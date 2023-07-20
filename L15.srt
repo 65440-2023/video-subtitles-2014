@@ -1,0 +1,7516 @@
+1
+0-1:59:36,500 --> 0-1:59:36,580
+
+2
+0-1:59:36,580 --> 0-1:59:38,930
+The following content is
+provided under a Creative
+
+3
+0-1:59:38,930 --> 0-1:59:40,320
+Commons license.
+
+4
+0-1:59:40,320 --> 0-1:59:42,550
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:42,550 --> 0-1:59:46,650
+continue to offer high quality
+educational resources for free.
+
+6
+0-1:59:46,650 --> 0-1:59:49,190
+To make a donation or to
+view additional materials
+
+7
+0-1:59:49,190 --> 0-1:59:53,100
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:53,100 --> 0-1:59:53,762
+at ocw.mit.edu.
+
+9
+0-1:59:53,762 --> 00:00:02,345
+
+10
+00:00:02,345 --> 00:00:05,380
+PROFESSOR: All right, today we
+are going to learn to count.
+
+11
+00:00:05,380 --> 00:00:10,960
+One, two, three-- In a
+algorithmic sense of course,
+
+12
+00:00:10,960 --> 00:00:13,820
+and prove hardness of
+counting style problems.
+
+13
+00:00:13,820 --> 00:00:18,330
+Or more generally, any problem
+where the output is an integer.
+
+14
+00:00:18,330 --> 00:00:21,870
+Like approximation
+algorithms, we
+
+15
+00:00:21,870 --> 00:00:25,130
+need to define a slightly
+stronger version of our NP
+
+16
+00:00:25,130 --> 00:00:25,715
+style problem.
+
+17
+00:00:25,715 --> 00:00:28,700
+It's not going to be
+a decision problem.
+
+18
+00:00:28,700 --> 00:00:30,860
+The remaining type
+is a search problem.
+
+19
+00:00:30,860 --> 00:00:39,880
+
+20
+00:00:39,880 --> 00:00:41,879
+Search problem you're
+trying to find a solution.
+
+21
+00:00:41,879 --> 00:00:43,570
+This is just like
+optimization problem,
+
+22
+00:00:43,570 --> 00:00:45,480
+but with no objective function.
+
+23
+00:00:45,480 --> 00:00:48,750
+Today all solutions
+are created equal.
+
+24
+00:00:48,750 --> 00:00:53,010
+So we just want to know
+how many there are.
+
+25
+00:00:53,010 --> 00:00:55,820
+So we're given an
+instance, the problem.
+
+26
+00:00:55,820 --> 00:00:58,055
+We want to produce a solution.
+
+27
+00:00:58,055 --> 00:01:00,734
+
+28
+00:01:00,734 --> 00:01:02,150
+Whereas in the
+decision problem we
+
+29
+00:01:02,150 --> 00:01:06,030
+want to know whether
+a solution exists.
+
+30
+00:01:06,030 --> 00:01:11,734
+With a search problem we
+want to find a solution.
+
+31
+00:01:11,734 --> 00:01:12,650
+Almost the same thing.
+
+32
+00:01:12,650 --> 00:01:32,540
+
+33
+00:01:32,540 --> 00:01:34,990
+So that would be a search
+problem in general.
+
+34
+00:01:34,990 --> 00:01:39,400
+For an NP search problem you can
+recognize what is an instance.
+
+35
+00:01:39,400 --> 00:01:40,990
+And you could
+recognize solutions
+
+36
+00:01:40,990 --> 00:01:43,790
+to instances in polynomial time.
+
+37
+00:01:43,790 --> 00:01:46,550
+Given an instance in the
+solution you can say,
+
+38
+00:01:46,550 --> 00:01:47,795
+yes that's a valid solution.
+
+39
+00:01:47,795 --> 00:01:51,120
+
+40
+00:01:51,120 --> 00:01:53,187
+OK for such a search
+problem of course,
+
+41
+00:01:53,187 --> 00:01:54,770
+is the corresponding
+decision problem.
+
+42
+00:01:54,770 --> 00:01:57,580
+Which is, does there
+exist a solution?
+
+43
+00:01:57,580 --> 00:02:02,390
+If you can solve this,
+then you can solve that.
+
+44
+00:02:02,390 --> 00:02:05,660
+You could solve the
+decision problem in NP
+
+45
+00:02:05,660 --> 00:02:08,960
+by guessing a
+solution and so on.
+
+46
+00:02:08,960 --> 00:02:13,510
+So this is intricately related
+to the notion of a certificate
+
+47
+00:02:13,510 --> 00:02:14,630
+for an NP problem.
+
+48
+00:02:14,630 --> 00:02:16,750
+The idea solutions
+are certificates.
+
+49
+00:02:16,750 --> 00:02:18,390
+But when we say
+problem is in NP,
+
+50
+00:02:18,390 --> 00:02:20,580
+we say there is some way
+to define certificate
+
+51
+00:02:20,580 --> 00:02:24,230
+so that this kind of
+problem can be set up.
+
+52
+00:02:24,230 --> 00:02:25,860
+And the goal here--
+the point here
+
+53
+00:02:25,860 --> 00:02:28,175
+is to solidify a specific
+notion of certificate.
+
+54
+00:02:28,175 --> 00:02:30,200
+We can't just use any
+one, because we're
+
+55
+00:02:30,200 --> 00:02:32,050
+going to count them
+the-- If you formulate
+
+56
+00:02:32,050 --> 00:02:33,466
+the certificates
+in different ways
+
+57
+00:02:33,466 --> 00:02:34,880
+you'll get different counts.
+
+58
+00:02:34,880 --> 00:02:39,850
+But in general,
+every NP problem can
+
+59
+00:02:39,850 --> 00:02:45,710
+be converted into an NP search
+problem in at least one way.
+
+60
+00:02:45,710 --> 00:02:50,220
+
+61
+00:02:50,220 --> 00:02:52,380
+But each notional
+certificate gives you
+
+62
+00:02:52,380 --> 00:02:55,010
+a notion of the search problem.
+
+63
+00:02:55,010 --> 00:02:59,200
+OK, in some complexity context
+these are called NP relations,
+
+64
+00:02:59,200 --> 00:03:00,950
+the way you specify
+what a certificate is.
+
+65
+00:03:00,950 --> 00:03:04,180
+But I think this is the more
+algorithmic perspective.
+
+66
+00:03:04,180 --> 00:03:05,650
+All right, so
+given such a search
+
+67
+00:03:05,650 --> 00:03:07,645
+problem we turn it into
+a counting problem.
+
+68
+00:03:07,645 --> 00:03:15,300
+
+69
+00:03:15,300 --> 00:03:18,360
+So that's a search
+problem, is called A.
+
+70
+00:03:18,360 --> 00:03:23,300
+Then counting problem will
+be sharp A, not hashtag
+
+71
+00:03:23,300 --> 00:03:28,910
+A. Some people call it
+number A. The problem is,
+
+72
+00:03:28,910 --> 00:03:35,805
+count the number of solutions
+for a given instance.
+
+73
+00:03:35,805 --> 00:03:46,270
+
+74
+00:03:46,270 --> 00:03:49,280
+OK so in particular, you
+detect whether the number
+
+75
+00:03:49,280 --> 00:03:51,040
+is zero, or not zero.
+
+76
+00:03:51,040 --> 00:03:53,350
+So this is strictly
+harder in some sense
+
+77
+00:03:53,350 --> 00:03:56,760
+than the decision problem,
+does there exist a solution.
+
+78
+00:03:56,760 --> 00:04:00,170
+And we will see some problems
+where the search problem is
+
+79
+00:04:00,170 --> 00:04:02,830
+polynomial, but the
+corresponding counting problem
+
+80
+00:04:02,830 --> 00:04:06,700
+is actually hard.
+
+81
+00:04:06,700 --> 00:04:08,270
+I can't say NP
+hard, there's going
+
+82
+00:04:08,270 --> 00:04:10,810
+to be a new notion of hardness.
+
+83
+00:04:10,810 --> 00:04:13,260
+So some examples.
+
+84
+00:04:13,260 --> 00:04:17,130
+Pretty much every problem we've
+defined as a decision problem
+
+85
+00:04:17,130 --> 00:04:20,610
+had a search problem in mind.
+
+86
+00:04:20,610 --> 00:04:24,107
+So something like SAT, you need
+to satisfy all of the things.
+
+87
+00:04:24,107 --> 00:04:25,690
+So there's no objective
+function here,
+
+88
+00:04:25,690 --> 00:04:27,250
+but you want to know
+how many different ways,
+
+89
+00:04:27,250 --> 00:04:29,700
+how many different variable
+assignments are there that
+
+90
+00:04:29,700 --> 00:04:31,850
+satisfy the given formula?
+
+91
+00:04:31,850 --> 00:04:36,570
+Or take your favorite
+pencil and paper puzzle,
+
+92
+00:04:36,570 --> 00:04:43,220
+we'll be looking at
+Shakashaka today, again.
+
+93
+00:04:43,220 --> 00:04:45,040
+How many different
+solutions are there?
+
+94
+00:04:45,040 --> 00:04:46,690
+You'd like, when
+designing a puzzle,
+
+95
+00:04:46,690 --> 00:04:48,870
+usually you want to
+know that it's unique.
+
+96
+00:04:48,870 --> 00:04:51,420
+So it'd be nice if you could
+count the number of solutions
+
+97
+00:04:51,420 --> 00:04:53,430
+and show that it's one.
+
+98
+00:04:53,430 --> 00:04:57,200
+These problems are going to turn
+out to be very hard of course.
+
+99
+00:04:57,200 --> 00:05:01,040
+So let's define a
+notion of hardness.
+
+100
+00:05:01,040 --> 00:05:04,825
+Sharp P is going to be the
+class of all of these counting
+
+101
+00:05:04,825 --> 00:05:05,325
+problems.
+
+102
+00:05:05,325 --> 00:05:18,790
+
+103
+00:05:18,790 --> 00:05:20,595
+This is the sort of certificate.
+
+104
+00:05:20,595 --> 00:05:21,220
+Yeah, question?
+
+105
+00:05:21,220 --> 00:05:22,540
+AUDIENCE: Just for the
+puzzle application,
+
+106
+00:05:22,540 --> 00:05:24,465
+is it going to turn out
+that counting if there's
+
+107
+00:05:24,465 --> 00:05:26,548
+one solution versus
+one-to-one solution is as hard
+
+108
+00:05:26,548 --> 00:05:28,398
+as just counting total numbers?
+
+109
+00:05:28,398 --> 00:05:32,850
+PROFESSOR: It's
+not quite as hard,
+
+110
+00:05:32,850 --> 00:05:36,820
+but we will show that
+distinguishing one
+
+111
+00:05:36,820 --> 00:05:40,930
+for more than one is very
+hard, is NP complete actually.
+
+112
+00:05:40,930 --> 00:05:44,014
+That's a decision problem that
+could show that's NP complete.
+
+113
+00:05:44,014 --> 00:05:45,680
+So normally we think
+of zero versus one,
+
+114
+00:05:45,680 --> 00:05:47,560
+but it turns out one
+versus two is not--
+
+115
+00:05:47,560 --> 00:05:52,370
+or one versus more than one
+is about the same difficulty.
+
+116
+00:05:52,370 --> 00:05:55,790
+Counting is even
+harder I would say.
+
+117
+00:05:55,790 --> 00:05:57,230
+But it's bad news all around.
+
+118
+00:05:57,230 --> 00:05:58,710
+There's different
+notions of bad.
+
+119
+00:05:58,710 --> 00:06:01,220
+
+120
+00:06:01,220 --> 00:06:06,310
+Cool, so this is the sort
+of certificate perspective.
+
+121
+00:06:06,310 --> 00:06:08,690
+With NP we-- I had given you
+two different definitions
+
+122
+00:06:08,690 --> 00:06:12,380
+of certificate perspective, and
+a non-deterministic computation
+
+123
+00:06:12,380 --> 00:06:13,270
+perspective.
+
+124
+00:06:13,270 --> 00:06:16,790
+You can do the same
+computational perspective here.
+
+125
+00:06:16,790 --> 00:06:23,790
+You could say sharp P
+is the set of problems,
+
+126
+00:06:23,790 --> 00:06:27,665
+solved by polynomial time.
+
+127
+00:06:27,665 --> 00:06:32,160
+
+128
+00:06:32,160 --> 00:06:34,495
+Call it a non-deterministic
+counting algorithm.
+
+129
+00:06:34,495 --> 00:06:39,797
+
+130
+00:06:39,797 --> 00:06:41,880
+We don't need Turing
+machines for this definition,
+
+131
+00:06:41,880 --> 00:06:44,540
+although that was of course
+the original definition.
+
+132
+00:06:44,540 --> 00:06:47,820
+So take your favorite
+non-deterministic algorithm
+
+133
+00:06:47,820 --> 00:06:51,420
+as usual for NP, it makes
+guesses at various points,
+
+134
+00:06:51,420 --> 00:06:53,080
+multiple branches.
+
+135
+00:06:53,080 --> 00:06:57,220
+With the NP algorithm the way
+we'd execute it on an NP style
+
+136
+00:06:57,220 --> 00:06:59,470
+machine is that we would
+see whether there's
+
+137
+00:06:59,470 --> 00:07:01,410
+any path that led to a yes.
+
+138
+00:07:01,410 --> 00:07:04,290
+Again, it's going to output
+yes or no at the end.
+
+139
+00:07:04,290 --> 00:07:07,430
+In this case, what the computer
+does, the sharp P style
+
+140
+00:07:07,430 --> 00:07:10,790
+computer, is it-- conceptually
+it runs all the branches.
+
+141
+00:07:10,790 --> 00:07:13,810
+It counts the number of yeses
+and returns that number.
+
+142
+00:07:13,810 --> 00:07:17,710
+So even though the algorithm is
+designed to return yes or no,
+
+143
+00:07:17,710 --> 00:07:20,530
+when it executes it
+actually outputs a number.
+
+144
+00:07:20,530 --> 00:07:23,690
+The original paper
+says magically.
+
+145
+00:07:23,690 --> 00:07:26,514
+It's just as magic as an NP
+machine, but a little-- even
+
+146
+00:07:26,514 --> 00:07:27,430
+a little more magical.
+
+147
+00:07:27,430 --> 00:07:30,130
+
+148
+00:07:30,130 --> 00:07:33,580
+OK so you-- I mean if you're not
+comfortable with that we just
+
+149
+00:07:33,580 --> 00:07:36,830
+use this definition, same thing.
+
+150
+00:07:36,830 --> 00:07:44,227
+This is all work done by Les
+Valiant in the late '70s.
+
+151
+00:07:44,227 --> 00:07:44,810
+These notions.
+
+152
+00:07:44,810 --> 00:07:59,210
+
+153
+00:07:59,210 --> 00:08:00,820
+So it's pretty clear,
+it's pretty easy
+
+154
+00:08:00,820 --> 00:08:02,910
+to show all these
+problems are in sharp P,
+
+155
+00:08:02,910 --> 00:08:05,451
+because they were-- the
+corresponding decision problems
+
+156
+00:08:05,451 --> 00:08:05,950
+were in NP.
+
+157
+00:08:05,950 --> 00:08:10,610
+We convert them into
+sharp P algorithms.
+
+158
+00:08:10,610 --> 00:08:13,710
+Now let's think about hardness
+with respect to sharp P.
+
+159
+00:08:13,710 --> 00:08:15,490
+As usual we want
+it to mean as hard
+
+160
+00:08:15,490 --> 00:08:16,909
+as all problems in that class.
+
+161
+00:08:16,909 --> 00:08:21,770
+Meaning that we can reduce all
+those problems to our problem.
+
+162
+00:08:21,770 --> 00:08:25,020
+And the question is, by
+what kind of reductions?
+
+163
+00:08:25,020 --> 00:08:28,285
+And here we're going to allow
+very powerful reductions.
+
+164
+00:08:28,285 --> 00:08:33,472
+
+165
+00:08:33,472 --> 00:08:34,930
+We've talked about
+these reductions
+
+166
+00:08:34,930 --> 00:08:37,820
+but never actually been
+allowed to use them.
+
+167
+00:08:37,820 --> 00:08:40,050
+Multicall, Cook-style
+reductions.
+
+168
+00:08:40,050 --> 00:08:42,580
+
+169
+00:08:42,580 --> 00:08:45,270
+I think in general, this
+is a common approach
+
+170
+00:08:45,270 --> 00:08:51,030
+for FNP, which is Functions
+NP style functions.
+
+171
+00:08:51,030 --> 00:08:54,020
+Which you can also think of
+this as kind of-- the counting
+
+172
+00:08:54,020 --> 00:08:56,350
+version is, the
+output is a value.
+
+173
+00:08:56,350 --> 00:09:00,550
+So you have a function instead
+of just a decision question.
+
+174
+00:09:00,550 --> 00:09:04,690
+When the output is some thing,
+some number, in this case.
+
+175
+00:09:04,690 --> 00:09:07,290
+You might have to manipulate
+that number at the end.
+
+176
+00:09:07,290 --> 00:09:09,680
+And so at the very least,
+you need to make a call
+
+177
+00:09:09,680 --> 00:09:11,860
+and do some stuff before
+you return your modified
+
+178
+00:09:11,860 --> 00:09:13,790
+answer in your reduction.
+
+179
+00:09:13,790 --> 00:09:16,370
+But in fact we're going
+to allow full tilt,
+
+180
+00:09:16,370 --> 00:09:20,290
+you could make multiple calls
+to some hypothetical solution
+
+181
+00:09:20,290 --> 00:09:25,257
+to your problem in order to
+solve all problems in sharp P.
+
+182
+00:09:25,257 --> 00:09:27,340
+And we'll actually use
+multicall a bunch of times.
+
+183
+00:09:27,340 --> 00:09:29,640
+We won't always need multicall.
+
+184
+00:09:29,640 --> 00:09:32,350
+Often we'll be able to get
+away with a much simpler kind
+
+185
+00:09:32,350 --> 00:09:33,410
+of reduction.
+
+186
+00:09:33,410 --> 00:09:35,070
+Let me tell you that kind now.
+
+187
+00:09:35,070 --> 00:09:38,490
+
+188
+00:09:38,490 --> 00:09:40,381
+But in general we allow
+arbitrary multicall.
+
+189
+00:09:40,381 --> 00:09:40,880
+Yeah?
+
+190
+00:09:40,880 --> 00:09:44,320
+AUDIENCE: Your not limited
+in the number of multicalls?
+
+191
+00:09:44,320 --> 00:09:45,050
+PROFESSOR: Right.
+
+192
+00:09:45,050 --> 00:09:47,080
+You could do polynomial
+number of multicalls.
+
+193
+00:09:47,080 --> 00:09:50,530
+As before, reduction
+should be polynomial time.
+
+194
+00:09:50,530 --> 00:09:54,570
+But, so you're basically
+given an algorithm.
+
+195
+00:09:54,570 --> 00:10:00,660
+That's usually called an Oracle
+that solves your problem,
+
+196
+00:10:00,660 --> 00:10:05,460
+solves your problem B. And
+you want to solve-- yeah,
+
+197
+00:10:05,460 --> 00:10:09,530
+you want to solve A by
+multiple calls to B. So
+
+198
+00:10:09,530 --> 00:10:11,870
+what, we'll see a bunch
+of examples of that.
+
+199
+00:10:11,870 --> 00:10:15,870
+Here's a more familiar
+style of reduction.
+
+200
+00:10:15,870 --> 00:10:18,560
+And often, for a lot of problems
+we can get away with this.
+
+201
+00:10:18,560 --> 00:10:20,450
+But especially a lot
+of the early proofs
+
+202
+00:10:20,450 --> 00:10:21,880
+needed the multicall.
+
+203
+00:10:21,880 --> 00:10:23,880
+And as you'll see you can
+do lots of cool tricks
+
+204
+00:10:23,880 --> 00:10:27,000
+with multicall
+using number theory.
+
+205
+00:10:27,000 --> 00:10:29,560
+
+206
+00:10:29,560 --> 00:10:33,290
+So parsimonious reduction.
+
+207
+00:10:33,290 --> 00:10:35,355
+This is for NP search problems.
+
+208
+00:10:35,355 --> 00:10:39,970
+
+209
+00:10:39,970 --> 00:10:45,580
+This is going to be a lot like
+an NP reduction, regular style.
+
+210
+00:10:45,580 --> 00:10:52,970
+So again we convert an instance
+x of a, five function f,
+
+211
+00:10:52,970 --> 00:10:59,200
+into an instance x prime of b.
+
+212
+00:10:59,200 --> 00:11:03,380
+
+213
+00:11:03,380 --> 00:11:08,530
+And that function should
+be computable in poly time.
+
+214
+00:11:08,530 --> 00:11:11,470
+
+215
+00:11:11,470 --> 00:11:13,886
+So far just like
+an NP reduction.
+
+216
+00:11:13,886 --> 00:11:16,560
+
+217
+00:11:16,560 --> 00:11:19,950
+And usually we would say,
+for a search problem,
+
+218
+00:11:19,950 --> 00:11:22,130
+we would say there
+exists a solution
+
+219
+00:11:22,130 --> 00:11:25,240
+for x, if and only if, there
+exists a solution for x prime.
+
+220
+00:11:25,240 --> 00:11:30,170
+That would be the direct analog
+of an NP style reduction.
+
+221
+00:11:30,170 --> 00:11:32,170
+But we're going to ask
+for a stronger condition.
+
+222
+00:11:32,170 --> 00:11:37,540
+Which is that the number
+of solutions to problem
+
+223
+00:11:37,540 --> 00:11:47,390
+A to instance x, equals the
+number of solutions of type B
+
+224
+00:11:47,390 --> 00:11:50,040
+to instance x prime.
+
+225
+00:11:50,040 --> 00:11:52,550
+OK so in particular, this
+one's going to equal to one,
+
+226
+00:11:52,550 --> 00:11:55,020
+this one will be greater than
+equal to one, and vice versa.
+
+227
+00:11:55,020 --> 00:11:57,329
+So this is stronger
+than an NP style
+
+228
+00:11:57,329 --> 00:11:59,370
+reduction for the
+corresponding decision problem.
+
+229
+00:11:59,370 --> 00:12:04,320
+
+230
+00:12:04,320 --> 00:12:06,280
+Yeah, so I even wrote that down.
+
+231
+00:12:06,280 --> 00:12:10,600
+This implies that the decision
+problems have the same answer.
+
+232
+00:12:10,600 --> 00:12:18,600
+
+233
+00:12:18,600 --> 00:12:21,935
+So in particular, this implies
+that we have an NP reduction.
+
+234
+00:12:21,935 --> 00:12:28,520
+
+235
+00:12:28,520 --> 00:12:36,040
+So in particular if A,
+the decision version of A
+
+236
+00:12:36,040 --> 00:12:39,180
+is NP hard, then the decision
+version of B is NP hard.
+
+237
+00:12:39,180 --> 00:12:46,900
+But more interesting is
+that, if A is sharp P hard,
+
+238
+00:12:46,900 --> 00:12:48,630
+then B is sharp P hard.
+
+239
+00:12:48,630 --> 00:12:54,320
+
+240
+00:12:54,320 --> 00:12:57,580
+But also this holds for NP.
+
+241
+00:12:57,580 --> 00:13:01,630
+For the decision versions
+of A and B. Sorry,
+
+242
+00:13:01,630 --> 00:13:07,005
+sharp A and sharp B. OK this
+is a subtle distinction.
+
+243
+00:13:07,005 --> 00:13:10,100
+
+244
+00:13:10,100 --> 00:13:13,210
+For sharp P hardness we're
+talking about the counting
+
+245
+00:13:13,210 --> 00:13:15,130
+problems, and we're
+talking about making calls
+
+246
+00:13:15,130 --> 00:13:16,567
+to other counting solutions.
+
+247
+00:13:16,567 --> 00:13:18,900
+Then doing things with those
+numbers and who knows what,
+
+248
+00:13:18,900 --> 00:13:20,790
+making many calls.
+
+249
+00:13:20,790 --> 00:13:22,430
+With parsimonious
+reduction we're
+
+250
+00:13:22,430 --> 00:13:25,490
+thinking about the
+non-counting version.
+
+251
+00:13:25,490 --> 00:13:27,330
+Just the search problem.
+
+252
+00:13:27,330 --> 00:13:31,550
+And so we're not worried about
+counting solutions directly,
+
+253
+00:13:31,550 --> 00:13:33,800
+I mean it-- what's nice
+about parsimonious reductions
+
+254
+00:13:33,800 --> 00:13:35,540
+is they look just
+like NP reductions
+
+255
+00:13:35,540 --> 00:13:37,750
+for the regular old problems.
+
+256
+00:13:37,750 --> 00:13:39,740
+We just need this
+extra property,
+
+257
+00:13:39,740 --> 00:13:43,680
+parsimony that the number
+of solutions to the unit
+
+258
+00:13:43,680 --> 00:13:45,710
+is preserved through
+the transformation.
+
+259
+00:13:45,710 --> 00:13:50,850
+And a lot of the proofs
+that we've covered follow--
+
+260
+00:13:50,850 --> 00:13:53,660
+have this property and
+will be good for us.
+
+261
+00:13:53,660 --> 00:13:55,910
+If we can get our
+source problems hard,
+
+262
+00:13:55,910 --> 00:13:58,930
+then we'll get a lot of
+target problems hard as well.
+
+263
+00:13:58,930 --> 00:14:01,890
+
+264
+00:14:01,890 --> 00:14:10,600
+Well let me tell you about one
+more version which I made up.
+
+265
+00:14:10,600 --> 00:14:11,805
+C-monious reductions.
+
+266
+00:14:11,805 --> 00:14:20,050
+
+267
+00:14:20,050 --> 00:14:21,560
+This is my attempt
+at understanding
+
+268
+00:14:21,560 --> 00:14:24,260
+the entomology of parsimonious.
+
+269
+00:14:24,260 --> 00:14:30,380
+Which is something like little
+money, being very thrifty.
+
+270
+00:14:30,380 --> 00:14:32,530
+So this is having a
+little bit more money.
+
+271
+00:14:32,530 --> 00:14:34,547
+You have C dollars.
+
+272
+00:14:34,547 --> 00:14:36,380
+But you have to be very
+consistent about it.
+
+273
+00:14:36,380 --> 00:14:38,420
+I should probably add
+some word that means
+
+274
+00:14:38,420 --> 00:14:39,610
+uniform in the middle there.
+
+275
+00:14:39,610 --> 00:14:44,890
+But I want the number of
+solutions of x prime to equal
+
+276
+00:14:44,890 --> 00:14:49,815
+c times the number
+of solutions to x.
+
+277
+00:14:49,815 --> 00:14:52,610
+
+278
+00:14:52,610 --> 00:14:55,580
+C a fixed constant.
+
+279
+00:14:55,580 --> 00:14:59,010
+And it has to be the
+same for every x.
+
+280
+00:14:59,010 --> 00:15:02,200
+
+281
+00:15:02,200 --> 00:15:04,520
+This would be just as good
+from a sharp P perspective.
+
+282
+00:15:04,520 --> 00:15:08,190
+Because if I could solve
+B and I wanted to solve A,
+
+283
+00:15:08,190 --> 00:15:12,180
+I would convert A to B, run
+the thing, then divide by C.
+
+284
+00:15:12,180 --> 00:15:16,330
+There will never be a remainder
+and then I have my answer to A.
+
+285
+00:15:16,330 --> 00:15:18,190
+As long as C's not zero.
+
+286
+00:15:18,190 --> 00:15:22,430
+C should be an integer here.
+
+287
+00:15:22,430 --> 00:15:28,290
+We will see a bunch of
+C-monious reductions.
+
+288
+00:15:28,290 --> 00:15:34,610
+I guess, yeah it doesn't have
+to be totally independent of x.
+
+289
+00:15:34,610 --> 00:15:36,980
+It can depend on things like n.
+
+290
+00:15:36,980 --> 00:15:40,370
+Something that we can
+compute easily I guess.
+
+291
+00:15:40,370 --> 00:15:42,530
+Shouldn't be too dependent on x.
+
+292
+00:15:42,530 --> 00:15:46,840
+All right, let's do-- let's
+look at some examples.
+
+293
+00:15:46,840 --> 00:15:59,530
+So, going to make a list here
+of sharp P complete problems.
+
+294
+00:15:59,530 --> 00:16:02,330
+
+295
+00:16:02,330 --> 00:16:06,060
+And we'll start with versions
+of SAT because we like SAT.
+
+296
+00:16:06,060 --> 00:16:12,620
+So I'm just going to tell
+you that sharp 3SAT is hard.
+
+297
+00:16:12,620 --> 00:16:16,990
+First sharp SAT is hard, and
+the usual proof of SAT hardness
+
+298
+00:16:16,990 --> 00:16:21,960
+shows sharp P completeness
+for sharp SAT.
+
+299
+00:16:21,960 --> 00:16:25,840
+And if you're careful about
+the conversion from SAT to 3CNF
+
+300
+00:16:25,840 --> 00:16:27,790
+you can get sharp
+three satisfied.
+
+301
+00:16:27,790 --> 00:16:29,740
+It's not terribly
+interesting and tedious.
+
+302
+00:16:29,740 --> 00:16:34,160
+So I will skip that one.
+
+303
+00:16:34,160 --> 00:16:37,620
+So what about Planar 3SAT?
+
+304
+00:16:37,620 --> 00:16:40,210
+
+305
+00:16:40,210 --> 00:16:43,470
+I stared at this diagram
+many times for a while.
+
+306
+00:16:43,470 --> 00:16:48,630
+This is lecture seven for
+replacing a crossing in a 3SAT
+
+307
+00:16:48,630 --> 00:16:50,710
+thing with this picture.
+
+308
+00:16:50,710 --> 00:16:54,450
+And all of this argument and
+this table in particular,
+
+309
+00:16:54,450 --> 00:16:57,099
+was concluding
+that the variables
+
+310
+00:16:57,099 --> 00:16:58,400
+are forced in this scenario.
+
+311
+00:16:58,400 --> 00:17:01,589
+If you know what
+A and B are-- so
+
+312
+00:17:01,589 --> 00:17:03,150
+once you choose
+what A and B are,
+
+313
+00:17:03,150 --> 00:17:05,150
+these two have to
+be copies of A and B
+
+314
+00:17:05,150 --> 00:17:08,260
+and then it ended up
+that A-- We proved
+
+315
+00:17:08,260 --> 00:17:11,180
+that A1 equaled A2
+and B1 equaled B2,
+
+316
+00:17:11,180 --> 00:17:13,360
+and then these
+variables were all
+
+317
+00:17:13,360 --> 00:17:15,320
+determined by these formula.
+
+318
+00:17:15,320 --> 00:17:17,940
+And so once you know A and
+B all the variable settings
+
+319
+00:17:17,940 --> 00:17:18,720
+are forced.
+
+320
+00:17:18,720 --> 00:17:21,680
+Which means you preserve
+the number of solutions.
+
+321
+00:17:21,680 --> 00:17:26,830
+So planar sharp 3SAT
+is sharp P complete.
+
+322
+00:17:26,830 --> 00:17:29,860
+
+323
+00:17:29,860 --> 00:17:32,700
+I'd like to pretend that there's
+some debate within the sharp P
+
+324
+00:17:32,700 --> 00:17:37,140
+community about whether the
+sharp P are here or here.
+
+325
+00:17:37,140 --> 00:17:40,080
+I kind of prefer it here,
+but I've seen it over here,
+
+326
+00:17:40,080 --> 00:17:40,740
+so you know.
+
+327
+00:17:40,740 --> 00:17:44,150
+
+328
+00:17:44,150 --> 00:17:46,640
+I don't think I've even
+seen that mentioned but I'm
+
+329
+00:17:46,640 --> 00:17:49,030
+sure it's out there somewhere.
+
+330
+00:17:49,030 --> 00:17:53,050
+So let's flip through our
+other planar hardness proofs.
+
+331
+00:17:53,050 --> 00:17:56,420
+This is planar monotone
+rectilinear 3SAT.
+
+332
+00:17:56,420 --> 00:17:58,290
+Mainly the monotone aspect.
+
+333
+00:17:58,290 --> 00:18:00,670
+We wanted there to
+be all the variables
+
+334
+00:18:00,670 --> 00:18:02,940
+to be positive or
+negative in every clause.
+
+335
+00:18:02,940 --> 00:18:06,320
+And so we had this trick
+for forcing this thing
+
+336
+00:18:06,320 --> 00:18:07,570
+to be not equal to this thing.
+
+337
+00:18:07,570 --> 00:18:11,290
+Basically copying the variable
+with a flip in its truths.
+
+338
+00:18:11,290 --> 00:18:13,110
+But again everything
+here is forced.
+
+339
+00:18:13,110 --> 00:18:15,162
+The variables we
+make are guaranteed
+
+340
+00:18:15,162 --> 00:18:17,120
+to be copies or indications
+of other variables.
+
+341
+00:18:17,120 --> 00:18:19,050
+So we preserve
+number of solutions.
+
+342
+00:18:19,050 --> 00:18:20,290
+So this is hard too.
+
+343
+00:18:20,290 --> 00:18:36,760
+
+344
+00:18:36,760 --> 00:18:39,560
+OK, what else?
+
+345
+00:18:39,560 --> 00:18:41,710
+I think we can-- I
+just made this up
+
+346
+00:18:41,710 --> 00:18:44,370
+--but we can add the
+dash three as usual
+
+347
+00:18:44,370 --> 00:18:46,500
+by replacing each variable
+with little cycle.
+
+348
+00:18:46,500 --> 00:18:49,020
+
+349
+00:18:49,020 --> 00:18:51,030
+What about planar 1-in-3 SAT?
+
+350
+00:18:51,030 --> 00:18:53,740
+So we had, we actually had
+two ways to prove this.
+
+351
+00:18:53,740 --> 00:18:59,680
+This is one of the
+reductions and we
+
+352
+00:18:59,680 --> 00:19:03,460
+check that this set
+of SAT clauses, these
+
+353
+00:19:03,460 --> 00:19:05,977
+are the SAT clauses implemented
+this 1-in-3 SAT clause.
+
+354
+00:19:05,977 --> 00:19:08,560
+And I stared at this for a while
+and its kind of hard to tell.
+
+355
+00:19:08,560 --> 00:19:10,920
+So I just wrote a program
+to enumerate all cases
+
+356
+00:19:10,920 --> 00:19:13,470
+and found there's
+exactly one case where
+
+357
+00:19:13,470 --> 00:19:16,290
+this is not parsimonious.
+
+358
+00:19:16,290 --> 00:19:22,260
+And that's when this is
+false and these two are true.
+
+359
+00:19:22,260 --> 00:19:24,400
+And because of these
+negations you can either
+
+360
+00:19:24,400 --> 00:19:25,900
+solve the internal
+things like this,
+
+361
+00:19:25,900 --> 00:19:27,880
+or you could flip all
+of the internal nodes
+
+362
+00:19:27,880 --> 00:19:30,050
+and that will also be satisfied.
+
+363
+00:19:30,050 --> 00:19:34,100
+Now this is bad news, because
+all the other cases there
+
+364
+00:19:34,100 --> 00:19:36,779
+is a unique solution over here.
+
+365
+00:19:36,779 --> 00:19:38,820
+But in this case there
+are exactly two solutions.
+
+366
+00:19:38,820 --> 00:19:40,445
+If it was two everywhere
+we'd be happy,
+
+367
+00:19:40,445 --> 00:19:42,000
+that would be twomonious.
+
+368
+00:19:42,000 --> 00:19:44,040
+If it was one everywhere
+we'd be happier, happy
+
+369
+00:19:44,040 --> 00:19:45,410
+that would be parsimonious.
+
+370
+00:19:45,410 --> 00:19:47,710
+But because it's a
+mixture of one and two
+
+371
+00:19:47,710 --> 00:19:49,475
+we have approximately
+preserved the counts
+
+372
+00:19:49,475 --> 00:19:50,480
+with a factor of two.
+
+373
+00:19:50,480 --> 00:19:52,390
+But that's not good
+enough for sharp P,
+
+374
+00:19:52,390 --> 00:19:55,740
+we need exact preservation.
+
+375
+00:19:55,740 --> 00:19:57,460
+So this is no good.
+
+376
+00:19:57,460 --> 00:19:59,700
+Luckily we had another
+proof which was actually
+
+377
+00:19:59,700 --> 00:20:03,900
+a stronger result, Planar
+Positive Rectilinear 1-in-3SAT.
+
+378
+00:20:03,900 --> 00:20:05,780
+This was a version
+with no negation,
+
+379
+00:20:05,780 --> 00:20:09,080
+and this one does work.
+
+380
+00:20:09,080 --> 00:20:12,700
+There's first of all
+this, the not equal gadget
+
+381
+00:20:12,700 --> 00:20:13,720
+and the equal gadget.
+
+382
+00:20:13,720 --> 00:20:17,350
+I don't want to go through them,
+but again A forced to be zero,
+
+383
+00:20:17,350 --> 00:20:20,280
+C was forced to be one,
+which forces B and D to be
+
+384
+00:20:20,280 --> 00:20:21,750
+zero in this picture.
+
+385
+00:20:21,750 --> 00:20:25,430
+So all is good.
+
+386
+00:20:25,430 --> 00:20:27,050
+And again parsimonious there.
+
+387
+00:20:27,050 --> 00:20:29,900
+And then this one was too
+complicated to think about,
+
+388
+00:20:29,900 --> 00:20:31,913
+so I again wrote a
+program to check-- try
+
+389
+00:20:31,913 --> 00:20:35,620
+all the cases and
+every choice of XYZ
+
+390
+00:20:35,620 --> 00:20:38,540
+over here that's satisfied,
+this is a reduction from 3SAT.
+
+391
+00:20:38,540 --> 00:20:40,370
+So if at least one
+of these is true,
+
+392
+00:20:40,370 --> 00:20:42,920
+there will be exactly
+one solution over here.
+
+393
+00:20:42,920 --> 00:20:46,055
+And just as before after--
+if zero of them are true,
+
+394
+00:20:46,055 --> 00:20:47,430
+then they'll be
+no solution here.
+
+395
+00:20:47,430 --> 00:20:49,900
+That we already knew.
+
+396
+00:20:49,900 --> 00:20:51,360
+So good news.
+
+397
+00:20:51,360 --> 00:20:53,610
+I should check whether that's
+mentioned in their paper
+
+398
+00:20:53,610 --> 00:20:57,330
+but it proves planar positive
+rectilinear 1-in-3SAT
+
+399
+00:20:57,330 --> 00:20:58,770
+is sharp P complete.
+
+400
+00:20:58,770 --> 00:21:18,960
+
+401
+00:21:18,960 --> 00:21:20,220
+Sharp go here, here.
+
+402
+00:21:20,220 --> 00:21:22,760
+
+403
+00:21:22,760 --> 00:21:24,970
+OK, so lots of fun results.
+
+404
+00:21:24,970 --> 00:21:27,180
+We get a lot of results
+just from-- by looking
+
+405
+00:21:27,180 --> 00:21:27,860
+at old proofs.
+
+406
+00:21:27,860 --> 00:21:31,430
+Now they're not
+all going to work,
+
+407
+00:21:31,430 --> 00:21:34,150
+but I have one more
+example that does work.
+
+408
+00:21:34,150 --> 00:21:36,910
+Shakashaka, remember the puzzle?
+
+409
+00:21:36,910 --> 00:21:38,350
+It's a Nikoli puzzle.
+
+410
+00:21:38,350 --> 00:21:40,300
+Every square,
+every white squared
+
+411
+00:21:40,300 --> 00:21:43,750
+can be filled in with a black
+thing, but adjacent to it too,
+
+412
+00:21:43,750 --> 00:21:46,370
+there should be
+exactly two of those.
+
+413
+00:21:46,370 --> 00:21:48,550
+And you want all of the
+resulting white regions
+
+414
+00:21:48,550 --> 00:21:50,950
+to be rectangles
+possibly rotated.
+
+415
+00:21:50,950 --> 00:21:56,020
+And we had this reduction
+from planar 3SAT,
+
+416
+00:21:56,020 --> 00:21:58,980
+and this basically,
+this type of wire.
+
+417
+00:21:58,980 --> 00:22:03,174
+And there's exactly two
+ways to solve a wire.
+
+418
+00:22:03,174 --> 00:22:04,340
+One for true, one for false.
+
+419
+00:22:04,340 --> 00:22:05,923
+So once you know
+what the variable is,
+
+420
+00:22:05,923 --> 00:22:07,740
+you're forced what
+to do, there is also
+
+421
+00:22:07,740 --> 00:22:10,200
+a parity-shifting gadget
+and splits and turns.
+
+422
+00:22:10,200 --> 00:22:13,030
+But again, exactly two
+ways to solve everything.
+
+423
+00:22:13,030 --> 00:22:15,800
+So parsimonious, and then
+the clause everything
+
+424
+00:22:15,800 --> 00:22:17,760
+was basically
+forced just-- you're
+
+425
+00:22:17,760 --> 00:22:20,600
+forced whether to have
+these square diamonds.
+
+426
+00:22:20,600 --> 00:22:22,200
+And you just
+eliminated the one case
+
+427
+00:22:22,200 --> 00:22:23,940
+where the clause
+is not satisfied.
+
+428
+00:22:23,940 --> 00:22:27,050
+So there's really no flexibility
+here, one way to solve it.
+
+429
+00:22:27,050 --> 00:22:28,810
+And so it's a
+parsimonious reduction
+
+430
+00:22:28,810 --> 00:22:30,950
+and indeed in the
+paper we mentioned
+
+431
+00:22:30,950 --> 00:22:33,830
+this implies sharp P
+completeness of counting
+
+432
+00:22:33,830 --> 00:22:36,270
+Shakashaka solutions.
+
+433
+00:22:36,270 --> 00:22:38,510
+Cool.
+
+434
+00:22:38,510 --> 00:22:41,400
+Here's an example
+that doesn't work.
+
+435
+00:22:41,400 --> 00:22:44,270
+A little different,
+Hamiltonicity or I
+
+436
+00:22:44,270 --> 00:22:47,630
+guess I want to count the
+number of Hamiltonian cycles.
+
+437
+00:22:47,630 --> 00:22:53,010
+The natural counting
+version of Hamiltonicity.
+
+438
+00:22:53,010 --> 00:22:55,580
+So we had two proofs for
+this, neither of them
+
+439
+00:22:55,580 --> 00:22:58,870
+work in a sharp P sense.
+
+440
+00:22:58,870 --> 00:23:01,220
+This one, remember
+the idea was that you
+
+441
+00:23:01,220 --> 00:23:05,480
+would traverse back and
+forth one way or the other
+
+442
+00:23:05,480 --> 00:23:06,795
+to get all of these nodes.
+
+443
+00:23:06,795 --> 00:23:08,170
+That was a variable,
+that's fine.
+
+444
+00:23:08,170 --> 00:23:09,925
+There're exactly
+two ways to do that.
+
+445
+00:23:09,925 --> 00:23:12,200
+But then the clause,
+the clause had
+
+446
+00:23:12,200 --> 00:23:15,790
+to be satisfied by at least
+one of the three variables.
+
+447
+00:23:15,790 --> 00:23:17,720
+And if it's satisfied
+for example,
+
+448
+00:23:17,720 --> 00:23:19,420
+by all three variables,
+then it could
+
+449
+00:23:19,420 --> 00:23:21,150
+be this node is
+picked up like this,
+
+450
+00:23:21,150 --> 00:23:23,434
+or the node could be
+picked up this way,
+
+451
+00:23:23,434 --> 00:23:25,100
+or the node could be
+picked up this way.
+
+452
+00:23:25,100 --> 00:23:27,200
+So there are three
+different solutions even
+
+453
+00:23:27,200 --> 00:23:29,630
+for one fixed
+variable assignment.
+
+454
+00:23:29,630 --> 00:23:31,870
+So that's bad, we're
+not allowed to do that.
+
+455
+00:23:31,870 --> 00:23:34,360
+It'd be fine if every one was
+three, but some will be one,
+
+456
+00:23:34,360 --> 00:23:36,370
+some will be two,
+some will be three.
+
+457
+00:23:36,370 --> 00:23:38,286
+That's going to be some
+weird product of those
+
+458
+00:23:38,286 --> 00:23:39,700
+over the clauses.
+
+459
+00:23:39,700 --> 00:23:41,270
+So that doesn't work.
+
+460
+00:23:41,270 --> 00:23:42,575
+We had this other proof.
+
+461
+00:23:42,575 --> 00:23:46,350
+
+462
+00:23:46,350 --> 00:23:49,930
+This was a notation
+for this gadget which
+
+463
+00:23:49,930 --> 00:23:53,110
+forced either this directed
+edge or this directed edge
+
+464
+00:23:53,110 --> 00:23:57,410
+to be used, but not both.
+
+465
+00:23:57,410 --> 00:23:58,910
+It's and x or.
+
+466
+00:23:58,910 --> 00:24:00,890
+So that's, remember
+what these things meant
+
+467
+00:24:00,890 --> 00:24:03,490
+and that we have the
+variable true or false.
+
+468
+00:24:03,490 --> 00:24:05,240
+And then we connected
+them to the clauses,
+
+469
+00:24:05,240 --> 00:24:08,360
+then separately we
+had a crossover.
+
+470
+00:24:08,360 --> 00:24:11,440
+But the trouble
+is in the clauses,
+
+471
+00:24:11,440 --> 00:24:15,310
+because again, the idea was that
+the variable chose this guy,
+
+472
+00:24:15,310 --> 00:24:17,000
+this one was forbidden.
+
+473
+00:24:17,000 --> 00:24:19,410
+That's actually the
+good case I think.
+
+474
+00:24:19,410 --> 00:24:22,890
+If the variable chose
+this, chose this one,
+
+475
+00:24:22,890 --> 00:24:24,840
+then this one must be included.
+
+476
+00:24:24,840 --> 00:24:29,161
+That's bad news, if you
+followed this, and then this,
+
+477
+00:24:29,161 --> 00:24:31,410
+and then this, then you cut
+off this part of the graph
+
+478
+00:24:31,410 --> 00:24:33,480
+and you don't get one
+Hamiltonian cycle.
+
+479
+00:24:33,480 --> 00:24:38,550
+You want at least one variable
+to allow you to go left here
+
+480
+00:24:38,550 --> 00:24:41,730
+and then you can go and grab
+all this stuff and come back.
+
+481
+00:24:41,730 --> 00:24:44,500
+But again if multiple
+variables satisfy this thing,
+
+482
+00:24:44,500 --> 00:24:47,300
+any one of them could
+grab the left rectangle.
+
+483
+00:24:47,300 --> 00:24:50,615
+And so they get multiple
+solutions, not parsimonious.
+
+484
+00:24:50,615 --> 00:24:53,130
+
+485
+00:24:53,130 --> 00:24:55,490
+But parts of this
+proof are useful
+
+486
+00:24:55,490 --> 00:24:58,740
+and they are used to make
+a parsimonious proof.
+
+487
+00:24:58,740 --> 00:25:02,050
+So the part that was useful is
+this x or gadget, and the way
+
+488
+00:25:02,050 --> 00:25:03,700
+to implement crossovers.
+
+489
+00:25:03,700 --> 00:25:08,890
+So just remember that
+you can build x ors,
+
+490
+00:25:08,890 --> 00:25:12,170
+and that you can cross them
+over using a bunch of x ors.
+
+491
+00:25:12,170 --> 00:25:15,110
+So only x or connections,
+these notations,
+
+492
+00:25:15,110 --> 00:25:17,510
+can be crossed in this view.
+
+493
+00:25:17,510 --> 00:25:19,370
+We're going to
+build more gadgets
+
+494
+00:25:19,370 --> 00:25:22,695
+and this is a proof
+by Sato in 2002.
+
+495
+00:25:22,695 --> 00:25:26,620
+It was a bachelor's
+thesis actually in Japan.
+
+496
+00:25:26,620 --> 00:25:29,699
+And so here you see
+redrawn the x or gadget.
+
+497
+00:25:29,699 --> 00:25:31,490
+Here it's going to be
+for undirected graph,
+
+498
+00:25:31,490 --> 00:25:34,790
+same structure works.
+
+499
+00:25:34,790 --> 00:25:37,610
+And this is do the
+crossover using x or.
+
+500
+00:25:37,610 --> 00:25:42,210
+So he's denoting x or's as this
+big X connected to two things.
+
+501
+00:25:42,210 --> 00:25:45,770
+Now given that we can
+build an or gadget, which
+
+502
+00:25:45,770 --> 00:25:48,380
+says that either we use this
+edge or we use this edge,
+
+503
+00:25:48,380 --> 00:25:50,900
+or both.
+
+504
+00:25:50,900 --> 00:25:53,950
+Here we're not using an x
+or, but this is the graph.
+
+505
+00:25:53,950 --> 00:25:58,140
+And the key is this has
+to be done uniquely.
+
+506
+00:25:58,140 --> 00:26:00,830
+That's in particular
+the point of these dots.
+
+507
+00:26:00,830 --> 00:26:03,950
+This looks asymmetric,
+it's kind of weird.
+
+508
+00:26:03,950 --> 00:26:10,130
+For example, if they're both
+in, then this guy can do this,
+
+509
+00:26:10,130 --> 00:26:12,390
+and this guy can do that.
+
+510
+00:26:12,390 --> 00:26:13,470
+But it's not symmetric.
+
+511
+00:26:13,470 --> 00:26:17,094
+You couldn't flip-- this guy
+can't grab these points, that
+
+512
+00:26:17,094 --> 00:26:19,010
+would be a second solution
+which would be bad,
+
+513
+00:26:19,010 --> 00:26:20,350
+but we missed these points.
+
+514
+00:26:20,350 --> 00:26:23,870
+So this guy has to stay
+down here if he's in at all.
+
+515
+00:26:23,870 --> 00:26:25,750
+And then this guy's
+the only one who
+
+516
+00:26:25,750 --> 00:26:28,620
+can grab those extra points.
+
+517
+00:26:28,620 --> 00:26:34,065
+Or if just the top guy's
+in then you do this.
+
+518
+00:26:34,065 --> 00:26:36,820
+
+519
+00:26:36,820 --> 00:26:42,580
+And if just the bottom guy's
+in I think it's symmetric.
+
+520
+00:26:42,580 --> 00:26:46,540
+That is symmetric,
+and it's unique.
+
+521
+00:26:46,540 --> 00:26:47,850
+Good.
+
+522
+00:26:47,850 --> 00:26:52,630
+If there's an implication-- so
+this says if this edge is in,
+
+523
+00:26:52,630 --> 00:26:56,710
+then that edge must be
+in the Hamiltonian cycle
+
+524
+00:26:56,710 --> 00:26:59,810
+and this is
+essentially by copying.
+
+525
+00:26:59,810 --> 00:27:01,790
+And we just have to
+grab an extra edge
+
+526
+00:27:01,790 --> 00:27:05,280
+and add this little extra
+thing just for copying value.
+
+527
+00:27:05,280 --> 00:27:09,830
+So if this one is in, then
+this edge must not be used,
+
+528
+00:27:09,830 --> 00:27:12,647
+which means this edge if
+it's used must go straight.
+
+529
+00:27:12,647 --> 00:27:13,980
+In particular, this is not used.
+
+530
+00:27:13,980 --> 00:27:16,020
+And we have an or that
+means that this one must
+
+531
+00:27:16,020 --> 00:27:18,430
+be forced by a property of or.
+
+532
+00:27:18,430 --> 00:27:24,450
+On the other hand, if this is
+not set, this one must be used.
+
+533
+00:27:24,450 --> 00:27:27,650
+So I guess this must be
+an edge that was already
+
+534
+00:27:27,650 --> 00:27:30,140
+going to be used for something.
+
+535
+00:27:30,140 --> 00:27:32,850
+So that edge is just going
+to get diverted down here,
+
+536
+00:27:32,850 --> 00:27:35,890
+and then the or doesn't
+constrain us at all.
+
+537
+00:27:35,890 --> 00:27:39,890
+Because zero or one, this one
+is one so the or is happy.
+
+538
+00:27:39,890 --> 00:27:41,700
+So that's an implication.
+
+539
+00:27:41,700 --> 00:27:45,166
+It's going to be a little more
+subtle how we combine these.
+
+540
+00:27:45,166 --> 00:27:49,200
+This is the tricky gadget.
+
+541
+00:27:49,200 --> 00:27:51,890
+I sort of understand
+it, but it has
+
+542
+00:27:51,890 --> 00:27:53,610
+a lot of details to
+check, especially
+
+543
+00:27:53,610 --> 00:27:55,270
+on the uniqueness front.
+
+544
+00:27:55,270 --> 00:27:57,060
+But this is a three-way
+or which we're
+
+545
+00:27:57,060 --> 00:28:00,980
+using for clause, SAT
+clause, 3SAT clause.
+
+546
+00:28:00,980 --> 00:28:03,920
+We want at least one
+of these three edges
+
+547
+00:28:03,920 --> 00:28:05,730
+to be in the Hamiltonian cycle.
+
+548
+00:28:05,730 --> 00:28:11,070
+And so here we use x ors, ors,
+implications, and more x ors.
+
+549
+00:28:11,070 --> 00:28:12,760
+I'll show you the
+intended solution,
+
+550
+00:28:12,760 --> 00:28:16,170
+assuming I can remember it.
+
+551
+00:28:16,170 --> 00:28:20,440
+So let's say for example, this
+edge is in the Hamiltonian
+
+552
+00:28:20,440 --> 00:28:22,250
+cycle.
+
+553
+00:28:22,250 --> 00:28:30,630
+Then we're going to do
+something like go over here,
+
+554
+00:28:30,630 --> 00:28:33,750
+come back around like this.
+
+555
+00:28:33,750 --> 00:28:34,480
+And then
+
+556
+00:28:34,480 --> 00:28:37,084
+AUDIENCE: Did you just
+violate the x or already?
+
+557
+00:28:37,084 --> 00:28:38,320
+PROFESSOR: This x or?
+
+558
+00:28:38,320 --> 00:28:39,065
+AUDIENCE: Yeah.
+
+559
+00:28:39,065 --> 00:28:40,190
+PROFESSOR: No, I went here.
+
+560
+00:28:40,190 --> 00:28:41,110
+AUDIENCE: And then you went up.
+
+561
+00:28:41,110 --> 00:28:42,650
+PROFESSOR: Oh, then
+I went up, good.
+
+562
+00:28:42,650 --> 00:28:45,470
+So actually I have to
+do this and around.
+
+563
+00:28:45,470 --> 00:28:47,730
+Yes, so all these constraints
+are thrown in, basically
+
+564
+00:28:47,730 --> 00:28:48,771
+to force it to be unique.
+
+565
+00:28:48,771 --> 00:28:51,390
+Without them you could--
+still it would still work,
+
+566
+00:28:51,390 --> 00:28:54,120
+but it wouldn't be parsimonious.
+
+567
+00:28:54,120 --> 00:28:56,120
+OK, let's see, this--
+
+568
+00:28:56,120 --> 00:28:57,120
+AUDIENCE: In the middle.
+
+569
+00:28:57,120 --> 00:28:59,200
+PROFESSOR: --doesn't
+constrain me.
+
+570
+00:28:59,200 --> 00:29:00,200
+This one?
+
+571
+00:29:00,200 --> 00:29:01,346
+AUDIENCE: Yeah.
+
+572
+00:29:01,346 --> 00:29:03,770
+PROFESSOR: Good, go up there.
+
+573
+00:29:03,770 --> 00:29:09,150
+So I did exactly one of those
+and then I need to grab these.
+
+574
+00:29:09,150 --> 00:29:10,560
+OK, so that's one picture.
+
+575
+00:29:10,560 --> 00:29:13,800
+I think it's not
+totally symmetric.
+
+576
+00:29:13,800 --> 00:29:15,890
+Again, so you have to
+check all three of them.
+
+577
+00:29:15,890 --> 00:29:19,080
+And you have to check for
+example, It's not so hard.
+
+578
+00:29:19,080 --> 00:29:21,770
+Like if this guy was also in,
+I could have just gone here
+
+579
+00:29:21,770 --> 00:29:24,110
+and this guy would
+pick up those nodes.
+
+580
+00:29:24,110 --> 00:29:27,400
+So as long as, in general, as
+long as at least one of them
+
+581
+00:29:27,400 --> 00:29:29,950
+is on you're OK.
+
+582
+00:29:29,950 --> 00:29:31,996
+And furthermore,
+if they're all on,
+
+583
+00:29:31,996 --> 00:29:33,620
+there's still a unique
+way to solve it.
+
+584
+00:29:33,620 --> 00:29:34,930
+And I'm not going
+to go through that.
+
+585
+00:29:34,930 --> 00:29:36,840
+But it's thanks to all
+of these constraints
+
+586
+00:29:36,840 --> 00:29:40,610
+they're cutting out
+multiple solutions.
+
+587
+00:29:40,610 --> 00:29:44,710
+OK, so now we just had
+to put these together,
+
+588
+00:29:44,710 --> 00:29:46,330
+this is pretty easy.
+
+589
+00:29:46,330 --> 00:29:47,910
+It's pretty much
+like the old proof.
+
+590
+00:29:47,910 --> 00:29:50,510
+Again, we have-- we
+represent variables
+
+591
+00:29:50,510 --> 00:29:54,750
+by having these double edges
+in a Hamiltonian cycle.
+
+592
+00:29:54,750 --> 00:29:58,080
+You're going to choose
+one or the other.
+
+593
+00:29:58,080 --> 00:30:00,700
+And then we have this exclusive
+or, forcing y and y bar
+
+594
+00:30:00,700 --> 00:30:02,450
+to choose opposite choices.
+
+595
+00:30:02,450 --> 00:30:04,450
+And then there are these
+exclusive words to say,
+
+596
+00:30:04,450 --> 00:30:06,408
+if you chose that one,
+then you can't choose it
+
+597
+00:30:06,408 --> 00:30:07,722
+for this clause.
+
+598
+00:30:07,722 --> 00:30:09,430
+And then the clauses
+are just represented
+
+599
+00:30:09,430 --> 00:30:10,690
+by those three-way ors.
+
+600
+00:30:10,690 --> 00:30:12,690
+So this overall
+structure is the same.
+
+601
+00:30:12,690 --> 00:30:14,840
+The crossovers
+are done as before
+
+602
+00:30:14,840 --> 00:30:17,650
+and it's really these
+gadgets that have changed.
+
+603
+00:30:17,650 --> 00:30:19,920
+And they're complicated,
+but it's parsimonious.
+
+604
+00:30:19,920 --> 00:30:22,200
+So with a little more work.
+
+605
+00:30:22,200 --> 00:30:25,130
+We get the number of
+Hamiltonian cycles
+
+606
+00:30:25,130 --> 00:30:30,900
+in planar max degree three
+graphs is sharp P complete.
+
+607
+00:30:30,900 --> 00:30:53,420
+
+608
+00:30:53,420 --> 00:30:56,530
+So that's nice.
+
+609
+00:30:56,530 --> 00:31:00,890
+And from that, we
+get Slitherlink.
+
+610
+00:31:00,890 --> 00:31:04,184
+So this is-- I've sort of been
+hiding these facts from you.
+
+611
+00:31:04,184 --> 00:31:05,850
+When we originally
+covered these proofs,
+
+612
+00:31:05,850 --> 00:31:09,740
+these papers actually talk
+about-- This one doesn't quite
+
+613
+00:31:09,740 --> 00:31:12,140
+talk about sharp P, but it
+is also sharp P complete.
+
+614
+00:31:12,140 --> 00:31:14,460
+Counting the number of
+solutions to Slitherlink
+
+615
+00:31:14,460 --> 00:31:16,707
+is sharp P complete.
+
+616
+00:31:16,707 --> 00:31:17,540
+This was the puzzle.
+
+617
+00:31:17,540 --> 00:31:22,030
+Again you have that number of
+adjacent edges-- each number.
+
+618
+00:31:22,030 --> 00:31:26,240
+And the proof was a
+reduction from planar max
+
+619
+00:31:26,240 --> 00:31:29,310
+degree three Hamiltonian cycle.
+
+620
+00:31:29,310 --> 00:31:31,240
+And at the time I
+said, oh you could just
+
+621
+00:31:31,240 --> 00:31:32,920
+assume it's a grid graph.
+
+622
+00:31:32,920 --> 00:31:36,380
+And then you just need
+the required gadget,
+
+623
+00:31:36,380 --> 00:31:38,050
+which is the b part.
+
+624
+00:31:38,050 --> 00:31:39,470
+Just need this gadget.
+
+625
+00:31:39,470 --> 00:31:41,510
+This was a gadget because
+it had these ones.
+
+626
+00:31:41,510 --> 00:31:44,545
+It meant it had to be
+traversed like a regular vertex
+
+627
+00:31:44,545 --> 00:31:46,880
+in Hamiltonian cycle
+and it turns out
+
+628
+00:31:46,880 --> 00:31:49,760
+there was a way to traverse
+it straight or with returns.
+
+629
+00:31:49,760 --> 00:31:52,110
+And then we could block
+off edges wherever there
+
+630
+00:31:52,110 --> 00:31:53,360
+wasn't supposed to be an edge.
+
+631
+00:31:53,360 --> 00:31:55,890
+And so if you're reducing from
+Hamiltonicity and grid graphs
+
+632
+00:31:55,890 --> 00:31:59,220
+that was the whole
+proof and we were happy.
+
+633
+00:31:59,220 --> 00:32:01,780
+Now we don't know whether
+Hamiltonicity and grid
+
+634
+00:32:01,780 --> 00:32:03,086
+graphs is sharp P complete.
+
+635
+00:32:03,086 --> 00:32:07,296
+
+636
+00:32:07,296 --> 00:32:08,670
+To prove that we
+would need to be
+
+637
+00:32:08,670 --> 00:32:10,540
+able to put bipartite
+in here, and I
+
+638
+00:32:10,540 --> 00:32:12,110
+don't know of a proof of that.
+
+639
+00:32:12,110 --> 00:32:13,890
+Good open problem.
+
+640
+00:32:13,890 --> 00:32:16,950
+So this was the reason that they
+have this other gadget, which
+
+641
+00:32:16,950 --> 00:32:21,640
+was to make Hamiltonian-- to
+make these white vertices that
+
+642
+00:32:21,640 --> 00:32:23,420
+don't have to be traversed.
+
+643
+00:32:23,420 --> 00:32:25,890
+They're just implementing
+an edge basically.
+
+644
+00:32:25,890 --> 00:32:28,100
+So just the black vertices
+have to be traversed.
+
+645
+00:32:28,100 --> 00:32:31,160
+We needed that for drawing
+things on the grid.
+
+646
+00:32:31,160 --> 00:32:34,290
+But if you just don't put in
+the ones and add in these zeros
+
+647
+00:32:34,290 --> 00:32:37,820
+again you can traverse
+it or not all.
+
+648
+00:32:37,820 --> 00:32:39,840
+And this one, as
+you can read here,
+
+649
+00:32:39,840 --> 00:32:42,900
+says this would be
+bad to have happen.
+
+650
+00:32:42,900 --> 00:32:44,650
+In fact you can rule
+it out, it will never
+
+651
+00:32:44,650 --> 00:32:46,890
+happen in the
+situations we want.
+
+652
+00:32:46,890 --> 00:32:49,780
+Because the white vertices
+only have two neighbors
+
+653
+00:32:49,780 --> 00:32:51,510
+that are traversable.
+
+654
+00:32:51,510 --> 00:32:54,810
+
+655
+00:32:54,810 --> 00:32:58,740
+Cool, and then furthermore, all
+of these solutions are unique.
+
+656
+00:32:58,740 --> 00:33:01,040
+There is exactly one
+way to go straight.
+
+657
+00:33:01,040 --> 00:33:03,330
+There's exactly one way to
+turn right, exactly one way
+
+658
+00:33:03,330 --> 00:33:04,480
+to turn left.
+
+659
+00:33:04,480 --> 00:33:06,990
+That's the subtle thing that
+was not revealed before.
+
+660
+00:33:06,990 --> 00:33:10,740
+But if you stare at it long
+enough you will be convinced.
+
+661
+00:33:10,740 --> 00:33:13,090
+So this is a
+parsimonious reduction
+
+662
+00:33:13,090 --> 00:33:15,440
+from planar max degree
+three Hamiltonian
+
+663
+00:33:15,440 --> 00:33:17,340
+cycle to Slitherlink.
+
+664
+00:33:17,340 --> 00:33:20,370
+So counting solutions
+in Slitherlink is hard.
+
+665
+00:33:20,370 --> 00:33:25,360
+That was the fully
+worked out example.
+
+666
+00:33:25,360 --> 00:33:26,912
+Any questions?
+
+667
+00:33:26,912 --> 00:33:27,412
+Yeah.
+
+668
+00:33:27,412 --> 00:33:29,700
+AUDIENCE: So are there
+examples of problems in P
+
+669
+00:33:29,700 --> 00:33:32,880
+who's counting versions
+are sharp P complete?
+
+670
+00:33:32,880 --> 00:33:33,560
+PROFESSOR: Yes.
+
+671
+00:33:33,560 --> 00:33:36,901
+And that will be the next topic.
+
+672
+00:33:36,901 --> 00:33:39,150
+Well it's going to be a
+little while til we get there.
+
+673
+00:33:39,150 --> 00:33:40,940
+But I'm going to proof
+things and then we
+
+674
+00:33:40,940 --> 00:33:42,890
+will get to an answer,
+but the answer is yes.
+
+675
+00:33:42,890 --> 00:33:47,031
+
+676
+00:33:47,031 --> 00:33:47,822
+AUDIENCE: Question.
+
+677
+00:33:47,822 --> 00:33:49,030
+PROFESSOR: Yeah.
+
+678
+00:33:49,030 --> 00:33:51,374
+AUDIENCE: So, for if
+we wanted-- if we're
+
+679
+00:33:51,374 --> 00:33:53,040
+like thinking about
+a problem that we're
+
+680
+00:33:53,040 --> 00:33:54,829
+trying to prove something
+P-hard and we start thinking
+
+681
+00:33:54,829 --> 00:33:57,412
+maybe stop, we would just show
+it's in P by finding algorithm.
+
+682
+00:33:57,412 --> 00:34:02,000
+Is there a nice way to show
+that our problem is not P hard?
+
+683
+00:34:02,000 --> 00:34:05,400
+PROFESSOR: Well you usually
+would say that sharp,
+
+684
+00:34:05,400 --> 00:34:07,800
+that problem is NP.
+
+685
+00:34:07,800 --> 00:34:10,330
+You find a polynomial
+counting algorithm.
+
+686
+00:34:10,330 --> 00:34:13,690
+And they're lot's of examples of
+polynomial counting algorithms
+
+687
+00:34:13,690 --> 00:34:15,340
+especially on like trees.
+
+688
+00:34:15,340 --> 00:34:17,271
+Typical thing is
+your dynamic program.
+
+689
+00:34:17,271 --> 00:34:19,020
+So like maybe you want
+to know-- let's say
+
+690
+00:34:19,020 --> 00:34:20,679
+you have a rooted binary
+tree and for each node
+
+691
+00:34:20,679 --> 00:34:22,389
+you could flip it
+this way or not.
+
+692
+00:34:22,389 --> 00:34:24,750
+How many different ways
+are there to do that?
+
+693
+00:34:24,750 --> 00:34:27,199
+And maybe have some
+constraints on how that's done.
+
+694
+00:34:27,199 --> 00:34:29,622
+Then you just try it
+flipped, and try it not.
+
+695
+00:34:29,622 --> 00:34:31,080
+You do dynamic
+programming and then
+
+696
+00:34:31,080 --> 00:34:34,437
+you multiply the two
+solution sizes together,
+
+697
+00:34:34,437 --> 00:34:36,020
+and you get the
+overall solution size.
+
+698
+00:34:36,020 --> 00:34:37,880
+So you basically
+do combinatorics
+
+699
+00:34:37,880 --> 00:34:39,630
+and if there's
+independent choices you
+
+700
+00:34:39,630 --> 00:34:43,040
+multiply, if they're
+opposing choices you add,
+
+701
+00:34:43,040 --> 00:34:43,910
+that kind of thing.
+
+702
+00:34:43,910 --> 00:34:46,570
+And from that you get polynomial
+time counting algorithms.
+
+703
+00:34:46,570 --> 00:34:50,540
+In tree-like things that
+often works inbound treewidth.
+
+704
+00:34:50,540 --> 00:34:53,062
+AUDIENCE: Do you know that NP
+hard problems who's counting
+
+705
+00:34:53,062 --> 00:34:56,067
+problems are not sharp P hard?
+
+706
+00:34:56,067 --> 00:34:57,608
+I guess this technique
+wouldn't work.
+
+707
+00:34:57,608 --> 00:35:00,390
+PROFESSOR: I would say
+generally most problems
+
+708
+00:35:00,390 --> 00:35:02,690
+that are hard to decide
+are hard to count.
+
+709
+00:35:02,690 --> 00:35:05,620
+And where NP hard
+implies sharp P hard.
+
+710
+00:35:05,620 --> 00:35:09,829
+I don't think there's a
+hard theorem in that there's
+
+711
+00:35:09,829 --> 00:35:12,120
+nothing that really says--
+meta-theorem that says that,
+
+712
+00:35:12,120 --> 00:35:13,078
+but that's the feeling.
+
+713
+00:35:13,078 --> 00:35:15,642
+
+714
+00:35:15,642 --> 00:35:17,100
+It'd be nice, then
+we wouldn't have
+
+715
+00:35:17,100 --> 00:35:18,570
+to do all the parsimonious work.
+
+716
+00:35:18,570 --> 00:35:22,200
+
+717
+00:35:22,200 --> 00:35:26,850
+All right so it's time for a
+little bit of linear algebra.
+
+718
+00:35:26,850 --> 00:35:30,910
+
+719
+00:35:30,910 --> 00:35:33,770
+Let me remind you, I
+guess linear algebra's not
+
+720
+00:35:33,770 --> 00:35:35,850
+a pre-req for this class,
+but probably you've
+
+721
+00:35:35,850 --> 00:35:37,989
+seen the determinant
+of a matrix and use,
+
+722
+00:35:37,989 --> 00:35:40,030
+if it's zero then it's
+non-invertible blah, blah,
+
+723
+00:35:40,030 --> 00:35:41,284
+blah.
+
+724
+00:35:41,284 --> 00:35:42,700
+Let me remind you
+of a definition.
+
+725
+00:35:42,700 --> 00:35:48,480
+
+726
+00:35:48,480 --> 00:35:50,140
+And we rarely use
+matrix notation.
+
+727
+00:35:50,140 --> 00:35:54,040
+So let me remind you
+of the usual one.
+
+728
+00:35:54,040 --> 00:35:55,550
+N by n, square matrix.
+
+729
+00:35:55,550 --> 00:35:57,630
+This is a polynomial
+time problem.
+
+730
+00:35:57,630 --> 00:36:01,830
+It is-- but I'm going to define
+it in an exponential way.
+
+731
+00:36:01,830 --> 00:36:04,910
+But you probably know a
+polynomial time algorithm.
+
+732
+00:36:04,910 --> 00:36:08,437
+This is not an algorithms class
+so you don't need to know it.
+
+733
+00:36:08,437 --> 00:36:11,260
+
+734
+00:36:11,260 --> 00:36:13,510
+But it's based on Gaussian
+elimination, the usual one.
+
+735
+00:36:13,510 --> 00:36:32,870
+
+736
+00:36:32,870 --> 00:36:37,290
+So you look at all
+permutation matrices,
+
+737
+00:36:37,290 --> 00:36:39,080
+all n by n permutation
+matrices which
+
+738
+00:36:39,080 --> 00:36:42,360
+you can think of as a
+permutation pi on the numbers 1
+
+739
+00:36:42,360 --> 00:36:43,380
+through n.
+
+740
+00:36:43,380 --> 00:36:46,280
+And you look at i
+comma pi event, that
+
+741
+00:36:46,280 --> 00:36:47,910
+defines the permutation matrix.
+
+742
+00:36:47,910 --> 00:36:51,000
+You take the product
+of the matrix
+
+743
+00:36:51,000 --> 00:36:56,640
+values-- if you superimpose
+the permutation matrix on that,
+
+744
+00:36:56,640 --> 00:37:00,495
+on the given matrix A.
+
+745
+00:37:00,495 --> 00:37:04,540
+You take that product
+you possibly negate it
+
+746
+00:37:04,540 --> 00:37:07,190
+if the sign of your
+permutation was negative,
+
+747
+00:37:07,190 --> 00:37:12,460
+if it does an even number-- an
+odd number of transpositions
+
+748
+00:37:12,460 --> 00:37:14,490
+then this will be negative.
+
+749
+00:37:14,490 --> 00:37:17,280
+Otherwise, it'd be positive
+and you add those up.
+
+750
+00:37:17,280 --> 00:37:19,340
+So of course, an exponential
+number permutations
+
+751
+00:37:19,340 --> 00:37:22,230
+you wouldn't want to do this as
+an algorithm but turns out it
+
+752
+00:37:22,230 --> 00:37:26,245
+can be done in polynomial time.
+
+753
+00:37:26,245 --> 00:37:27,620
+The reason for
+talking about this
+
+754
+00:37:27,620 --> 00:37:33,190
+is by analogy I want the
+notion of permanent, of an n
+
+755
+00:37:33,190 --> 00:37:33,950
+by n matrix.
+
+756
+00:37:33,950 --> 00:37:35,690
+The same thing, but
+with this removed.
+
+757
+00:37:35,690 --> 00:37:38,870
+
+758
+00:37:38,870 --> 00:37:43,120
+The determinant of A is the
+sum over all permutations pi,
+
+759
+00:37:43,120 --> 00:37:50,400
+of the product from i equals
+one to n of ai, pi of i.
+
+760
+00:37:50,400 --> 00:37:52,370
+Now this may not look
+like a counting problem.
+
+761
+00:37:52,370 --> 00:37:54,400
+It turns out it is a
+counting problem, sort of,
+
+762
+00:37:54,400 --> 00:37:55,732
+a weighted counting problem.
+
+763
+00:37:55,732 --> 00:37:57,815
+We will get back to counting
+problems in a moment.
+
+764
+00:37:57,815 --> 00:38:01,240
+This Is related to the number
+of perfect matchings in a graph.
+
+765
+00:38:01,240 --> 00:38:03,020
+But at this point
+it's just-- it's
+
+766
+00:38:03,020 --> 00:38:04,300
+a quantity we want to compute.
+
+767
+00:38:04,300 --> 00:38:06,130
+This is a function of a matrix.
+
+768
+00:38:06,130 --> 00:38:10,100
+And computing this function
+is sharp P complete.
+
+769
+00:38:10,100 --> 00:38:10,600
+Yeah.
+
+770
+00:38:10,600 --> 00:38:13,760
+AUDIENCE: Could it just be
+sine minus 1 2e sine of pi?
+
+771
+00:38:13,760 --> 00:38:16,776
+
+772
+00:38:16,776 --> 00:38:18,810
+PROFESSOR: I don't
+know, it depends.
+
+773
+00:38:18,810 --> 00:38:23,195
+If you call the number of
+transpositions mod two so then
+
+774
+00:38:23,195 --> 00:38:24,545
+it's zero one.
+
+775
+00:38:24,545 --> 00:38:25,420
+You know what I mean.
+
+776
+00:38:25,420 --> 00:38:29,710
+
+777
+00:38:29,710 --> 00:38:32,540
+All right.
+
+778
+00:38:32,540 --> 00:38:34,517
+So the claim is, permanent
+is sharp P complete.
+
+779
+00:38:34,517 --> 00:38:35,600
+We're going to prove this.
+
+780
+00:38:35,600 --> 00:38:38,470
+This was the original problem
+proved sharp P complete.
+
+781
+00:38:38,470 --> 00:38:41,730
+Well other than
+sharp 3SAT I guess.
+
+782
+00:38:41,730 --> 00:38:42,280
+Same paper.
+
+783
+00:38:42,280 --> 00:38:46,180
+
+784
+00:38:46,180 --> 00:38:51,630
+Great so let me give
+you a little intuition
+
+785
+00:38:51,630 --> 00:38:53,240
+of what the permanent is.
+
+786
+00:38:53,240 --> 00:38:56,996
+We'd like a definition
+that's not so algebraic.
+
+787
+00:38:56,996 --> 00:39:00,480
+At least I would like one more
+graph-theoretic would be nice.
+
+788
+00:39:00,480 --> 00:39:02,310
+So here's what
+we're going to do.
+
+789
+00:39:02,310 --> 00:39:06,620
+We're going to convert A, our
+matrix, into a weighted graph.
+
+790
+00:39:06,620 --> 00:39:18,630
+
+791
+00:39:18,630 --> 00:39:26,020
+And then let me go
+to the other board.
+
+792
+00:39:26,020 --> 00:39:37,080
+
+793
+00:39:37,080 --> 00:39:38,751
+How do we convert
+into a weighted graph,
+
+794
+00:39:38,751 --> 00:39:39,750
+weighted directed graph?
+
+795
+00:39:39,750 --> 00:39:44,920
+Well the weight from,
+vertex I to vertex J is AIJ.
+
+796
+00:39:44,920 --> 00:39:47,450
+The obvious transformation
+if it's zero then
+
+797
+00:39:47,450 --> 00:39:49,950
+there's not going to be an edge,
+although it doesn't matter.
+
+798
+00:39:49,950 --> 00:39:51,825
+You could leave the edge
+in with weight zero,
+
+799
+00:39:51,825 --> 00:39:53,504
+it will be the same.
+
+800
+00:39:53,504 --> 00:39:55,420
+Because what we're
+interested in, in the claim
+
+801
+00:39:55,420 --> 00:40:04,930
+is the permanent of the
+matrix equals the sum,
+
+802
+00:40:04,930 --> 00:40:18,717
+of the product of edge
+weights, over all cycle covers
+
+803
+00:40:18,717 --> 00:40:22,540
+of the graph.
+
+804
+00:40:22,540 --> 00:40:25,740
+OK, this is really just the same
+thing, but a little bit easier
+
+805
+00:40:25,740 --> 00:40:26,900
+to think about.
+
+806
+00:40:26,900 --> 00:40:29,830
+So a cycle cover it's kind
+of like a Hamiltonian cycle
+
+807
+00:40:29,830 --> 00:40:31,940
+but there could be
+multiple cycles.
+
+808
+00:40:31,940 --> 00:40:35,100
+So at every vertex you
+should enter and leave.
+
+809
+00:40:35,100 --> 00:40:37,930
+And so you have sort of in
+degree one and out degree one.
+
+810
+00:40:37,930 --> 00:40:41,480
+So you end up decomposing the
+graph into vertex destroyed
+
+811
+00:40:41,480 --> 00:40:45,440
+cycles which hit every vertex.
+
+812
+00:40:45,440 --> 00:40:47,750
+That's a cycle cover.
+
+813
+00:40:47,750 --> 00:40:50,690
+Important note here, we do
+have loops in the graph.
+
+814
+00:40:50,690 --> 00:40:53,640
+We can't have loops
+if aii is not zero.
+
+815
+00:40:53,640 --> 00:40:54,870
+Then you have a loop.
+
+816
+00:40:54,870 --> 00:40:59,340
+So the idea is to look
+at every cycle cover
+
+817
+00:40:59,340 --> 00:41:02,130
+and just take the product
+of the edge weights
+
+818
+00:41:02,130 --> 00:41:05,050
+that are edges in
+the cycles and then
+
+819
+00:41:05,050 --> 00:41:06,770
+add that up overall
+cycle covers.
+
+820
+00:41:06,770 --> 00:41:08,710
+So it's the same thing
+if you stare at it
+
+821
+00:41:08,710 --> 00:41:10,635
+long enough because
+you're going from I.
+
+822
+00:41:10,635 --> 00:41:12,180
+I mean this is
+basically the cycle
+
+823
+00:41:12,180 --> 00:41:15,910
+decomposition of the permutation
+if you know permutation theory.
+
+824
+00:41:15,910 --> 00:41:17,410
+So if you don't,
+don't worry this is
+
+825
+00:41:17,410 --> 00:41:20,380
+your definition of permanent.
+
+826
+00:41:20,380 --> 00:41:23,340
+So we're going to prove this
+problem, is sharp P complete?
+
+827
+00:41:23,340 --> 00:41:31,860
+
+828
+00:41:31,860 --> 00:41:41,600
+And we're going to prove
+it by a C-monious reduction
+
+829
+00:41:41,600 --> 00:41:43,880
+from sharp 3SAT.
+
+830
+00:41:43,880 --> 00:41:47,218
+
+831
+00:41:47,218 --> 00:41:51,242
+AUDIENCE: You said this is just
+the original thing introducing
+
+832
+00:41:51,242 --> 00:41:51,742
+that?
+
+833
+00:41:51,742 --> 00:41:53,030
+PROFESSOR: Yes.
+
+834
+00:41:53,030 --> 00:41:56,630
+AUDIENCE: Did they not call it--
+you made up the term C-monious.
+
+835
+00:41:56,630 --> 00:41:58,510
+What did they call it?
+
+836
+00:41:58,510 --> 00:42:03,760
+PROFESSOR: I think they
+just called it a reduction.
+
+837
+00:42:03,760 --> 00:42:06,320
+I think pretty sure, they
+just called it reduction.
+
+838
+00:42:06,320 --> 00:42:08,560
+And for them-- and they
+said at the beginning,
+
+839
+00:42:08,560 --> 00:42:11,490
+--reduction means
+multicall reduction.
+
+840
+00:42:11,490 --> 00:42:13,350
+So they're thinking about that.
+
+841
+00:42:13,350 --> 00:42:16,690
+But it turns out to be
+a C-monious reduction.
+
+842
+00:42:16,690 --> 00:42:18,620
+C will not be
+literally constant,
+
+843
+00:42:18,620 --> 00:42:22,640
+but it will be a function
+of the problem sets.
+
+844
+00:42:22,640 --> 00:42:24,520
+And this is the reduction.
+
+845
+00:42:24,520 --> 00:42:28,410
+So as usual, we have a clause
+gadget, and a variable gadget,
+
+846
+00:42:28,410 --> 00:42:30,270
+and then there's
+this shaded thing
+
+847
+00:42:30,270 --> 00:42:35,276
+which is this matrix, which
+you can think of as a graph.
+
+848
+00:42:35,276 --> 00:42:37,150
+But in this case will
+be easier to just think
+
+849
+00:42:37,150 --> 00:42:39,680
+of as a black box matrix.
+
+850
+00:42:39,680 --> 00:42:44,490
+OK all of the edges in these
+pictures have weight one.
+
+851
+00:42:44,490 --> 00:42:46,080
+And then these
+edges are special,
+
+852
+00:42:46,080 --> 00:42:49,230
+and here you have some
+loops in the center.
+
+853
+00:42:49,230 --> 00:42:51,480
+No one else has a loop.
+
+854
+00:42:51,480 --> 00:42:55,000
+So the high-level
+idea is if you're
+
+855
+00:42:55,000 --> 00:42:59,180
+thinking of a cycle
+cover in a vertex
+
+856
+00:42:59,180 --> 00:43:01,640
+because you--
+sorry, in a variable
+
+857
+00:43:01,640 --> 00:43:04,900
+because you've got a vertex
+here and a vertex here you
+
+858
+00:43:04,900 --> 00:43:06,150
+have to cover them somehow.
+
+859
+00:43:06,150 --> 00:43:09,790
+And the intent is that you
+either cover this one this way,
+
+860
+00:43:09,790 --> 00:43:11,970
+or you cover this
+one that way, those
+
+861
+00:43:11,970 --> 00:43:15,120
+would be the true and the false.
+
+862
+00:43:15,120 --> 00:43:18,600
+And then from the
+clouds perspective
+
+863
+00:43:18,600 --> 00:43:22,531
+we need to understand, so then
+these things are connected.
+
+864
+00:43:22,531 --> 00:43:24,155
+This thing would go
+here and this thing
+
+865
+00:43:24,155 --> 00:43:26,940
+would go here, and
+generally connect variables
+
+866
+00:43:26,940 --> 00:43:30,030
+to clauses in the obvious way.
+
+867
+00:43:30,030 --> 00:43:33,015
+And in general, for every
+occurrence of the positive form
+
+868
+00:43:33,015 --> 00:43:35,920
+and the negative form, sorry
+positive or negative form
+
+869
+00:43:35,920 --> 00:43:39,000
+you'll have one of these blobs
+that connects to the clause.
+
+870
+00:43:39,000 --> 00:43:41,420
+So overall architecture
+should be clear.
+
+871
+00:43:41,420 --> 00:43:43,600
+What does this gadget do?
+
+872
+00:43:43,600 --> 00:43:50,050
+It has some nifty properties
+let me write them down.
+
+873
+00:43:50,050 --> 00:43:54,290
+So this matrix is
+called x in the paper.
+
+874
+00:43:54,290 --> 00:43:59,799
+So first of all, permanent
+of x equals zero.
+
+875
+00:43:59,799 --> 00:44:01,340
+I'm just going to
+state these, I mean
+
+876
+00:44:01,340 --> 00:44:03,620
+you could check them by
+doing the computation.
+
+877
+00:44:03,620 --> 00:44:08,590
+So we're interested in cycle
+covers whose products are not
+
+878
+00:44:08,590 --> 00:44:09,090
+zero.
+
+879
+00:44:09,090 --> 00:44:11,350
+Otherwise they don't
+contribute to the sum.
+
+880
+00:44:11,350 --> 00:44:15,810
+So I could also add in non-zero.
+
+881
+00:44:15,810 --> 00:44:18,360
+Meaning the product is non-zero.
+
+882
+00:44:18,360 --> 00:44:23,340
+OK so if we had a cycle cover
+that just-- where the cycle
+
+883
+00:44:23,340 --> 00:44:26,540
+cover just locally solved this
+thing by traversing these four
+
+884
+00:44:26,540 --> 00:44:28,670
+vertices all by themselves.
+
+885
+00:44:28,670 --> 00:44:32,662
+Then that cycle would
+have permanent zero.
+
+886
+00:44:32,662 --> 00:44:34,370
+And then the permanent
+of the whole cycle
+
+887
+00:44:34,370 --> 00:44:37,590
+covers the product
+of those things.
+
+888
+00:44:37,590 --> 00:44:39,280
+And so the overall
+thing would be zero.
+
+889
+00:44:39,280 --> 00:44:40,720
+So if you look at
+a nonzero cycle
+
+890
+00:44:40,720 --> 00:44:42,900
+cover you can't just
+leave these isolated,
+
+891
+00:44:42,900 --> 00:44:44,680
+you have to visit them.
+
+892
+00:44:44,680 --> 00:44:47,884
+You have to enter
+them and leave them.
+
+893
+00:44:47,884 --> 00:44:50,300
+Now the question is, where
+could you enter and leave them?
+
+894
+00:44:50,300 --> 00:44:53,210
+This is maybe not totally
+clear from the drawing
+
+895
+00:44:53,210 --> 00:44:57,730
+but, the intent is that
+the first vertex in-- which
+
+896
+00:44:57,730 --> 00:45:01,480
+corresponds to row one, column
+one here, is the left side.
+
+897
+00:45:01,480 --> 00:45:06,080
+And the column four, row
+four is the right side.
+
+898
+00:45:06,080 --> 00:45:08,440
+I claim that you have
+to enter at one of those
+
+899
+00:45:08,440 --> 00:45:10,460
+and leave at the other.
+
+900
+00:45:10,460 --> 00:45:12,540
+Why is that true?
+
+901
+00:45:12,540 --> 00:45:13,540
+For a couple reasons.
+
+902
+00:45:13,540 --> 00:45:19,450
+One is that the permanent
+of x with row and column
+
+903
+00:45:19,450 --> 00:45:28,052
+one removed is zero,
+and so is the permanent
+
+904
+00:45:28,052 --> 00:45:30,710
+of x with row and
+column four removed.
+
+905
+00:45:30,710 --> 00:45:35,310
+
+906
+00:45:35,310 --> 00:45:41,160
+OK vertex one and four
+out of this x matrix
+
+907
+00:45:41,160 --> 00:45:43,150
+are the only places you
+could enter and leave.
+
+908
+00:45:43,150 --> 00:45:45,450
+But it's possible you enter
+and then immediately leave.
+
+909
+00:45:45,450 --> 00:45:47,342
+So you just touch
+the thing and leave.
+
+910
+00:45:47,342 --> 00:45:49,300
+That would correspond to
+leaving behind a three
+
+911
+00:45:49,300 --> 00:45:50,830
+by three sub-matrix.
+
+912
+00:45:50,830 --> 00:45:52,570
+Either by deleting
+this row and column,
+
+913
+00:45:52,570 --> 00:45:54,736
+or by deleting this row and
+column if you just visit
+
+914
+00:45:54,736 --> 00:45:56,049
+this vertex and leave.
+
+915
+00:45:56,049 --> 00:45:57,340
+Those also have permanent zero.
+
+916
+00:45:57,340 --> 00:45:59,710
+So if you're looking at
+a nonzero cycle cover
+
+917
+00:45:59,710 --> 00:46:01,240
+you can't do that.
+
+918
+00:46:01,240 --> 00:46:03,860
+So together those mean
+that you enter one of them
+
+919
+00:46:03,860 --> 00:46:06,030
+and leave at the other.
+
+920
+00:46:06,030 --> 00:46:19,880
+And furthermore, if you look
+at the permanent of x with rows
+
+921
+00:46:19,880 --> 00:46:26,480
+and columns one and four
+removed, both removed,
+
+922
+00:46:26,480 --> 00:46:28,100
+that's also zero.
+
+923
+00:46:28,100 --> 00:46:32,050
+So the permanent of
+this sub-matrix is zero
+
+924
+00:46:32,050 --> 00:46:34,860
+and therefore you can't
+just enter here, jump here,
+
+925
+00:46:34,860 --> 00:46:35,780
+and leave.
+
+926
+00:46:35,780 --> 00:46:39,394
+Which means finally you have
+to traverse all four vertices.
+
+927
+00:46:39,394 --> 00:46:41,310
+You enter at one of them,
+traverse everything,
+
+928
+00:46:41,310 --> 00:46:42,970
+and leave at the other.
+
+929
+00:46:42,970 --> 00:46:47,460
+So basically this
+is a forced edge.
+
+930
+00:46:47,460 --> 00:46:51,550
+If you touch here you have to
+then traverse and leave there,
+
+931
+00:46:51,550 --> 00:46:53,970
+in any cycle cover.
+
+932
+00:46:53,970 --> 00:46:56,700
+So we're used to seeing forced
+edges in Hamiltonian cycle.
+
+933
+00:46:56,700 --> 00:46:58,930
+This is sort of a
+stronger form of it.
+
+934
+00:46:58,930 --> 00:47:02,800
+That's cool now one catch.
+
+935
+00:47:02,800 --> 00:47:05,730
+So if you do that, if you
+enter let's say vertex one
+
+936
+00:47:05,730 --> 00:47:10,010
+and leave at vertex four, you
+will end up-- your contribution
+
+937
+00:47:10,010 --> 00:47:14,520
+to the cycle will end up
+being the permanent of x
+
+938
+00:47:14,520 --> 00:47:18,430
+minus row one and column four.
+
+939
+00:47:18,430 --> 00:47:21,310
+Or symmetrically
+with four and one.
+
+940
+00:47:21,310 --> 00:47:26,240
+You'd like this to be
+one, but it's four.
+
+941
+00:47:26,240 --> 00:47:30,910
+So there are four ways to
+traverse the forced edge.
+
+942
+00:47:30,910 --> 00:47:33,410
+But because it's
+always four, or zero,
+
+943
+00:47:33,410 --> 00:47:35,020
+and then it doesn't
+contribute at all.
+
+944
+00:47:35,020 --> 00:47:37,910
+It's always going to be four
+so this will be a nice uniform
+
+945
+00:47:37,910 --> 00:47:40,362
+blow up in our
+number of solutions.
+
+946
+00:47:40,362 --> 00:47:41,820
+C is not going to
+be four, but it's
+
+947
+00:47:41,820 --> 00:47:44,900
+going to be four to some power.
+
+948
+00:47:44,900 --> 00:47:46,810
+It's going to be
+four to the power,
+
+949
+00:47:46,810 --> 00:47:49,300
+the number of those gadgets.
+
+950
+00:47:49,300 --> 00:47:50,747
+So because you can
+predict that, I
+
+951
+00:47:50,747 --> 00:47:53,330
+mean in the reduction you know
+exactly how many there it's not
+
+952
+00:47:53,330 --> 00:47:56,375
+depend on the solution,
+it's only dependent on how
+
+953
+00:47:56,375 --> 00:47:57,250
+you built this thing.
+
+954
+00:47:57,250 --> 00:47:59,170
+So at the end, we're
+going to divide by four
+
+955
+00:47:59,170 --> 00:48:07,710
+to the power-- it's I think five
+times the number of clauses.
+
+956
+00:48:07,710 --> 00:48:12,715
+So C is going to be four to
+the power of five times number
+
+957
+00:48:12,715 --> 00:48:14,090
+of clauses because
+there are five
+
+958
+00:48:14,090 --> 00:48:17,554
+of these gadgets per clause.
+
+959
+00:48:17,554 --> 00:48:19,720
+So at the end we'll just
+divide by that and be done.
+
+960
+00:48:19,720 --> 00:48:23,003
+AUDIENCE: Would it be 10
+times because you got it
+
+961
+00:48:23,003 --> 00:48:25,348
+on the variable side too?
+
+962
+00:48:25,348 --> 00:48:27,150
+PROFESSOR: Yes 10
+times, thank you.
+
+963
+00:48:27,150 --> 00:48:29,255
+AUDIENCE: Eight-- two
+of those don't actually
+
+964
+00:48:29,255 --> 00:48:30,130
+connect to variables.
+
+965
+00:48:30,130 --> 00:48:31,671
+PROFESSOR: Two of
+them do not connect
+
+966
+00:48:31,671 --> 00:48:34,142
+to variables, yeah eight.
+
+967
+00:48:34,142 --> 00:48:35,833
+Eight times the
+number of clauses.
+
+968
+00:48:35,833 --> 00:48:39,150
+
+969
+00:48:39,150 --> 00:48:43,590
+All right so now it's
+just a matter of-- now
+
+970
+00:48:43,590 --> 00:48:47,070
+that you understand
+what this is now
+
+971
+00:48:47,070 --> 00:48:49,480
+you could sort of see how
+information is communicated.
+
+972
+00:48:49,480 --> 00:48:52,440
+Because if the variable they
+choose is the true setting
+
+973
+00:48:52,440 --> 00:48:54,280
+it must visit these edges.
+
+974
+00:48:54,280 --> 00:48:56,570
+And once it touches here
+it has to leave here
+
+975
+00:48:56,570 --> 00:48:58,930
+and this is a edge
+going the wrong way.
+
+976
+00:48:58,930 --> 00:49:02,980
+So you can't try to traverse--
+from here you cannot touch
+
+977
+00:49:02,980 --> 00:49:05,151
+the clauses down below.
+
+978
+00:49:05,151 --> 00:49:06,900
+Once you touch here
+to you have to go here
+
+979
+00:49:06,900 --> 00:49:09,870
+and then you must
+leave here and so on.
+
+980
+00:49:09,870 --> 00:49:11,850
+But you leave this
+one behind and it
+
+981
+00:49:11,850 --> 00:49:14,570
+must be traversed by the
+clause and vice versa.
+
+982
+00:49:14,570 --> 00:49:18,590
+If I choose this one then these
+must be visited by the clauses.
+
+983
+00:49:18,590 --> 00:49:20,750
+So from the clause
+perspective as he
+
+984
+00:49:20,750 --> 00:49:23,640
+said there are five of these
+gadgets, but only three of them
+
+985
+00:49:23,640 --> 00:49:24,310
+are connected.
+
+986
+00:49:24,310 --> 00:49:29,840
+So these guys are forced, and
+there's a bunch of edges here
+
+987
+00:49:29,840 --> 00:49:30,892
+and it's a case analysis.
+
+988
+00:49:30,892 --> 00:49:32,100
+So it'd be the short version.
+
+989
+00:49:32,100 --> 00:49:34,850
+Let's just do a
+couple of examples.
+
+990
+00:49:34,850 --> 00:49:36,910
+If none of these
+have been traversed
+
+991
+00:49:36,910 --> 00:49:39,800
+by the variable then
+the-- pretty much
+
+992
+00:49:39,800 --> 00:49:42,320
+you have to go straight through.
+
+993
+00:49:42,320 --> 00:49:44,530
+But then you're in trouble.
+
+994
+00:49:44,530 --> 00:49:47,500
+Because there's no pointer
+back to the beginning.
+
+995
+00:49:47,500 --> 00:49:51,340
+You can only go back this far.
+
+996
+00:49:51,340 --> 00:49:54,090
+So if none of-- if you have
+to traverse all these things
+
+997
+00:49:54,090 --> 00:49:56,850
+it's not possible
+with the cycle cover.
+
+998
+00:49:56,850 --> 00:49:59,240
+But if any one of them
+has been traversed.
+
+999
+00:49:59,240 --> 00:50:01,630
+So for example, if this
+one has been traversed then
+
+1000
+00:50:01,630 --> 00:50:04,780
+we'll jump over it,
+visit these guys,
+
+1001
+00:50:04,780 --> 00:50:07,930
+jump back here, visit this
+guy, and jump back there.
+
+1002
+00:50:07,930 --> 00:50:11,840
+And if you check that's the
+only way to do it, it's unique.
+
+1003
+00:50:11,840 --> 00:50:14,690
+And similarly any one of
+them has been covered,
+
+1004
+00:50:14,690 --> 00:50:17,190
+or if all three of them have
+been covered, or if two of them
+
+1005
+00:50:17,190 --> 00:50:18,648
+have been covered
+in all cases this
+
+1006
+00:50:18,648 --> 00:50:21,380
+is a unique way from
+the clause perspective
+
+1007
+00:50:21,380 --> 00:50:22,655
+to connect all the things.
+
+1008
+00:50:22,655 --> 00:50:24,030
+Now in reality,
+there's four ways
+
+1009
+00:50:24,030 --> 00:50:25,180
+to traverse each
+of these things.
+
+1010
+00:50:25,180 --> 00:50:26,846
+So the whole thing
+grows by this product
+
+1011
+00:50:26,846 --> 00:50:29,550
+but it doesn't matter
+which cycle they appear in.
+
+1012
+00:50:29,550 --> 00:50:33,380
+We'll always scale the number
+of solutions by factor of four.
+
+1013
+00:50:33,380 --> 00:50:39,010
+So it's nice uniform
+scaling C-monious.
+
+1014
+00:50:39,010 --> 00:50:40,460
+And that's permanent.
+
+1015
+00:50:40,460 --> 00:50:41,910
+Pretty cool.
+
+1016
+00:50:41,910 --> 00:50:43,910
+Pretty cool proof.
+
+1017
+00:50:43,910 --> 00:50:46,840
+Now one not so nice
+thing about this proof
+
+1018
+00:50:46,840 --> 00:50:53,140
+is it involves numbers negative
+one, zero, one, two, and three.
+
+1019
+00:50:53,140 --> 00:50:55,150
+For reasons we will
+see in a moment
+
+1020
+00:50:55,150 --> 00:50:57,760
+it'd be really to
+just use zero and one.
+
+1021
+00:50:57,760 --> 00:51:01,020
+And it turns out
+that's possible,
+
+1022
+00:51:01,020 --> 00:51:03,740
+but it's kind of annoying.
+
+1023
+00:51:03,740 --> 00:51:04,500
+It's nifty though.
+
+1024
+00:51:04,500 --> 00:51:06,916
+I think this will demonstrate
+a bunch of fun number theory
+
+1025
+00:51:06,916 --> 00:51:08,620
+things you could do.
+
+1026
+00:51:08,620 --> 00:51:11,160
+So next goal is
+zero one permanent.
+
+1027
+00:51:11,160 --> 00:51:13,330
+Now the matrix is
+just zero's and one's.
+
+1028
+00:51:13,330 --> 00:51:18,270
+This is sharp P complete.
+
+1029
+00:51:18,270 --> 00:51:24,008
+I'll tell you the reason that
+is particularly interesting.
+
+1030
+00:51:24,008 --> 00:51:25,800
+As it gets rid of
+the weights it makes
+
+1031
+00:51:25,800 --> 00:51:34,210
+it more clearly-- makes it more
+clearly a counting problem.
+
+1032
+00:51:34,210 --> 00:51:36,940
+So first of all is the
+number of cycle covers
+
+1033
+00:51:36,940 --> 00:51:39,800
+in the corresponding graph.
+
+1034
+00:51:39,800 --> 00:51:41,690
+No more weights it's
+just-- if it's a zero
+
+1035
+00:51:41,690 --> 00:51:42,600
+there's not an edge.
+
+1036
+00:51:42,600 --> 00:51:44,433
+Since you can't traverse
+there if it's a one
+
+1037
+00:51:44,433 --> 00:51:46,620
+you can traverse there
+and then every cycle cover
+
+1038
+00:51:46,620 --> 00:51:49,160
+will have product one.
+
+1039
+00:51:49,160 --> 00:51:50,850
+So it's just counting them.
+
+1040
+00:51:50,850 --> 00:51:55,250
+But it also happens to be the
+number of perfect matchings
+
+1041
+00:51:55,250 --> 00:51:56,690
+in a bipartite graph.
+
+1042
+00:51:56,690 --> 00:52:09,880
+
+1043
+00:52:09,880 --> 00:52:12,548
+Which bipartite graph?
+
+1044
+00:52:12,548 --> 00:52:15,980
+The bipartite graph where
+one side of the bi-partition
+
+1045
+00:52:15,980 --> 00:52:20,100
+is the rows and the other side
+is the columns of the matrix.
+
+1046
+00:52:20,100 --> 00:52:24,120
+
+1047
+00:52:24,120 --> 00:52:26,790
+And you have an edge I j.
+
+1048
+00:52:26,790 --> 00:52:31,740
+
+1049
+00:52:31,740 --> 00:52:39,270
+If and only if a i sorry
+j is not a good not
+
+1050
+00:52:39,270 --> 00:52:41,770
+the best terminology
+for I-- where I here's
+
+1051
+00:52:41,770 --> 00:52:46,160
+is a vertex of v one and
+j is a vertex of v two.
+
+1052
+00:52:46,160 --> 00:52:48,890
+Whenever I j equals 1, if
+it's zero there's no edge.
+
+1053
+00:52:48,890 --> 00:52:51,670
+
+1054
+00:52:51,670 --> 00:52:56,030
+It's a little confusing because
+the matrix is not symmetric
+
+1055
+00:52:56,030 --> 00:52:59,540
+so you might say well, how does
+this make an undirected graph?
+
+1056
+00:52:59,540 --> 00:53:02,390
+Because you could have and edge
+from i to j, but not to j to I.
+
+1057
+00:53:02,390 --> 00:53:05,140
+That's OK because I is
+interpreted in the left space
+
+1058
+00:53:05,140 --> 00:53:07,510
+and j is interpreted
+in the right space.
+
+1059
+00:53:07,510 --> 00:53:10,230
+So the asymmetric
+case would be the case
+
+1060
+00:53:10,230 --> 00:53:13,331
+that there's an edge here to
+here, but not an edge from here
+
+1061
+00:53:13,331 --> 00:53:13,830
+to here.
+
+1062
+00:53:13,830 --> 00:53:15,350
+That's perfectly OK.
+
+1063
+00:53:15,350 --> 00:53:18,430
+This is one, two, three,
+for a three by three matrix
+
+1064
+00:53:18,430 --> 00:53:22,120
+we get a six vertex
+graph, not three vertex.
+
+1065
+00:53:22,120 --> 00:53:25,594
+That's what allows you to be
+asymmetric on a loop, what
+
+1066
+00:53:25,594 --> 00:53:27,510
+we were normally thinking
+is a loop just means
+
+1067
+00:53:27,510 --> 00:53:30,000
+a horizontal edge.
+
+1068
+00:53:30,000 --> 00:53:33,500
+OK so it turns out if you
+look at this graph, which
+
+1069
+00:53:33,500 --> 00:53:36,250
+is a different graph from
+what we started with,
+
+1070
+00:53:36,250 --> 00:53:38,450
+the number of perfect
+matchings in that graph
+
+1071
+00:53:38,450 --> 00:53:42,324
+is equal to the number of cycle
+covers in the other graph,
+
+1072
+00:53:42,324 --> 00:53:43,240
+in the directed graph.
+
+1073
+00:53:43,240 --> 00:53:45,380
+So this one's undirected
+and bipartite.
+
+1074
+00:53:45,380 --> 00:53:48,590
+This one was directed
+and not bipartite.
+
+1075
+00:53:48,590 --> 00:53:51,880
+And the rough intuition
+is that we're just
+
+1076
+00:53:51,880 --> 00:53:54,184
+kind of pulling
+the vertices apart
+
+1077
+00:53:54,184 --> 00:53:56,600
+into two versions, the left
+version and the right version.
+
+1078
+00:53:56,600 --> 00:53:59,510
+If you imagine there being
+a connection from one
+
+1079
+00:53:59,510 --> 00:54:03,240
+right to one left and similarly
+from two right to two left
+
+1080
+00:54:03,240 --> 00:54:04,657
+directed.
+
+1081
+00:54:04,657 --> 00:54:07,240
+And three right to three left,
+hey it looks like cycles again.
+
+1082
+00:54:07,240 --> 00:54:10,007
+You went here, then you went
+around, then you went here,
+
+1083
+00:54:10,007 --> 00:54:10,840
+then you went there.
+
+1084
+00:54:10,840 --> 00:54:13,420
+That was a cycle and
+similarly this is a cycle.
+
+1085
+00:54:13,420 --> 00:54:15,890
+So they're the same thing.
+
+1086
+00:54:15,890 --> 00:54:18,210
+This is cool because
+perfect matchings
+
+1087
+00:54:18,210 --> 00:54:20,650
+are interesting in
+particular perfect matchings
+
+1088
+00:54:20,650 --> 00:54:22,970
+are easy to find
+in polynomial time.
+
+1089
+00:54:22,970 --> 00:54:25,981
+But counting them
+as Sharp P complete.
+
+1090
+00:54:25,981 --> 00:54:27,230
+Getting back to that question.
+
+1091
+00:54:27,230 --> 00:54:30,460
+
+1092
+00:54:30,460 --> 00:54:34,490
+So that's why we care about zero
+one permanence or one reason
+
+1093
+00:54:34,490 --> 00:54:35,390
+to care about it.
+
+1094
+00:54:35,390 --> 00:54:36,812
+Let's prove that it's hard.
+
+1095
+00:54:36,812 --> 00:54:52,550
+
+1096
+00:54:52,550 --> 00:54:55,850
+And here we'll use a number
+theory, pretty basic number
+
+1097
+00:54:55,850 --> 00:54:56,350
+theory.
+
+1098
+00:54:56,350 --> 00:55:05,100
+
+1099
+00:55:05,100 --> 00:55:06,820
+So first claim is
+that computing the
+
+1100
+00:55:06,820 --> 00:55:12,100
+permanent of a matrix, general
+matrix nonzero one modulo
+
+1101
+00:55:12,100 --> 00:55:14,340
+given integer r is hard.
+
+1102
+00:55:14,340 --> 00:55:18,760
+
+1103
+00:55:18,760 --> 00:55:20,700
+r has to be an input
+for this problem.
+
+1104
+00:55:20,700 --> 00:55:23,555
+It's not like computing at
+Mod three necessarily as hard,
+
+1105
+00:55:23,555 --> 00:55:27,477
+but computing at modular
+anything is hard.
+
+1106
+00:55:27,477 --> 00:55:30,060
+And here we're going to finally
+use some multi-color reduction
+
+1107
+00:55:30,060 --> 00:55:31,410
+power.
+
+1108
+00:55:31,410 --> 00:55:34,840
+So the idea is, suppose you
+could solve this problem then
+
+1109
+00:55:34,840 --> 00:55:37,051
+I claim I can solve permanent.
+
+1110
+00:55:37,051 --> 00:55:38,200
+Anyone know how?
+
+1111
+00:55:38,200 --> 00:55:39,700
+AUDIENCE: Chinese
+remainder theorem?
+
+1112
+00:55:39,700 --> 00:55:52,427
+PROFESSOR: Chinese
+remainder theorem
+
+1113
+00:55:52,427 --> 00:55:54,510
+OK if you don't know the
+Chinese remainder theorem
+
+1114
+00:55:54,510 --> 00:55:55,530
+but you should know it.
+
+1115
+00:55:55,530 --> 00:55:57,990
+It's good.
+
+1116
+00:55:57,990 --> 00:56:01,240
+So the idea is
+we're going to set r
+
+1117
+00:56:01,240 --> 00:56:10,470
+to be all primes up to how big?
+
+1118
+00:56:10,470 --> 00:56:14,730
+Or we can stop when the
+product of all the primes
+
+1119
+00:56:14,730 --> 00:56:20,560
+that we've considered is bigger
+than the potential permanent.
+
+1120
+00:56:20,560 --> 00:56:25,690
+And the permanent is at
+most m to the n times
+
+1121
+00:56:25,690 --> 00:56:28,850
+n factorial, where
+m is the largest
+
+1122
+00:56:28,850 --> 00:56:30,140
+absolute value in the matrix.
+
+1123
+00:56:30,140 --> 00:56:36,850
+
+1124
+00:56:36,850 --> 00:56:39,980
+That's one upper bound,
+doesn't really matter.
+
+1125
+00:56:39,980 --> 00:56:41,610
+But the point is,
+it is computable
+
+1126
+00:56:41,610 --> 00:56:44,060
+and if you take the
+logarithm it's not so big.
+
+1127
+00:56:44,060 --> 00:56:45,990
+All these numbers
+are at least two.
+
+1128
+00:56:45,990 --> 00:56:48,050
+All primes are at least two.
+
+1129
+00:56:48,050 --> 00:56:52,400
+So the number of primes
+we'll have to consider
+
+1130
+00:56:52,400 --> 00:56:55,980
+is at most log base 2 of that.
+
+1131
+00:56:55,980 --> 00:57:01,650
+So this means the
+number of primes,
+
+1132
+00:57:01,650 --> 00:57:05,500
+so that's log of m to
+the n times n factorial,
+
+1133
+00:57:05,500 --> 00:57:09,200
+and this is roughly--
+I'll put a total here.
+
+1134
+00:57:09,200 --> 00:57:12,900
+This is like m
+log n that's exact
+
+1135
+00:57:12,900 --> 00:57:18,700
+plus n log n that's approximate
+but it's minus order n
+
+1136
+00:57:18,700 --> 00:57:21,030
+so it won't hurt us.
+
+1137
+00:57:21,030 --> 00:57:22,900
+So that's good,
+that's a polynomial.
+
+1138
+00:57:22,900 --> 00:57:26,540
+Log m is a reasonable thing,
+m was given us as a number
+
+1139
+00:57:26,540 --> 00:57:29,180
+so log n is part of this input.
+
+1140
+00:57:29,180 --> 00:57:34,360
+So as our input and n is
+obviously good as the dimension
+
+1141
+00:57:34,360 --> 00:57:35,140
+of the matrix.
+
+1142
+00:57:35,140 --> 00:57:37,774
+So this is a polynomial
+number of calls.
+
+1143
+00:57:37,774 --> 00:57:39,440
+We're going to compute
+the permanent mod
+
+1144
+00:57:39,440 --> 00:57:42,080
+r for all these things and
+our Chinese remainder theorem
+
+1145
+00:57:42,080 --> 00:57:45,350
+tells you if you
+know a number which
+
+1146
+00:57:45,350 --> 00:57:49,420
+is the permanent module
+all primes whose products--
+
+1147
+00:57:49,420 --> 00:57:53,270
+Well if you know a number of
+modulo a bunch of primes then
+
+1148
+00:57:53,270 --> 00:57:58,050
+you can figure out the number of
+modulo, the product of primes.
+
+1149
+00:57:58,050 --> 00:58:00,790
+And if we set the product to
+be bigger than the number could
+
+1150
+00:58:00,790 --> 00:58:04,230
+be, then we know [? any ?]
+modulo that is actually
+
+1151
+00:58:04,230 --> 00:58:06,000
+knowing the number itself.
+
+1152
+00:58:06,000 --> 00:58:08,320
+So then we can
+reconstruct the permanent.
+
+1153
+00:58:08,320 --> 00:58:12,040
+
+1154
+00:58:12,040 --> 00:58:13,920
+So here we're really
+using multicall.
+
+1155
+00:58:13,920 --> 00:58:22,484
+
+1156
+00:58:22,484 --> 00:58:23,900
+I think that's the
+first time I've
+
+1157
+00:58:23,900 --> 00:58:26,650
+used Chinese remainder theorem
+in a class that I've taught.
+
+1158
+00:58:26,650 --> 00:58:29,601
+
+1159
+00:58:29,601 --> 00:58:30,100
+Good stuff.
+
+1160
+00:58:30,100 --> 00:58:34,337
+
+1161
+00:58:34,337 --> 00:58:36,795
+AUDIENCE: Do you know why it's
+called the Chinese remainder
+
+1162
+00:58:36,795 --> 00:58:37,360
+theorem?
+
+1163
+00:58:37,360 --> 00:58:39,330
+PROFESSOR: I assume
+it was proved
+
+1164
+00:58:39,330 --> 00:58:42,540
+by a Chinese mathematician
+but I-- anyone know?
+
+1165
+00:58:42,540 --> 00:58:43,791
+AUDIENCE: Sun Tzu.
+
+1166
+00:58:43,791 --> 00:58:44,960
+PROFESSOR: Sun Tzu.
+
+1167
+00:58:44,960 --> 00:58:49,145
+OK I've heard of him.
+
+1168
+00:58:49,145 --> 00:58:51,150
+AUDIENCE: Not the guy
+who did Art of War.
+
+1169
+00:58:51,150 --> 00:58:51,900
+PROFESSOR: Oh, OK.
+
+1170
+00:58:51,900 --> 00:58:54,300
+I don't know him then.
+
+1171
+00:58:54,300 --> 00:58:57,600
+Another Sun Tzu.
+
+1172
+00:58:57,600 --> 00:59:00,470
+Cool, yeah so permanent
+mod r is hard.
+
+1173
+00:59:00,470 --> 00:59:08,900
+Next claim is that the zero
+one permanent mod r is hard.
+
+1174
+00:59:08,900 --> 00:59:11,432
+
+1175
+00:59:11,432 --> 00:59:12,890
+The whole reason
+we're going to mod
+
+1176
+00:59:12,890 --> 00:59:14,973
+r-- I mean it's interesting
+to know that computing
+
+1177
+00:59:14,973 --> 00:59:17,180
+permanent mod r is just
+as hard as permanent
+
+1178
+00:59:17,180 --> 00:59:20,210
+but it's kind of standard thing.
+
+1179
+00:59:20,210 --> 00:59:22,110
+The reason I wanted
+to go to mod r
+
+1180
+00:59:22,110 --> 00:59:24,300
+was to get rid of
+these negative numbers.
+
+1181
+00:59:24,300 --> 00:59:26,230
+Negative numbers are annoying.
+
+1182
+00:59:26,230 --> 00:59:31,460
+Once I go to mod any r
+negative numbers flip around
+
+1183
+00:59:31,460 --> 00:59:34,980
+and I can figure everything
+is positive or non-negative.
+
+1184
+00:59:34,980 --> 00:59:38,180
+Now I can go back
+to gadget land.
+
+1185
+00:59:38,180 --> 00:59:40,720
+So suppose I have an
+edge of weight five,
+
+1186
+00:59:40,720 --> 00:59:42,770
+this will work for any
+number greater than one.
+
+1187
+00:59:42,770 --> 00:59:44,880
+If It's one I don't touch it.
+
+1188
+00:59:44,880 --> 00:59:48,180
+If it's greater than one I'm
+going to make this thing.
+
+1189
+00:59:48,180 --> 00:59:51,400
+
+1190
+00:59:51,400 --> 00:59:55,860
+And the claim is there
+are exactly five ways
+
+1191
+00:59:55,860 --> 00:59:56,890
+to use this edge.
+
+1192
+00:59:56,890 --> 00:59:58,970
+Either you don't use it
+and you don't use it.
+
+1193
+00:59:58,970 --> 01:00:02,790
+But if you do use it,
+exactly five ways to use it.
+
+1194
+01:00:02,790 --> 01:00:05,729
+If you make this traversal,
+there are five ways to do it.
+
+1195
+01:00:05,729 --> 01:00:07,270
+Remember this has
+to be a cycle cover
+
+1196
+01:00:07,270 --> 01:00:09,360
+so we have to visit everything.
+
+1197
+01:00:09,360 --> 01:00:12,950
+If you come up here, can't go
+that way gotta go straight.
+
+1198
+01:00:12,950 --> 01:00:14,795
+Can't go that way,
+got to go straight.
+
+1199
+01:00:14,795 --> 01:00:17,080
+Hmm, OK.
+
+1200
+01:00:17,080 --> 01:00:19,330
+So in fact, the rest
+of this cycle cover
+
+1201
+01:00:19,330 --> 01:00:21,410
+must be entirely
+within this picture.
+
+1202
+01:00:21,410 --> 01:00:23,710
+And so for example, you
+could say that's a cycle
+
+1203
+01:00:23,710 --> 01:00:26,330
+and then that's a
+cycle, these are loops.
+
+1204
+01:00:26,330 --> 01:00:28,450
+And then that's a
+cycle and then that's
+
+1205
+01:00:28,450 --> 01:00:31,890
+a cycle and then that's a
+cycle and then that's a cycle.
+
+1206
+01:00:31,890 --> 01:00:34,120
+And whoops I'm left
+with one vertex.
+
+1207
+01:00:34,120 --> 01:00:37,430
+So in fact I have to choose
+exactly one of the loops,
+
+1208
+01:00:37,430 --> 01:00:39,660
+put that in and the
+rest can be covered.
+
+1209
+01:00:39,660 --> 01:00:42,702
+For example, if I choose this
+guy then this will be a cycle,
+
+1210
+01:00:42,702 --> 01:00:44,410
+this'll be a cycle,
+this will be a cycle.
+
+1211
+01:00:44,410 --> 01:00:46,990
+Perfect parity this will be
+a cycle, is will be a cycle,
+
+1212
+01:00:46,990 --> 01:00:48,250
+and this will be a cycle.
+
+1213
+01:00:48,250 --> 01:00:49,230
+Can't choose two loops.
+
+1214
+01:00:49,230 --> 01:00:50,771
+If I chose like
+these two groups then
+
+1215
+01:00:50,771 --> 01:00:52,460
+this guy would be isolated.
+
+1216
+01:00:52,460 --> 01:00:54,640
+So you have to choose
+exactly one loop
+
+1217
+01:00:54,640 --> 01:00:56,210
+and there are
+exactly five of them.
+
+1218
+01:00:56,210 --> 01:01:00,390
+In general you make-- there'd be
+k of them if you want weight k,
+
+1219
+01:01:00,390 --> 01:01:02,050
+and you can simulate.
+
+1220
+01:01:02,050 --> 01:01:05,530
+If you don't use this edge then
+there's actually only one way
+
+1221
+01:01:05,530 --> 01:01:06,110
+to do it.
+
+1222
+01:01:06,110 --> 01:01:09,550
+You have to go all the
+way around like this.
+
+1223
+01:01:09,550 --> 01:01:10,262
+So that's cool.
+
+1224
+01:01:10,262 --> 01:01:12,470
+If you don't use the edge,
+didn't mess with anything.
+
+1225
+01:01:12,470 --> 01:01:14,597
+If you use the edge you
+get a weight of five.
+
+1226
+01:01:14,597 --> 01:01:16,680
+Multiplicative, because
+this is independent of all
+
+1227
+01:01:16,680 --> 01:01:18,670
+the other such choices.
+
+1228
+01:01:18,670 --> 01:01:23,990
+So you can simulate a
+high-weight edge, module r.
+
+1229
+01:01:23,990 --> 01:01:26,490
+In general you can simulate
+a non-negative weight edge
+
+1230
+01:01:26,490 --> 01:01:27,960
+like this.
+
+1231
+01:01:27,960 --> 01:01:30,530
+Just these are all weight one
+obviously and absent edges
+
+1232
+01:01:30,530 --> 01:01:31,810
+are zero.
+
+1233
+01:01:31,810 --> 01:01:34,440
+So we can convert
+in the module r
+
+1234
+01:01:34,440 --> 01:01:38,340
+setting there are no
+negative numbers essentially.
+
+1235
+01:01:38,340 --> 01:01:40,385
+So we can just do that
+simulation, everything
+
+1236
+01:01:40,385 --> 01:01:42,320
+will work mod r.
+
+1237
+01:01:42,320 --> 01:01:43,610
+So use gadget.
+
+1238
+01:01:43,610 --> 01:01:53,030
+
+1239
+01:01:53,030 --> 01:01:55,800
+Now finally we can prove
+zero one permanent is hard.
+
+1240
+01:01:55,800 --> 01:02:01,000
+
+1241
+01:02:01,000 --> 01:02:01,510
+Why?
+
+1242
+01:02:01,510 --> 01:02:03,593
+Because if we could compute
+the zero one permanent
+
+1243
+01:02:03,593 --> 01:02:05,230
+we can compute at mod r.
+
+1244
+01:02:05,230 --> 01:02:08,790
+Just compute the permanent,
+take the answer mod r and you
+
+1245
+01:02:08,790 --> 01:02:10,750
+solve zero one permanent mod r.
+
+1246
+01:02:10,750 --> 01:02:13,910
+So this is what I might
+call a one-call reduction.
+
+1247
+01:02:13,910 --> 01:02:16,050
+It's not our usual notion
+of one-call reduction
+
+1248
+01:02:16,050 --> 01:02:19,490
+because we're doing
+stuff at the end.
+
+1249
+01:02:19,490 --> 01:02:22,020
+But I'm going to use
+one-call in this setting.
+
+1250
+01:02:22,020 --> 01:02:27,200
+
+1251
+01:02:27,200 --> 01:02:30,130
+Just call it-- in fact we don't
+even have to change the input.
+
+1252
+01:02:30,130 --> 01:02:32,100
+Then we get the output
+when we computed mod r.
+
+1253
+01:02:32,100 --> 01:02:32,600
+Question.
+
+1254
+01:02:32,600 --> 01:02:36,420
+AUDIENCE: So in
+that the weight you
+
+1255
+01:02:36,420 --> 01:02:37,848
+can have really high weight.
+
+1256
+01:02:37,848 --> 01:02:41,022
+But then your
+[INAUDIBLE] nodes so then
+
+1257
+01:02:41,022 --> 01:02:44,887
+when you use that wouldn't n?
+
+1258
+01:02:44,887 --> 01:02:45,720
+PROFESSOR: Oh I see.
+
+1259
+01:02:45,720 --> 01:02:47,345
+If the weights were
+exponentially large
+
+1260
+01:02:47,345 --> 01:02:48,850
+this would be bad news.
+
+1261
+01:02:48,850 --> 01:02:50,440
+But they're not
+exponentially large
+
+1262
+01:02:50,440 --> 01:02:53,500
+because we know they're
+all at most three.
+
+1263
+01:02:53,500 --> 01:02:57,070
+They're between
+negative one and three.
+
+1264
+01:02:57,070 --> 01:03:03,260
+Oh but negative
+one-- Yes, OK good
+
+1265
+01:03:03,260 --> 01:03:04,800
+I need the prime number theorem.
+
+1266
+01:03:04,800 --> 01:03:05,300
+Thank you.
+
+1267
+01:03:05,300 --> 01:03:08,720
+So we have numbers
+negative one then
+
+1268
+01:03:08,720 --> 01:03:10,650
+we're mapping them
+modulo some prime.
+
+1269
+01:03:10,650 --> 01:03:14,590
+Now negative one is actually
+the prime minus one.
+
+1270
+01:03:14,590 --> 01:03:19,940
+So indeed, we do get weights
+that are as large as r.
+
+1271
+01:03:19,940 --> 01:03:24,370
+So this is-- r here we're
+assuming is encoded in unary.
+
+1272
+01:03:24,370 --> 01:03:28,110
+
+1273
+01:03:28,110 --> 01:03:32,210
+It turns out we can afford
+to encode the primes in unary
+
+1274
+01:03:32,210 --> 01:03:35,630
+because the number
+of primes that we use
+
+1275
+01:03:35,630 --> 01:03:40,870
+is this polynomial thing,
+a weakly polynomial thing.
+
+1276
+01:03:40,870 --> 01:03:46,170
+And by the prime number theorem,
+the prime with that index
+
+1277
+01:03:46,170 --> 01:03:47,500
+is roughly that big.
+
+1278
+01:03:47,500 --> 01:03:49,450
+It's the log factor larger.
+
+1279
+01:03:49,450 --> 01:03:53,050
+So the primes are going
+to-- the actual value
+
+1280
+01:03:53,050 --> 01:03:58,360
+of the prime is going to
+be something like n log
+
+1281
+01:03:58,360 --> 01:04:08,770
+m, times log base e, and log m.
+
+1282
+01:04:08,770 --> 01:04:11,970
+By the prime number theorem and
+that's again weakly polynomial.
+
+1283
+01:04:11,970 --> 01:04:14,020
+And so we can assume
+ours encoded in unary.
+
+1284
+01:04:14,020 --> 01:04:17,950
+
+1285
+01:04:17,950 --> 01:04:22,143
+Wow, we get to use the prime
+number theorem that's fun.
+
+1286
+01:04:22,143 --> 01:04:24,726
+AUDIENCE: Is that the first time
+you had to use prime numbers?
+
+1287
+01:04:24,726 --> 01:04:27,011
+PROFESSOR: Probably.
+
+1288
+01:04:27,011 --> 01:04:29,260
+Pretty sure I've used prime
+number theorem if and only
+
+1289
+01:04:29,260 --> 01:04:32,130
+if I've used Chinese
+remainder theorem.
+
+1290
+01:04:32,130 --> 01:04:33,120
+They go hand in hand.
+
+1291
+01:04:33,120 --> 01:04:35,930
+
+1292
+01:04:35,930 --> 01:04:36,430
+Clear?
+
+1293
+01:04:36,430 --> 01:04:39,064
+So this was kind
+of roundabout way,
+
+1294
+01:04:39,064 --> 01:04:41,230
+but we ended up getting rid
+of the negative numbers.
+
+1295
+01:04:41,230 --> 01:04:42,730
+Luckily it still worked.
+
+1296
+01:04:42,730 --> 01:04:44,710
+And now it's zero
+one permanence hard,
+
+1297
+01:04:44,710 --> 01:04:47,390
+therefore counting the number
+of perfect matchings in a given
+
+1298
+01:04:47,390 --> 01:04:49,390
+bipartite graph isn't
+going to be hard.
+
+1299
+01:04:49,390 --> 01:04:51,964
+These problems were equivalent,
+like they're identical.
+
+1300
+01:04:51,964 --> 01:04:53,880
+So you could-- this was
+a reduction in one way
+
+1301
+01:04:53,880 --> 01:04:57,480
+but that's equally
+reducible both ways.
+
+1302
+01:04:57,480 --> 01:04:59,930
+So you can reduce this
+one, reduce this one
+
+1303
+01:04:59,930 --> 01:05:03,806
+to perfect matchings
+or vice versa.
+
+1304
+01:05:03,806 --> 01:05:04,305
+All right.
+
+1305
+01:05:04,305 --> 01:05:07,547
+
+1306
+01:05:07,547 --> 01:05:09,130
+Here's some more fun
+things we can do.
+
+1307
+01:05:09,130 --> 01:05:26,500
+
+1308
+01:05:26,500 --> 01:05:27,980
+Guess I can add to my list here.
+
+1309
+01:05:27,980 --> 01:05:32,100
+But in particular we
+have zero one permanent.
+
+1310
+01:05:32,100 --> 01:05:36,700
+
+1311
+01:05:36,700 --> 01:05:40,641
+So there are other ways you
+might be interested in counting
+
+1312
+01:05:40,641 --> 01:05:41,140
+matchings.
+
+1313
+01:05:41,140 --> 01:05:48,510
+
+1314
+01:05:48,510 --> 01:05:51,880
+So, so far we know it's hard
+to count perfect matchings.
+
+1315
+01:05:51,880 --> 01:05:57,274
+So in a balanced bipartite graph
+we had n vertices on the left,
+
+1316
+01:05:57,274 --> 01:05:58,440
+and n vertices on the right.
+
+1317
+01:05:58,440 --> 01:06:00,290
+We're going to use that.
+
+1318
+01:06:00,290 --> 01:06:03,290
+Then the hope is that
+there's matching a size n.
+
+1319
+01:06:03,290 --> 01:06:05,629
+But in general, you could
+just count maybe those
+
+1320
+01:06:05,629 --> 01:06:06,420
+don't exist at all.
+
+1321
+01:06:06,420 --> 01:06:08,560
+Maybe we just want to
+count maximal matchings.
+
+1322
+01:06:08,560 --> 01:06:10,780
+These are not maximum matchings.
+
+1323
+01:06:10,780 --> 01:06:13,840
+Maximal, meaning you can't
+add any more edges to them.
+
+1324
+01:06:13,840 --> 01:06:17,300
+They're locally maximum.
+
+1325
+01:06:17,300 --> 01:06:19,640
+So that's going to
+be a bigger number,
+
+1326
+01:06:19,640 --> 01:06:22,380
+it's going to be always
+bigger than zero.
+
+1327
+01:06:22,380 --> 01:06:24,350
+Because the empty
+matching, well you
+
+1328
+01:06:24,350 --> 01:06:25,808
+could start with
+the empty matching
+
+1329
+01:06:25,808 --> 01:06:28,500
+and add things you'll get at
+least one maximal matching.
+
+1330
+01:06:28,500 --> 01:06:30,650
+But this is also
+sharp P complete,
+
+1331
+01:06:30,650 --> 01:06:32,590
+and you can prove
+it using some tricks
+
+1332
+01:06:32,590 --> 01:06:37,880
+from bipartite perfect
+matching, counting.
+
+1333
+01:06:37,880 --> 01:06:41,080
+
+1334
+01:06:41,080 --> 01:06:42,570
+Don't have a ton
+of time so I'll go
+
+1335
+01:06:42,570 --> 01:06:45,340
+through this relatively quick.
+
+1336
+01:06:45,340 --> 01:06:48,880
+We're going to take each vertex
+and convert it, basically
+
+1337
+01:06:48,880 --> 01:06:51,420
+make n copies of it.
+
+1338
+01:06:51,420 --> 01:06:55,260
+And when we have an edge
+that's going to turn
+
+1339
+01:06:55,260 --> 01:07:00,440
+into a biclique between them.
+
+1340
+01:07:00,440 --> 01:07:02,300
+Why did I address
+such a big one?
+
+1341
+01:07:02,300 --> 01:07:06,470
+
+1342
+01:07:06,470 --> 01:07:09,150
+This was supposed to be n and n.
+
+1343
+01:07:09,150 --> 01:07:10,720
+OK so just blow up every edge.
+
+1344
+01:07:10,720 --> 01:07:14,350
+My intent is to make matchings
+become more plentiful.
+
+1345
+01:07:14,350 --> 01:07:16,980
+
+1346
+01:07:16,980 --> 01:07:24,052
+So in general, if I used to
+have a matching of size i,
+
+1347
+01:07:24,052 --> 01:07:30,810
+I end up converting it into n
+factorial to the i-th power,
+
+1348
+01:07:30,810 --> 01:07:40,960
+distinct matchings
+of size n times i.
+
+1349
+01:07:40,960 --> 01:07:43,980
+OK because if I
+use an edge here,
+
+1350
+01:07:43,980 --> 01:07:46,290
+now I get to put in a
+arbitrary perfect matching
+
+1351
+01:07:46,290 --> 01:07:50,660
+in this biclique and
+they're n factorial of them.
+
+1352
+01:07:50,660 --> 01:07:53,729
+Cool, why did I do that?
+
+1353
+01:07:53,729 --> 01:07:55,910
+Because now I
+suppose that I knew
+
+1354
+01:07:55,910 --> 01:07:59,127
+how to count the number
+of maximum actions.
+
+1355
+01:07:59,127 --> 01:08:01,210
+So they're going to be
+matchings of various sizes.
+
+1356
+01:08:01,210 --> 01:08:04,240
+From that I want to extract the
+number of perfect matchings.
+
+1357
+01:08:04,240 --> 01:08:07,670
+Sounds impossible, but
+when you make things giant
+
+1358
+01:08:07,670 --> 01:08:10,285
+like this they kind of-- all
+the matchings kind of separate.
+
+1359
+01:08:10,285 --> 01:08:13,529
+It's like biology or something.
+
+1360
+01:08:13,529 --> 01:08:14,060
+Chemistry.
+
+1361
+01:08:14,060 --> 01:08:19,760
+So let's see, it
+shows how much I know.
+
+1362
+01:08:19,760 --> 01:08:26,290
+Number of maximal
+matchings is going
+
+1363
+01:08:26,290 --> 01:08:31,920
+to be sum i equals
+zero to n over 2.
+
+1364
+01:08:31,920 --> 01:08:35,300
+That's the possible
+sizes of the matchings.
+
+1365
+01:08:35,300 --> 01:08:36,870
+Of the old matchings
+I should say.
+
+1366
+01:08:36,870 --> 01:08:42,170
+Number of original
+maximal matchings
+
+1367
+01:08:42,170 --> 01:08:51,790
+in the input graph of size i,
+times n factorial to the i.
+
+1368
+01:08:51,790 --> 01:08:53,330
+OK this is just rewriting.
+
+1369
+01:08:53,330 --> 01:08:55,689
+I'm just this thing, but
+I'm summing over all i.
+
+1370
+01:08:55,689 --> 01:08:58,439
+So I have however many matchings
+I used to have a size i,
+
+1371
+01:08:58,439 --> 01:09:00,510
+but then I multiply them
+by n factorial to the i,
+
+1372
+01:09:00,510 --> 01:09:01,926
+because these are
+all independent.
+
+1373
+01:09:01,926 --> 01:09:06,470
+
+1374
+01:09:06,470 --> 01:09:09,819
+And this thing,
+the original number
+
+1375
+01:09:09,819 --> 01:09:13,270
+of matchings in the worst case,
+I mean the largest it could be
+
+1376
+01:09:13,270 --> 01:09:15,029
+is when everything
+is a biclique.
+
+1377
+01:09:15,029 --> 01:09:23,775
+And then we have n over two
+factorial maximal matchings
+
+1378
+01:09:23,775 --> 01:09:24,275
+originally.
+
+1379
+01:09:24,275 --> 01:09:27,069
+
+1380
+01:09:27,069 --> 01:09:31,150
+And this is smaller than that.
+
+1381
+01:09:31,150 --> 01:09:35,420
+And therefore we can pull
+this apart as a number modulo
+
+1382
+01:09:35,420 --> 01:09:37,150
+n factorial.
+
+1383
+01:09:37,150 --> 01:09:41,520
+And each digit is the number of
+maximum actions of each size.
+
+1384
+01:09:41,520 --> 01:09:44,130
+And we look at
+the last digit, we
+
+1385
+01:09:44,130 --> 01:09:48,300
+get all the number of
+maximum matchings of size n
+
+1386
+01:09:48,300 --> 01:09:52,640
+over two also known as the
+number of perfect matchings.
+
+1387
+01:09:52,640 --> 01:09:53,140
+Question?
+
+1388
+01:09:53,140 --> 01:09:55,470
+AUDIENCE: So that
+second max is maximal?
+
+1389
+01:09:55,470 --> 01:09:56,840
+PROFESSOR: Yes this is maximal.
+
+1390
+01:09:56,840 --> 01:10:01,180
+
+1391
+01:10:01,180 --> 01:10:02,860
+Other questions?
+
+1392
+01:10:02,860 --> 01:10:05,500
+So again I kind of numbered
+[? through ?] trick
+
+1393
+01:10:05,500 --> 01:10:09,770
+by blowing up-- well
+by making each of these
+
+1394
+01:10:09,770 --> 01:10:12,630
+get multiplied by a
+different huge number
+
+1395
+01:10:12,630 --> 01:10:15,570
+we can pull them apart,
+separate them-- In logarithm
+
+1396
+01:10:15,570 --> 01:10:19,095
+these numbers are not huge
+so it is actually plausible
+
+1397
+01:10:19,095 --> 01:10:20,350
+you could compute this thing.
+
+1398
+01:10:20,350 --> 01:10:23,199
+
+1399
+01:10:23,199 --> 01:10:24,990
+And a tree graph you
+definitely could do it
+
+1400
+01:10:24,990 --> 01:10:28,450
+by various multiplications
+at each level.
+
+1401
+01:10:28,450 --> 01:10:29,800
+All right.
+
+1402
+01:10:29,800 --> 01:10:34,975
+So that's nice, let's do
+another one of that flavor.
+
+1403
+01:10:34,975 --> 01:10:37,663
+
+1404
+01:10:37,663 --> 01:10:39,204
+AUDIENCE: So I was
+actually wondering
+
+1405
+01:10:39,204 --> 01:10:41,245
+can you find all those
+primes in polynomial time?
+
+1406
+01:10:41,245 --> 01:10:44,320
+PROFESSOR: You could use
+the Sieve of Eratosthenes.
+
+1407
+01:10:44,320 --> 01:10:46,336
+AUDIENCE: Is that
+like going to be--
+
+1408
+01:10:46,336 --> 01:10:48,960
+PROFESSOR: We can handle pseudo
+poly here because as we argued,
+
+1409
+01:10:48,960 --> 01:10:50,730
+the primes are not that big.
+
+1410
+01:10:50,730 --> 01:10:53,150
+So we could just
+spend-- we could just
+
+1411
+01:10:53,150 --> 01:10:55,150
+do Sieve of Eratosthenes,
+we can afford
+
+1412
+01:10:55,150 --> 01:10:58,120
+to spend a linear time
+on the largest prime.
+
+1413
+01:10:58,120 --> 01:10:59,225
+Or quadratic in that even.
+
+1414
+01:10:59,225 --> 01:11:00,600
+You could do the
+naive algorithm.
+
+1415
+01:11:00,600 --> 01:11:06,010
+
+1416
+01:11:06,010 --> 01:11:09,780
+We're not doing real Hogan's
+[? mid-number ?] theory here.
+
+1417
+01:11:09,780 --> 01:11:13,750
+I could tell where you
+have to be more careful.
+
+1418
+01:11:13,750 --> 01:11:16,690
+All right. .
+
+1419
+01:11:16,690 --> 01:11:19,992
+So here's another question.
+
+1420
+01:11:19,992 --> 01:11:22,200
+What if I just want to count
+the number of matchings?
+
+1421
+01:11:22,200 --> 01:11:23,191
+No condition?
+
+1422
+01:11:23,191 --> 01:11:27,430
+
+1423
+01:11:27,430 --> 01:11:31,490
+This is going to use
+almost the reverse trick.
+
+1424
+01:11:31,490 --> 01:11:34,300
+So no maximal constraint
+just all matchings,
+
+1425
+01:11:34,300 --> 01:11:35,550
+including the empty matchings.
+
+1426
+01:11:35,550 --> 01:11:37,600
+Count them all.
+
+1427
+01:11:37,600 --> 01:11:41,470
+We'll see why in a moment,
+this is quite natural.
+
+1428
+01:11:41,470 --> 01:11:46,160
+So I claim I can do a multicall
+reduction to bipartite
+
+1429
+01:11:46,160 --> 01:11:48,280
+number of maximal matchings.
+
+1430
+01:11:48,280 --> 01:11:51,610
+And here are my calls
+for every graph g,
+
+1431
+01:11:51,610 --> 01:11:54,690
+I'm going to make
+a graph g prime.
+
+1432
+01:11:54,690 --> 01:11:57,520
+Where if I have a
+vertex I'm going to add
+
+1433
+01:11:57,520 --> 01:12:01,630
+k extra nodes connected
+just to that vertex.
+
+1434
+01:12:01,630 --> 01:12:04,522
+So these are leaves
+and so if this vertex
+
+1435
+01:12:04,522 --> 01:12:06,730
+was unmatched over here,
+then I have k different ways
+
+1436
+01:12:06,730 --> 01:12:09,080
+to match it over here.
+
+1437
+01:12:09,080 --> 01:12:13,340
+And my intent is to measure this
+number of matchings of size n
+
+1438
+01:12:13,340 --> 01:12:15,580
+over two minus k.
+
+1439
+01:12:15,580 --> 01:12:16,560
+That would be the hope.
+
+1440
+01:12:16,560 --> 01:12:21,000
+
+1441
+01:12:21,000 --> 01:12:29,610
+So if I have m r matchings
+of size r over here,
+
+1442
+01:12:29,610 --> 01:12:35,320
+these will get mapped
+to Mr times k plus one
+
+1443
+01:12:35,320 --> 01:12:45,610
+to the r, matchings of
+size no, not of size.
+
+1444
+01:12:45,610 --> 01:12:46,540
+Matchings over here.
+
+1445
+01:12:46,540 --> 01:12:53,154
+
+1446
+01:12:53,154 --> 01:12:55,320
+Because for each one I can
+either leave it unmatched
+
+1447
+01:12:55,320 --> 01:12:57,120
+or I could add this edge,
+or I could add this edge,
+
+1448
+01:12:57,120 --> 01:12:58,578
+or I could add this
+edge and that's
+
+1449
+01:12:58,578 --> 01:13:00,560
+true for every unmatched vertex.
+
+1450
+01:13:00,560 --> 01:13:04,562
+Sorry, this is not size r, this
+is size n over two minus r.
+
+1451
+01:13:04,562 --> 01:13:07,160
+R is going to be the
+number of leftover guys.
+
+1452
+01:13:07,160 --> 01:13:10,110
+Then they kind of
+pops out over here.
+
+1453
+01:13:10,110 --> 01:13:12,510
+So I'm going to run
+this algorithm-- I'm
+
+1454
+01:13:12,510 --> 01:13:19,540
+going to compute the number of
+matchings in Gk for all k up
+
+1455
+01:13:19,540 --> 01:13:25,750
+to like n over two plus one.
+
+1456
+01:13:25,750 --> 01:13:37,430
+So I'm going to do
+this and what I end up
+
+1457
+01:13:37,430 --> 01:13:43,890
+computing is number of matchings
+in each Gk, which is going
+
+1458
+01:13:43,890 --> 01:13:46,522
+to be the sum over all r.
+
+1459
+01:13:46,522 --> 01:13:52,385
+r is zero to n over two
+of Mr the original number
+
+1460
+01:13:52,385 --> 01:13:56,330
+of matchings the size
+n over two minus r,
+
+1461
+01:13:56,330 --> 01:13:59,010
+times k plus one to the r.
+
+1462
+01:13:59,010 --> 01:14:04,670
+Now this is a polynomial
+in k plus one.
+
+1463
+01:14:04,670 --> 01:14:09,500
+And if I evaluate a polynomial
+at its degree plus one
+
+1464
+01:14:09,500 --> 01:14:12,000
+different points I can
+reconstruct the coefficients
+
+1465
+01:14:12,000 --> 01:14:13,220
+of the polynomial.
+
+1466
+01:14:13,220 --> 01:14:15,660
+And therefore get all of
+these and in particular
+
+1467
+01:14:15,660 --> 01:14:21,480
+get m zero, which is the
+number of perfect matchings.
+
+1468
+01:14:21,480 --> 01:14:22,480
+Ta da.
+
+1469
+01:14:22,480 --> 01:14:34,630
+
+1470
+01:14:34,630 --> 01:14:35,490
+Having too much fun.
+
+1471
+01:14:35,490 --> 01:14:42,950
+
+1472
+01:14:42,950 --> 01:14:43,690
+Enough matchings.
+
+1473
+01:14:43,690 --> 01:14:47,200
+
+1474
+01:14:47,200 --> 01:14:50,220
+We have all these versions
+of SAT, which are hard.
+
+1475
+01:14:50,220 --> 01:14:53,730
+But in fact there are
+even funnier versions
+
+1476
+01:14:53,730 --> 01:14:55,860
+like positive 2SAT.
+
+1477
+01:14:55,860 --> 01:14:59,350
+
+1478
+01:14:59,350 --> 01:15:02,100
+Positive 2SAT is
+really easy to decide,
+
+1479
+01:15:02,100 --> 01:15:06,010
+but it turns out if I add a
+sharp it is sharp P complete.
+
+1480
+01:15:06,010 --> 01:15:07,902
+This is sort of like
+max 2SAT, but here we
+
+1481
+01:15:07,902 --> 01:15:09,360
+have to satisfy
+all the constraints
+
+1482
+01:15:09,360 --> 01:15:11,485
+but you want to count how
+many different ways there
+
+1483
+01:15:11,485 --> 01:15:13,590
+are to solve it.
+
+1484
+01:15:13,590 --> 01:15:15,850
+This is the same thing
+as vertex cover remember.
+
+1485
+01:15:15,850 --> 01:15:18,050
+Vertex cover's the
+same as positive 2SAT.
+
+1486
+01:15:18,050 --> 01:15:20,230
+So also sharp
+vertex cover's hard
+
+1487
+01:15:20,230 --> 01:15:23,070
+and therefore also
+sharp clique is hard.
+
+1488
+01:15:23,070 --> 01:15:25,800
+So this is actually a
+parsimonious reduction
+
+1489
+01:15:25,800 --> 01:15:27,775
+from bipartite matching.
+
+1490
+01:15:27,775 --> 01:15:29,890
+That's why I wanted
+to get there.
+
+1491
+01:15:29,890 --> 01:15:37,210
+So for every edge we're going
+to make a variable, x of e,
+
+1492
+01:15:37,210 --> 01:15:42,000
+which is true if the edge is
+not in the perfect matching.
+
+1493
+01:15:42,000 --> 01:15:47,730
+And so then whenever I have
+two incident edges in f,
+
+1494
+01:15:47,730 --> 01:15:50,940
+we're going to have a clause
+which is either I don't use e,
+
+1495
+01:15:50,940 --> 01:15:53,110
+or I don't use f.
+
+1496
+01:15:53,110 --> 01:15:54,924
+That's 2SAT, done.
+
+1497
+01:15:54,924 --> 01:16:00,070
+
+1498
+01:16:00,070 --> 01:16:00,720
+Satisfying?
+
+1499
+01:16:00,720 --> 01:16:01,550
+It's parsimonious.
+
+1500
+01:16:01,550 --> 01:16:03,830
+So satisfying assignments
+will be one to one
+
+1501
+01:16:03,830 --> 01:16:06,230
+with bipartite matchings.
+
+1502
+01:16:06,230 --> 01:16:08,160
+So this is why you should care.
+
+1503
+01:16:08,160 --> 01:16:12,100
+And if we instead reduce
+from-- did I erase it?
+
+1504
+01:16:12,100 --> 01:16:16,950
+Bipartite maximal
+matchings up here,
+
+1505
+01:16:16,950 --> 01:16:19,720
+then I get the
+counting the number
+
+1506
+01:16:19,720 --> 01:16:28,030
+of maximally true assignments
+that satisfy the 2SAT clause
+
+1507
+01:16:28,030 --> 01:16:30,930
+is also hard.
+
+1508
+01:16:30,930 --> 01:16:34,620
+For what it's worth, a
+different way of counting that.
+
+1509
+01:16:34,620 --> 01:16:35,320
+(BREAK IN VIDEO)
+
+1510
+01:16:35,320 --> 01:16:38,210
+Maxwell means you can't set
+any more variables true.
+
+1511
+01:16:38,210 --> 01:16:38,710
+Yeah.
+
+1512
+01:16:38,710 --> 01:16:42,478
+AUDIENCE: Since the edges on
+your positive 2SAT reduction
+
+1513
+01:16:42,478 --> 01:16:49,654
+are the variables there are
+true when the edge is not
+
+1514
+01:16:49,654 --> 01:16:50,622
+in a matching.
+
+1515
+01:16:50,622 --> 01:16:52,462
+I think it's maximally false.
+
+1516
+01:16:52,462 --> 01:16:53,420
+And not maximally true.
+
+1517
+01:16:53,420 --> 01:16:56,240
+Also maximally true, you just
+said everything was true.
+
+1518
+01:16:56,240 --> 01:16:57,310
+PROFESSOR: Yes.
+
+1519
+01:16:57,310 --> 01:16:58,890
+Right, right, right, sorry.
+
+1520
+01:16:58,890 --> 01:16:59,723
+I see, you're right.
+
+1521
+01:16:59,723 --> 01:17:01,950
+So it's minimal solutions
+for a 2SAT, thank you.
+
+1522
+01:17:01,950 --> 01:17:05,200
+
+1523
+01:17:05,200 --> 01:17:17,150
+OK in fact, it's known that
+three regular bipartite planar
+
+1524
+01:17:17,150 --> 01:17:18,220
+sharp vertex cover.
+
+1525
+01:17:18,220 --> 01:17:22,762
+
+1526
+01:17:22,762 --> 01:17:23,720
+I won't prove this one.
+
+1527
+01:17:23,720 --> 01:17:26,730
+But in particular you
+can make this planar,
+
+1528
+01:17:26,730 --> 01:17:28,920
+although it doesn't look
+like we have positive here.
+
+1529
+01:17:28,920 --> 01:17:30,961
+And you can also make it
+bipartite, which doesn't
+
+1530
+01:17:30,961 --> 01:17:32,310
+mean a lot in 2SAT land.
+
+1531
+01:17:32,310 --> 01:17:36,330
+But it means-- makes a lot of
+sense in vertex cover land.
+
+1532
+01:17:36,330 --> 01:17:38,120
+In my zero remaining
+minutes I want
+
+1533
+01:17:38,120 --> 01:17:39,530
+to mention one more concept.
+
+1534
+01:17:39,530 --> 01:17:42,236
+
+1535
+01:17:42,236 --> 01:17:46,060
+To go back to the
+original question
+
+1536
+01:17:46,060 --> 01:17:49,900
+of uniqueness for puzzles.
+
+1537
+01:17:49,900 --> 01:17:52,790
+And you'll see this in the
+literature if you look at it.
+
+1538
+01:17:52,790 --> 01:17:55,230
+Lot of people won't
+even mention sharp P,
+
+1539
+01:17:55,230 --> 01:17:58,190
+but they'll mention ASP.
+
+1540
+01:17:58,190 --> 01:18:02,380
+ASP is slightly weaker but
+for most intents and purposes
+
+1541
+01:18:02,380 --> 01:18:04,710
+essentially identical
+notion to sharp P,
+
+1542
+01:18:04,710 --> 01:18:06,800
+from a hardness perspective.
+
+1543
+01:18:06,800 --> 01:18:09,770
+The goal for-- in general,
+if I have a problem
+
+1544
+01:18:09,770 --> 01:18:12,000
+a search problem
+like we started with.
+
+1545
+01:18:12,000 --> 01:18:15,150
+The ASP version of
+that search problem is,
+
+1546
+01:18:15,150 --> 01:18:19,680
+I give you a solution and I want
+to know is there another one?
+
+1547
+01:18:19,680 --> 01:18:21,430
+This is a little
+different from everything
+
+1548
+01:18:21,430 --> 01:18:24,585
+we've seen because I actually
+give you a starting point.
+
+1549
+01:18:24,585 --> 01:18:26,460
+There's some problems
+where this helps a lot.
+
+1550
+01:18:26,460 --> 01:18:30,610
+For example, if the solution
+is never unique like coloring,
+
+1551
+01:18:30,610 --> 01:18:32,390
+I give you a k
+coloring, I can give you
+
+1552
+01:18:32,390 --> 01:18:34,810
+another one I'll just
+swap colors one and two.
+
+1553
+01:18:34,810 --> 01:18:38,390
+Or more subtle if I give you
+a Hamiltonian cycle in a three
+
+1554
+01:18:38,390 --> 01:18:39,110
+regular graph.
+
+1555
+01:18:39,110 --> 01:18:43,360
+There's always a way to switch
+it and make another one.
+
+1556
+01:18:43,360 --> 01:18:46,440
+So ASP is sometimes easy.
+
+1557
+01:18:46,440 --> 01:18:50,130
+But you would basically
+use the same reductions.
+
+1558
+01:18:50,130 --> 01:18:53,200
+If you can find a
+parsimonious reduction that
+
+1559
+01:18:53,200 --> 01:18:55,810
+also has the property--
+so parsimonious reduction
+
+1560
+01:18:55,810 --> 01:18:58,990
+there is a one to one
+bijection between solutions
+
+1561
+01:18:58,990 --> 01:19:00,400
+to x and solutions to x prime.
+
+1562
+01:19:00,400 --> 01:19:03,882
+If you could also compute
+that bijection, if you can
+
+1563
+01:19:03,882 --> 01:19:05,590
+convert a solution
+from one to the other.
+
+1564
+01:19:05,590 --> 01:19:07,580
+Which we could do in every
+single proof we've seen
+
+1565
+01:19:07,580 --> 01:19:08,996
+and even the ones
+we haven't seen.
+
+1566
+01:19:08,996 --> 01:19:11,500
+You can always compute that
+bijection between solutions
+
+1567
+01:19:11,500 --> 01:19:14,610
+of A to solutions of B.
+And so what that means is,
+
+1568
+01:19:14,610 --> 01:19:23,050
+if I can solve B, consider
+the ASP version of A
+
+1569
+01:19:23,050 --> 01:19:24,390
+where I give you a solution.
+
+1570
+01:19:24,390 --> 01:19:27,110
+If I can convert that solution
+into a solution for my B
+
+1571
+01:19:27,110 --> 01:19:29,300
+problem, and then with
+the parsimonious reduction
+
+1572
+01:19:29,300 --> 01:19:35,330
+I also get a B instance, then
+I can solve the ASP problem
+
+1573
+01:19:35,330 --> 01:19:37,060
+for B. That's a
+decision problem.
+
+1574
+01:19:37,060 --> 01:19:38,500
+Is there another solution?
+
+1575
+01:19:38,500 --> 01:19:40,980
+If yes, then A will also
+have another solution,
+
+1576
+01:19:40,980 --> 01:19:43,920
+because it's parsimonious
+the numbers will be the same.
+
+1577
+01:19:43,920 --> 01:19:47,550
+We need a weaker version of
+parsimony we just need the one
+
+1578
+01:19:47,550 --> 01:19:49,511
+and more than one
+are kept the same.
+
+1579
+01:19:49,511 --> 01:19:51,760
+If this one was unique then
+this one should be unique.
+
+1580
+01:19:51,760 --> 01:19:54,540
+If this one wasn't unique then
+this one should be not unique.
+
+1581
+01:19:54,540 --> 01:19:56,680
+If I can solve B
+then I can solve A.
+
+1582
+01:19:56,680 --> 01:20:00,570
+Or if I can solve ASP B
+then I can solve ASP A.
+
+1583
+01:20:00,570 --> 01:20:04,250
+A lot of these proofs are
+done-- so-called ASP reduction
+
+1584
+01:20:04,250 --> 01:20:07,160
+is usually done by a
+parsimonious reduction.
+
+1585
+01:20:07,160 --> 01:20:10,240
+And so in particular
+this was introduced,
+
+1586
+01:20:10,240 --> 01:20:12,910
+this concept was introduced in
+the likes of like Slitherlink,
+
+1587
+01:20:12,910 --> 01:20:16,660
+I think, was one of the early
+ASP completeness proofs.
+
+1588
+01:20:16,660 --> 01:20:18,810
+And they were interested
+in this because the idea
+
+1589
+01:20:18,810 --> 01:20:20,435
+is if you're designing
+a puzzle usually
+
+1590
+01:20:20,435 --> 01:20:22,890
+you design a puzzle
+with a solution in mind.
+
+1591
+01:20:22,890 --> 01:20:25,280
+But then you need to make sure
+there's no other solution.
+
+1592
+01:20:25,280 --> 01:20:28,880
+So you have exactly
+this set up and if you
+
+1593
+01:20:28,880 --> 01:20:31,520
+want a formal definition of ASP
+completeness it's in the notes.
+
+1594
+01:20:31,520 --> 01:20:36,930
+But it's not that difficult.
+
+1595
+01:20:36,930 --> 01:20:40,102
+The key point here is if you're
+going to prove sharp P or ASP
+
+1596
+01:20:40,102 --> 01:20:42,560
+completeness you might as well
+prove the other one as well.
+
+1597
+01:20:42,560 --> 01:20:45,900
+Get twice the results for
+basically the same reduction.
+
+1598
+01:20:45,900 --> 01:20:47,960
+All the versions of
+3SAT and 1-in-3SAT,
+
+1599
+01:20:47,960 --> 01:20:51,290
+and all those things, those
+were all parsimonious.
+
+1600
+01:20:51,290 --> 01:20:54,230
+And all of those are
+ASP complete as well.
+
+1601
+01:20:54,230 --> 01:20:55,830
+But once you get
+into C-monious you're
+
+1602
+01:20:55,830 --> 01:20:59,970
+no longer preserving one
+versus more than one.
+
+1603
+01:20:59,970 --> 01:21:02,752
+So while you preserved--
+from a counting perspective
+
+1604
+01:21:02,752 --> 01:21:04,960
+in multicall reductions
+where you can divide that off
+
+1605
+01:21:04,960 --> 01:21:05,820
+that's fine.
+
+1606
+01:21:05,820 --> 01:21:08,990
+But from an ASP completeness
+perspective you're not fine.
+
+1607
+01:21:08,990 --> 01:21:12,510
+So in fact all the
+stuff that we just
+
+1608
+01:21:12,510 --> 01:21:17,370
+did with the permanent
+matchings and sharp 2SAT,
+
+1609
+01:21:17,370 --> 01:21:18,380
+their sharp P complete.
+
+1610
+01:21:18,380 --> 01:21:20,125
+They may not be ASP complete.
+
+1611
+01:21:20,125 --> 01:21:22,730
+
+1612
+01:21:22,730 --> 01:21:24,580
+But you'll notice
+the puzzles that we
+
+1613
+01:21:24,580 --> 01:21:31,440
+reduce from like, whatever,
+Shakashaka is one of them.
+
+1614
+01:21:31,440 --> 01:21:35,710
+That was from a version of
+3SAT, and the other one we had
+
+1615
+01:21:35,710 --> 01:21:37,210
+was from a version
+of Hamiltonicity.
+
+1616
+01:21:37,210 --> 01:21:40,000
+
+1617
+01:21:40,000 --> 01:21:41,630
+This guy.
+
+1618
+01:21:41,630 --> 01:21:43,590
+These are all-- which
+was also from 3SAT.
+
+1619
+01:21:43,590 --> 01:21:46,750
+So these are all
+ASP complete also.
+
+1620
+01:21:46,750 --> 01:21:49,350
+But if you use the
+weirder things like 2SAT
+
+1621
+01:21:49,350 --> 01:21:50,670
+you don't get that.
+
+1622
+01:21:50,670 --> 01:21:53,570
+So usually in one proof you can
+get NP hardness, ASP hardness,
+
+1623
+01:21:53,570 --> 01:21:55,627
+and sharp P hardness.
+
+1624
+01:21:55,627 --> 01:21:57,460
+But if you're going to
+go from these weirder
+
+1625
+01:21:57,460 --> 01:21:59,277
+problems with C-monious
+reductions then
+
+1626
+01:21:59,277 --> 01:22:01,360
+you only get sharp P
+hardness, because they're not
+
+1627
+01:22:01,360 --> 01:22:03,400
+even NP-hard.
+
+1628
+01:22:03,400 --> 01:22:04,730
+Cool, all right.
+
+1629
+01:22:04,730 --> 01:22:06,500
+Thank you.
+

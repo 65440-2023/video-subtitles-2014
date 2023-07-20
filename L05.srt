@@ -1,0 +1,8609 @@
+1
+0-1:59:36,500 --> 0-1:59:36,580
+
+2
+0-1:59:36,580 --> 0-1:59:38,930
+The following content is
+provided under a Creative
+
+3
+0-1:59:38,930 --> 0-1:59:40,340
+Commons license.
+
+4
+0-1:59:40,340 --> 0-1:59:42,550
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:42,550 --> 0-1:59:46,650
+continue to offer high-quality
+educational resources for free.
+
+6
+0-1:59:46,650 --> 0-1:59:49,190
+To make a donation or to
+view additional materials
+
+7
+0-1:59:49,190 --> 0-1:59:53,022
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:53,022 --> 0-1:59:53,646
+at ocw.mit.edu.
+
+9
+0-1:59:53,646 --> 00:00:02,670
+
+10
+00:00:02,670 --> 00:00:04,810
+PROFESSOR: Welcome
+back to 6.890.
+
+11
+00:00:04,810 --> 00:00:08,380
+Today, we will do many more
+hardness proofs, mostly
+
+12
+00:00:08,380 --> 00:00:13,450
+of games and puzzles and some
+graph theoretic problems, all
+
+13
+00:00:13,450 --> 00:00:15,490
+reducing from 3SAT.
+
+14
+00:00:15,490 --> 00:00:18,360
+We're going to continue where
+we left off last time, which
+
+15
+00:00:18,360 --> 00:00:20,690
+was with this picture,
+which also comes
+
+16
+00:00:20,690 --> 00:00:23,900
+from lecture 1, which is how to
+prove Super Mario Brothers is
+
+17
+00:00:23,900 --> 00:00:24,490
+NP-hard.
+
+18
+00:00:24,490 --> 00:00:27,460
+We had two main gadgets,
+the variable gadget,
+
+19
+00:00:27,460 --> 00:00:31,840
+which forces your player to
+choose going left or right,
+
+20
+00:00:31,840 --> 00:00:34,830
+and the clause
+gadget, which could
+
+21
+00:00:34,830 --> 00:00:38,660
+be visited in three different
+ways in order to enable it.
+
+22
+00:00:38,660 --> 00:00:41,569
+These each contained
+an invincibility star,
+
+23
+00:00:41,569 --> 00:00:44,646
+so that if later, you come
+through to traverse the gadget,
+
+24
+00:00:44,646 --> 00:00:46,770
+you can get through all
+these fire bars if and only
+
+25
+00:00:46,770 --> 00:00:49,090
+if there was at
+least one star there.
+
+26
+00:00:49,090 --> 00:00:51,784
+So that was a
+regular 3SAT clause.
+
+27
+00:00:51,784 --> 00:00:53,700
+And then, there's the
+connectivity in between.
+
+28
+00:00:53,700 --> 00:00:56,180
+And so in particular, you
+need a crossover gadget
+
+29
+00:00:56,180 --> 00:00:57,020
+with this set-up.
+
+30
+00:00:57,020 --> 00:00:59,110
+But the general idea
+is you visit variable,
+
+31
+00:00:59,110 --> 00:01:01,070
+visit all the clauses
+that are in it
+
+32
+00:01:01,070 --> 00:01:04,119
+that include that literal-- you
+get to choose only one-- then
+
+33
+00:01:04,119 --> 00:01:05,910
+you go to the next
+variable, next variable.
+
+34
+00:01:05,910 --> 00:01:07,493
+And then, you traverse
+all the clauses
+
+35
+00:01:07,493 --> 00:01:09,070
+and you can get to
+finish if and only
+
+36
+00:01:09,070 --> 00:01:12,740
+if the 3SAT formula
+was satisfiable.
+
+37
+00:01:12,740 --> 00:01:16,300
+This is a general
+construction or approach
+
+38
+00:01:16,300 --> 00:01:18,050
+for platform video games.
+
+39
+00:01:18,050 --> 00:01:22,760
+That's what we were presenting
+it as in a recent paper.
+
+40
+00:01:22,760 --> 00:01:25,880
+I thought I'd show you a few
+other Nintendo games you can
+
+41
+00:01:25,880 --> 00:01:27,790
+prove hard with this technique.
+
+42
+00:01:27,790 --> 00:01:32,400
+This is the clause gadget
+for Super Mario World.
+
+43
+00:01:32,400 --> 00:01:34,490
+So in Super Mario
+World, there are
+
+44
+00:01:34,490 --> 00:01:39,480
+these great question-mark blocks
+and in particular, POW blocks,
+
+45
+00:01:39,480 --> 00:01:42,897
+which go back to the
+original Mario Brothers
+
+46
+00:01:42,897 --> 00:01:43,730
+without the "Super."
+
+47
+00:01:43,730 --> 00:01:45,949
+How many people
+played Mario Brothers?
+
+48
+00:01:45,949 --> 00:01:48,970
+Really old-school,
+pre-Super Mario.
+
+49
+00:01:48,970 --> 00:01:51,740
+And anyway, it doesn't matter
+exactly where it comes from.
+
+50
+00:01:51,740 --> 00:01:54,700
+It does something completely
+different in Super Mario World,
+
+51
+00:01:54,700 --> 00:01:58,010
+which is turns all
+coins into things
+
+52
+00:01:58,010 --> 00:02:01,020
+you can walk on for 10 seconds.
+
+53
+00:02:01,020 --> 00:02:03,130
+But you can't normally
+hit a question-mark block
+
+54
+00:02:03,130 --> 00:02:04,249
+except from the bottom.
+
+55
+00:02:04,249 --> 00:02:05,540
+There's no way to do that here.
+
+56
+00:02:05,540 --> 00:02:08,340
+But if you can visit one
+of these three places,
+
+57
+00:02:08,340 --> 00:02:11,340
+you can send one of these
+turtle shells flying
+
+58
+00:02:11,340 --> 00:02:14,350
+and it will hit this and bring
+the POW block off and then
+
+59
+00:02:14,350 --> 00:02:17,300
+disappear, so that later when
+you try to traverse this clause
+
+60
+00:02:17,300 --> 00:02:19,600
+gadget, if there's a POW
+block, you can turn these
+
+61
+00:02:19,600 --> 00:02:23,250
+into solid things for
+long enough to get across
+
+62
+00:02:23,250 --> 00:02:24,500
+but no longer than that.
+
+63
+00:02:24,500 --> 00:02:27,160
+So in the next gadget, you need
+another POW block, and so on.
+
+64
+00:02:27,160 --> 00:02:31,259
+So that's clause gadget
+for Super Mario World.
+
+65
+00:02:31,259 --> 00:02:32,800
+The other gadgets
+are pretty similar,
+
+66
+00:02:32,800 --> 00:02:34,091
+so I'll just show you that one.
+
+67
+00:02:34,091 --> 00:02:37,734
+AUDIENCE: Does the
+star trick not work?
+
+68
+00:02:37,734 --> 00:02:39,900
+PROFESSOR: I guess you could
+also do the star trick,
+
+69
+00:02:39,900 --> 00:02:42,874
+but I think we drew this figure
+before we did the star trick.
+
+70
+00:02:42,874 --> 00:02:44,290
+So we thought, oh,
+this is cooler.
+
+71
+00:02:44,290 --> 00:02:48,080
+
+72
+00:02:48,080 --> 00:02:51,220
+Now, one thing I thought
+I'd mention briefly
+
+73
+00:02:51,220 --> 00:02:54,980
+is some fun glitches you can
+do in the real Super Mario
+
+74
+00:02:54,980 --> 00:02:58,700
+Brothers, as
+implemented on the ROMs.
+
+75
+00:02:58,700 --> 00:03:02,212
+You can do these crazy things
+like jump off of walls.
+
+76
+00:03:02,212 --> 00:03:03,920
+You're not supposed
+to be able to do this
+
+77
+00:03:03,920 --> 00:03:06,320
+and this level would be
+unsolvable in the way you would
+
+78
+00:03:06,320 --> 00:03:08,930
+normally think about
+Super Mario Brothers,
+
+79
+00:03:08,930 --> 00:03:12,600
+but there happens to be this
+fun subpixel resolution.
+
+80
+00:03:12,600 --> 00:03:15,840
+I think this is
+usually very hard to do
+
+81
+00:03:15,840 --> 00:03:18,520
+with a real controller,
+but much easier
+
+82
+00:03:18,520 --> 00:03:22,280
+to do when you can slow things
+down 100 times and every frame,
+
+83
+00:03:22,280 --> 00:03:24,940
+you have a choice of whether
+to push a particular button.
+
+84
+00:03:24,940 --> 00:03:27,870
+That's called tool-assisted
+speed runs, usually.
+
+85
+00:03:27,870 --> 00:03:30,730
+
+86
+00:03:30,730 --> 00:03:33,220
+I don't know if you consider
+this real Super Mario
+
+87
+00:03:33,220 --> 00:03:34,110
+Brothers or not.
+
+88
+00:03:34,110 --> 00:03:35,680
+It depends on your
+notion of reality,
+
+89
+00:03:35,680 --> 00:03:37,890
+whether you're more of a
+mathematician or a gamer,
+
+90
+00:03:37,890 --> 00:03:39,180
+I guess.
+
+91
+00:03:39,180 --> 00:03:43,090
+But you can try to modify
+the gadget so that wall
+
+92
+00:03:43,090 --> 00:03:44,600
+jumping doesn't help you.
+
+93
+00:03:44,600 --> 00:03:46,919
+So you could imagine trying
+to jump up these walls.
+
+94
+00:03:46,919 --> 00:03:48,960
+But if there's things in
+the way, it prevents it.
+
+95
+00:03:48,960 --> 00:03:51,350
+So if you just add that
+to every vertical tunnel,
+
+96
+00:03:51,350 --> 00:03:54,350
+that will prevent going
+back up the tunnels, which
+
+97
+00:03:54,350 --> 00:03:56,100
+is important for the
+variable gadgets.
+
+98
+00:03:56,100 --> 00:03:58,100
+We don't want to be able
+to reverse our decision
+
+99
+00:03:58,100 --> 00:04:01,140
+and later choose the
+opposite variable setting.
+
+100
+00:04:01,140 --> 00:04:07,760
+Here's another fun set of cheats
+where you jump through walls.
+
+101
+00:04:07,760 --> 00:04:12,300
+This one is apparently somewhat
+doable on a real controller,
+
+102
+00:04:12,300 --> 00:04:15,230
+but still quite challenging.
+
+103
+00:04:15,230 --> 00:04:17,670
+I think that one of
+the general ideas
+
+104
+00:04:17,670 --> 00:04:21,550
+is the collision detection
+is not super good in the game
+
+105
+00:04:21,550 --> 00:04:23,050
+as implemented.
+
+106
+00:04:23,050 --> 00:04:26,440
+So if you get just
+the right geometry,
+
+107
+00:04:26,440 --> 00:04:27,910
+you can walk through the walls.
+
+108
+00:04:27,910 --> 00:04:31,620
+There's instructions for you.
+
+109
+00:04:31,620 --> 00:04:34,440
+So this is obviously problematic
+because all of our gadgets
+
+110
+00:04:34,440 --> 00:04:35,180
+involve walls.
+
+111
+00:04:35,180 --> 00:04:38,390
+So if you can walk through
+them, not very interesting.
+
+112
+00:04:38,390 --> 00:04:43,520
+So a general approach is to
+just add lots of monsters
+
+113
+00:04:43,520 --> 00:04:44,450
+into the walls.
+
+114
+00:04:44,450 --> 00:04:47,290
+So even if you could walk
+through, you become small Mario
+
+115
+00:04:47,290 --> 00:04:49,645
+and then that's not an option.
+
+116
+00:04:49,645 --> 00:04:51,770
+I should say these have
+not been thoroughly tested,
+
+117
+00:04:51,770 --> 00:04:54,311
+so it's plausible you can walk
+through the wall in such a way
+
+118
+00:04:54,311 --> 00:04:57,620
+that maybe you kill the monster
+or there may be other glitches
+
+119
+00:04:57,620 --> 00:04:58,670
+that we don't know about.
+
+120
+00:04:58,670 --> 00:05:02,550
+And so you might consider
+this a work in progress.
+
+121
+00:05:02,550 --> 00:05:05,430
+But generally, I would believe
+you can modify the proof
+
+122
+00:05:05,430 --> 00:05:08,670
+to work on real Super Mario
+Brothers as implemented
+
+123
+00:05:08,670 --> 00:05:11,970
+in real physics, of course,
+generalized to an n by n screen
+
+124
+00:05:11,970 --> 00:05:14,220
+and so on.
+
+125
+00:05:14,220 --> 00:05:18,280
+What exactly you call
+"real" is challenging there.
+
+126
+00:05:18,280 --> 00:05:21,230
+But that's Super Mario
+Brothers-- just some more fun
+
+127
+00:05:21,230 --> 00:05:24,600
+stuff in the paper.
+
+128
+00:05:24,600 --> 00:05:26,966
+Let me talk a little bit
+about Legend of Zelda.
+
+129
+00:05:26,966 --> 00:05:29,340
+This is what it looks like,
+in case you've never seen it.
+
+130
+00:05:29,340 --> 00:05:31,907
+And this is the original
+Legend of Zelda.
+
+131
+00:05:31,907 --> 00:05:32,990
+You're a little character.
+
+132
+00:05:32,990 --> 00:05:33,823
+You can walk around.
+
+133
+00:05:33,823 --> 00:05:37,670
+And this is what I would say is
+a typical block-pushing puzzle
+
+134
+00:05:37,670 --> 00:05:41,460
+in Legend of Zelda, which
+is try all the blocks
+
+135
+00:05:41,460 --> 00:05:43,690
+and hope that one
+of then pushes.
+
+136
+00:05:43,690 --> 00:05:48,630
+And I have to say, I
+watched an entire-- I
+
+137
+00:05:48,630 --> 00:05:51,030
+don't know how long it was--
+five hours of walkthrough
+
+138
+00:05:51,030 --> 00:05:52,570
+of Legend of Zelda
+wanting to find
+
+139
+00:05:52,570 --> 00:05:53,930
+whether there are
+any more complicated
+
+140
+00:05:53,930 --> 00:05:54,846
+block-pushing puzzles.
+
+141
+00:05:54,846 --> 00:05:57,760
+I swear I remember a slightly
+more complicated one,
+
+142
+00:05:57,760 --> 00:05:59,440
+but I could not find it.
+
+143
+00:05:59,440 --> 00:06:03,350
+It's possible it skipped in
+this particular walkthrough.
+
+144
+00:06:03,350 --> 00:06:05,810
+Well, it just takes a long time.
+
+145
+00:06:05,810 --> 00:06:06,480
+But you get it.
+
+146
+00:06:06,480 --> 00:06:07,860
+All right, we're almost done.
+
+147
+00:06:07,860 --> 00:06:11,020
+You get an idea of
+what the game is like.
+
+148
+00:06:11,020 --> 00:06:12,310
+You've got a sword, whatever.
+
+149
+00:06:12,310 --> 00:06:14,560
+That won't be particularly
+relevant to our reductions.
+
+150
+00:06:14,560 --> 00:06:16,393
+There will be no monsters
+in our reductions.
+
+151
+00:06:16,393 --> 00:06:19,000
+In this case, I think you just
+have to wait a really long time
+
+152
+00:06:19,000 --> 00:06:21,361
+or possibly kill the
+hand that comes out.
+
+153
+00:06:21,361 --> 00:06:22,610
+Then, you can push that block.
+
+154
+00:06:22,610 --> 00:06:24,526
+He actually tried to
+push it in the beginning,
+
+155
+00:06:24,526 --> 00:06:25,510
+but it wouldn't move.
+
+156
+00:06:25,510 --> 00:06:27,380
+Anyway, that's Legend of Zelda.
+
+157
+00:06:27,380 --> 00:06:29,976
+
+158
+00:06:29,976 --> 00:06:31,600
+Here's a slightly
+more interesting one.
+
+159
+00:06:31,600 --> 00:06:32,510
+This is what I remember.
+
+160
+00:06:32,510 --> 00:06:34,040
+Normally, you push one,
+two, three, and then
+
+161
+00:06:34,040 --> 00:06:35,360
+you push this to the side.
+
+162
+00:06:35,360 --> 00:06:38,719
+In this particular case, blocks
+are not pushable sideways,
+
+163
+00:06:38,719 --> 00:06:39,760
+which is really annoying.
+
+164
+00:06:39,760 --> 00:06:41,801
+So you actually have to
+solve it a different way.
+
+165
+00:06:41,801 --> 00:06:45,330
+If you watch this video, at this
+point, he's like, oh, my god.
+
+166
+00:06:45,330 --> 00:06:48,650
+This was the simplest
+block-pushing puzzle ever
+
+167
+00:06:48,650 --> 00:06:49,400
+and I solved it.
+
+168
+00:06:49,400 --> 00:06:51,610
+Yea!
+
+169
+00:06:51,610 --> 00:06:55,500
+It's after half an hour
+of trying other things.
+
+170
+00:06:55,500 --> 00:06:59,590
+That's the joy of Legend
+of Zelda, very fun puzzles,
+
+171
+00:06:59,590 --> 00:07:01,220
+so to speak.
+
+172
+00:07:01,220 --> 00:07:03,220
+So the point is, you have
+block-pushing puzzles.
+
+173
+00:07:03,220 --> 00:07:05,090
+We already know-- oh, sorry.
+
+174
+00:07:05,090 --> 00:07:06,160
+Here's one more, I guess.
+
+175
+00:07:06,160 --> 00:07:08,770
+These are in Legend of
+Zelda-- A Link to the Past.
+
+176
+00:07:08,770 --> 00:07:10,420
+So it has a slightly
+more com-- there's
+
+177
+00:07:10,420 --> 00:07:13,980
+an actual slightly nontrivial
+block-pushing puzzle.
+
+178
+00:07:13,980 --> 00:07:18,690
+But in general, we
+know push-one is hard.
+
+179
+00:07:18,690 --> 00:07:21,820
+Most versions of Legend of Zelda
+are slightly more restrictive
+
+180
+00:07:21,820 --> 00:07:23,080
+than push-one.
+
+181
+00:07:23,080 --> 00:07:25,420
+I would call them
+"push-once" blocks,
+
+182
+00:07:25,420 --> 00:07:28,480
+where you can only
+push one at a time.
+
+183
+00:07:28,480 --> 00:07:29,570
+That's your strength.
+
+184
+00:07:29,570 --> 00:07:31,410
+But also, you can only
+push a block once.
+
+185
+00:07:31,410 --> 00:07:32,980
+You can never push
+it a second time
+
+186
+00:07:32,980 --> 00:07:35,010
+or push it back or do
+anything like that.
+
+187
+00:07:35,010 --> 00:07:38,110
+And with some slight-- this
+is the gadget we saw before.
+
+188
+00:07:38,110 --> 00:07:41,180
+With some slight tweaks,
+you can make the locks still
+
+189
+00:07:41,180 --> 00:07:44,370
+work when you're only allowed
+to push each block once.
+
+190
+00:07:44,370 --> 00:07:48,240
+So that proves that most
+versions of Legend of Zelda
+
+191
+00:07:48,240 --> 00:07:53,060
+are at least NP-hard, because
+they include block pushing.
+
+192
+00:07:53,060 --> 00:07:56,400
+But it would be
+nice to understand
+
+193
+00:07:56,400 --> 00:07:58,730
+other senses in which
+these kinds of games
+
+194
+00:07:58,730 --> 00:08:00,450
+are hard without
+using block pushing.
+
+195
+00:08:00,450 --> 00:08:05,870
+So here's another feature
+called the hookshot.
+
+196
+00:08:05,870 --> 00:08:07,670
+So you select it
+and then if there's
+
+197
+00:08:07,670 --> 00:08:11,190
+an object on the other side,
+you can hookshot to that side.
+
+198
+00:08:11,190 --> 00:08:12,880
+So you can't walk
+over the cavern,
+
+199
+00:08:12,880 --> 00:08:14,500
+but you can hookshot across.
+
+200
+00:08:14,500 --> 00:08:15,512
+Here it is again.
+
+201
+00:08:15,512 --> 00:08:17,220
+As long as there's an
+object over there--
+
+202
+00:08:17,220 --> 00:08:20,750
+you can also pick up
+objects and destroy them.
+
+203
+00:08:20,750 --> 00:08:23,940
+So does that make it hard
+with no pushing blocks?
+
+204
+00:08:23,940 --> 00:08:26,810
+Well, a little bit
+of pushing blocks.
+
+205
+00:08:26,810 --> 00:08:29,640
+Here's a simple proof
+using that structure.
+
+206
+00:08:29,640 --> 00:08:31,580
+So here's a variable.
+
+207
+00:08:31,580 --> 00:08:32,980
+I go from top to bottom.
+
+208
+00:08:32,980 --> 00:08:35,350
+You see over here a
+treasure chest or something
+
+209
+00:08:35,350 --> 00:08:37,954
+that you can hookshot onto
+to go over the cavern.
+
+210
+00:08:37,954 --> 00:08:39,120
+And here, you have a choice.
+
+211
+00:08:39,120 --> 00:08:40,620
+You can go left or
+you can go right,
+
+212
+00:08:40,620 --> 00:08:43,680
+but then you can't back up,
+because there's no object
+
+213
+00:08:43,680 --> 00:08:44,820
+here to hookshot onto.
+
+214
+00:08:44,820 --> 00:08:47,060
+You can only do it orthogonally.
+
+215
+00:08:47,060 --> 00:08:47,804
+Here's a clause.
+
+216
+00:08:47,804 --> 00:08:49,470
+If you come down any
+one of these paths,
+
+217
+00:08:49,470 --> 00:08:52,470
+then you can push
+this block one step.
+
+218
+00:08:52,470 --> 00:08:55,480
+And then, you'll be able
+to hookshot from the right
+
+219
+00:08:55,480 --> 00:08:59,190
+to get onto this platform and
+then continue to the left.
+
+220
+00:08:59,190 --> 00:09:01,820
+And a crossover is really
+easy in this world.
+
+221
+00:09:01,820 --> 00:09:04,710
+So you could come up with
+lots of different NP-hardness
+
+222
+00:09:04,710 --> 00:09:05,210
+proofs.
+
+223
+00:09:05,210 --> 00:09:08,970
+So this is a fun one
+for A Link to the Past,
+
+224
+00:09:08,970 --> 00:09:11,340
+which is the first game
+that has that hookshot.
+
+225
+00:09:11,340 --> 00:09:12,120
+This is Metroid.
+
+226
+00:09:12,120 --> 00:09:13,786
+If you've never played,
+most of the time
+
+227
+00:09:13,786 --> 00:09:17,400
+you spend going up and
+down elevator shafts.
+
+228
+00:09:17,400 --> 00:09:20,142
+And there are these monsters
+which you can shoot.
+
+229
+00:09:20,142 --> 00:09:21,600
+And then, there's
+also this ability
+
+230
+00:09:21,600 --> 00:09:24,790
+to become a one-by-one block
+instead of a two-by-one block
+
+231
+00:09:24,790 --> 00:09:26,520
+and roll through small things.
+
+232
+00:09:26,520 --> 00:09:29,800
+When you're in that position,
+in a certain part of the game,
+
+233
+00:09:29,800 --> 00:09:31,850
+you are not allowed to shoot.
+
+234
+00:09:31,850 --> 00:09:35,990
+So that's the situation
+we're going to imagine.
+
+235
+00:09:35,990 --> 00:09:38,770
+So here is a clause
+in a crossover.
+
+236
+00:09:38,770 --> 00:09:40,884
+The variable gadget
+is the same as Mario.
+
+237
+00:09:40,884 --> 00:09:42,050
+You fall left or fall right.
+
+238
+00:09:42,050 --> 00:09:45,640
+You can't go back up, because
+you have a limited jump height.
+
+239
+00:09:45,640 --> 00:09:48,010
+So let's do the clause first.
+
+240
+00:09:48,010 --> 00:09:50,650
+There are three different
+ways to visit it.
+
+241
+00:09:50,650 --> 00:09:53,480
+When you're setting your
+variables, if you can get here,
+
+242
+00:09:53,480 --> 00:09:55,980
+you can aim upwards and just
+shoot all of these things.
+
+243
+00:09:55,980 --> 00:09:57,700
+It would take a few
+minutes, but you'd
+
+244
+00:09:57,700 --> 00:09:59,230
+get rid of all these guys.
+
+245
+00:09:59,230 --> 00:10:02,272
+These guys just walk
+around constantly.
+
+246
+00:10:02,272 --> 00:10:03,730
+And then, to
+traverse, you're going
+
+247
+00:10:03,730 --> 00:10:05,540
+to be coming through
+here in ball mode.
+
+248
+00:10:05,540 --> 00:10:06,740
+There's no way
+to-- I guess, here,
+
+249
+00:10:06,740 --> 00:10:08,906
+you could briefly stand up,
+but you can't shoot down
+
+250
+00:10:08,906 --> 00:10:10,010
+in original Metroid.
+
+251
+00:10:10,010 --> 00:10:11,925
+So you want to roll
+over here, but you
+
+252
+00:10:11,925 --> 00:10:13,960
+would take too much damage.
+
+253
+00:10:13,960 --> 00:10:15,630
+You maybe only have
+one hit point left,
+
+254
+00:10:15,630 --> 00:10:17,190
+so if there's any
+of these guys left,
+
+255
+00:10:17,190 --> 00:10:18,815
+you have to visit at
+least one of these
+
+256
+00:10:18,815 --> 00:10:21,540
+to kill all the monsters
+and then get through.
+
+257
+00:10:21,540 --> 00:10:22,920
+That's clause.
+
+258
+00:10:22,920 --> 00:10:26,260
+Crossover is a little
+more challenging.
+
+259
+00:10:26,260 --> 00:10:29,850
+In this case, we set things up--
+the idea is you come in here
+
+260
+00:10:29,850 --> 00:10:32,490
+and you want to leave out there.
+
+261
+00:10:32,490 --> 00:10:33,630
+So it's uni-directional.
+
+262
+00:10:33,630 --> 00:10:36,010
+You can't go up in this gadget.
+
+263
+00:10:36,010 --> 00:10:38,590
+And the idea is
+there's a little gap
+
+264
+00:10:38,590 --> 00:10:41,830
+and it's moving this way as
+the monsters move around.
+
+265
+00:10:41,830 --> 00:10:44,010
+So you wait for the
+gap to come here.
+
+266
+00:10:44,010 --> 00:10:45,580
+Then, you go down
+and then, you're
+
+267
+00:10:45,580 --> 00:10:50,150
+basically forced in timing
+when you fall down this cavern.
+
+268
+00:10:50,150 --> 00:10:55,830
+And it's set up so that by the
+time this thing gets to here,
+
+269
+00:10:55,830 --> 00:10:58,130
+these guys will have
+come to the other side.
+
+270
+00:10:58,130 --> 00:10:59,775
+Then, you have to
+roll to the right
+
+271
+00:10:59,775 --> 00:11:01,900
+in order to avoid taking
+damage from these guys who
+
+272
+00:11:01,900 --> 00:11:04,500
+are going around the
+other way and similarly
+
+273
+00:11:04,500 --> 00:11:06,510
+in the other direction.
+
+274
+00:11:06,510 --> 00:11:09,210
+So you have to get the timing
+right and we haven't exactly
+
+275
+00:11:09,210 --> 00:11:12,710
+tested this yet, but it should
+be approximately correct.
+
+276
+00:11:12,710 --> 00:11:15,170
+And that will force a crossover.
+
+277
+00:11:15,170 --> 00:11:17,670
+Should be a simpler way, but
+that's the best crossover
+
+278
+00:11:17,670 --> 00:11:19,930
+we have currently.
+
+279
+00:11:19,930 --> 00:11:21,850
+So Metroid is NP.
+
+280
+00:11:21,850 --> 00:11:24,690
+Here, we actually
+claim NP-completeness,
+
+281
+00:11:24,690 --> 00:11:28,300
+because there isn't too
+much state to the game.
+
+282
+00:11:28,300 --> 00:11:31,300
+So the issue here is the
+length of a solution polynomial
+
+283
+00:11:31,300 --> 00:11:31,800
+length.
+
+284
+00:11:31,800 --> 00:11:36,600
+If it is, then it's
+in NP and NP-complete.
+
+285
+00:11:36,600 --> 00:11:40,330
+And here, you can kill
+each monster only once.
+
+286
+00:11:40,330 --> 00:11:44,412
+So that's the idea for--
+and the amount of state
+
+287
+00:11:44,412 --> 00:11:46,870
+you have is just your position
+and what items you currently
+
+288
+00:11:46,870 --> 00:11:47,370
+have.
+
+289
+00:11:47,370 --> 00:11:49,524
+So you should be able
+to solve this in NP
+
+290
+00:11:49,524 --> 00:11:51,190
+and that sort of
+settles the complexity.
+
+291
+00:11:51,190 --> 00:11:53,523
+Most of these other problems
+could potentially be harder
+
+292
+00:11:53,523 --> 00:11:56,040
+than NP and we have
+some other results
+
+293
+00:11:56,040 --> 00:11:57,666
+like that, which
+we may get to when
+
+294
+00:11:57,666 --> 00:11:58,790
+we're talking about PSPACE.
+
+295
+00:11:58,790 --> 00:12:01,206
+But today is about NP.
+
+296
+00:12:01,206 --> 00:12:02,330
+Here's Donkey Kong Country.
+
+297
+00:12:02,330 --> 00:12:06,320
+If you haven't played,
+this is a speed run
+
+298
+00:12:06,320 --> 00:12:09,630
+and you can kill
+monsters by rolling.
+
+299
+00:12:09,630 --> 00:12:13,910
+Most of the time, you're
+jumping and collecting bananas.
+
+300
+00:12:13,910 --> 00:12:16,250
+There are these bees
+that if you touch them,
+
+301
+00:12:16,250 --> 00:12:20,296
+you die or you sort of
+have two hit points.
+
+302
+00:12:20,296 --> 00:12:21,670
+And then, there
+are these barrels
+
+303
+00:12:21,670 --> 00:12:23,970
+you can pick up-- that's a
+giant bee-- you can pick up
+
+304
+00:12:23,970 --> 00:12:26,580
+certain barrels and then
+throw them at a monster
+
+305
+00:12:26,580 --> 00:12:28,935
+and, in this case,
+damage, usually kill them.
+
+306
+00:12:28,935 --> 00:12:30,310
+Then, there are
+these other types
+
+307
+00:12:30,310 --> 00:12:31,809
+of barrels that
+when you touch them,
+
+308
+00:12:31,809 --> 00:12:33,570
+they shoot you in a
+predefined direction
+
+309
+00:12:33,570 --> 00:12:36,100
+and let you collect
+lots of bananas.
+
+310
+00:12:36,100 --> 00:12:40,120
+So those are the rules of
+Donkey Kong in a nutshell,
+
+311
+00:12:40,120 --> 00:12:41,886
+in a banana shell.
+
+312
+00:12:41,886 --> 00:12:43,010
+AUDIENCE: In a banana peel?
+
+313
+00:12:43,010 --> 00:12:46,060
+PROFESSOR: Sorry, in a
+banana peel, thank you.
+
+314
+00:12:46,060 --> 00:12:49,641
+So here's a simple
+crossover with that setup.
+
+315
+00:12:49,641 --> 00:12:51,390
+You just have these
+barrels that shoot you
+
+316
+00:12:51,390 --> 00:12:52,880
+in a predefined
+direction and force
+
+317
+00:12:52,880 --> 00:12:54,338
+you to go through
+this intersection
+
+318
+00:12:54,338 --> 00:12:55,310
+without any choice.
+
+319
+00:12:55,310 --> 00:12:58,580
+When you're being
+shot, you cannot move.
+
+320
+00:12:58,580 --> 00:13:01,040
+So that's easy.
+
+321
+00:13:01,040 --> 00:13:02,610
+Again, variables
+the same as Mario,
+
+322
+00:13:02,610 --> 00:13:04,060
+you fall left or fall right.
+
+323
+00:13:04,060 --> 00:13:06,930
+And a clause-- it's a little
+hard to see with the background
+
+324
+00:13:06,930 --> 00:13:09,720
+here, but there's a
+little ledge here.
+
+325
+00:13:09,720 --> 00:13:13,480
+And you can come down this
+way, pick up this barrel,
+
+326
+00:13:13,480 --> 00:13:15,730
+and throw it over here.
+
+327
+00:13:15,730 --> 00:13:19,120
+And it will eventually
+hit this bee,
+
+328
+00:13:19,120 --> 00:13:21,890
+so that later, you can
+traverse this gadget
+
+329
+00:13:21,890 --> 00:13:23,270
+without dying from the bee.
+
+330
+00:13:23,270 --> 00:13:27,350
+So not drawn is a platform
+that you need to-- or maybe
+
+331
+00:13:27,350 --> 00:13:29,800
+you're falling all the
+way through these things
+
+332
+00:13:29,800 --> 00:13:31,700
+if you set up all the
+clauses vertically.
+
+333
+00:13:31,700 --> 00:13:34,169
+And if there's any bee left,
+you will die, otherwise not,
+
+334
+00:13:34,169 --> 00:13:35,710
+and so you have to
+visit at least one
+
+335
+00:13:35,710 --> 00:13:37,644
+of these three barrels
+to kill the bee.
+
+336
+00:13:37,644 --> 00:13:40,550
+
+337
+00:13:40,550 --> 00:13:43,260
+And I think this is a
+mechanism to prevent you
+
+338
+00:13:43,260 --> 00:13:46,840
+from carrying this barrel
+anywhere else, like climbing up
+
+339
+00:13:46,840 --> 00:13:49,050
+or something.
+
+340
+00:13:49,050 --> 00:13:51,220
+Anyway, that's
+Donkey Kong Country.
+
+341
+00:13:51,220 --> 00:13:54,520
+I think there's
+one more, Pokemon.
+
+342
+00:13:54,520 --> 00:13:55,520
+I'm kind of embarrassed.
+
+343
+00:13:55,520 --> 00:13:57,240
+I've never actually
+played a Pokemon game.
+
+344
+00:13:57,240 --> 00:13:58,740
+I don't know if I
+should admit this,
+
+345
+00:13:58,740 --> 00:14:04,370
+but I need to sit down and
+play them all some weekend.
+
+346
+00:14:04,370 --> 00:14:07,439
+I did watch Twitch
+play it for a while.
+
+347
+00:14:07,439 --> 00:14:09,230
+AUDIENCE: Going back
+to the previous slide,
+
+348
+00:14:09,230 --> 00:14:15,150
+in some of the other gadgets,
+if we satisfied a clause,
+
+349
+00:14:15,150 --> 00:14:20,840
+there was no way to--
+there was a barrier
+
+350
+00:14:20,840 --> 00:14:24,060
+between setting the
+clause and going
+
+351
+00:14:24,060 --> 00:14:26,080
+through the rest of that thing.
+
+352
+00:14:26,080 --> 00:14:28,500
+So potentially, you could
+get to the last clause
+
+353
+00:14:28,500 --> 00:14:32,980
+here, kill the bee, and just
+walk forward without-- can
+
+354
+00:14:32,980 --> 00:14:37,190
+we with the rest of the stuff?
+
+355
+00:14:37,190 --> 00:14:39,390
+PROFESSOR: Good question.
+
+356
+00:14:39,390 --> 00:14:41,050
+Yeah, I think
+probably the right way
+
+357
+00:14:41,050 --> 00:14:44,470
+to set this up-- I'm not quite
+sure how to do it directly
+
+358
+00:14:44,470 --> 00:14:47,710
+from the drawing, but an easy
+way to do it would be there's
+
+359
+00:14:47,710 --> 00:14:49,940
+no floor below here.
+
+360
+00:14:49,940 --> 00:14:52,870
+And at the end, when you
+solved all the things,
+
+361
+00:14:52,870 --> 00:14:54,490
+there is one of
+these barrels that
+
+362
+00:14:54,490 --> 00:14:57,764
+shoots you straight to the left
+until you get to the finish.
+
+363
+00:14:57,764 --> 00:14:58,520
+AUDIENCE: Ah.
+
+364
+00:14:58,520 --> 00:15:01,214
+PROFESSOR: So if you tried
+to exit the clause early,
+
+365
+00:15:01,214 --> 00:15:02,630
+you would just
+fall to your death,
+
+366
+00:15:02,630 --> 00:15:05,000
+because there's only one barrel
+shooting way over on the right.
+
+367
+00:15:05,000 --> 00:15:06,100
+That would be one solution.
+
+368
+00:15:06,100 --> 00:15:07,641
+I forget exactly
+what's in the paper,
+
+369
+00:15:07,641 --> 00:15:09,987
+but it wouldn't surprise
+me if it's that.
+
+370
+00:15:09,987 --> 00:15:10,820
+Yeah, good question.
+
+371
+00:15:10,820 --> 00:15:12,903
+You definitely don't want
+to be able to just visit
+
+372
+00:15:12,903 --> 00:15:15,650
+the last clause, kill
+the guy, and then exit.
+
+373
+00:15:15,650 --> 00:15:18,674
+That would be cheating.
+
+374
+00:15:18,674 --> 00:15:20,090
+But in these proofs,
+that's always
+
+375
+00:15:20,090 --> 00:15:22,480
+what you have to worry about
+is this type of cheating.
+
+376
+00:15:22,480 --> 00:15:24,880
+Other questions?
+
+377
+00:15:24,880 --> 00:15:27,000
+Cool.
+
+378
+00:15:27,000 --> 00:15:34,887
+Pokemon time-- so Pokemon is
+a somewhat complicated game.
+
+379
+00:15:34,887 --> 00:15:36,720
+It's a lot of different
+abilities and so on.
+
+380
+00:15:36,720 --> 00:15:39,580
+So we had to abstract things
+away and in these pictures,
+
+381
+00:15:39,580 --> 00:15:42,130
+there are two types
+of-- I haven't
+
+382
+00:15:42,130 --> 00:15:43,340
+defined any of the rules yet.
+
+383
+00:15:43,340 --> 00:15:47,400
+You are a little person
+walking around here.
+
+384
+00:15:47,400 --> 00:15:49,460
+You're carrying
+Pokemon, whatever.
+
+385
+00:15:49,460 --> 00:15:52,030
+And there are these
+characters called
+
+386
+00:15:52,030 --> 00:15:57,270
+trainers and the red trainers
+are called "weak" trainers.
+
+387
+00:15:57,270 --> 00:15:59,002
+These are people
+that when you visit,
+
+388
+00:15:59,002 --> 00:16:00,210
+they just sort of deactivate.
+
+389
+00:16:00,210 --> 00:16:01,230
+You beat them.
+
+390
+00:16:01,230 --> 00:16:02,874
+And then, there's blue trainers.
+
+391
+00:16:02,874 --> 00:16:04,290
+We'll call them
+"strong" trainers.
+
+392
+00:16:04,290 --> 00:16:07,690
+Those are ones that no
+matter when or how you try
+
+393
+00:16:07,690 --> 00:16:09,420
+to play them, you always die.
+
+394
+00:16:09,420 --> 00:16:13,710
+And so you fail, so you never
+want to visit a blue trainer.
+
+395
+00:16:13,710 --> 00:16:16,400
+Now, trainers have two
+kinds of-- let's talk
+
+396
+00:16:16,400 --> 00:16:17,330
+about variables maybe.
+
+397
+00:16:17,330 --> 00:16:19,990
+This is an easy situation.
+
+398
+00:16:19,990 --> 00:16:22,929
+So a variable, you want
+to come in the "in"
+
+399
+00:16:22,929 --> 00:16:25,220
+and either leave in the
+"false" or leave in the "true."
+
+400
+00:16:25,220 --> 00:16:27,330
+And there are two ways
+to activate a trainer.
+
+401
+00:16:27,330 --> 00:16:30,440
+One is to walk into their
+field of view, which are
+
+402
+00:16:30,440 --> 00:16:31,990
+drawn with these rectangles.
+
+403
+00:16:31,990 --> 00:16:35,570
+If you walk to this position,
+the trainer will walk to you
+
+404
+00:16:35,570 --> 00:16:37,830
+and then you fight the trainer.
+
+405
+00:16:37,830 --> 00:16:40,599
+And because it's
+red, you'll win.
+
+406
+00:16:40,599 --> 00:16:42,730
+And so in that case,
+the trainers moved here.
+
+407
+00:16:42,730 --> 00:16:46,400
+Trainers are obstacles, so you
+can't get to the true anymore.
+
+408
+00:16:46,400 --> 00:16:48,219
+You have to go around to false.
+
+409
+00:16:48,219 --> 00:16:49,760
+The other way you
+can visit a trainer
+
+410
+00:16:49,760 --> 00:16:52,660
+is to talk to them from
+the side or from behind.
+
+411
+00:16:52,660 --> 00:16:55,220
+So you can walk here, talk
+to the trainer, beat them,
+
+412
+00:16:55,220 --> 00:16:56,210
+then they deactivate.
+
+413
+00:16:56,210 --> 00:16:58,099
+Then, you can walk this way.
+
+414
+00:16:58,099 --> 00:16:59,500
+And you can only
+fight them once.
+
+415
+00:16:59,500 --> 00:17:00,290
+Then, it's over.
+
+416
+00:17:00,290 --> 00:17:01,599
+They won't move anymore.
+
+417
+00:17:01,599 --> 00:17:03,775
+So that forces you
+to do true or false
+
+418
+00:17:03,775 --> 00:17:05,150
+and then commit
+to that decision.
+
+419
+00:17:05,150 --> 00:17:08,030
+
+420
+00:17:08,030 --> 00:17:11,030
+And these are obviously
+obstacles that are immovable.
+
+421
+00:17:11,030 --> 00:17:11,530
+All right.
+
+422
+00:17:11,530 --> 00:17:17,590
+So the idea with the
+clause is the following.
+
+423
+00:17:17,590 --> 00:17:20,000
+When you're traversing
+the clause at the end,
+
+424
+00:17:20,000 --> 00:17:22,610
+you want to walk
+through here and leave.
+
+425
+00:17:22,610 --> 00:17:24,950
+And the worry is this position.
+
+426
+00:17:24,950 --> 00:17:31,240
+If this trainer can come
+to you, you will die.
+
+427
+00:17:31,240 --> 00:17:37,960
+So that will be possible
+exactly when all of these guys
+
+428
+00:17:37,960 --> 00:17:38,872
+are out of the way.
+
+429
+00:17:38,872 --> 00:17:40,330
+When will they come
+out of the way?
+
+430
+00:17:40,330 --> 00:17:42,551
+When you walk through
+them-- and none of them
+
+431
+00:17:42,551 --> 00:17:43,550
+have been activated yet.
+
+432
+00:17:43,550 --> 00:17:45,258
+So then, they will
+walk one space to you.
+
+433
+00:17:45,258 --> 00:17:48,130
+You'll win, but it's temporary.
+
+434
+00:17:48,130 --> 00:17:50,920
+You win the battle, lose the
+war, because when you get here,
+
+435
+00:17:50,920 --> 00:17:52,736
+then this guy can walk through.
+
+436
+00:17:52,736 --> 00:17:54,360
+But these serve as
+obstacles otherwise.
+
+437
+00:17:54,360 --> 00:17:58,320
+So if you can come
+down one of these paths
+
+438
+00:17:58,320 --> 00:18:00,760
+and visit the trainer
+early, then later when
+
+439
+00:18:00,760 --> 00:18:02,760
+you come through, they
+will not move toward you.
+
+440
+00:18:02,760 --> 00:18:05,370
+They will stay an obstacle for
+this guy in, so this guy cannot
+
+441
+00:18:05,370 --> 00:18:06,500
+walk to you.
+
+442
+00:18:06,500 --> 00:18:08,690
+This is just to make a barrier.
+
+443
+00:18:08,690 --> 00:18:12,700
+And then, you can get through.
+
+444
+00:18:12,700 --> 00:18:16,560
+Crossover, you get
+the idea, right?
+
+445
+00:18:16,560 --> 00:18:19,360
+We could try to walk through
+it, but it's definitely
+
+446
+00:18:19,360 --> 00:18:20,120
+complicated.
+
+447
+00:18:20,120 --> 00:18:23,310
+In general, we want to go from
+x to x prime or y to y prime.
+
+448
+00:18:23,310 --> 00:18:25,441
+Again, it's directional.
+
+449
+00:18:25,441 --> 00:18:27,440
+And now that I know the
+right color assignment--
+
+450
+00:18:27,440 --> 00:18:35,250
+red is weak-- I would guess
+this guy is an obstacle.
+
+451
+00:18:35,250 --> 00:18:38,010
+But as soon as you go this way,
+this guy moves out of the way.
+
+452
+00:18:38,010 --> 00:18:41,510
+So it kind of closes off
+trying to return this way.
+
+453
+00:18:41,510 --> 00:18:43,670
+So once you come
+through here, this
+
+454
+00:18:43,670 --> 00:18:45,190
+would be a problem to come back.
+
+455
+00:18:45,190 --> 00:18:47,380
+So that kind of cuts
+you off from going back
+
+456
+00:18:47,380 --> 00:18:49,820
+and it's kind of
+like the crossover
+
+457
+00:18:49,820 --> 00:18:54,640
+we saw with push-one
+2D, I believe.
+
+458
+00:18:54,640 --> 00:18:57,195
+Then, you probably go here.
+
+459
+00:18:57,195 --> 00:19:00,480
+A similar thing happens.
+
+460
+00:19:00,480 --> 00:19:07,520
+This guy will approach, come to
+you, and then you can escape.
+
+461
+00:19:07,520 --> 00:19:10,360
+When you get here, this guy
+will come all the way down.
+
+462
+00:19:10,360 --> 00:19:12,216
+Oh, that looks bad.
+
+463
+00:19:12,216 --> 00:19:13,467
+AUDIENCE: Can you [INAUDIBLE]?
+
+464
+00:19:13,467 --> 00:19:15,049
+PROFESSOR: Yeah, so
+probably we should
+
+465
+00:19:15,049 --> 00:19:16,140
+have talked to him early.
+
+466
+00:19:16,140 --> 00:19:19,010
+So then, we can come through
+here without any trouble,
+
+467
+00:19:19,010 --> 00:19:20,531
+succeed in getting
+down to y prime.
+
+468
+00:19:20,531 --> 00:19:22,530
+You have to check that
+you can't get to x prime.
+
+469
+00:19:22,530 --> 00:19:25,430
+This looks like an impossible
+nexus to get through,
+
+470
+00:19:25,430 --> 00:19:26,790
+but these guys can walk through.
+
+471
+00:19:26,790 --> 00:19:29,081
+That's the reason
+they're there instead
+
+472
+00:19:29,081 --> 00:19:30,080
+of just being obstacles.
+
+473
+00:19:30,080 --> 00:19:32,880
+
+474
+00:19:32,880 --> 00:19:34,610
+Left to right should be-- sorry?
+
+475
+00:19:34,610 --> 00:19:37,180
+AUDIENCE: They can only see
+you five or six tiles away.
+
+476
+00:19:37,180 --> 00:19:40,420
+PROFESSOR: This is a
+generalized Pokemon.
+
+477
+00:19:40,420 --> 00:19:42,200
+Yeah, it would be nice.
+
+478
+00:19:42,200 --> 00:19:45,400
+Obviously, this is a
+bounded visibility.
+
+479
+00:19:45,400 --> 00:19:49,210
+It would be nice to
+get that down smaller,
+
+480
+00:19:49,210 --> 00:19:52,290
+but at least this shows
+constant visibility is enough,
+
+481
+00:19:52,290 --> 00:19:55,680
+because these gadgets
+are all local.
+
+482
+00:19:55,680 --> 00:19:57,050
+It would maybe also be nice.
+
+483
+00:19:57,050 --> 00:19:58,896
+Are they all the
+same visibility?
+
+484
+00:19:58,896 --> 00:20:01,104
+AUDIENCE: Yeah, it's just
+some fixed amount of tiles.
+
+485
+00:20:01,104 --> 00:20:04,200
+PROFESSOR: So it would be nice
+if they were also all the same.
+
+486
+00:20:04,200 --> 00:20:09,860
+That does not currently hold,
+but it wouldn't surprise me
+
+487
+00:20:09,860 --> 00:20:13,712
+if that-- well, yeah, tricky.
+
+488
+00:20:13,712 --> 00:20:15,160
+All right.
+
+489
+00:20:15,160 --> 00:20:18,470
+I'll just mention for a
+little bit of Pokemon cred,
+
+490
+00:20:18,470 --> 00:20:22,050
+this is one paragraph
+of our paper
+
+491
+00:20:22,050 --> 00:20:30,570
+where we construct the weak
+and the strong trainers
+
+492
+00:20:30,570 --> 00:20:33,500
+using exactly the setup that's
+available in various Pokemon
+
+493
+00:20:33,500 --> 00:20:35,530
+games.
+
+494
+00:20:35,530 --> 00:20:38,660
+I believe in every
+single game there
+
+495
+00:20:38,660 --> 00:20:42,650
+are enough abilities that you
+can set up so that you either
+
+496
+00:20:42,650 --> 00:20:45,580
+force the bad guy to all
+he can do is self-destruct
+
+497
+00:20:45,580 --> 00:20:50,640
+or all he can do is kill you and
+you lose, that sort of thing.
+
+498
+00:20:50,640 --> 00:20:55,360
+But it requires some
+Pokemon expertise which
+
+499
+00:20:55,360 --> 00:20:57,020
+Alan Guo had in this case.
+
+500
+00:20:57,020 --> 00:20:59,090
+He's a PhD student
+in C-Cell here.
+
+501
+00:20:59,090 --> 00:21:02,210
+
+502
+00:21:02,210 --> 00:21:05,250
+Any other questions
+about Nintendo games
+
+503
+00:21:05,250 --> 00:21:06,510
+before we move on?
+
+504
+00:21:06,510 --> 00:21:08,680
+AUDIENCE: This is a common
+sort of Pokemon specific.
+
+505
+00:21:08,680 --> 00:21:12,580
+In Generation One, moves
+can miss with a one and two
+
+506
+00:21:12,580 --> 00:21:15,844
+[INAUDIBLE] even if
+their accuracy is 100%.
+
+507
+00:21:15,844 --> 00:21:16,832
+Are you good with this?
+
+508
+00:21:16,832 --> 00:21:19,796
+
+509
+00:21:19,796 --> 00:21:21,772
+AUDIENCE: It's self-destructing.
+
+510
+00:21:21,772 --> 00:21:23,169
+AUDIENCE: [INAUDIBLE].
+
+511
+00:21:23,169 --> 00:21:25,210
+AUDIENCE: The self-destruct
+means he doesn't die.
+
+512
+00:21:25,210 --> 00:21:26,695
+AUDIENCE: No, the
+self-destruct doesn't matter
+
+513
+00:21:26,695 --> 00:21:28,180
+whether he does damage, right?
+
+514
+00:21:28,180 --> 00:21:31,092
+It's just
+self-destruct, you die.
+
+515
+00:21:31,092 --> 00:21:33,550
+AUDIENCE: I think self-destruct,
+the death doesn't actually
+
+516
+00:21:33,550 --> 00:21:34,960
+happen if the attack misses.
+
+517
+00:21:34,960 --> 00:21:35,602
+Can you?
+
+518
+00:21:35,602 --> 00:21:36,560
+PROFESSOR: No, it does.
+
+519
+00:21:36,560 --> 00:21:37,110
+It does.
+
+520
+00:21:37,110 --> 00:21:37,380
+AUDIENCE: Really?
+
+521
+00:21:37,380 --> 00:21:37,880
+OK.
+
+522
+00:21:37,880 --> 00:21:40,870
+PROFESSOR: Yeah, it does.
+
+523
+00:21:40,870 --> 00:21:41,950
+We'll have to go play.
+
+524
+00:21:41,950 --> 00:21:44,740
+
+525
+00:21:44,740 --> 00:21:45,249
+All right.
+
+526
+00:21:45,249 --> 00:21:46,790
+The next game I'm
+going to talk about
+
+527
+00:21:46,790 --> 00:21:50,750
+is a sort of physical game
+that you play on usually a go
+
+528
+00:21:50,750 --> 00:21:52,470
+board with go stones.
+
+529
+00:21:52,470 --> 00:21:54,860
+So they're white stones
+and black stones.
+
+530
+00:21:54,860 --> 00:21:58,100
+It was invented by
+this guy, John Conway.
+
+531
+00:21:58,100 --> 00:22:00,767
+And so if you've ever played
+Conway's Game of Life,
+
+532
+00:22:00,767 --> 00:22:01,850
+that's a zero-player game.
+
+533
+00:22:01,850 --> 00:22:04,770
+This is an actual two-player
+game and quite challenging.
+
+534
+00:22:04,770 --> 00:22:06,710
+Here's the general idea.
+
+535
+00:22:06,710 --> 00:22:10,320
+There's a right player trying
+to get the white ball-- that's
+
+536
+00:22:10,320 --> 00:22:11,530
+the "football."
+
+537
+00:22:11,530 --> 00:22:13,996
+This is philosophers'
+football, if you will.
+
+538
+00:22:13,996 --> 00:22:16,700
+You're trying to get this
+ball over to that goal
+
+539
+00:22:16,700 --> 00:22:19,360
+and the left player's trying to
+get the ball to the right goal.
+
+540
+00:22:19,360 --> 00:22:21,980
+Then, there are these black
+pieces, which are called "men."
+
+541
+00:22:21,980 --> 00:22:25,360
+Those are the players of
+the game, so to speak.
+
+542
+00:22:25,360 --> 00:22:27,740
+And there are two types
+of moves in this game.
+
+543
+00:22:27,740 --> 00:22:31,880
+One move you can do is just
+place a black stone anywhere
+
+544
+00:22:31,880 --> 00:22:34,259
+on the board that's
+currently empty.
+
+545
+00:22:34,259 --> 00:22:36,550
+And the other type of move
+is the more complicated one.
+
+546
+00:22:36,550 --> 00:22:38,310
+This is called
+"kicking the ball."
+
+547
+00:22:38,310 --> 00:22:40,920
+You can take the
+white piece and you
+
+548
+00:22:40,920 --> 00:22:44,620
+can jump it over a string
+of consecutive black pieces.
+
+549
+00:22:44,620 --> 00:22:46,630
+Those pieces are
+immediately removed,
+
+550
+00:22:46,630 --> 00:22:48,780
+so this gray shading
+means they've
+
+551
+00:22:48,780 --> 00:22:50,480
+been removed from the board.
+
+552
+00:22:50,480 --> 00:22:53,560
+But in the same move, you
+can do several such jumps.
+
+553
+00:22:53,560 --> 00:22:54,970
+So I can jump here.
+
+554
+00:22:54,970 --> 00:22:56,880
+Then, I can jump here.
+
+555
+00:22:56,880 --> 00:22:59,080
+Then, I can jump here.
+
+556
+00:22:59,080 --> 00:23:00,540
+Then, I can jump here.
+
+557
+00:23:00,540 --> 00:23:03,740
+And everything I jump
+over-- in this case, I won.
+
+558
+00:23:03,740 --> 00:23:06,350
+If I'm the right player,
+I got to that position.
+
+559
+00:23:06,350 --> 00:23:07,850
+So this is why
+the right player--
+
+560
+00:23:07,850 --> 00:23:09,433
+from the original
+position, maybe they
+
+561
+00:23:09,433 --> 00:23:12,630
+wanted to place this stone
+because that would enable
+
+562
+00:23:12,630 --> 00:23:15,480
+in their next move-- you
+can't place a black stone
+
+563
+00:23:15,480 --> 00:23:16,120
+and then jump.
+
+564
+00:23:16,120 --> 00:23:17,510
+You can do one or the other.
+
+565
+00:23:17,510 --> 00:23:19,540
+So you could try to
+place this position,
+
+566
+00:23:19,540 --> 00:23:22,660
+place this stone hoping
+that in your next turn,
+
+567
+00:23:22,660 --> 00:23:25,080
+you'll be able to do
+this jump and win.
+
+568
+00:23:25,080 --> 00:23:29,490
+But instead from this position,
+the left player could say,
+
+569
+00:23:29,490 --> 00:23:33,250
+oh, well, I'll just add this
+stone and then in my next move,
+
+570
+00:23:33,250 --> 00:23:35,610
+I'll be able to jump
+to the right side.
+
+571
+00:23:35,610 --> 00:23:38,040
+And that's, I
+think, unblockable.
+
+572
+00:23:38,040 --> 00:23:40,445
+So left wins.
+
+573
+00:23:40,445 --> 00:23:40,945
+Yea!
+
+574
+00:23:40,945 --> 00:23:43,630
+
+575
+00:23:43,630 --> 00:23:45,690
+So that's the setup.
+
+576
+00:23:45,690 --> 00:23:48,860
+This is a fairly
+complicated game.
+
+577
+00:23:48,860 --> 00:23:52,030
+You can get to the same
+position multiple times
+
+578
+00:23:52,030 --> 00:23:55,810
+and so it's actually open
+how hard this game is.
+
+579
+00:23:55,810 --> 00:23:57,310
+I think there's an
+upper bound of it
+
+580
+00:23:57,310 --> 00:24:00,115
+being solvable in exponential
+time, so it's in EXP.
+
+581
+00:24:00,115 --> 00:24:02,090
+AUDIENCE: What do you
+mean by "solvable?"
+
+582
+00:24:02,090 --> 00:24:03,950
+PROFESSOR: So given
+a position, you
+
+583
+00:24:03,950 --> 00:24:05,680
+want to know whether
+left or right will
+
+584
+00:24:05,680 --> 00:24:07,295
+win from this position.
+
+585
+00:24:07,295 --> 00:24:09,840
+AUDIENCE: Is it possible
+that it doesn't terminate?
+
+586
+00:24:09,840 --> 00:24:13,610
+PROFESSOR: I could be a
+tie is the right answer.
+
+587
+00:24:13,610 --> 00:24:15,440
+So that's tricky.
+
+588
+00:24:15,440 --> 00:24:18,480
+There is a piece-base hardness
+result relatively recent,
+
+589
+00:24:18,480 --> 00:24:22,360
+but an old result of
+ours with David Eppstein
+
+590
+00:24:22,360 --> 00:24:26,600
+is that just determining
+whether you can win in one move
+
+591
+00:24:26,600 --> 00:24:28,310
+is NP-complete.
+
+592
+00:24:28,310 --> 00:24:29,810
+So that's a relatively
+clean thing.
+
+593
+00:24:29,810 --> 00:24:31,944
+You don't have to worry
+about non-termination
+
+594
+00:24:31,944 --> 00:24:32,860
+or that sort of thing.
+
+595
+00:24:32,860 --> 00:24:34,980
+It's just one player's move.
+
+596
+00:24:34,980 --> 00:24:37,285
+Here, everything is reversed.
+
+597
+00:24:37,285 --> 00:24:40,330
+
+598
+00:24:40,330 --> 00:24:42,120
+The ball is black in this case.
+
+599
+00:24:42,120 --> 00:24:46,450
+I'm not sure if there's a
+consistent notion, anyway.
+
+600
+00:24:46,450 --> 00:24:49,750
+And this is actually a
+reduction all on one slide.
+
+601
+00:24:49,750 --> 00:24:50,840
+It's pretty simple.
+
+602
+00:24:50,840 --> 00:24:53,204
+So this is what we call
+the mate in one problem.
+
+603
+00:24:53,204 --> 00:24:54,870
+And you can take lots
+of different games
+
+604
+00:24:54,870 --> 00:24:57,370
+and make them really
+clean, well-defined puzzles
+
+605
+00:24:57,370 --> 00:24:59,570
+if you just ask, can
+I win in one move?
+
+606
+00:24:59,570 --> 00:25:03,220
+Even games that involve cards
+and randomness and weird stuff.
+
+607
+00:25:03,220 --> 00:25:05,950
+And one movie usually
+doesn't involve those at all.
+
+608
+00:25:05,950 --> 00:25:09,070
+Anyway, here, we're getting rid
+of the loopiness of the game
+
+609
+00:25:09,070 --> 00:25:11,080
+and not having to
+worry about that.
+
+610
+00:25:11,080 --> 00:25:14,000
+So there's sort of two
+parts to this proof,
+
+611
+00:25:14,000 --> 00:25:16,004
+the variable traversal
+and the clause traversal.
+
+612
+00:25:16,004 --> 00:25:17,920
+But here, we have a kind
+of very different way
+
+613
+00:25:17,920 --> 00:25:19,169
+of connecting things together.
+
+614
+00:25:19,169 --> 00:25:22,380
+We have a giant
+matrix, if you will.
+
+615
+00:25:22,380 --> 00:25:24,630
+We're starting up
+here and we have
+
+616
+00:25:24,630 --> 00:25:27,690
+a choice whether-- if we
+want to set x1 to true,
+
+617
+00:25:27,690 --> 00:25:30,850
+we're just going to go to the
+right by a sequence of jumps.
+
+618
+00:25:30,850 --> 00:25:33,300
+We jump here, then
+here, then here.
+
+619
+00:25:33,300 --> 00:25:35,790
+Every time we stop,
+we have no choice.
+
+620
+00:25:35,790 --> 00:25:38,300
+If we want to keep
+going, our goal
+
+621
+00:25:38,300 --> 00:25:43,330
+is to get to somewhere, one
+of the edges of the board,
+
+622
+00:25:43,330 --> 00:25:45,300
+I think the bottom edge.
+
+623
+00:25:45,300 --> 00:25:49,034
+Bottom edge is the one
+that's hard to get to.
+
+624
+00:25:49,034 --> 00:25:50,700
+So every time we jump
+to the right here,
+
+625
+00:25:50,700 --> 00:25:51,658
+we don't have a choice.
+
+626
+00:25:51,658 --> 00:25:53,650
+We have to keep
+jumping to the right.
+
+627
+00:25:53,650 --> 00:25:55,030
+But over here, we have a choice.
+
+628
+00:25:55,030 --> 00:25:59,111
+We could go down and then jump
+to the right and get over here
+
+629
+00:25:59,111 --> 00:26:01,110
+and that will do different
+things in the middle.
+
+630
+00:26:01,110 --> 00:26:03,307
+In general, that is
+our setting of x1.
+
+631
+00:26:03,307 --> 00:26:05,390
+Then, we're going to do
+the same thing coming back
+
+632
+00:26:05,390 --> 00:26:07,130
+for x2 of two choices.
+
+633
+00:26:07,130 --> 00:26:09,890
+Then, the same thing
+going back for x3
+
+634
+00:26:09,890 --> 00:26:11,870
+and then we get to this corner.
+
+635
+00:26:11,870 --> 00:26:14,280
+So that's forced other
+than these two choices,
+
+636
+00:26:14,280 --> 00:26:16,450
+binary choices.
+
+637
+00:26:16,450 --> 00:26:19,730
+Now, we have our first clause.
+
+638
+00:26:19,730 --> 00:26:24,040
+Let's say x1 negated or
+x2 negated or x3 negated.
+
+639
+00:26:24,040 --> 00:26:26,330
+We want one of those
+things to be true.
+
+640
+00:26:26,330 --> 00:26:29,250
+And so the idea is we're
+going to choose whichever
+
+641
+00:26:29,250 --> 00:26:33,589
+one has been set correctly and
+then we will go up that channel
+
+642
+00:26:33,589 --> 00:26:34,380
+and get to the top.
+
+643
+00:26:34,380 --> 00:26:36,420
+Again, it's pretty
+much symmetric.
+
+644
+00:26:36,420 --> 00:26:38,600
+So every time we jump
+over a bunch of pieces,
+
+645
+00:26:38,600 --> 00:26:40,800
+whenever we stop, we
+can't go left or right.
+
+646
+00:26:40,800 --> 00:26:42,000
+We have to keep going up.
+
+647
+00:26:42,000 --> 00:26:44,560
+So we have to make
+it all the way.
+
+648
+00:26:44,560 --> 00:26:48,210
+In fact, each of these columns
+will be completely filled
+
+649
+00:26:48,210 --> 00:26:50,640
+except for one
+intersection, which is
+
+650
+00:26:50,640 --> 00:26:52,900
+the thing that makes it false.
+
+651
+00:26:52,900 --> 00:26:56,090
+So here, we want x2 to be false.
+
+652
+00:26:56,090 --> 00:27:00,550
+So if we happen to follow the
+true path where x2 is true,
+
+653
+00:27:00,550 --> 00:27:03,340
+we won't make it because
+this piece will already
+
+654
+00:27:03,340 --> 00:27:05,670
+have been removed when
+we came through here.
+
+655
+00:27:05,670 --> 00:27:08,100
+And so if we try to take this
+path, we'll get stuck here.
+
+656
+00:27:08,100 --> 00:27:11,280
+There won't be any
+piece above us.
+
+657
+00:27:11,280 --> 00:27:15,180
+As long as that didn't happen,
+as long as this row was not
+
+658
+00:27:15,180 --> 00:27:17,330
+chosen, then we can
+take this column
+
+659
+00:27:17,330 --> 00:27:19,594
+and just make it all
+the way up to the top.
+
+660
+00:27:19,594 --> 00:27:22,010
+So we're going to be able to
+take one of these three paths
+
+661
+00:27:22,010 --> 00:27:24,640
+if and only if at least one
+of these things is true.
+
+662
+00:27:24,640 --> 00:27:26,470
+That's the first clause.
+
+663
+00:27:26,470 --> 00:27:28,880
+Then, we do the same thing
+for the second clause.
+
+664
+00:27:28,880 --> 00:27:30,360
+And if all of the
+clauses are true,
+
+665
+00:27:30,360 --> 00:27:32,430
+we will be able to
+get here and then
+
+666
+00:27:32,430 --> 00:27:35,510
+we can jump down and
+get to the finish line
+
+667
+00:27:35,510 --> 00:27:39,940
+and win in one move, one move.
+
+668
+00:27:39,940 --> 00:27:44,060
+So mate in one is NP-complete.
+
+669
+00:27:44,060 --> 00:27:46,240
+I have one other example
+of a mate in one result.
+
+670
+00:27:46,240 --> 00:27:48,656
+It's actually not a hardness
+result, but it's kind of fun,
+
+671
+00:27:48,656 --> 00:27:51,650
+so I thought I would talk about
+a non-hardness result for once,
+
+672
+00:27:51,650 --> 00:27:53,060
+which is checkers.
+
+673
+00:27:53,060 --> 00:27:54,870
+Checkers is another
+game where in one move,
+
+674
+00:27:54,870 --> 00:27:56,080
+you can do a lot of jumps.
+
+675
+00:27:56,080 --> 00:27:58,510
+Especially if you
+have a king, then you
+
+676
+00:27:58,510 --> 00:28:03,460
+can potentially win by killing
+a lot of pieces all at once.
+
+677
+00:28:03,460 --> 00:28:05,360
+And this is considered
+back in 1978.
+
+678
+00:28:05,360 --> 00:28:06,860
+This is the same
+paper that proves
+
+679
+00:28:06,860 --> 00:28:09,800
+checkers is
+EXPTIME-complete, which
+
+680
+00:28:09,800 --> 00:28:12,069
+we will get to at some point.
+
+681
+00:28:12,069 --> 00:28:14,360
+But for now, let's think
+about the mate in one problem.
+
+682
+00:28:14,360 --> 00:28:18,280
+This turns out to be
+easy, unlike phutball.
+
+683
+00:28:18,280 --> 00:28:23,320
+So checkers-- I assume
+you've all played checkers.
+
+684
+00:28:23,320 --> 00:28:27,030
+You can only move diagonally
+on the black squares.
+
+685
+00:28:27,030 --> 00:28:30,920
+So you can recast that
+into an orthogonal problem
+
+686
+00:28:30,920 --> 00:28:34,730
+where the pieces can only
+move orthogonally up or right
+
+687
+00:28:34,730 --> 00:28:37,297
+or vice versa,
+except king pieces.
+
+688
+00:28:37,297 --> 00:28:38,630
+They can just move orthogonally.
+
+689
+00:28:38,630 --> 00:28:40,909
+And the interesting part
+is when you can jump over
+
+690
+00:28:40,909 --> 00:28:41,950
+a piece of another color.
+
+691
+00:28:41,950 --> 00:28:46,310
+So if there was a black piece
+here, this one can jump over.
+
+692
+00:28:46,310 --> 00:28:49,680
+And in general, if you have a
+sequence of jumps you can make,
+
+693
+00:28:49,680 --> 00:28:51,912
+then you can do all
+of them at once.
+
+694
+00:28:51,912 --> 00:28:53,620
+So the problem looks
+something like this.
+
+695
+00:28:53,620 --> 00:28:57,790
+If you have a black piece and
+let's say a black to move,
+
+696
+00:28:57,790 --> 00:29:01,900
+if there are a bunch of white
+pieces, you can jump over them.
+
+697
+00:29:01,900 --> 00:29:03,870
+And the key thing
+to notice-- again,
+
+698
+00:29:03,870 --> 00:29:05,870
+as soon as you jump over
+a piece, it disappears.
+
+699
+00:29:05,870 --> 00:29:08,130
+So you can reuse
+it in the same move
+
+700
+00:29:08,130 --> 00:29:10,890
+or I guess you can't
+reuse it in general.
+
+701
+00:29:10,890 --> 00:29:14,140
+The key thing is that the jumps
+preserve the parity, the even
+
+702
+00:29:14,140 --> 00:29:16,720
+or oddness of both
+your x-coordinate
+
+703
+00:29:16,720 --> 00:29:17,890
+and your y-coordinate.
+
+704
+00:29:17,890 --> 00:29:20,110
+So you're moving around
+on this reduced grid.
+
+705
+00:29:20,110 --> 00:29:22,330
+And so you can take
+a picture like this
+
+706
+00:29:22,330 --> 00:29:25,660
+and turn it into a graph
+where the potential positions
+
+707
+00:29:25,660 --> 00:29:29,310
+for you, which are drawn
+with this kind of pattern,
+
+708
+00:29:29,310 --> 00:29:34,650
+same parity of rows and columns.
+
+709
+00:29:34,650 --> 00:29:36,670
+You could make those the
+vertices of your graph.
+
+710
+00:29:36,670 --> 00:29:38,253
+And then, there's
+an edge between them
+
+711
+00:29:38,253 --> 00:29:40,980
+if there's a white stone
+in between that you
+
+712
+00:29:40,980 --> 00:29:42,920
+could jump over.
+
+713
+00:29:42,920 --> 00:29:44,620
+So then, given this
+graph, the question
+
+714
+00:29:44,620 --> 00:29:46,940
+is, can you visit all of
+the edges of the graph
+
+715
+00:29:46,940 --> 00:29:48,500
+with a single path?
+
+716
+00:29:48,500 --> 00:29:50,920
+And that is the Euler tour
+problem or the Euler path
+
+717
+00:29:50,920 --> 00:29:51,820
+problem.
+
+718
+00:29:51,820 --> 00:29:54,270
+And it's easy to solve
+that in polynomial time.
+
+719
+00:29:54,270 --> 00:29:55,730
+You look for
+odd-degree vertices.
+
+720
+00:29:55,730 --> 00:29:58,320
+There should be at most two of
+them and you better be at one
+
+721
+00:29:58,320 --> 00:30:00,370
+of them.
+
+722
+00:30:00,370 --> 00:30:01,550
+Or there's zero of them.
+
+723
+00:30:01,550 --> 00:30:03,330
+Then, you're happy.
+
+724
+00:30:03,330 --> 00:30:05,299
+So that's how to
+solve mate in one
+
+725
+00:30:05,299 --> 00:30:07,840
+in checkers, in case you ever
+get to those difficult checkers
+
+726
+00:30:07,840 --> 00:30:08,660
+endgames.
+
+727
+00:30:08,660 --> 00:30:13,430
+And now, you can decide how
+to win or not in one move.
+
+728
+00:30:13,430 --> 00:30:17,190
+Two moves is left to you.
+
+729
+00:30:17,190 --> 00:30:18,430
+All right.
+
+730
+00:30:18,430 --> 00:30:22,260
+So next topic is
+called cryptarithms.
+
+731
+00:30:22,260 --> 00:30:25,450
+This comes from the
+recreational math world
+
+732
+00:30:25,450 --> 00:30:26,470
+and they're kind of fun.
+
+733
+00:30:26,470 --> 00:30:28,761
+You've probably seen this or
+you may have seen this one
+
+734
+00:30:28,761 --> 00:30:30,265
+if you've seen any cryptarithm.
+
+735
+00:30:30,265 --> 00:30:30,890
+It's a classic.
+
+736
+00:30:30,890 --> 00:30:34,810
+It goes back to 1979 from
+this book by Madachy.
+
+737
+00:30:34,810 --> 00:30:37,990
+And the idea is this is
+an arithmetic formula,
+
+738
+00:30:37,990 --> 00:30:40,570
+SEND plus MORE equals MONEY.
+
+739
+00:30:40,570 --> 00:30:43,800
+And each of these letters
+represents a digit zero
+
+740
+00:30:43,800 --> 00:30:44,730
+through nine.
+
+741
+00:30:44,730 --> 00:30:49,700
+And so these two M's represent
+the same digit and so on.
+
+742
+00:30:49,700 --> 00:30:51,605
+Two n's represent
+the same digits.
+
+743
+00:30:51,605 --> 00:30:53,780
+Those two O's represent
+the same digit.
+
+744
+00:30:53,780 --> 00:30:56,890
+And furthermore, M is different
+from O is differ from R.
+
+745
+00:30:56,890 --> 00:30:59,680
+So it's a bijection
+between the letters that
+
+746
+00:30:59,680 --> 00:31:03,840
+appear in this puzzle and some
+subset of zero through nine.
+
+747
+00:31:03,840 --> 00:31:05,600
+And it actually has
+a unique solution.
+
+748
+00:31:05,600 --> 00:31:06,140
+This is it.
+
+749
+00:31:06,140 --> 00:31:07,820
+You could verify it,
+but I'll leave it
+
+750
+00:31:07,820 --> 00:31:10,480
+as a puzzle so don't look at
+that too long, in case you
+
+751
+00:31:10,480 --> 00:31:12,120
+want to solve it.
+
+752
+00:31:12,120 --> 00:31:13,930
+It is doable, but
+the tricky part
+
+753
+00:31:13,930 --> 00:31:16,060
+are things like the carries
+in the addition, which
+
+754
+00:31:16,060 --> 00:31:19,780
+make it not just a simple
+linear system to solve.
+
+755
+00:31:19,780 --> 00:31:23,320
+And in fact, these puzzles,
+generalized to an arbitrary
+
+756
+00:31:23,320 --> 00:31:25,130
+base, are NP-complete.
+
+757
+00:31:25,130 --> 00:31:27,810
+If you do it in base
+10, then there's
+
+758
+00:31:27,810 --> 00:31:31,400
+only at most 10 factorial
+possible solutions.
+
+759
+00:31:31,400 --> 00:31:33,904
+So that's constant and
+that's considered fast.
+
+760
+00:31:33,904 --> 00:31:35,320
+And indeed, in
+real computers, you
+
+761
+00:31:35,320 --> 00:31:39,870
+can solve 10
+factorial reasonably.
+
+762
+00:31:39,870 --> 00:31:43,560
+So for generalized
+base, here is a proof.
+
+763
+00:31:43,560 --> 00:31:45,130
+This is actually
+David Eppstein, who
+
+764
+00:31:45,130 --> 00:31:46,755
+was a co-author in
+the previous result.
+
+765
+00:31:46,755 --> 00:31:50,600
+This is his first theory
+paper, "SIGACT News."
+
+766
+00:31:50,600 --> 00:31:53,210
+And it proved that it's
+strongly NP-complete,
+
+767
+00:31:53,210 --> 00:31:56,630
+meaning even if the
+base is polynomial,
+
+768
+00:31:56,630 --> 00:31:58,990
+the problem is NP-hard.
+
+769
+00:31:58,990 --> 00:32:03,510
+And it looks really messy, but
+actually, it's fairly simple.
+
+770
+00:32:03,510 --> 00:32:08,030
+So let me start
+with this gadget.
+
+771
+00:32:08,030 --> 00:32:09,610
+This is an easy one.
+
+772
+00:32:09,610 --> 00:32:12,790
+So there's no notion of
+zero or one in this gadget,
+
+773
+00:32:12,790 --> 00:32:16,370
+but zero is just a letter
+and one is just a letter.
+
+774
+00:32:16,370 --> 00:32:18,890
+But with this gadget
+in place, 0 is
+
+775
+00:32:18,890 --> 00:32:24,770
+0 and 1 is 1, because 0's
+the only possible digit when
+
+776
+00:32:24,770 --> 00:32:27,280
+you add it with yourself,
+you get it again.
+
+777
+00:32:27,280 --> 00:32:30,840
+It is the identity
+in additive ring.
+
+778
+00:32:30,840 --> 00:32:33,480
+So that forces 0 to be 0.
+
+779
+00:32:33,480 --> 00:32:38,132
+And then, here, we're
+adding p with p.
+
+780
+00:32:38,132 --> 00:32:39,680
+P are just arbitrary things.
+
+781
+00:32:39,680 --> 00:32:41,420
+We sort of don't
+care what they are.
+
+782
+00:32:41,420 --> 00:32:42,920
+We get something q.
+
+783
+00:32:42,920 --> 00:32:45,807
+And over here, we add
+0 to 0 and we get 1.
+
+784
+00:32:45,807 --> 00:32:47,515
+That's only going to
+be possible if there
+
+785
+00:32:47,515 --> 00:32:49,060
+was a carry in this column.
+
+786
+00:32:49,060 --> 00:32:50,569
+And carries can be only 1.
+
+787
+00:32:50,569 --> 00:32:51,360
+They can be 0 or 1.
+
+788
+00:32:51,360 --> 00:32:53,180
+So that forces--
+we know it's not 0
+
+789
+00:32:53,180 --> 00:32:54,870
+because 1 is different from 0.
+
+790
+00:32:54,870 --> 00:32:57,140
+Therefore, 1 is 1.
+
+791
+00:32:57,140 --> 00:33:00,751
+The symbol 1 is the value
+one, the number one.
+
+792
+00:33:00,751 --> 00:33:01,250
+All right.
+
+793
+00:33:01,250 --> 00:33:02,840
+So that gives us
+some infrastructure.
+
+794
+00:33:02,840 --> 00:33:04,256
+And the zeroes are
+really helpful,
+
+795
+00:33:04,256 --> 00:33:06,550
+because it lets us space
+out gadgets and guarantee
+
+796
+00:33:06,550 --> 00:33:08,490
+that there's no
+carry between them.
+
+797
+00:33:08,490 --> 00:33:10,230
+This is supposed to
+be a variable gadget.
+
+798
+00:33:10,230 --> 00:33:14,680
+There's vi and there's vi bar.
+
+799
+00:33:14,680 --> 00:33:16,840
+So let's see what happens.
+
+800
+00:33:16,840 --> 00:33:19,190
+Let's do the vi part first.
+
+801
+00:33:19,190 --> 00:33:25,050
+So this formula says
+that bi equals twice ai.
+
+802
+00:33:25,050 --> 00:33:27,632
+And there's guaranteed to
+be no carry because of this.
+
+803
+00:33:27,632 --> 00:33:28,840
+Now, this is a little tricky.
+
+804
+00:33:28,840 --> 00:33:31,250
+We add yi to yi until we get zi.
+
+805
+00:33:31,250 --> 00:33:34,960
+So there may be a
+carry or not here.
+
+806
+00:33:34,960 --> 00:33:37,910
+Then, we add bi to
+bi and we get vi.
+
+807
+00:33:37,910 --> 00:33:44,280
+So vi is going to be 2
+times bi plus either 0 or 1.
+
+808
+00:33:44,280 --> 00:33:46,330
+That's going to be
+our binary choice.
+
+809
+00:33:46,330 --> 00:33:49,590
+We can set up the yi's
+to either carry or not.
+
+810
+00:33:49,590 --> 00:33:52,909
+We'll call that C.
+In this formulation,
+
+811
+00:33:52,909 --> 00:33:55,450
+C is the carry in
+that operation.
+
+812
+00:33:55,450 --> 00:34:00,370
+
+813
+00:34:00,370 --> 00:34:01,880
+And bi is 2 times ai.
+
+814
+00:34:01,880 --> 00:34:06,940
+So this is 4 times ai
+plus C, which is 0 or 1.
+
+815
+00:34:06,940 --> 00:34:11,030
+And what we're going to
+think about is modulo four.
+
+816
+00:34:11,030 --> 00:34:14,350
+This is congruent
+to C. So we're going
+
+817
+00:34:14,350 --> 00:34:16,940
+to treat all of our variable
+assignments modulo four
+
+818
+00:34:16,940 --> 00:34:19,790
+and they're always
+going to be 0 or 1.
+
+819
+00:34:19,790 --> 00:34:23,820
+vi became this and the claim
+is that this part makes
+
+820
+00:34:23,820 --> 00:34:26,440
+vi bar the opposite.
+
+821
+00:34:26,440 --> 00:34:28,980
+And you can work
+through the arithmetic
+
+822
+00:34:28,980 --> 00:34:30,820
+as I did in the notes.
+
+823
+00:34:30,820 --> 00:34:37,405
+You end up vi bar has to be 4
+times something, which is Ci.
+
+824
+00:34:37,405 --> 00:34:39,750
+So we don't care what that is.
+
+825
+00:34:39,750 --> 00:34:45,100
+We'll set it at the very
+end, plus 3C plus 1.
+
+826
+00:34:45,100 --> 00:34:49,670
+C is 1, this is 4,
+and this becomes 0.
+
+827
+00:34:49,670 --> 00:34:53,910
+If C is 0, this becomes 1 mod 4.
+
+828
+00:34:53,910 --> 00:34:55,920
+So in general, it's
+1 minus C. It's
+
+829
+00:34:55,920 --> 00:35:00,500
+the opposite choice from what
+vi was that becomes vi bar.
+
+830
+00:35:00,500 --> 00:35:01,190
+So that's cool.
+
+831
+00:35:01,190 --> 00:35:01,940
+We've got vi.
+
+832
+00:35:01,940 --> 00:35:03,040
+We've got vi bar.
+
+833
+00:35:03,040 --> 00:35:05,320
+We can duplicate our
+variables for free,
+
+834
+00:35:05,320 --> 00:35:07,280
+because we can just
+use that same letter
+
+835
+00:35:07,280 --> 00:35:10,210
+vi in many different
+places and then
+
+836
+00:35:10,210 --> 00:35:13,040
+we just need a clause gadget.
+
+837
+00:35:13,040 --> 00:35:18,880
+And so the work is
+similar kind of tricks.
+
+838
+00:35:18,880 --> 00:35:22,260
+We add fi to itself, we get gi.
+
+839
+00:35:22,260 --> 00:35:24,700
+We add gi to itself, we get hi.
+
+840
+00:35:24,700 --> 00:35:30,140
+So at this point, we have 4
+times fi plus possibly one
+
+841
+00:35:30,140 --> 00:35:30,990
+carry.
+
+842
+00:35:30,990 --> 00:35:33,380
+This wi might carry or not.
+
+843
+00:35:33,380 --> 00:35:45,560
+So we get hi is 4
+times fi plus 0 or 1.
+
+844
+00:35:45,560 --> 00:35:50,150
+Then, we add hi to
+1 and we get ti,
+
+845
+00:35:50,150 --> 00:35:53,730
+plus there might be a
+carry from this column.
+
+846
+00:35:53,730 --> 00:36:02,460
+So that's ti is going to be hi
+plus 1 plus a potential carry.
+
+847
+00:36:02,460 --> 00:36:11,020
+hi is this thing, so we end up
+with 4 times fi plus 1 plus 0
+
+848
+00:36:11,020 --> 00:36:16,270
+or 1 or 2, depending on how many
+carries we've had total, which
+
+849
+00:36:16,270 --> 00:36:22,980
+is 4 times fi plus 1 or 2 or 3.
+
+850
+00:36:22,980 --> 00:36:25,860
+And modulo four, that
+is one or two or three.
+
+851
+00:36:25,860 --> 00:36:28,160
+This is going to be the
+number of true variables
+
+852
+00:36:28,160 --> 00:36:31,940
+in our clause, because in the
+end, we just add vi plus vb.
+
+853
+00:36:31,940 --> 00:36:32,970
+We get this thing.
+
+854
+00:36:32,970 --> 00:36:37,140
+We add vc for our three
+variables, a, b, and c.
+
+855
+00:36:37,140 --> 00:36:39,590
+We get ti.
+
+856
+00:36:39,590 --> 00:36:42,050
+And ti was that thing.
+
+857
+00:36:42,050 --> 00:36:46,960
+So if we just think about things
+modulo four, that means va
+
+858
+00:36:46,960 --> 00:36:52,820
+plus vb plus vc should
+be 1, 2, or 3 mod four.
+
+859
+00:36:52,820 --> 00:36:56,990
+Now, the reason we have this
+junk-- and the junk's-- well,
+
+860
+00:36:56,990 --> 00:36:57,490
+OK.
+
+861
+00:36:57,490 --> 00:36:59,550
+There's the not
+modulo four part,
+
+862
+00:36:59,550 --> 00:37:00,800
+the part when you divide by 4.
+
+863
+00:37:00,800 --> 00:37:02,474
+That's sort of tricky.
+
+864
+00:37:02,474 --> 00:37:04,640
+But at this point, at least,
+you should be convinced
+
+865
+00:37:04,640 --> 00:37:08,740
+that if there's a solution
+to this problem, then
+
+866
+00:37:08,740 --> 00:37:12,700
+there must be a solution to
+the original 3SAT instance.
+
+867
+00:37:12,700 --> 00:37:13,850
+The reverse is less clear.
+
+868
+00:37:13,850 --> 00:37:15,590
+If you have a solution
+to the 3SAT instance,
+
+869
+00:37:15,590 --> 00:37:17,839
+you have to be able to set
+all these variables to make
+
+870
+00:37:17,839 --> 00:37:18,760
+everything work out.
+
+871
+00:37:18,760 --> 00:37:21,260
+That's a little more tedious.
+
+872
+00:37:21,260 --> 00:37:25,070
+For fun, and this
+is an old proof 1987
+
+873
+00:37:25,070 --> 00:37:28,280
+and I was just looking
+at it again today,
+
+874
+00:37:28,280 --> 00:37:30,860
+I think, or I think
+it was yesterday.
+
+875
+00:37:30,860 --> 00:37:33,150
+I think I can simplify
+it a little bit.
+
+876
+00:37:33,150 --> 00:37:35,890
+Instead of using
+regular 3SAT where
+
+877
+00:37:35,890 --> 00:37:38,760
+you have all these choices, one,
+two, or three things are true,
+
+878
+00:37:38,760 --> 00:37:41,940
+if you use exactly
+one 3SAT, one in 3SAT,
+
+879
+00:37:41,940 --> 00:37:43,600
+it should be a lot easier.
+
+880
+00:37:43,600 --> 00:37:46,270
+So gadgets are smaller.
+
+881
+00:37:46,270 --> 00:37:48,510
+With one in 3SAT, we
+don't need negation.
+
+882
+00:37:48,510 --> 00:37:50,310
+So I just need
+the vi part, which
+
+883
+00:37:50,310 --> 00:37:53,020
+we did explicitly over here.
+
+884
+00:37:53,020 --> 00:37:55,800
+So that's kind of nifty.
+
+885
+00:37:55,800 --> 00:37:58,780
+And for exactly
+one 3SAT, we don't
+
+886
+00:37:58,780 --> 00:38:00,110
+need to have all those carries.
+
+887
+00:38:00,110 --> 00:38:03,810
+We just need to build
+four times something--
+
+888
+00:38:03,810 --> 00:38:06,650
+sorry, that should be fi here.
+
+889
+00:38:06,650 --> 00:38:08,200
+We add fi to itself.
+
+890
+00:38:08,200 --> 00:38:09,360
+We add gi to itself.
+
+891
+00:38:09,360 --> 00:38:11,970
+So here, we have 4 times fi.
+
+892
+00:38:11,970 --> 00:38:14,290
+And then, we add 1.
+
+893
+00:38:14,290 --> 00:38:17,405
+So this ti will be one mod four.
+
+894
+00:38:17,405 --> 00:38:18,780
+And then, we add
+the variables up
+
+895
+00:38:18,780 --> 00:38:20,847
+and we should get
+exactly one mod four.
+
+896
+00:38:20,847 --> 00:38:22,930
+Now, admittedly, I haven't
+checked the second half
+
+897
+00:38:22,930 --> 00:38:25,220
+of the proof with
+this construction,
+
+898
+00:38:25,220 --> 00:38:26,860
+but it seems
+plausible this would
+
+899
+00:38:26,860 --> 00:38:28,870
+be a somewhat simpler proof.
+
+900
+00:38:28,870 --> 00:38:32,220
+So it shows you the power of all
+the different versions of 3SAT
+
+901
+00:38:32,220 --> 00:38:33,820
+we saw last class.
+
+902
+00:38:33,820 --> 00:38:36,650
+
+903
+00:38:36,650 --> 00:38:40,580
+Now, I can tell you a little
+bit about the other direction.
+
+904
+00:38:40,580 --> 00:38:46,714
+
+905
+00:38:46,714 --> 00:38:50,040
+I have some of the
+details written down here.
+
+906
+00:38:50,040 --> 00:38:51,780
+So the other
+direction is we need
+
+907
+00:38:51,780 --> 00:38:55,045
+to check if there's a satisfying
+assignment to 3SAT or one
+
+908
+00:38:55,045 --> 00:38:57,240
+in 3SAT, that we can
+actually construct
+
+909
+00:38:57,240 --> 00:39:02,080
+these numbers that the
+base is only polynomial.
+
+910
+00:39:02,080 --> 00:39:04,770
+The trickiest part is to
+get all of these numbers
+
+911
+00:39:04,770 --> 00:39:06,170
+to be distinct from each other.
+
+912
+00:39:06,170 --> 00:39:09,420
+
+913
+00:39:09,420 --> 00:39:11,220
+AUDIENCE: What base do you do?
+
+914
+00:39:11,220 --> 00:39:15,006
+PROFESSOR: The base will
+be something like n cubed,
+
+915
+00:39:15,006 --> 00:39:16,450
+it turns out.
+
+916
+00:39:16,450 --> 00:39:20,270
+And I'll tell you, one
+trick is we have all these
+
+917
+00:39:20,270 --> 00:39:21,887
+ai's, bi's, and ci's.
+
+918
+00:39:21,887 --> 00:39:24,220
+We can guarantee they are all
+different from each other,
+
+919
+00:39:24,220 --> 00:39:26,761
+that all the a's are different
+from all the b's are different
+
+920
+00:39:26,761 --> 00:39:32,110
+from all the c's by saying all
+a's-- let me get this right--
+
+921
+00:39:32,110 --> 00:39:38,010
+all a's will be 2,
+34, 66, or 98 mod 128.
+
+922
+00:39:38,010 --> 00:39:41,000
+And in general, those
+are particular numbers
+
+923
+00:39:41,000 --> 00:39:44,510
+set up to make this
+construction work out.
+
+924
+00:39:44,510 --> 00:39:47,931
+I didn't check them
+all but I believe them.
+
+925
+00:39:47,931 --> 00:39:50,180
+In general, we're going to
+distinguish all the letters
+
+926
+00:39:50,180 --> 00:39:53,520
+by what they are mod 128.
+
+927
+00:39:53,520 --> 00:39:56,170
+So given a number
+between zero and 127,
+
+928
+00:39:56,170 --> 00:39:59,530
+there's a unique letter of
+the regular English letter
+
+929
+00:39:59,530 --> 00:40:03,400
+alphabet, the a's, the b's,
+the y's, the z's, and so on
+
+930
+00:40:03,400 --> 00:40:04,420
+that it is assigned to.
+
+931
+00:40:04,420 --> 00:40:09,950
+And I'll tell you in particular,
+the vi's and the vi bars
+
+932
+00:40:09,950 --> 00:40:18,270
+are going to be, I
+think, 8 or 9 mod 128.
+
+933
+00:40:18,270 --> 00:40:23,865
+And the 8 is if
+it's false and the 9
+
+934
+00:40:23,865 --> 00:40:26,290
+is if it's true, because
+remember, modulo 4,
+
+935
+00:40:26,290 --> 00:40:29,110
+we want this to be zero
+and we want this to be one.
+
+936
+00:40:29,110 --> 00:40:30,777
+So there's a bunch
+of choices like that.
+
+937
+00:40:30,777 --> 00:40:31,776
+Some of them are unique.
+
+938
+00:40:31,776 --> 00:40:33,200
+We can always
+guarantee-- I forget
+
+939
+00:40:33,200 --> 00:40:36,920
+which ones-- the ci's are
+all something mod 128.
+
+940
+00:40:36,920 --> 00:40:38,630
+So the mod 128
+will tell you sort
+
+941
+00:40:38,630 --> 00:40:40,800
+of what letter of
+the English alphabet
+
+942
+00:40:40,800 --> 00:40:43,610
+it is and then it's
+a matter of deciding
+
+943
+00:40:43,610 --> 00:40:47,050
+the high-order bits, your
+number divided by 128
+
+944
+00:40:47,050 --> 00:40:48,460
+and take the floor.
+
+945
+00:40:48,460 --> 00:40:53,190
+What that is we set to
+make everybody distinct.
+
+946
+00:40:53,190 --> 00:40:56,840
+And the heart of the
+proof, I will say,
+
+947
+00:40:56,840 --> 00:41:01,205
+is to make sure that the
+vi's are all different.
+
+948
+00:41:01,205 --> 00:41:05,140
+
+949
+00:41:05,140 --> 00:41:07,870
+Or let's say that the
+ti's are different.
+
+950
+00:41:07,870 --> 00:41:10,250
+So we have the variables here.
+
+951
+00:41:10,250 --> 00:41:15,610
+We're adding them up and
+we get ti and we need all
+
+952
+00:41:15,610 --> 00:41:18,180
+of the ti's-- there's
+one ti per clause.
+
+953
+00:41:18,180 --> 00:41:19,890
+We need them all
+to be different,
+
+954
+00:41:19,890 --> 00:41:23,490
+which means no matter which
+triple of vi's we get,
+
+955
+00:41:23,490 --> 00:41:25,730
+we should get a different
+sum of the triples.
+
+956
+00:41:25,730 --> 00:41:33,990
+So this is a problem of
+set vi and vi prime divided
+
+957
+00:41:33,990 --> 00:41:46,570
+by 128 so that vi plus vj
+plus vk are all distinct.
+
+958
+00:41:46,570 --> 00:41:52,356
+
+959
+00:41:52,356 --> 00:41:53,730
+And at this point,
+Eppstein says,
+
+960
+00:41:53,730 --> 00:41:56,880
+oh, there's a result by Bose
+and Chowla from 1959 the
+
+961
+00:41:56,880 --> 00:42:00,800
+says you can always choose these
+guys-- if there's n of them
+
+962
+00:42:00,800 --> 00:42:03,750
+that you need to choose, then
+n-cubed different integers
+
+963
+00:42:03,750 --> 00:42:06,470
+suffice to make this true.
+
+964
+00:42:06,470 --> 00:42:09,130
+That's if you know the
+literature super well,
+
+965
+00:42:09,130 --> 00:42:13,070
+but there's an easy proof
+that polynomials enough here.
+
+966
+00:42:13,070 --> 00:42:15,880
+And those of you
+who are in 6.851
+
+967
+00:42:15,880 --> 00:42:18,460
+should be able to construct
+one, because this is essentially
+
+968
+00:42:18,460 --> 00:42:19,980
+fusion trees.
+
+969
+00:42:19,980 --> 00:42:31,070
+But in general, imagine that
+you've chosen by induction
+
+970
+00:42:31,070 --> 00:42:33,814
+I'll call them v less than i.
+
+971
+00:42:33,814 --> 00:42:34,980
+And let's ignore the primes.
+
+972
+00:42:34,980 --> 00:42:37,270
+Let's just say we've
+constructed all the things up
+
+973
+00:42:37,270 --> 00:42:38,790
+to the vi minus 1.
+
+974
+00:42:38,790 --> 00:42:43,950
+And now, we want
+to choose vi and it
+
+975
+00:42:43,950 --> 00:42:49,280
+needs to avoid certain values.
+
+976
+00:42:49,280 --> 00:42:59,400
+I think if it avoids vj plus
+vk minus vl minus vm minus vp
+
+977
+00:42:59,400 --> 00:43:07,860
+for all j, k, l,
+m, p less than i,
+
+978
+00:43:07,860 --> 00:43:11,840
+then no triple should
+sum to any other triple,
+
+979
+00:43:11,840 --> 00:43:15,290
+because if we
+add-- I think maybe
+
+980
+00:43:15,290 --> 00:43:17,480
+I have the signs slightly off.
+
+981
+00:43:17,480 --> 00:43:23,750
+So I wanted to do this.
+
+982
+00:43:23,750 --> 00:43:26,600
+Yeah, so this is one more plus.
+
+983
+00:43:26,600 --> 00:43:29,670
+So suppose I had an
+equation like this.
+
+984
+00:43:29,670 --> 00:43:32,400
+I claim that's bad because
+if I move these guys over
+
+985
+00:43:32,400 --> 00:43:35,720
+to the left-hand side, that's
+a triple of v's that sums
+
+986
+00:43:35,720 --> 00:43:37,500
+to another triple of v's.
+
+987
+00:43:37,500 --> 00:43:40,730
+So as long as I choose
+my new value v-- sorry,
+
+988
+00:43:40,730 --> 00:43:43,020
+this should vi.
+
+989
+00:43:43,020 --> 00:43:44,880
+That's the one I'm choosing.
+
+990
+00:43:44,880 --> 00:43:51,040
+As long as I choose vi to be
+different from all such sums
+
+991
+00:43:51,040 --> 00:43:55,510
+and they're only less than
+n to the fifth such sums,
+
+992
+00:43:55,510 --> 00:43:58,220
+because there are only n
+of these different things,
+
+993
+00:43:58,220 --> 00:43:59,882
+then I'm OK.
+
+994
+00:43:59,882 --> 00:44:01,340
+And so by the
+pigeonhole principle,
+
+995
+00:44:01,340 --> 00:44:03,210
+as long as I have
+a range that is
+
+996
+00:44:03,210 --> 00:44:05,850
+at least n to the
+fifth in size, then
+
+997
+00:44:05,850 --> 00:44:09,460
+I can always choose vi to
+avoid all those conflicts.
+
+998
+00:44:09,460 --> 00:44:11,960
+So that's a really easy proof
+that n to the fifth is enough.
+
+999
+00:44:11,960 --> 00:44:15,150
+In fact, n cubed is enough,
+but this is a hardness proof.
+
+1000
+00:44:15,150 --> 00:44:16,770
+All we need is strong hardness.
+
+1001
+00:44:16,770 --> 00:44:18,060
+We just need n cubed.
+
+1002
+00:44:18,060 --> 00:44:20,580
+That's just fine
+or n to the fifth.
+
+1003
+00:44:20,580 --> 00:44:23,850
+Any polynomial would be OK.
+
+1004
+00:44:23,850 --> 00:44:26,046
+So that's a sketch of
+the reverse direction
+
+1005
+00:44:26,046 --> 00:44:26,670
+for this proof.
+
+1006
+00:44:26,670 --> 00:44:28,336
+There are some more
+details to make sure
+
+1007
+00:44:28,336 --> 00:44:30,550
+everything adds up right
+mod 128 and that you
+
+1008
+00:44:30,550 --> 00:44:32,920
+can make all the ai's
+different and so on,
+
+1009
+00:44:32,920 --> 00:44:37,412
+but the hard part is the
+vi's, which seems believable.
+
+1010
+00:44:37,412 --> 00:44:38,620
+Questions about cryptarithms?
+
+1011
+00:44:38,620 --> 00:44:45,960
+
+1012
+00:44:45,960 --> 00:44:47,120
+Cool.
+
+1013
+00:44:47,120 --> 00:44:50,330
+Next is an origami proof.
+
+1014
+00:44:50,330 --> 00:44:53,160
+So here's the
+motivating problem.
+
+1015
+00:44:53,160 --> 00:44:54,890
+I give you some
+crease pattern, which
+
+1016
+00:44:54,890 --> 00:44:57,430
+is just a graph drawn in
+a plane, no crossings,
+
+1017
+00:44:57,430 --> 00:44:59,670
+and all the edges are
+straight segments.
+
+1018
+00:44:59,670 --> 00:45:04,190
+And you want to fold
+it into a flat origami
+
+1019
+00:45:04,190 --> 00:45:06,580
+or a flat folded state would
+be the more technical term.
+
+1020
+00:45:06,580 --> 00:45:10,010
+So this is an example of what's
+called an origami tessellation.
+
+1021
+00:45:10,010 --> 00:45:11,960
+But in general, what
+you're allowed to do,
+
+1022
+00:45:11,960 --> 00:45:14,040
+the red lines here
+mean that you fold
+
+1023
+00:45:14,040 --> 00:45:18,350
+as a mountain by 180
+degrees and the blue lines
+
+1024
+00:45:18,350 --> 00:45:20,662
+mean you fold a
+valley 180 degrees.
+
+1025
+00:45:20,662 --> 00:45:22,620
+So they're specifying
+the relative orientation.
+
+1026
+00:45:22,620 --> 00:45:24,286
+But in flat-folding,
+you're only allowed
+
+1027
+00:45:24,286 --> 00:45:26,850
+to go plus or minus 180.
+
+1028
+00:45:26,850 --> 00:45:30,270
+And then, it has to exist.
+
+1029
+00:45:30,270 --> 00:45:32,500
+Now, the rules for
+paper are twofold.
+
+1030
+00:45:32,500 --> 00:45:33,940
+One is that it doesn't stretch.
+
+1031
+00:45:33,940 --> 00:45:36,550
+It's an isometric mapping
+of the piece of paper.
+
+1032
+00:45:36,550 --> 00:45:39,750
+Each of these little
+polygons is just rotated,
+
+1033
+00:45:39,750 --> 00:45:43,350
+translated, reflected
+possibly over here.
+
+1034
+00:45:43,350 --> 00:45:45,490
+They fit together, so
+you don't tear the paper.
+
+1035
+00:45:45,490 --> 00:45:48,090
+They fit together
+at all the creases
+
+1036
+00:45:48,090 --> 00:45:50,680
+and there are no
+crossings, because paper
+
+1037
+00:45:50,680 --> 00:45:52,880
+can't intersect itself.
+
+1038
+00:45:52,880 --> 00:45:57,780
+So the geometry is basically
+determined if you say,
+
+1039
+00:45:57,780 --> 00:46:00,350
+OK, I'm going to view
+this panel as being fixed.
+
+1040
+00:46:00,350 --> 00:46:01,372
+It doesn't move.
+
+1041
+00:46:01,372 --> 00:46:03,330
+Then, this one is just
+going to be a reflection
+
+1042
+00:46:03,330 --> 00:46:05,340
+through this line flipped over.
+
+1043
+00:46:05,340 --> 00:46:07,260
+And in general, all of
+these other polygons
+
+1044
+00:46:07,260 --> 00:46:09,130
+just have to be reflections,
+because every time you
+
+1045
+00:46:09,130 --> 00:46:10,880
+fold on a line-- and
+the rules of the game
+
+1046
+00:46:10,880 --> 00:46:14,640
+here is you have to fold
+everywhere there's a crease.
+
+1047
+00:46:14,640 --> 00:46:19,640
+You can figure out this polygon
+will end up here relative
+
+1048
+00:46:19,640 --> 00:46:21,340
+to some original polygon.
+
+1049
+00:46:21,340 --> 00:46:23,240
+So you can figure out
+pretty much what this
+
+1050
+00:46:23,240 --> 00:46:26,210
+looks like as an x-ray diagram.
+
+1051
+00:46:26,210 --> 00:46:29,410
+And the hard part becomes
+how are layers stacked.
+
+1052
+00:46:29,410 --> 00:46:30,910
+Is this one on top
+of this one or is
+
+1053
+00:46:30,910 --> 00:46:32,890
+this one on top of that one?
+
+1054
+00:46:32,890 --> 00:46:35,540
+That's why the problem
+is NP-complete is
+
+1055
+00:46:35,540 --> 00:46:38,590
+that last step, deciding which
+layers are on top of the other.
+
+1056
+00:46:38,590 --> 00:46:41,250
+In general, whenever two layers
+of paper partially overlap,
+
+1057
+00:46:41,250 --> 00:46:43,350
+you have to decide which
+is on top of the other.
+
+1058
+00:46:43,350 --> 00:46:45,099
+And then, there's some
+obvious constraints
+
+1059
+00:46:45,099 --> 00:46:49,800
+like-- let me get my hands
+oriented-- this is OK
+
+1060
+00:46:49,800 --> 00:46:52,480
+but this is not OK.
+
+1061
+00:46:52,480 --> 00:46:54,930
+If there's one
+crease of paper here
+
+1062
+00:46:54,930 --> 00:46:56,570
+and another crease
+of paper here,
+
+1063
+00:46:56,570 --> 00:46:58,550
+then these locally intersect.
+
+1064
+00:46:58,550 --> 00:46:59,760
+So this is OK.
+
+1065
+00:46:59,760 --> 00:47:01,010
+This is OK.
+
+1066
+00:47:01,010 --> 00:47:02,650
+This is not OK.
+
+1067
+00:47:02,650 --> 00:47:04,139
+That's the rules.
+
+1068
+00:47:04,139 --> 00:47:06,180
+We don't need to know
+those rules super precisely
+
+1069
+00:47:06,180 --> 00:47:08,620
+to understand this
+proof fairly intuitively
+
+1070
+00:47:08,620 --> 00:47:11,990
+because everything's going
+to be small and quite local.
+
+1071
+00:47:11,990 --> 00:47:14,230
+The basic idea is the following.
+
+1072
+00:47:14,230 --> 00:47:19,700
+You take a piece of
+paper and you fold it
+
+1073
+00:47:19,700 --> 00:47:22,680
+along two parallel lines.
+
+1074
+00:47:22,680 --> 00:47:27,280
+So fold along this line
+and then along this line.
+
+1075
+00:47:27,280 --> 00:47:30,050
+
+1076
+00:47:30,050 --> 00:47:33,407
+And this is called a pleat and
+there are two ways to do it.
+
+1077
+00:47:33,407 --> 00:47:34,990
+You could do one
+mountain, one valley,
+
+1078
+00:47:34,990 --> 00:47:37,440
+or you could do the other one
+mountain and the other one
+
+1079
+00:47:37,440 --> 00:47:38,490
+valley.
+
+1080
+00:47:38,490 --> 00:47:40,740
+You can't make them both
+mountains because then, you'd
+
+1081
+00:47:40,740 --> 00:47:43,320
+locally intersect yourself.
+
+1082
+00:47:43,320 --> 00:47:45,580
+So it could be this
+way or it could
+
+1083
+00:47:45,580 --> 00:47:48,672
+be the other way I just had it.
+
+1084
+00:47:48,672 --> 00:47:51,090
+It's a little tedious.
+
+1085
+00:47:51,090 --> 00:47:52,590
+And so you have to
+make that choice.
+
+1086
+00:47:52,590 --> 00:47:53,714
+Which one is a mountain?
+
+1087
+00:47:53,714 --> 00:47:54,630
+Which one is a valley?
+
+1088
+00:47:54,630 --> 00:47:57,690
+
+1089
+00:47:57,690 --> 00:47:59,380
+That's going to be
+our true signal.
+
+1090
+00:47:59,380 --> 00:48:01,770
+We're going to consider one
+option true, the other option
+
+1091
+00:48:01,770 --> 00:48:02,940
+false.
+
+1092
+00:48:02,940 --> 00:48:06,140
+And as a point of
+notation, we're
+
+1093
+00:48:06,140 --> 00:48:09,000
+going to have an arrow
+in every one of these--
+
+1094
+00:48:09,000 --> 00:48:10,090
+we call them wire gadgets.
+
+1095
+00:48:10,090 --> 00:48:15,710
+In general, wires are how
+we have truth settings.
+
+1096
+00:48:15,710 --> 00:48:19,240
+And so relative to the
+orientation of this arrow,
+
+1097
+00:48:19,240 --> 00:48:21,250
+if it's valley on
+the left-- blue
+
+1098
+00:48:21,250 --> 00:48:25,210
+is valley because I guess
+rivers are in valleys--
+
+1099
+00:48:25,210 --> 00:48:26,900
+then we'll consider it true.
+
+1100
+00:48:26,900 --> 00:48:29,700
+If there's blue on the right,
+we'll consider it false.
+
+1101
+00:48:29,700 --> 00:48:30,200
+Question?
+
+1102
+00:48:30,200 --> 00:48:31,890
+AUDIENCE: Just a
+question about the SAT.
+
+1103
+00:48:31,890 --> 00:48:33,640
+Once you draw all the
+red and blue lines,
+
+1104
+00:48:33,640 --> 00:48:36,260
+there's just one unique answer?
+
+1105
+00:48:36,260 --> 00:48:39,120
+PROFESSOR: No, the answer's
+not necessarily unique,
+
+1106
+00:48:39,120 --> 00:48:42,020
+but there will be a
+unique yes or no answer.
+
+1107
+00:48:42,020 --> 00:48:44,247
+Either it will be
+flat-foldable or not,
+
+1108
+00:48:44,247 --> 00:48:46,080
+but there actually may
+be many flat foldings
+
+1109
+00:48:46,080 --> 00:48:48,870
+consistent with a given
+mountain-valley assignment
+
+1110
+00:48:48,870 --> 00:48:49,600
+in general.
+
+1111
+00:48:49,600 --> 00:48:52,560
+So we're not worrying
+about that too much here.
+
+1112
+00:48:52,560 --> 00:48:54,870
+We're just worrying about
+whether it is feasible,
+
+1113
+00:48:54,870 --> 00:49:00,020
+whether there's some ordering
+that makes things work out.
+
+1114
+00:49:00,020 --> 00:49:02,590
+So the idea is this
+could be your variable.
+
+1115
+00:49:02,590 --> 00:49:04,180
+Some reductions have
+variable gadgets.
+
+1116
+00:49:04,180 --> 00:49:04,697
+Some don't.
+
+1117
+00:49:04,697 --> 00:49:06,280
+This one is just
+going to have a wire.
+
+1118
+00:49:06,280 --> 00:49:07,821
+The idea is if you
+say, well, there's
+
+1119
+00:49:07,821 --> 00:49:09,760
+a pleat over here
+in the paper, then
+
+1120
+00:49:09,760 --> 00:49:11,860
+it could be pleated
+one way or the other.
+
+1121
+00:49:11,860 --> 00:49:15,810
+And that serves as
+a variable, as you
+
+1122
+00:49:15,810 --> 00:49:17,020
+make one choice or the other.
+
+1123
+00:49:17,020 --> 00:49:20,790
+What we'd like is to take that
+truth value and duplicate it,
+
+1124
+00:49:20,790 --> 00:49:21,890
+make many copies.
+
+1125
+00:49:21,890 --> 00:49:23,230
+But that's not the next gadget.
+
+1126
+00:49:23,230 --> 00:49:25,764
+The next gadget is a not
+all equal clause gadget.
+
+1127
+00:49:25,764 --> 00:49:27,180
+So this is going
+to be a reduction
+
+1128
+00:49:27,180 --> 00:49:29,600
+from not all equal 3SAT.
+
+1129
+00:49:29,600 --> 00:49:34,680
+And I have the gadget
+pre-folded here.
+
+1130
+00:49:34,680 --> 00:49:38,550
+So this is what in origami world
+is called a triangular twist.
+
+1131
+00:49:38,550 --> 00:49:40,660
+It's a slightly weird
+triangular twist,
+
+1132
+00:49:40,660 --> 00:49:46,630
+in that this is 35
+degrees instead of 30
+
+1133
+00:49:46,630 --> 00:49:48,130
+being the usual one.
+
+1134
+00:49:48,130 --> 00:49:50,480
+And so it's just a
+little bit larger
+
+1135
+00:49:50,480 --> 00:49:51,610
+and that causes a problem.
+
+1136
+00:49:51,610 --> 00:49:57,360
+So this is an example of a valid
+flat-folding of that gadget.
+
+1137
+00:49:57,360 --> 00:50:00,540
+And if you look at the three
+pleats that are coming in,
+
+1138
+00:50:00,540 --> 00:50:02,420
+notice the arrows
+are all pointing in.
+
+1139
+00:50:02,420 --> 00:50:04,430
+So it's sort of symmetric.
+
+1140
+00:50:04,430 --> 00:50:08,330
+It's going to be one
+of the valid ones.
+
+1141
+00:50:08,330 --> 00:50:10,860
+So I guess it's actually
+written on the diagram here.
+
+1142
+00:50:10,860 --> 00:50:13,280
+This one is considered
+true because there's
+
+1143
+00:50:13,280 --> 00:50:18,290
+a valley on your right,
+this one is considered false
+
+1144
+00:50:18,290 --> 00:50:21,935
+because there's a
+valley on your-- oh
+
+1145
+00:50:21,935 --> 00:50:27,820
+I'm so confused-- on
+your right, and this one
+
+1146
+00:50:27,820 --> 00:50:29,550
+is considered true
+because there's
+
+1147
+00:50:29,550 --> 00:50:32,240
+a valley on your left-- oh,
+sorry, false because there's
+
+1148
+00:50:32,240 --> 00:50:33,946
+a valley on your right.
+
+1149
+00:50:33,946 --> 00:50:35,320
+If you're walking
+down the arrow,
+
+1150
+00:50:35,320 --> 00:50:37,970
+then the right-hand
+side has a valley.
+
+1151
+00:50:37,970 --> 00:50:40,330
+And so this happens to
+fold because they're not
+
+1152
+00:50:40,330 --> 00:50:40,945
+all the same.
+
+1153
+00:50:40,945 --> 00:50:42,820
+If you tried to make
+them all the same, which
+
+1154
+00:50:42,820 --> 00:50:47,590
+should be like
+reversing the true,
+
+1155
+00:50:47,590 --> 00:50:57,460
+it's going to look something
+like this, which is actually
+
+1156
+00:50:57,460 --> 00:50:58,860
+easier to see back here.
+
+1157
+00:50:58,860 --> 00:51:02,190
+So now, they're all trying
+to fold the same way.
+
+1158
+00:51:02,190 --> 00:51:04,820
+But the problem is on this side.
+
+1159
+00:51:04,820 --> 00:51:08,180
+These guys will all come
+and intersect in the center.
+
+1160
+00:51:08,180 --> 00:51:11,360
+And I think we
+have a diagram Here
+
+1161
+00:51:11,360 --> 00:51:14,029
+And in x-ray, this
+is what must happen.
+
+1162
+00:51:14,029 --> 00:51:16,570
+And there's this little area of
+intersection where you cannot
+
+1163
+00:51:16,570 --> 00:51:19,130
+resolve which of these three
+things are on top of each other
+
+1164
+00:51:19,130 --> 00:51:21,160
+because this one wants be on
+top of this one who wants to be
+
+1165
+00:51:21,160 --> 00:51:23,520
+on top of this one who wants
+to be on top of this one.
+
+1166
+00:51:23,520 --> 00:51:24,936
+So there's a cycle
+of constraints.
+
+1167
+00:51:24,936 --> 00:51:28,331
+No one can be on top of each
+other in this little region.
+
+1168
+00:51:28,331 --> 00:51:29,830
+Then, in the regular
+triangle twist,
+
+1169
+00:51:29,830 --> 00:51:31,711
+this is a point and
+everything's fine.
+
+1170
+00:51:31,711 --> 00:51:33,210
+But the way these
+angles are set up,
+
+1171
+00:51:33,210 --> 00:51:34,840
+there's this area of overlap.
+
+1172
+00:51:34,840 --> 00:51:36,420
+And in that one
+situation, you're
+
+1173
+00:51:36,420 --> 00:51:39,175
+toast So if they're all
+true-- but of course,
+
+1174
+00:51:39,175 --> 00:51:40,050
+everything symmetric.
+
+1175
+00:51:40,050 --> 00:51:42,591
+If you flip it over, then it's
+the same if they're all false.
+
+1176
+00:51:42,591 --> 00:51:43,945
+So you forbid all true.
+
+1177
+00:51:43,945 --> 00:51:44,820
+You forbid all false.
+
+1178
+00:51:44,820 --> 00:51:47,880
+Everything else will work
+so this is not all equal.
+
+1179
+00:51:47,880 --> 00:51:49,790
+This will be
+flat-foldable locally
+
+1180
+00:51:49,790 --> 00:51:55,220
+if and only if those variable
+assignments are not all equal.
+
+1181
+00:51:55,220 --> 00:51:58,190
+Now, we need a couple more
+gadgets for this to work.
+
+1182
+00:51:58,190 --> 00:52:01,180
+One is the ability
+to duplicate a signal
+
+1183
+00:52:01,180 --> 00:52:03,510
+and the other is a crossover.
+
+1184
+00:52:03,510 --> 00:52:06,940
+So here, this is a proof by
+Burn and Hayes, by the way.
+
+1185
+00:52:06,940 --> 00:52:09,510
+This is, I think, the
+first or second paper
+
+1186
+00:52:09,510 --> 00:52:10,630
+in computational origami.
+
+1187
+00:52:10,630 --> 00:52:13,640
+So it got things off
+to an exciting start.
+
+1188
+00:52:13,640 --> 00:52:18,296
+This is a
+splitter/negation gadget.
+
+1189
+00:52:18,296 --> 00:52:19,420
+This is what it folds like.
+
+1190
+00:52:19,420 --> 00:52:23,420
+It looks a little bit weird
+because my paper's a little bit
+
+1191
+00:52:23,420 --> 00:52:26,790
+small, but the point
+is there's essentially
+
+1192
+00:52:26,790 --> 00:52:28,580
+only one way to fold this.
+
+1193
+00:52:28,580 --> 00:52:31,700
+And if you take 6,849, you'll
+know this little local analysis
+
+1194
+00:52:31,700 --> 00:52:34,410
+that forces different mountains
+and valleys to be the same.
+
+1195
+00:52:34,410 --> 00:52:35,785
+For example, these
+two have to be
+
+1196
+00:52:35,785 --> 00:52:38,010
+opposite, which forces
+if this is a true,
+
+1197
+00:52:38,010 --> 00:52:40,260
+this one must be a false.
+
+1198
+00:52:40,260 --> 00:52:41,890
+So that's your negation.
+
+1199
+00:52:41,890 --> 00:52:45,160
+And also from a local
+analysis of this vertex,
+
+1200
+00:52:45,160 --> 00:52:48,300
+if this one is true,
+this one must be true.
+
+1201
+00:52:48,300 --> 00:52:52,520
+And it works and it also
+works in the inverse setup.
+
+1202
+00:52:52,520 --> 00:52:54,590
+That's always going to be true.
+
+1203
+00:52:54,590 --> 00:52:57,590
+A natural reason for us to
+be using not all equal 3SAT
+
+1204
+00:52:57,590 --> 00:52:59,490
+here is there's
+really no preference
+
+1205
+00:52:59,490 --> 00:53:00,530
+between true and false.
+
+1206
+00:53:00,530 --> 00:53:03,190
+They're not really
+a logical notion.
+
+1207
+00:53:03,190 --> 00:53:07,130
+It's more like red and blue,
+literally red and blue.
+
+1208
+00:53:07,130 --> 00:53:09,750
+So not all equal is the one
+that's nice and symmetric.
+
+1209
+00:53:09,750 --> 00:53:11,790
+It has no preference
+between red and blue.
+
+1210
+00:53:11,790 --> 00:53:12,750
+And so we're seeing that here.
+
+1211
+00:53:12,750 --> 00:53:14,280
+Because everything's
+invertible, we
+
+1212
+00:53:14,280 --> 00:53:16,070
+want that symmetry
+between red and blue.
+
+1213
+00:53:16,070 --> 00:53:17,570
+So that would be
+one reason to guest
+
+1214
+00:53:17,570 --> 00:53:20,890
+not all equal 3SAT is
+a good choice here,
+
+1215
+00:53:20,890 --> 00:53:22,650
+at least for that wire.
+
+1216
+00:53:22,650 --> 00:53:25,310
+So cool, if we have a
+signal, we can make a copy.
+
+1217
+00:53:25,310 --> 00:53:28,520
+We also get two copies.
+
+1218
+00:53:28,520 --> 00:53:30,260
+One of them happens
+to be negated
+
+1219
+00:53:30,260 --> 00:53:33,445
+with this particular choice
+of arrow orientation.
+
+1220
+00:53:33,445 --> 00:53:35,070
+If we oriented the
+arrow the other way,
+
+1221
+00:53:35,070 --> 00:53:36,732
+you could call
+that a copy, but we
+
+1222
+00:53:36,732 --> 00:53:38,440
+don't want to take a
+wire that's pointing
+
+1223
+00:53:38,440 --> 00:53:42,560
+backwards because we need to
+attach this to something else.
+
+1224
+00:53:42,560 --> 00:53:44,170
+These all have very
+particular angles,
+
+1225
+00:53:44,170 --> 00:53:46,160
+but it turns out
+that will be OK.
+
+1226
+00:53:46,160 --> 00:53:49,320
+One more gadget is
+a crossover gadget.
+
+1227
+00:53:49,320 --> 00:53:50,280
+This is very simple.
+
+1228
+00:53:50,280 --> 00:53:54,320
+It is just one-- this is
+not the pre-folded one-- you
+
+1229
+00:53:54,320 --> 00:53:57,774
+do one pleat and then
+you do the other pleat.
+
+1230
+00:53:57,774 --> 00:53:59,440
+And you can see from
+the crease pattern,
+
+1231
+00:53:59,440 --> 00:54:01,730
+you have to do this pleat
+and then do this pleat.
+
+1232
+00:54:01,730 --> 00:54:03,120
+But it's completely independent.
+
+1233
+00:54:03,120 --> 00:54:04,494
+I could do each
+pleat either way.
+
+1234
+00:54:04,494 --> 00:54:05,950
+It doesn't affect the other one.
+
+1235
+00:54:05,950 --> 00:54:08,400
+So that's crossover, done, easy.
+
+1236
+00:54:08,400 --> 00:54:11,342
+This works with pretty
+much any angles.
+
+1237
+00:54:11,342 --> 00:54:13,550
+And then, it's just a matter
+of checking that you can
+
+1238
+00:54:13,550 --> 00:54:15,270
+fit all the gadgets together.
+
+1239
+00:54:15,270 --> 00:54:17,590
+This is something
+we did in our book
+
+1240
+00:54:17,590 --> 00:54:20,265
+to get a picture of
+how everything works.
+
+1241
+00:54:20,265 --> 00:54:22,640
+But in general, the idea is
+on the left side of the page,
+
+1242
+00:54:22,640 --> 00:54:23,848
+we have all of our variables.
+
+1243
+00:54:23,848 --> 00:54:27,120
+Those are just wires so they
+can go one way or the other.
+
+1244
+00:54:27,120 --> 00:54:30,090
+So the idea is here is x2.
+
+1245
+00:54:30,090 --> 00:54:32,170
+I just want to bend it so
+it's pointing downwards
+
+1246
+00:54:32,170 --> 00:54:35,260
+so I'm going to use the
+splitter/negation gadget.
+
+1247
+00:54:35,260 --> 00:54:38,560
+So we get this copy
+of x2 just going off.
+
+1248
+00:54:38,560 --> 00:54:41,220
+It's going to go up to the
+top of the page, no big deal.
+
+1249
+00:54:41,220 --> 00:54:42,454
+Just throw it away.
+
+1250
+00:54:42,454 --> 00:54:43,870
+Then, we're going
+to go over here.
+
+1251
+00:54:43,870 --> 00:54:46,500
+Something happens to cross
+us, but we don't care.
+
+1252
+00:54:46,500 --> 00:54:48,920
+Now, what I would
+like to do-- looks
+
+1253
+00:54:48,920 --> 00:54:51,700
+like this clause involves x2.
+
+1254
+00:54:51,700 --> 00:54:56,360
+So I'm going to do this funny
+kind of turnaround thingy
+
+1255
+00:54:56,360 --> 00:54:58,920
+which will end up making a
+copy of this variable pointing
+
+1256
+00:54:58,920 --> 00:55:02,880
+straight up and also will make
+a copy of the variable pointing
+
+1257
+00:55:02,880 --> 00:55:03,920
+in this direction.
+
+1258
+00:55:03,920 --> 00:55:06,370
+And so in general, I'm
+going to keep doing that.
+
+1259
+00:55:06,370 --> 00:55:08,310
+And whenever I need
+a copy, I'll just
+
+1260
+00:55:08,310 --> 00:55:13,070
+use an appropriate parity of
+turns to get a positive copy.
+
+1261
+00:55:13,070 --> 00:55:17,795
+So this is negated and then
+this is a copy of the negation
+
+1262
+00:55:17,795 --> 00:55:20,669
+and then we flip it
+one, two, three times.
+
+1263
+00:55:20,669 --> 00:55:22,210
+So in the end, it
+should be positive.
+
+1264
+00:55:22,210 --> 00:55:23,970
+So this is the
+tricky part to check.
+
+1265
+00:55:23,970 --> 00:55:27,496
+Here, we have a not all
+equal 3SAT clause where
+
+1266
+00:55:27,496 --> 00:55:28,620
+three things come together.
+
+1267
+00:55:28,620 --> 00:55:30,411
+And that's going to be
+foldable if and only
+
+1268
+00:55:30,411 --> 00:55:32,250
+if the three variables
+that we're combining
+
+1269
+00:55:32,250 --> 00:55:34,340
+have a reasonable assignment.
+
+1270
+00:55:34,340 --> 00:55:36,490
+And then, we just have
+to copy all these things
+
+1271
+00:55:36,490 --> 00:55:40,710
+and get them to meet all at
+those nexuses at the top.
+
+1272
+00:55:40,710 --> 00:55:43,380
+So definitely tricky
+to make sure this works
+
+1273
+00:55:43,380 --> 00:55:45,160
+to guarantee all
+the coordinates can
+
+1274
+00:55:45,160 --> 00:55:47,650
+be encoded with a
+polynomial number of bits.
+
+1275
+00:55:47,650 --> 00:55:52,220
+And therefore, this is a
+strongly NP-hard proof.
+
+1276
+00:55:52,220 --> 00:55:54,220
+But I'm going to wave my
+hands of those details.
+
+1277
+00:55:54,220 --> 00:55:57,050
+
+1278
+00:55:57,050 --> 00:55:59,280
+Questions?
+
+1279
+00:55:59,280 --> 00:56:01,345
+If it's any consolation,
+the original proof
+
+1280
+00:56:01,345 --> 00:56:03,030
+also waves its hand
+at these details.
+
+1281
+00:56:03,030 --> 00:56:05,050
+AUDIENCE: If you have a
+fold pattern like this,
+
+1282
+00:56:05,050 --> 00:56:08,000
+can you tell what order you
+would need to do the folds in?
+
+1283
+00:56:08,000 --> 00:56:10,500
+PROFESSOR: There's no such thing
+as order of the folds here.
+
+1284
+00:56:10,500 --> 00:56:13,257
+All of the folds would be folded
+simultaneously, more or less.
+
+1285
+00:56:13,257 --> 00:56:14,340
+AUDIENCE: Instantaneously.
+
+1286
+00:56:14,340 --> 00:56:17,226
+PROFESSOR: Instantaneously,
+to make it even more precise.
+
+1287
+00:56:17,226 --> 00:56:18,600
+So here, it was
+really a question
+
+1288
+00:56:18,600 --> 00:56:20,380
+of whether there is
+a flat-folded state.
+
+1289
+00:56:20,380 --> 00:56:21,970
+We're not worried about
+the motion to get there.
+
+1290
+00:56:21,970 --> 00:56:24,160
+That's another topic
+which you should take 8.49
+
+1291
+00:56:24,160 --> 00:56:26,100
+if you're curious about.
+
+1292
+00:56:26,100 --> 00:56:28,860
+But these kinds of patterns,
+you can't do one thing
+
+1293
+00:56:28,860 --> 00:56:31,511
+because there's no pleat
+that goes all the way.
+
+1294
+00:56:31,511 --> 00:56:34,380
+And that's life, unlike
+the folding problem
+
+1295
+00:56:34,380 --> 00:56:39,000
+we saw two classes ago, the map
+folding where we were doing one
+
+1296
+00:56:39,000 --> 00:56:39,930
+and then the other.
+
+1297
+00:56:39,930 --> 00:56:42,186
+In the notion of simple
+folds, there's an ordering,
+
+1298
+00:56:42,186 --> 00:56:44,060
+but in general origami,
+there is no ordering.
+
+1299
+00:56:44,060 --> 00:56:46,590
+
+1300
+00:56:46,590 --> 00:56:48,780
+Cool.
+
+1301
+00:56:48,780 --> 00:56:53,600
+Good, that is origami stuff.
+
+1302
+00:56:53,600 --> 00:56:58,230
+The next topic is a more graph
+theoretic basic question,
+
+1303
+00:56:58,230 --> 00:57:01,170
+but it will also
+relate to a puzzle.
+
+1304
+00:57:01,170 --> 00:57:03,330
+And this is the idea of
+vertex disjoint paths.
+
+1305
+00:57:03,330 --> 00:57:06,460
+This is in Jason
+Lynch's early work,
+
+1306
+00:57:06,460 --> 00:57:11,060
+before he was born, no relation.
+
+1307
+00:57:11,060 --> 00:57:16,730
+1975, so early days of
+NP-completeness-- this problem,
+
+1308
+00:57:16,730 --> 00:57:21,630
+vertex disjoint paths in a
+graph is proved NP-complete.
+
+1309
+00:57:21,630 --> 00:57:26,490
+So the problem is, I give you
+a bunch of terminal pairs, v1,
+
+1310
+00:57:26,490 --> 00:57:30,840
+v1 prime, v2, v2 prime,
+and so on, c1, c1 prime,
+
+1311
+00:57:30,840 --> 00:57:32,480
+a bunch of pairs of vertices.
+
+1312
+00:57:32,480 --> 00:57:35,150
+And I want to connect
+the pairs by paths.
+
+1313
+00:57:35,150 --> 00:57:38,720
+So I want to find a path
+from v1 to v1 prime and so
+
+1314
+00:57:38,720 --> 00:57:43,210
+on so that those paths
+are all vertex disjoint.
+
+1315
+00:57:43,210 --> 00:57:44,630
+Here's the hardness proof.
+
+1316
+00:57:44,630 --> 00:57:48,942
+Super simple-- this is one of
+the easiest 3SAT reductions.
+
+1317
+00:57:48,942 --> 00:57:50,400
+This is not the
+end of their paper.
+
+1318
+00:57:50,400 --> 00:57:52,790
+They do more interesting
+things, which I will get to,
+
+1319
+00:57:52,790 --> 00:57:55,060
+but first, let's
+understand this one.
+
+1320
+00:57:55,060 --> 00:57:59,390
+So this is a graph and I've
+drawn it in a funny way.
+
+1321
+00:57:59,390 --> 00:58:00,550
+These are vertices.
+
+1322
+00:58:00,550 --> 00:58:01,680
+These are vertices.
+
+1323
+00:58:01,680 --> 00:58:03,230
+These are not vertices.
+
+1324
+00:58:03,230 --> 00:58:05,400
+Those are just in the
+plane, they happen to cross,
+
+1325
+00:58:05,400 --> 00:58:06,566
+but there's no vertex there.
+
+1326
+00:58:06,566 --> 00:58:10,380
+So it's just a straight
+path all the way through.
+
+1327
+00:58:10,380 --> 00:58:14,120
+Kind of similar to what we
+did with phutball-- the idea
+
+1328
+00:58:14,120 --> 00:58:18,100
+is that from v1 to v1
+prime, there are two paths,
+
+1329
+00:58:18,100 --> 00:58:19,350
+at least if you stay here.
+
+1330
+00:58:19,350 --> 00:58:22,230
+You could try to go into a
+clause path and wreak havoc,
+
+1331
+00:58:22,230 --> 00:58:25,580
+but I think you will
+be doomed, I hope.
+
+1332
+00:58:25,580 --> 00:58:28,940
+So the idea is v1, maybe
+you choose the blue path.
+
+1333
+00:58:28,940 --> 00:58:32,646
+That will prevent c3 from
+using that path because there's
+
+1334
+00:58:32,646 --> 00:58:33,520
+an intersection here.
+
+1335
+00:58:33,520 --> 00:58:35,394
+It won't prevent anybody
+else because there's
+
+1336
+00:58:35,394 --> 00:58:37,630
+no other vertices here.
+
+1337
+00:58:37,630 --> 00:58:40,920
+So I use the blue path,
+c3 cannot use that path.
+
+1338
+00:58:40,920 --> 00:58:42,940
+If I use the red path,
+c1 can't use this
+
+1339
+00:58:42,940 --> 00:58:45,270
+one. c2 can't use this one.
+
+1340
+00:58:45,270 --> 00:58:47,270
+So again, we are
+blocking the thing
+
+1341
+00:58:47,270 --> 00:58:49,300
+that it would be setting false.
+
+1342
+00:58:49,300 --> 00:58:53,460
+So that means, let's say red--
+I forget in this picture-- let's
+
+1343
+00:58:53,460 --> 00:58:56,520
+say red is true.
+
+1344
+00:58:56,520 --> 00:59:01,190
+Then, c1 has v1 bar in it.
+
+1345
+00:59:01,190 --> 00:59:03,820
+c1 is happy if you
+choose the blue path
+
+1346
+00:59:03,820 --> 00:59:06,030
+but it's not happy if
+you choose the red path.
+
+1347
+00:59:06,030 --> 00:59:09,380
+Now, c1 to c1 prime
+only has to be happy
+
+1348
+00:59:09,380 --> 00:59:12,980
+if one of these three things
+are happy and that's 3SAT.
+
+1349
+00:59:12,980 --> 00:59:15,270
+At least one of the things
+should be set correctly.
+
+1350
+00:59:15,270 --> 00:59:17,547
+Then, there is a path
+from c1 to c1 prime.
+
+1351
+00:59:17,547 --> 00:59:19,380
+Otherwise, there'll be
+vertex intersections.
+
+1352
+00:59:19,380 --> 00:59:22,130
+You won't have vertex
+disjoint paths.
+
+1353
+00:59:22,130 --> 00:59:24,590
+So in a graph, done.
+
+1354
+00:59:24,590 --> 00:59:28,750
+Now, let's make it a planar
+graph, where things get fun.
+
+1355
+00:59:28,750 --> 00:59:30,970
+So this is the original gadget.
+
+1356
+00:59:30,970 --> 00:59:33,740
+I've stared at it
+for many hours,
+
+1357
+00:59:33,740 --> 00:59:36,030
+but it's actually
+pretty simple after you
+
+1358
+00:59:36,030 --> 00:59:38,420
+stare at it for enough hours.
+
+1359
+00:59:38,420 --> 00:59:41,750
+Let me try to
+convince you of that.
+
+1360
+00:59:41,750 --> 00:59:46,452
+So I'm going to follow the
+same kind of outline here,
+
+1361
+00:59:46,452 --> 00:59:47,785
+but we have to get rid of these.
+
+1362
+00:59:47,785 --> 00:59:48,550
+These are fine.
+
+1363
+00:59:48,550 --> 00:59:50,210
+Those are intersections.
+
+1364
+00:59:50,210 --> 00:59:53,910
+But these crossovers, we need
+to build a crossover gadget.
+
+1365
+00:59:53,910 --> 00:59:57,030
+So the idea is
+instead of v1 to v1
+
+1366
+00:59:57,030 --> 01:00:00,790
+prime being a single path--
+that's going to be a problem.
+
+1367
+01:00:00,790 --> 01:00:03,720
+Instead of that, I'm going
+to have it be several paths
+
+1368
+01:00:03,720 --> 01:00:07,040
+and they're going to
+be nested brackets.
+
+1369
+01:00:07,040 --> 01:00:11,854
+
+1370
+01:00:11,854 --> 01:00:24,620
+Chalk-- this is the kind
+of thing we're imagining.
+
+1371
+01:00:24,620 --> 01:00:30,620
+We have some vertex pairs
+which can connect like this.
+
+1372
+01:00:30,620 --> 01:00:33,640
+And there are two ways
+to connect them in what
+
+1373
+01:00:33,640 --> 01:00:35,160
+will end up being the diagram.
+
+1374
+01:00:35,160 --> 01:00:39,125
+We could connect them like this.
+
+1375
+01:00:39,125 --> 01:00:44,250
+
+1376
+01:00:44,250 --> 01:00:47,040
+Notice I'm still connecting the
+same pairs if I do it right.
+
+1377
+01:00:47,040 --> 01:00:51,010
+
+1378
+01:00:51,010 --> 01:00:53,130
+And the whites do not
+intersect each other.
+
+1379
+01:00:53,130 --> 01:00:54,130
+They're vertex disjoint.
+
+1380
+01:00:54,130 --> 01:00:56,090
+The reds do not
+intersect each other.
+
+1381
+01:00:56,090 --> 01:00:57,090
+They're vertex disjoint.
+
+1382
+01:00:57,090 --> 01:00:58,980
+But if you tried to
+switch from white to red,
+
+1383
+01:00:58,980 --> 01:00:59,979
+you'd get intersections.
+
+1384
+01:00:59,979 --> 01:01:02,460
+
+1385
+01:01:02,460 --> 01:01:04,120
+There's exactly
+two settings here.
+
+1386
+01:01:04,120 --> 01:01:05,990
+So this is a wire.
+
+1387
+01:01:05,990 --> 01:01:09,240
+Once I choose over
+here white or red,
+
+1388
+01:01:09,240 --> 01:01:11,980
+all the others are
+forced to alternate.
+
+1389
+01:01:11,980 --> 01:01:12,840
+Oh, sorry.
+
+1390
+01:01:12,840 --> 01:01:14,970
+Once I choose up
+or down, the rest
+
+1391
+01:01:14,970 --> 01:01:16,650
+are forced to
+alternate up or down.
+
+1392
+01:01:16,650 --> 01:01:18,400
+If I choose white here,
+they're all white.
+
+1393
+01:01:18,400 --> 01:01:20,560
+If I choose red,
+they're all red.
+
+1394
+01:01:20,560 --> 01:01:22,320
+This is independent
+for each variable,
+
+1395
+01:01:22,320 --> 01:01:23,721
+so independent for each wire.
+
+1396
+01:01:23,721 --> 01:01:25,970
+So that's what's going on
+here and if you look closely
+
+1397
+01:01:25,970 --> 01:01:31,100
+at the bold lines, you've got
+a bracket here from v1 to x1.
+
+1398
+01:01:31,100 --> 01:01:34,440
+Then, you've got a bracket
+here from x2 to x3, then
+
+1399
+01:01:34,440 --> 01:01:36,160
+a bracket here from x4.
+
+1400
+01:01:36,160 --> 01:01:39,580
+But in general, there would be
+lots of those brackets going
+
+1401
+01:01:39,580 --> 01:01:42,840
+all the way down the picture.
+
+1402
+01:01:42,840 --> 01:01:46,600
+And the cool thing about
+this is you get the ability
+
+1403
+01:01:46,600 --> 01:01:49,340
+to crossover,
+because now if I just
+
+1404
+01:01:49,340 --> 01:01:51,580
+restrict this picture--
+it's hard to see-- if I just
+
+1405
+01:01:51,580 --> 01:01:56,080
+restrict to the white part,
+you can go from top to bottom.
+
+1406
+01:01:56,080 --> 01:02:00,750
+You just need an
+appropriate kind of zigzag.
+
+1407
+01:02:00,750 --> 01:02:03,240
+That will let you go from
+up here to down there
+
+1408
+01:02:03,240 --> 01:02:06,270
+without intersections
+and that's what's
+
+1409
+01:02:06,270 --> 01:02:08,160
+happening with this line.
+
+1410
+01:02:08,160 --> 01:02:11,620
+It's going over, around
+the brackets, and down.
+
+1411
+01:02:11,620 --> 01:02:15,490
+And so the c1 to c1 prime
+can remain a single path.
+
+1412
+01:02:15,490 --> 01:02:17,550
+It can always get through.
+
+1413
+01:02:17,550 --> 01:02:19,020
+If you have this
+gadget, then you
+
+1414
+01:02:19,020 --> 01:02:21,780
+can have an intersection
+with no trouble.
+
+1415
+01:02:21,780 --> 01:02:24,400
+But v1 is still
+communicating information
+
+1416
+01:02:24,400 --> 01:02:29,820
+down the line of one setting
+or the other, 0 or 1.
+
+1417
+01:02:29,820 --> 01:02:35,380
+There's some details to check
+there, but that's the idea.
+
+1418
+01:02:35,380 --> 01:02:37,910
+And that's the end
+of the Lynch paper.
+
+1419
+01:02:37,910 --> 01:02:42,980
+Now, we were looking at
+this earlier this year
+
+1420
+01:02:42,980 --> 01:02:46,280
+and we can prove an even
+stronger result, which
+
+1421
+01:02:46,280 --> 01:02:48,520
+is what you might call
+planar vertex disjoint
+
+1422
+01:02:48,520 --> 01:02:49,640
+paths in a rectangle.
+
+1423
+01:02:49,640 --> 01:02:52,710
+
+1424
+01:02:52,710 --> 01:02:54,845
+So the idea is you
+have a rectangle
+
+1425
+01:02:54,845 --> 01:02:57,450
+of one-by-one squares.
+
+1426
+01:02:57,450 --> 01:03:01,905
+Each one-by-one square could be
+a terminal and a terminal pair
+
+1427
+01:03:01,905 --> 01:03:03,280
+or it could just
+be a blank space
+
+1428
+01:03:03,280 --> 01:03:05,220
+so you can route paths through.
+
+1429
+01:03:05,220 --> 01:03:10,410
+And my goal is to find vertex
+disjoint paths connecting
+
+1430
+01:03:10,410 --> 01:03:11,730
+all the terminal pairs.
+
+1431
+01:03:11,730 --> 01:03:14,800
+But furthermore, I want
+every square of the grid
+
+1432
+01:03:14,800 --> 01:03:17,500
+to be occupied by a path.
+
+1433
+01:03:17,500 --> 01:03:19,730
+So it's not quite
+Hamiltonian path.
+
+1434
+01:03:19,730 --> 01:03:23,690
+It's like you have a bunch
+of paths that collectively
+
+1435
+01:03:23,690 --> 01:03:25,850
+fill the entire grid.
+
+1436
+01:03:25,850 --> 01:03:26,740
+Why?
+
+1437
+01:03:26,740 --> 01:03:29,390
+It's motivated by a puzzle,
+but it's natural enough.
+
+1438
+01:03:29,390 --> 01:03:31,790
+This is a more
+specialized version.
+
+1439
+01:03:31,790 --> 01:03:33,260
+So this is also
+NP-hard and we're
+
+1440
+01:03:33,260 --> 01:03:35,310
+going to mimic the same proof.
+
+1441
+01:03:35,310 --> 01:03:37,390
+And this, for
+example, is a gadget
+
+1442
+01:03:37,390 --> 01:03:41,760
+to do, say, this little picture
+where you have two choices.
+
+1443
+01:03:41,760 --> 01:03:44,850
+So maybe the v1 dot
+is actually here
+
+1444
+01:03:44,850 --> 01:03:47,120
+and the idea is you could
+either follow this path
+
+1445
+01:03:47,120 --> 01:03:49,460
+or you can follow this path.
+
+1446
+01:03:49,460 --> 01:03:53,380
+And what's also drawn here are
+lots of other terminal pairs.
+
+1447
+01:03:53,380 --> 01:03:57,030
+These are what you might
+call adjacent terminal pairs,
+
+1448
+01:03:57,030 --> 01:03:59,370
+what you might also
+call obstacles.
+
+1449
+01:03:59,370 --> 01:04:01,740
+Because the paths have
+to be vertex disjoint,
+
+1450
+01:04:01,740 --> 01:04:05,500
+no path can go
+through a terminal.
+
+1451
+01:04:05,500 --> 01:04:07,360
+Any of these dots
+serve as obstacles
+
+1452
+01:04:07,360 --> 01:04:10,380
+so we effectively simulate this
+blank space that you're not
+
+1453
+01:04:10,380 --> 01:04:11,260
+allowed to touch.
+
+1454
+01:04:11,260 --> 01:04:14,110
+
+1455
+01:04:14,110 --> 01:04:16,550
+Now, the fun part is
+maybe those terminal
+
+1456
+01:04:16,550 --> 01:04:19,010
+pairs are connected by
+the single edge that
+
+1457
+01:04:19,010 --> 01:04:21,265
+joins them and doesn't
+get in the way.
+
+1458
+01:04:21,265 --> 01:04:22,640
+But there are
+other possibilities
+
+1459
+01:04:22,640 --> 01:04:24,360
+drawn with these blue lines.
+
+1460
+01:04:24,360 --> 01:04:27,360
+So instead of going
+here, I could do this.
+
+1461
+01:04:27,360 --> 01:04:29,507
+Instead of going here, I
+could do this and this.
+
+1462
+01:04:29,507 --> 01:04:31,090
+And then, if you
+look at this picture,
+
+1463
+01:04:31,090 --> 01:04:37,590
+every pixel has a path
+through it in this case.
+
+1464
+01:04:37,590 --> 01:04:39,890
+And then, here's
+the other case again
+
+1465
+01:04:39,890 --> 01:04:43,740
+and now I'll fill these
+two pixels with this pair.
+
+1466
+01:04:43,740 --> 01:04:46,664
+And now, every pixel
+has a path through it.
+
+1467
+01:04:46,664 --> 01:04:48,580
+That's my goal is to
+make sure every pixel has
+
+1468
+01:04:48,580 --> 01:04:49,020
+a path through it.
+
+1469
+01:04:49,020 --> 01:04:50,520
+So we're just trying
+to preserve all
+
+1470
+01:04:50,520 --> 01:04:52,056
+of the solutions
+we have here but
+
+1471
+01:04:52,056 --> 01:04:53,680
+with the additional
+constraint that all
+
+1472
+01:04:53,680 --> 01:04:57,040
+of the-- because we already
+know this is simulating 3SAT.
+
+1473
+01:04:57,040 --> 01:04:58,650
+We already know it's hard.
+
+1474
+01:04:58,650 --> 01:05:00,820
+We just now want to have
+this extra constraint
+
+1475
+01:05:00,820 --> 01:05:03,100
+that every pixel has
+a path through it
+
+1476
+01:05:03,100 --> 01:05:05,190
+and that we live in a rectangle.
+
+1477
+01:05:05,190 --> 01:05:08,082
+So this looks good.
+
+1478
+01:05:08,082 --> 01:05:10,290
+As you might imagine, there's
+a little bit of finesse
+
+1479
+01:05:10,290 --> 01:05:12,027
+to make these gadgets work.
+
+1480
+01:05:12,027 --> 01:05:14,360
+You notice some of these guys
+are oriented horizontally.
+
+1481
+01:05:14,360 --> 01:05:15,901
+Some of them are
+oriented vertically.
+
+1482
+01:05:15,901 --> 01:05:20,160
+That's to make it
+work, but this is easy.
+
+1483
+01:05:20,160 --> 01:05:23,670
+What you're about
+to see is less easy.
+
+1484
+01:05:23,670 --> 01:05:26,460
+So let's do the crossover
+gadget, because that's
+
+1485
+01:05:26,460 --> 01:05:27,560
+the heart of everything.
+
+1486
+01:05:27,560 --> 01:05:29,590
+And when we were
+starting on this--
+
+1487
+01:05:29,590 --> 01:05:34,020
+I think this was in
+May-- I was very happy
+
+1488
+01:05:34,020 --> 01:05:36,854
+when I could finally
+draw this picture.
+
+1489
+01:05:36,854 --> 01:05:38,520
+Sorry, this is actually
+the final gadget
+
+1490
+01:05:38,520 --> 01:05:43,510
+which works but you can see
+the same kind of picture.
+
+1491
+01:05:43,510 --> 01:05:46,140
+I've got a bracket here that
+corresponds to this bracket
+
+1492
+01:05:46,140 --> 01:05:48,000
+here and there's
+another bracket here.
+
+1493
+01:05:48,000 --> 01:05:50,590
+I've just rounded it
+to integer coordinates
+
+1494
+01:05:50,590 --> 01:05:54,020
+and made sure that everything
+else can be filled in.
+
+1495
+01:05:54,020 --> 01:05:54,950
+Easy, right?
+
+1496
+01:05:54,950 --> 01:05:58,520
+
+1497
+01:05:58,520 --> 01:06:01,150
+In the sake of education, let
+me show you all the things that
+
+1498
+01:06:01,150 --> 01:06:02,379
+went wrong in this proof.
+
+1499
+01:06:02,379 --> 01:06:03,920
+Because it was only
+a few months ago,
+
+1500
+01:06:03,920 --> 01:06:06,670
+I mostly remember
+everything that went wrong,
+
+1501
+01:06:06,670 --> 01:06:08,950
+which was a lot.
+
+1502
+01:06:08,950 --> 01:06:11,330
+So this was an early
+version of the gadget,
+
+1503
+01:06:11,330 --> 01:06:15,460
+not actually the first one
+but it serves its purpose.
+
+1504
+01:06:15,460 --> 01:06:17,040
+So here, we have
+the two settings.
+
+1505
+01:06:17,040 --> 01:06:19,210
+It's corresponding to
+these two settings, the up
+
+1506
+01:06:19,210 --> 01:06:22,210
+and the down setting, the
+true and the false setting.
+
+1507
+01:06:22,210 --> 01:06:25,270
+We've got this path coming
+through in both cases.
+
+1508
+01:06:25,270 --> 01:06:29,120
+It takes a slightly
+different path over here.
+
+1509
+01:06:29,120 --> 01:06:31,157
+The brackets are flipped.
+
+1510
+01:06:31,157 --> 01:06:32,740
+So the first thing
+I want to point out
+
+1511
+01:06:32,740 --> 01:06:35,810
+are these circled nodes.
+
+1512
+01:06:35,810 --> 01:06:37,826
+The obvious way to
+draw this picture
+
+1513
+01:06:37,826 --> 01:06:41,799
+is with all of the
+terminals in the center row.
+
+1514
+01:06:41,799 --> 01:06:42,840
+That would be reasonable.
+
+1515
+01:06:42,840 --> 01:06:45,910
+They're not drawn that way here
+because imagine at this point,
+
+1516
+01:06:45,910 --> 01:06:49,400
+we're down here and we have
+this big path over here.
+
+1517
+01:06:49,400 --> 01:06:51,780
+Then, there'll be
+three pixels here which
+
+1518
+01:06:51,780 --> 01:06:54,170
+somehow have to be filled.
+
+1519
+01:06:54,170 --> 01:06:58,240
+And that is trouble
+because three is odd.
+
+1520
+01:06:58,240 --> 01:07:02,050
+So this is what you
+might call issue one.
+
+1521
+01:07:02,050 --> 01:07:04,050
+Wherever you have
+empty space, any group
+
+1522
+01:07:04,050 --> 01:07:08,670
+should have even area because
+if you look at two guys that
+
+1523
+01:07:08,670 --> 01:07:13,390
+are adjacent and you replace
+them with some other path,
+
+1524
+01:07:13,390 --> 01:07:14,780
+together, that forms a polygon.
+
+1525
+01:07:14,780 --> 01:07:19,090
+And in the square grid
+every polygon has even area.
+
+1526
+01:07:19,090 --> 01:07:22,920
+So you will never fill
+exactly three spaces.
+
+1527
+01:07:22,920 --> 01:07:26,900
+So the major revolution which
+I spent many hours figuring out
+
+1528
+01:07:26,900 --> 01:07:28,870
+is if I just move these
+points up one spot,
+
+1529
+01:07:28,870 --> 01:07:29,920
+everything just works.
+
+1530
+01:07:29,920 --> 01:07:31,690
+I was so happy.
+
+1531
+01:07:31,690 --> 01:07:33,200
+So I figured, OK, proof's done.
+
+1532
+01:07:33,200 --> 01:07:36,920
+I drew these two figures
+and forgot about it.
+
+1533
+01:07:36,920 --> 01:07:40,750
+Then, a couple months later,
+we want to write the paper
+
+1534
+01:07:40,750 --> 01:07:42,340
+and then we get to issue two.
+
+1535
+01:07:42,340 --> 01:07:44,990
+So issue two is
+well, this is great.
+
+1536
+01:07:44,990 --> 01:07:51,090
+This works fine if the
+clause path is present.
+
+1537
+01:07:51,090 --> 01:07:53,510
+If the clause chooses
+this vertical path,
+
+1538
+01:07:53,510 --> 01:07:54,720
+this will fill everything.
+
+1539
+01:07:54,720 --> 01:07:56,220
+This will fill everything.
+
+1540
+01:07:56,220 --> 01:07:58,930
+But what if the
+clause path is absent?
+
+1541
+01:07:58,930 --> 01:08:00,080
+Clause has three choices.
+
+1542
+01:08:00,080 --> 01:08:02,420
+It may not choose
+this vertical path.
+
+1543
+01:08:02,420 --> 01:08:06,290
+So then, somehow, this stuff
+has to be covered using
+
+1544
+01:08:06,290 --> 01:08:10,200
+all the extra filler stuff.
+
+1545
+01:08:10,200 --> 01:08:13,769
+And here, I couldn't
+quite figure out
+
+1546
+01:08:13,769 --> 01:08:14,810
+how to fill these things.
+
+1547
+01:08:14,810 --> 01:08:17,970
+Well, maybe I should add a
+couple more rows in the middle.
+
+1548
+01:08:17,970 --> 01:08:20,880
+That didn't seem to help.
+
+1549
+01:08:20,880 --> 01:08:22,430
+I thought this one was OK.
+
+1550
+01:08:22,430 --> 01:08:26,040
+It looks fine until I
+notice that well, either I
+
+1551
+01:08:26,040 --> 01:08:29,200
+connect these two dots
+by a length two path
+
+1552
+01:08:29,200 --> 01:08:30,479
+or I connect it by this path.
+
+1553
+01:08:30,479 --> 01:08:36,450
+But in that case, this
+pixel is uncovered by paths.
+
+1554
+01:08:36,450 --> 01:08:39,500
+And this is bad, because there's
+exactly one such pixel, which
+
+1555
+01:08:39,500 --> 01:08:42,850
+means I have another
+parity problem again.
+
+1556
+01:08:42,850 --> 01:08:48,029
+So I think what we
+ended up doing--
+
+1557
+01:08:48,029 --> 01:08:50,450
+and when you're really doing
+it, you don't immediately
+
+1558
+01:08:50,450 --> 01:08:53,130
+realize it's a parity problem.
+
+1559
+01:08:53,130 --> 01:08:55,020
+I tried trying to fix
+this many, many times
+
+1560
+01:08:55,020 --> 01:08:57,729
+and every single time, I
+had one pixel uncovered.
+
+1561
+01:08:57,729 --> 01:08:59,120
+Oh, bet there's a theorem here.
+
+1562
+01:08:59,120 --> 01:09:02,300
+And then, I proved, oh, yeah,
+it's got to change parity.
+
+1563
+01:09:02,300 --> 01:09:06,170
+So what we ended up doing
+was adding a row down here.
+
+1564
+01:09:06,170 --> 01:09:07,899
+Make this path slightly longer.
+
+1565
+01:09:07,899 --> 01:09:09,830
+That adds exactly
+one uncovered pixel
+
+1566
+01:09:09,830 --> 01:09:12,310
+so it should fix
+the parity problem.
+
+1567
+01:09:12,310 --> 01:09:16,040
+Many hours later, we
+came up with this.
+
+1568
+01:09:16,040 --> 01:09:19,000
+So this is good.
+
+1569
+01:09:19,000 --> 01:09:22,649
+Every pixel is covered
+in all four cases.
+
+1570
+01:09:22,649 --> 01:09:27,029
+The bottom row is that
+the clause path is in
+
+1571
+01:09:27,029 --> 01:09:29,950
+and the top row is the
+clause path is out.
+
+1572
+01:09:29,950 --> 01:09:33,080
+And as you can see, lots
+of careful orientations
+
+1573
+01:09:33,080 --> 01:09:35,960
+of these little terminal pairs
+to make sure in all cases,
+
+1574
+01:09:35,960 --> 01:09:37,130
+you can cover everything.
+
+1575
+01:09:37,130 --> 01:09:39,000
+This was frustrating
+because you'd fix one
+
+1576
+01:09:39,000 --> 01:09:40,583
+and then you switch
+to the other layer
+
+1577
+01:09:40,583 --> 01:09:42,350
+and say, oh, I broke
+this other one.
+
+1578
+01:09:42,350 --> 01:09:45,650
+I rotated these guys and now,
+it's not possible to do this,
+
+1579
+01:09:45,650 --> 01:09:47,260
+so you better-- and
+it would be like,
+
+1580
+01:09:47,260 --> 01:09:49,551
+you'd rotate this and then
+rotate that and rotate this.
+
+1581
+01:09:49,551 --> 01:09:52,750
+And luckily, no bad
+cycles happened.
+
+1582
+01:09:52,750 --> 01:09:54,660
+You could always resolve it.
+
+1583
+01:09:54,660 --> 01:09:57,170
+And so finally, we
+got this picture,
+
+1584
+01:09:57,170 --> 01:10:02,570
+except for issue three, which
+is another parity problem.
+
+1585
+01:10:02,570 --> 01:10:03,410
+I was blown away.
+
+1586
+01:10:03,410 --> 01:10:07,570
+It was like every day, there
+was another parity problem.
+
+1587
+01:10:07,570 --> 01:10:10,660
+Of course, the deadline
+is tomorrow at this point.
+
+1588
+01:10:10,660 --> 01:10:12,410
+Luckily, I started
+three days ahead
+
+1589
+01:10:12,410 --> 01:10:17,030
+so there were
+exactly three issues.
+
+1590
+01:10:17,030 --> 01:10:20,340
+So remember this gadget,
+which was the choice.
+
+1591
+01:10:20,340 --> 01:10:22,195
+I didn't say this is
+a variable choice.
+
+1592
+01:10:22,195 --> 01:10:23,070
+You have two choices.
+
+1593
+01:10:23,070 --> 01:10:25,870
+If you want a clause choice,
+you connect two of these gadgets
+
+1594
+01:10:25,870 --> 01:10:27,870
+together and then you
+have three different paths
+
+1595
+01:10:27,870 --> 01:10:28,930
+you might follow.
+
+1596
+01:10:28,930 --> 01:10:31,460
+If you stare at this
+enough-- and I just
+
+1597
+01:10:31,460 --> 01:10:34,000
+wanted to make sure, OK,
+can I plug these together?
+
+1598
+01:10:34,000 --> 01:10:37,626
+I thought, OK, I'll just copy
+and paste and lay things out
+
+1599
+01:10:37,626 --> 01:10:38,750
+and I had a parity problem.
+
+1600
+01:10:38,750 --> 01:10:40,620
+I was like, oh, man,
+what's going on?
+
+1601
+01:10:40,620 --> 01:10:44,100
+Well, if you look here,
+this is at one column
+
+1602
+01:10:44,100 --> 01:10:47,370
+and this is a column
+four positions over.
+
+1603
+01:10:47,370 --> 01:10:48,860
+So in particular,
+the two choices
+
+1604
+01:10:48,860 --> 01:10:51,610
+here have the same parity.
+
+1605
+01:10:51,610 --> 01:10:55,420
+I think it's mod 2 not mod
+4 but I could double-check.
+
+1606
+01:10:55,420 --> 01:10:58,300
+And you just cannot build this
+if you want these things to be
+
+1607
+01:10:58,300 --> 01:11:02,720
+an odd distance
+apart because parity.
+
+1608
+01:11:02,720 --> 01:11:05,960
+So then, you look at
+this gadget and you
+
+1609
+01:11:05,960 --> 01:11:09,570
+realize it has an odd
+number of columns.
+
+1610
+01:11:09,570 --> 01:11:11,270
+We've made it an
+even number of rows
+
+1611
+01:11:11,270 --> 01:11:13,520
+when we added that
+last row but now
+
+1612
+01:11:13,520 --> 01:11:16,650
+it has an odd number of
+columns, which is kind of weird
+
+1613
+01:11:16,650 --> 01:11:18,640
+but that's life.
+
+1614
+01:11:18,640 --> 01:11:22,130
+So we need to make it even.
+
+1615
+01:11:22,130 --> 01:11:25,210
+And so I think if
+you focus right here,
+
+1616
+01:11:25,210 --> 01:11:27,710
+we add another column.
+
+1617
+01:11:27,710 --> 01:11:29,897
+It's now right here so
+where there used to be two,
+
+1618
+01:11:29,897 --> 01:11:30,730
+now there are three.
+
+1619
+01:11:30,730 --> 01:11:34,100
+We have this little trick
+to fill things in and not
+
+1620
+01:11:34,100 --> 01:11:35,001
+too much changed.
+
+1621
+01:11:35,001 --> 01:11:36,500
+I think I also
+cleaned up the gadget
+
+1622
+01:11:36,500 --> 01:11:38,460
+or removed a couple extra
+columns on the right,
+
+1623
+01:11:38,460 --> 01:11:41,650
+but the key thing was
+to add a new column that
+
+1624
+01:11:41,650 --> 01:11:42,740
+fixed the parity.
+
+1625
+01:11:42,740 --> 01:11:44,530
+Now, the number
+of columns is even
+
+1626
+01:11:44,530 --> 01:11:46,210
+and now, I have to prove this.
+
+1627
+01:11:46,210 --> 01:11:49,540
+But it's pretty easy to check.
+
+1628
+01:11:49,540 --> 01:11:54,370
+You can combine these gadgets
+together and they match up.
+
+1629
+01:11:54,370 --> 01:11:56,050
+And then, if you
+have blank space,
+
+1630
+01:11:56,050 --> 01:11:59,890
+it's also even by even and so
+it always has a perfect matching
+
+1631
+01:11:59,890 --> 01:12:03,460
+and so you can fill in any
+blank space with extra pairs.
+
+1632
+01:12:03,460 --> 01:12:06,640
+
+1633
+01:12:06,640 --> 01:12:11,980
+Those are the gadgets
+except there's one more
+
+1634
+01:12:11,980 --> 01:12:13,234
+issue I haven't mentioned.
+
+1635
+01:12:13,234 --> 01:12:14,900
+AUDIENCE: Yeah, there's
+a parity problem
+
+1636
+01:12:14,900 --> 01:12:15,700
+with your parity problems.
+
+1637
+01:12:15,700 --> 01:12:17,140
+There's only an
+odd number of them.
+
+1638
+01:12:17,140 --> 01:12:18,570
+PROFESSOR: Only an odd
+number of parity problems--
+
+1639
+01:12:18,570 --> 01:12:20,710
+luckily, the next problem
+is not a parity problem
+
+1640
+01:12:20,710 --> 01:12:23,540
+or unluckily-- I don't know.
+
+1641
+01:12:23,540 --> 01:12:25,220
+And this wasn't
+really a problem.
+
+1642
+01:12:25,220 --> 01:12:26,470
+I knew it was going to happen.
+
+1643
+01:12:26,470 --> 01:12:30,220
+I just had to draw the figure
+but it's good for an exercise.
+
+1644
+01:12:30,220 --> 01:12:33,280
+Think about what could
+possibly be missing.
+
+1645
+01:12:33,280 --> 01:12:36,450
+We spent all this time
+doing crossover gadgets
+
+1646
+01:12:36,450 --> 01:12:39,690
+but there's also the case
+where the wires cross
+
+1647
+01:12:39,690 --> 01:12:41,560
+and we actually want
+the vertical wire
+
+1648
+01:12:41,560 --> 01:12:45,030
+to block the horizontal
+wire in a particular choice.
+
+1649
+01:12:45,030 --> 01:12:47,050
+This is actually
+really easy to do.
+
+1650
+01:12:47,050 --> 01:12:48,967
+So here's the gadget
+I was just showing you
+
+1651
+01:12:48,967 --> 01:12:50,300
+without all the stuff filled in.
+
+1652
+01:12:50,300 --> 01:12:52,100
+Those are just the
+terminal pairs.
+
+1653
+01:12:52,100 --> 01:12:54,630
+And this guy goes to the left.
+
+1654
+01:12:54,630 --> 01:12:55,850
+This guy goes to here.
+
+1655
+01:12:55,850 --> 01:12:58,270
+This guy goes to the right.
+
+1656
+01:12:58,270 --> 01:13:03,500
+If you just add in an extra
+pair here or an extra pair here,
+
+1657
+01:13:03,500 --> 01:13:06,140
+you will block blue or
+red, correspondingly.
+
+1658
+01:13:06,140 --> 01:13:08,220
+So if we go to the
+previous slide here,
+
+1659
+01:13:08,220 --> 01:13:11,870
+blue goes through this
+position but red does not.
+
+1660
+01:13:11,870 --> 01:13:16,740
+And down here, blue does
+not go through this position
+
+1661
+01:13:16,740 --> 01:13:18,350
+but red does.
+
+1662
+01:13:18,350 --> 01:13:20,590
+And so if you add in
+this extra little pair,
+
+1663
+01:13:20,590 --> 01:13:24,160
+you will force red or
+blue at that intersection.
+
+1664
+01:13:24,160 --> 01:13:26,760
+And that was the little
+squares in the overall diagram.
+
+1665
+01:13:26,760 --> 01:13:28,870
+So if you choose
+this vertical path,
+
+1666
+01:13:28,870 --> 01:13:33,600
+you force the horizontal
+path to be the other thing.
+
+1667
+01:13:33,600 --> 01:13:36,830
+That's the proof.
+
+1668
+01:13:36,830 --> 01:13:41,570
+I hope there are no more
+issues but it was exciting.
+
+1669
+01:13:41,570 --> 01:13:43,600
+So just to give you a
+flavor for parity issues,
+
+1670
+01:13:43,600 --> 01:13:45,766
+there are all over the
+place, especially when you're
+
+1671
+01:13:45,766 --> 01:13:46,460
+on a grid.
+
+1672
+01:13:46,460 --> 01:13:48,280
+Be careful of them.
+
+1673
+01:13:48,280 --> 01:13:49,710
+That's the life lesson.
+
+1674
+01:13:49,710 --> 01:13:52,650
+
+1675
+01:13:52,650 --> 01:13:55,390
+I'll tell you a little bit
+about where this kind of problem
+
+1676
+01:13:55,390 --> 01:13:56,080
+comes from.
+
+1677
+01:13:56,080 --> 01:13:59,200
+The earliest reference we know
+is by Sam Loyd, a famous puzzle
+
+1678
+01:13:59,200 --> 01:13:59,940
+designer.
+
+1679
+01:13:59,940 --> 01:14:04,600
+In 1897, he posed this puzzle,
+an incredibly complicated
+
+1680
+01:14:04,600 --> 01:14:07,640
+puzzle, lots of stuff in it.
+
+1681
+01:14:07,640 --> 01:14:09,580
+And then, I think
+the next issue,
+
+1682
+01:14:09,580 --> 01:14:12,439
+he published the
+solution, which is this.
+
+1683
+01:14:12,439 --> 01:14:13,855
+Hopefully, I
+remember the problem.
+
+1684
+01:14:13,855 --> 01:14:16,450
+So you have these
+houses and you'll notice
+
+1685
+01:14:16,450 --> 01:14:21,140
+each house faces an exit.
+
+1686
+01:14:21,140 --> 01:14:24,750
+And what you'd like
+is for each house
+
+1687
+01:14:24,750 --> 01:14:28,894
+to be connected by a
+pathway to the exit.
+
+1688
+01:14:28,894 --> 01:14:31,310
+But if you just did that, they
+would intersect each other.
+
+1689
+01:14:31,310 --> 01:14:33,310
+So you want vertex
+disjoint paths
+
+1690
+01:14:33,310 --> 01:14:36,620
+in the grid from the houses
+to the exit that they face.
+
+1691
+01:14:36,620 --> 01:14:40,490
+So that is a terminal pair
+vertex disjoint path problem.
+
+1692
+01:14:40,490 --> 01:14:44,380
+Now, he didn't specify
+that those paths should
+
+1693
+01:14:44,380 --> 01:14:47,660
+fill the entire grid
+but they almost do.
+
+1694
+01:14:47,660 --> 01:14:49,890
+Other than this
+little corner, they
+
+1695
+01:14:49,890 --> 01:14:52,940
+do and a few little
+corners at the extremes.
+
+1696
+01:14:52,940 --> 01:14:53,760
+And you can fix it.
+
+1697
+01:14:53,760 --> 01:14:55,230
+Instead of going
+like this, you can
+
+1698
+01:14:55,230 --> 01:14:59,250
+go zig, zig, zig, zig, and
+zig, zig, zig, zig, zig
+
+1699
+01:14:59,250 --> 01:15:05,500
+and make it into a solution
+to the problem I just said.
+
+1700
+01:15:05,500 --> 01:15:08,620
+So that's 1897.
+
+1701
+01:15:08,620 --> 01:15:12,720
+In modern terms, this is known
+as the Numberlink puzzle.
+
+1702
+01:15:12,720 --> 01:15:17,540
+Nikoli is a famous
+Japanese puzzle publisher.
+
+1703
+01:15:17,540 --> 01:15:21,400
+These are two Nikoli books
+that we got in our last trip
+
+1704
+01:15:21,400 --> 01:15:23,472
+to Japan a couple months ago.
+
+1705
+01:15:23,472 --> 01:15:25,180
+These are both for
+the Numberlink puzzle.
+
+1706
+01:15:25,180 --> 01:15:30,990
+So you turn to an arbitrary
+page and you have some picture
+
+1707
+01:15:30,990 --> 01:15:34,230
+like this, which
+here's an example.
+
+1708
+01:15:34,230 --> 01:15:35,200
+You have pairs.
+
+1709
+01:15:35,200 --> 01:15:37,550
+You have a bunch of
+numbers and blank spaces.
+
+1710
+01:15:37,550 --> 01:15:40,770
+The idea is that there's
+exactly two of each number.
+
+1711
+01:15:40,770 --> 01:15:42,200
+Those are your terminal pairs.
+
+1712
+01:15:42,200 --> 01:15:44,835
+You want to find vertex
+disjoint paths that connect them
+
+1713
+01:15:44,835 --> 01:15:47,120
+and in the back,
+there's solutions
+
+1714
+01:15:47,120 --> 01:15:49,460
+if you can't solve one.
+
+1715
+01:15:49,460 --> 01:15:53,560
+They have easy ones,
+medium ones, hard ones.
+
+1716
+01:15:53,560 --> 01:15:55,050
+So how hard is it?
+
+1717
+01:15:55,050 --> 01:15:58,430
+NP-hard because this is exactly
+the problem we were just
+
+1718
+01:15:58,430 --> 01:16:00,670
+solving, if you want
+to find vertex disjoint
+
+1719
+01:16:00,670 --> 01:16:03,190
+paths in the grid.
+
+1720
+01:16:03,190 --> 01:16:05,840
+There is this issue
+of whether you
+
+1721
+01:16:05,840 --> 01:16:08,030
+are specified as one
+of the constraints
+
+1722
+01:16:08,030 --> 01:16:12,530
+that you must
+visit every square.
+
+1723
+01:16:12,530 --> 01:16:19,870
+But do a quick visual scan
+here-- in every solution
+
+1724
+01:16:19,870 --> 01:16:24,210
+that I see, every square
+happens to be filled.
+
+1725
+01:16:24,210 --> 01:16:26,910
+Now, that might be the
+way that they designed
+
+1726
+01:16:26,910 --> 01:16:29,760
+the puzzles, the only way to
+solve them is for every square
+
+1727
+01:16:29,760 --> 01:16:31,730
+to be filled or it might
+be that's a constraint
+
+1728
+01:16:31,730 --> 01:16:32,313
+to the puzzle.
+
+1729
+01:16:32,313 --> 01:16:34,760
+And different write-ups
+suggest different ways.
+
+1730
+01:16:34,760 --> 01:16:37,270
+But what we proved is,
+both ways, it's hard.
+
+1731
+01:16:37,270 --> 01:16:40,240
+Whether you give that as a
+specification or you make
+
+1732
+01:16:40,240 --> 01:16:44,050
+it possible to do, it is
+NP-hard because we started
+
+1733
+01:16:44,050 --> 01:16:46,570
+from a reduction that didn't
+have to fill every pixel
+
+1734
+01:16:46,570 --> 01:16:48,069
+and we turned it
+into one that could
+
+1735
+01:16:48,069 --> 01:16:50,090
+fill every pixel if you wanted.
+
+1736
+01:16:50,090 --> 01:16:50,630
+Yeah?
+
+1737
+01:16:50,630 --> 01:16:53,830
+AUDIENCE: There's a sense
+in which these puzzles are
+
+1738
+01:16:53,830 --> 01:16:57,260
+sparser, in terms of
+the number of vertices
+
+1739
+01:16:57,260 --> 01:16:58,610
+than your reduction.
+
+1740
+01:16:58,610 --> 01:17:01,777
+Is it possible that you
+could define it in such a way
+
+1741
+01:17:01,777 --> 01:17:03,640
+that these are unsolvable?
+
+1742
+01:17:03,640 --> 01:17:06,000
+PROFESSOR: It's an
+interesting question.
+
+1743
+01:17:06,000 --> 01:17:13,140
+So our reduction has most of
+the cells filled with numbers.
+
+1744
+01:17:13,140 --> 01:17:15,830
+These you could say, if you
+have an n by n grid, maybe
+
+1745
+01:17:15,830 --> 01:17:18,390
+these only have order
+n numbers, whereas we
+
+1746
+01:17:18,390 --> 01:17:20,140
+have order n squared numbers.
+
+1747
+01:17:20,140 --> 01:17:21,230
+That would be interesting.
+
+1748
+01:17:21,230 --> 01:17:22,880
+I don't know the complexity.
+
+1749
+01:17:22,880 --> 01:17:25,930
+The one thing that's known
+is for one terminal pair,
+
+1750
+01:17:25,930 --> 01:17:28,990
+it's polynomial time.
+
+1751
+01:17:28,990 --> 01:17:32,090
+I think even two terminal
+pairs is an open problem.
+
+1752
+01:17:32,090 --> 01:17:34,850
+So you need to solve that
+before you could solve
+
+1753
+01:17:34,850 --> 01:17:38,239
+n terminal pairs for an n by n.
+
+1754
+01:17:38,239 --> 01:17:40,780
+So I don't know how many people
+worked on two terminal pairs.
+
+1755
+01:17:40,780 --> 01:17:42,238
+I've thought about
+it a little bit.
+
+1756
+01:17:42,238 --> 01:17:44,600
+It seems very difficult.
+
+1757
+01:17:44,600 --> 01:17:46,150
+Anyway, a little
+more to this story.
+
+1758
+01:17:46,150 --> 01:17:49,954
+
+1759
+01:17:49,954 --> 01:17:51,620
+In fact, we first
+encountered Numberlink
+
+1760
+01:17:51,620 --> 01:17:54,180
+in the form of an Android
+game called Flow Free, which
+
+1761
+01:17:54,180 --> 01:17:55,510
+some of you may have played.
+
+1762
+01:17:55,510 --> 01:17:59,170
+It became popular for
+a few months there
+
+1763
+01:17:59,170 --> 01:18:02,170
+but it is exactly Numberlink
+as I have defined it.
+
+1764
+01:18:02,170 --> 01:18:05,450
+And once you know
+that, then there's
+
+1765
+01:18:05,450 --> 01:18:08,080
+also Number Link and a
+zillion other clones.
+
+1766
+01:18:08,080 --> 01:18:10,580
+And I don't think Nikoli
+publishes any of these.
+
+1767
+01:18:10,580 --> 01:18:12,990
+But it's all from
+1897, so unclear
+
+1768
+01:18:12,990 --> 01:18:15,437
+what the copyright is here.
+
+1769
+01:18:15,437 --> 01:18:17,020
+But in particular,
+Number Link I like.
+
+1770
+01:18:17,020 --> 01:18:19,360
+It has the nicest GUI.
+
+1771
+01:18:19,360 --> 01:18:21,260
+But in the beginning
+tutorial, it
+
+1772
+01:18:21,260 --> 01:18:23,500
+says, well, there's actually
+two modes you can play.
+
+1773
+01:18:23,500 --> 01:18:25,710
+There's zigzag mode, where
+you can draw paths however
+
+1774
+01:18:25,710 --> 01:18:26,210
+you want.
+
+1775
+01:18:26,210 --> 01:18:28,180
+That's what I've been
+talking about because
+
+1776
+01:18:28,180 --> 01:18:30,220
+graphed theoretically,
+that's the natural thing.
+
+1777
+01:18:30,220 --> 01:18:33,560
+Then, there's this other
+modes called classic mode
+
+1778
+01:18:33,560 --> 01:18:38,060
+where if you draw
+a complicated path,
+
+1779
+01:18:38,060 --> 01:18:42,520
+it gets-- "autoshrinked"
+is the general term.
+
+1780
+01:18:42,520 --> 01:18:44,640
+Now, again, it's hard to
+have an authority here
+
+1781
+01:18:44,640 --> 01:18:47,330
+in what are the
+rules of Number Link?
+
+1782
+01:18:47,330 --> 01:18:49,940
+But one definition
+is you consider
+
+1783
+01:18:49,940 --> 01:18:53,450
+all possible paths
+between these pairs that
+
+1784
+01:18:53,450 --> 01:18:54,646
+have the same topology.
+
+1785
+01:18:54,646 --> 01:18:56,942
+
+1786
+01:18:56,942 --> 01:18:59,400
+You can try to go this way or
+you could try to go this way.
+
+1787
+01:18:59,400 --> 01:19:01,730
+Here, you have these two
+guys on your right-hand side.
+
+1788
+01:19:01,730 --> 01:19:03,480
+Here, you have them
+on the left-hand side.
+
+1789
+01:19:03,480 --> 01:19:06,230
+In general, that's called a
+homotopy type of that path.
+
+1790
+01:19:06,230 --> 01:19:10,460
+Consider all paths with
+the same homotopy type.
+
+1791
+01:19:10,460 --> 01:19:14,830
+Your path should be shortest
+among all such paths.
+
+1792
+01:19:14,830 --> 01:19:17,003
+That is one notion
+of autoshrinked.
+
+1793
+01:19:17,003 --> 01:19:19,253
+I don't know if that's the
+official one, but it is a--
+
+1794
+01:19:19,253 --> 01:19:21,419
+AUDIENCE: That has to do
+with the order in which you
+
+1795
+01:19:21,419 --> 01:19:22,840
+set the things.
+
+1796
+01:19:22,840 --> 01:19:26,650
+PROFESSOR: This description
+suggests a particular order.
+
+1797
+01:19:26,650 --> 01:19:29,004
+So you'd also maybe
+need a proper ordering.
+
+1798
+01:19:29,004 --> 01:19:29,952
+Yeah?
+
+1799
+01:19:29,952 --> 01:19:32,796
+AUDIENCE: So the
+1 to the 1 here,
+
+1800
+01:19:32,796 --> 01:19:35,213
+there's multiple ways--
+well, the other way,
+
+1801
+01:19:35,213 --> 01:19:37,463
+there's multiple ways to get
+through that square grid,
+
+1802
+01:19:37,463 --> 01:19:37,963
+I think.
+
+1803
+01:19:37,963 --> 01:19:40,450
+You can go down and all the
+way around or you could go--
+
+1804
+01:19:40,450 --> 01:19:40,760
+PROFESSOR: Right.
+
+1805
+01:19:40,760 --> 01:19:42,350
+These would both
+be the same length.
+
+1806
+01:19:42,350 --> 01:19:44,200
+And I think those are
+both considered valid,
+
+1807
+01:19:44,200 --> 01:19:45,900
+although you'd have to
+play in this particular--
+
+1808
+01:19:45,900 --> 01:19:47,076
+AUDIENCE: So it wouldn't
+change either of those.It
+
+1809
+01:19:47,076 --> 01:19:48,350
+would take the one you chose.
+
+1810
+01:19:48,350 --> 01:19:49,520
+PROFESSOR: Right.
+
+1811
+01:19:49,520 --> 01:19:51,080
+So you still have
+some flexibility.
+
+1812
+01:19:51,080 --> 01:19:53,079
+There are multiple shortest
+paths in this world,
+
+1813
+01:19:53,079 --> 01:19:55,520
+because we're Manhattan metric.
+
+1814
+01:19:55,520 --> 01:20:00,592
+So this raises the issue
+of classic Number Link.
+
+1815
+01:20:00,592 --> 01:20:02,800
+And most of the puzzles--
+I think all the puzzles-- I
+
+1816
+01:20:02,800 --> 01:20:04,780
+haven't checked every
+single one-- actually
+
+1817
+01:20:04,780 --> 01:20:06,580
+follow these rules.
+
+1818
+01:20:06,580 --> 01:20:09,890
+But again, I'm not clear
+what the rules actually
+
+1819
+01:20:09,890 --> 01:20:12,340
+are, whether they
+require this or this.
+
+1820
+01:20:12,340 --> 01:20:15,560
+But luckily, there's another
+paper the covers that case.
+
+1821
+01:20:15,560 --> 01:20:26,550
+It's in Japanese but it
+considers the classic mode,
+
+1822
+01:20:26,550 --> 01:20:30,280
+where you have to do some kind
+of locally shortest paths.
+
+1823
+01:20:30,280 --> 01:20:33,560
+And the gadgets critically
+exploit that feature.
+
+1824
+01:20:33,560 --> 01:20:35,040
+It's a reduction
+from planar 3SAT.
+
+1825
+01:20:35,040 --> 01:20:37,270
+We might look at it when
+we get to planar 3SAT,
+
+1826
+01:20:37,270 --> 01:20:39,800
+which is the next class or two.
+
+1827
+01:20:39,800 --> 01:20:42,310
+Or not-- there's a ton
+of planar 3SAT proofs.
+
+1828
+01:20:42,310 --> 01:20:44,480
+But anyway, that's
+been covered already.
+
+1829
+01:20:44,480 --> 01:20:46,580
+The actual order of events
+is we proved our result
+
+1830
+01:20:46,580 --> 01:20:48,040
+and then we're like, uh
+oh, this is Numberlink.
+
+1831
+01:20:48,040 --> 01:20:49,748
+Uh oh, Numberlink is
+NP-complete and that
+
+1832
+01:20:49,748 --> 01:20:51,280
+was known a few years ago.
+
+1833
+01:20:51,280 --> 01:20:54,770
+Oh, good thing it's a
+different game that we studied.
+
+1834
+01:20:54,770 --> 01:20:56,740
+So there are two versions
+of Numberlink now.
+
+1835
+01:20:56,740 --> 01:20:57,980
+They're both hard.
+
+1836
+01:20:57,980 --> 01:21:02,090
+So that's the good news
+and that's all for today.
+
+1837
+01:21:02,090 --> 01:21:05,720
+This is the Super Mario
+Brothers edition of 6.890.
+

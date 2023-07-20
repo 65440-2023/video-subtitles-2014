@@ -1,0 +1,8070 @@
+1
+00:00:02,255 --> 00:00:03,130
+PROFESSOR: All right.
+
+2
+00:00:03,130 --> 00:00:06,250
+Welcome to 6.890,
+Algorithmic Lower Bounds,
+
+3
+00:00:06,250 --> 00:00:07,530
+Fun with Hardness Proofs.
+
+4
+00:00:07,530 --> 00:00:09,710
+I am your host, Erik Demaine.
+
+5
+00:00:09,710 --> 00:00:16,600
+We have on my left Jayson Lynch
+and Sarah Eisenstat, your TAs.
+
+6
+00:00:16,625 --> 00:00:19,288
+And this is the course website
+
+7
+00:00:19,313 --> 00:00:21,834
+which you should all go to,
+if you haven't already.
+
+8
+00:00:21,859 --> 00:00:24,311
+It looks like the poster
+
+9
+00:00:24,336 --> 00:00:27,873
+and has lots of information about
+the class, including problem sets,
+
+10
+00:00:27,898 --> 00:00:34,575
+lecture notes-- like the slides and
+the handwritten stuff that I have.
+
+11
+00:00:34,600 --> 00:00:38,150
+First question is what
+is this class about?
+
+12
+00:00:38,150 --> 00:00:40,660
+The tag line is
+hardness made easy.
+
+13
+00:00:40,660 --> 00:00:44,120
+In general, we're interested
+in proving problems hard.
+
+14
+00:00:44,120 --> 00:00:46,920
+Proving that there's no fast
+algorithms to solve problems
+
+15
+00:00:46,920 --> 00:00:49,470
+under certain assumptions.
+
+16
+00:00:49,470 --> 00:00:54,020
+And the goal is to give
+you a practical guide
+
+17
+00:00:54,020 --> 00:00:56,810
+and give you lots of experience
+in how to prove problems hard,
+
+18
+00:00:56,810 --> 00:00:59,140
+to make that an easy process.
+
+19
+00:00:59,140 --> 00:01:00,670
+There's a lot of
+technique involved,
+
+20
+00:01:00,670 --> 00:01:03,770
+and the more experience
+you get improving hardness,
+
+21
+00:01:03,770 --> 00:01:06,170
+it becomes relatively
+straightforward to take
+
+22
+00:01:06,170 --> 00:01:08,760
+whatever problem you're
+interested in and prove it hard
+
+23
+00:01:08,760 --> 00:01:11,580
+So the three of us
+are pretty good at it,
+
+24
+00:01:11,580 --> 00:01:15,120
+and our goal is to share
+with you that expertise so
+
+25
+00:01:15,120 --> 00:01:18,070
+that everyone's good at it.
+
+26
+00:01:18,070 --> 00:01:20,297
+This is not a complexity class.
+
+27
+00:01:20,297 --> 00:01:22,380
+Because there are lots of
+computational complexity
+
+28
+00:01:22,380 --> 00:01:24,280
+classes at MIT.
+
+29
+00:01:24,280 --> 00:01:27,170
+So we're not going
+to talk about lots
+
+30
+00:01:27,170 --> 00:01:30,240
+of beautiful deep
+mathematics about relations
+
+31
+00:01:30,240 --> 00:01:31,830
+between complexity classes.
+
+32
+00:01:31,830 --> 00:01:34,180
+We're just going to use
+a lot of those results
+
+33
+00:01:34,180 --> 00:01:36,315
+wholesale without proving them.
+
+34
+00:01:36,315 --> 00:01:38,690
+And you can take one of the
+many computational complexity
+
+35
+00:01:38,690 --> 00:01:40,340
+classes to get that background.
+
+36
+00:01:40,340 --> 00:01:43,640
+I will tell you everything you
+need to know about complexity.
+
+37
+00:01:43,640 --> 00:01:45,300
+So if you've taken
+a complexity class,
+
+38
+00:01:45,300 --> 00:01:47,091
+there will be a small
+amount of repetition.
+
+39
+00:01:47,091 --> 00:01:49,370
+Most of it will be contained
+in today's lecture.
+
+40
+00:01:49,370 --> 00:01:52,830
+But very little repetition, but
+also no background required.
+
+41
+00:01:52,830 --> 00:01:55,610
+I do expect you to have a
+background in algorithms,
+
+42
+00:01:55,610 --> 00:01:58,910
+because we take a kind of
+algorithmic perspective.
+
+43
+00:01:58,910 --> 00:02:04,370
+I call it an anti-algorithmic
+perspective, if you like.
+
+44
+00:02:04,370 --> 00:02:07,750
+And so, yeah.
+
+45
+00:02:07,750 --> 00:02:09,820
+So that's what this class is.
+
+46
+00:02:09,820 --> 00:02:11,650
+Why would you want
+to take this class?
+
+47
+00:02:11,650 --> 00:02:12,600
+Why prove hardness?
+
+48
+00:02:12,600 --> 00:02:15,490
+Well, the main reason
+is to show that you
+
+49
+00:02:15,490 --> 00:02:17,845
+can't design algorithms
+in whatever model
+
+50
+00:02:17,845 --> 00:02:18,720
+you're interested in.
+
+51
+00:02:18,720 --> 00:02:21,649
+That encourages you either
+to change the problem, like
+
+52
+00:02:21,649 --> 00:02:23,190
+to look for
+approximation algorithms,
+
+53
+00:02:23,190 --> 00:02:24,697
+or fixed parameter algorithms.
+
+54
+00:02:24,697 --> 00:02:26,780
+That's, of course, the
+topics of algorithms class.
+
+55
+00:02:26,780 --> 00:02:28,696
+Our goal is to prove
+when these things are not
+
+56
+00:02:28,696 --> 00:02:30,381
+possible in this class.
+
+57
+00:02:30,381 --> 00:02:32,130
+We're going to master
+a lot of techniques.
+
+58
+00:02:32,130 --> 00:02:37,300
+You'll see a lot of key problems
+to reduce from to your problem.
+
+59
+00:02:37,300 --> 00:02:39,790
+Get a lot of proof
+styles that are
+
+60
+00:02:39,790 --> 00:02:41,880
+quite common in the
+literature, but unless you've
+
+61
+00:02:41,880 --> 00:02:43,410
+done them and
+experienced them, it's
+
+62
+00:02:43,410 --> 00:02:45,130
+hard to know what to look for.
+
+63
+00:02:45,130 --> 00:02:48,229
+And one of the big ideas
+in this class is gadgets.
+
+64
+00:02:48,229 --> 00:02:49,770
+And you may have
+seen gadgets before,
+
+65
+00:02:49,770 --> 00:02:52,659
+but we're going to explore
+gadgets to their fullest.
+
+66
+00:02:52,659 --> 00:02:54,450
+The idea of taking lots
+of small components
+
+67
+00:02:54,450 --> 00:02:57,357
+and combining them together.
+
+68
+00:02:57,357 --> 00:02:58,940
+Even if you don't
+care about hardness,
+
+69
+00:02:58,940 --> 00:03:01,420
+I think this class is a
+lot of fun for two reasons.
+
+70
+00:03:01,420 --> 00:03:03,290
+Maybe three.
+
+71
+00:03:03,290 --> 00:03:05,205
+One is that you see
+lots of cool connections
+
+72
+00:03:05,205 --> 00:03:07,330
+between different problems
+that you might not think
+
+73
+00:03:07,330 --> 00:03:08,880
+are related at first glance.
+
+74
+00:03:08,880 --> 00:03:10,370
+Most of the problems
+in this class
+
+75
+00:03:10,370 --> 00:03:11,950
+are equivalent to each other.
+
+76
+00:03:11,950 --> 00:03:13,320
+And it's all about proving that.
+
+77
+00:03:13,320 --> 00:03:15,880
+That's the goal.
+
+78
+00:03:15,880 --> 00:03:18,350
+We'll also study
+lots of fun problems,
+
+79
+00:03:18,350 --> 00:03:19,550
+like Super Mario Brothers.
+
+80
+00:03:19,550 --> 00:03:21,880
+We'll NP-complete today.
+
+81
+00:03:21,880 --> 00:03:24,204
+Tetris, we'll do in
+a lecture or two.
+
+82
+00:03:24,204 --> 00:03:26,620
+There are also serious problems,
+so if you don't like fun,
+
+83
+00:03:26,620 --> 00:03:28,520
+don't worry.
+
+84
+00:03:28,520 --> 00:03:31,300
+And in general,
+proving problems hard
+
+85
+00:03:31,300 --> 00:03:33,160
+is really like solving a puzzle.
+
+86
+00:03:33,160 --> 00:03:34,420
+And it's a lot of fun.
+
+87
+00:03:34,420 --> 00:03:36,530
+And this is one
+of the rare areas
+
+88
+00:03:36,530 --> 00:03:38,830
+where you can basically
+play with puzzles all day,
+
+89
+00:03:38,830 --> 00:03:41,150
+and in the end have
+publishable papers.
+
+90
+00:03:41,150 --> 00:03:43,250
+So we're going to do
+that in particular
+
+91
+00:03:43,250 --> 00:03:45,540
+through an open problem
+session, which is optional.
+
+92
+00:03:45,540 --> 00:03:47,700
+If you want to
+solve open problems
+
+93
+00:03:47,700 --> 00:03:49,470
+that no one knows
+the answer to, we
+
+94
+00:03:49,470 --> 00:03:51,380
+will try to do it once a week.
+
+95
+00:03:51,380 --> 00:03:54,570
+We'll be sending email
+with a call for times when
+
+96
+00:03:54,570 --> 00:03:57,170
+that's ideal for everybody.
+
+97
+00:03:57,170 --> 00:04:02,250
+We talked about background
+and requirements.
+
+98
+00:04:02,250 --> 00:04:03,660
+So first requirement
+of the class
+
+99
+00:04:03,660 --> 00:04:06,430
+is to fill out the survey, which
+is circulating Does anyone not
+
+100
+00:04:06,430 --> 00:04:07,560
+have a survey?
+
+101
+00:04:07,560 --> 00:04:08,060
+Good.
+
+102
+00:04:08,060 --> 00:04:08,990
+Everyone has one.
+
+103
+00:04:08,990 --> 00:04:13,730
+So fill that out, so
+we know who you are.
+
+104
+00:04:13,730 --> 00:04:15,469
+You should also join
+the mailing list.
+
+105
+00:04:15,469 --> 00:04:17,260
+By filling out that
+survey, you should auto
+
+106
+00:04:17,260 --> 00:04:18,176
+join the mailing list.
+
+107
+00:04:18,176 --> 00:04:20,280
+But just in case, if you
+haven't, the mailing list
+
+108
+00:04:20,280 --> 00:04:21,321
+is on the course website.
+
+109
+00:04:21,321 --> 00:04:23,800
+
+
+110
+00:04:23,800 --> 00:04:25,311
+Yeah.
+
+111
+00:04:25,311 --> 00:04:27,450
+Good.
+
+112
+00:04:27,450 --> 00:04:29,200
+Another requirement
+is to attend lectures.
+
+113
+00:04:29,200 --> 00:04:31,760
+You're doing good
+on that so far.
+
+114
+00:04:31,760 --> 00:04:34,220
+And you'll have scribe--
+
+115
+00:04:34,220 --> 00:04:37,550
+I would guess at
+this scale, you'll
+
+116
+00:04:37,550 --> 00:04:39,840
+scribe once, probably in a team.
+
+117
+00:04:39,840 --> 00:04:44,650
+But we will figure that
+out as time goes on.
+
+118
+00:04:44,650 --> 00:04:47,680
+Again, they'll be email about
+signing up for scribing.
+
+119
+00:04:47,680 --> 00:04:50,130
+Scribing is taking
+notes in the lecture
+
+120
+00:04:50,130 --> 00:04:52,642
+so we have another
+form of notes.
+
+121
+00:04:52,642 --> 00:04:54,100
+There will be
+something like five P
+
+122
+00:04:54,100 --> 00:04:55,720
+sets every two to three weeks.
+
+123
+00:04:55,720 --> 00:04:59,950
+The first one will go
+out Tuesday is the plan.
+
+124
+00:04:59,950 --> 00:05:01,890
+And then the big
+part of the class
+
+125
+00:05:01,890 --> 00:05:05,710
+is the project and presentation,
+so the final project,
+
+126
+00:05:05,710 --> 00:05:07,860
+you could do it on
+almost anything related
+
+127
+00:05:07,860 --> 00:05:09,610
+to the content of the class.
+
+128
+00:05:09,610 --> 00:05:13,370
+Typical projects are do
+something new theoretically,
+
+129
+00:05:13,370 --> 00:05:17,970
+prove a problem hard, find
+some nice open problems, survey
+
+130
+00:05:17,970 --> 00:05:21,120
+existing material, something
+that's not covered in class.
+
+131
+00:05:21,120 --> 00:05:22,400
+You can code something.
+
+132
+00:05:22,400 --> 00:05:24,490
+I think in this context,
+the most natural thing
+
+133
+00:05:24,490 --> 00:05:27,360
+to do is to visualize
+cool proofs that we
+
+134
+00:05:27,360 --> 00:05:29,670
+cover in class in a new way.
+
+135
+00:05:29,670 --> 00:05:31,390
+You could contribute
+to Wikipedia,
+
+136
+00:05:31,390 --> 00:05:33,370
+or you could make
+some art piece,
+
+137
+00:05:33,370 --> 00:05:35,350
+like a sculpture,
+or a performance,
+
+138
+00:05:35,350 --> 00:05:39,580
+or whatever you want
+related to hardness proofs.
+
+139
+00:05:39,580 --> 00:05:43,120
+That's your project
+possibilities.
+
+140
+00:05:43,120 --> 00:05:45,810
+So what is in this class?
+
+141
+00:05:45,810 --> 00:05:50,440
+I will look at what
+specific topics are covered.
+
+142
+00:05:50,440 --> 00:05:51,820
+This is on the website.
+
+143
+00:05:51,820 --> 00:05:54,000
+So a lot of the class will
+be about NP-completeness,
+
+144
+00:05:54,000 --> 00:05:56,940
+which I will define in a bit.
+
+145
+00:05:56,940 --> 00:05:59,060
+But we'll also look
+at even harder--
+
+146
+00:05:59,060 --> 00:06:02,090
+these are all notions of no
+polynomial time algorithm.
+
+147
+00:06:02,090 --> 00:06:05,050
+We'll do even harder notions
+then NP, like PSPACE and X
+
+148
+00:06:05,050 --> 00:06:06,510
+time, and so on.
+
+149
+00:06:06,510 --> 00:06:09,140
+In particular, we'll be studying
+those in the context of games
+
+150
+00:06:09,140 --> 00:06:12,250
+and puzzles, and there's a whole
+theory called games, puzzles,
+
+151
+00:06:12,250 --> 00:06:15,210
+and computation, the
+topic of this book,
+
+152
+00:06:15,210 --> 00:06:18,690
+which we will talk
+about at length.
+
+153
+00:06:18,690 --> 00:06:23,150
+Then, we will go to
+inapproximability.
+
+154
+00:06:23,150 --> 00:06:25,890
+This is not necessarily in
+order, so I should say then.
+
+155
+00:06:25,890 --> 00:06:28,840
+But we'll talk about when you
+cannot find good approximation
+
+156
+00:06:28,840 --> 00:06:31,990
+algorithms, and what good means
+depends on what sort of problem
+
+157
+00:06:31,990 --> 00:06:35,360
+you're looking at, and when
+you cannot find fixed parameter
+
+158
+00:06:35,360 --> 00:06:38,390
+algorithms, which are fast
+algorithms when the optimal
+
+159
+00:06:38,390 --> 00:06:41,070
+solutions happens to be small.
+
+160
+00:06:41,070 --> 00:06:42,950
+So that's all about
+not polynomial.
+
+161
+00:06:42,950 --> 00:06:45,040
+Then, there's a
+small amount of work
+
+162
+00:06:45,040 --> 00:06:49,680
+on understanding the polynomial
+aspect for small polynomials,
+
+163
+00:06:49,680 --> 00:06:51,935
+distinguishing almost
+linear time from n
+
+164
+00:06:51,935 --> 00:06:54,090
+squared time or n cubed time.
+
+165
+00:06:54,090 --> 00:06:55,425
+That sort of thing.
+
+166
+00:06:55,425 --> 00:06:57,050
+Then there are other
+sorts of problems.
+
+167
+00:06:57,050 --> 00:06:59,214
+We can think about less
+common types of problems,
+
+168
+00:06:59,214 --> 00:07:01,380
+like where you want to count
+the number of solutions
+
+169
+00:07:01,380 --> 00:07:03,460
+instead of just
+find one, or tell
+
+170
+00:07:03,460 --> 00:07:05,350
+whether the solution is unique.
+
+171
+00:07:05,350 --> 00:07:08,060
+There's some economic
+game theory stuff.
+
+172
+00:07:08,060 --> 00:07:09,720
+This existential
+theory, the reals,
+
+173
+00:07:09,720 --> 00:07:11,310
+comes up in some
+geometric settings.
+
+174
+00:07:11,310 --> 00:07:13,220
+And if there's time,
+we'll talk a little bit
+
+175
+00:07:13,220 --> 00:07:14,761
+about undecidability,
+although that's
+
+176
+00:07:14,761 --> 00:07:16,730
+a pretty different world.
+
+177
+00:07:16,730 --> 00:07:19,750
+That's where there's
+no algorithm given
+
+178
+00:07:19,750 --> 00:07:23,130
+any finite time bound.
+
+179
+00:07:23,130 --> 00:07:26,190
+So that's in a nutshell
+what's the entire class is.
+
+180
+00:07:26,190 --> 00:07:30,890
+Today, we're going to do
+a sort of crash course
+
+181
+00:07:30,890 --> 00:07:32,750
+on computational complexity.
+
+182
+00:07:32,750 --> 00:07:36,280
+Most of what you should need
+for the entire course, I think,
+
+183
+00:07:36,280 --> 00:07:40,040
+will fit in about 40 minutes.
+
+184
+00:07:40,040 --> 00:07:40,890
+Maybe 50 minutes.
+
+185
+00:07:40,890 --> 00:07:41,650
+Something.
+
+186
+00:07:41,650 --> 00:07:44,470
+And that will serve
+as a guideline.
+
+187
+00:07:44,470 --> 00:07:47,440
+If anything's not clear, if I
+go too fast, feel free to stop,
+
+188
+00:07:47,440 --> 00:07:51,610
+ask questions during
+class or after class.
+
+189
+00:07:51,610 --> 00:07:52,660
+And let's see.
+
+190
+00:07:52,660 --> 00:07:55,620
+So we have some--
+
+191
+00:07:55,620 --> 00:07:57,360
+there's no real
+textbook for the class,
+
+192
+00:07:57,360 --> 00:08:00,050
+but there are two
+recommended reading books.
+
+193
+00:08:00,050 --> 00:08:02,720
+They are Garey and Johnson.
+
+194
+00:08:02,720 --> 00:08:04,477
+Computers and
+Intractability is the title.
+
+195
+00:08:04,477 --> 00:08:06,060
+Most people call it
+Garey and Johnson.
+
+196
+00:08:06,060 --> 00:08:09,140
+This is an old book
+from pretty much
+
+197
+00:08:09,140 --> 00:08:10,850
+early on in the world
+of NP completeness,
+
+198
+00:08:10,850 --> 00:08:12,960
+but it's still a
+really good book.
+
+199
+00:08:12,960 --> 00:08:15,680
+So that's good to check out.
+
+200
+00:08:15,680 --> 00:08:18,770
+And then there's my
+book with Bob Hearn.
+
+201
+00:08:18,770 --> 00:08:21,650
+This is Bob Hearn's PhD
+thesis at MIT, Games, Puzzles,
+
+202
+00:08:21,650 --> 00:08:22,690
+and Computation.
+
+203
+00:08:22,690 --> 00:08:25,590
+This is available
+electronically for free online
+
+204
+00:08:25,590 --> 00:08:26,956
+to all MIT people.
+
+205
+00:08:26,956 --> 00:08:28,539
+So if you look it
+up in MIT libraries,
+
+206
+00:08:28,539 --> 00:08:32,100
+it's actually linked right here.
+
+207
+00:08:32,100 --> 00:08:33,319
+So you're seeing that base.
+
+208
+00:08:33,319 --> 00:08:34,610
+You can get an electronic copy.
+
+209
+00:08:34,610 --> 00:08:38,039
+If you want to buy one,
+talk to me or order it.
+
+210
+00:08:38,039 --> 00:08:40,650
+
+
+211
+00:08:40,650 --> 00:08:42,920
+There's a couple other
+links on the website.
+
+212
+00:08:42,920 --> 00:08:45,500
+There was some followup
+to the Garey and Johnson
+
+213
+00:08:45,500 --> 00:08:51,300
+book by Johnson and some
+other cool websites.
+
+214
+00:08:51,300 --> 00:08:53,020
+All right.
+
+215
+00:08:53,020 --> 00:08:56,680
+So I think that is the
+administrative part.
+
+216
+00:08:56,680 --> 00:08:58,930
+Now we can start the
+fun part of the class.
+
+217
+00:08:58,930 --> 00:09:04,949
+So let's do our crash
+course on complexity.
+
+218
+00:09:04,949 --> 00:09:06,990
+So if you've seen complexity
+before, some of this
+
+219
+00:09:06,990 --> 00:09:08,490
+will be review.
+
+220
+00:09:08,490 --> 00:09:16,560
+We start with our favorite
+class of problems that can
+
+221
+00:09:16,560 --> 00:09:18,430
+be solved in polynomial time.
+
+222
+00:09:18,430 --> 00:09:29,990
+
+
+223
+00:09:29,990 --> 00:09:32,365
+Say on a RAM, I should
+specify model of computation
+
+224
+00:09:32,365 --> 00:09:34,140
+and exactly what a
+problem is, but I'll
+
+225
+00:09:34,140 --> 00:09:35,550
+be a little bit informal here.
+
+226
+00:09:35,550 --> 00:09:40,690
+Polynomial time means
+n to some constant,
+
+227
+00:09:40,690 --> 00:09:45,170
+where n is the size of
+the problem instance.
+
+228
+00:09:45,170 --> 00:09:46,590
+And we will talk
+a little bit more
+
+229
+00:09:46,590 --> 00:09:48,340
+about subtleties in defining n.
+
+230
+00:09:48,340 --> 00:09:51,770
+But usually, polynomial
+time is pretty clear.
+
+231
+00:09:51,770 --> 00:09:53,650
+This is what we consider
+good algorithms.
+
+232
+00:09:53,650 --> 00:09:55,870
+An example of something
+we consider bad
+
+233
+00:09:55,870 --> 00:09:57,200
+is exponential time.
+
+234
+00:09:57,200 --> 00:09:59,440
+So x is going to be all
+the problems that can
+
+235
+00:09:59,440 --> 00:10:01,550
+be solved in exponential time.
+
+236
+00:10:01,550 --> 00:10:05,970
+
+
+237
+00:10:05,970 --> 00:10:10,090
+And exponential's a little
+less a uniquely defined,
+
+238
+00:10:10,090 --> 00:10:11,830
+but I'll define it this way.
+
+239
+00:10:11,830 --> 00:10:14,500
+I think this is the
+usual definition for x. .
+
+240
+00:10:14,500 --> 00:10:16,722
+So 2 to a polynomial.
+
+241
+00:10:16,722 --> 00:10:19,020
+Of course, it could
+be 3 if you prefer.
+
+242
+00:10:19,020 --> 00:10:20,870
+Any constant will
+be the same here.
+
+243
+00:10:20,870 --> 00:10:24,450
+This constant dwarfs
+any constant there.
+
+244
+00:10:24,450 --> 00:10:27,850
+So that is-- this is a
+huge class, any problem you
+
+245
+00:10:27,850 --> 00:10:29,140
+can in exponential time.
+
+246
+00:10:29,140 --> 00:10:31,030
+Most problems can be
+solved exponential time,
+
+247
+00:10:31,030 --> 00:10:33,980
+though not all.
+
+248
+00:10:33,980 --> 00:10:37,430
+Most problems we
+encounter, I should say.
+
+249
+00:10:37,430 --> 00:10:40,030
+And then I'll define
+one more just for kicks.
+
+250
+00:10:40,030 --> 00:10:42,320
+R is a recursively
+enumerable problems,
+
+251
+00:10:42,320 --> 00:10:43,669
+or recursive problems.
+
+252
+00:10:43,669 --> 00:10:46,210
+These are all the problems that
+can be solved in finite time.
+
+253
+00:10:46,210 --> 00:10:50,830
+
+
+254
+00:10:50,830 --> 00:10:51,430
+Always.
+
+255
+00:10:51,430 --> 00:10:54,490
+And these are all
+worst case bounds.
+
+256
+00:10:54,490 --> 00:10:58,290
+So I'm going to have
+a running picture.
+
+257
+00:10:58,290 --> 00:11:02,320
+This is my favorite
+picture to draw.
+
+258
+00:11:02,320 --> 00:11:08,250
+We have on the x-axis
+a somewhat vague notion
+
+259
+00:11:08,250 --> 00:11:11,856
+of computational difficulty.
+
+260
+00:11:11,856 --> 00:11:15,110
+What you might call
+hardness colloquially.
+
+261
+00:11:15,110 --> 00:11:18,180
+This is a bit informal,
+but it's still a useful way
+
+262
+00:11:18,180 --> 00:11:19,420
+to think about things.
+
+263
+00:11:19,420 --> 00:11:22,640
+So this initial
+chunk here is going
+
+264
+00:11:22,640 --> 00:11:26,000
+to be P. I'm going to
+leave in some space
+
+265
+00:11:26,000 --> 00:11:27,940
+to fill in some other things.
+
+266
+00:11:27,940 --> 00:11:30,910
+And probably go to here.
+
+267
+00:11:30,910 --> 00:11:38,340
+And this part is
+going to be EXP,
+
+268
+00:11:38,340 --> 00:11:46,330
+and then everything to
+the left of this line
+
+269
+00:11:46,330 --> 00:11:48,540
+are the problems that are
+solvable in finite time.
+
+270
+00:11:48,540 --> 00:11:50,040
+Everything to the
+right of that line
+
+271
+00:11:50,040 --> 00:11:51,650
+is not solvable by algorithms.
+
+272
+00:11:51,650 --> 00:11:52,913
+That would be undecidable.
+
+273
+00:11:52,913 --> 00:11:53,820
+OK.
+
+274
+00:11:53,820 --> 00:11:56,940
+So obviously, anything
+we saw in polynomial time
+
+275
+00:11:56,940 --> 00:11:58,620
+can also be solved
+in exponential time.
+
+276
+00:11:58,620 --> 00:12:01,410
+That's all that this is saying.
+
+277
+00:12:01,410 --> 00:12:01,910
+Cool.
+
+278
+00:12:01,910 --> 00:12:05,480
+So I have examples.
+
+279
+00:12:05,480 --> 00:12:09,490
+I'll give you some
+examples to think about.
+
+280
+00:12:09,490 --> 00:12:14,510
+For example, n by n Chess.
+
+281
+00:12:14,510 --> 00:12:17,130
+So this is, I give you a Chess
+configuration on an n by n,
+
+282
+00:12:17,130 --> 00:12:19,500
+and I want to know,
+let's say, white to move.
+
+283
+00:12:19,500 --> 00:12:23,100
+Can white force a win?
+
+284
+00:12:23,100 --> 00:12:29,290
+This turns out to be
+solvable in exponential time,
+
+285
+00:12:29,290 --> 00:12:36,020
+and is not solvable
+in polynomial time.
+
+286
+00:12:36,020 --> 00:12:40,660
+So that's a nice result.
+Something we will get to.
+
+287
+00:12:40,660 --> 00:12:46,520
+Another example is Tetris,
+suitably generalized.
+
+288
+00:12:46,520 --> 00:12:48,135
+So we're thinking
+about problems where
+
+289
+00:12:48,135 --> 00:12:49,180
+you have all the information.
+
+290
+00:12:49,180 --> 00:12:50,910
+Usually in Tetris, you
+don't know all the pieces
+
+291
+00:12:50,910 --> 00:12:51,868
+that are going to come.
+
+292
+00:12:51,868 --> 00:12:54,230
+But supposing you knew
+the future, I give you
+
+293
+00:12:54,230 --> 00:12:56,950
+the entire sequence of pieces
+that are going to come,
+
+294
+00:12:56,950 --> 00:12:58,020
+sort of a Tetris puzzle.
+
+295
+00:12:58,020 --> 00:13:01,140
+They used to publish these
+in Nintendo Power Magazine.
+
+296
+00:13:01,140 --> 00:13:02,720
+And you want to
+know, can I survive
+
+297
+00:13:02,720 --> 00:13:03,840
+from this board position?
+
+298
+00:13:03,840 --> 00:13:06,190
+Can I survive this
+sequence of pieces
+
+299
+00:13:06,190 --> 00:13:07,675
+This is also in EXP.
+
+300
+00:13:07,675 --> 00:13:09,300
+You can solve this
+in exponential time.
+
+301
+00:13:09,300 --> 00:13:12,410
+That's a little more obvious.
+
+302
+00:13:12,410 --> 00:13:18,440
+But we don't know whether
+it's in P. Probably it's not,
+
+303
+00:13:18,440 --> 00:13:19,820
+and we'll see why in a moment.
+
+304
+00:13:19,820 --> 00:13:25,640
+
+
+305
+00:13:25,640 --> 00:13:27,370
+If you've taken an
+algorithms class,
+
+306
+00:13:27,370 --> 00:13:28,980
+you know tons of
+examples of problems
+
+307
+00:13:28,980 --> 00:13:35,360
+that are in P, like shortest
+paths or lots of good things.
+
+308
+00:13:35,360 --> 00:13:40,290
+Halting problem, you've
+probably heard of.
+
+309
+00:13:40,290 --> 00:13:42,970
+Kind of a classic.
+
+310
+00:13:42,970 --> 00:13:47,880
+Halting problem is, given an
+algorithm, does it terminate,
+
+311
+00:13:47,880 --> 00:13:50,280
+or given some computer
+code, does it terminate?
+
+312
+00:13:50,280 --> 00:13:52,950
+This is not recursive,
+meaning there's
+
+313
+00:13:52,950 --> 00:13:57,590
+no algorithm to solve it in
+finite time in the worst case.
+
+314
+00:13:57,590 --> 00:13:59,350
+There's a more
+depressing result,
+
+315
+00:13:59,350 --> 00:14:02,010
+which is that in
+fact, most problems--
+
+316
+00:14:02,010 --> 00:14:13,430
+let's say most decision
+problems are not in R.
+
+317
+00:14:13,430 --> 00:14:15,600
+Most problems cannot be
+solved by an algorithm.
+
+318
+00:14:15,600 --> 00:14:19,050
+If you haven't seen that,
+it's cool result. Basically,
+
+319
+00:14:19,050 --> 00:14:27,310
+the proof is that the number
+of problems in the universe
+
+320
+00:14:27,310 --> 00:14:32,010
+is about 2 to the N. And
+the number of algorithms
+
+321
+00:14:32,010 --> 00:14:35,520
+is only about N. So if you
+know set theory, great.
+
+322
+00:14:35,520 --> 00:14:38,950
+Otherwise, ignore this sentence.
+
+323
+00:14:38,950 --> 00:14:41,680
+So you could think of an
+algorithm as a number.
+
+324
+00:14:41,680 --> 00:14:43,720
+It's like, you take this
+string and convert it
+
+325
+00:14:43,720 --> 00:14:45,380
+to a giant number.
+
+326
+00:14:45,380 --> 00:14:47,920
+So that's integers over here.
+
+327
+00:14:47,920 --> 00:14:49,630
+You can think of
+problems as a mapping
+
+328
+00:14:49,630 --> 00:14:52,000
+from inputs to Yes or No.
+
+329
+00:14:52,000 --> 00:14:53,310
+Yes or No is the 2.
+
+330
+00:14:53,310 --> 00:14:57,672
+Inputs is the N. This is
+the same as real numbers.
+
+331
+00:14:57,672 --> 00:15:00,130
+This is the integers, and there
+are a lot more real numbers
+
+332
+00:15:00,130 --> 00:15:00,713
+than integers.
+
+333
+00:15:00,713 --> 00:15:01,940
+You probably heard of that.
+
+334
+00:15:01,940 --> 00:15:04,481
+So this means most problems have
+no algorithm if an algorithm
+
+335
+00:15:04,481 --> 00:15:06,280
+can only solve one problem.
+
+336
+00:15:06,280 --> 00:15:07,570
+That's the sad news of life.
+
+337
+00:15:07,570 --> 00:15:10,150
+Luckily, most of the
+problems we tend to pose
+
+338
+00:15:10,150 --> 00:15:13,475
+do have an algorithm, and
+it's more about P versus EXP
+
+339
+00:15:13,475 --> 00:15:16,420
+that this class is about.
+
+340
+00:15:16,420 --> 00:15:19,710
+So let's go to more
+interesting things.
+
+341
+00:15:19,710 --> 00:15:24,400
+
+
+342
+00:15:24,400 --> 00:15:30,060
+I'm going to define a class
+NP, which is in between here.
+
+343
+00:15:30,060 --> 00:15:31,180
+In between P and EXP.
+
+344
+00:15:31,180 --> 00:15:39,130
+
+
+345
+00:15:39,130 --> 00:15:40,970
+So as I said, decision
+problems are problems
+
+346
+00:15:40,970 --> 00:15:42,240
+where the answer is Yes or No.
+
+347
+00:15:42,240 --> 00:15:46,170
+
+
+348
+00:15:46,170 --> 00:15:48,190
+There are lots of possible
+definitions of NP.
+
+349
+00:15:48,190 --> 00:15:49,480
+I will cover two.
+
+350
+00:15:49,480 --> 00:15:53,129
+
+
+351
+00:15:53,129 --> 00:15:54,670
+I would like there
+to be an algorithm
+
+352
+00:15:54,670 --> 00:15:56,336
+to solve the problem
+in polynomial time,
+
+353
+00:15:56,336 --> 00:15:59,970
+but not in a regular
+model of computation,
+
+354
+00:15:59,970 --> 00:16:03,260
+But with something I
+call a lucky algorithm.
+
+355
+00:16:03,260 --> 00:16:08,480
+
+
+356
+00:16:08,480 --> 00:16:11,000
+Lucky algorithm
+comes to a decision,
+
+357
+00:16:11,000 --> 00:16:14,004
+and it always makes
+the right one.
+
+358
+00:16:14,004 --> 00:16:14,670
+It's just lucky.
+
+359
+00:16:14,670 --> 00:16:17,128
+It doesn't have any reason to
+believe that's the right one.
+
+360
+00:16:17,128 --> 00:16:19,890
+It just always makes the
+right choice given the choice
+
+361
+00:16:19,890 --> 00:16:22,440
+between two options, let's say.
+
+362
+00:16:22,440 --> 00:16:24,835
+So this is, you
+make lucky guesses.
+
+363
+00:16:24,835 --> 00:16:28,310
+You always guess the right one.
+
+364
+00:16:28,310 --> 00:16:31,130
+It's a little bit biased
+in a way that I should say.
+
+365
+00:16:31,130 --> 00:16:33,430
+So let me be a
+little more precise.
+
+366
+00:16:33,430 --> 00:16:37,810
+This is called a
+non-deterministic model.
+
+367
+00:16:37,810 --> 00:16:42,070
+And the N in NP is
+non-deterministic.
+
+368
+00:16:42,070 --> 00:16:47,590
+
+
+369
+00:16:47,590 --> 00:16:50,740
+So the idea is
+that the algorithm
+
+370
+00:16:50,740 --> 00:16:51,830
+makes a series of guesses.
+
+371
+00:16:51,830 --> 00:16:53,788
+It could do it at the
+beginning, or could do it
+
+372
+00:16:53,788 --> 00:16:56,210
+in the middle of
+the computation.
+
+373
+00:16:56,210 --> 00:17:00,690
+And eventually, it
+outputs an answer.
+
+374
+00:17:00,690 --> 00:17:05,430
+So it's going to say
+either Yes or No.
+
+375
+00:17:05,430 --> 00:17:09,089
+And what we guarantee in this
+weird non-deterministic lucky
+
+376
+00:17:09,089 --> 00:17:15,160
+model of computation is that
+you will be led to a Yes answer
+
+377
+00:17:15,160 --> 00:17:17,250
+if it's possible.
+
+378
+00:17:17,250 --> 00:17:18,910
+So it guesses--
+this is asymmetric.
+
+379
+00:17:18,910 --> 00:17:36,140
+
+
+380
+00:17:36,140 --> 00:17:38,750
+So what this means is say
+you run your magical lucky
+
+381
+00:17:38,750 --> 00:17:40,320
+algorithm, and it outputs No.
+
+382
+00:17:40,320 --> 00:17:44,420
+That means no matter
+what set of choices
+
+383
+00:17:44,420 --> 00:17:48,376
+you made for each guess, you
+would always get to a No.
+
+384
+00:17:48,376 --> 00:17:49,750
+If you get a Yes
+answer, you just
+
+385
+00:17:49,750 --> 00:17:52,380
+know there's some set of guesses
+that lead to a Yes answer.
+
+386
+00:17:52,380 --> 00:17:56,020
+So one is an existential
+quantifier, one's universal.
+
+387
+00:17:56,020 --> 00:17:58,810
+So this is asymmetric.
+
+388
+00:17:58,810 --> 00:18:03,930
+There is a notion of CoNP,
+which is exactly the reverse.
+
+389
+00:18:03,930 --> 00:18:08,510
+CoNP, you let's say
+flip Yes with No.
+
+390
+00:18:08,510 --> 00:18:12,960
+So CoNP, you prefer no
+answers if you can get them.
+
+391
+00:18:12,960 --> 00:18:14,180
+All right.
+
+392
+00:18:14,180 --> 00:18:19,890
+So let me give another
+definition of NP.
+
+393
+00:18:19,890 --> 00:18:42,934
+
+
+394
+00:18:42,934 --> 00:18:45,100
+Another way to think of the
+same definition, really.
+
+395
+00:18:45,100 --> 00:19:10,850
+
+
+396
+00:19:10,850 --> 00:19:12,350
+So you can also
+think of NP problems
+
+397
+00:19:12,350 --> 00:19:15,800
+as problems that have solutions
+that are relatively succinct
+
+398
+00:19:15,800 --> 00:19:17,990
+and can be checked
+in polynomial time.
+
+399
+00:19:17,990 --> 00:19:21,960
+I guess really they need to
+be checkable efficiently.
+
+400
+00:19:21,960 --> 00:19:25,570
+So what you can think
+of this as saying is,
+
+401
+00:19:25,570 --> 00:19:27,230
+well, every time I
+make a guess, I'll
+
+402
+00:19:27,230 --> 00:19:31,060
+write down whether I went
+left or went right in my maze,
+
+403
+00:19:31,060 --> 00:19:32,450
+I guess.
+
+404
+00:19:32,450 --> 00:19:35,100
+And so that you could
+think of as a certificate.
+
+405
+00:19:35,100 --> 00:19:37,410
+If you know what the right
+sequence of guesses are,
+
+406
+00:19:37,410 --> 00:19:38,951
+of course, you can
+run the algorithm,
+
+407
+00:19:38,951 --> 00:19:41,290
+because it's a polynomial
+time algorithm.
+
+408
+00:19:41,290 --> 00:19:46,400
+Conversely, if I don't have
+the solution to the problem,
+
+409
+00:19:46,400 --> 00:19:49,570
+yet I'm told that it exists,
+at the top of my algorithm,
+
+410
+00:19:49,570 --> 00:19:52,970
+I could just guess what that
+solution is, and then check it.
+
+411
+00:19:52,970 --> 00:19:54,440
+So if I'm given
+such an algorithm,
+
+412
+00:19:54,440 --> 00:19:56,270
+I can convert it into
+a lucky algorithm.
+
+413
+00:19:56,270 --> 00:19:57,770
+If I'm given a
+lucky algorithm, I
+
+414
+00:19:57,770 --> 00:20:01,150
+can convert it into one of
+these checking algorithms.
+
+415
+00:20:01,150 --> 00:20:01,650
+OK.
+
+416
+00:20:01,650 --> 00:20:04,580
+
+
+417
+00:20:04,580 --> 00:20:07,775
+So let's do an example.
+
+418
+00:20:07,775 --> 00:20:12,670
+
+
+419
+00:20:12,670 --> 00:20:17,380
+Let's say Tetris is in NP.
+
+420
+00:20:17,380 --> 00:20:22,570
+So if I give you a board, and
+I give you a sequence of pieces
+
+421
+00:20:22,570 --> 00:20:23,820
+that are going to come.
+
+422
+00:20:23,820 --> 00:20:25,770
+How would I prove to
+you that I can survive
+
+423
+00:20:25,770 --> 00:20:26,811
+those sequence of pieces?
+
+424
+00:20:26,811 --> 00:20:29,340
+
+
+425
+00:20:29,340 --> 00:20:30,830
+AUDIENCE: Say where they go?
+
+426
+00:20:30,830 --> 00:20:32,246
+PROFESSOR: Just
+say where they go.
+
+427
+00:20:32,246 --> 00:20:36,460
+Say what sequence or moves I
+press, and at what times say.
+
+428
+00:20:36,460 --> 00:20:39,060
+Just where should
+I drop each piece?
+
+429
+00:20:39,060 --> 00:20:41,730
+So then all you need to do
+for this definition is check
+
+430
+00:20:41,730 --> 00:20:43,719
+that that's about
+solution that you never
+
+431
+00:20:43,719 --> 00:20:45,260
+have to push a piece
+up, for example,
+
+432
+00:20:45,260 --> 00:20:49,600
+to get it into the
+right position.
+
+433
+00:20:49,600 --> 00:20:51,680
+Or you can think
+of the same thing
+
+434
+00:20:51,680 --> 00:20:53,410
+as an algorithm
+that says, oh, OK.
+
+435
+00:20:53,410 --> 00:20:56,090
+Every time I have to press left,
+or right, or wait a second,
+
+436
+00:20:56,090 --> 00:20:57,850
+or push down, I'll
+just guess which
+
+437
+00:20:57,850 --> 00:20:59,830
+one to do, and then do that.
+
+438
+00:20:59,830 --> 00:21:04,070
+So these are the same
+algorithm, essentially.
+
+439
+00:21:04,070 --> 00:21:05,760
+And that's why Tetris is in NP.
+
+440
+00:21:05,760 --> 00:21:08,370
+In general, let's see.
+
+441
+00:21:08,370 --> 00:21:11,750
+Every problem that I can
+solve in polynomial time,
+
+442
+00:21:11,750 --> 00:21:14,230
+of course, I can solve in
+non-deterministic polynomial
+
+443
+00:21:14,230 --> 00:21:16,470
+time, so that's
+that containment.
+
+444
+00:21:16,470 --> 00:21:18,510
+If I have an NP
+problem and I want
+
+445
+00:21:18,510 --> 00:21:20,930
+to solve it in
+exponential time, well, I
+
+446
+00:21:20,930 --> 00:21:23,590
+could just simulate all the
+possible guessing paths,
+
+447
+00:21:23,590 --> 00:21:26,030
+because I run for
+only polynomial time.
+
+448
+00:21:26,030 --> 00:21:28,389
+And so for each one,
+maybe I have two choices.
+
+449
+00:21:28,389 --> 00:21:29,180
+I'll just try both.
+
+450
+00:21:29,180 --> 00:21:31,140
+I'll do this sort
+of depth research.
+
+451
+00:21:31,140 --> 00:21:33,790
+And yeah.
+
+452
+00:21:33,790 --> 00:21:36,890
+I have exponential is
+exactly 2 to that polynomial,
+
+453
+00:21:36,890 --> 00:21:39,830
+so I can afford to branch
+in both directions.
+
+454
+00:21:39,830 --> 00:21:41,990
+So I guess my guesses
+here are just binary.
+
+455
+00:21:41,990 --> 00:21:44,060
+I could afford to branch
+in both directions,
+
+456
+00:21:44,060 --> 00:21:46,894
+and eventually see whether
+any of them leads to a Yes.
+
+457
+00:21:46,894 --> 00:21:49,310
+I could also figure out whether
+any of them leads to a No.
+
+458
+00:21:49,310 --> 00:21:53,280
+But in general, NP
+is contained in EXP.
+
+459
+00:21:53,280 --> 00:21:55,900
+Cool.
+
+460
+00:21:55,900 --> 00:21:58,495
+Still not too interesting.
+
+461
+00:21:58,495 --> 00:22:00,795
+
+
+462
+00:22:00,795 --> 00:22:02,170
+Where it gets
+interesting is when
+
+463
+00:22:02,170 --> 00:22:04,900
+we start talking about
+hardness, which is next.
+
+464
+00:22:04,900 --> 00:22:09,840
+I should mention big open
+question is whether there's
+
+465
+00:22:09,840 --> 00:22:12,900
+any problem in
+here in NP minus P.
+
+466
+00:22:12,900 --> 00:22:15,520
+This is the same as P
+equals NP open problem.
+
+467
+00:22:15,520 --> 00:22:20,640
+Most sane people in the universe
+believe P does not equal NP.
+
+468
+00:22:20,640 --> 00:22:27,070
+What this means intuitively is
+that you can't engineer luck.
+
+469
+00:22:27,070 --> 00:22:30,110
+Luck shouldn't exist
+in the real world.
+
+470
+00:22:30,110 --> 00:22:33,106
+You can't just like,
+go one way or the other
+
+471
+00:22:33,106 --> 00:22:34,480
+and always make
+the right choice.
+
+472
+00:22:34,480 --> 00:22:36,070
+You could make a random choice.
+
+473
+00:22:36,070 --> 00:22:37,946
+You could try both choices.
+
+474
+00:22:37,946 --> 00:22:40,320
+But you shouldn't be able to
+always make the right choice
+
+475
+00:22:40,320 --> 00:22:41,310
+for all problems.
+
+476
+00:22:41,310 --> 00:22:42,599
+That seems insane.
+
+477
+00:22:42,599 --> 00:22:44,890
+So if you believe that, you
+believe P does not equal NP
+
+478
+00:22:44,890 --> 00:22:47,420
+and you believe there's some
+things in between those two
+
+479
+00:22:47,420 --> 00:22:47,920
+lines.
+
+480
+00:22:47,920 --> 00:22:51,320
+But we don't know,
+unfortunately.
+
+481
+00:22:51,320 --> 00:22:57,750
+So let me talk about hardness.
+
+482
+00:22:57,750 --> 00:23:00,563
+So if I have some
+complexity class X,
+
+483
+00:23:00,563 --> 00:23:06,040
+X could be NP, or
+EXP at this point.
+
+484
+00:23:06,040 --> 00:23:07,162
+P we won't talk about.
+
+485
+00:23:07,162 --> 00:23:08,370
+P hardness is a little weird.
+
+486
+00:23:08,370 --> 00:23:11,957
+
+
+487
+00:23:11,957 --> 00:23:14,290
+I'm not going to define this
+formally until a little bit
+
+488
+00:23:14,290 --> 00:23:16,260
+later in today's class.
+
+489
+00:23:16,260 --> 00:23:23,170
+
+
+490
+00:23:23,170 --> 00:23:25,770
+So problem is X-hard if
+it's sort of the hardest
+
+491
+00:23:25,770 --> 00:23:30,040
+problem in the class X, if it's
+as hard as every other problem
+
+492
+00:23:30,040 --> 00:23:33,470
+in X. Actually, this
+problem may not be in X,
+
+493
+00:23:33,470 --> 00:23:37,200
+so I should say it's hard
+as every problem in X.
+
+494
+00:23:37,200 --> 00:23:45,530
+So what that means in this
+picture is the following.
+
+495
+00:23:45,530 --> 00:23:49,010
+
+
+496
+00:23:49,010 --> 00:23:52,880
+So every problem from
+here onward is EXP-hard.
+
+497
+00:23:52,880 --> 00:23:57,380
+
+
+498
+00:23:57,380 --> 00:24:02,630
+And every problem from
+here onward is NP-hard.
+
+499
+00:24:02,630 --> 00:24:06,590
+
+
+500
+00:24:06,590 --> 00:24:08,260
+Whoops.
+
+501
+00:24:08,260 --> 00:24:10,759
+Here.
+
+502
+00:24:10,759 --> 00:24:12,050
+We won't talk about P hardness.
+
+503
+00:24:12,050 --> 00:24:15,005
+That's a notion in
+parallel computing.
+
+504
+00:24:15,005 --> 00:24:17,120
+I mean, maybe we'll have
+time to talk about it,
+
+505
+00:24:17,120 --> 00:24:19,420
+but it's not
+currently on the plan.
+
+506
+00:24:19,420 --> 00:24:23,017
+So this is the lower
+bound side, right?
+
+507
+00:24:23,017 --> 00:24:24,600
+You're proving that
+you're at least as
+
+508
+00:24:24,600 --> 00:24:27,290
+hard as the very
+hardest problem in NP,
+
+509
+00:24:27,290 --> 00:24:31,090
+or you're at least as hard
+as the problem in EXP.
+
+510
+00:24:31,090 --> 00:24:38,010
+The reason, the only reason,
+I know that Chess is not NP
+
+511
+00:24:38,010 --> 00:24:41,750
+is because I know that
+Chess is actually X-hard.
+
+512
+00:24:41,750 --> 00:24:44,330
+I know it's at least as hard
+as all problems solvable
+
+513
+00:24:44,330 --> 00:24:45,610
+an exponential time.
+
+514
+00:24:45,610 --> 00:24:49,010
+And there's a great theorem
+called time hierarchy theorem
+
+515
+00:24:49,010 --> 00:24:52,500
+that tells you that P does
+not equal EXP in particular.
+
+516
+00:24:52,500 --> 00:24:55,590
+So we know there are
+some problems in EXP that
+
+517
+00:24:55,590 --> 00:24:58,700
+are not in P. Some problems that
+require exponential time can't
+
+518
+00:24:58,700 --> 00:25:00,440
+be done in polynomial time.
+
+519
+00:25:00,440 --> 00:25:02,920
+And we know that Chess is
+as hard as all of them,
+
+520
+00:25:02,920 --> 00:25:07,382
+so in particular, it also can't
+be solved in polynomial time.
+
+521
+00:25:07,382 --> 00:25:09,840
+Mind you, though, I haven't
+defined what as hard as a means
+
+522
+00:25:09,840 --> 00:25:13,820
+yet, but I will get there.
+
+523
+00:25:13,820 --> 00:25:18,180
+Another good term to
+know is X-completeness.
+
+524
+00:25:18,180 --> 00:25:23,590
+This is just the and of two
+things, being X-hard and being
+
+525
+00:25:23,590 --> 00:25:34,310
+in X. So in my picture, this
+dot right here is NP-complete.
+
+526
+00:25:34,310 --> 00:25:38,580
+
+
+527
+00:25:38,580 --> 00:25:41,730
+And this dot right here is--
+
+528
+00:25:41,730 --> 00:25:43,560
+got to write it this way--
+
+529
+00:25:43,560 --> 00:25:44,620
+is X-complete.
+
+530
+00:25:44,620 --> 00:25:50,171
+
+
+531
+00:25:50,171 --> 00:25:50,670
+OK.
+
+532
+00:25:50,670 --> 00:25:52,830
+I already mentioned
+that Chess is in EXP.
+
+533
+00:25:52,830 --> 00:25:55,420
+So in fact, Chess is X-complete.
+
+534
+00:25:55,420 --> 00:25:57,920
+It means there's an upper bound
+saying that you can solve it
+
+535
+00:25:57,920 --> 00:25:58,777
+in exponential time.
+
+536
+00:25:58,777 --> 00:26:00,860
+There's a lower bound
+saying that it's at least as
+
+537
+00:26:00,860 --> 00:26:02,426
+hard as everything in EXP.
+
+538
+00:26:02,426 --> 00:26:05,050
+And both are true, so you would
+know you're kind of right here.
+
+539
+00:26:05,050 --> 00:26:07,270
+From the resolution
+of this picture,
+
+540
+00:26:07,270 --> 00:26:09,510
+that's all you could
+hope to know about Chess.
+
+541
+00:26:09,510 --> 00:26:12,860
+
+
+542
+00:26:12,860 --> 00:26:15,810
+So, good.
+
+543
+00:26:15,810 --> 00:26:18,850
+
+
+544
+00:26:18,850 --> 00:26:22,620
+One more class of problems
+good to know about,
+
+545
+00:26:22,620 --> 00:26:29,370
+and it will come up a lot in
+games, is the notion of PSPACE.
+
+546
+00:26:29,370 --> 00:26:31,190
+So so far, we've only
+thought about time.
+
+547
+00:26:31,190 --> 00:26:32,640
+But usually, we
+measure algorithms
+
+548
+00:26:32,640 --> 00:26:33,800
+in terms of time and space.
+
+549
+00:26:33,800 --> 00:26:37,020
+How much memory does
+your algorithm use?
+
+550
+00:26:37,020 --> 00:26:43,505
+And so PSPACE is going to be, I
+guess, say let's say problems.
+
+551
+00:26:43,505 --> 00:26:52,685
+
+
+552
+00:26:52,685 --> 00:26:54,560
+As you might guess, this
+is problems solvable
+
+553
+00:26:54,560 --> 00:26:57,560
+in polynomial space.
+
+554
+00:26:57,560 --> 00:27:00,060
+In general, if you can solve
+a problem in polynomial space,
+
+555
+00:27:00,060 --> 00:27:02,441
+you can solve it in
+exponential time,
+
+556
+00:27:02,441 --> 00:27:04,440
+because there are only
+exponentially many states
+
+557
+00:27:04,440 --> 00:27:07,100
+of your machine if you
+only have polynomial space.
+
+558
+00:27:07,100 --> 00:27:14,820
+So PSPACE fits here
+in between NP and EXP.
+
+559
+00:27:14,820 --> 00:27:17,710
+
+
+560
+00:27:17,710 --> 00:27:28,654
+And of course, there's
+PSPACE-hard and
+
+561
+00:27:28,654 --> 00:27:29,320
+PSPACE-complete.
+
+562
+00:27:29,320 --> 00:27:35,690
+
+
+563
+00:27:35,690 --> 00:27:37,840
+If you don't remember
+anything from today
+
+564
+00:27:37,840 --> 00:27:41,240
+except one blackboard,
+remember this blackboard.
+
+565
+00:27:41,240 --> 00:27:44,090
+It's like the cheat sheet
+to everything we've defined.
+
+566
+00:27:44,090 --> 00:27:47,540
+You just have to remember
+what all the letters mean.
+
+567
+00:27:47,540 --> 00:27:49,170
+But not too hard.
+
+568
+00:27:49,170 --> 00:27:51,850
+So that's pretty much all
+the classes we'll be using.
+
+569
+00:27:51,850 --> 00:27:53,560
+There are a few others.
+
+570
+00:27:53,560 --> 00:27:54,060
+I'm sorry.
+
+571
+00:27:54,060 --> 00:27:57,690
+I'll give you one example to
+go with our other examples.
+
+572
+00:27:57,690 --> 00:28:00,370
+The problem we'll look
+at today is Rush Hour.
+
+573
+00:28:00,370 --> 00:28:03,250
+
+
+574
+00:28:03,250 --> 00:28:04,956
+This is a one
+player puzzle, where
+
+575
+00:28:04,956 --> 00:28:07,080
+you're trying to move the
+cars, and they could only
+
+576
+00:28:07,080 --> 00:28:09,710
+go vertically or horizontally.
+
+577
+00:28:09,710 --> 00:28:15,610
+This is in PSPACE, which
+is maybe not so obvious.
+
+578
+00:28:15,610 --> 00:28:20,010
+And actually, it's
+PSPACE-complete.
+
+579
+00:28:20,010 --> 00:28:27,070
+So this is from the
+diagram, PSPACE-complete
+
+580
+00:28:27,070 --> 00:28:29,287
+is harder than NP-complete.
+
+581
+00:28:29,287 --> 00:28:31,870
+Now of course, we don't actually
+know whether these two points
+
+582
+00:28:31,870 --> 00:28:33,404
+are the same.
+
+583
+00:28:33,404 --> 00:28:34,320
+It's kind of annoying.
+
+584
+00:28:34,320 --> 00:28:36,514
+We don't know whether these
+two points are the same.
+
+585
+00:28:36,514 --> 00:28:38,680
+We don't know whether these
+two points are the same.
+
+586
+00:28:38,680 --> 00:28:40,301
+This whole thing could collapse.
+
+587
+00:28:40,301 --> 00:28:42,050
+We do know these two
+points are different.
+
+588
+00:28:42,050 --> 00:28:46,390
+So somewhere here, or here, or
+here, we have a positive range.
+
+589
+00:28:46,390 --> 00:28:50,609
+Most people believe all of
+these have problems in them,
+
+590
+00:28:50,609 --> 00:28:52,150
+so none of these
+things are the same.
+
+591
+00:28:52,150 --> 00:28:54,441
+It could be NP-complete is
+the same as PSPACE-complete.
+
+592
+00:28:54,441 --> 00:28:57,460
+But again, most people
+believe these are different.
+
+593
+00:28:57,460 --> 00:29:00,380
+So in some sense, Rush
+Hour, which is here,
+
+594
+00:29:00,380 --> 00:29:02,020
+is harder than
+Tetris, which is here.
+
+595
+00:29:02,020 --> 00:29:05,230
+
+
+596
+00:29:05,230 --> 00:29:06,090
+Cool.
+
+597
+00:29:06,090 --> 00:29:11,280
+And if you believe that either
+one of these is non-empty,
+
+598
+00:29:11,280 --> 00:29:13,960
+then we know that Rush Hour
+does not have a polynomial time
+
+599
+00:29:13,960 --> 00:29:14,460
+algorithm.
+
+600
+00:29:14,460 --> 00:29:18,179
+So to show that Rush Hour is
+not in P, you have a choice.
+
+601
+00:29:18,179 --> 00:29:20,220
+You could prove either
+one of these as non-empty.
+
+602
+00:29:20,220 --> 00:29:22,550
+For Tetris, you have
+to prove this one.
+
+603
+00:29:22,550 --> 00:29:25,190
+So you'd be less famous
+if you prove this one.
+
+604
+00:29:25,190 --> 00:29:27,690
+Still pretty famous, but you
+wouldn't win the million dollar
+
+605
+00:29:27,690 --> 00:29:29,150
+bounty that's on P versus NP.
+
+606
+00:29:29,150 --> 00:29:31,880
+
+
+607
+00:29:31,880 --> 00:29:33,000
+All right.
+
+608
+00:29:33,000 --> 00:29:35,235
+There are bigger classes.
+
+609
+00:29:35,235 --> 00:29:36,610
+We talked about
+exponential time.
+
+610
+00:29:36,610 --> 00:29:38,782
+You can, of course, talk
+about exponential space.
+
+611
+00:29:38,782 --> 00:29:39,990
+In general, these interleave.
+
+612
+00:29:39,990 --> 00:29:42,850
+You go polynomial
+time, polynomial space,
+
+613
+00:29:42,850 --> 00:29:45,940
+exponential time, exponential
+space, doubly exponential time,
+
+614
+00:29:45,940 --> 00:29:47,910
+doubly exponential
+space, and so on.
+
+615
+00:29:47,910 --> 00:29:51,780
+That's the order in
+which they occur.
+
+616
+00:29:51,780 --> 00:29:54,590
+The only things we know
+is that polynomial time is
+
+617
+00:29:54,590 --> 00:29:56,020
+different from
+exponential time is
+
+618
+00:29:56,020 --> 00:29:57,644
+different from doubly
+exponential time,
+
+619
+00:29:57,644 --> 00:29:59,960
+or any function of time, really.
+
+620
+00:29:59,960 --> 00:30:02,360
+And we know that
+polynomial space
+
+621
+00:30:02,360 --> 00:30:04,860
+is different from exponential
+space is different from doubly
+
+622
+00:30:04,860 --> 00:30:06,010
+exponential space.
+
+623
+00:30:06,010 --> 00:30:07,718
+But we don't know
+about the interrelation
+
+624
+00:30:07,718 --> 00:30:08,780
+between time and space.
+
+625
+00:30:08,780 --> 00:30:10,960
+That's one of the big questions.
+
+626
+00:30:10,960 --> 00:30:13,140
+The other big question
+is non-determinism.
+
+627
+00:30:13,140 --> 00:30:19,800
+One fun fact you should know
+is that PSPACE equals NPSPACE.
+
+628
+00:30:19,800 --> 00:30:22,920
+This is a useful fact.
+
+629
+00:30:22,920 --> 00:30:26,330
+NPSPACE is non-deterministic
+polynomial space.
+
+630
+00:30:26,330 --> 00:30:28,306
+So you take a lucky
+algorithm, and you
+
+631
+00:30:28,306 --> 00:30:29,930
+don't guarantee how
+much time it takes,
+
+632
+00:30:29,930 --> 00:30:31,634
+it will be a most
+exponential time.
+
+633
+00:30:31,634 --> 00:30:33,550
+You only guarantee the
+amount of space it uses
+
+634
+00:30:33,550 --> 00:30:36,680
+is, at most, polynomial.
+
+635
+00:30:36,680 --> 00:30:38,950
+This is a theorem
+called Savages Theorem,
+
+636
+00:30:38,950 --> 00:30:40,326
+and it works for
+any space bound.
+
+637
+00:30:40,326 --> 00:30:41,866
+In general, the
+space bound, I think,
+
+638
+00:30:41,866 --> 00:30:43,570
+grows to the square
+of its original,
+
+639
+00:30:43,570 --> 00:30:45,460
+if you want to convert
+non-deterministic
+
+640
+00:30:45,460 --> 00:30:46,480
+to deterministic.
+
+641
+00:30:46,480 --> 00:30:49,691
+This is useful for Rush Hour,
+because to play a Rush Hour
+
+642
+00:30:49,691 --> 00:30:52,190
+game, in general, the number
+of moves you might have to make
+
+643
+00:30:52,190 --> 00:30:55,430
+is exponential, so
+it's not obviously
+
+644
+00:30:55,430 --> 00:30:57,520
+in NP, because NP
+would have to have
+
+645
+00:30:57,520 --> 00:30:59,700
+a short polynomial-length
+solution that you
+
+646
+00:30:59,700 --> 00:31:02,930
+can check in polynomial time.
+
+647
+00:31:02,930 --> 00:31:05,226
+But Rush Hour, you can
+solve in polynomial space
+
+648
+00:31:05,226 --> 00:31:07,100
+if you're really lucky
+because you say, well,
+
+649
+00:31:07,100 --> 00:31:07,690
+what move should I make?
+
+650
+00:31:07,690 --> 00:31:09,949
+Well, I'll guess one,
+then I'll make that move.
+
+651
+00:31:09,949 --> 00:31:10,740
+Guess another move.
+
+652
+00:31:10,740 --> 00:31:11,690
+Make the move.
+
+653
+00:31:11,690 --> 00:31:14,150
+And just maintaining
+the state of the board
+
+654
+00:31:14,150 --> 00:31:16,240
+only takes polynomial space.
+
+655
+00:31:16,240 --> 00:31:19,130
+So then if you solve
+it, you're happy.
+
+656
+00:31:19,130 --> 00:31:22,160
+If there's no way to solve
+it, you will return No.
+
+657
+00:31:22,160 --> 00:31:23,650
+I guess you have a timer.
+
+658
+00:31:23,650 --> 00:31:25,470
+After you've made
+exponentially many moves,
+
+659
+00:31:25,470 --> 00:31:28,290
+if you still haven't solved
+the puzzle, you can return No.
+
+660
+00:31:28,290 --> 00:31:30,460
+And in the lucky
+world, that means
+
+661
+00:31:30,460 --> 00:31:32,770
+you will find a solution
+if there is one.
+
+662
+00:31:32,770 --> 00:31:34,230
+Conveniently, lucky
+algorithms can
+
+663
+00:31:34,230 --> 00:31:36,360
+be turned into
+regular algorithms
+
+664
+00:31:36,360 --> 00:31:38,440
+when you're only worried
+about space bounds.
+
+665
+00:31:38,440 --> 00:31:42,230
+And so that's how you prove
+Rush Hour is in PSPACE.
+
+666
+00:31:42,230 --> 00:31:43,900
+So that's a good fact to know.
+
+667
+00:31:43,900 --> 00:31:46,630
+
+
+668
+00:31:46,630 --> 00:31:48,130
+Cool.
+
+669
+00:31:48,130 --> 00:31:48,630
+All right.
+
+670
+00:31:48,630 --> 00:31:51,410
+There's one key thing
+we haven't defined yet,
+
+671
+00:31:51,410 --> 00:31:53,720
+which is as hard as.
+
+672
+00:31:53,720 --> 00:31:55,530
+So let's get to that.
+
+673
+00:31:55,530 --> 00:32:00,169
+This is really the
+heart of the class.
+
+674
+00:32:00,169 --> 00:32:00,960
+Let me go up there.
+
+675
+00:32:00,960 --> 00:32:35,730
+
+
+676
+00:32:35,730 --> 00:32:39,410
+So this class is really
+all about one notion,
+
+677
+00:32:39,410 --> 00:32:41,540
+and that notion is reductions.
+
+678
+00:32:41,540 --> 00:32:44,212
+So if I have two
+problems A and B, then
+
+679
+00:32:44,212 --> 00:32:46,170
+there's this notion of
+a reduction from A to B.
+
+680
+00:32:46,170 --> 00:32:48,240
+This will be an algorithm.
+
+681
+00:32:48,240 --> 00:32:50,980
+For us, almost all the time
+it will be a polynomial time
+
+682
+00:32:50,980 --> 00:32:54,240
+algorithm, although you could
+put in a different adjective
+
+683
+00:32:54,240 --> 00:32:55,765
+here than polynomial time.
+
+684
+00:32:55,765 --> 00:32:57,390
+Most of the time,
+that is what we want.
+
+685
+00:32:57,390 --> 00:33:06,570
+
+
+686
+00:33:06,570 --> 00:33:10,980
+And it's going to convert an
+instance of the A problem--
+
+687
+00:33:10,980 --> 00:33:12,445
+so instance just means input--
+
+688
+00:33:12,445 --> 00:33:15,320
+
+
+689
+00:33:15,320 --> 00:33:17,690
+and we'll convert it into an
+instance of the B problem.
+
+690
+00:33:17,690 --> 00:33:21,380
+
+
+691
+00:33:21,380 --> 00:33:30,270
+And it's going to do so in a
+way such that the solution to A
+
+692
+00:33:30,270 --> 00:33:36,910
+equals the solution
+to B. I mean,
+
+693
+00:33:36,910 --> 00:33:39,600
+the solution of
+that instance of A
+
+694
+00:33:39,600 --> 00:33:42,690
+is the same as the solution
+of the instance to B.
+
+695
+00:33:42,690 --> 00:33:45,260
+So this is-- think
+decision problems.
+
+696
+00:33:45,260 --> 00:33:47,585
+The answer's either Yes or No.
+
+697
+00:33:47,585 --> 00:33:51,410
+So we want to convert A into
+an equivalent instance of B,
+
+698
+00:33:51,410 --> 00:33:54,630
+equivalent meaning that
+it has the same answer.
+
+699
+00:33:54,630 --> 00:33:55,800
+Why do we care?
+
+700
+00:33:55,800 --> 00:34:02,390
+Because let's suppose we
+had an algorithm to solve B.
+
+701
+00:34:02,390 --> 00:34:03,620
+That would be this arrow.
+
+702
+00:34:03,620 --> 00:34:11,370
+So let's say if we
+can solve B, then
+
+703
+00:34:11,370 --> 00:34:14,880
+we can solve A by this diagram.
+
+704
+00:34:14,880 --> 00:34:18,469
+Take an instance of A, convert
+it into an equivalence of B,
+
+705
+00:34:18,469 --> 00:34:22,150
+solve B, and then that solution
+is equal to the solution to A,
+
+706
+00:34:22,150 --> 00:34:31,800
+so we solved A.
+
+707
+00:34:31,800 --> 00:34:33,570
+This is as hard as.
+
+708
+00:34:33,570 --> 00:34:46,050
+So what we say is
+B is as hard as A.
+
+709
+00:34:46,050 --> 00:34:48,900
+That's a definition
+of this hardness.
+
+710
+00:34:48,900 --> 00:34:51,429
+In general, depending on
+your definition of reduction,
+
+711
+00:34:51,429 --> 00:34:53,262
+you'll get a different
+notion of as hard as,
+
+712
+00:34:53,262 --> 00:34:57,180
+but we will stick primarily
+to polynomial time.
+
+713
+00:34:57,180 --> 00:34:58,620
+Reductions.
+
+714
+00:34:58,620 --> 00:35:03,444
+This is what you might
+call a one call reduction.
+
+715
+00:35:03,444 --> 00:35:04,735
+This is kind of a technicality.
+
+716
+00:35:04,735 --> 00:35:08,190
+
+
+717
+00:35:08,190 --> 00:35:10,490
+Also called a Karp
+style reduction
+
+718
+00:35:10,490 --> 00:35:17,690
+because Karp gave a whole bunch
+of them in the '70s, '80s.
+
+719
+00:35:17,690 --> 00:35:21,620
+So the idea is you only get to
+call your solution to be once.
+
+720
+00:35:21,620 --> 00:35:23,830
+In general, you could imagine
+an algorithm that calls
+
+721
+00:35:23,830 --> 00:35:25,830
+your solution to be many times.
+
+722
+00:35:25,830 --> 00:35:28,250
+That would also be a
+notion of as hard as.
+
+723
+00:35:28,250 --> 00:35:32,522
+For the problems we'll look,
+basically, these two notions
+
+724
+00:35:32,522 --> 00:35:33,980
+don't seem very
+helpful, let's say.
+
+725
+00:35:33,980 --> 00:35:35,540
+So we'll stick to
+one call reductions
+
+726
+00:35:35,540 --> 00:35:38,690
+because they seem
+sufficient for everything
+
+727
+00:35:38,690 --> 00:35:40,080
+that we will cover
+in this class.
+
+728
+00:35:40,080 --> 00:35:40,660
+Probably.
+
+729
+00:35:40,660 --> 00:35:42,326
+Maybe in some very
+late lecture, we'll
+
+730
+00:35:42,326 --> 00:35:43,700
+talk about multi-call
+reductions.
+
+731
+00:35:43,700 --> 00:35:45,130
+But they're not so prominent.
+
+732
+00:35:45,130 --> 00:35:48,980
+One call reductions are the
+bread and butter of hardness.
+
+733
+00:35:48,980 --> 00:35:52,200
+So as you might imagine, this
+is how you prove a problem hard.
+
+734
+00:35:52,200 --> 00:35:58,560
+Basically, all hardness
+proofs in the known universe
+
+735
+00:35:58,560 --> 00:36:00,040
+are based on a reduction.
+
+736
+00:36:00,040 --> 00:36:01,561
+You start from a
+problem which you
+
+737
+00:36:01,561 --> 00:36:04,550
+know is hard in whatever
+class you care about,
+
+738
+00:36:04,550 --> 00:36:07,330
+and you reduce from that
+problem, the known hard
+
+739
+00:36:07,330 --> 00:36:10,340
+problem, to your problem
+that you're not sure about.
+
+740
+00:36:10,340 --> 00:36:12,430
+If you can do that,
+then you prove
+
+741
+00:36:12,430 --> 00:36:15,370
+that your problem is as hard
+as the original problem.
+
+742
+00:36:15,370 --> 00:36:17,960
+If you know that one is
+hard, than this one is hard.
+
+743
+00:36:17,960 --> 00:36:20,840
+Don't get this backwards.
+
+744
+00:36:20,840 --> 00:36:23,730
+You will anyway, but try
+not to get it backwards.
+
+745
+00:36:23,730 --> 00:36:27,140
+You're always reducing
+from the known hard problem
+
+746
+00:36:27,140 --> 00:36:28,701
+to your problem.
+
+747
+00:36:28,701 --> 00:36:29,200
+OK.
+
+748
+00:36:29,200 --> 00:36:33,150
+So usually say, our proof is
+based on a reduction from--
+
+749
+00:36:33,150 --> 00:36:34,360
+pick your favorite problem.
+
+750
+00:36:34,360 --> 00:36:35,720
+Never two.
+
+751
+00:36:35,720 --> 00:36:39,920
+Easy to get wrong, because
+it's easy to make a sign error.
+
+752
+00:36:39,920 --> 00:36:40,840
+But that's life.
+
+753
+00:36:40,840 --> 00:36:44,280
+So good.
+
+754
+00:36:44,280 --> 00:36:45,760
+Anything else?
+
+755
+00:36:45,760 --> 00:36:47,509
+Now if you've taken
+an algorithms class,
+
+756
+00:36:47,509 --> 00:36:48,800
+you've seen lots of reductions.
+
+757
+00:36:48,800 --> 00:36:51,670
+Reductions are a powerful
+tool in algorithms too.
+
+758
+00:36:51,670 --> 00:36:56,010
+For example, some
+lame examples like,
+
+759
+00:36:56,010 --> 00:36:58,500
+if you have an unweighted
+shortest path problem,
+
+760
+00:36:58,500 --> 00:37:02,299
+you can reduce that to a
+weighted shortest path problem.
+
+761
+00:37:02,299 --> 00:37:03,090
+How do you do that?
+
+762
+00:37:03,090 --> 00:37:04,298
+You set all the weights to 1.
+
+763
+00:37:04,298 --> 00:37:05,680
+Yay.
+
+764
+00:37:05,680 --> 00:37:06,630
+Why would you do that?
+
+765
+00:37:06,630 --> 00:37:07,338
+Well, never mind.
+
+766
+00:37:07,338 --> 00:37:10,670
+
+
+767
+00:37:10,670 --> 00:37:12,680
+It kind of illustrates
+what's going on here.
+
+768
+00:37:12,680 --> 00:37:16,600
+What we're showing is
+that A is a special case
+
+769
+00:37:16,600 --> 00:37:19,250
+of B. Unweighted shortest
+paths is a special case
+
+770
+00:37:19,250 --> 00:37:20,570
+of weighted shortest paths.
+
+771
+00:37:20,570 --> 00:37:22,750
+In some sense, all
+reductions are that,
+
+772
+00:37:22,750 --> 00:37:24,510
+but they're usually
+much less obvious
+
+773
+00:37:24,510 --> 00:37:27,120
+than unweighted shortest paths
+to weighted shortest paths.
+
+774
+00:37:27,120 --> 00:37:28,750
+And the reason we
+can say B is as hard
+
+775
+00:37:28,750 --> 00:37:32,234
+as A is because [? modular ?]
+this conversion algorithm
+
+776
+00:37:32,234 --> 00:37:34,820
+A is a special case
+of B. So of course,
+
+777
+00:37:34,820 --> 00:37:37,370
+if B has more cases than
+A, or maybe the same,
+
+778
+00:37:37,370 --> 00:37:40,050
+but if it has at least as many
+cases as A, then of course,
+
+779
+00:37:40,050 --> 00:37:41,450
+B is at at least
+as hard to solve
+
+780
+00:37:41,450 --> 00:37:44,500
+as A in this formal sense.
+
+781
+00:37:44,500 --> 00:37:45,790
+OK.
+
+782
+00:37:45,790 --> 00:37:46,630
+Cool.
+
+783
+00:37:46,630 --> 00:37:47,640
+There are more
+interesting examples
+
+784
+00:37:47,640 --> 00:37:49,181
+you've probably seen
+in problem sets,
+
+785
+00:37:49,181 --> 00:37:52,750
+like if you want in
+the arbitrage problem,
+
+786
+00:37:52,750 --> 00:37:56,410
+you want to find a path that
+has the minimum product of all
+
+787
+00:37:56,410 --> 00:37:58,715
+the values, to convert
+products into a min.
+
+788
+00:37:58,715 --> 00:38:00,840
+Some problem, you just take
+logs of all the values.
+
+789
+00:38:00,840 --> 00:38:03,430
+So the reduction is compute
+logs and all the weights.
+
+790
+00:38:03,430 --> 00:38:06,130
+So you've probably seen
+lots of things like that.
+
+791
+00:38:06,130 --> 00:38:09,810
+Some are more
+complicated than others.
+
+792
+00:38:09,810 --> 00:38:14,880
+What we're going to do in this
+class is reduce instead of--
+
+793
+00:38:14,880 --> 00:38:17,040
+so for algorithms, you
+want to reduce to something
+
+794
+00:38:17,040 --> 00:38:18,830
+you know how to solve.
+
+795
+00:38:18,830 --> 00:38:20,620
+We're going to
+reduce from something
+
+796
+00:38:20,620 --> 00:38:23,440
+we know we can't solve
+under certain assumptions.
+
+797
+00:38:23,440 --> 00:38:27,380
+So assuming P does not
+equal NP, if A is NP-hard
+
+798
+00:38:27,380 --> 00:38:33,320
+and we reduce from A to B,
+then we know the B is NP-hard.
+
+799
+00:38:33,320 --> 00:38:35,320
+That's a theorem.
+
+800
+00:38:35,320 --> 00:38:40,200
+So in this situation,
+if we have a reduction,
+
+801
+00:38:40,200 --> 00:38:48,790
+let's say if A reduces to
+B, I'll be explicit, and A--
+
+802
+00:38:48,790 --> 00:38:49,707
+better get this right.
+
+803
+00:38:49,707 --> 00:38:51,790
+It would be pretty
+embarrassing if I got it wrong,
+
+804
+00:38:51,790 --> 00:38:54,520
+but I probably will get it wrong
+at some point in this class.
+
+805
+00:38:54,520 --> 00:38:56,840
+Hopefully not today.
+
+806
+00:38:56,840 --> 00:38:59,160
+Then B is X-hard.
+
+807
+00:38:59,160 --> 00:39:01,510
+
+
+808
+00:39:01,510 --> 00:39:02,010
+OK.
+
+809
+00:39:02,010 --> 00:39:04,290
+That's actually kind
+of a trivial theorem
+
+810
+00:39:04,290 --> 00:39:05,954
+if you read all the definitions.
+
+811
+00:39:05,954 --> 00:39:06,620
+What did X-hard?
+
+812
+00:39:06,620 --> 00:39:10,670
+It meant as hard as
+every problem in X.
+
+813
+00:39:10,670 --> 00:39:13,970
+And as hard as meant
+there was a reduction.
+
+814
+00:39:13,970 --> 00:39:16,330
+So that means-- get this right--
+
+815
+00:39:16,330 --> 00:39:21,140
+there's reduction from every
+problem in X to your problem.
+
+816
+00:39:21,140 --> 00:39:23,070
+So if A is NP-hard
+there's a reduction
+
+817
+00:39:23,070 --> 00:39:25,280
+from every problem
+to A, and we're
+
+818
+00:39:25,280 --> 00:39:27,830
+saying now what if there's
+also a reduction from A to B,
+
+819
+00:39:27,830 --> 00:39:29,246
+well then, we can
+just chain those
+
+820
+00:39:29,246 --> 00:39:32,320
+are two reductions together,
+convert any problem in X to A,
+
+821
+00:39:32,320 --> 00:39:35,550
+then convert it to B. And so
+we've shown every problem in X
+
+822
+00:39:35,550 --> 00:39:38,980
+can be reduced to B,
+where B is X-hard.
+
+823
+00:39:38,980 --> 00:39:41,420
+This is an easy theorem.
+
+824
+00:39:41,420 --> 00:39:45,740
+The converse would be if B
+can be solved in class X,
+
+825
+00:39:45,740 --> 00:39:49,160
+and X contains
+polynomial time, then
+
+826
+00:39:49,160 --> 00:39:54,250
+you could can also solve A
+in the same complexity class.
+
+827
+00:39:54,250 --> 00:39:56,550
+So for example,
+if B is in PSPACE,
+
+828
+00:39:56,550 --> 00:39:58,380
+then we learn that
+A is in PSPACE.
+
+829
+00:39:58,380 --> 00:40:00,720
+Something like that.
+
+830
+00:40:00,720 --> 00:40:03,050
+Cool.
+
+831
+00:40:03,050 --> 00:40:06,314
+Any questions at this point?
+
+832
+00:40:06,314 --> 00:40:07,215
+AUDIENCE: Question.
+
+833
+00:40:07,215 --> 00:40:07,881
+PROFESSOR: Yeah?
+
+834
+00:40:07,881 --> 00:40:09,994
+AUDIENCE: You've talked
+a lot about thi NP thing.
+
+835
+00:40:09,994 --> 00:40:12,452
+Why don't you ever talk about
+non-deterministic exponential
+
+836
+00:40:12,452 --> 00:40:14,489
+orobelms or things like that.
+
+837
+00:40:14,489 --> 00:40:15,072
+PROFESSOR: OK.
+
+838
+00:40:15,072 --> 00:40:17,540
+Yeah, I didn't define
+non-deterministic exponential
+
+839
+00:40:17,540 --> 00:40:19,460
+problems, but that's
+a valid thing.
+
+840
+00:40:19,460 --> 00:40:21,980
+I think it's usually
+written NEXP.
+
+841
+00:40:21,980 --> 00:40:25,890
+And I believe there
+is a class of games
+
+842
+00:40:25,890 --> 00:40:27,490
+that naturally fits into NEXP.
+
+843
+00:40:27,490 --> 00:40:30,880
+Its mainly an issue of
+which classes commonly arise
+
+844
+00:40:30,880 --> 00:40:32,457
+in problems that we care about.
+
+845
+00:40:32,457 --> 00:40:34,290
+This is a pretty rare
+one, but I think there
+
+846
+00:40:34,290 --> 00:40:36,170
+might be one instance where--
+
+847
+00:40:36,170 --> 00:40:37,180
+we might touch on this.
+
+848
+00:40:37,180 --> 00:40:38,750
+Yeah, we definitely can.
+
+849
+00:40:38,750 --> 00:40:41,770
+It's the same open problem
+where EXP equals NEXP.
+
+850
+00:40:41,770 --> 00:40:43,187
+I mean, it's another
+open problem.
+
+851
+00:40:43,187 --> 00:40:44,436
+I shouldn't say it's the same.
+
+852
+00:40:44,436 --> 00:40:46,372
+I think you could solve
+one without the other.
+
+853
+00:40:46,372 --> 00:40:48,080
+Again, everyone believes
+you can't do it.
+
+854
+00:40:48,080 --> 00:40:49,455
+If you believe
+you can't engineer
+
+855
+00:40:49,455 --> 00:40:52,940
+luckiness, then of course,
+NEXP doesn't equal EXP.
+
+856
+00:40:52,940 --> 00:40:57,870
+But that would fit
+right after EXP.
+
+857
+00:40:57,870 --> 00:41:00,230
+If you get NEXP, and
+then you get EXPSPACE.
+
+858
+00:41:00,230 --> 00:41:02,730
+According to the things we've
+written down and cared about,
+
+859
+00:41:02,730 --> 00:41:04,146
+that would be the
+order of things.
+
+860
+00:41:04,146 --> 00:41:06,950
+Of course there are
+classes in between these,
+
+861
+00:41:06,950 --> 00:41:08,790
+but these are the ones
+that appear normally.
+
+862
+00:41:08,790 --> 00:41:09,422
+Yeah?
+
+863
+00:41:09,422 --> 00:41:11,630
+AUDIENCE: Do we know how to
+use hardness assumptions,
+
+864
+00:41:11,630 --> 00:41:13,580
+for example, P not
+equal to NP to say
+
+865
+00:41:13,580 --> 00:41:16,135
+whether there exists problems
+that are not in P nor NP
+
+866
+00:41:16,135 --> 00:41:17,974
+complete?
+
+867
+00:41:17,974 --> 00:41:18,640
+PROFESSOR: Yeah.
+
+868
+00:41:18,640 --> 00:41:21,790
+That's another
+big open question.
+
+869
+00:41:21,790 --> 00:41:23,980
+Let's say P does not equal NP.
+
+870
+00:41:23,980 --> 00:41:25,900
+Are there problems here?
+
+871
+00:41:25,900 --> 00:41:28,660
+Which is to say strictly
+in between being--
+
+872
+00:41:28,660 --> 00:41:31,610
+so they're still not in P
+to the right of this line,
+
+873
+00:41:31,610 --> 00:41:33,950
+but they're also easier
+than NP-complete problems.
+
+874
+00:41:33,950 --> 00:41:35,830
+There are a couple
+problems that are famously
+
+875
+00:41:35,830 --> 00:41:41,380
+conjectured to live there, like
+factoring integers and graph
+
+876
+00:41:41,380 --> 00:41:42,160
+isomorphism.
+
+877
+00:41:42,160 --> 00:41:47,360
+But I'm not aware of any
+nice complexity class there.
+
+878
+00:41:47,360 --> 00:41:50,137
+You can, of course, say--
+
+879
+00:41:50,137 --> 00:41:51,720
+you can talk about
+a class of problems
+
+880
+00:41:51,720 --> 00:41:55,670
+that are as hard as graph
+isomorphism in a certain sense,
+
+881
+00:41:55,670 --> 00:41:56,880
+that if you believe--
+
+882
+00:41:56,880 --> 00:41:59,942
+if you have a graph isomorphism
+Oracle, what can you do?
+
+883
+00:41:59,942 --> 00:42:02,400
+So there's a little bit of work
+trying to chart that space,
+
+884
+00:42:02,400 --> 00:42:05,669
+but I'd say in general, it's
+been not super successful.
+
+885
+00:42:05,669 --> 00:42:06,960
+Don't quote me on that, though.
+
+886
+00:42:06,960 --> 00:42:09,810
+I also don't know the
+literature super well there.
+
+887
+00:42:09,810 --> 00:42:13,332
+So that's a big uncharted
+territory, let's say.
+
+888
+00:42:13,332 --> 00:42:14,290
+Could be a big project.
+
+889
+00:42:14,290 --> 00:42:17,580
+Probably lots of
+open problems there.
+
+890
+00:42:17,580 --> 00:42:18,370
+Other questions?
+
+891
+00:42:18,370 --> 00:42:21,680
+I think most people believe
+there are things there.
+
+892
+00:42:21,680 --> 00:42:23,180
+One thing you could
+prove is there's
+
+893
+00:42:23,180 --> 00:42:26,370
+a thing called exponential
+time hypothesis, which
+
+894
+00:42:26,370 --> 00:42:30,010
+would say that [? sat ?] has
+no sub-exponential algorithm.
+
+895
+00:42:30,010 --> 00:42:31,710
+Nothing to the
+[? little o of ?] N.
+
+896
+00:42:31,710 --> 00:42:33,796
+If you believe that,
+then it's known
+
+897
+00:42:33,796 --> 00:42:35,170
+there are some
+things in between.
+
+898
+00:42:35,170 --> 00:42:36,855
+You can pick your
+favorite function, like N
+
+899
+00:42:36,855 --> 00:42:38,938
+to Log [? Log ?] N. That's
+bigger than polynomial,
+
+900
+00:42:38,938 --> 00:42:40,500
+but smaller than exponential.
+
+901
+00:42:40,500 --> 00:42:43,767
+And there are problems that are
+in that class and not [? NP. ?]
+
+902
+00:42:43,767 --> 00:42:45,350
+So definitely with
+ETH, you can do it.
+
+903
+00:42:45,350 --> 00:42:46,461
+Yeah.
+
+904
+00:42:46,461 --> 00:42:48,002
+AUDIENCE: So regarding
+that question,
+
+905
+00:42:48,002 --> 00:42:52,060
+I think it has been proven
+that if P not equal NP, then
+
+906
+00:42:52,060 --> 00:42:53,152
+there is stuff in there.
+
+907
+00:42:53,152 --> 00:42:54,152
+PROFESSOR: Oh, there is.
+
+908
+00:42:54,152 --> 00:42:55,000
+Yeah.
+
+909
+00:42:55,000 --> 00:42:57,740
+AUDIENCE: Or you can kind
+of do a diagonalization.
+
+910
+00:42:57,740 --> 00:42:59,690
+PROFESSOR: Other questions?
+
+911
+00:42:59,690 --> 00:43:00,190
+Yeah?
+
+912
+00:43:00,190 --> 00:43:03,680
+AUDIENCE: What's the decision
+problem for the factoring?
+
+913
+00:43:03,680 --> 00:43:06,400
+PROFESSOR: Decision
+problem for factoring.
+
+914
+00:43:06,400 --> 00:43:10,590
+I think one version is
+I give you a number,
+
+915
+00:43:10,590 --> 00:43:12,690
+and I give you a
+bit position, and I
+
+916
+00:43:12,690 --> 00:43:15,780
+want to know whether there
+is a factor that has a 0 or 1
+
+917
+00:43:15,780 --> 00:43:17,037
+in that position.
+
+918
+00:43:17,037 --> 00:43:19,370
+So if you can solve the
+problem, then by repeated calls,
+
+919
+00:43:19,370 --> 00:43:24,400
+you could actually find
+a factor that's not 1.
+
+920
+00:43:24,400 --> 00:43:26,525
+I don't know if there's a
+better version than that.
+
+921
+00:43:26,525 --> 00:43:28,691
+You have to be careful, of
+course, if you say, well,
+
+922
+00:43:28,691 --> 00:43:29,680
+is the number prime?
+
+923
+00:43:29,680 --> 00:43:31,330
+Then that's in polynomial time.
+
+924
+00:43:31,330 --> 00:43:33,580
+That was a big result
+a bunch of years ago.
+
+925
+00:43:33,580 --> 00:43:34,840
+So, yeah.
+
+926
+00:43:34,840 --> 00:43:38,170
+
+
+927
+00:43:38,170 --> 00:43:41,250
+Most of the time, it's easy
+to go from your optimization
+
+928
+00:43:41,250 --> 00:43:43,080
+problem to a decision problem.
+
+929
+00:43:43,080 --> 00:43:48,376
+But factoring is one
+where it's less clear.
+
+930
+00:43:48,376 --> 00:43:49,000
+More questions?
+
+931
+00:43:49,000 --> 00:43:53,520
+
+
+932
+00:43:53,520 --> 00:43:55,850
+That was a lot in a
+small amount of time.
+
+933
+00:43:55,850 --> 00:43:58,100
+But that's all you should
+need from complexity theory.
+
+934
+00:43:58,100 --> 00:43:58,809
+Yeah?
+
+935
+00:43:58,809 --> 00:43:59,350
+AUDIENCE: OK.
+
+936
+00:43:59,350 --> 00:44:02,829
+I guess I have a question
+about the way you defined NP
+
+937
+00:44:02,829 --> 00:44:04,536
+with the [INAUDIBLE] algorithms?
+
+938
+00:44:04,536 --> 00:44:05,160
+PROFESSOR: Yup.
+
+939
+00:44:05,160 --> 00:44:06,701
+AUDIENCE: So the
+definition that I've
+
+940
+00:44:06,701 --> 00:44:10,042
+seen before is in
+terms of [INAUDIBLE]..
+
+941
+00:44:10,042 --> 00:44:10,750
+PROFESSOR: Right.
+
+942
+00:44:10,750 --> 00:44:13,640
+AUDIENCE: And there, it
+specifically constrains
+
+943
+00:44:13,640 --> 00:44:17,138
+every branch in the computation
+to run polynomial time,
+
+944
+00:44:17,138 --> 00:44:21,636
+whereas you can imagine a lucky
+algorithm that avoids infinite
+
+945
+00:44:21,636 --> 00:44:23,887
+looping just because it's lucky.
+
+946
+00:44:23,887 --> 00:44:24,470
+PROFESSOR: Oh.
+
+947
+00:44:24,470 --> 00:44:24,830
+OK.
+
+948
+00:44:24,830 --> 00:44:25,460
+Yeah.
+
+949
+00:44:25,460 --> 00:44:27,740
+I was a little vague here.
+
+950
+00:44:27,740 --> 00:44:29,840
+For the definition of NP
+, I said polynomial time
+
+951
+00:44:29,840 --> 00:44:31,280
+in the worst case.
+
+952
+00:44:31,280 --> 00:44:33,640
+Probably I need to say it's
+polynomial time no matter
+
+953
+00:44:33,640 --> 00:44:36,970
+what branch you take.
+
+954
+00:44:36,970 --> 00:44:38,660
+Not sure it matters.
+
+955
+00:44:38,660 --> 00:44:41,380
+Because maybe if you
+know your algorithm's
+
+956
+00:44:41,380 --> 00:44:44,600
+supposed to run in polynomial
+time, you could have a timer,
+
+957
+00:44:44,600 --> 00:44:48,130
+and if it ever exceeds
+that time, just return no.
+
+958
+00:44:48,130 --> 00:44:50,750
+So you might be able
+to convert the weaker
+
+959
+00:44:50,750 --> 00:44:52,870
+notion of polynomial
+time to the stronger one.
+
+960
+00:44:52,870 --> 00:44:55,810
+But it won't matter too much.
+
+961
+00:44:55,810 --> 00:44:58,660
+I mean, in all the
+algorithms we'll think about,
+
+962
+00:44:58,660 --> 00:45:00,840
+every branch you could
+possibly think of even,
+
+963
+00:45:00,840 --> 00:45:02,590
+the non-lucky ones,
+are polynomial time.
+
+964
+00:45:02,590 --> 00:45:04,839
+So we will stick to that.
+
+965
+00:45:04,839 --> 00:45:06,630
+We won't spend much
+time in general proving
+
+966
+00:45:06,630 --> 00:45:08,431
+that problems are
+in NP or NPSPACE,
+
+967
+00:45:08,431 --> 00:45:10,430
+only to check that this
+is the right class we're
+
+968
+00:45:10,430 --> 00:45:11,680
+supposed to be working in.
+
+969
+00:45:11,680 --> 00:45:14,450
+We'll spend most of our time
+proving the hardness cases,
+
+970
+00:45:14,450 --> 00:45:15,460
+the lower bounds.
+
+971
+00:45:15,460 --> 00:45:16,514
+Yeah?
+
+972
+00:45:16,514 --> 00:45:18,466
+AUDIENCE: So you
+mentioned that if you
+
+973
+00:45:18,466 --> 00:45:21,642
+use different notions of a
+reduction, different limit
+
+974
+00:45:21,642 --> 00:45:23,494
+space equally on
+the competition,
+
+975
+00:45:23,494 --> 00:45:25,667
+you get different
+measures of as hard as.
+
+976
+00:45:25,667 --> 00:45:26,293
+PROFESSOR: Yes.
+
+977
+00:45:26,293 --> 00:45:27,958
+AUDIENCE: So as your
+classes get bigger,
+
+978
+00:45:27,958 --> 00:45:30,239
+does it matter if you start
+using more polynomial time
+
+979
+00:45:30,239 --> 00:45:30,988
+in your reduction?
+
+980
+00:45:30,988 --> 00:45:33,220
+Does it actually change?
+
+981
+00:45:33,220 --> 00:45:34,700
+PROFESSOR: I'm sure it matters.
+
+982
+00:45:34,700 --> 00:45:38,480
+But again, it's
+beyond the classes
+
+983
+00:45:38,480 --> 00:45:41,250
+that are usually considered
+from an algorithmic standpoint.
+
+984
+00:45:41,250 --> 00:45:43,750
+Bigger than these classes
+don't seem to matter much.
+
+985
+00:45:43,750 --> 00:45:46,000
+And in these, maybe
+once I've seen like,
+
+986
+00:45:46,000 --> 00:45:49,490
+a polynomial space reduction
+to prove X-hardness,
+
+987
+00:45:49,490 --> 00:45:51,350
+so it's a slightly
+weaker notion than if you
+
+988
+00:45:51,350 --> 00:45:55,020
+do a polynomial time
+reduction, but if you
+
+989
+00:45:55,020 --> 00:45:58,540
+believe PSPACE does not equal
+X, but still a separation.
+
+990
+00:45:58,540 --> 00:46:00,780
+So sometimes, things
+like that happen.
+
+991
+00:46:00,780 --> 00:46:03,010
+I think the most common is
+just switching to a space
+
+992
+00:46:03,010 --> 00:46:05,332
+measure over time measure.
+
+993
+00:46:05,332 --> 00:46:07,540
+I don't think it will matter
+in anything we see here.
+
+994
+00:46:07,540 --> 00:46:10,040
+But it does arise
+in the literature.
+
+995
+00:46:10,040 --> 00:46:11,500
+Definitely.
+
+996
+00:46:11,500 --> 00:46:15,240
+I think PSPACE or log space
+are the two common ones.
+
+997
+00:46:15,240 --> 00:46:18,632
+And of course, when you're doing
+P-completeness, it's another.
+
+998
+00:46:18,632 --> 00:46:19,841
+Yeah?
+
+999
+00:46:19,841 --> 00:46:21,840
+AUDIENCE: You mentioned
+setting it [INAUDIBLE],,
+
+1000
+00:46:21,840 --> 00:46:24,350
+and I'm curious how
+you could do that.
+
+1001
+00:46:24,350 --> 00:46:29,590
+Because for any
+instance of the problem,
+
+1002
+00:46:29,590 --> 00:46:32,450
+you can't say that I've
+used exponential time.
+
+1003
+00:46:32,450 --> 00:46:35,207
+It could just be that there's
+a bigger constant out front.
+
+1004
+00:46:35,207 --> 00:46:35,790
+PROFESSOR: OK.
+
+1005
+00:46:35,790 --> 00:46:38,600
+Yeah, so you need to know
+what the polynomial is
+
+1006
+00:46:38,600 --> 00:46:40,360
+for it to have a timer.
+
+1007
+00:46:40,360 --> 00:46:41,775
+That's a small catch.
+
+1008
+00:46:41,775 --> 00:46:44,610
+
+
+1009
+00:46:44,610 --> 00:46:45,110
+Yeah.
+
+1010
+00:46:45,110 --> 00:46:48,280
+I don't see an easy
+way to avoid that.
+
+1011
+00:46:48,280 --> 00:46:48,780
+Yeah.
+
+1012
+00:46:48,780 --> 00:46:51,561
+There's some few subtle
+constructive issues there.
+
+1013
+00:46:51,561 --> 00:46:53,060
+If you don't know
+what the bound is,
+
+1014
+00:46:53,060 --> 00:46:54,427
+then things get more annoying.
+
+1015
+00:46:54,427 --> 00:46:56,260
+None of those things
+will happen in reality.
+
+1016
+00:46:56,260 --> 00:46:58,890
+So remember, this not
+a complexity class.
+
+1017
+00:46:58,890 --> 00:47:02,590
+We're looking at
+algorithms here.
+
+1018
+00:47:02,590 --> 00:47:04,010
+This part is actually easy.
+
+1019
+00:47:04,010 --> 00:47:06,330
+It's all about the reductions.
+
+1020
+00:47:06,330 --> 00:47:09,020
+That's where the meat
+of this class will be.
+
+1021
+00:47:09,020 --> 00:47:12,480
+And for that, we need
+to get NP-hardcore.
+
+1022
+00:47:12,480 --> 00:47:14,870
+AUDIENCE: [LAUGHING].
+
+1023
+00:47:14,870 --> 00:47:18,100
+PROFESSOR: I think all of
+you soon will be NP-hardore,
+
+1024
+00:47:18,100 --> 00:47:22,020
+and we'll be able to prove
+really hard problems really
+
+1025
+00:47:22,020 --> 00:47:24,070
+hard.
+
+1026
+00:47:24,070 --> 00:47:27,330
+So in the spirit
+of NP-hardcoreness,
+
+1027
+00:47:27,330 --> 00:47:30,750
+we're going to take the classic
+of hardcore video games, Super
+
+1028
+00:47:30,750 --> 00:47:31,980
+Mario Brothers.
+
+1029
+00:47:31,980 --> 00:47:35,650
+And our first proof will be
+that Mario Brothers is NP-hard.
+
+1030
+00:47:35,650 --> 00:47:37,790
+This got lots of
+press, like here's
+
+1031
+00:47:37,790 --> 00:47:39,520
+Kotaku saying, "Science
+proves old video
+
+1032
+00:47:39,520 --> 00:47:41,154
+games were super hard."
+
+1033
+00:47:41,154 --> 00:47:43,940
+AUDIENCE: [LAUGHING].
+
+1034
+00:47:43,940 --> 00:47:48,560
+PROFESSOR: This is proving
+the obvious, I guess.
+
+1035
+00:47:48,560 --> 00:47:51,390
+But anyway.
+
+1036
+00:47:51,390 --> 00:47:55,220
+So let me tell you a little
+bit about how this proof goes,
+
+1037
+00:47:55,220 --> 00:47:56,370
+and then we will see it.
+
+1038
+00:47:56,370 --> 00:48:12,660
+
+
+1039
+00:48:12,660 --> 00:48:13,770
+All right.
+
+1040
+00:48:13,770 --> 00:48:18,540
+So we need a problem
+to reduce from.
+
+1041
+00:48:18,540 --> 00:48:19,910
+The problem is 3SAT.
+
+1042
+00:48:19,910 --> 00:48:22,574
+This is probably the most
+common problem to reduce from.
+
+1043
+00:48:22,574 --> 00:48:24,240
+We will spend a bunch
+of lectures on it.
+
+1044
+00:48:24,240 --> 00:48:26,210
+It won't be our very
+next class, but we
+
+1045
+00:48:26,210 --> 00:48:27,405
+will get to it pretty soon.
+
+1046
+00:48:27,405 --> 00:48:29,030
+This is also known
+as 3-Satisfiability.
+
+1047
+00:48:29,030 --> 00:48:31,750
+
+
+1048
+00:48:31,750 --> 00:48:33,880
+If you're ever trying
+to prove NP-hardness
+
+1049
+00:48:33,880 --> 00:48:36,540
+and you don't know where to
+start from, the answer is 3SAT.
+
+1050
+00:48:36,540 --> 00:48:38,505
+Almost always, but not always.
+
+1051
+00:48:38,505 --> 00:48:42,147
+
+
+1052
+00:48:42,147 --> 00:48:46,476
+AUDIENCE: [LAUGHING]
+
+1053
+00:48:46,476 --> 00:48:47,919
+PROFESSOR: OK.
+
+1054
+00:48:47,919 --> 00:48:49,380
+Whatever.
+
+1055
+00:48:49,380 --> 00:48:51,090
+So what's the problem?
+
+1056
+00:48:51,090 --> 00:48:54,820
+You're given a 3CNF formula.
+
+1057
+00:48:54,820 --> 00:49:00,830
+This means something
+like x5, or I'll
+
+1058
+00:49:00,830 --> 00:49:08,680
+be nice and write
+English, or x3, or not x1.
+
+1059
+00:49:08,680 --> 00:49:11,620
+
+
+1060
+00:49:11,620 --> 00:49:22,010
+And another thing like
+that. x7, or not x2, or x5.
+
+1061
+00:49:22,010 --> 00:49:22,510
+Whatever.
+
+1062
+00:49:22,510 --> 00:49:26,070
+
+
+1063
+00:49:26,070 --> 00:49:30,090
+So some key words
+you should know.
+
+1064
+00:49:30,090 --> 00:49:30,626
+xI's.
+
+1065
+00:49:30,626 --> 00:49:31,750
+Those are called variables.
+
+1066
+00:49:31,750 --> 00:49:35,000
+
+
+1067
+00:49:35,000 --> 00:49:37,190
+xI or not xI.
+
+1068
+00:49:37,190 --> 00:49:41,060
+Those are called literals.
+
+1069
+00:49:41,060 --> 00:49:41,990
+You have two choices.
+
+1070
+00:49:41,990 --> 00:49:43,910
+You could either have
+a positive variable
+
+1071
+00:49:43,910 --> 00:49:45,900
+or a negative variable.
+
+1072
+00:49:45,900 --> 00:49:51,080
+Then you always have
+three literals per clause.
+
+1073
+00:49:51,080 --> 00:49:52,330
+These things are called--
+
+1074
+00:49:52,330 --> 00:49:54,875
+each row of this thing that
+I drew is called a clause.
+
+1075
+00:49:54,875 --> 00:49:57,980
+
+
+1076
+00:49:57,980 --> 00:50:00,100
+The whole thing's
+called a formula.
+
+1077
+00:50:00,100 --> 00:50:04,240
+And the question is, can
+you make this formula true?
+
+1078
+00:50:04,240 --> 00:50:07,520
+So that's what you want to know.
+
+1079
+00:50:07,520 --> 00:50:14,429
+Do there exist xI's such
+that the formula is true?
+
+1080
+00:50:14,429 --> 00:50:15,595
+That's the decision problem.
+
+1081
+00:50:15,595 --> 00:50:20,050
+
+
+1082
+00:50:20,050 --> 00:50:21,070
+And it's NP-complete.
+
+1083
+00:50:21,070 --> 00:50:23,777
+
+
+1084
+00:50:23,777 --> 00:50:25,860
+It is almost the first
+problem proved NP-complete.
+
+1085
+00:50:25,860 --> 00:50:31,530
+
+
+1086
+00:50:31,530 --> 00:50:34,720
+It's like the second
+problem that's NP-complete.
+
+1087
+00:50:34,720 --> 00:50:39,230
+The first one was without
+this particular style.
+
+1088
+00:50:39,230 --> 00:50:41,290
+It was just a bunch of
+ands and or's and nots
+
+1089
+00:50:41,290 --> 00:50:43,260
+in any combination.
+
+1090
+00:50:43,260 --> 00:50:45,350
+But this is also hard,
+and it's usually easier
+
+1091
+00:50:45,350 --> 00:50:47,100
+to start from this situation.
+
+1092
+00:50:47,100 --> 00:50:50,610
+So what we want to do
+is reduce from 3SAT
+
+1093
+00:50:50,610 --> 00:50:52,861
+to Super Mario Brothers.
+
+1094
+00:50:52,861 --> 00:50:53,360
+OK.
+
+1095
+00:50:53,360 --> 00:50:57,560
+So let's do it.
+
+1096
+00:50:57,560 --> 00:50:59,965
+So I should mention our proof
+holds Super Mario Brothers
+
+1097
+00:50:59,965 --> 00:51:03,544
+1, Lost Levels, and 3.
+
+1098
+00:51:03,544 --> 00:51:05,210
+Super Mario Brothers
+2 is another world.
+
+1099
+00:51:05,210 --> 00:51:09,250
+Also, Super Mario
+Worlds, I think 1 and 2.
+
+1100
+00:51:09,250 --> 00:51:13,310
+But most the pictures will be
+Super Mario Brothers Original.
+
+1101
+00:51:13,310 --> 00:51:16,720
+So what we're going to
+do are build gadgets.
+
+1102
+00:51:16,720 --> 00:51:18,950
+Gadgets are in this
+case little pieces
+
+1103
+00:51:18,950 --> 00:51:21,310
+of levels that we're
+going to join together
+
+1104
+00:51:21,310 --> 00:51:23,680
+to make the actual reduction.
+
+1105
+00:51:23,680 --> 00:51:26,095
+So it's usually--
+it's not typical
+
+1106
+00:51:26,095 --> 00:51:29,690
+that you look at the instance of
+A, and just think really hard,
+
+1107
+00:51:29,690 --> 00:51:33,520
+and then just output an
+instance of B from nowhere.
+
+1108
+00:51:33,520 --> 00:51:37,360
+You just say, well, OK, instance
+of A has lots of little pieces.
+
+1109
+00:51:37,360 --> 00:51:39,140
+It's got variables,
+and literals,
+
+1110
+00:51:39,140 --> 00:51:40,757
+and clauses, and a formula.
+
+1111
+00:51:40,757 --> 00:51:42,840
+I'm just going to take
+each of those little pieces
+
+1112
+00:51:42,840 --> 00:51:45,005
+and convert them into a
+little piece in my output,
+
+1113
+00:51:45,005 --> 00:51:46,549
+and then just string
+them altogether
+
+1114
+00:51:46,549 --> 00:51:48,965
+in a usually fairly obvious
+way, though sometimes, there's
+
+1115
+00:51:48,965 --> 00:51:50,410
+some subtleties there.
+
+1116
+00:51:50,410 --> 00:51:52,770
+Almost all of our proofs
+will follow this structure.
+
+1117
+00:51:52,770 --> 00:51:54,520
+This is gadget
+structure, and this is
+
+1118
+00:51:54,520 --> 00:51:56,040
+the thing you're here to learn.
+
+1119
+00:51:56,040 --> 00:51:57,380
+And it's super cool.
+
+1120
+00:51:57,380 --> 00:52:00,370
+Because once you know
+that you want to do 3SAT,
+
+1121
+00:52:00,370 --> 00:52:02,830
+you're like, OK, I need
+variables in closets.
+
+1122
+00:52:02,830 --> 00:52:05,070
+So here's the variable.
+
+1123
+00:52:05,070 --> 00:52:06,950
+Got Mario on the top.
+
+1124
+00:52:06,950 --> 00:52:12,220
+Mario has to decide should
+he go left or right?
+
+1125
+00:52:12,220 --> 00:52:14,180
+I mean, you could
+go back, but if you
+
+1126
+00:52:14,180 --> 00:52:17,060
+want to go through
+this gadget, you
+
+1127
+00:52:17,060 --> 00:52:18,970
+can either fall
+left or fall right.
+
+1128
+00:52:18,970 --> 00:52:21,670
+And all of these heights
+are so large that once you
+
+1129
+00:52:21,670 --> 00:52:23,920
+make that decision, you can't
+come back up because you
+
+1130
+00:52:23,920 --> 00:52:26,620
+have a limited jump height.
+
+1131
+00:52:26,620 --> 00:52:27,290
+OK.
+
+1132
+00:52:27,290 --> 00:52:29,930
+Here's the clause gadget.
+
+1133
+00:52:29,930 --> 00:52:32,790
+So the idea of variables
+we're choosing,
+
+1134
+00:52:32,790 --> 00:52:35,250
+do I set x5 to be true or false?
+
+1135
+00:52:35,250 --> 00:52:37,547
+Let's say the left branch
+corresponds to true,
+
+1136
+00:52:37,547 --> 00:52:39,130
+the right branch
+corresponds to false.
+
+1137
+00:52:39,130 --> 00:52:40,796
+How that happens,
+we'll see in a moment.
+
+1138
+00:52:40,796 --> 00:52:43,290
+That's about how the
+gadgets fit together.
+
+1139
+00:52:43,290 --> 00:52:45,890
+Clause gadget has two parts.
+
+1140
+00:52:45,890 --> 00:52:48,870
+On the one hand, you have
+these three entry points
+
+1141
+00:52:48,870 --> 00:52:53,310
+where your goal is to hit
+koopas and bounce them around.
+
+1142
+00:52:53,310 --> 00:52:56,530
+And then the other part is down
+here, is a bunch of bricks.
+
+1143
+00:52:56,530 --> 00:52:59,700
+And at the end of the level,
+we're going to set it up
+
+1144
+00:52:59,700 --> 00:53:03,320
+so Mario has to go
+through this part.
+
+1145
+00:53:03,320 --> 00:53:05,730
+And this will be
+traversable if and only
+
+1146
+00:53:05,730 --> 00:53:07,800
+if these bricks
+have been broken.
+
+1147
+00:53:07,800 --> 00:53:10,700
+So how would you do that?
+
+1148
+00:53:10,700 --> 00:53:13,930
+This brick-- well, various
+things are in the way here,
+
+1149
+00:53:13,930 --> 00:53:18,340
+so what you need to do--
+
+1150
+00:53:18,340 --> 00:53:19,217
+interesting.
+
+1151
+00:53:19,217 --> 00:53:21,300
+But we're going to change
+this gadget in a second.
+
+1152
+00:53:21,300 --> 00:53:22,716
+I already see some
+issues with it.
+
+1153
+00:53:22,716 --> 00:53:24,770
+But this was our original.
+
+1154
+00:53:24,770 --> 00:53:27,240
+Original proof
+didn't get published,
+
+1155
+00:53:27,240 --> 00:53:30,840
+and we ended up fixing it
+before we submitted it.
+
+1156
+00:53:30,840 --> 00:53:34,770
+So the idea is what we want
+Mario to do is come down here,
+
+1157
+00:53:34,770 --> 00:53:37,635
+hit the koopa, and then
+knock the shell out here,
+
+1158
+00:53:37,635 --> 00:53:39,260
+and it will bounce
+and eventually break
+
+1159
+00:53:39,260 --> 00:53:40,350
+all these bricks.
+
+1160
+00:53:40,350 --> 00:53:41,370
+Right?
+
+1161
+00:53:41,370 --> 00:53:44,060
+Well, no, that would be
+Super Mario Brothers 3, where
+
+1162
+00:53:44,060 --> 00:53:45,730
+turtles actually break bricks.
+
+1163
+00:53:45,730 --> 00:53:47,590
+In Super Mario
+Brothers 1, they don't.
+
+1164
+00:53:47,590 --> 00:53:51,880
+So we will use a
+different gadget
+
+1165
+00:53:51,880 --> 00:53:55,430
+with fire bars and
+question blocks
+
+1166
+00:53:55,430 --> 00:53:58,510
+with invincibility
+stars in them.
+
+1167
+00:53:58,510 --> 00:53:59,010
+OK.
+
+1168
+00:53:59,010 --> 00:54:00,710
+So same idea.
+
+1169
+00:54:00,710 --> 00:54:03,300
+There are three
+entrances down here.
+
+1170
+00:54:03,300 --> 00:54:05,530
+If you hit any one of
+them, then the star
+
+1171
+00:54:05,530 --> 00:54:07,670
+will just float
+around here forever.
+
+1172
+00:54:07,670 --> 00:54:08,400
+We tested it.
+
+1173
+00:54:08,400 --> 00:54:11,050
+It goes there for as long
+as the level can last.
+
+1174
+00:54:11,050 --> 00:54:14,980
+Then later, if you come
+here, lots of testing
+
+1175
+00:54:14,980 --> 00:54:17,540
+involved, of course.
+
+1176
+00:54:17,540 --> 00:54:20,197
+Later if you come into here,
+and you can get the star,
+
+1177
+00:54:20,197 --> 00:54:22,530
+you have just enough time to
+run through all these fire.
+
+1178
+00:54:22,530 --> 00:54:25,130
+Bars if you don't, you will die.
+
+1179
+00:54:25,130 --> 00:54:25,630
+OK?
+
+1180
+00:54:25,630 --> 00:54:28,610
+So that's the clause gadget.
+
+1181
+00:54:28,610 --> 00:54:32,210
+So if you visit in at least
+one of these three places--
+
+1182
+00:54:32,210 --> 00:54:33,980
+you can visit all
+of them, it doesn't
+
+1183
+00:54:33,980 --> 00:54:36,660
+help to have three stars
+versus one in this case,
+
+1184
+00:54:36,660 --> 00:54:39,770
+because they don't
+stack or anything--
+
+1185
+00:54:39,770 --> 00:54:43,660
+then and only then can you
+go through the top part.
+
+1186
+00:54:43,660 --> 00:54:46,110
+This is what we might call
+a traversal, and this is--
+
+1187
+00:54:46,110 --> 00:54:49,579
+you could call it setting
+the gadget to True.
+
+1188
+00:54:49,579 --> 00:54:50,870
+How does this all fit together?
+
+1189
+00:54:50,870 --> 00:54:53,020
+This is sort of
+the bigger issue.
+
+1190
+00:54:53,020 --> 00:54:57,280
+So we're going to take
+this three set instance.
+
+1191
+00:54:57,280 --> 00:55:00,280
+It's got variables and clauses.
+
+1192
+00:55:00,280 --> 00:55:03,540
+And let's ignore the
+negations for now.
+
+1193
+00:55:03,540 --> 00:55:05,025
+Am I going to ignore them?
+
+1194
+00:55:05,025 --> 00:55:06,400
+No, I'm not going
+to ignore them.
+
+1195
+00:55:06,400 --> 00:55:09,870
+But on the one hand,
+we have variables.
+
+1196
+00:55:09,870 --> 00:55:11,330
+On the other hand,
+we have clauses.
+
+1197
+00:55:11,330 --> 00:55:13,580
+And we're going to
+connect each variable
+
+1198
+00:55:13,580 --> 00:55:15,970
+to the clause that contains it.
+
+1199
+00:55:15,970 --> 00:55:19,140
+So this is an actual set
+of four clauses here,
+
+1200
+00:55:19,140 --> 00:55:20,720
+and you can trace them all.
+
+1201
+00:55:20,720 --> 00:55:24,140
+So the claim is that
+x in the positive form
+
+1202
+00:55:24,140 --> 00:55:26,440
+appears in the first clause
+and the second clause.
+
+1203
+00:55:26,440 --> 00:55:28,460
+You can see there's an
+x here and an x here.
+
+1204
+00:55:28,460 --> 00:55:31,440
+It appears in the negative
+one-- this is not x--
+
+1205
+00:55:31,440 --> 00:55:38,140
+in clause three and four,
+because here's not x and not x.
+
+1206
+00:55:38,140 --> 00:55:38,839
+And so on.
+
+1207
+00:55:38,839 --> 00:55:41,130
+So that's what all these
+connections in the middle are.
+
+1208
+00:55:41,130 --> 00:55:43,070
+In general, it's kind
+of a bipartite graph.
+
+1209
+00:55:43,070 --> 00:55:45,140
+You've got variables on
+the one side, clauses
+
+1210
+00:55:45,140 --> 00:55:47,240
+on the other side,
+and we happened
+
+1211
+00:55:47,240 --> 00:55:50,610
+to have coalesced
+things in these groups.
+
+1212
+00:55:50,610 --> 00:55:53,710
+What these edges are now
+going to be converted into
+
+1213
+00:55:53,710 --> 00:55:55,970
+are paths for Mario to follow.
+
+1214
+00:55:55,970 --> 00:55:58,570
+So this is the variable gadget.
+
+1215
+00:55:58,570 --> 00:55:59,510
+It's this thing.
+
+1216
+00:55:59,510 --> 00:56:01,400
+We're just going to
+plug that in here.
+
+1217
+00:56:01,400 --> 00:56:03,590
+So the idea is you
+enter from here,
+
+1218
+00:56:03,590 --> 00:56:08,130
+and then you have two
+ways that you can go,
+
+1219
+00:56:08,130 --> 00:56:10,970
+either the true way
+or the false way.
+
+1220
+00:56:10,970 --> 00:56:12,820
+If you set the
+variable to True, you
+
+1221
+00:56:12,820 --> 00:56:16,260
+can then go and visit
+the corresponding clauses
+
+1222
+00:56:16,260 --> 00:56:20,740
+that contain it and
+get one of the stars.
+
+1223
+00:56:20,740 --> 00:56:21,310
+OK.
+
+1224
+00:56:21,310 --> 00:56:23,485
+Now, for each
+variable, you only get
+
+1225
+00:56:23,485 --> 00:56:24,860
+to make one of
+those choices then
+
+1226
+00:56:24,860 --> 00:56:29,330
+you satisfy all the causes
+that contain that literal.
+
+1227
+00:56:29,330 --> 00:56:31,970
+And then when you're done, you
+can walk to the next variable.
+
+1228
+00:56:31,970 --> 00:56:34,770
+
+
+1229
+00:56:34,770 --> 00:56:37,800
+So there's actually two
+entrances to the variable.
+
+1230
+00:56:37,800 --> 00:56:39,120
+I guess that kind of matters.
+
+1231
+00:56:39,120 --> 00:56:40,490
+What we want in the variable--
+
+1232
+00:56:40,490 --> 00:56:42,472
+so you came from
+the True setting,
+
+1233
+00:56:42,472 --> 00:56:43,930
+or you came from
+the False setting,
+
+1234
+00:56:43,930 --> 00:56:45,960
+you don't want to be
+able to run and jump over
+
+1235
+00:56:45,960 --> 00:56:47,390
+to the other side
+and the satisfy
+
+1236
+00:56:47,390 --> 00:56:49,380
+the previous variable
+both true and false.
+
+1237
+00:56:49,380 --> 00:56:51,450
+You only get to make one choice.
+
+1238
+00:56:51,450 --> 00:56:53,640
+Lots of things check here.
+
+1239
+00:56:53,640 --> 00:56:55,750
+Then in the end, at the
+very end after you've
+
+1240
+00:56:55,750 --> 00:56:58,150
+set the last variable,
+you have to traverse
+
+1241
+00:56:58,150 --> 00:57:00,329
+all of these clauses
+through the fire bars.
+
+1242
+00:57:00,329 --> 00:57:02,120
+And that's going to be
+possible if and only
+
+1243
+00:57:02,120 --> 00:57:05,342
+if every one of the
+causes has a star in it.
+
+1244
+00:57:05,342 --> 00:57:08,350
+In other words, the variables
+satisfy all the clauses.
+
+1245
+00:57:08,350 --> 00:57:10,070
+In other words, the
+formula is true,
+
+1246
+00:57:10,070 --> 00:57:13,020
+because the clauses are
+combined with an and.
+
+1247
+00:57:13,020 --> 00:57:13,590
+OK?
+
+1248
+00:57:13,590 --> 00:57:15,610
+That is in a nutshell the proof.
+
+1249
+00:57:15,610 --> 00:57:17,368
+Once you've made
+this construction
+
+1250
+00:57:17,368 --> 00:57:26,350
+that the solution to 3SAT is
+equal to the solution to Mario
+
+1251
+00:57:26,350 --> 00:57:29,130
+in general, you want to
+prove on the one hand
+
+1252
+00:57:29,130 --> 00:57:31,910
+if the answer is yes
+to 3SAT, if there's
+
+1253
+00:57:31,910 --> 00:57:34,050
+a valid setting
+for the variables,
+
+1254
+00:57:34,050 --> 00:57:36,630
+then there is a solution
+to this Mario instance.
+
+1255
+00:57:36,630 --> 00:57:38,320
+You can actually
+solve the level.
+
+1256
+00:57:38,320 --> 00:57:40,360
+The decision question
+here is, can I make it
+
+1257
+00:57:40,360 --> 00:57:41,359
+to the end of the level?
+
+1258
+00:57:41,359 --> 00:57:43,450
+There's a flag over there.
+
+1259
+00:57:43,450 --> 00:57:47,320
+And conversely, if there is an
+actual solution to this puzzle,
+
+1260
+00:57:47,320 --> 00:57:49,350
+you want to show that
+you can convert it
+
+1261
+00:57:49,350 --> 00:57:52,680
+into a valid setting for 3SAT
+that satisfies the formula.
+
+1262
+00:57:52,680 --> 00:57:53,800
+You need to check both.
+
+1263
+00:57:53,800 --> 00:57:57,430
+That gives you
+the equality here.
+
+1264
+00:57:57,430 --> 00:57:58,692
+Question?
+
+1265
+00:57:58,692 --> 00:58:02,090
+AUDIENCE: Don't you need
+this graph to be planar?
+
+1266
+00:58:02,090 --> 00:58:03,190
+PROFESSOR: Good question.
+
+1267
+00:58:03,190 --> 00:58:06,230
+This graph is not planar, and
+so there are these crossings.
+
+1268
+00:58:06,230 --> 00:58:09,560
+So there's one more gadget,
+the crossover gadget.
+
+1269
+00:58:09,560 --> 00:58:12,335
+And this is on the poster,
+so if you were analyzing it.
+
+1270
+00:58:12,335 --> 00:58:13,835
+There are many ways
+to do crossover,
+
+1271
+00:58:13,835 --> 00:58:16,280
+and this one is kind of
+overkill unless I tell you
+
+1272
+00:58:16,280 --> 00:58:19,910
+that Super Mario Brothers
+has tons of hacks and cheats
+
+1273
+00:58:19,910 --> 00:58:21,890
+that you can play,
+and run through walls,
+
+1274
+00:58:21,890 --> 00:58:22,600
+and crazy things.
+
+1275
+00:58:22,600 --> 00:58:25,120
+But never mind that.
+
+1276
+00:58:25,120 --> 00:58:27,660
+The idea here is
+you are a big Mario.
+
+1277
+00:58:27,660 --> 00:58:29,776
+At the beginning of a
+level, there's a mushroom.
+
+1278
+00:58:29,776 --> 00:58:30,900
+And you better not lose it.
+
+1279
+00:58:30,900 --> 00:58:32,560
+Otherwise, you're in trouble.
+
+1280
+00:58:32,560 --> 00:58:35,400
+So on the one hand, I can
+go from left to right.
+
+1281
+00:58:35,400 --> 00:58:37,080
+It's a directional crossover.
+
+1282
+00:58:37,080 --> 00:58:38,420
+Or I can go from--
+
+1283
+00:58:38,420 --> 00:58:40,810
+this is the bottom to the top.
+
+1284
+00:58:40,810 --> 00:58:42,410
+But I can't go from
+bottom to right.
+
+1285
+00:58:42,410 --> 00:58:43,770
+I can't go from bottom to left.
+
+1286
+00:58:43,770 --> 00:58:45,880
+All these sorts of things.
+
+1287
+00:58:45,880 --> 00:58:47,130
+Why?
+
+1288
+00:58:47,130 --> 00:58:47,630
+OK.
+
+1289
+00:58:47,630 --> 00:58:49,960
+Let's do the
+positive case first.
+
+1290
+00:58:49,960 --> 00:58:50,990
+Say I'm from the bottom.
+
+1291
+00:58:50,990 --> 00:58:51,640
+I fall here.
+
+1292
+00:58:51,640 --> 00:58:52,630
+Can't go back.
+
+1293
+00:58:52,630 --> 00:58:54,130
+I can jump.
+
+1294
+00:58:54,130 --> 00:58:56,590
+If I'm big Mario, I can break
+through a couple bricks,
+
+1295
+00:58:56,590 --> 00:58:58,520
+and then I can escape.
+
+1296
+00:58:58,520 --> 00:58:59,270
+OK?
+
+1297
+00:58:59,270 --> 00:59:03,382
+But I could run under here.
+
+1298
+00:59:03,382 --> 00:59:05,840
+For example, if you're good,
+you can crouch slide, and then
+
+1299
+00:59:05,840 --> 00:59:07,048
+jump, jump, jump, jump, jump.
+
+1300
+00:59:07,048 --> 00:59:08,090
+You get to here.
+
+1301
+00:59:08,090 --> 00:59:10,020
+But you cannot get through this.
+
+1302
+00:59:10,020 --> 00:59:12,250
+Or maybe I need to
+add one more wiggle.
+
+1303
+00:59:12,250 --> 00:59:13,810
+A little easier
+to see over here.
+
+1304
+00:59:13,810 --> 00:59:16,080
+Maybe I can get
+here and move over.
+
+1305
+00:59:16,080 --> 00:59:18,080
+But if you're in
+this position, you
+
+1306
+00:59:18,080 --> 00:59:21,800
+have no momentum you
+can gain, and so you
+
+1307
+00:59:21,800 --> 00:59:23,680
+can't crouch slide into there.
+
+1308
+00:59:23,680 --> 00:59:28,010
+So if you're here coming from
+the bottom, you can't get out.
+
+1309
+00:59:28,010 --> 00:59:32,460
+Alternatively, if you
+come from the left--
+
+1310
+00:59:32,460 --> 00:59:34,460
+it's so tempting
+to kill the goomba.
+
+1311
+00:59:34,460 --> 00:59:36,930
+But instead of
+killing him, you take
+
+1312
+00:59:36,930 --> 00:59:39,160
+damage, become small
+Mario, then you
+
+1313
+00:59:39,160 --> 00:59:40,945
+can traverse through
+here, because you
+
+1314
+00:59:40,945 --> 00:59:42,070
+don't need to crouch slide.
+
+1315
+00:59:42,070 --> 00:59:43,130
+You just jump.
+
+1316
+00:59:43,130 --> 00:59:46,080
+And there's another mushroom
+for you to restore big Mario
+
+1317
+00:59:46,080 --> 00:59:47,946
+and restore the invariant.
+
+1318
+00:59:47,946 --> 00:59:49,820
+And you better take it
+because otherwise, you
+
+1319
+00:59:49,820 --> 00:59:52,410
+can't get out through here.
+
+1320
+00:59:52,410 --> 00:59:57,280
+So you're almost forced to go
+left to right or bottom to top.
+
+1321
+00:59:57,280 --> 00:59:59,380
+Now if you traverse
+both of these gadgets
+
+1322
+00:59:59,380 --> 01:00:02,400
+in both directions,
+then all bets are off.
+
+1323
+01:00:02,400 --> 01:00:04,450
+Then you can go from
+anywhere to anywhere.
+
+1324
+01:00:04,450 --> 01:00:05,920
+That's OK.
+
+1325
+01:00:05,920 --> 01:00:09,980
+Because what we're
+worried about in
+
+1326
+01:00:09,980 --> 01:00:14,434
+this reduction is whether
+you can reach certain things.
+
+1327
+01:00:14,434 --> 01:00:16,975
+If you can reach something, I
+don't care whether you reach it
+
+1328
+01:00:16,975 --> 01:00:18,807
+now or later.
+
+1329
+01:00:18,807 --> 01:00:20,640
+It's just you don't
+want to be able to reach
+
+1330
+01:00:20,640 --> 01:00:21,440
+unreachable things.
+
+1331
+01:00:21,440 --> 01:00:23,090
+When you set the
+variable to True,
+
+1332
+01:00:23,090 --> 01:00:26,570
+I don't want to be able to
+visit this false vertex ever.
+
+1333
+01:00:26,570 --> 01:00:29,170
+And if you check
+all the crossovers,
+
+1334
+01:00:29,170 --> 01:00:33,000
+it's enough to build this kind
+of thing, which either you
+
+1335
+01:00:33,000 --> 01:00:35,750
+traverse left to right,
+or bottom to top,
+
+1336
+01:00:35,750 --> 01:00:38,510
+or you can reach both
+the left and the bottom,
+
+1337
+01:00:38,510 --> 01:00:40,650
+and then you can reach anything.
+
+1338
+01:00:40,650 --> 01:00:42,322
+And you never have
+to go right to left.
+
+1339
+01:00:42,322 --> 01:00:43,780
+You never have to
+go top to bottom.
+
+1340
+01:00:43,780 --> 01:00:45,488
+Because we always know
+the order in which
+
+1341
+01:00:45,488 --> 01:00:46,980
+we're traversing
+things and so on.
+
+1342
+01:00:46,980 --> 01:00:47,480
+OK.
+
+1343
+01:00:47,480 --> 01:00:49,190
+I think I've waved
+my hands enough.
+
+1344
+01:00:49,190 --> 01:00:51,752
+There are details to check,
+but if you're interested,
+
+1345
+01:00:51,752 --> 01:00:53,960
+you can wait 'til this part
+of the class, where we'll
+
+1346
+01:00:53,960 --> 01:01:01,100
+cover the Legend of Zelda,
+Pokemon, Metroid, and I'm
+
+1347
+01:01:01,100 --> 01:01:02,320
+missing one.
+
+1348
+01:01:02,320 --> 01:01:03,800
+Donkey Kong Country.
+
+1349
+01:01:03,800 --> 01:01:05,840
+Donkey Kong Country
+is PSPACE-complete.
+
+1350
+01:01:05,840 --> 01:01:07,210
+That's a hard proof.
+
+1351
+01:01:07,210 --> 01:01:09,450
+No pun intended.
+
+1352
+01:01:09,450 --> 01:01:11,720
+So that was Super
+Mario Brothers.
+
+1353
+01:01:11,720 --> 01:01:13,340
+Any more questions?
+
+1354
+01:01:13,340 --> 01:01:14,820
+You asked the right one.
+
+1355
+01:01:14,820 --> 01:01:16,832
+I would have gone
+to it otherwise.
+
+1356
+01:01:16,832 --> 01:01:18,050
+Yes?
+
+1357
+01:01:18,050 --> 01:01:18,376
+AUDIENCE: Are you
+sure we'll never have
+
+1358
+01:01:18,376 --> 01:01:19,790
+to go say, left to right twice?
+
+1359
+01:01:19,790 --> 01:01:24,300
+
+
+1360
+01:01:24,300 --> 01:01:25,130
+PROFESSOR: Yes.
+
+1361
+01:01:25,130 --> 01:01:26,780
+That's a good question.
+
+1362
+01:01:26,780 --> 01:01:30,930
+In this gadget, we are not
+able to go left to right twice,
+
+1363
+01:01:30,930 --> 01:01:33,630
+but that's OK.
+
+1364
+01:01:33,630 --> 01:01:38,110
+What's not really drawn
+here but should be is
+
+1365
+01:01:38,110 --> 01:01:40,804
+we're really taking an
+Euler tour of this star,
+
+1366
+01:01:40,804 --> 01:01:42,720
+so we're going to go
+sort of on the left path.
+
+1367
+01:01:42,720 --> 01:01:45,506
+There's actually two
+paths down here maybe.
+
+1368
+01:01:45,506 --> 01:01:46,880
+We're going to go
+down here, then
+
+1369
+01:01:46,880 --> 01:01:49,050
+we'll come back the other way.
+
+1370
+01:01:49,050 --> 01:01:51,280
+Here, there are
+actual crossovers.
+
+1371
+01:01:51,280 --> 01:01:53,860
+When we come back, there are
+different crossover gadgets.
+
+1372
+01:01:53,860 --> 01:01:56,180
+Or you could say there's two
+crossover gadgets for each
+
+1373
+01:01:56,180 --> 01:01:58,900
+of these, one for going one
+direction, one for coming back.
+
+1374
+01:01:58,900 --> 01:02:01,590
+
+
+1375
+01:02:01,590 --> 01:02:03,430
+Yeah.
+
+1376
+01:02:03,430 --> 01:02:06,380
+Four crossovers for
+each intersection,
+
+1377
+01:02:06,380 --> 01:02:08,830
+for both directions
+and both guys.
+
+1378
+01:02:08,830 --> 01:02:10,894
+AUDIENCE: I'm mostly
+willing to believe you,
+
+1379
+01:02:10,894 --> 01:02:13,310
+but I just have this nagging
+doubt that you can't actually
+
+1380
+01:02:13,310 --> 01:02:15,710
+arrange all these things
+and make them fit together.
+
+1381
+01:02:15,710 --> 01:02:16,293
+PROFESSOR: OK.
+
+1382
+01:02:16,293 --> 01:02:19,670
+So there is a top level question
+which is, in general, it's
+
+1383
+01:02:19,670 --> 01:02:21,580
+the gadget assembly problem.
+
+1384
+01:02:21,580 --> 01:02:24,300
+If I have all these gadgets, can
+I actually put them together?
+
+1385
+01:02:24,300 --> 01:02:27,800
+And it's important,
+the output instance
+
+1386
+01:02:27,800 --> 01:02:30,070
+should have polynomial size.
+
+1387
+01:02:30,070 --> 01:02:32,320
+I probably should
+mention that here.
+
+1388
+01:02:32,320 --> 01:02:34,380
+It's important.
+
+1389
+01:02:34,380 --> 01:02:38,830
+Of polynomials.
+
+1390
+01:02:38,830 --> 01:02:41,245
+Oh, that's polynomial
+time algorithm.
+
+1391
+01:02:41,245 --> 01:02:42,410
+Good, good, good.
+
+1392
+01:02:42,410 --> 01:02:42,910
+Yes.
+
+1393
+01:02:42,910 --> 01:02:45,902
+So this is in parentheses.
+
+1394
+01:02:45,902 --> 01:02:47,610
+Because it's a polynomial
+time algorithm,
+
+1395
+01:02:47,610 --> 01:02:49,600
+you will generate a
+polynomial size output,
+
+1396
+01:02:49,600 --> 01:02:52,450
+because our outputs have to
+be represented explicitly
+
+1397
+01:02:52,450 --> 01:02:54,520
+for reduction.
+
+1398
+01:02:54,520 --> 01:02:58,350
+So the main issue
+is, can you draw this
+
+1399
+01:02:58,350 --> 01:03:00,619
+in a grid of polynomial size?
+
+1400
+01:03:00,619 --> 01:03:02,160
+And the short answer
+to your question
+
+1401
+01:03:02,160 --> 01:03:05,750
+is, use standard graph
+drawing algorithms.
+
+1402
+01:03:05,750 --> 01:03:11,070
+If I give you a planar graph,
+I can draw it with n vertices.
+
+1403
+01:03:11,070 --> 01:03:15,197
+I can draw it in a grid
+that order n by order n.
+
+1404
+01:03:15,197 --> 01:03:16,530
+I forget what the best bound is.
+
+1405
+01:03:16,530 --> 01:03:17,720
+Maybe 6n by 6n.
+
+1406
+01:03:17,720 --> 01:03:18,860
+Doesn't matter here.
+
+1407
+01:03:18,860 --> 01:03:20,270
+Now this graph is not planar.
+
+1408
+01:03:20,270 --> 01:03:23,727
+But if you just add a vertex
+for every intersection,
+
+1409
+01:03:23,727 --> 01:03:25,560
+and there's at most n
+squared intersections,
+
+1410
+01:03:25,560 --> 01:03:27,330
+then I will have a planar graph.
+
+1411
+01:03:27,330 --> 01:03:28,640
+Then I apply that algorithm.
+
+1412
+01:03:28,640 --> 01:03:30,090
+It draws everything into a grid.
+
+1413
+01:03:30,090 --> 01:03:32,870
+I explode that grid
+by a factor of 100,
+
+1414
+01:03:32,870 --> 01:03:35,980
+whatever the largest size of
+this gadget is, plunk them in,
+
+1415
+01:03:35,980 --> 01:03:37,760
+and then I route the tunnels.
+
+1416
+01:03:37,760 --> 01:03:40,330
+So the only thing I
+haven't really filled in
+
+1417
+01:03:40,330 --> 01:03:42,880
+is how do you route the tunnels
+to make them traversable?
+
+1418
+01:03:42,880 --> 01:03:44,546
+Because if you go up,
+you've got to have
+
+1419
+01:03:44,546 --> 01:03:45,880
+enough stairs along the way.
+
+1420
+01:03:45,880 --> 01:03:48,542
+But it's an exercise
+for the reader.
+
+1421
+01:03:48,542 --> 01:03:50,000
+There are definitely
+details there.
+
+1422
+01:03:50,000 --> 01:03:52,080
+And in some cases,
+they are subtle.
+
+1423
+01:03:52,080 --> 01:03:54,640
+I'll tell you the most
+annoying issue that
+
+1424
+01:03:54,640 --> 01:03:57,270
+can happen is a parity issue.
+
+1425
+01:03:57,270 --> 01:03:58,481
+Sometimes, these gadgets--
+
+1426
+01:03:58,481 --> 01:04:00,730
+I mean, you could make them
+slightly wider or slightly
+
+1427
+01:04:00,730 --> 01:04:01,040
+taller.
+
+1428
+01:04:01,040 --> 01:04:01,870
+It doesn't matter.
+
+1429
+01:04:01,870 --> 01:04:04,490
+Sometimes they have to
+be even size or odd size.
+
+1430
+01:04:04,490 --> 01:04:06,460
+And then things don't
+always fit up well.
+
+1431
+01:04:06,460 --> 01:04:09,400
+And that's a pain to do.
+
+1432
+01:04:09,400 --> 01:04:13,640
+And I had a proof last
+month, where I had,
+
+1433
+01:04:13,640 --> 01:04:16,209
+I think, three separate
+parity issues in a row.
+
+1434
+01:04:16,209 --> 01:04:18,250
+I fixed one, and it's
+like, yes, I got the proof.
+
+1435
+01:04:18,250 --> 01:04:20,654
+And it was like, uh-oh,
+there's another parity problem.
+
+1436
+01:04:20,654 --> 01:04:21,570
+Then I fixed that one.
+
+1437
+01:04:21,570 --> 01:04:23,570
+And then, uh-oh, there's
+another parity problem.
+
+1438
+01:04:23,570 --> 01:04:26,430
+And finally, the proof
+is hopefully correct.
+
+1439
+01:04:26,430 --> 01:04:28,450
+And we might go through
+that as an example.
+
+1440
+01:04:28,450 --> 01:04:29,908
+So there are
+definitely issues that
+
+1441
+01:04:29,908 --> 01:04:32,970
+can come up in gadget
+assembly, but this one
+
+1442
+01:04:32,970 --> 01:04:34,663
+I'm not worried
+about, let's say.
+
+1443
+01:04:34,663 --> 01:04:35,482
+Yeah?
+
+1444
+01:04:35,482 --> 01:04:37,440
+AUDIENCE: Did the original
+Super Mario Brothers
+
+1445
+01:04:37,440 --> 01:04:38,290
+allow you to go left?
+
+1446
+01:04:38,290 --> 01:04:38,860
+PROFESSOR: No.
+
+1447
+01:04:38,860 --> 01:04:40,401
+In the original
+Super Mario Brothers,
+
+1448
+01:04:40,401 --> 01:04:42,110
+you cannot scroll
+the screen left.
+
+1449
+01:04:42,110 --> 01:04:43,290
+Mario can go left.
+
+1450
+01:04:43,290 --> 01:04:46,840
+So this is all one screen.
+
+1451
+01:04:46,840 --> 01:04:50,190
+You always have to generalize
+something in your problem.
+
+1452
+01:04:50,190 --> 01:04:55,390
+And if you say the size of
+your screen, it's 320 by 240,
+
+1453
+01:04:55,390 --> 01:04:57,660
+or whatever in the
+original is constant,
+
+1454
+01:04:57,660 --> 01:04:59,570
+then you can solve
+Mario in polynomial time
+
+1455
+01:04:59,570 --> 01:05:00,600
+by dynamic programming.
+
+1456
+01:05:00,600 --> 01:05:03,470
+So that's not as interesting.
+
+1457
+01:05:03,470 --> 01:05:04,180
+Mario 1.
+
+1458
+01:05:04,180 --> 01:05:06,960
+Of course, any other
+Mario, you can go left,
+
+1459
+01:05:06,960 --> 01:05:10,800
+except sometimes it forgets
+the status of your monsters.
+
+1460
+01:05:10,800 --> 01:05:13,651
+
+
+1461
+01:05:13,651 --> 01:05:16,150
+Again, if you have that, you
+can solve it in polynomial time
+
+1462
+01:05:16,150 --> 01:05:17,820
+by dynamic programming.
+
+1463
+01:05:17,820 --> 01:05:19,710
+So we're in the
+sort of, we'll say,
+
+1464
+01:05:19,710 --> 01:05:24,640
+as intended model, which is
+you can have a big level.
+
+1465
+01:05:24,640 --> 01:05:26,130
+4K is already happening.
+
+1466
+01:05:26,130 --> 01:05:28,350
+Imagine the future, you
+have a giant screen,
+
+1467
+01:05:28,350 --> 01:05:29,900
+and you play a giant level.
+
+1468
+01:05:29,900 --> 01:05:34,100
+AUDIENCE: [LAUGHING]
+
+1469
+01:05:34,100 --> 01:05:35,810
+PROFESSOR: Other questions?
+
+1470
+01:05:35,810 --> 01:05:40,570
+Now, one question is is Mario
+Brothers an NP conjecture?
+
+1471
+01:05:40,570 --> 01:05:43,612
+No, I think by now we
+might have a proof that
+
+1472
+01:05:43,612 --> 01:05:45,107
+is PSPACE complete.
+
+1473
+01:05:45,107 --> 01:05:47,190
+But that's not published
+yet, or even written yet.
+
+1474
+01:05:47,190 --> 01:05:52,160
+So it's certainly not
+guaranteed, but we think so.
+
+1475
+01:05:52,160 --> 01:05:53,790
+OK.
+
+1476
+01:05:53,790 --> 01:05:58,940
+Last proof is Rush Hour.
+
+1477
+01:05:58,940 --> 01:06:00,940
+Before I get to Rush Hour,
+I'm going to tell you
+
+1478
+01:06:00,940 --> 01:06:05,610
+about another source problem.
+
+1479
+01:06:05,610 --> 01:06:10,450
+So 3SAT is the most
+common problem for--
+
+1480
+01:06:10,450 --> 01:06:14,090
+you might call
+them short puzzles.
+
+1481
+01:06:14,090 --> 01:06:15,779
+Mario Brothers is
+maybe a short puzzle.
+
+1482
+01:06:15,779 --> 01:06:17,570
+If you have a time
+limit in Mario Brothers,
+
+1483
+01:06:17,570 --> 01:06:19,736
+then you're guaranteed
+you're going to make at most,
+
+1484
+01:06:19,736 --> 01:06:22,540
+let's say, n moves, and
+then the game is over.
+
+1485
+01:06:22,540 --> 01:06:24,880
+You either dire or you finish.
+
+1486
+01:06:24,880 --> 01:06:28,140
+And 3-Satisfiability is a
+good representation of that.
+
+1487
+01:06:28,140 --> 01:06:33,000
+For longer games, another
+model called constraint logic
+
+1488
+01:06:33,000 --> 01:06:35,170
+or constraint graphs is useful.
+
+1489
+01:06:35,170 --> 01:06:37,580
+So let me tell you this problem.
+
+1490
+01:06:37,580 --> 01:06:39,200
+It's in some sense
+simpler than 3SATs.
+
+1491
+01:06:39,200 --> 01:06:41,774
+On a graph, you have red
+edges and blue edges.
+
+1492
+01:06:41,774 --> 01:06:43,190
+Notice the blue
+edges are thicker.
+
+1493
+01:06:43,190 --> 01:06:46,530
+That means they're twice
+as heavy, so that you
+
+1494
+01:06:46,530 --> 01:06:48,890
+think of this as your machine.
+
+1495
+01:06:48,890 --> 01:06:51,430
+Now a state of the
+machine is going
+
+1496
+01:06:51,430 --> 01:06:53,630
+to be an orientation
+of the graph.
+
+1497
+01:06:53,630 --> 01:06:55,420
+So every edge is just
+going to be oriented
+
+1498
+01:06:55,420 --> 01:06:57,000
+one way or the other.
+
+1499
+01:06:57,000 --> 01:06:59,210
+And the constraint--
+in general, this
+
+1500
+01:06:59,210 --> 01:07:00,970
+is called a constrained graph.
+
+1501
+01:07:00,970 --> 01:07:03,180
+And the constraint
+you have to satisfy
+
+1502
+01:07:03,180 --> 01:07:06,280
+is that at every vertex, you
+have at least two units of flow
+
+1503
+01:07:06,280 --> 01:07:07,647
+pointed into the vertex.
+
+1504
+01:07:07,647 --> 01:07:09,980
+So here there's actually three
+units of flow pointed in.
+
+1505
+01:07:09,980 --> 01:07:12,390
+There's the red single unit
+and the blue double unit.
+
+1506
+01:07:12,390 --> 01:07:15,010
+Blue's always 2,
+red is always 1.
+
+1507
+01:07:15,010 --> 01:07:18,699
+So if you get the Kindle
+edition of this book,
+
+1508
+01:07:18,699 --> 01:07:20,490
+don't read it on a
+black and white display.
+
+1509
+01:07:20,490 --> 01:07:23,200
+
+
+1510
+01:07:23,200 --> 01:07:25,280
+Or the PDF, whatever.
+
+1511
+01:07:25,280 --> 01:07:28,450
+So what you're allowed
+to do in this game,
+
+1512
+01:07:28,450 --> 01:07:30,660
+the move you're allowed
+to do, is reverse an edge.
+
+1513
+01:07:30,660 --> 01:07:32,620
+As long as you always
+satisfy this invariant
+
+1514
+01:07:32,620 --> 01:07:34,980
+that at least two units
+are in, then you're OK.
+
+1515
+01:07:34,980 --> 01:07:37,774
+So I think here, we're going
+to reverse this one first.
+
+1516
+01:07:37,774 --> 01:07:39,690
+So now we have three
+units of flow pointed in.
+
+1517
+01:07:39,690 --> 01:07:41,898
+You have to check that the
+other vertice's satisfied,
+
+1518
+01:07:41,898 --> 01:07:43,460
+but this one's certainly OK.
+
+1519
+01:07:43,460 --> 01:07:45,710
+Now because there
+are two red units,
+
+1520
+01:07:45,710 --> 01:07:48,010
+we can reverse the blue one.
+
+1521
+01:07:48,010 --> 01:07:52,080
+And we cannot reverse
+the red ones right now,
+
+1522
+01:07:52,080 --> 01:07:54,720
+because that would leave only
+one unit of flow inwards.
+
+1523
+01:07:54,720 --> 01:07:57,610
+There's always two.
+
+1524
+01:07:57,610 --> 01:08:00,450
+So in fact, this vertex that
+I've drawn is in some sense
+
+1525
+01:08:00,450 --> 01:08:01,955
+an AND gate.
+
+1526
+01:08:01,955 --> 01:08:04,010
+We call it an AND
+vertex, because it's not
+
+1527
+01:08:04,010 --> 01:08:06,040
+a regular gate.
+
+1528
+01:08:06,040 --> 01:08:09,232
+Over here, we're
+going to think of--
+
+1529
+01:08:09,232 --> 01:08:10,440
+it's a little bit asymmetric.
+
+1530
+01:08:10,440 --> 01:08:12,773
+We're going to think of these
+as the inputs to the gate,
+
+1531
+01:08:12,773 --> 01:08:15,120
+and this as the
+output of the gate.
+
+1532
+01:08:15,120 --> 01:08:17,560
+And if the inputs are
+pointing out, that's a false.
+
+1533
+01:08:17,560 --> 01:08:19,569
+If they're pointing
+in, that's a true.
+
+1534
+01:08:19,569 --> 01:08:21,965
+And the output is reverse,
+so if it's pointing in,
+
+1535
+01:08:21,965 --> 01:08:22,590
+that's a false.
+
+1536
+01:08:22,590 --> 01:08:24,870
+If it's pointing
+out, it's a true.
+
+1537
+01:08:24,870 --> 01:08:27,229
+So here's one
+state false, false.
+
+1538
+01:08:27,229 --> 01:08:30,560
+And so the AND of false
+and false is false.
+
+1539
+01:08:30,560 --> 01:08:33,080
+Here's another state where
+both inputs are true,
+
+1540
+01:08:33,080 --> 01:08:35,021
+and then the output can be true.
+
+1541
+01:08:35,021 --> 01:08:36,270
+It doesn't have to be, though.
+
+1542
+01:08:36,270 --> 01:08:39,649
+So in this example, let's
+say we reverse this edge.
+
+1543
+01:08:39,649 --> 01:08:41,790
+So now, we have false and true.
+
+1544
+01:08:41,790 --> 01:08:45,050
+Still, we can't reverse this
+because false and true is
+
+1545
+01:08:45,050 --> 01:08:47,479
+false, and because
+there would only
+
+1546
+01:08:47,479 --> 01:08:50,180
+be one unit of incoming flow
+before we can reverse this.
+
+1547
+01:08:50,180 --> 01:08:54,490
+If I could reverse it back, I
+could reverse the other one.
+
+1548
+01:08:54,490 --> 01:08:58,050
+Only once I reverse
+both of the inputs am
+
+1549
+01:08:58,050 --> 01:08:59,540
+I allowed to reverse the output.
+
+1550
+01:08:59,540 --> 01:09:00,569
+But I don't have.
+
+1551
+01:09:00,569 --> 01:09:03,229
+I could just let it sit there.
+
+1552
+01:09:03,229 --> 01:09:04,880
+It's not a gate in
+the sense that it
+
+1553
+01:09:04,880 --> 01:09:07,090
+doesn't compute the answer.
+
+1554
+01:09:07,090 --> 01:09:10,840
+But what you know is that if
+you have an output of true,
+
+1555
+01:09:10,840 --> 01:09:12,660
+you know that the
+inputs must be true.
+
+1556
+01:09:12,660 --> 01:09:16,240
+So it's kind of an AND.
+
+1557
+01:09:16,240 --> 01:09:18,840
+We call it a
+constraint logic AND.
+
+1558
+01:09:18,840 --> 01:09:21,180
+Now here, this I claim is an OR.
+
+1559
+01:09:21,180 --> 01:09:23,910
+Now if you look at this in a
+graph, it's totally symmetric.
+
+1560
+01:09:23,910 --> 01:09:25,109
+It's just three blue edges.
+
+1561
+01:09:25,109 --> 01:09:27,317
+But if you think of these
+two as inputs and these two
+
+1562
+01:09:27,317 --> 01:09:30,319
+as outputs, it's an OR.
+
+1563
+01:09:30,319 --> 01:09:33,859
+And so what's the point?
+
+1564
+01:09:33,859 --> 01:09:37,380
+Well, if I reverse any of the
+edges, the incoming edges,
+
+1565
+01:09:37,380 --> 01:09:39,160
+the input edges I
+should say, then
+
+1566
+01:09:39,160 --> 01:09:40,920
+I can reverse the bottom edge.
+
+1567
+01:09:40,920 --> 01:09:42,810
+I don't have to.
+
+1568
+01:09:42,810 --> 01:09:45,920
+And I could also do both true.
+
+1569
+01:09:45,920 --> 01:09:49,798
+This could still
+be true, and so on.
+
+1570
+01:09:49,798 --> 01:09:51,338
+AUDIENCE: So if
+it's symmetric, how
+
+1571
+01:09:51,338 --> 01:09:53,216
+do you constrain some of
+them to be inputs and others
+
+1572
+01:09:53,216 --> 01:09:53,960
+to be outputs?
+
+1573
+01:09:53,960 --> 01:09:55,793
+PROFESSOR: The inputs
+and output distinction
+
+1574
+01:09:55,793 --> 01:09:58,110
+is only in your head.
+
+1575
+01:09:58,110 --> 01:10:00,430
+The way that I
+used it is I said,
+
+1576
+01:10:00,430 --> 01:10:03,390
+an input is true if
+it's pointing in,
+
+1577
+01:10:03,390 --> 01:10:07,350
+an output is true if
+it's pointing out.
+
+1578
+01:10:07,350 --> 01:10:09,260
+So that's asymmetric,
+and it's just
+
+1579
+01:10:09,260 --> 01:10:11,660
+a way of interpreting what's
+happening in the graph.
+
+1580
+01:10:11,660 --> 01:10:14,960
+the graph knows no difference.
+
+1581
+01:10:14,960 --> 01:10:17,510
+This is useful, of course,
+because your output
+
+1582
+01:10:17,510 --> 01:10:19,620
+is the next vertex's
+input probably
+
+1583
+01:10:19,620 --> 01:10:22,940
+if you're building a
+bunch of ANDS and ORs.
+
+1584
+01:10:22,940 --> 01:10:24,830
+If you're building
+a regular circuit.
+
+1585
+01:10:24,830 --> 01:10:27,620
+So you want that definition
+to be asymmetric.
+
+1586
+01:10:27,620 --> 01:10:30,272
+It gets a little bit
+confusing, and we
+
+1587
+01:10:30,272 --> 01:10:32,230
+will spend a lot more
+time on constraint logic.
+
+1588
+01:10:32,230 --> 01:10:34,760
+This is more of a teaser.
+
+1589
+01:10:34,760 --> 01:10:39,050
+But that's just in
+the naming of things.
+
+1590
+01:10:39,050 --> 01:10:40,380
+Naming of true and false.
+
+1591
+01:10:40,380 --> 01:10:40,880
+OK.
+
+1592
+01:10:40,880 --> 01:10:46,280
+So constraint logic, let's say,
+what's the decision problem?
+
+1593
+01:10:46,280 --> 01:10:48,980
+I give you such a graph.
+
+1594
+01:10:48,980 --> 01:10:53,310
+Notice every vertex is either
+an AND, two red and a blue,
+
+1595
+01:10:53,310 --> 01:10:55,090
+or an OR, three blues.
+
+1596
+01:10:55,090 --> 01:10:58,590
+And I want to know, can
+I reverse that edge?
+
+1597
+01:10:58,590 --> 01:11:01,730
+This is actually a crossover
+gadget if you're curious.
+
+1598
+01:11:01,730 --> 01:11:03,340
+In this world,
+crossover gadgets,
+
+1599
+01:11:03,340 --> 01:11:06,000
+you can just build
+using ANDs and ORs.
+
+1600
+01:11:06,000 --> 01:11:07,430
+There's no NOTs in this world.
+
+1601
+01:11:07,430 --> 01:11:09,830
+NOTs don't even make
+sense because you
+
+1602
+01:11:09,830 --> 01:11:11,290
+can't force anything.
+
+1603
+01:11:11,290 --> 01:11:15,750
+But it turns out this
+problem is PSPACE complete.
+
+1604
+01:11:15,750 --> 01:11:20,060
+So even harder than
+3SAT, assuming NP
+
+1605
+01:11:20,060 --> 01:11:22,810
+does not equal PSPACE.
+
+1606
+01:11:22,810 --> 01:11:26,190
+And the cool thing is
+once you have developed
+
+1607
+01:11:26,190 --> 01:11:29,640
+all that infrastructure, if you
+want to take a puzzle like Rush
+
+1608
+01:11:29,640 --> 01:11:30,310
+Hour--
+
+1609
+01:11:30,310 --> 01:11:31,370
+so these are cars.
+
+1610
+01:11:31,370 --> 01:11:33,855
+Each car can slide in
+the direction of the car,
+
+1611
+01:11:33,855 --> 01:11:38,295
+no turns allowed, and your
+goal is to get some car out,
+
+1612
+01:11:38,295 --> 01:11:41,790
+or to move some car
+at all, let's say,
+
+1613
+01:11:41,790 --> 01:11:43,030
+I need to do two things.
+
+1614
+01:11:43,030 --> 01:11:46,990
+I need to construct an AND
+date and construct an OR gate,
+
+1615
+01:11:46,990 --> 01:11:49,980
+and then I need to check
+that they fit together.
+
+1616
+01:11:49,980 --> 01:11:52,600
+So let me convince
+you this is an AND
+
+1617
+01:11:52,600 --> 01:11:54,420
+with this kind of orientation.
+
+1618
+01:11:54,420 --> 01:11:58,370
+And yeah.
+
+1619
+01:11:58,370 --> 01:12:01,820
+So this is going to
+feel a little backwards.
+
+1620
+01:12:01,820 --> 01:12:05,570
+Inward pointing means
+that the block is out,
+
+1621
+01:12:05,570 --> 01:12:08,690
+and outward pointing
+means the block is in.
+
+1622
+01:12:08,690 --> 01:12:11,289
+Ignore this picture
+for the moment.
+
+1623
+01:12:11,289 --> 01:12:12,830
+What happens here
+is that if you want
+
+1624
+01:12:12,830 --> 01:12:15,710
+to push C into this
+gadget, imagine
+
+1625
+01:12:15,710 --> 01:12:17,530
+the dark gray blocks are rigid.
+
+1626
+01:12:17,530 --> 01:12:18,830
+They can't they can never move.
+
+1627
+01:12:18,830 --> 01:12:20,570
+That's going to be true.
+
+1628
+01:12:20,570 --> 01:12:22,110
+We'll see why in a moment.
+
+1629
+01:12:22,110 --> 01:12:24,320
+So then it's just about
+these inner guys moving.
+
+1630
+01:12:24,320 --> 01:12:26,640
+If you want to
+move C in one unit,
+
+1631
+01:12:26,640 --> 01:12:29,410
+that will be possible if
+and only if A moves out
+
+1632
+01:12:29,410 --> 01:12:32,230
+and B moves out by one unit.
+
+1633
+01:12:32,230 --> 01:12:34,710
+A moves out by one unit,
+B moves out by one unit,
+
+1634
+01:12:34,710 --> 01:12:39,920
+then this block can slide here,
+this block can slide here.
+
+1635
+01:12:39,920 --> 01:12:44,600
+This block can slide one,
+this block can slide two,
+
+1636
+01:12:44,600 --> 01:12:47,300
+and then C can move in one.
+
+1637
+01:12:47,300 --> 01:12:50,750
+On the other hand, this
+is an OR gate, OR vertex.
+
+1638
+01:12:50,750 --> 01:12:55,200
+If A moves out one
+or B moves out one,
+
+1639
+01:12:55,200 --> 01:12:58,540
+then either E can move down,
+or this guy can move down.
+
+1640
+01:12:58,540 --> 01:13:00,130
+Once either of
+those moves down, D
+
+1641
+01:13:00,130 --> 01:13:02,129
+can move all the way to
+the right or all the way
+
+1642
+01:13:02,129 --> 01:13:05,650
+to the left, and then
+C can move down one.
+
+1643
+01:13:05,650 --> 01:13:08,110
+This is called a Protected Or.
+
+1644
+01:13:08,110 --> 01:13:09,150
+Small, subtle detail.
+
+1645
+01:13:09,150 --> 01:13:12,190
+If A and B move out, then
+everything can fall apart.
+
+1646
+01:13:12,190 --> 01:13:17,356
+So basically, there's
+a proof in this book
+
+1647
+01:13:17,356 --> 01:13:19,230
+that says you don't need
+to worry about that.
+
+1648
+01:13:19,230 --> 01:13:21,340
+We can guarantee
+that we'll never
+
+1649
+01:13:21,340 --> 01:13:23,270
+have both A and B move out.
+
+1650
+01:13:23,270 --> 01:13:25,230
+Only one of them will happen.
+
+1651
+01:13:25,230 --> 01:13:27,850
+That's the protected part.
+
+1652
+01:13:27,850 --> 01:13:30,360
+So that's basically the
+proof of PSPACE-completeness
+
+1653
+01:13:30,360 --> 01:13:31,366
+in two pictures.
+
+1654
+01:13:31,366 --> 01:13:33,240
+This is the cool thing
+about constraint logic
+
+1655
+01:13:33,240 --> 01:13:35,510
+you don't need a crossover
+gadget because those always
+
+1656
+01:13:35,510 --> 01:13:37,029
+happen for free.
+
+1657
+01:13:37,029 --> 01:13:39,570
+You just need to check that you
+can fit the gadgets together.
+
+1658
+01:13:39,570 --> 01:13:42,370
+And this is the intended
+tiling to fit them together.
+
+1659
+01:13:42,370 --> 01:13:46,350
+And you can check that as long
+the box only move at most one
+
+1660
+01:13:46,350 --> 01:13:51,140
+unit at any time, then
+these gray regions are solid
+
+1661
+01:13:51,140 --> 01:13:52,670
+all the way through.
+
+1662
+01:13:52,670 --> 01:13:55,320
+I think I need to add
+some more filler here.
+
+1663
+01:13:55,320 --> 01:13:58,890
+And therefore, the gray
+blocks can never move.
+
+1664
+01:13:58,890 --> 01:14:01,890
+And so then, you can analyze
+each gadget one at a time
+
+1665
+01:14:01,890 --> 01:14:08,090
+and construct any constraint
+logic graph in this way.
+
+1666
+01:14:08,090 --> 01:14:10,910
+
+
+1667
+01:14:10,910 --> 01:14:11,950
+Questions?
+
+1668
+01:14:11,950 --> 01:14:12,590
+Yeah?
+
+1669
+01:14:12,590 --> 01:14:17,920
+AUDIENCE: So for that
+graph orientation problem,
+
+1670
+01:14:17,920 --> 01:14:20,010
+I do not fully understand.
+
+1671
+01:14:20,010 --> 01:14:21,616
+So you're given a graph--
+
+1672
+01:14:21,616 --> 01:14:23,740
+PROFESSOR: You're given a
+graph and an orientation,
+
+1673
+01:14:23,740 --> 01:14:27,176
+and you want to know, can
+I reverse this one edge?
+
+1674
+01:14:27,176 --> 01:14:28,550
+So in this world,
+it means you're
+
+1675
+01:14:28,550 --> 01:14:32,070
+given an initial placement
+of all the blocks,
+
+1676
+01:14:32,070 --> 01:14:34,670
+and you know whether each thing
+is in or out, because you know
+
+1677
+01:14:34,670 --> 01:14:37,670
+whether the edge is
+pointed to the left
+
+1678
+01:14:37,670 --> 01:14:38,670
+or pointed to the right.
+
+1679
+01:14:38,670 --> 01:14:41,270
+And you want to know, can
+I move this one block?
+
+1680
+01:14:41,270 --> 01:14:42,010
+AUDIENCE: OK.
+
+1681
+01:14:42,010 --> 01:14:44,924
+And then for this graph,
+you satisfied the property
+
+1682
+01:14:44,924 --> 01:14:48,210
+that each vertex has at least
+two units [? of input. ?]
+
+1683
+01:14:48,210 --> 01:14:51,100
+PROFESSOR: Yes, the
+input-oriented graph
+
+1684
+01:14:51,100 --> 01:14:53,280
+should already
+satisfy the invariant.
+
+1685
+01:14:53,280 --> 01:14:56,990
+And then at every
+move you do, you
+
+1686
+01:14:56,990 --> 01:14:59,221
+have to also satisfy
+the invariant.
+
+1687
+01:14:59,221 --> 01:15:01,512
+AUDIENCE: Can you give a
+small example of a graph which
+
+1688
+01:15:01,512 --> 01:15:02,750
+satisfies that [INAUDIBLE]?
+
+1689
+01:15:02,750 --> 01:15:05,090
+PROFESSOR: A small example.
+
+1690
+01:15:05,090 --> 01:15:08,360
+Like this one?
+
+1691
+01:15:08,360 --> 01:15:10,020
+This is not a single graph.
+
+1692
+01:15:10,020 --> 01:15:14,440
+But if I connect this edge to
+here, and this edge to here,
+
+1693
+01:15:14,440 --> 01:15:18,180
+that will satisfy the property.
+
+1694
+01:15:18,180 --> 01:15:20,010
+And it's one graph.
+
+1695
+01:15:20,010 --> 01:15:21,620
+I don't have a small
+example offhand
+
+1696
+01:15:21,620 --> 01:15:23,290
+but I think you could make.
+
+1697
+01:15:23,290 --> 01:15:27,110
+One
+
+1698
+01:15:27,110 --> 01:15:28,610
+It's an interesting
+question, what's
+
+1699
+01:15:28,610 --> 01:15:31,160
+the smallest satisfied graph?
+
+1700
+01:15:31,160 --> 01:15:35,790
+Probably 10 vertices or
+something should suffice.
+
+1701
+01:15:35,790 --> 01:15:38,350
+I should put it on
+the problem set.
+
+1702
+01:15:38,350 --> 01:15:38,890
+But later.
+
+1703
+01:15:38,890 --> 01:15:40,765
+We'll talk about constraint
+logic more later.
+
+1704
+01:15:40,765 --> 01:15:43,230
+
+
+1705
+01:15:43,230 --> 01:15:43,915
+More questions?
+
+1706
+01:15:43,915 --> 01:15:47,180
+
+
+1707
+01:15:47,180 --> 01:15:48,140
+So we did a lot.
+
+1708
+01:15:48,140 --> 01:15:50,470
+We proved Mario is NP-complete.
+
+1709
+01:15:50,470 --> 01:15:51,910
+I mean, some hand
+waving involved.
+
+1710
+01:15:51,910 --> 01:15:56,130
+We proved that Rush
+Hour is PSPACE-complete
+
+1711
+01:15:56,130 --> 01:15:58,740
+if you believe that constraint
+logic PSPACE-complete.
+
+1712
+01:15:58,740 --> 01:16:01,680
+In general, this whole
+class is about reductions,
+
+1713
+01:16:01,680 --> 01:16:03,230
+about taking a
+known hard problem
+
+1714
+01:16:03,230 --> 01:16:05,790
+and converting it
+into your problem.
+
+1715
+01:16:05,790 --> 01:16:12,070
+We will see a ton of them, and
+each kind of type of problem
+
+1716
+01:16:12,070 --> 01:16:13,980
+has a different flavor.
+
+1717
+01:16:13,980 --> 01:16:17,300
+There's a whole range of
+different 3SAT proofs.
+
+1718
+01:16:17,300 --> 01:16:18,820
+This is not the
+only form of 3SAT.
+
+1719
+01:16:18,820 --> 01:16:21,880
+There are probably
+a dozen of them .
+
+1720
+01:16:21,880 --> 01:16:24,390
+But they all follow
+the same pattern, which
+
+1721
+01:16:24,390 --> 01:16:27,299
+is come up with a clause gadget,
+come up with a variable gadget,
+
+1722
+01:16:27,299 --> 01:16:29,090
+come up with ways to
+connect them together.
+
+1723
+01:16:29,090 --> 01:16:30,900
+And that's a very
+useful way of thinking
+
+1724
+01:16:30,900 --> 01:16:32,830
+about things for some problems.
+
+1725
+01:16:32,830 --> 01:16:36,514
+And then for other problems,
+you might use things
+
+1726
+01:16:36,514 --> 01:16:37,430
+like constraint logic.
+
+1727
+01:16:37,430 --> 01:16:39,135
+Constraint logic
+is most relevant
+
+1728
+01:16:39,135 --> 01:16:41,020
+when it's designed
+around games and puzzles,
+
+1729
+01:16:41,020 --> 01:16:43,492
+but it comes up in
+other scenarios too.
+
+1730
+01:16:43,492 --> 01:16:46,530
+I think in graph
+labeling, there have
+
+1731
+01:16:46,530 --> 01:16:48,170
+been proofs of
+PSPACE-completeness
+
+1732
+01:16:48,170 --> 01:16:51,290
+using constraint logic.
+
+1733
+01:16:51,290 --> 01:16:53,352
+Next class, we'll
+talk about a problem
+
+1734
+01:16:53,352 --> 01:16:55,810
+called three partition, which
+is really useful for problems
+
+1735
+01:16:55,810 --> 01:16:59,440
+that involve numbers and adding
+up numbers, where 3SAT isn't
+
+1736
+01:16:59,440 --> 01:17:03,744
+really useful but three
+partition turns out
+
+1737
+01:17:03,744 --> 01:17:04,660
+to be the right thing.
+
+1738
+01:17:04,660 --> 01:17:08,020
+So that will be next.
+
+1739
+01:17:08,020 --> 01:17:10,540
+And that's all for today.
+

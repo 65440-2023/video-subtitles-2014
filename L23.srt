@@ -1,0 +1,6747 @@
+1
+0-1:59:36,500 --> 0-1:59:36,580
+
+2
+0-1:59:36,580 --> 0-1:59:38,930
+The following content is
+provided under a Creative
+
+3
+0-1:59:38,930 --> 0-1:59:40,310
+Commons license.
+
+4
+0-1:59:40,310 --> 0-1:59:42,560
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:42,560 --> 0-1:59:46,650
+continue to offer high quality
+educational resources for free.
+
+6
+0-1:59:46,650 --> 0-1:59:49,200
+To make a donation or to
+view additional materials
+
+7
+0-1:59:49,200 --> 0-1:59:53,100
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:53,100 --> 0-1:59:53,763
+at ocw.mit.edu.
+
+9
+0-1:59:53,763 --> 00:00:03,260
+
+10
+00:00:03,260 --> 00:00:04,760
+PROFESSOR: Today
+we have a lecturer,
+
+11
+00:00:04,760 --> 00:00:08,640
+guest lecture two of
+two, Costis Daskalakis.
+
+12
+00:00:08,640 --> 00:00:10,460
+COSTIS DASKALAKIS:
+Glad to be back.
+
+13
+00:00:10,460 --> 00:00:13,980
+So let's continue on the
+path we followed last time.
+
+14
+00:00:13,980 --> 00:00:16,610
+Let me remind you what we
+did last time, first of all.
+
+15
+00:00:16,610 --> 00:00:19,510
+So I talked about
+interesting theorems
+
+16
+00:00:19,510 --> 00:00:23,510
+in topology-- Nash,
+Sperner, and Brouwer.
+
+17
+00:00:23,510 --> 00:00:28,660
+And I defined the
+corresponding--
+
+18
+00:00:28,660 --> 00:00:30,470
+so these were
+theorems in topology.
+
+19
+00:00:30,470 --> 00:00:34,320
+Define the
+corresponding problems.
+
+20
+00:00:34,320 --> 00:00:37,490
+And because of these
+existence theorems,
+
+21
+00:00:37,490 --> 00:00:40,800
+the corresponding search
+problems were total.
+
+22
+00:00:40,800 --> 00:00:46,760
+And then I looked into the
+problems in NP that are total,
+
+23
+00:00:46,760 --> 00:00:53,510
+and I tried to identify what in
+these problems make them total
+
+24
+00:00:53,510 --> 00:00:56,540
+and tried to identify
+combinatorial argument that
+
+25
+00:00:56,540 --> 00:01:00,650
+guarantees the existence of
+solutions in these problems.
+
+26
+00:01:00,650 --> 00:01:03,350
+Motivated by the
+argument, which turned out
+
+27
+00:01:03,350 --> 00:01:05,630
+to be a parity argument
+on directed graphs,
+
+28
+00:01:05,630 --> 00:01:10,960
+I defined the class PPAD,
+and I introduced the problem
+
+29
+00:01:10,960 --> 00:01:21,160
+of ArithmCircuitSAT, which is
+PPAD complete, and from which
+
+30
+00:01:21,160 --> 00:01:24,830
+I promised to show a bunch
+of PPAD hardness deductions
+
+31
+00:01:24,830 --> 00:01:26,030
+this time.
+
+32
+00:01:26,030 --> 00:01:33,780
+So let me remind you the
+salient points from this list
+
+33
+00:01:33,780 --> 00:01:34,630
+before I keep going.
+
+34
+00:01:34,630 --> 00:01:38,520
+So first of all, the PPAD class
+has a combinatorial flavor.
+
+35
+00:01:38,520 --> 00:01:40,750
+In the definition of the
+class, what I'm doing
+
+36
+00:01:40,750 --> 00:01:46,110
+is I'm defining a graph
+on all possible n-bit
+
+37
+00:01:46,110 --> 00:01:50,290
+strings, so an
+exponentially large set
+
+38
+00:01:50,290 --> 00:01:52,870
+by providing two
+circuits, P and N.
+
+39
+00:01:52,870 --> 00:01:58,760
+P is a circuit of
+possible father,
+
+40
+00:01:58,760 --> 00:02:02,420
+and N is the circuit
+of possible child.
+
+41
+00:02:02,420 --> 00:02:06,280
+And given these two circuits,
+I establish a directed edge
+
+42
+00:02:06,280 --> 00:02:10,610
+between string v1 and string v2,
+if they agree on their parent
+
+43
+00:02:10,610 --> 00:02:14,230
+relationship, meaning v2
+believes V1 is his father,
+
+44
+00:02:14,230 --> 00:02:17,780
+and also v1 believes
+v2 is its child.
+
+45
+00:02:17,780 --> 00:02:20,245
+In that case if this
+condition is true,
+
+46
+00:02:20,245 --> 00:02:23,520
+I establish an edge between
+these two pairs of nodes.
+
+47
+00:02:23,520 --> 00:02:25,980
+And I do the same for
+all pairs of strings.
+
+48
+00:02:25,980 --> 00:02:28,690
+And in the end, I get a graph.
+
+49
+00:02:28,690 --> 00:02:32,150
+And the problem end of the line
+is given these two circuits
+
+50
+00:02:32,150 --> 00:02:35,630
+and the corresponding graph
+that they define on this set,
+
+51
+00:02:35,630 --> 00:02:40,530
+if the all 0 string is
+unbalanced meaning different
+
+52
+00:02:40,530 --> 00:02:43,910
+in and out degree,
+then I want you
+
+53
+00:02:43,910 --> 00:02:50,460
+to find another
+unbalanced node, string,
+
+54
+00:02:50,460 --> 00:02:54,440
+which is guaranteed to exist
+by the parity arguments.
+
+55
+00:02:54,440 --> 00:02:57,850
+And PPAD is a class of
+all search problems in FNP
+
+56
+00:02:57,850 --> 00:03:02,080
+they are reducable-- polynomial
+time reducible to this problem.
+
+57
+00:03:02,080 --> 00:03:05,980
+I'll remind you also of
+structure of the graph defined
+
+58
+00:03:05,980 --> 00:03:07,630
+by these two circuits.
+
+59
+00:03:07,630 --> 00:03:13,540
+It's easy to verify that if
+my edge definition is this,
+
+60
+00:03:13,540 --> 00:03:16,840
+then every vertex has in degree
+and out degree at most once.
+
+61
+00:03:16,840 --> 00:03:20,230
+So the graph that's induced
+by these two circuits
+
+62
+00:03:20,230 --> 00:03:21,820
+will have this form.
+
+63
+00:03:21,820 --> 00:03:25,910
+And basically, I'm looking
+for all red points.
+
+64
+00:03:25,910 --> 00:03:29,780
+For any of these points, any
+of these red points, strings,
+
+65
+00:03:29,780 --> 00:03:32,110
+are solutions, any
+unbalanced string,
+
+66
+00:03:32,110 --> 00:03:34,680
+except for the all 0 string.
+
+67
+00:03:34,680 --> 00:03:36,660
+If the all 0 string
+is not unbalanced,
+
+68
+00:03:36,660 --> 00:03:38,719
+then I don't want
+you to do anything.
+
+69
+00:03:38,719 --> 00:03:40,260
+If it is unbalanced,
+then I'm looking
+
+70
+00:03:40,260 --> 00:03:41,670
+for any of these red vertices.
+
+71
+00:03:41,670 --> 00:03:45,090
+So that's the class PPAD, and
+it has a combinatorial flavor.
+
+72
+00:03:45,090 --> 00:03:48,550
+So I'm defining a huge graph,
+we have these two circuits.
+
+73
+00:03:48,550 --> 00:03:51,890
+And I'm asking you to find
+any of these red points.
+
+74
+00:03:51,890 --> 00:03:56,029
+So on the other hand,
+sort of like the problems
+
+75
+00:03:56,029 --> 00:03:59,380
+we were targeting, Nash
+equilibrium, Brouwer's theorem,
+
+76
+00:03:59,380 --> 00:04:01,590
+had a more continues flavor.
+
+77
+00:04:01,590 --> 00:04:09,290
+So instead of working
+directly with this problem,
+
+78
+00:04:09,290 --> 00:04:10,870
+with the end of the
+line, and trying
+
+79
+00:04:10,870 --> 00:04:14,240
+to reduce this problem
+too Nash and to Brouwer
+
+80
+00:04:14,240 --> 00:04:17,090
+to establish PPAD
+hardness deductions,
+
+81
+00:04:17,090 --> 00:04:19,510
+I actually introduced
+a problem that actually
+
+82
+00:04:19,510 --> 00:04:21,200
+closer to this problem.
+
+83
+00:04:21,200 --> 00:04:22,930
+It has a continuous flavor.
+
+84
+00:04:22,930 --> 00:04:26,440
+And it was the problem
+ArithmCircuitSAT.
+
+85
+00:04:26,440 --> 00:04:28,260
+There were a bunch
+of problems last time
+
+86
+00:04:28,260 --> 00:04:30,220
+about the definition
+of the problem.
+
+87
+00:04:30,220 --> 00:04:34,130
+So I decided to be more
+explicit about what it is.
+
+88
+00:04:34,130 --> 00:04:37,090
+So basically I'm
+giving you a circuit
+
+89
+00:04:37,090 --> 00:04:40,520
+that has two types of nodes,
+viable nodes, v1 through vn,
+
+90
+00:04:40,520 --> 00:04:43,240
+and gate nodes, g1 through gn.
+
+91
+00:04:43,240 --> 00:04:48,970
+Now gate node has one
+of six possible flavors.
+
+92
+00:04:48,970 --> 00:04:53,720
+It could be an assignment
+gate, and addition gate,
+
+93
+00:04:53,720 --> 00:04:57,230
+a subtraction gate, set
+equal to constant gate,
+
+94
+00:04:57,230 --> 00:05:01,846
+multiply by a constant
+gate, and comparison gate.
+
+95
+00:05:01,846 --> 00:05:03,220
+Depending on the
+type, it's going
+
+96
+00:05:03,220 --> 00:05:08,240
+to have from 0 to the
+3 inputs, to 2 inputs.
+
+97
+00:05:08,240 --> 00:05:10,400
+And it always has 1 output.
+
+98
+00:05:10,400 --> 00:05:15,110
+Now what I wanted to emphasize
+is that this graph doesn't
+
+99
+00:05:15,110 --> 00:05:17,340
+have inputs-- input variables.
+
+100
+00:05:17,340 --> 00:05:20,260
+
+101
+00:05:20,260 --> 00:05:22,940
+Loops are allowed.
+
+102
+00:05:22,940 --> 00:05:25,780
+And what I want to emphasize
+that I didn't emphasise
+
+103
+00:05:25,780 --> 00:05:31,930
+last time is that variable
+nodes have n degree 1,
+
+104
+00:05:31,930 --> 00:05:33,970
+and gates have 0,
+1, or 2 inputs,
+
+105
+00:05:33,970 --> 00:05:35,870
+depending on their type.
+
+106
+00:05:35,870 --> 00:05:39,500
+Otherwise for instance,
+the out degree of a node
+
+107
+00:05:39,500 --> 00:05:40,860
+could be arbitrary.
+
+108
+00:05:40,860 --> 00:05:45,290
+The fan out could be
+arbitrary, it doesn't matter.
+
+109
+00:05:45,290 --> 00:05:46,550
+But you have to respect this.
+
+110
+00:05:46,550 --> 00:05:50,560
+Every variable node
+has n degree 1.
+
+111
+00:05:50,560 --> 00:05:55,420
+Every gate node has 1, 2, or 2
+inputs depending on the type.
+
+112
+00:05:55,420 --> 00:05:58,904
+There are no edges
+between gates and gates,
+
+113
+00:05:58,904 --> 00:06:00,070
+and variables and variables.
+
+114
+00:06:00,070 --> 00:06:02,770
+There are only edges
+between variables and gates,
+
+115
+00:06:02,770 --> 00:06:04,560
+and gates to variables.
+
+116
+00:06:04,560 --> 00:06:06,210
+That's the input.
+
+117
+00:06:06,210 --> 00:06:09,580
+The input is a circuit
+that has this form.
+
+118
+00:06:09,580 --> 00:06:11,340
+And what I want
+you to do is I want
+
+119
+00:06:11,340 --> 00:06:15,665
+you to find an
+assignment of real 0,
+
+120
+00:06:15,665 --> 00:06:19,700
+1 values to the
+variables of this circuit
+
+121
+00:06:19,700 --> 00:06:25,370
+such that the constraints
+of the gates are satisfied.
+
+122
+00:06:25,370 --> 00:06:28,010
+And here are the
+constrains of the gates.
+
+123
+00:06:28,010 --> 00:06:30,030
+So if they gate is
+an assignment gate,
+
+124
+00:06:30,030 --> 00:06:33,600
+I want the output
+node, the node who's
+
+125
+00:06:33,600 --> 00:06:36,770
+connected to the
+output of the gate
+
+126
+00:06:36,770 --> 00:06:41,740
+has equal value to the node
+that's feeding into that gate.
+
+127
+00:06:41,740 --> 00:06:43,450
+If they gate is
+an addition gate,
+
+128
+00:06:43,450 --> 00:06:49,250
+I want that variable node
+who's connected to the output
+
+129
+00:06:49,250 --> 00:06:54,930
+of the gate to be basically the
+sum of the values of the inputs
+
+130
+00:06:54,930 --> 00:06:58,939
+to the addition gate, except
+I'm also going to threshold it.
+
+131
+00:06:58,939 --> 00:07:01,480
+I'm not going to allow it going
+above 1, and so and so forth.
+
+132
+00:07:01,480 --> 00:07:04,310
+So these are the
+gate conditions.
+
+133
+00:07:04,310 --> 00:07:09,770
+So now what I said last time
+is that a satisfying assignment
+
+134
+00:07:09,770 --> 00:07:13,320
+always exists for this problem.
+
+135
+00:07:13,320 --> 00:07:15,820
+It's not a priori,
+so it a requires work
+
+136
+00:07:15,820 --> 00:07:18,250
+and actually it is going
+through a fixed point
+
+137
+00:07:18,250 --> 00:07:23,460
+to argue that there is always
+a solution to this problem.
+
+138
+00:07:23,460 --> 00:07:26,290
+What I also claimed
+last time is that it's
+
+139
+00:07:26,290 --> 00:07:29,180
+PPAD complete to find a
+satisfying assignment.
+
+140
+00:07:29,180 --> 00:07:32,890
+So it's a natural starting
+point for deductions.
+
+141
+00:07:32,890 --> 00:07:35,790
+What I also said last
+time is that in fact,
+
+142
+00:07:35,790 --> 00:07:42,160
+I can allow some noise in the
+error, in the gate constraints.
+
+143
+00:07:42,160 --> 00:07:46,580
+I can allow plus minus
+epsilon deviation
+
+144
+00:07:46,580 --> 00:07:49,700
+from the gate constraints.
+
+145
+00:07:49,700 --> 00:07:52,640
+And so this should
+be a minus epsilon.
+
+146
+00:07:52,640 --> 00:07:55,080
+Sorry about that.
+
+147
+00:07:55,080 --> 00:07:58,360
+And this epsilon is
+part of the input.
+
+148
+00:07:58,360 --> 00:08:02,450
+I can give as input both
+a circuit and an epsilon.
+
+149
+00:08:02,450 --> 00:08:04,920
+And I will ask you to
+satisfy the gate constraints
+
+150
+00:08:04,920 --> 00:08:07,030
+with an epsilon.
+
+151
+00:08:07,030 --> 00:08:10,480
+Now last time I also
+showed you the structure
+
+152
+00:08:10,480 --> 00:08:12,970
+the hardness proof
+for Nash, which
+
+153
+00:08:12,970 --> 00:08:17,360
+basically took generic PPAD
+end of the line problem.
+
+154
+00:08:17,360 --> 00:08:19,549
+Today PPAD complete
+problem, end of the line,
+
+155
+00:08:19,549 --> 00:08:25,570
+is embedded into geometry,
+into the 3-D cube.
+
+156
+00:08:25,570 --> 00:08:31,660
+Then we define a version of
+Sperner's Lemma, which then
+
+157
+00:08:31,660 --> 00:08:34,610
+introduced ArithmCircuitSAT.
+
+158
+00:08:34,610 --> 00:08:36,590
+And I didn't show this
+part of the deduction,
+
+159
+00:08:36,590 --> 00:08:38,381
+and I'm not going to
+show it because that's
+
+160
+00:08:38,381 --> 00:08:40,040
+the complicated part.
+
+161
+00:08:40,040 --> 00:08:42,150
+But I am going to
+show is how to go
+
+162
+00:08:42,150 --> 00:08:44,580
+from this problem,
+the ArithmCircuitSAT
+
+163
+00:08:44,580 --> 00:08:48,310
+to Nash equilibrium,
+just to show how easy it
+
+164
+00:08:48,310 --> 00:08:54,070
+is to work with this problem
+and reduce to other problems.
+
+165
+00:08:54,070 --> 00:08:56,650
+So that's where I
+want to focus on.
+
+166
+00:08:56,650 --> 00:08:58,850
+So that's the review
+from last time.
+
+167
+00:08:58,850 --> 00:09:01,010
+And this time, I want
+to talk about-- I
+
+168
+00:09:01,010 --> 00:09:02,760
+want to show the PPAD
+completeness of Nash
+
+169
+00:09:02,760 --> 00:09:04,370
+equilibrium.
+
+170
+00:09:04,370 --> 00:09:10,960
+I'm going to briefly give
+two other examples that
+
+171
+00:09:10,960 --> 00:09:15,000
+have come from combinatorics.
+
+172
+00:09:15,000 --> 00:09:18,190
+And then lastly, I'm going
+to talk about other existence
+
+173
+00:09:18,190 --> 00:09:23,070
+arguments and the complexity
+classes that they define.
+
+174
+00:09:23,070 --> 00:09:27,422
+So I'm going to introduce these
+classes, PPA, PPP, and PLS.
+
+175
+00:09:27,422 --> 00:09:28,880
+Before I do that,
+I also thought it
+
+176
+00:09:28,880 --> 00:09:30,129
+was a question from last time.
+
+177
+00:09:30,129 --> 00:09:32,220
+PPAD stands for
+polynomial parity argument
+
+178
+00:09:32,220 --> 00:09:35,670
+in directed graphs,
+corresponding to the fact
+
+179
+00:09:35,670 --> 00:09:38,280
+that this class is defined
+with this parity argument
+
+180
+00:09:38,280 --> 00:09:41,630
+in directed graphs in mind.
+
+181
+00:09:41,630 --> 00:09:43,910
+So let's focus on this
+reduction, from Circuit
+
+182
+00:09:43,910 --> 00:09:45,240
+to Nash.
+
+183
+00:09:45,240 --> 00:09:49,870
+I want to introduce a concept
+before I show the reduction.
+
+184
+00:09:49,870 --> 00:09:53,270
+That concept is graphical
+games and polymatrix games,
+
+185
+00:09:53,270 --> 00:09:55,590
+a special case of
+graphical games.
+
+186
+00:09:55,590 --> 00:09:58,150
+So graphical games
+were introduced in 2001
+
+187
+00:09:58,150 --> 00:10:02,490
+by Kearns, Littman, and Singh
+as something very natural.
+
+188
+00:10:02,490 --> 00:10:05,060
+Basically they tried
+to capture situations
+
+189
+00:10:05,060 --> 00:10:06,640
+where the payoff
+of a player only
+
+190
+00:10:06,640 --> 00:10:10,630
+depends on the actions
+of a few other players,
+
+191
+00:10:10,630 --> 00:10:13,090
+because of geographical,
+communication,
+
+192
+00:10:13,090 --> 00:10:14,520
+or other constraints.
+
+193
+00:10:14,520 --> 00:10:19,175
+So in the graphical game, the
+players are nodes in the graph,
+
+194
+00:10:19,175 --> 00:10:21,440
+in a directive graph.
+
+195
+00:10:21,440 --> 00:10:24,490
+And a player's
+payoff only depends
+
+196
+00:10:24,490 --> 00:10:28,280
+on her own strategy, as well
+as the strategy of the players
+
+197
+00:10:28,280 --> 00:10:30,030
+that point to him.
+
+198
+00:10:30,030 --> 00:10:33,210
+
+199
+00:10:33,210 --> 00:10:36,810
+For example, this
+guy's payoff depends
+
+200
+00:10:36,810 --> 00:10:39,890
+on this guy's, this guy's,
+and this guy's action.
+
+201
+00:10:39,890 --> 00:10:42,170
+Because all of these guys
+point to him, as well as
+
+202
+00:10:42,170 --> 00:10:42,880
+his own action.
+
+203
+00:10:42,880 --> 00:10:47,450
+
+204
+00:10:47,450 --> 00:10:52,180
+A special case of these
+games was actually
+
+205
+00:10:52,180 --> 00:10:55,440
+introduced much earlier.
+
+206
+00:10:55,440 --> 00:10:57,860
+So polymatrix games
+are graphical games
+
+207
+00:10:57,860 --> 00:11:00,010
+where the payoff
+functions of the nodes
+
+208
+00:11:00,010 --> 00:11:02,750
+are actually
+edge-wise separable.
+
+209
+00:11:02,750 --> 00:11:06,810
+So for instance, the
+payoff of this guy
+
+210
+00:11:06,810 --> 00:11:10,500
+as a function of
+everybody's mixed strategy
+
+211
+00:11:10,500 --> 00:11:13,650
+is separable overall
+edges that point
+
+212
+00:11:13,650 --> 00:11:19,030
+to him of some pairwise
+player function that
+
+213
+00:11:19,030 --> 00:11:23,960
+has to do with his action
+and his neighbor's action.
+
+214
+00:11:23,960 --> 00:11:26,200
+That's what's written here.
+
+215
+00:11:26,200 --> 00:11:35,730
+And it's not very hard to see
+that any-- so this is a utility
+
+216
+00:11:35,730 --> 00:11:43,250
+function that depends on
+the two mixed strategies.
+
+217
+00:11:43,250 --> 00:11:47,230
+And by assumption, these
+players randomize independently
+
+218
+00:11:47,230 --> 00:11:48,550
+of each other.
+
+219
+00:11:48,550 --> 00:11:55,180
+So any such expectation of a
+pair of players' strategies
+
+220
+00:11:55,180 --> 00:11:57,350
+that's are a
+product can actually
+
+221
+00:11:57,350 --> 00:12:01,094
+be written as a quadratic form.
+
+222
+00:12:01,094 --> 00:12:01,760
+Do you see that?
+
+223
+00:12:01,760 --> 00:12:05,600
+
+224
+00:12:05,600 --> 00:12:07,630
+Let me write on the board.
+
+225
+00:12:07,630 --> 00:12:21,440
+So again, Xv is the mixed
+strategy of player v. Xw
+
+226
+00:12:21,440 --> 00:12:27,370
+is the mixed strategy of w.
+
+227
+00:12:27,370 --> 00:12:36,040
+What I mean by Uwv Xu,
+comma Xw is basically
+
+228
+00:12:36,040 --> 00:12:42,680
+an expectation over an
+action Su drawn from Xu,
+
+229
+00:12:42,680 --> 00:12:45,980
+and action is Sw.
+
+230
+00:12:45,980 --> 00:12:50,460
+Sorry-- Sv drawn from
+Xv, Sw drawn from Xw,
+
+231
+00:12:50,460 --> 00:13:08,090
+independently of-- and that's
+just the sum of all the Us
+
+232
+00:13:08,090 --> 00:13:22,450
+and all the Sws of U, W, sv,
+sw, and then the probabilities.
+
+233
+00:13:22,450 --> 00:13:30,410
+
+234
+00:13:30,410 --> 00:13:32,840
+And that's a quadratic form.
+
+235
+00:13:32,840 --> 00:13:36,760
+So that's what I
+mean by this line.
+
+236
+00:13:36,760 --> 00:13:40,280
+Because players play
+independently from each other,
+
+237
+00:13:40,280 --> 00:13:45,570
+any expectation with respect
+to that product distribution
+
+238
+00:13:45,570 --> 00:13:47,749
+is a quadratic form.
+
+239
+00:13:47,749 --> 00:13:49,290
+I'm not saying
+something interesting.
+
+240
+00:13:49,290 --> 00:13:51,980
+
+241
+00:13:51,980 --> 00:13:54,130
+Good?
+
+242
+00:13:54,130 --> 00:13:56,710
+So then a polymatrix
+game is really,
+
+243
+00:13:56,710 --> 00:14:00,960
+because of this, defined
+by a directive graph.
+
+244
+00:14:00,960 --> 00:14:07,130
+And then for every directed
+edge, and every-- there is
+
+245
+00:14:07,130 --> 00:14:15,230
+a matrix that defines the
+quadratic form for that edge.
+
+246
+00:14:15,230 --> 00:14:18,464
+So polymatrix game
+is easily described.
+
+247
+00:14:18,464 --> 00:14:20,130
+You can describe by
+specifying the graph
+
+248
+00:14:20,130 --> 00:14:22,670
+and then giving a matrix
+what every directed edge.
+
+249
+00:14:22,670 --> 00:14:25,510
+
+250
+00:14:25,510 --> 00:14:28,670
+So bimatrix game are
+two player games.
+
+251
+00:14:28,670 --> 00:14:30,700
+So that's why these
+are called polymatrix,
+
+252
+00:14:30,700 --> 00:14:33,496
+because you have many matrices.
+
+253
+00:14:33,496 --> 00:14:35,870
+In a two player game, you only
+need to give two matrices,
+
+254
+00:14:35,870 --> 00:14:43,299
+one for a two player game
+is just player 1, player 2.
+
+255
+00:14:43,299 --> 00:14:45,090
+And you give one matrix
+for this direction,
+
+256
+00:14:45,090 --> 00:14:46,610
+and one matrix for
+that direction.
+
+257
+00:14:46,610 --> 00:14:49,030
+So that's a bimatrix game.
+
+258
+00:14:49,030 --> 00:14:50,313
+This is a polymatrix game.
+
+259
+00:14:50,313 --> 00:14:54,260
+
+260
+00:14:54,260 --> 00:14:59,860
+Now what I want to do
+is I want to-- in order
+
+261
+00:14:59,860 --> 00:15:03,077
+to reduce ArithmCircuitSAT
+to Nash, instead what
+
+262
+00:15:03,077 --> 00:15:04,910
+I'm going to do first
+is I'm going to reduce
+
+263
+00:15:04,910 --> 00:15:09,820
+ArithmCircuitSAT
+to finding a Nash
+
+264
+00:15:09,820 --> 00:15:12,950
+equilibrium in a
+polymatrix game.
+
+265
+00:15:12,950 --> 00:15:14,750
+That's what I want to do first.
+
+266
+00:15:14,750 --> 00:15:18,370
+After I do that, then I'm
+going to reduce it to-- so here
+
+267
+00:15:18,370 --> 00:15:20,100
+I have many players.
+
+268
+00:15:20,100 --> 00:15:22,840
+I want to go down
+to two players.
+
+269
+00:15:22,840 --> 00:15:25,280
+But the first step is to
+just go to multiplayer
+
+270
+00:15:25,280 --> 00:15:26,500
+Nash equilibrium.
+
+271
+00:15:26,500 --> 00:15:30,290
+Then that deduction
+is the easy part.
+
+272
+00:15:30,290 --> 00:15:32,170
+Also this is an easy part.
+
+273
+00:15:32,170 --> 00:15:33,420
+The hard part happened before.
+
+274
+00:15:33,420 --> 00:15:36,700
+
+275
+00:15:36,700 --> 00:15:42,300
+So now how can we reduce
+an ArithmCircuitSAT problem
+
+276
+00:15:42,300 --> 00:15:47,260
+into a polymatrix game
+Nash equilibrium problem?
+
+277
+00:15:47,260 --> 00:15:54,680
+Like in LP completeness, like in
+reductions for NP, RP hardness
+
+278
+00:15:54,680 --> 00:15:58,320
+proofs, you have
+to give gadgets.
+
+279
+00:15:58,320 --> 00:16:05,390
+You have to identify objects
+in polymatrix games that
+
+280
+00:16:05,390 --> 00:16:08,420
+simulate the
+operations that happen
+
+281
+00:16:08,420 --> 00:16:10,530
+in your circuit over here.
+
+282
+00:16:10,530 --> 00:16:15,370
+So what I want to introduce is
+what is called a game gadget.
+
+283
+00:16:15,370 --> 00:16:17,530
+These are small
+polymatrix games that
+
+284
+00:16:17,530 --> 00:16:20,850
+do various arithmetic
+operations, which
+
+285
+00:16:20,850 --> 00:16:26,060
+I can then put together to
+simulate an ArithmCircuitSAT
+
+286
+00:16:26,060 --> 00:16:26,560
+problem.
+
+287
+00:16:26,560 --> 00:16:30,086
+
+288
+00:16:30,086 --> 00:16:31,960
+So what I want to do is
+I'm going to give you
+
+289
+00:16:31,960 --> 00:16:33,220
+a flavor of these gadgets.
+
+290
+00:16:33,220 --> 00:16:35,170
+So I'm going to give you
+the addition gadgets.
+
+291
+00:16:35,170 --> 00:16:39,510
+I want to give you a polymatrix
+game that does addition.
+
+292
+00:16:39,510 --> 00:16:43,240
+
+293
+00:16:43,240 --> 00:16:44,650
+So it's going to
+have-- this game
+
+294
+00:16:44,650 --> 00:16:48,040
+is going to have four players.
+
+295
+00:16:48,040 --> 00:16:51,260
+Everything player will have
+just two strategies-- 0 and 1,
+
+296
+00:16:51,260 --> 00:16:54,800
+two pure strategies, hence the
+mixed strategy of that player
+
+297
+00:16:54,800 --> 00:16:56,349
+is going to be a
+real number in 0,
+
+298
+00:16:56,349 --> 00:16:58,280
+1, which corresponds
+to the probability
+
+299
+00:16:58,280 --> 00:17:00,710
+by which this player plays 1.
+
+300
+00:17:00,710 --> 00:17:05,430
+
+301
+00:17:05,430 --> 00:17:07,530
+So here's the structure
+of the gadget.
+
+302
+00:17:07,530 --> 00:17:09,730
+So this gadget, I'm
+showing it here embedded
+
+303
+00:17:09,730 --> 00:17:13,130
+into a potentially
+bigger polymatrix game.
+
+304
+00:17:13,130 --> 00:17:18,575
+But the gadget itself is going
+to have four players, X, Y, W,
+
+305
+00:17:18,575 --> 00:17:24,080
+Z. Now X, Y are what is called
+the input to the gadget.
+
+306
+00:17:24,080 --> 00:17:27,470
+So these are players
+who point to W,
+
+307
+00:17:27,470 --> 00:17:30,430
+but don't depend on
+the actions of W and X
+
+308
+00:17:30,430 --> 00:17:33,000
+because there are no
+directions going the other way.
+
+309
+00:17:33,000 --> 00:17:36,230
+So these guys don't care about
+what these players are doing,
+
+310
+00:17:36,230 --> 00:17:39,800
+and they serve as an
+input to the gadget.
+
+311
+00:17:39,800 --> 00:17:44,530
+Now this player, W, gets his
+input of players strategies
+
+312
+00:17:44,530 --> 00:17:46,340
+in this gadget.
+
+313
+00:17:46,340 --> 00:17:50,310
+While X only cares
+about the W is doing.
+
+314
+00:17:50,310 --> 00:17:52,550
+So X and Y are going
+to be called the input
+
+315
+00:17:52,550 --> 00:17:53,970
+players to the gadget.
+
+316
+00:17:53,970 --> 00:17:56,630
+Z is going to be called the
+output player to the gadget.
+
+317
+00:17:56,630 --> 00:18:01,430
+And W is going to be called
+the auxiliary player.
+
+318
+00:18:01,430 --> 00:18:05,130
+Now what I want to do is I want
+to define-- the only thing I'm
+
+319
+00:18:05,130 --> 00:18:07,220
+going to define is the
+payoff function of W
+
+320
+00:18:07,220 --> 00:18:08,520
+and the payoff function of Z.
+
+321
+00:18:08,520 --> 00:18:10,820
+And I'm going to define this
+payoff functions in a way
+
+322
+00:18:10,820 --> 00:18:14,430
+that addition somehow
+happens at a Nash equilibrium
+
+323
+00:18:14,430 --> 00:18:15,750
+of this little game.
+
+324
+00:18:15,750 --> 00:18:19,320
+
+325
+00:18:19,320 --> 00:18:21,474
+So I'm going to define
+the payoff succinctly.
+
+326
+00:18:21,474 --> 00:18:23,640
+But then I'm going to
+convince you that these really
+
+327
+00:18:23,640 --> 00:18:26,130
+correspond to tables.
+
+328
+00:18:26,130 --> 00:18:32,870
+So I'm going to say that W is
+paid an expected-- depending
+
+329
+00:18:32,870 --> 00:18:33,740
+on what he plays.
+
+330
+00:18:33,740 --> 00:18:38,520
+So if he plays 0, he gets
+paid an expected probability
+
+331
+00:18:38,520 --> 00:18:41,370
+X equal $1, plus
+probably X equals
+
+332
+00:18:41,370 --> 00:18:45,580
+Y equals $1 if he plays 0.
+
+333
+00:18:45,580 --> 00:18:50,110
+But if he plays 1, he only gets
+paid probabilities equals $1.
+
+334
+00:18:50,110 --> 00:18:53,220
+So in some sense if he plays
+0, he looks to the left.
+
+335
+00:18:53,220 --> 00:18:55,520
+If he plays 1, he
+looks to the right.
+
+336
+00:18:55,520 --> 00:19:00,310
+His payoffs are the sum of
+these two guys probabilities
+
+337
+00:19:00,310 --> 00:19:06,880
+of playing 1 in one case,
+and this guy's probability
+
+338
+00:19:06,880 --> 00:19:08,490
+of playing 1 in the other case.
+
+339
+00:19:08,490 --> 00:19:15,380
+So that's the payoff function
+to W. Now you would ask me maybe
+
+340
+00:19:15,380 --> 00:19:18,670
+how can you implement
+this payoff functions.
+
+341
+00:19:18,670 --> 00:19:21,600
+And that's actually very easy.
+
+342
+00:19:21,600 --> 00:19:28,790
+So here's the table for
+player W. So when W plays 0,
+
+343
+00:19:28,790 --> 00:19:38,450
+his payoff is depending on
+the strategies of X and Y.
+
+344
+00:19:38,450 --> 00:19:42,810
+I'm going to define it
+to be 0, 1, 1, and 2.
+
+345
+00:19:42,810 --> 00:19:48,870
+Now notice that in expectation
+over X's and Y's strategies,
+
+346
+00:19:48,870 --> 00:19:53,860
+he's payoff-- so if he plays
+0, his expected payoff over X
+
+347
+00:19:53,860 --> 00:19:58,320
+and Y's strategies is just
+the probability that X plays
+
+348
+00:19:58,320 --> 00:20:02,780
+1 plus the probability
+that Y plays 1.
+
+349
+00:20:02,780 --> 00:20:06,080
+Do you see this
+from this matrix?
+
+350
+00:20:06,080 --> 00:20:13,560
+So what's the expected
+payoff to W when he plays 0?
+
+351
+00:20:13,560 --> 00:20:21,610
+So this is 1 if Y
+plays 1, but X plays 0.
+
+352
+00:20:21,610 --> 00:20:24,900
+
+353
+00:20:24,900 --> 00:20:32,800
+And it's 1 if X plays
+1, but Y plays 0,
+
+354
+00:20:32,800 --> 00:20:35,540
+and 2 if they both play 1.
+
+355
+00:20:35,540 --> 00:20:41,470
+
+356
+00:20:41,470 --> 00:20:45,180
+And I claim that if you
+properly collect the terms,
+
+357
+00:20:45,180 --> 00:20:50,230
+this is just equal to
+probability Y plays 1,
+
+358
+00:20:50,230 --> 00:20:55,482
+and X plays 1.
+
+359
+00:20:55,482 --> 00:20:56,440
+So that's what I claim.
+
+360
+00:20:56,440 --> 00:20:59,200
+
+361
+00:20:59,200 --> 00:21:01,240
+So I covered this line.
+
+362
+00:21:01,240 --> 00:21:04,660
+This line is also easy to cover
+by saying that when W plays 0,
+
+363
+00:21:04,660 --> 00:21:11,220
+his payoff just depends
+on what Z is doing.
+
+364
+00:21:11,220 --> 00:21:12,890
+And it's going to be like this.
+
+365
+00:21:12,890 --> 00:21:16,450
+
+366
+00:21:16,450 --> 00:21:19,060
+So when W plays 1,
+his expected payoff
+
+367
+00:21:19,060 --> 00:21:21,170
+is exactly the
+probability Z plays 1.
+
+368
+00:21:21,170 --> 00:21:25,190
+
+369
+00:21:25,190 --> 00:21:26,880
+So what I've written
+here is actually
+
+370
+00:21:26,880 --> 00:21:30,855
+consistent with some tables
+that I'm hiding from this slide.
+
+371
+00:21:30,855 --> 00:21:33,940
+
+372
+00:21:33,940 --> 00:21:38,710
+So that's, I guess, that's
+what I want to write.
+
+373
+00:21:38,710 --> 00:21:42,730
+And then similarly, Z is paid
+to play the opposite of W.
+
+374
+00:21:42,730 --> 00:21:44,770
+What do I mean by that?
+
+375
+00:21:44,770 --> 00:21:49,720
+I mean that Z's payoff,
+when he plays 0,
+
+376
+00:21:49,720 --> 00:21:53,510
+is exactly 1/2, no
+matter what W does.
+
+377
+00:21:53,510 --> 00:22:00,570
+But if he plays 1, his
+payoff is 1 minus W plays 1.
+
+378
+00:22:00,570 --> 00:22:02,920
+Which again, you
+should be able to see
+
+379
+00:22:02,920 --> 00:22:05,900
+that there's a table, a little
+table implementing these payoff
+
+380
+00:22:05,900 --> 00:22:07,720
+functions.
+
+381
+00:22:07,720 --> 00:22:08,790
+And that sounds weird.
+
+382
+00:22:08,790 --> 00:22:10,330
+Why did I define it this way?
+
+383
+00:22:10,330 --> 00:22:12,770
+Here's my claim.
+
+384
+00:22:12,770 --> 00:22:15,180
+In any Nash equilibrium
+of a game that
+
+385
+00:22:15,180 --> 00:22:20,970
+contains this little
+gadget, the probability
+
+386
+00:22:20,970 --> 00:22:23,400
+that the output player
+plays 1 is basically
+
+387
+00:22:23,400 --> 00:22:26,490
+the sum of the probability
+that the input players play
+
+388
+00:22:26,490 --> 00:22:31,030
+1 thresholded at 1 of course.
+
+389
+00:22:31,030 --> 00:22:34,470
+So if this little gadget
+that I define here
+
+390
+00:22:34,470 --> 00:22:40,460
+is part of a bigger game-- now
+what can the bigger game do?
+
+391
+00:22:40,460 --> 00:22:46,590
+So it can fit something into
+X. It can take the value of Z
+
+392
+00:22:46,590 --> 00:22:49,570
+and use it in some other way,
+potentially looping around,
+
+393
+00:22:49,570 --> 00:22:55,050
+doing anything and once, except
+the only inputs to W's payoff
+
+394
+00:22:55,050 --> 00:22:56,360
+are X, Y, and Z.
+
+395
+00:22:56,360 --> 00:22:59,390
+And the only input
+to Z's payoff is W,
+
+396
+00:22:59,390 --> 00:23:03,020
+but otherwise the
+game can be arbitrary.
+
+397
+00:23:03,020 --> 00:23:05,190
+So if this game
+that I define here
+
+398
+00:23:05,190 --> 00:23:07,430
+is embedded within
+a bigger game,
+
+399
+00:23:07,430 --> 00:23:09,430
+then in anything Nash
+equilibrium of that bigger
+
+400
+00:23:09,430 --> 00:23:13,170
+game, the probability
+that this guy plays 1
+
+401
+00:23:13,170 --> 00:23:15,300
+is exactly the sum
+of the probabilities
+
+402
+00:23:15,300 --> 00:23:19,780
+that these two guys play
+1, thresholded at 1.
+
+403
+00:23:19,780 --> 00:23:21,050
+Now how can we see this?
+
+404
+00:23:21,050 --> 00:23:24,240
+Why is that true?
+
+405
+00:23:24,240 --> 00:23:26,900
+It's a little case analysis.
+
+406
+00:23:26,900 --> 00:23:27,830
+It's very simple.
+
+407
+00:23:27,830 --> 00:23:28,790
+Let's try to do it.
+
+408
+00:23:28,790 --> 00:23:35,290
+
+409
+00:23:35,290 --> 00:23:40,320
+So suppose that the
+probability that Z plays 1
+
+410
+00:23:40,320 --> 00:23:47,000
+is smaller than the probability
+X plays 1 plus the probability
+
+411
+00:23:47,000 --> 00:23:49,550
+Y plays 1.
+
+412
+00:23:49,550 --> 00:23:54,080
+Actually, let's do
+something else--
+
+413
+00:23:54,080 --> 00:24:00,060
+it's smaller than the
+min between this and 1.
+
+414
+00:24:00,060 --> 00:24:02,700
+
+415
+00:24:02,700 --> 00:24:03,920
+What happens in this case?
+
+416
+00:24:03,920 --> 00:24:08,070
+So what happens if Z is smaller
+than the minimum of these two
+
+417
+00:24:08,070 --> 00:24:10,380
+values?
+
+418
+00:24:10,380 --> 00:24:14,454
+What is W going to
+do in that case?
+
+419
+00:24:14,454 --> 00:24:16,400
+AUDIENCE: Is he going to play 0?
+
+420
+00:24:16,400 --> 00:24:19,440
+COSTIS DASKALAKIS: Yeah, because
+0 gives him a high payoff,
+
+421
+00:24:19,440 --> 00:24:21,200
+gives his a higher
+payoff than this guy,
+
+422
+00:24:21,200 --> 00:24:24,050
+but because of that condition.
+
+423
+00:24:24,050 --> 00:24:35,659
+So this implies that W is going
+to play 0 with probability 1.
+
+424
+00:24:35,659 --> 00:24:36,700
+Now what does this imply?
+
+425
+00:24:36,700 --> 00:24:39,730
+
+426
+00:24:39,730 --> 00:24:43,665
+If W plays 0 with probability
+1, what does Z do?
+
+427
+00:24:43,665 --> 00:24:44,790
+If he plays 0, he gets 0.5.
+
+428
+00:24:44,790 --> 00:24:47,350
+What if he plays 1?
+
+429
+00:24:47,350 --> 00:24:50,380
+How much does he get?
+
+430
+00:24:50,380 --> 00:24:53,300
+He gets 1 because
+of that condition.
+
+431
+00:24:53,300 --> 00:24:56,040
+
+432
+00:24:56,040 --> 00:24:58,540
+So he's going to play what?
+
+433
+00:24:58,540 --> 00:24:59,330
+1.
+
+434
+00:24:59,330 --> 00:25:09,880
+And so this implies
+that-- but how
+
+435
+00:25:09,880 --> 00:25:13,060
+can 1 be smaller than the
+minimal of 1 and something
+
+436
+00:25:13,060 --> 00:25:13,790
+else?
+
+437
+00:25:13,790 --> 00:25:15,050
+That's can't be.
+
+438
+00:25:15,050 --> 00:25:18,780
+So this is impossible.
+
+439
+00:25:18,780 --> 00:25:22,540
+So do the other side,
+or maybe you already
+
+440
+00:25:22,540 --> 00:25:24,030
+trust me that it's OK.
+
+441
+00:25:24,030 --> 00:25:32,180
+
+442
+00:25:32,180 --> 00:25:35,252
+Let's try to argue that
+this cannot be the case.
+
+443
+00:25:35,252 --> 00:25:36,710
+I don't need to do
+the mean anymore
+
+444
+00:25:36,710 --> 00:25:40,230
+because it can't possibly
+be that this guy plays
+
+445
+00:25:40,230 --> 00:25:42,720
+more than 1 probability.
+
+446
+00:25:42,720 --> 00:25:45,700
+So this is the only case
+I want to consider now.
+
+447
+00:25:45,700 --> 00:25:51,980
+
+448
+00:25:51,980 --> 00:25:53,220
+So what happens in this case?
+
+449
+00:25:53,220 --> 00:25:56,060
+
+450
+00:25:56,060 --> 00:25:59,190
+The same logic.
+
+451
+00:25:59,190 --> 00:26:01,444
+What does W do?
+
+452
+00:26:01,444 --> 00:26:02,390
+AUDIENCE: Play 1?
+
+453
+00:26:02,390 --> 00:26:04,348
+COSTIS DASKALAKIS: Has
+to play 1 because that's
+
+454
+00:26:04,348 --> 00:26:07,190
+the better strategy.
+
+455
+00:26:07,190 --> 00:26:09,557
+And what does he do?
+
+456
+00:26:09,557 --> 00:26:10,265
+AUDIENCE: Play 0.
+
+457
+00:26:10,265 --> 00:26:13,374
+
+458
+00:26:13,374 --> 00:26:15,040
+COSTIS DASKALAKIS:
+But 0 can't be bigger
+
+459
+00:26:15,040 --> 00:26:17,350
+than the sum of two
+r probabilities,
+
+460
+00:26:17,350 --> 00:26:19,820
+so this and that can happen.
+
+461
+00:26:19,820 --> 00:26:24,410
+Hence, the only case that's
+possible is this one.
+
+462
+00:26:24,410 --> 00:26:27,960
+
+463
+00:26:27,960 --> 00:26:29,680
+So it's very simple.
+
+464
+00:26:29,680 --> 00:26:32,110
+So the only realization
+that one had to do
+
+465
+00:26:32,110 --> 00:26:36,830
+is that-- where the
+arithmetic happens?
+
+466
+00:26:36,830 --> 00:26:38,500
+It happens in the
+mixed strategies
+
+467
+00:26:38,500 --> 00:26:39,510
+chosen by the players.
+
+468
+00:26:39,510 --> 00:26:41,000
+That's where it happens.
+
+469
+00:26:41,000 --> 00:26:48,110
+
+470
+00:26:48,110 --> 00:26:49,500
+So this is the addition gadget.
+
+471
+00:26:49,500 --> 00:26:51,802
+Similarly, one can
+define other gadgets.
+
+472
+00:26:51,802 --> 00:26:53,260
+For example, the
+subtraction gadget
+
+473
+00:26:53,260 --> 00:26:57,770
+is really, really similar to
+this except with one change.
+
+474
+00:26:57,770 --> 00:27:01,040
+I replace this
+plus with a minus.
+
+475
+00:27:01,040 --> 00:27:02,630
+That's the only
+change I need to do.
+
+476
+00:27:02,630 --> 00:27:06,000
+
+477
+00:27:06,000 --> 00:27:11,930
+I'm not sure I want to do
+it, but in other words,
+
+478
+00:27:11,930 --> 00:27:17,640
+this table-- I only
+change this table
+
+479
+00:27:17,640 --> 00:27:23,770
+to have 0 here and minus 1 here.
+
+480
+00:27:23,770 --> 00:27:27,710
+And I've exactly implemented
+that, the subtraction.
+
+481
+00:27:27,710 --> 00:27:30,380
+And the proof is
+exactly the same.
+
+482
+00:27:30,380 --> 00:27:33,100
+You can argue that in any Nash
+equilibrium of a game that
+
+483
+00:27:33,100 --> 00:27:36,620
+contains this gadget, the
+probability that this guy plays
+
+484
+00:27:36,620 --> 00:27:40,830
+1 is actually the difference
+of the probabilities
+
+485
+00:27:40,830 --> 00:27:45,870
+that X plays 1 and Y plays 1,
+a probability truncated at 0.
+
+486
+00:27:45,870 --> 00:27:49,520
+
+487
+00:27:49,520 --> 00:27:53,540
+Any questions about
+what taking place here?
+
+488
+00:27:53,540 --> 00:27:57,320
+What we're trying to do is we
+want take a ArithmCircuitSAT
+
+489
+00:27:57,320 --> 00:28:01,230
+instance, and we want to
+create a polymatrix game that
+
+490
+00:28:01,230 --> 00:28:04,030
+simulates that
+circuit SAT instance.
+
+491
+00:28:04,030 --> 00:28:08,160
+And what we need for that is
+gadgets, so little polymatrix
+
+492
+00:28:08,160 --> 00:28:11,065
+games that implement
+various operations.
+
+493
+00:28:11,065 --> 00:28:14,030
+
+494
+00:28:14,030 --> 00:28:16,300
+And I showed you
+addition and subtraction.
+
+495
+00:28:16,300 --> 00:28:20,240
+But I claim that
+you can implement
+
+496
+00:28:20,240 --> 00:28:21,295
+a bunch of other gates.
+
+497
+00:28:21,295 --> 00:28:26,490
+
+498
+00:28:26,490 --> 00:28:28,290
+To have a more
+succinct notation,
+
+499
+00:28:28,290 --> 00:28:33,720
+I'm going to use probability
+that some node plays 1.
+
+500
+00:28:33,720 --> 00:28:35,980
+I'm not going to
+differentiate that with an X,
+
+501
+00:28:35,980 --> 00:28:38,590
+and the probability
+that X plays 1.
+
+502
+00:28:38,590 --> 00:28:40,320
+With this notation,
+I claim that we
+
+503
+00:28:40,320 --> 00:28:43,590
+can implement all the gadgets
+that we need to simulate
+
+504
+00:28:43,590 --> 00:28:46,720
+a circuit SAT instance.
+
+505
+00:28:46,720 --> 00:28:48,265
+So let's look at this table.
+
+506
+00:28:48,265 --> 00:28:51,370
+So in all these
+lines of this table,
+
+507
+00:28:51,370 --> 00:28:54,500
+Z is the output
+player of the gadget,
+
+508
+00:28:54,500 --> 00:28:57,380
+X and Y are the input
+players of the gadgets.
+
+509
+00:28:57,380 --> 00:28:59,370
+And potentially, the
+gadget's implementing
+
+510
+00:28:59,370 --> 00:29:02,610
+each of these gates
+use auxiliary players.
+
+511
+00:29:02,610 --> 00:29:06,090
+Like in the addition case, I was
+using one intermediate player.
+
+512
+00:29:06,090 --> 00:29:08,550
+He was the auxiliary player.
+
+513
+00:29:08,550 --> 00:29:13,890
+And the claim is that you
+can implement gadgets such
+
+514
+00:29:13,890 --> 00:29:17,730
+that if any of these gadgets
+is contained in a bigger
+
+515
+00:29:17,730 --> 00:29:22,320
+polymatrix game, then any Nash
+equilibrium of these bigger
+
+516
+00:29:22,320 --> 00:29:28,027
+polymatrix game
+these conditions are
+
+517
+00:29:28,027 --> 00:29:35,200
+satisfied by the output and
+input players of the gadget.
+
+518
+00:29:35,200 --> 00:29:38,510
+And this is as long as you
+don't mess up with the gadgets,
+
+519
+00:29:38,510 --> 00:29:43,420
+meaning that the bigger
+the game can have edges
+
+520
+00:29:43,420 --> 00:29:45,580
+into the input players
+of the gadgets,
+
+521
+00:29:45,580 --> 00:29:47,990
+and edges out of output
+players of the gadgets.
+
+522
+00:29:47,990 --> 00:29:52,720
+
+523
+00:29:52,720 --> 00:29:55,200
+But I claim that you can
+implement all of the gadgets
+
+524
+00:29:55,200 --> 00:29:56,660
+that you need.
+
+525
+00:29:56,660 --> 00:30:00,210
+So in particular, if you have
+an instance for ArithmCircuitSAT
+
+526
+00:30:00,210 --> 00:30:03,280
+you can create the
+polymatrix game
+
+527
+00:30:03,280 --> 00:30:10,850
+by composing gadgets
+for each of these gates,
+
+528
+00:30:10,850 --> 00:30:14,780
+so that at any Nash
+equilibrium of polymatrix game,
+
+529
+00:30:14,780 --> 00:30:18,560
+all gates conditions
+are satisfied.
+
+530
+00:30:18,560 --> 00:30:23,930
+So in particular, you are--
+by finding a Nash equilibrium
+
+531
+00:30:23,930 --> 00:30:26,640
+of this game, you are
+solving the instance
+
+532
+00:30:26,640 --> 00:30:30,640
+of ArithmCircuitSAT
+you started with.
+
+533
+00:30:30,640 --> 00:30:32,800
+So that's the idea.
+
+534
+00:30:32,800 --> 00:30:39,090
+Any questions about what
+happened so far in the lecture?
+
+535
+00:30:39,090 --> 00:30:44,650
+Questions about this deduction,
+or how the gadgets work?
+
+536
+00:30:44,650 --> 00:30:45,150
+Yeah?
+
+537
+00:30:45,150 --> 00:30:46,733
+AUDIENCE: Does this
+give a valid proof
+
+538
+00:30:46,733 --> 00:30:49,630
+that every instance
+of ArithmCircuitSAT
+
+539
+00:30:49,630 --> 00:30:50,870
+has a satisfying ascendant?
+
+540
+00:30:50,870 --> 00:30:53,310
+COSTIS DASKALAKIS:
+Yeah, that's correct.
+
+541
+00:30:53,310 --> 00:30:55,050
+Because this is a game.
+
+542
+00:30:55,050 --> 00:30:57,730
+Some by Nash's theorem,
+there is a Nash equilibrium.
+
+543
+00:30:57,730 --> 00:31:00,740
+Hence, there is a
+solution to that.
+
+544
+00:31:00,740 --> 00:31:04,176
+Because a Nash equilibrium
+is a solution to that.
+
+545
+00:31:04,176 --> 00:31:05,050
+That's exactly right.
+
+546
+00:31:05,050 --> 00:31:06,700
+Actually that's how we get it.
+
+547
+00:31:06,700 --> 00:31:10,330
+
+548
+00:31:10,330 --> 00:31:12,500
+One thing that's
+not exactly obvious,
+
+549
+00:31:12,500 --> 00:31:15,990
+but you can argue that it's
+true is that actually not only
+
+550
+00:31:15,990 --> 00:31:17,490
+there's always a
+solution, but there
+
+551
+00:31:17,490 --> 00:31:20,980
+is a solution in
+irrational numbers
+
+552
+00:31:20,980 --> 00:31:24,360
+with polynomial description
+complexity in the input size.
+
+553
+00:31:24,360 --> 00:31:29,930
+So that requires some linear
+programming techniques.
+
+554
+00:31:29,930 --> 00:31:32,340
+But that's also use it to show.
+
+555
+00:31:32,340 --> 00:31:34,750
+A priori, Nash's
+theorem will give you
+
+556
+00:31:34,750 --> 00:31:35,970
+that any solution exists.
+
+557
+00:31:35,970 --> 00:31:38,410
+It wouldn't give guarantees
+about the description
+
+558
+00:31:38,410 --> 00:31:40,120
+complexity of that solution.
+
+559
+00:31:40,120 --> 00:31:41,560
+But using linear
+programming, you
+
+560
+00:31:41,560 --> 00:31:43,850
+can argue that there's
+always a rational solution
+
+561
+00:31:43,850 --> 00:31:46,832
+with polynomial
+description complexity.
+
+562
+00:31:46,832 --> 00:31:48,915
+Are you interested in
+seeing any of these gadgets?
+
+563
+00:31:48,915 --> 00:31:52,730
+
+564
+00:31:52,730 --> 00:31:54,090
+I've only shown addition.
+
+565
+00:31:54,090 --> 00:31:55,810
+Do you want to
+see anything else?
+
+566
+00:31:55,810 --> 00:31:57,950
+Do you believe me that
+I can actually do that?
+
+567
+00:31:57,950 --> 00:31:59,760
+AUDIENCE: The
+comparison one that
+
+568
+00:31:59,760 --> 00:32:03,790
+has arbitrary output
+for a certain conditions
+
+569
+00:32:03,790 --> 00:32:05,180
+seems interesting.
+
+570
+00:32:05,180 --> 00:32:07,729
+COSTIS DASKALAKIS:
+OK, I can show that.
+
+571
+00:32:07,729 --> 00:32:09,520
+So let me try to do
+the comparison gadgets.
+
+572
+00:32:09,520 --> 00:32:11,603
+They're actually simpler
+than the addition gadget.
+
+573
+00:32:11,603 --> 00:32:16,060
+
+574
+00:32:16,060 --> 00:32:18,060
+So I want to implement
+a comparison.
+
+575
+00:32:18,060 --> 00:32:23,040
+So I'm only going to have the
+input players and the output
+
+576
+00:32:23,040 --> 00:32:25,380
+player.
+
+577
+00:32:25,380 --> 00:32:31,590
+And the payoffs of the output
+player are-- let's see.
+
+578
+00:32:31,590 --> 00:32:34,400
+
+579
+00:32:34,400 --> 00:32:36,510
+So if you play 0,
+then his payoff
+
+580
+00:32:36,510 --> 00:32:43,570
+is only depends on the
+X. And it looks like is.
+
+581
+00:32:43,570 --> 00:32:49,590
+If he plays 1, let's
+see if it works.
+
+582
+00:32:49,590 --> 00:32:54,020
+I haven't prepared this but
+it's easy to figure this out.
+
+583
+00:32:54,020 --> 00:32:57,640
+Worse case, I'll back track.
+
+584
+00:32:57,640 --> 00:33:02,990
+So now what I want to argue
+is that-- let's bring up
+
+585
+00:33:02,990 --> 00:33:04,590
+the conditions that
+I need to satisfy.
+
+586
+00:33:04,590 --> 00:33:08,650
+
+587
+00:33:08,650 --> 00:33:10,970
+So I want to satisfy
+those conditions.
+
+588
+00:33:10,970 --> 00:33:12,960
+So let's see if I do
+satisfy these conditions.
+
+589
+00:33:12,960 --> 00:33:16,140
+So I messed it up a
+little bit, I guess.
+
+590
+00:33:16,140 --> 00:33:22,485
+So I have to replace
+X here and Y here.
+
+591
+00:33:22,485 --> 00:33:25,060
+
+592
+00:33:25,060 --> 00:33:26,580
+Now let's see if that's true.
+
+593
+00:33:26,580 --> 00:33:36,260
+So I claim that if probability
+x is bigger than probability y,
+
+594
+00:33:36,260 --> 00:33:41,220
+then what do I prefer to play?
+
+595
+00:33:41,220 --> 00:33:42,310
+I'm prefer to play 0.
+
+596
+00:33:42,310 --> 00:33:48,940
+
+597
+00:33:48,940 --> 00:33:51,719
+Similarly for the other
+case, when they're equal,
+
+598
+00:33:51,719 --> 00:33:54,790
+anything is possible.
+
+599
+00:33:54,790 --> 00:33:56,960
+It's that's simple.
+
+600
+00:33:56,960 --> 00:33:58,570
+There's not [INAUDIBLE]
+going on here.
+
+601
+00:33:58,570 --> 00:34:02,611
+
+602
+00:34:02,611 --> 00:34:03,110
+Cool.
+
+603
+00:34:03,110 --> 00:34:07,420
+So I've established
+that this direction,
+
+604
+00:34:07,420 --> 00:34:09,120
+this part of the direction.
+
+605
+00:34:09,120 --> 00:34:12,690
+Now I want to go down
+from a polymatrix game
+
+606
+00:34:12,690 --> 00:34:14,260
+to a two-player game.
+
+607
+00:34:14,260 --> 00:34:19,320
+
+608
+00:34:19,320 --> 00:34:21,500
+That's the next
+part of the lecture.
+
+609
+00:34:21,500 --> 00:34:24,639
+How do you go down
+to two players?
+
+610
+00:34:24,639 --> 00:34:34,670
+Well the first thing to
+note is that all the gates
+
+611
+00:34:34,670 --> 00:34:39,100
+can be implemented
+with bipartite graphs.
+
+612
+00:34:39,100 --> 00:34:46,890
+So if you remember
+my addition gadget,
+
+613
+00:34:46,890 --> 00:34:50,210
+it had the input and
+the output players
+
+614
+00:34:50,210 --> 00:34:53,930
+on one side and the
+auxiliary player on one side.
+
+615
+00:34:53,930 --> 00:34:56,500
+My comparison gadget does
+not satisfy this probability
+
+616
+00:34:56,500 --> 00:34:58,500
+because the input players
+and the output players
+
+617
+00:34:58,500 --> 00:34:59,967
+are on different sides.
+
+618
+00:34:59,967 --> 00:35:02,300
+But I claim that you can
+implement actually a comparison
+
+619
+00:35:02,300 --> 00:35:06,650
+by adding an X and an additional
+step with a bipartite graph.
+
+620
+00:35:06,650 --> 00:35:09,400
+So I claim that all
+gates can be implemented
+
+621
+00:35:09,400 --> 00:35:12,900
+with polymatrix games
+that have input and output
+
+622
+00:35:12,900 --> 00:35:18,180
+players on one side,
+and auxiliary vertices
+
+623
+00:35:18,180 --> 00:35:19,780
+on the other side.
+
+624
+00:35:19,780 --> 00:35:26,371
+So I claim that all my gadgets
+are actually bipartite.
+
+625
+00:35:26,371 --> 00:35:28,120
+So in particularly, I
+can color this graph
+
+626
+00:35:28,120 --> 00:35:31,230
+with two colors, blue and red.
+
+627
+00:35:31,230 --> 00:35:36,350
+And what I want to do is I want
+to create these super players.
+
+628
+00:35:36,350 --> 00:35:38,380
+I'm going to call the lawyers.
+
+629
+00:35:38,380 --> 00:35:44,600
+I'm going to have a red
+lawyer and a blue lawyer.
+
+630
+00:35:44,600 --> 00:35:47,650
+And the red player is going to
+represent all the nodes that
+
+631
+00:35:47,650 --> 00:35:51,440
+are colored red in here,
+while the blue lawyer is going
+
+632
+00:35:51,440 --> 00:35:53,310
+to represent all blue nodes.
+
+633
+00:35:53,310 --> 00:35:55,860
+
+634
+00:35:55,860 --> 00:35:59,830
+And what I want to do is I
+want to define the lawyer
+
+635
+00:35:59,830 --> 00:36:00,810
+game in the next slide.
+
+636
+00:36:00,810 --> 00:36:03,620
+
+637
+00:36:03,620 --> 00:36:05,960
+So every lawyer,
+so the red lawyer,
+
+638
+00:36:05,960 --> 00:36:11,740
+his strategy set is the union,
+not the product, the union.
+
+639
+00:36:11,740 --> 00:36:13,540
+That's important,
+otherwise my deduction
+
+640
+00:36:13,540 --> 00:36:15,490
+would be exponentially large.
+
+641
+00:36:15,490 --> 00:36:17,880
+My induction wouldn't
+be a polynomial.
+
+642
+00:36:17,880 --> 00:36:20,900
+So as a lawyer, and
+that poses actually
+
+643
+00:36:20,900 --> 00:36:22,467
+technicalities in
+the construction
+
+644
+00:36:22,467 --> 00:36:23,550
+that I'm about to present.
+
+645
+00:36:23,550 --> 00:36:27,810
+But every lawyer will have a
+strategy set, a pure strategy
+
+646
+00:36:27,810 --> 00:36:32,490
+set, the union of the pure
+strategy sets of the clients
+
+647
+00:36:32,490 --> 00:36:33,510
+that he represents.
+
+648
+00:36:33,510 --> 00:36:36,200
+So the red lawyer
+has one strategy
+
+649
+00:36:36,200 --> 00:36:41,330
+for every strategy
+of every red nodes.
+
+650
+00:36:41,330 --> 00:36:44,320
+The blue lawyer has one
+strategy for every strategy
+
+651
+00:36:44,320 --> 00:36:45,650
+of every blue node.
+
+652
+00:36:45,650 --> 00:36:48,412
+
+653
+00:36:48,412 --> 00:36:50,120
+Now what I want to do
+is I want to define
+
+654
+00:36:50,120 --> 00:36:52,690
+the payoffs in the lower game.
+
+655
+00:36:52,690 --> 00:36:54,900
+What are the payoffs
+in the lower game?
+
+656
+00:36:54,900 --> 00:36:57,700
+Well, what happens
+if the red lawyer
+
+657
+00:36:57,700 --> 00:37:04,180
+decides to play strategy
+i or red client U?
+
+658
+00:37:04,180 --> 00:37:08,360
+And what if the
+blue lawyer plays
+
+659
+00:37:08,360 --> 00:37:11,340
+strategy j of blue node v?
+
+660
+00:37:11,340 --> 00:37:13,490
+What are the payoffs
+of the two lawyers
+
+661
+00:37:13,490 --> 00:37:16,950
+in that choice of strategies?
+
+662
+00:37:16,950 --> 00:37:20,000
+Well, it's going to be exactly
+the corresponding payoffs
+
+663
+00:37:20,000 --> 00:37:25,420
+of the nodes of the
+polymatrix game.
+
+664
+00:37:25,420 --> 00:37:28,250
+So the red lawyer
+will the payoff
+
+665
+00:37:28,250 --> 00:37:33,490
+that U would have gotten
+in the polymatrix game
+
+666
+00:37:33,490 --> 00:37:36,910
+if these two players
+played i and j.
+
+667
+00:37:36,910 --> 00:37:39,510
+And the blue
+lawyer's going to get
+
+668
+00:37:39,510 --> 00:37:42,480
+his client's value,
+so v's value,
+
+669
+00:37:42,480 --> 00:37:45,570
+under the same
+choice of strategies.
+
+670
+00:37:45,570 --> 00:37:49,280
+So in particularly, if there's
+no edge between those two nodes
+
+671
+00:37:49,280 --> 00:37:52,950
+that blue and red
+lawyers chose to play,
+
+672
+00:37:52,950 --> 00:37:55,300
+then nobody gets anything.
+
+673
+00:37:55,300 --> 00:37:58,890
+The payoff here
+is going to be 0.
+
+674
+00:37:58,890 --> 00:38:04,230
+And if there is a
+directed edge from V to U,
+
+675
+00:38:04,230 --> 00:38:07,620
+then this is going
+to be 0, and that's
+
+676
+00:38:07,620 --> 00:38:09,690
+whatever it is, and vice versa.
+
+677
+00:38:09,690 --> 00:38:12,186
+But you get the idea.
+
+678
+00:38:12,186 --> 00:38:15,380
+If the blue lawyer decides
+to represent a client,
+
+679
+00:38:15,380 --> 00:38:19,450
+and the red lawyer decides
+to represent another client,
+
+680
+00:38:19,450 --> 00:38:22,740
+then the payoff of the lawyers
+are the corresponding payoffs
+
+681
+00:38:22,740 --> 00:38:24,460
+that the clients
+would have gotten
+
+682
+00:38:24,460 --> 00:38:27,620
+had they played the strategies
+that the lawyers decided
+
+683
+00:38:27,620 --> 00:38:29,010
+to play for them.
+
+684
+00:38:29,010 --> 00:38:31,780
+That's the definition
+of the lawyer game.
+
+685
+00:38:31,780 --> 00:38:32,390
+Is this clear?
+
+686
+00:38:32,390 --> 00:38:35,310
+
+687
+00:38:35,310 --> 00:38:40,940
+Now the wishful thinking
+is that if X and Y
+
+688
+00:38:40,940 --> 00:38:44,790
+is a Nash equilibrium
+of the lawyer game,
+
+689
+00:38:44,790 --> 00:38:52,600
+then if I look at the marginal
+probability distributions
+
+690
+00:38:52,600 --> 00:38:57,150
+on the different nodes,
+on the different clients
+
+691
+00:38:57,150 --> 00:39:00,070
+by their lawyer, then
+this marginal probability
+
+692
+00:39:00,070 --> 00:39:02,275
+distribution are a
+Nash equilibrium.
+
+693
+00:39:02,275 --> 00:39:05,330
+
+694
+00:39:05,330 --> 00:39:08,880
+So the wishful
+thinking is that if I
+
+695
+00:39:08,880 --> 00:39:11,420
+start with a Nash equilibrium
+of the lawyer game,
+
+696
+00:39:11,420 --> 00:39:14,840
+then if I look at
+the distribution
+
+697
+00:39:14,840 --> 00:39:19,080
+that the red lawyer,
+the marginal probability
+
+698
+00:39:19,080 --> 00:39:24,480
+distribution that the red
+lawyer places on every red node
+
+699
+00:39:24,480 --> 00:39:27,270
+separately, and the
+marginal probability
+
+700
+00:39:27,270 --> 00:39:30,090
+distributions that the
+blue lawyer places on
+
+701
+00:39:30,090 --> 00:39:32,700
+all blue node separately,
+so all this collection
+
+702
+00:39:32,700 --> 00:39:35,670
+of marginal probability
+distributions,
+
+703
+00:39:35,670 --> 00:39:38,790
+that this collection is a Nash
+equilibrium of the polymatrix
+
+704
+00:39:38,790 --> 00:39:39,844
+game.
+
+705
+00:39:39,844 --> 00:39:41,010
+That's the wishful thinking.
+
+706
+00:39:41,010 --> 00:39:46,880
+
+707
+00:39:46,880 --> 00:39:48,840
+Questions about what
+the wishful thinking is?
+
+708
+00:39:48,840 --> 00:39:53,950
+
+709
+00:39:53,950 --> 00:39:55,450
+Of course, this is
+wishful thinking
+
+710
+00:39:55,450 --> 00:39:58,300
+because we know
+how lawyers behave.
+
+711
+00:39:58,300 --> 00:40:00,685
+They only represent
+the lucrative clients.
+
+712
+00:40:00,685 --> 00:40:03,420
+
+713
+00:40:03,420 --> 00:40:09,940
+There's no reason that the red
+lawyer would have incentive
+
+714
+00:40:09,940 --> 00:40:17,510
+to choose at least some strategy
+to place positive probability
+
+715
+00:40:17,510 --> 00:40:19,850
+mass on every node
+he represents.
+
+716
+00:40:19,850 --> 00:40:23,710
+Maybe in the Nash equilibrium
+of this lawyer game,
+
+717
+00:40:23,710 --> 00:40:25,410
+some of these
+marginal distributions
+
+718
+00:40:25,410 --> 00:40:29,300
+are actually undefined
+because the lawyers-- are ill
+
+719
+00:40:29,300 --> 00:40:31,830
+defined because the
+lawyers place 0 probability
+
+720
+00:40:31,830 --> 00:40:35,940
+mass on the strategies
+of those nodes.
+
+721
+00:40:35,940 --> 00:40:38,490
+So that wishful thinking
+isn't going through.
+
+722
+00:40:38,490 --> 00:40:40,090
+But there is some truth to that.
+
+723
+00:40:40,090 --> 00:40:41,790
+So there is a way to fix it.
+
+724
+00:40:41,790 --> 00:40:45,650
+So here's how we're going
+to fix the lawyer game.
+
+725
+00:40:45,650 --> 00:40:47,720
+So we know what lawyers like.
+
+726
+00:40:47,720 --> 00:40:49,750
+They like money.
+
+727
+00:40:49,750 --> 00:40:52,100
+So we're going to define
+a high stakes game.
+
+728
+00:40:52,100 --> 00:40:54,426
+
+729
+00:40:54,426 --> 00:40:55,800
+But the lawyers
+are going to play
+
+730
+00:40:55,800 --> 00:40:59,730
+on the side at the same
+time as the actual game
+
+731
+00:40:59,730 --> 00:41:01,660
+that we're interested in.
+
+732
+00:41:01,660 --> 00:41:05,070
+So for a lot of cash-- so those
+are the stakes of that game.
+
+733
+00:41:05,070 --> 00:41:07,357
+
+734
+00:41:07,357 --> 00:41:08,690
+We're going to do the following.
+
+735
+00:41:08,690 --> 00:41:11,700
+So some terminology first.
+
+736
+00:41:11,700 --> 00:41:13,810
+So suppose that we had
+lots of generalities.
+
+737
+00:41:13,810 --> 00:41:17,050
+Suppose that every lawyer
+has n clients he represents.
+
+738
+00:41:17,050 --> 00:41:19,870
+
+739
+00:41:19,870 --> 00:41:22,500
+And let's label the
+red lawyer's clients
+
+740
+00:41:22,500 --> 00:41:26,190
+1 through n, and the blue
+lawyer's clients 1 through n.
+
+741
+00:41:26,190 --> 00:41:29,000
+If you know one of the two
+lawyers have fewer clients,
+
+742
+00:41:29,000 --> 00:41:32,460
+then we can pad this
+with dummy players
+
+743
+00:41:32,460 --> 00:41:38,500
+and that doesn't change the
+polymatrix game's equilibria.
+
+744
+00:41:38,500 --> 00:41:42,470
+So suppose that both lawyers
+represent the same number
+
+745
+00:41:42,470 --> 00:41:44,340
+of players, clients.
+
+746
+00:41:44,340 --> 00:41:48,470
+And let's label both lawyers'
+clients one through n,
+
+747
+00:41:48,470 --> 00:41:49,580
+in an arbitrary way.
+
+748
+00:41:49,580 --> 00:41:54,100
+
+749
+00:41:54,100 --> 00:41:57,270
+The strategies of
+the high stakes game
+
+750
+00:41:57,270 --> 00:41:59,550
+are exactly the same as
+the strategies of the game
+
+751
+00:41:59,550 --> 00:42:00,820
+that I showed in
+the previous slide.
+
+752
+00:42:00,820 --> 00:42:02,195
+In particular,
+the red lawyer has
+
+753
+00:42:02,195 --> 00:42:05,160
+the union of the
+strategies of blue nodes.
+
+754
+00:42:05,160 --> 00:42:08,030
+And red lawyer has the
+union of the strategies
+
+755
+00:42:08,030 --> 00:42:09,900
+of the red nodes.
+
+756
+00:42:09,900 --> 00:42:13,410
+Now what's the high stakes game?
+
+757
+00:42:13,410 --> 00:42:17,340
+Suppose that the red player
+plays any strategy of client j,
+
+758
+00:42:17,340 --> 00:42:20,810
+and the blue lawyer play
+any strategy of client k.
+
+759
+00:42:20,810 --> 00:42:27,070
+Then if they choose
+different clients,
+
+760
+00:42:27,070 --> 00:42:29,600
+they both get 0 dollars.
+
+761
+00:42:29,600 --> 00:42:33,560
+But if they choose the
+same client-- I mean,
+
+762
+00:42:33,560 --> 00:42:36,230
+it's not the same client, it's
+the same label of a client
+
+763
+00:42:36,230 --> 00:42:38,590
+because they each represent
+different clients.
+
+764
+00:42:38,590 --> 00:42:43,190
+But if they choose different
+labels, then they both get 0.
+
+765
+00:42:43,190 --> 00:42:48,330
+If the choose the same
+label, whoever it was,
+
+766
+00:42:48,330 --> 00:42:52,450
+the red lawyer
+gets a lot of cash,
+
+767
+00:42:52,450 --> 00:42:55,570
+and that blue lawyer
+loses a lot of cash.
+
+768
+00:42:55,570 --> 00:43:00,310
+
+769
+00:43:00,310 --> 00:43:06,020
+Again, so this game has the same
+strategies as the lawyer game
+
+770
+00:43:06,020 --> 00:43:08,460
+that I showed in
+the previous slide.
+
+771
+00:43:08,460 --> 00:43:11,310
+Except now in this game,
+all the lawyers care
+
+772
+00:43:11,310 --> 00:43:16,660
+about is the labels
+of the clients
+
+773
+00:43:16,660 --> 00:43:19,180
+whose strategies they choose.
+
+774
+00:43:19,180 --> 00:43:25,140
+So if they choose a
+strategy of a client that
+
+775
+00:43:25,140 --> 00:43:29,560
+has the same label, then the
+red lawyer gains a lot of money,
+
+776
+00:43:29,560 --> 00:43:31,320
+and the blue lawyer
+lose a lot of money.
+
+777
+00:43:31,320 --> 00:43:34,940
+But if they choose strategies of
+clients with different labels,
+
+778
+00:43:34,940 --> 00:43:38,200
+then they both get 0.
+
+779
+00:43:38,200 --> 00:43:41,240
+In other words in some
+sense, the blue lawyer
+
+780
+00:43:41,240 --> 00:43:44,800
+is trying to avoid
+the red lawyer,
+
+781
+00:43:44,800 --> 00:43:50,310
+and the red lawyer is trying
+to catch the blue lawyer.
+
+782
+00:43:50,310 --> 00:43:52,830
+So now this is a
+simple 0 sum game.
+
+783
+00:43:52,830 --> 00:43:55,770
+And it's not hard to
+see that in any Nash
+
+784
+00:43:55,770 --> 00:44:05,120
+equilibrium of this
+game, the lawyers are
+
+785
+00:44:05,120 --> 00:44:10,690
+going to represent every client
+with the same probability.
+
+786
+00:44:10,690 --> 00:44:14,330
+So each lawyer
+assigns a probability
+
+787
+00:44:14,330 --> 00:44:19,000
+exactly 1/n to the
+set of his strategies
+
+788
+00:44:19,000 --> 00:44:22,860
+corresponding to
+each of his clients.
+
+789
+00:44:22,860 --> 00:44:24,740
+So the high stakes
+game has the property
+
+790
+00:44:24,740 --> 00:44:29,660
+that the lawyers represent
+all their clients
+
+791
+00:44:29,660 --> 00:44:31,930
+with the same
+probability distribution,
+
+792
+00:44:31,930 --> 00:44:34,250
+and you can divide the
+probability distribution
+
+793
+00:44:34,250 --> 00:44:38,090
+in an arbitrary way within
+the strategies of each
+
+794
+00:44:38,090 --> 00:44:40,270
+of their clients in this game.
+
+795
+00:44:40,270 --> 00:44:43,000
+
+796
+00:44:43,000 --> 00:44:47,340
+That's easy to see just by the
+symmetry of this games, that
+
+797
+00:44:47,340 --> 00:44:49,290
+has to be true.
+
+798
+00:44:49,290 --> 00:44:54,810
+And with these two
+definitions, the game
+
+799
+00:44:54,810 --> 00:44:57,810
+that I'm going to do for my
+reduction from polymatrix games
+
+800
+00:44:57,810 --> 00:45:03,110
+to two player games is going to
+be the sum of these two games.
+
+801
+00:45:03,110 --> 00:45:06,700
+So this is the game
+that I defined earlier.
+
+802
+00:45:06,700 --> 00:45:09,730
+And this matrix
+is a block matrix.
+
+803
+00:45:09,730 --> 00:45:14,570
+So this is a block of strategies
+corresponding to-- this matrix
+
+804
+00:45:14,570 --> 00:45:21,910
+is a matrix that is a constant
+matrix where everything is big.
+
+805
+00:45:21,910 --> 00:45:25,440
+And this block
+corresponds to-- these
+
+806
+00:45:25,440 --> 00:45:27,330
+are the strategies
+of client with label
+
+807
+00:45:27,330 --> 00:45:29,020
+1 for the red lawyer.
+
+808
+00:45:29,020 --> 00:45:35,020
+And this is the
+strategies of the client
+
+809
+00:45:35,020 --> 00:45:37,790
+of the blue lawyer with
+label 1, and so on so forth.
+
+810
+00:45:37,790 --> 00:45:39,880
+So this is a block matrix.
+
+811
+00:45:39,880 --> 00:45:46,230
+And there are ms and minus
+ms in this diagonal blocks,
+
+812
+00:45:46,230 --> 00:45:48,460
+and everything else is 0.
+
+813
+00:45:48,460 --> 00:45:50,060
+So that's the high stakes game.
+
+814
+00:45:50,060 --> 00:45:54,440
+It's played along
+blocks of strategies
+
+815
+00:45:54,440 --> 00:45:57,330
+because all I care of
+is the label the client
+
+816
+00:45:57,330 --> 00:46:00,870
+I'm choosing for each
+of these lawyers.
+
+817
+00:46:00,870 --> 00:46:02,980
+Well, this is a more
+fine-grained game,
+
+818
+00:46:02,980 --> 00:46:05,990
+where I not only care about
+which clients and choosing,
+
+819
+00:46:05,990 --> 00:46:08,940
+but also which strategies of
+these clients I'm choosing.
+
+820
+00:46:08,940 --> 00:46:13,790
+And I'm going to choose
+an m that overwhelms
+
+821
+00:46:13,790 --> 00:46:15,010
+the payoffs in this games.
+
+822
+00:46:15,010 --> 00:46:17,970
+So this condition is OK
+for what I'm about to say.
+
+823
+00:46:17,970 --> 00:46:22,150
+But think of m as huge
+compared to the maximum utility
+
+824
+00:46:22,150 --> 00:46:25,940
+in this game times the number
+of clients in that game.
+
+825
+00:46:25,940 --> 00:46:29,402
+
+826
+00:46:29,402 --> 00:46:31,860
+AUDIENCE: Just to make sure
+I'm understanding this so far--
+
+827
+00:46:31,860 --> 00:46:35,865
+so in the naive game,
+if the red guy chooses
+
+828
+00:46:35,865 --> 00:46:37,740
+strategy and the blue
+guys chooses a strategy
+
+829
+00:46:37,740 --> 00:46:39,281
+and the two vertices
+they choose from
+
+830
+00:46:39,281 --> 00:46:41,730
+are not connected by an
+edge, then they both get 0.
+
+831
+00:46:41,730 --> 00:46:44,180
+COSTIS DASKALAKIS: Yeah.
+
+832
+00:46:44,180 --> 00:46:46,610
+And if they're connected,
+they get payoffs
+
+833
+00:46:46,610 --> 00:46:48,661
+that the corresponding
+nodes would have gotten--
+
+834
+00:46:48,661 --> 00:46:50,160
+AUDIENCE: [INAUDIBLE]
+vertical edge,
+
+835
+00:46:50,160 --> 00:46:53,301
+one is the one on the outgoing
+vertex will still get 0.
+
+836
+00:46:53,301 --> 00:46:54,676
+COSTIS DASKALAKIS:
+Exactly, yeah.
+
+837
+00:46:54,676 --> 00:46:59,790
+
+838
+00:46:59,790 --> 00:47:01,300
+Any other questions
+about-- yeah?
+
+839
+00:47:01,300 --> 00:47:03,455
+AUDIENCE: Even with a
+really large choice of m,
+
+840
+00:47:03,455 --> 00:47:06,271
+can't it still mess up
+the values a little bit?
+
+841
+00:47:06,271 --> 00:47:07,270
+COSTIS DASKALAKIS: Yeah.
+
+842
+00:47:07,270 --> 00:47:08,930
+It will mess it up a little bit.
+
+843
+00:47:08,930 --> 00:47:10,780
+So the Nash equilibrium
+of this game,
+
+844
+00:47:10,780 --> 00:47:13,120
+the addition of these
+two games, is not
+
+845
+00:47:13,120 --> 00:47:15,727
+going to have the property
+that this game by itself had.
+
+846
+00:47:15,727 --> 00:47:17,060
+But it's going to be very close.
+
+847
+00:47:17,060 --> 00:47:19,392
+And I'm going to be
+specific about it.
+
+848
+00:47:19,392 --> 00:47:23,410
+AUDIENCE: So the choice of me
+is so that the isn't that big.
+
+849
+00:47:23,410 --> 00:47:25,410
+COSTIS DASKALAKIS: Even
+for arbitrarily large m,
+
+850
+00:47:25,410 --> 00:47:29,730
+I can't actually quite show
+that the lawyers represent
+
+851
+00:47:29,730 --> 00:47:31,190
+their clients exactly equally.
+
+852
+00:47:31,190 --> 00:47:32,560
+But I can bring it close.
+
+853
+00:47:32,560 --> 00:47:35,490
+And the larger m is
+the closer the come.
+
+854
+00:47:35,490 --> 00:47:38,110
+In particular, I can show
+the following statement
+
+855
+00:47:38,110 --> 00:47:45,040
+that in any Nash equilibrium
+of the combined game, if X used
+
+856
+00:47:45,040 --> 00:47:49,200
+the total mass that
+the red lawyer places
+
+857
+00:47:49,200 --> 00:47:56,130
+on the union of strategies of
+node U, then that's about 1/m.
+
+858
+00:47:56,130 --> 00:48:00,260
+But there is the matter that's
+the case with m, and similarly
+
+859
+00:48:00,260 --> 00:48:03,310
+for the blue lawyer.
+
+860
+00:48:03,310 --> 00:48:08,660
+So approximately they're
+representing all their clients.
+
+861
+00:48:08,660 --> 00:48:12,770
+And if I choose m huge
+then at least my marginals
+
+862
+00:48:12,770 --> 00:48:14,470
+are well-defined now.
+
+863
+00:48:14,470 --> 00:48:18,460
+So there is probability
+mass on every client
+
+864
+00:48:18,460 --> 00:48:21,140
+and I can define these
+marginal distributions.
+
+865
+00:48:21,140 --> 00:48:23,630
+Now whether these distributions
+are useful or not,
+
+866
+00:48:23,630 --> 00:48:26,190
+we are about to see.
+
+867
+00:48:26,190 --> 00:48:31,320
+But what I'm saying here
+is that as far as deciding
+
+868
+00:48:31,320 --> 00:48:36,260
+how to split the
+pie into my clients,
+
+869
+00:48:36,260 --> 00:48:38,450
+really the large
+game is what matters.
+
+870
+00:48:38,450 --> 00:48:40,060
+The high stakes game
+is what matters.
+
+871
+00:48:40,060 --> 00:48:45,730
+Because if I make a mistake, m
+is huge, some huge [INAUDIBLE].
+
+872
+00:48:45,730 --> 00:48:48,350
+So for splitting,
+for deciding how
+
+873
+00:48:48,350 --> 00:48:51,990
+to split my total unit
+of probability mass
+
+874
+00:48:51,990 --> 00:48:55,790
+into my clients, only the high
+stakes game-- essentially,
+
+875
+00:48:55,790 --> 00:48:59,110
+only the high
+stakes games matter.
+
+876
+00:48:59,110 --> 00:49:06,850
+On the other hand, when it comes
+to having decided how much mass
+
+877
+00:49:06,850 --> 00:49:10,300
+to put on the unit of a
+particular node strategies,
+
+878
+00:49:10,300 --> 00:49:15,400
+deciding about the fine-grained
+decision of how to allocate
+
+879
+00:49:15,400 --> 00:49:24,070
+that Xu into the different
+strategies on that node U, then
+
+880
+00:49:24,070 --> 00:49:27,290
+actually only the
+small game matters.
+
+881
+00:49:27,290 --> 00:49:30,000
+And the reason is
+that the payoff
+
+882
+00:49:30,000 --> 00:49:37,530
+different of the red lawyer
+from strategies Ui and Uj--
+
+883
+00:49:37,530 --> 00:49:41,290
+so to distinguishes
+between strategies
+
+884
+00:49:41,290 --> 00:49:46,450
+i and j of node U, the payoff
+difference between these two
+
+885
+00:49:46,450 --> 00:49:49,950
+choices doesn't have m in it.
+
+886
+00:49:49,950 --> 00:49:53,750
+If you actually look
+at it, m goes away.
+
+887
+00:49:53,750 --> 00:49:58,600
+There's no m in the payoff
+difference between these two
+
+888
+00:49:58,600 --> 00:50:00,500
+options.
+
+889
+00:50:00,500 --> 00:50:05,626
+So which one is better
+doesn't have m in it,
+
+890
+00:50:05,626 --> 00:50:07,000
+essentially doesn't
+have m in it.
+
+891
+00:50:07,000 --> 00:50:12,440
+There is some m in
+here because this I'm
+
+892
+00:50:12,440 --> 00:50:15,830
+summing over all nodes,
+and different nodes
+
+893
+00:50:15,830 --> 00:50:23,290
+have different sum
+of probabilities.
+
+894
+00:50:23,290 --> 00:50:27,440
+But I'm going to get to that.
+
+895
+00:50:27,440 --> 00:50:32,960
+But trust me that when
+the red lawyer is trying
+
+896
+00:50:32,960 --> 00:50:40,320
+to decide how to allocate this
+Xu probability that he has
+
+897
+00:50:40,320 --> 00:50:44,100
+decided to allocate
+on the difference
+
+898
+00:50:44,100 --> 00:50:47,954
+strategies of node U, he looks
+at this difference, that's
+
+899
+00:50:47,954 --> 00:50:49,370
+the difference in
+the two payoffs.
+
+900
+00:50:49,370 --> 00:50:51,860
+And essentially there's
+no m in this equation.
+
+901
+00:50:51,860 --> 00:50:56,739
+So we're going to see when m
+gets into the picture and why.
+
+902
+00:50:56,739 --> 00:50:58,780
+But this is just from the
+definition of the game.
+
+903
+00:50:58,780 --> 00:51:00,420
+Again, this is exactly true.
+
+904
+00:51:00,420 --> 00:51:02,580
+The difference of the two
+payoff is exactly this.
+
+905
+00:51:02,580 --> 00:51:05,350
+
+906
+00:51:05,350 --> 00:51:11,030
+Now from that
+equation, it follows
+
+907
+00:51:11,030 --> 00:51:14,340
+that if they lawyer decides
+to put positive probability
+
+908
+00:51:14,340 --> 00:51:20,430
+mass on a particular strategy i
+of that node, then for all js,
+
+909
+00:51:20,430 --> 00:51:23,570
+for all alternative
+strategies of that node
+
+910
+00:51:23,570 --> 00:51:26,460
+that he could choose, it
+better be that this payoff
+
+911
+00:51:26,460 --> 00:51:29,190
+difference is positive.
+
+912
+00:51:29,190 --> 00:51:33,560
+And that really, really looks
+like the condition of the Nash
+
+913
+00:51:33,560 --> 00:51:38,190
+equilibrium conditions for the
+client, if you think about it.
+
+914
+00:51:38,190 --> 00:51:45,320
+Because if I define the
+marginal probabilities
+
+915
+00:51:45,320 --> 00:51:47,690
+of node U on these
+two strategies,
+
+916
+00:51:47,690 --> 00:51:54,110
+on these strategies, then this
+is really the Nash equilibrium
+
+917
+00:51:54,110 --> 00:52:00,480
+condition for that node
+U. The only problem
+
+918
+00:52:00,480 --> 00:52:06,040
+is to go from this equation
+for the unmarginalized
+
+919
+00:52:06,040 --> 00:52:11,190
+probabilities Vy,
+Vl's, to the marginals.
+
+920
+00:52:11,190 --> 00:52:13,650
+I'm dividing with something,
+and that something
+
+921
+00:52:13,650 --> 00:52:16,380
+is an equal for all these.
+
+922
+00:52:16,380 --> 00:52:19,310
+So if it was equal,
+then these marginals
+
+923
+00:52:19,310 --> 00:52:21,940
+would actually be
+directly Nash equilibrium.
+
+924
+00:52:21,940 --> 00:52:26,010
+Because this condition I
+could just divide by 1/n,
+
+925
+00:52:26,010 --> 00:52:28,680
+and this would be made
+marginal probability.
+
+926
+00:52:28,680 --> 00:52:30,980
+And that's exactly the
+equilibrium condition
+
+927
+00:52:30,980 --> 00:52:33,090
+for the client U.
+
+928
+00:52:33,090 --> 00:52:37,430
+The problem is that these
+Xvs are not all equal.
+
+929
+00:52:37,430 --> 00:52:39,680
+Yvs are not equal.
+
+930
+00:52:39,680 --> 00:52:43,280
+So I cannot just divide by 1/n
+and claim that the equation is
+
+931
+00:52:43,280 --> 00:52:45,620
+still true.
+
+932
+00:52:45,620 --> 00:52:49,510
+But the point is that
+this error doesn't
+
+933
+00:52:49,510 --> 00:52:53,680
+create too much problems in
+the equilibrium conditions.
+
+934
+00:52:53,680 --> 00:52:55,760
+And OK, it's not going
+to be an exact Nash
+
+935
+00:52:55,760 --> 00:52:57,980
+equilibrium for the
+polymatrix game,
+
+936
+00:52:57,980 --> 00:53:00,550
+but it's going to be
+an approximate one.
+
+937
+00:53:00,550 --> 00:53:05,000
+And because I can take n
+to be as large as I want,
+
+938
+00:53:05,000 --> 00:53:10,330
+I can make this approximation
+go to 0 as fast as I want.
+
+939
+00:53:10,330 --> 00:53:13,850
+And remember this
+ArithmCircuitSAT problem
+
+940
+00:53:13,850 --> 00:53:16,117
+allowed some error in it.
+
+941
+00:53:16,117 --> 00:53:17,700
+So what effectively
+is going to happen
+
+942
+00:53:17,700 --> 00:53:21,330
+here is that I'm going to get
+an approximate equilibrium
+
+943
+00:53:21,330 --> 00:53:22,310
+of the polymatrix game.
+
+944
+00:53:22,310 --> 00:53:24,480
+So that would correspond to
+an approximate equilibrium
+
+945
+00:53:24,480 --> 00:53:26,354
+of the arithmetic SAT
+problem I started with.
+
+946
+00:53:26,354 --> 00:53:28,570
+But this approximation
+can back accommodated,
+
+947
+00:53:28,570 --> 00:53:31,640
+and the problem is to PPAD hard.
+
+948
+00:53:31,640 --> 00:53:33,970
+So that's approximately
+how the argument works.
+
+949
+00:53:33,970 --> 00:53:38,920
+
+950
+00:53:38,920 --> 00:53:41,810
+The fact that the
+disagreements aren't uniform
+
+951
+00:53:41,810 --> 00:53:45,730
+doesn't really matter as long
+as n is chosen large enough.
+
+952
+00:53:45,730 --> 00:53:48,270
+
+953
+00:53:48,270 --> 00:53:50,780
+I went a bit too fast.
+
+954
+00:53:50,780 --> 00:53:54,740
+I didn't mean for this
+to be very detailed.
+
+955
+00:53:54,740 --> 00:53:58,710
+But I meant to convey
+the bigger picture.
+
+956
+00:53:58,710 --> 00:54:00,410
+And the bigger
+picture basically says
+
+957
+00:54:00,410 --> 00:54:02,660
+that you can analyze what
+happens in this lower
+
+958
+00:54:02,660 --> 00:54:04,960
+game in two steps.
+
+959
+00:54:04,960 --> 00:54:08,430
+In one step, you argue that
+the lawyers approximately
+
+960
+00:54:08,430 --> 00:54:11,180
+represent all their clients.
+
+961
+00:54:11,180 --> 00:54:13,310
+In the other step,
+you have to decide
+
+962
+00:54:13,310 --> 00:54:20,560
+how these lawyers allocate
+their probabilities
+
+963
+00:54:20,560 --> 00:54:24,340
+to the different strategies
+of a particular node.
+
+964
+00:54:24,340 --> 00:54:28,410
+That leads you to write down
+this difference of payoffs
+
+965
+00:54:28,410 --> 00:54:33,220
+that the lawyer is
+experiencing when he switches.
+
+966
+00:54:33,220 --> 00:54:36,000
+This is tracking how much
+better the expected payoff
+
+967
+00:54:36,000 --> 00:54:40,650
+from this strategies is
+compared to that strategy.
+
+968
+00:54:40,650 --> 00:54:43,710
+And by the equilibrium
+conditions of the lawyer game,
+
+969
+00:54:43,710 --> 00:54:47,540
+you get the inequality I
+showed in the next slide
+
+970
+00:54:47,540 --> 00:54:52,160
+that if the lawyer decides
+to place positive probability
+
+971
+00:54:52,160 --> 00:54:55,480
+mass to a strategy
+i of node U, then it
+
+972
+00:54:55,480 --> 00:55:00,736
+must be that there is no
+alternative strategy, Uj,
+
+973
+00:55:00,736 --> 00:55:02,360
+that would give them
+the better payoff,
+
+974
+00:55:02,360 --> 00:55:04,750
+so you get this condition.
+
+975
+00:55:04,750 --> 00:55:09,230
+And that's essentially
+the equilibrium condition
+
+976
+00:55:09,230 --> 00:55:12,050
+for the polymatrix
+game, except that you
+
+977
+00:55:12,050 --> 00:55:14,220
+need to normalize these guy.
+
+978
+00:55:14,220 --> 00:55:16,580
+And when you try to
+normalize these guy,
+
+979
+00:55:16,580 --> 00:55:20,350
+you run into the
+problem that the lawyers
+
+980
+00:55:20,350 --> 00:55:24,830
+don't play uniform
+strategies for their clients.
+
+981
+00:55:24,830 --> 00:55:28,040
+But they play approximate
+uniform distribution
+
+982
+00:55:28,040 --> 00:55:29,310
+of their clients.
+
+983
+00:55:29,310 --> 00:55:32,690
+So this inequality gets
+messed up a little bit.
+
+984
+00:55:32,690 --> 00:55:34,820
+So effectively that
+means that the players
+
+985
+00:55:34,820 --> 00:55:37,990
+are almost best responding.
+
+986
+00:55:37,990 --> 00:55:40,552
+The marginal distributions on
+an approximate Nash equilibrium
+
+987
+00:55:40,552 --> 00:55:41,510
+of the polymatrix game.
+
+988
+00:55:41,510 --> 00:55:44,180
+
+989
+00:55:44,180 --> 00:55:48,590
+Also because the polymatrix game
+came from my ArithmCircuitSAT
+
+990
+00:55:48,590 --> 00:55:51,140
+problem, an approximate
+evaluation of that problem.
+
+991
+00:55:51,140 --> 00:55:55,170
+But theses are all PPAD hard,
+as I pointed out earlier.
+
+992
+00:55:55,170 --> 00:55:57,840
+That's the high level idea.
+
+993
+00:55:57,840 --> 00:56:00,770
+And trust me, the details
+are not hard at all.
+
+994
+00:56:00,770 --> 00:56:01,270
+OK
+
+995
+00:56:01,270 --> 00:56:09,350
+So you just have to trust me
+that the approximate uniform
+
+996
+00:56:09,350 --> 00:56:11,490
+distribution of
+the claim are true
+
+997
+00:56:11,490 --> 00:56:17,700
+and that dividing by
+approximately 1/n here
+
+998
+00:56:17,700 --> 00:56:19,958
+doesn't mess up this
+condition too much.
+
+999
+00:56:19,958 --> 00:56:22,890
+
+1000
+00:56:22,890 --> 00:56:25,440
+So this was the end of
+the proof basically.
+
+1001
+00:56:25,440 --> 00:56:28,020
+That's basically
+how the proof goes.
+
+1002
+00:56:28,020 --> 00:56:33,280
+So if have this,
+it's easy to do this,
+
+1003
+00:56:33,280 --> 00:56:34,720
+and then it's easy to go here.
+
+1004
+00:56:34,720 --> 00:56:37,442
+
+1005
+00:56:37,442 --> 00:56:39,877
+Any questions?
+
+1006
+00:56:39,877 --> 00:56:41,460
+Now the reduction I
+showed you was not
+
+1007
+00:56:41,460 --> 00:56:42,650
+from the original paper.
+
+1008
+00:56:42,650 --> 00:56:48,190
+It was established by a follow
+up paper by Chen and Deng.
+
+1009
+00:56:48,190 --> 00:56:51,990
+In that original paper, we
+actually took this problem
+
+1010
+00:56:51,990 --> 00:56:53,400
+in reduced to 4-player Nash.
+
+1011
+00:56:53,400 --> 00:56:57,030
+
+1012
+00:56:57,030 --> 00:56:59,652
+The proof is identical
+to the one I showed you.
+
+1013
+00:56:59,652 --> 00:57:02,110
+The only reason that we went
+to four players instead of two
+
+1014
+00:57:02,110 --> 00:57:07,830
+players is that our gadgets
+were four-partite instead
+
+1015
+00:57:07,830 --> 00:57:08,760
+of bipartite.
+
+1016
+00:57:08,760 --> 00:57:12,020
+So we had four colors
+and four lawyers.
+
+1017
+00:57:12,020 --> 00:57:15,400
+Now why did we have
+four-partite gadgets?
+
+1018
+00:57:15,400 --> 00:57:18,650
+Well, we were being a bit silly.
+
+1019
+00:57:18,650 --> 00:57:21,000
+We had in our
+arithmetic circuit,
+
+1020
+00:57:21,000 --> 00:57:24,040
+we had an extra gate,
+which plus multiplication,
+
+1021
+00:57:24,040 --> 00:57:27,250
+not by a constant, but the
+multiplication of two numbers.
+
+1022
+00:57:27,250 --> 00:57:30,776
+And you can show that
+this-- but we didn't use it.
+
+1023
+00:57:30,776 --> 00:57:33,210
+We were being a bit silly.
+
+1024
+00:57:33,210 --> 00:57:37,020
+We had this gadget here
+that we weren't using.
+
+1025
+00:57:37,020 --> 00:57:41,800
+And it was hard to-- actually
+it's impossible to make it
+
+1026
+00:57:41,800 --> 00:57:44,480
+into a bipartite gadget.
+
+1027
+00:57:44,480 --> 00:57:48,390
+So in our recent paper, we made
+it into a four-partite gadget.
+
+1028
+00:57:48,390 --> 00:57:50,070
+And then, in the
+followup paper we
+
+1029
+00:57:50,070 --> 00:57:53,480
+actual managed to reduce it
+to a three-partite gadget.
+
+1030
+00:57:53,480 --> 00:57:56,010
+But then this multiplication
+gadget actually you can show
+
+1031
+00:57:56,010 --> 00:57:58,930
+cannot be reduced to bipartite.
+
+1032
+00:57:58,930 --> 00:58:00,690
+So these guys observed
+that actually we
+
+1033
+00:58:00,690 --> 00:58:03,160
+are not using multiplication.
+
+1034
+00:58:03,160 --> 00:58:06,910
+So you can implement all
+gadgets that we actually
+
+1035
+00:58:06,910 --> 00:58:08,480
+used with partite graphs.
+
+1036
+00:58:08,480 --> 00:58:10,230
+So you can go down
+to two lawyers
+
+1037
+00:58:10,230 --> 00:58:13,690
+instead of three lawyers.
+
+1038
+00:58:13,690 --> 00:58:18,430
+So it felt like leaving money
+on the table, but that's OK.
+
+1039
+00:58:18,430 --> 00:58:22,280
+
+1040
+00:58:22,280 --> 00:58:26,951
+That's my discussion of
+PPAD-completeness of Nash.
+
+1041
+00:58:26,951 --> 00:58:27,450
+Yeah?
+
+1042
+00:58:27,450 --> 00:58:29,650
+AUDIENCE: Obviously,
+in zero-sum games,
+
+1043
+00:58:29,650 --> 00:58:32,390
+it's easy to find
+an equilibrium.
+
+1044
+00:58:32,390 --> 00:58:35,620
+Is there something in
+between zero-sum games
+
+1045
+00:58:35,620 --> 00:58:38,950
+and general two-player
+games for which any hardness
+
+1046
+00:58:38,950 --> 00:58:39,952
+result is known?
+
+1047
+00:58:39,952 --> 00:58:42,910
+
+1048
+00:58:42,910 --> 00:58:45,000
+COSTIS DASKALAKIS: Yeah.
+
+1049
+00:58:45,000 --> 00:58:50,280
+A natural way to interpolate
+between zero-sum games
+
+1050
+00:58:50,280 --> 00:58:53,950
+and general two-player
+games is the following.
+
+1051
+00:58:53,950 --> 00:58:58,450
+So in a zero-sum game let's
+call R and C the payoff matrix
+
+1052
+00:58:58,450 --> 00:58:59,960
+of the two players.
+
+1053
+00:58:59,960 --> 00:59:04,320
+In the game of zero-sum, if R
+plus C, the sum of these two
+
+1054
+00:59:04,320 --> 00:59:11,610
+matrices is identically 0, as I
+claimed in the very first slide
+
+1055
+00:59:11,610 --> 00:59:13,100
+I gave last time.
+
+1056
+00:59:13,100 --> 00:59:22,110
+Now you could call a game
+rank-r if R plus C has rank-r.
+
+1057
+00:59:22,110 --> 00:59:27,690
+
+1058
+00:59:27,690 --> 00:59:41,082
+Now what is known is that
+rank-1 games can be solved in P.
+
+1059
+00:59:41,082 --> 00:59:50,635
+I believe that it's known that
+rank-3 games are PPAD hard.
+
+1060
+00:59:50,635 --> 00:59:57,470
+
+1061
+00:59:57,470 --> 01:00:05,280
+And you should look at the
+paper by Mehta, Ruta Mehta
+
+1062
+01:00:05,280 --> 01:00:11,360
+in '14, I believe,
+where she shows that.
+
+1063
+01:00:11,360 --> 01:00:15,410
+She might even be showing
+rank-2, but I'm not sure.
+
+1064
+01:00:15,410 --> 01:00:20,260
+Maybe there is some gap there.
+
+1065
+01:00:20,260 --> 01:00:27,130
+Maybe it's even-- so there is
+a constant where it's already
+
+1066
+01:00:27,130 --> 01:00:27,930
+PPAD hard.
+
+1067
+01:00:27,930 --> 01:00:32,160
+
+1068
+01:00:32,160 --> 01:00:37,180
+And while I'm here, an
+interesting open question
+
+1069
+01:00:37,180 --> 01:00:43,450
+is approximate equilibrium.
+
+1070
+01:00:43,450 --> 01:00:52,470
+So interesting open problem--
+approximate Nash equilibria.
+
+1071
+01:00:52,470 --> 01:00:57,430
+
+1072
+01:00:57,430 --> 01:00:59,140
+Even into two-player
+games, we've
+
+1073
+01:00:59,140 --> 01:01:00,690
+don't know how to find them.
+
+1074
+01:01:00,690 --> 01:01:04,480
+So let me remind you what this.
+
+1075
+01:01:04,480 --> 01:01:08,050
+So a Nash equilibrium is
+a pair of strategies such
+
+1076
+01:01:08,050 --> 01:01:12,490
+that no one has an incentive to
+change his randomization given
+
+1077
+01:01:12,490 --> 01:01:14,910
+what the other player is doing.
+
+1078
+01:01:14,910 --> 01:01:22,570
+And epsilon Nash equilibrium is
+when this condition are true to
+
+1079
+01:01:22,570 --> 01:01:24,130
+within an order of epsilon.
+
+1080
+01:01:24,130 --> 01:01:28,629
+So no player has incentive, more
+than epsilon, additive epsilon
+
+1081
+01:01:28,629 --> 01:01:30,170
+incentive, to changed
+his strategies.
+
+1082
+01:01:30,170 --> 01:01:35,100
+
+1083
+01:01:35,100 --> 01:01:42,555
+So at most, additive
+epsilon incentive to change.
+
+1084
+01:01:42,555 --> 01:01:46,040
+
+1085
+01:01:46,040 --> 01:01:48,670
+Now what do we know
+about these problems?
+
+1086
+01:01:48,670 --> 01:01:52,380
+Well, if the input
+to your problem
+
+1087
+01:01:52,380 --> 01:01:56,870
+is a game and an epsilon, then
+it follows from those results
+
+1088
+01:01:56,870 --> 01:01:58,100
+that that's PPAD complete.
+
+1089
+01:01:58,100 --> 01:02:00,840
+
+1090
+01:02:00,840 --> 01:02:04,720
+Now it's even true that
+if your input is a game,
+
+1091
+01:02:04,720 --> 01:02:07,980
+and you have a
+prespecified epsilon that's
+
+1092
+01:02:07,980 --> 01:02:11,540
+inverse polynomial in
+the size of the game,
+
+1093
+01:02:11,540 --> 01:02:14,510
+so that the input
+is a game, and there
+
+1094
+01:02:14,510 --> 01:02:18,690
+is a inverse
+polynomial function,
+
+1095
+01:02:18,690 --> 01:02:19,690
+and that's your epsilon.
+
+1096
+01:02:19,690 --> 01:02:21,790
+And you want to find an
+inverse polynomial Nash
+
+1097
+01:02:21,790 --> 01:02:25,920
+equilibrium of this given game
+that's still PPAD complete.
+
+1098
+01:02:25,920 --> 01:02:27,965
+But what is not known
+is epsilon constant.
+
+1099
+01:02:27,965 --> 01:02:31,250
+
+1100
+01:02:31,250 --> 01:02:33,120
+How hard is it to
+find equilibria
+
+1101
+01:02:33,120 --> 01:02:36,840
+when epsilon is a constant?
+
+1102
+01:02:36,840 --> 01:02:46,610
+And if your matrices
+have entries in 0,1,
+
+1103
+01:02:46,610 --> 01:02:49,330
+then we know how to
+do this in time n
+
+1104
+01:02:49,330 --> 01:02:53,260
+to the order log n
+over epsilon squared.
+
+1105
+01:02:53,260 --> 01:02:56,070
+
+1106
+01:02:56,070 --> 01:02:59,930
+We know that there is no
+FPTAS for the problem because
+
+1107
+01:02:59,930 --> 01:03:05,390
+of actually these
+results, follow up results
+
+1108
+01:03:05,390 --> 01:03:06,360
+to these results.
+
+1109
+01:03:06,360 --> 01:03:09,870
+But what I claimed earlier about
+inverse polynomial accuracy
+
+1110
+01:03:09,870 --> 01:03:13,440
+prohibits an FPTAS
+for the problem.
+
+1111
+01:03:13,440 --> 01:03:15,280
+But a PTAS is possible.
+
+1112
+01:03:15,280 --> 01:03:16,990
+What we have is a quasi-PTAS.
+
+1113
+01:03:16,990 --> 01:03:20,580
+So if you have an
+n-th strategy game,
+
+1114
+01:03:20,580 --> 01:03:23,240
+and you're interested in
+some constant epsilon,
+
+1115
+01:03:23,240 --> 01:03:27,220
+then we can get you an epsilon
+Nash equilibrium, n to the log
+
+1116
+01:03:27,220 --> 01:03:29,400
+and over epsilon squared time.
+
+1117
+01:03:29,400 --> 01:03:31,430
+And because I'm looking
+at additive of epsilons,
+
+1118
+01:03:31,430 --> 01:03:34,240
+I'm also normalizing
+my payoffs to be 0, 1,
+
+1119
+01:03:34,240 --> 01:03:40,450
+so that epsilon is related to
+the maximum payoff of the game.
+
+1120
+01:03:40,450 --> 01:03:41,770
+So that's what we have.
+
+1121
+01:03:41,770 --> 01:03:49,880
+And it's a great open problem
+if you can improve this, or show
+
+1122
+01:03:49,880 --> 01:03:51,780
+a lawyer bond.
+
+1123
+01:03:51,780 --> 01:03:54,490
+That's a great open problem.
+
+1124
+01:03:54,490 --> 01:04:01,030
+Speaking of which, if the
+rank of this game is up to,
+
+1125
+01:04:01,030 --> 01:04:03,915
+I believe, logarithmic,
+we know how to get a PTAS.
+
+1126
+01:04:03,915 --> 01:04:10,090
+
+1127
+01:04:10,090 --> 01:04:12,400
+Now I don't have
+too much time left,
+
+1128
+01:04:12,400 --> 01:04:16,960
+so I guess I had two
+options for today.
+
+1129
+01:04:16,960 --> 01:04:21,280
+One was to talk about
+different problems
+
+1130
+01:04:21,280 --> 01:04:28,770
+that you can show PPAD hard, or
+to talk about other existence
+
+1131
+01:04:28,770 --> 01:04:30,860
+arguments.
+
+1132
+01:04:30,860 --> 01:04:34,490
+And I think I only have
+time for one of the two.
+
+1133
+01:04:34,490 --> 01:04:40,970
+
+1134
+01:04:40,970 --> 01:04:44,440
+The other option is to show
+other arguments of existence
+
+1135
+01:04:44,440 --> 01:04:45,290
+in TFNP.
+
+1136
+01:04:45,290 --> 01:04:48,729
+So two examples,
+or other argument?
+
+1137
+01:04:48,729 --> 01:04:49,645
+What do you guys vote?
+
+1138
+01:04:49,645 --> 01:04:52,490
+
+1139
+01:04:52,490 --> 01:04:54,320
+So who wants two other examples?
+
+1140
+01:04:54,320 --> 01:04:56,850
+
+1141
+01:04:56,850 --> 01:04:58,120
+OK, who's giving the count?
+
+1142
+01:04:58,120 --> 01:05:00,870
+
+1143
+01:05:00,870 --> 01:05:02,635
+Who wants other
+existence arguments?
+
+1144
+01:05:02,635 --> 01:05:06,460
+
+1145
+01:05:06,460 --> 01:05:09,534
+So I think there's a slight
+majority for other existence
+
+1146
+01:05:09,534 --> 01:05:11,075
+arguments, so I'm
+going to show that.
+
+1147
+01:05:11,075 --> 01:05:17,170
+
+1148
+01:05:17,170 --> 01:05:22,510
+PPAD is founded on the
+directed parity argument.
+
+1149
+01:05:22,510 --> 01:05:26,370
+Other natural arguments of
+existence in combinatorics
+
+1150
+01:05:26,370 --> 01:05:28,380
+are the following,
+and each of them
+
+1151
+01:05:28,380 --> 01:05:32,450
+is going to correspond to a
+different complexity class.
+
+1152
+01:05:32,450 --> 01:05:35,730
+This is a parity argument
+on an undirected graph
+
+1153
+01:05:35,730 --> 01:05:38,660
+if an undirected graph has
+a node of odd degree then
+
+1154
+01:05:38,660 --> 01:05:41,760
+it must have another
+node of odd degree,
+
+1155
+01:05:41,760 --> 01:05:44,620
+also known as the
+handshaking lemma, I believe.
+
+1156
+01:05:44,620 --> 01:05:48,230
+
+1157
+01:05:48,230 --> 01:05:49,860
+Well this is another simple one.
+
+1158
+01:05:49,860 --> 01:05:54,800
+If a DAG, any DAG
+has a sink, that's
+
+1159
+01:05:54,800 --> 01:05:56,410
+going to give rise
+to the class PLS.
+
+1160
+01:05:56,410 --> 01:05:59,710
+
+1161
+01:05:59,710 --> 01:06:01,410
+And that's the
+pigeonhole principle.
+
+1162
+01:06:01,410 --> 01:06:03,470
+If you have a function
+mapping n elements,
+
+1163
+01:06:03,470 --> 01:06:06,340
+n minus 1 elements, than
+there is a collision.
+
+1164
+01:06:06,340 --> 01:06:08,960
+That's going to give
+rise to the PPP.
+
+1165
+01:06:08,960 --> 01:06:11,490
+So PPA stands for
+polynomial parity
+
+1166
+01:06:11,490 --> 01:06:16,810
+on undirected graphs, PLS,
+polynomial local search, PPP,
+
+1167
+01:06:16,810 --> 01:06:19,390
+polynomial pigeonhole principle.
+
+1168
+01:06:19,390 --> 01:06:21,320
+And I'm going to
+define them formally
+
+1169
+01:06:21,320 --> 01:06:23,680
+in the next few slides.
+
+1170
+01:06:23,680 --> 01:06:25,550
+So I'm going to start
+with PPA because it's
+
+1171
+01:06:25,550 --> 01:06:28,265
+very similar to be PPAD,
+except there's no direction.
+
+1172
+01:06:28,265 --> 01:06:30,970
+
+1173
+01:06:30,970 --> 01:06:37,420
+And the input to the
+problem is a circuit
+
+1174
+01:06:37,420 --> 01:06:41,700
+that induces a graph
+of [INAUDIBLE] strings.
+
+1175
+01:06:41,700 --> 01:06:50,260
+So the circuit gets its input at
+nodes, and outputs two strings.
+
+1176
+01:06:50,260 --> 01:06:53,070
+Gets one string,
+outputs two strings.
+
+1177
+01:06:53,070 --> 01:06:56,590
+Now this circuit induces
+a undirected graph
+
+1178
+01:06:56,590 --> 01:06:59,460
+over all possible strings
+in the following way.
+
+1179
+01:06:59,460 --> 01:07:02,120
+There is a node between
+string 1 and string 2
+
+1180
+01:07:02,120 --> 01:07:06,490
+if v1 is in the
+output list of v2,
+
+1181
+01:07:06,490 --> 01:07:08,620
+and v2 is in the
+output list of v1.
+
+1182
+01:07:08,620 --> 01:07:11,440
+
+1183
+01:07:11,440 --> 01:07:14,680
+So this circuit gets
+n-bits as input,
+
+1184
+01:07:14,680 --> 01:07:17,470
+and has two n-bits as output.
+
+1185
+01:07:17,470 --> 01:07:21,000
+And no matter what it is,
+it doesn't use a graph
+
+1186
+01:07:21,000 --> 01:07:27,870
+over strings that places an
+edge between these two strings,
+
+1187
+01:07:27,870 --> 01:07:32,810
+if v1 is in the output
+list of v2, and vice versa.
+
+1188
+01:07:32,810 --> 01:07:36,940
+Now in the same reasoning as
+last time, the same spirit
+
+1189
+01:07:36,940 --> 01:07:40,020
+as last time, any
+input C is going
+
+1190
+01:07:40,020 --> 01:07:42,160
+to reduce a graph with
+a particular structure.
+
+1191
+01:07:42,160 --> 01:07:44,470
+What's that structure?
+
+1192
+01:07:44,470 --> 01:07:46,750
+The odd degree of
+every node is what?
+
+1193
+01:07:46,750 --> 01:07:48,680
+At most 2.
+
+1194
+01:07:48,680 --> 01:07:53,410
+Hence the graph that is
+induced by any given circuit
+
+1195
+01:07:53,410 --> 01:07:56,325
+is going to be a collection
+of isolated vertices, cycles,
+
+1196
+01:07:56,325 --> 01:07:56,825
+and paths.
+
+1197
+01:07:56,825 --> 01:07:59,910
+
+1198
+01:07:59,910 --> 01:08:03,840
+The odd degree node
+problem is the following.
+
+1199
+01:08:03,840 --> 01:08:08,240
+If the 0 string has
+odd degree, then I
+
+1200
+01:08:08,240 --> 01:08:11,330
+want you to find me another
+node with odd degree,
+
+1201
+01:08:11,330 --> 01:08:14,640
+which we know exists by
+the handshaking lemma.
+
+1202
+01:08:14,640 --> 01:08:19,140
+Otherwise, if 0 to the n has
+even degree, just say, yes,
+
+1203
+01:08:19,140 --> 01:08:21,760
+and call it a day.
+
+1204
+01:08:21,760 --> 01:08:28,279
+Now PPA is the class of
+search problems in NP
+
+1205
+01:08:28,279 --> 01:08:31,240
+that are reducible, polytime
+reducible, to this problem,
+
+1206
+01:08:31,240 --> 01:08:35,105
+to the odd degree node
+problem, whose graph structure
+
+1207
+01:08:35,105 --> 01:08:40,479
+is very similar to PPAD,
+except there are no directions.
+
+1208
+01:08:40,479 --> 01:08:44,770
+So any circuit C defines
+a graph of this form,
+
+1209
+01:08:44,770 --> 01:08:47,569
+except the graph is over
+exponentially many vertices,
+
+1210
+01:08:47,569 --> 01:08:52,279
+so we cannot just go
+and check every node,
+
+1211
+01:08:52,279 --> 01:08:53,830
+every node's degree.
+
+1212
+01:08:53,830 --> 01:08:58,660
+So the question is if 0
+to the n has odd degree,
+
+1213
+01:08:58,660 --> 01:09:01,460
+then there must be another
+node of odd degree.
+
+1214
+01:09:01,460 --> 01:09:03,990
+Any of these nodes is a valid
+solution to the problem.
+
+1215
+01:09:03,990 --> 01:09:06,600
+
+1216
+01:09:06,600 --> 01:09:10,740
+Something that I didn't
+mention before for PPAD,
+
+1217
+01:09:10,740 --> 01:09:12,580
+but it's useful to
+mention, and I'm also
+
+1218
+01:09:12,580 --> 01:09:16,580
+going to mention it
+for PPA, if I insist
+
+1219
+01:09:16,580 --> 01:09:19,640
+on finding the other
+end of this path,
+
+1220
+01:09:19,640 --> 01:09:22,370
+of the specific path
+that started at 0,
+
+1221
+01:09:22,370 --> 01:09:23,460
+the problem is not in FNP.
+
+1222
+01:09:23,460 --> 01:09:27,920
+
+1223
+01:09:27,920 --> 01:09:32,560
+So it's crucial that
+given the unbalanceness,
+
+1224
+01:09:32,560 --> 01:09:34,455
+or the odd degree
+of this node, I'll
+
+1225
+01:09:34,455 --> 01:09:38,520
+allow you to return any
+other odd degree node.
+
+1226
+01:09:38,520 --> 01:09:40,040
+That's very crucial.
+
+1227
+01:09:40,040 --> 01:09:43,130
+If I insisted on
+you returning me
+
+1228
+01:09:43,130 --> 01:09:47,790
+the other endpoint on the
+path that starts at 0,
+
+1229
+01:09:47,790 --> 01:09:50,580
+that's above NP basically
+because there's no source
+
+1230
+01:09:50,580 --> 01:09:55,350
+certificate that this node
+in the other end of the path
+
+1231
+01:09:55,350 --> 01:09:56,380
+starting at 0.
+
+1232
+01:09:56,380 --> 01:09:58,060
+So it's very crucial
+that I allow you
+
+1233
+01:09:58,060 --> 01:09:59,820
+to return any odd degree node.
+
+1234
+01:09:59,820 --> 01:10:03,050
+
+1235
+01:10:03,050 --> 01:10:06,990
+Now an interesting problem
+that is in this class,
+
+1236
+01:10:06,990 --> 01:10:10,450
+and as far as we
+know, not in PPAD,
+
+1237
+01:10:10,450 --> 01:10:16,020
+is the problem Smith, which
+is given a Hamiltonian
+
+1238
+01:10:16,020 --> 01:10:19,860
+circuit in a
+3-regular graph, find
+
+1239
+01:10:19,860 --> 01:10:23,894
+me another Hamiltonian
+circuit in this graph.
+
+1240
+01:10:23,894 --> 01:10:25,560
+Now this graph is not
+exponentially big.
+
+1241
+01:10:25,560 --> 01:10:27,476
+It's actually a graph
+that you can write down.
+
+1242
+01:10:27,476 --> 01:10:29,990
+So I give you a
+graph explicitly,
+
+1243
+01:10:29,990 --> 01:10:32,700
+and I also give you
+a Hamiltonian circuit
+
+1244
+01:10:32,700 --> 01:10:35,810
+in this graph.
+
+1245
+01:10:35,810 --> 01:10:37,985
+I claim that there is
+another Hamiltonian circuit.
+
+1246
+01:10:37,985 --> 01:10:41,140
+
+1247
+01:10:41,140 --> 01:10:42,930
+The question is find it.
+
+1248
+01:10:42,930 --> 01:10:45,684
+
+1249
+01:10:45,684 --> 01:10:47,600
+Now why is there always
+a Hamiltonian circuit?
+
+1250
+01:10:47,600 --> 01:10:51,210
+Well, that follows
+from a theorem by Smith
+
+1251
+01:10:51,210 --> 01:10:55,140
+saying that-- a theorem by Smith
+implies that there's always
+
+1252
+01:10:55,140 --> 01:10:57,122
+another Hamiltonian path.
+
+1253
+01:10:57,122 --> 01:10:58,580
+And let me actually
+show it to you.
+
+1254
+01:10:58,580 --> 01:11:00,380
+It's very simple.
+
+1255
+01:11:00,380 --> 01:11:03,590
+So here's is actually a copy
+from Papadimitriou's '94 paper.
+
+1256
+01:11:03,590 --> 01:11:06,160
+
+1257
+01:11:06,160 --> 01:11:09,070
+I guess there's a
+missing apostrophe here.
+
+1258
+01:11:09,070 --> 01:11:12,480
+So here's the input graph.
+
+1259
+01:11:12,480 --> 01:11:21,300
+And obviously, this is
+a Hamiltonian circuit.
+
+1260
+01:11:21,300 --> 01:11:26,130
+So I'm following the outer
+boundary here, going inside,
+
+1261
+01:11:26,130 --> 01:11:27,570
+and then coming back here.
+
+1262
+01:11:27,570 --> 01:11:29,445
+That's the Hamiltonian circuit.
+
+1263
+01:11:29,445 --> 01:11:31,320
+And here's the same
+circuit, except I removed
+
+1264
+01:11:31,320 --> 01:11:34,750
+one edge, x and y.
+
+1265
+01:11:34,750 --> 01:11:37,270
+And here I'm showing
+a bunch of operations
+
+1266
+01:11:37,270 --> 01:11:40,980
+you can do this
+Hamiltonian path-- this
+
+1267
+01:11:40,980 --> 01:11:47,450
+is a Hamiltonian path-- to
+create another Hamilton path
+
+1268
+01:11:47,450 --> 01:11:49,980
+with the same edge missing.
+
+1269
+01:11:49,980 --> 01:11:53,910
+Hence, out of that edge, you
+get another Hamiltonian circuit.
+
+1270
+01:11:53,910 --> 01:11:56,730
+And the [INAUDIBLE]
+is very simple.
+
+1271
+01:11:56,730 --> 01:11:59,660
+So what you do is the following.
+
+1272
+01:11:59,660 --> 01:12:01,880
+So you start with--
+it doesn't matter.
+
+1273
+01:12:01,880 --> 01:12:04,730
+You can start with
+an arbitrary node.
+
+1274
+01:12:04,730 --> 01:12:13,330
+All the circuits I'm
+going to be defining,
+
+1275
+01:12:13,330 --> 01:12:16,690
+will have x as one
+of the two endpoints.
+
+1276
+01:12:16,690 --> 01:12:20,660
+But the other endpoint is
+going to be moving around
+
+1277
+01:12:20,660 --> 01:12:23,980
+and in the end, is going
+to get back to this vertex.
+
+1278
+01:12:23,980 --> 01:12:27,270
+Hence, I can knock that edge
+back and get the circuit.
+
+1279
+01:12:27,270 --> 01:12:29,380
+So I started with the circuit.
+
+1280
+01:12:29,380 --> 01:12:33,130
+I remove one edge, x and y.
+
+1281
+01:12:33,130 --> 01:12:34,630
+And I'm about to
+show you that there
+
+1282
+01:12:34,630 --> 01:12:39,430
+is another Hamiltonian path
+that misses the same edge,
+
+1283
+01:12:39,430 --> 01:12:41,520
+but is different than this one.
+
+1284
+01:12:41,520 --> 01:12:42,870
+So it's going to be that one.
+
+1285
+01:12:42,870 --> 01:12:44,500
+Now let me try to
+argue that that
+
+1286
+01:12:44,500 --> 01:12:48,447
+is another Hamiltonian path
+that is missing the same edge.
+
+1287
+01:12:48,447 --> 01:12:49,530
+How am I going to do that?
+
+1288
+01:12:49,530 --> 01:12:54,870
+Well, in this sequence
+of Hamiltonian paths
+
+1289
+01:12:54,870 --> 01:12:57,210
+that I'm going to define,
+x is going to stay fixed,
+
+1290
+01:12:57,210 --> 01:12:59,220
+y is going to be moving around.
+
+1291
+01:12:59,220 --> 01:13:02,860
+Now let's land somewhere
+in the middle, here.
+
+1292
+01:13:02,860 --> 01:13:05,470
+So now y is this guy.
+
+1293
+01:13:05,470 --> 01:13:09,820
+y, because the
+graph is 3-regular,
+
+1294
+01:13:09,820 --> 01:13:13,080
+and y is an endpoint,
+there's exactly
+
+1295
+01:13:13,080 --> 01:13:16,920
+one edge that's used in
+the Hamiltonian path.
+
+1296
+01:13:16,920 --> 01:13:20,090
+And there are two
+edges that are missing.
+
+1297
+01:13:20,090 --> 01:13:27,105
+I'm going to try to add both
+of them and get a circuit--
+
+1298
+01:13:27,105 --> 01:13:30,220
+and get a path, a
+Hamiltonian path.
+
+1299
+01:13:30,220 --> 01:13:35,350
+What would happen if I tried to
+add this edge into this path?
+
+1300
+01:13:35,350 --> 01:13:38,115
+Well, that wouldn't
+be a path anymore.
+
+1301
+01:13:38,115 --> 01:13:40,880
+
+1302
+01:13:40,880 --> 01:13:44,960
+So because this guy would have
+degree 3 if I added that edge.
+
+1303
+01:13:44,960 --> 01:13:47,980
+Now have two kill one of the
+two edges adjacent to this node.
+
+1304
+01:13:47,980 --> 01:13:51,120
+And I'm going to kill the one
+that the maintains the fact
+
+1305
+01:13:51,120 --> 01:13:53,500
+that the graph is connected.
+
+1306
+01:13:53,500 --> 01:13:58,460
+If I add this edge, and I
+kill this edge, I'm screwed.
+
+1307
+01:13:58,460 --> 01:14:01,320
+The graph is not
+connected anymore.
+
+1308
+01:14:01,320 --> 01:14:02,750
+So I'm going to kill that edge.
+
+1309
+01:14:02,750 --> 01:14:04,340
+So what happens here?
+
+1310
+01:14:04,340 --> 01:14:06,660
+I added that edge, and
+I killed that edge.
+
+1311
+01:14:06,660 --> 01:14:09,260
+And this what I got.
+
+1312
+01:14:09,260 --> 01:14:14,399
+If I tried to add this
+edge, then this node
+
+1313
+01:14:14,399 --> 01:14:15,190
+will have degree 3.
+
+1314
+01:14:15,190 --> 01:14:18,630
+I have to kill either
+that edge or that edge.
+
+1315
+01:14:18,630 --> 01:14:22,939
+I can kill exactly one to
+avoid disconnecting my graph.
+
+1316
+01:14:22,939 --> 01:14:24,480
+And I'm going to be
+killing that one,
+
+1317
+01:14:24,480 --> 01:14:26,790
+and that's going
+to bring me here.
+
+1318
+01:14:26,790 --> 01:14:35,110
+So every Hamiltonian path
+has exactly two neighbors
+
+1319
+01:14:35,110 --> 01:14:43,950
+corresponding to adding
+one of the two missing
+
+1320
+01:14:43,950 --> 01:14:48,810
+edges from the y
+endpoint of that path.
+
+1321
+01:14:48,810 --> 01:14:52,900
+And there's only one
+way this thing can stop,
+
+1322
+01:14:52,900 --> 01:14:53,830
+by arriving at y.
+
+1323
+01:14:53,830 --> 01:14:57,780
+
+1324
+01:14:57,780 --> 01:15:00,510
+If I don't get
+endpoint y to come back
+
+1325
+01:15:00,510 --> 01:15:02,570
+to its original position
+I will keep going.
+
+1326
+01:15:02,570 --> 01:15:08,180
+
+1327
+01:15:08,180 --> 01:15:11,500
+In other words, like my proof
+[INAUDIBLE], what I did here
+
+1328
+01:15:11,500 --> 01:15:14,010
+is I defined a
+neighborhood relationship
+
+1329
+01:15:14,010 --> 01:15:16,820
+between Hamiltonian
+paths, which was
+
+1330
+01:15:16,820 --> 01:15:19,860
+adding an edge, one
+of the two missing
+
+1331
+01:15:19,860 --> 01:15:22,030
+edges from the endpoints.
+
+1332
+01:15:22,030 --> 01:15:25,525
+And another, the only stopping
+condition is if I get here.
+
+1333
+01:15:25,525 --> 01:15:29,440
+And that's why Smith is in PPA.
+
+1334
+01:15:29,440 --> 01:15:31,390
+Now it's a very
+interesting problem
+
+1335
+01:15:31,390 --> 01:15:33,375
+to show that this
+is PPA complete.
+
+1336
+01:15:33,375 --> 01:15:38,280
+
+1337
+01:15:38,280 --> 01:15:41,160
+Let me define the class PLS.
+
+1338
+01:15:41,160 --> 01:15:44,450
+That was define earlier
+by Johnson, Papadimitriou
+
+1339
+01:15:44,450 --> 01:15:47,230
+and Yanakakis.
+
+1340
+01:15:47,230 --> 01:15:51,720
+Now I want to implement a class
+that exploits this argument,
+
+1341
+01:15:51,720 --> 01:15:52,902
+that every DAG has a sink.
+
+1342
+01:15:52,902 --> 01:15:54,360
+The way I'm going
+to do that is I'm
+
+1343
+01:15:54,360 --> 01:15:56,760
+going to give you two functions.
+
+1344
+01:15:56,760 --> 01:15:59,890
+Function C is going
+to take-- both of them
+
+1345
+01:15:59,890 --> 01:16:03,230
+will have n-bits as inputs.
+
+1346
+01:16:03,230 --> 01:16:08,260
+This guy, C, will output
+a list of strings,
+
+1347
+01:16:08,260 --> 01:16:10,510
+a list of k strings.
+
+1348
+01:16:10,510 --> 01:16:14,840
+So it has n-bits as input,
+and k n-bits as output.
+
+1349
+01:16:14,840 --> 01:16:19,290
+While this guy is
+outputting some real number,
+
+1350
+01:16:19,290 --> 01:16:21,300
+I mean, some rational
+number, whatever.
+
+1351
+01:16:21,300 --> 01:16:24,507
+But I interpret the output
+of the circuit as a number.
+
+1352
+01:16:24,507 --> 01:16:26,090
+I interpret the
+output of this circuit
+
+1353
+01:16:26,090 --> 01:16:27,465
+as a list of other strings.
+
+1354
+01:16:27,465 --> 01:16:31,181
+
+1355
+01:16:31,181 --> 01:16:34,510
+I add that's between-- given
+these two circuits, that
+
+1356
+01:16:34,510 --> 01:16:38,430
+induces a DAG, I claim,
+in the following way.
+
+1357
+01:16:38,430 --> 01:16:41,940
+I add an edge from
+v1 to v2 if v2
+
+1358
+01:16:41,940 --> 01:16:49,390
+is in the adjacency list of
+v1, and the score of v2 two
+
+1359
+01:16:49,390 --> 01:16:53,740
+is better than the score of v1.
+
+1360
+01:16:53,740 --> 01:16:57,790
+Then and only then, I add
+an edge from v1 to v2.
+
+1361
+01:16:57,790 --> 01:17:03,780
+And obviously, this is a DAG now
+because I'm increasing my score
+
+1362
+01:17:03,780 --> 01:17:04,980
+as I go along.
+
+1363
+01:17:04,980 --> 01:17:08,650
+So I cannot come back
+to where I started.
+
+1364
+01:17:08,650 --> 01:17:11,480
+So the problem that
+I want to define
+
+1365
+01:17:11,480 --> 01:17:17,520
+is the FindSink problem, which
+is given two circuits as above,
+
+1366
+01:17:17,520 --> 01:17:25,300
+find an x that has a
+better score than any
+
+1367
+01:17:25,300 --> 01:17:28,970
+of the adjacent vertices.
+
+1368
+01:17:28,970 --> 01:17:32,150
+And such a thing has to exist
+because if I define this graph
+
+1369
+01:17:32,150 --> 01:17:33,850
+and find any sink
+of this graph, this
+
+1370
+01:17:33,850 --> 01:17:36,430
+will satisfy this property.
+
+1371
+01:17:36,430 --> 01:17:40,740
+The class PLS are all
+search problems in the P,
+
+1372
+01:17:40,740 --> 01:17:42,330
+but are polynomial
+time reducible
+
+1373
+01:17:42,330 --> 01:17:45,350
+to this problem, FindSink.
+
+1374
+01:17:45,350 --> 01:17:49,470
+The picture for this
+problem is this,
+
+1375
+01:17:49,470 --> 01:17:51,560
+exponentially large graph.
+
+1376
+01:17:51,560 --> 01:17:53,410
+But there is a DAG
+that's implicitly
+
+1377
+01:17:53,410 --> 01:17:56,940
+defined by these two vertices,
+by these two circuits.
+
+1378
+01:17:56,940 --> 01:17:58,415
+And all of these are solutions.
+
+1379
+01:17:58,415 --> 01:18:03,420
+
+1380
+01:18:03,420 --> 01:18:05,140
+An interesting
+problem in this class
+
+1381
+01:18:05,140 --> 01:18:07,890
+is the LocalMaxCut
+problem, a relative
+
+1382
+01:18:07,890 --> 01:18:12,010
+of the well-known MaxCut
+problem, which is NP complete.
+
+1383
+01:18:12,010 --> 01:18:16,350
+In the LocalMaxCut problem, I'm
+giving you a weighted graph.
+
+1384
+01:18:16,350 --> 01:18:19,810
+And I want a partition
+that's not globally
+
+1385
+01:18:19,810 --> 01:18:22,420
+optimal, but locally
+optimal, meaning
+
+1386
+01:18:22,420 --> 01:18:24,280
+there is no single
+node I could move
+
+1387
+01:18:24,280 --> 01:18:26,560
+from one to the
+other side of the cut
+
+1388
+01:18:26,560 --> 01:18:27,731
+to improve the cut value.
+
+1389
+01:18:27,731 --> 01:18:32,450
+
+1390
+01:18:32,450 --> 01:18:37,360
+Now if the weights were
+bounded and integral,
+
+1391
+01:18:37,360 --> 01:18:40,890
+this wouldn't be a hard problem.
+
+1392
+01:18:40,890 --> 01:18:43,600
+But for arbitrary
+weights, it's actually PLS
+
+1393
+01:18:43,600 --> 01:18:49,232
+complete to find a
+local maximum cut.
+
+1394
+01:18:49,232 --> 01:18:53,840
+
+1395
+01:18:53,840 --> 01:18:56,610
+Final problem, and
+I'm concluding,
+
+1396
+01:18:56,610 --> 01:18:59,980
+is final class is
+the class PPP that's
+
+1397
+01:18:59,980 --> 01:19:03,620
+trying to implement the
+pigeonhole principle.
+
+1398
+01:19:03,620 --> 01:19:06,450
+Here I'm giving you
+a circuit that has
+
+1399
+01:19:06,450 --> 01:19:08,295
+n-bit input and n-bit outputs.
+
+1400
+01:19:08,295 --> 01:19:15,110
+
+1401
+01:19:15,110 --> 01:19:17,190
+The collision problem
+that I want to define
+
+1402
+01:19:17,190 --> 01:19:20,130
+is given sets of
+circuits, either find
+
+1403
+01:19:20,130 --> 01:19:24,160
+me an x that maps
+to the 0 string,
+
+1404
+01:19:24,160 --> 01:19:29,080
+or find me a pair x and y
+that map to the same string.
+
+1405
+01:19:29,080 --> 01:19:32,850
+Clearly, by the pigeonhole
+principle if nobody goes to 0,
+
+1406
+01:19:32,850 --> 01:19:35,970
+there must be two
+guys that collide.
+
+1407
+01:19:35,970 --> 01:19:40,330
+So this problem is also total
+by the pigeonhole principal.
+
+1408
+01:19:40,330 --> 01:19:44,090
+So it always has a solution,
+no matter what the circuit is.
+
+1409
+01:19:44,090 --> 01:19:46,650
+And the class PPP is
+all problems in NP that
+
+1410
+01:19:46,650 --> 01:19:48,020
+are reducible to this problem.
+
+1411
+01:19:48,020 --> 01:19:51,230
+
+1412
+01:19:51,230 --> 01:19:56,330
+Finally, the hierarchy of
+problems I defined is this.
+
+1413
+01:19:56,330 --> 01:20:00,100
+P, FNP, there is total
+FNP somewhere here,
+
+1414
+01:20:00,100 --> 01:20:01,630
+which I don't show.
+
+1415
+01:20:01,630 --> 01:20:04,710
+And these are the relationships
+of these problems.
+
+1416
+01:20:04,710 --> 01:20:09,290
+I haven't shown that
+these arrows true,
+
+1417
+01:20:09,290 --> 01:20:12,030
+that this is a subclass,
+PPD's a subclass
+
+1418
+01:20:12,030 --> 01:20:13,030
+of these two subclasses.
+
+1419
+01:20:13,030 --> 01:20:13,850
+This is easy.
+
+1420
+01:20:13,850 --> 01:20:18,300
+This is a simple exercise
+we can think about.
+
+1421
+01:20:18,300 --> 01:20:20,380
+This is basically
+my introduction
+
+1422
+01:20:20,380 --> 01:20:24,750
+to PPA, PPAD and
+related classes.
+
+1423
+01:20:24,750 --> 01:20:26,540
+The final thing that
+I want to point out
+
+1424
+01:20:26,540 --> 01:20:29,115
+is answering a
+question that was asked
+
+1425
+01:20:29,115 --> 01:20:30,490
+after the previous
+lecture, which
+
+1426
+01:20:30,490 --> 01:20:33,930
+was why did you
+define these classes,
+
+1427
+01:20:33,930 --> 01:20:39,260
+and not just a TFNP
+complete problem.
+
+1428
+01:20:39,260 --> 01:20:45,670
+Why did you have to pay special
+attention to precise existence
+
+1429
+01:20:45,670 --> 01:20:49,200
+argument that gives
+rise to the guarantee
+
+1430
+01:20:49,200 --> 01:20:51,460
+that your problems are total?
+
+1431
+01:20:51,460 --> 01:20:55,250
+And the reason for that
+is that actually TFNP
+
+1432
+01:20:55,250 --> 01:20:58,390
+is not what's called
+a syntactic class.
+
+1433
+01:20:58,390 --> 01:21:06,370
+In other words, if I give
+you a problem with TFNP--
+
+1434
+01:21:06,370 --> 01:21:11,400
+if I give you a Turing machine,
+you cannot decide whether that
+
+1435
+01:21:11,400 --> 01:21:15,750
+is computing a total problem,
+that no matter what the input
+
+1436
+01:21:15,750 --> 01:21:20,440
+to that machine is,
+there's always an output.
+
+1437
+01:21:20,440 --> 01:21:26,710
+So I had to pay attention to the
+specialized existence arguments
+
+1438
+01:21:26,710 --> 01:21:29,530
+because for specialized
+existence arguments,
+
+1439
+01:21:29,530 --> 01:21:34,430
+I know a priori that
+the problem is total.
+
+1440
+01:21:34,430 --> 01:21:39,100
+So in particular, no matter
+what circuit I give you here,
+
+1441
+01:21:39,100 --> 01:21:40,620
+I don't even have
+to check anything.
+
+1442
+01:21:40,620 --> 01:21:44,220
+No matter what input you give
+me, I know there is a solution.
+
+1443
+01:21:44,220 --> 01:21:48,610
+No matter what pairs of
+circuits you give me here,
+
+1444
+01:21:48,610 --> 01:21:50,420
+I don't need to check anything.
+
+1445
+01:21:50,420 --> 01:21:52,430
+I know the answer
+to this problem--
+
+1446
+01:21:52,430 --> 01:21:56,600
+there's always an answer to this
+problem, and so on, so forth.
+
+1447
+01:21:56,600 --> 01:21:59,990
+No matter what you
+give to me as input,
+
+1448
+01:21:59,990 --> 01:22:03,500
+it is important to
+define complexity classes
+
+1449
+01:22:03,500 --> 01:22:07,186
+for which you can show
+hardness results to find
+
+1450
+01:22:07,186 --> 01:22:07,935
+complete problems.
+
+1451
+01:22:07,935 --> 01:22:10,720
+
+1452
+01:22:10,720 --> 01:22:12,650
+Otherwise, you
+would have what is
+
+1453
+01:22:12,650 --> 01:22:16,290
+called promise classes, which
+are not amenable to showing
+
+1454
+01:22:16,290 --> 01:22:19,240
+the completeness results.
+
+1455
+01:22:19,240 --> 01:22:21,470
+On that brief not,
+I want to stop.
+
+1456
+01:22:21,470 --> 01:22:23,320
+Thanks a lot.
+

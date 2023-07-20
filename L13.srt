@@ -1,0 +1,7231 @@
+1
+0-1:59:36,500 --> 0-1:59:36,580
+
+2
+0-1:59:36,580 --> 0-1:59:38,930
+The following content is
+provided under a Creative
+
+3
+0-1:59:38,930 --> 0-1:59:40,320
+Commons license.
+
+4
+0-1:59:40,320 --> 0-1:59:42,550
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:42,550 --> 0-1:59:46,650
+continue to offer high quality
+educational resources for free.
+
+6
+0-1:59:46,650 --> 0-1:59:49,190
+To make a donation or to
+view additional materials
+
+7
+0-1:59:49,190 --> 0-1:59:53,100
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:53,100 --> 0-1:59:53,805
+at ocw.mit.edu.
+
+9
+0-1:59:53,805 --> 00:00:03,420
+
+10
+00:00:03,420 --> 00:00:05,400
+PROFESSOR: Today, we
+begin a new topic, which
+
+11
+00:00:05,400 --> 00:00:06,685
+is parameterized complexity.
+
+12
+00:00:06,685 --> 00:00:09,400
+
+13
+00:00:09,400 --> 00:00:15,230
+This is one of the
+most recent areas
+
+14
+00:00:15,230 --> 00:00:17,930
+of hardness that
+has been invented
+
+15
+00:00:17,930 --> 00:00:21,415
+that we will cover so far.
+
+16
+00:00:21,415 --> 00:00:25,440
+It started around 1999,
+and then since the 2000s,
+
+17
+00:00:25,440 --> 00:00:27,280
+it's been getting
+really big, originally
+
+18
+00:00:27,280 --> 00:00:29,460
+by Downey and Fellows.
+
+19
+00:00:29,460 --> 00:00:31,010
+And the general
+idea is we're going
+
+20
+00:00:31,010 --> 00:00:33,070
+to take problems,
+which normally we
+
+21
+00:00:33,070 --> 00:00:36,490
+think of as being parameterized
+by the problem size, n,
+
+22
+00:00:36,490 --> 00:00:39,495
+and thinking about polynomial
+versus exponential growth of n.
+
+23
+00:00:39,495 --> 00:00:41,830
+And we're going to
+add another parameter.
+
+24
+00:00:41,830 --> 00:00:43,850
+So you could say this
+is a two parameter
+
+25
+00:00:43,850 --> 00:00:45,410
+analysis in some sense.
+
+26
+00:00:45,410 --> 00:00:48,640
+Usually, we call problem
+size n and then we
+
+27
+00:00:48,640 --> 00:00:51,480
+call the parameter k.
+
+28
+00:00:51,480 --> 00:00:54,030
+In general, a parameter
+is just some way
+
+29
+00:00:54,030 --> 00:00:56,190
+of measuring instances.
+
+30
+00:00:56,190 --> 00:01:03,020
+So parameter, k, is a
+function from instances
+
+31
+00:01:03,020 --> 00:01:08,450
+to non-negative
+integers, 0, 1, 2.
+
+32
+00:01:08,450 --> 00:01:14,530
+And usually, this number k
+is just part of the instance,
+
+33
+00:01:14,530 --> 00:01:25,560
+for example-- well, let me
+go over here to examples.
+
+34
+00:01:25,560 --> 00:01:33,760
+Let's say problem that's
+called k-vertex cover--
+
+35
+00:01:33,760 --> 00:01:36,950
+and usually, I'll just call it
+vertex cover for simplicity.
+
+36
+00:01:36,950 --> 00:01:39,730
+You know the problem
+vertices to cover edges.
+
+37
+00:01:39,730 --> 00:01:43,400
+And usually, the decision
+version of that is
+
+38
+00:01:43,400 --> 00:01:47,259
+are there k vertices
+that cover all edges?
+
+39
+00:01:47,259 --> 00:01:54,740
+
+40
+00:01:54,740 --> 00:01:56,700
+So k is an input
+to this problem,
+
+41
+00:01:56,700 --> 00:01:59,080
+and it appears in the
+statement of the problem.
+
+42
+00:01:59,080 --> 00:02:00,860
+But in particular,
+it's an input.
+
+43
+00:02:00,860 --> 00:02:03,980
+And so this function, k,
+of a vertex cover instance
+
+44
+00:02:03,980 --> 00:02:08,080
+just pulls out that one number
+and throws away the graph.
+
+45
+00:02:08,080 --> 00:02:11,060
+That's the typical parameter.
+
+46
+00:02:11,060 --> 00:02:13,850
+But in general, a parameter
+could be some hard to compute
+
+47
+00:02:13,850 --> 00:02:15,060
+thing.
+
+48
+00:02:15,060 --> 00:02:18,110
+Maybe k-- you think
+of the parameter--
+
+49
+00:02:18,110 --> 00:02:20,070
+you take vertex cover
+as your problem,
+
+50
+00:02:20,070 --> 00:02:21,530
+but you define your
+parameter to be
+
+51
+00:02:21,530 --> 00:02:25,270
+the smallest independent set--
+or largest independent set.
+
+52
+00:02:25,270 --> 00:02:30,310
+Smallest is pretty small, 0.
+
+53
+00:02:30,310 --> 00:02:32,250
+Or, pick your favorite.
+
+54
+00:02:32,250 --> 00:02:38,200
+You could, for example, think
+about vertex cover with respect
+
+55
+00:02:38,200 --> 00:02:44,280
+to-- this is how we'll write
+the parameter-- crossing number.
+
+56
+00:02:44,280 --> 00:02:50,720
+
+57
+00:02:50,720 --> 00:02:56,090
+So the idea here is-- sorry
+I forgot to covet-- we always
+
+58
+00:02:56,090 --> 00:02:57,590
+measure our instances
+with respect
+
+59
+00:02:57,590 --> 00:02:59,840
+to the problem size, which
+is the size of the graph
+
+60
+00:02:59,840 --> 00:03:02,360
+for vertex cover instance.
+
+61
+00:03:02,360 --> 00:03:04,340
+But we're also going
+to parameterize
+
+62
+00:03:04,340 --> 00:03:05,851
+by some other quantity here.
+
+63
+00:03:05,851 --> 00:03:08,100
+Maybe it's the minimum
+crossing number for your graph,
+
+64
+00:03:08,100 --> 00:03:10,500
+so 0 if it's planar and so on.
+
+65
+00:03:10,500 --> 00:03:13,890
+We prove that that's
+NP-complete to compute.
+
+66
+00:03:13,890 --> 00:03:18,110
+So this parameter may not be
+easy to compute in general.
+
+67
+00:03:18,110 --> 00:03:21,190
+But a lot of the times it's
+just part of the problem.
+
+68
+00:03:21,190 --> 00:03:25,886
+And in general, this is called
+the natural parameterization.
+
+69
+00:03:25,886 --> 00:03:31,340
+
+70
+00:03:31,340 --> 00:03:32,950
+If you have an
+optimization problem,
+
+71
+00:03:32,950 --> 00:03:35,820
+like vertex cover is--
+minimum vertex cover--
+
+72
+00:03:35,820 --> 00:03:38,430
+and you convert the optimization
+problem into a decision
+
+73
+00:03:38,430 --> 00:03:41,080
+problem, you're asking is
+opt less than or equal to k.
+
+74
+00:03:41,080 --> 00:03:44,290
+That k is the natural parameter
+for an optimization problem.
+
+75
+00:03:44,290 --> 00:03:46,860
+So most the time, we'll
+be thinking about that.
+
+76
+00:03:46,860 --> 00:03:50,320
+But things like this also arise.
+
+77
+00:03:50,320 --> 00:03:57,800
+So just to be a
+little more precise
+
+78
+00:03:57,800 --> 00:04:03,595
+a parameterized problem
+is a decision problem
+
+79
+00:04:03,595 --> 00:04:04,420
+plus the parameter.
+
+80
+00:04:04,420 --> 00:04:12,770
+
+81
+00:04:12,770 --> 00:04:15,870
+So when I said vertex cover
+with respect to crossing number,
+
+82
+00:04:15,870 --> 00:04:18,830
+I meant my decision
+problem is vertex cover,
+
+83
+00:04:18,830 --> 00:04:21,570
+and I'm going to choose to
+use this particular parameter
+
+84
+00:04:21,570 --> 00:04:24,710
+function to parameterize
+those instances.
+
+85
+00:04:24,710 --> 00:04:29,350
+And in general, we'll call them
+parameter k and problem size n.
+
+86
+00:04:29,350 --> 00:04:33,780
+And our goal is to get a
+very good dependence on n
+
+87
+00:04:33,780 --> 00:04:36,920
+at the cost of a
+bad dependence on k.
+
+88
+00:04:36,920 --> 00:04:44,430
+So let me start with a
+so-so dependents, XP, would
+
+89
+00:04:44,430 --> 00:04:56,070
+be the set of all prioritized
+problems solvable in n
+
+90
+00:04:56,070 --> 00:04:59,950
+to the f of k time for some
+function k-- for any function
+
+91
+00:04:59,950 --> 00:05:02,650
+k, any function f.
+
+92
+00:05:02,650 --> 00:05:07,870
+And FPT is the set of
+parameterized problem solvable
+
+93
+00:05:07,870 --> 00:05:13,750
+in f of k times
+n to the order 1.
+
+94
+00:05:13,750 --> 00:05:15,500
+So this is considered
+a good running time.
+
+95
+00:05:15,500 --> 00:05:19,320
+This is considered
+a bad running time.
+
+96
+00:05:19,320 --> 00:05:21,120
+F is presumably exponential.
+
+97
+00:05:21,120 --> 00:05:22,510
+Assuming your
+problem is NP-hard,
+
+98
+00:05:22,510 --> 00:05:24,540
+you have to have
+exponential in something.
+
+99
+00:05:24,540 --> 00:05:27,390
+And the goal is to get the
+exponential away from n
+
+100
+00:05:27,390 --> 00:05:28,910
+because n is hard to control.
+
+101
+00:05:28,910 --> 00:05:32,337
+We like to solve big problems,
+but maybe we can somehow
+
+102
+00:05:32,337 --> 00:05:34,170
+characterize that the
+problems we care about
+
+103
+00:05:34,170 --> 00:05:38,780
+have some small measure, k--
+for some interesting measure k.
+
+104
+00:05:38,780 --> 00:05:41,126
+If such an algorithm is
+possible and, in practice,
+
+105
+00:05:41,126 --> 00:05:42,750
+your k's are small,
+then you're golden.
+
+106
+00:05:42,750 --> 00:05:44,124
+These give really
+good algorithms
+
+107
+00:05:44,124 --> 00:05:46,250
+for solving lots of problems.
+
+108
+00:05:46,250 --> 00:05:50,160
+Any problem in FPT, if k
+is somewhat reasonable,
+
+109
+00:05:50,160 --> 00:05:52,310
+even when n is huge, we
+can solve the problem.
+
+110
+00:05:52,310 --> 00:05:55,340
+
+111
+00:05:55,340 --> 00:05:59,630
+This running time is also
+polynomial for fixed k,
+
+112
+00:05:59,630 --> 00:06:02,640
+but the polynomial
+changes depending on k.
+
+113
+00:06:02,640 --> 00:06:04,920
+So here, we typically get
+linear time algorithms
+
+114
+00:06:04,920 --> 00:06:06,390
+for any fixed k.
+
+115
+00:06:06,390 --> 00:06:08,440
+Here, as k increases,
+the polynomial
+
+116
+00:06:08,440 --> 00:06:09,490
+gets bigger and bigger.
+
+117
+00:06:09,490 --> 00:06:11,220
+And in practice,
+you probably can't
+
+118
+00:06:11,220 --> 00:06:14,460
+handle more than an n squared
+algorithm for a large n.
+
+119
+00:06:14,460 --> 00:06:17,840
+So this is considered not
+useful even for small k.
+
+120
+00:06:17,840 --> 00:06:20,360
+This is considered very
+useful for small k,
+
+121
+00:06:20,360 --> 00:06:24,240
+depending on your notion
+of small, of course.
+
+122
+00:06:24,240 --> 00:06:27,190
+And parameterized complexity,
+the main name of the game
+
+123
+00:06:27,190 --> 00:06:29,820
+is distinguishing between FPT.
+
+124
+00:06:29,820 --> 00:06:33,810
+And XP is actually rather large,
+but distinguishing between when
+
+125
+00:06:33,810 --> 00:06:35,945
+this is possible and
+when it is impossible.
+
+126
+00:06:35,945 --> 00:06:39,780
+
+127
+00:06:39,780 --> 00:06:40,280
+Cool.
+
+128
+00:06:40,280 --> 00:06:44,051
+So for example,
+vertex cover is FPT.
+
+129
+00:06:44,051 --> 00:06:46,300
+Vertex cover with respect
+to crossing number, I think,
+
+130
+00:06:46,300 --> 00:06:47,130
+is FPT.
+
+131
+00:06:47,130 --> 00:06:49,580
+I have to think about
+that a little bit more.
+
+132
+00:06:49,580 --> 00:06:55,460
+AUDIENCE: Can you say what
+XP and FPT roughly stand for?
+
+133
+00:06:55,460 --> 00:06:57,950
+PROFESSOR: Oh, right.
+
+134
+00:06:57,950 --> 00:07:02,290
+FPT is fixed
+parameter tractable.
+
+135
+00:07:02,290 --> 00:07:03,650
+That's the good word.
+
+136
+00:07:03,650 --> 00:07:07,250
+
+137
+00:07:07,250 --> 00:07:10,290
+intuitive--
+etymological that means
+
+138
+00:07:10,290 --> 00:07:13,860
+when you fix the parameter k,
+you get a tractable problem
+
+139
+00:07:13,860 --> 00:07:16,800
+although it's a strong
+sense of tractable.
+
+140
+00:07:16,800 --> 00:07:19,910
+You can say it is n
+squared for any fixed k.
+
+141
+00:07:19,910 --> 00:07:22,070
+Or, it's n to the
+fifth for any fixed k.
+
+142
+00:07:22,070 --> 00:07:24,820
+This constant does
+not depend on k.
+
+143
+00:07:24,820 --> 00:07:28,220
+
+144
+00:07:28,220 --> 00:07:29,480
+But the lead constant does.
+
+145
+00:07:29,480 --> 00:07:33,220
+
+146
+00:07:33,220 --> 00:07:35,240
+So that's FPT.
+
+147
+00:07:35,240 --> 00:07:40,480
+XP, experience points.
+
+148
+00:07:40,480 --> 00:07:46,547
+
+149
+00:07:46,547 --> 00:07:47,130
+Good question.
+
+150
+00:07:47,130 --> 00:07:49,730
+
+151
+00:07:49,730 --> 00:07:51,260
+One other good thing to know.
+
+152
+00:07:51,260 --> 00:07:53,940
+
+153
+00:07:53,940 --> 00:07:58,340
+You might wonder why f
+of k times polynomial n.
+
+154
+00:07:58,340 --> 00:08:02,850
+Maybe I could hope for better
+like f of k plus polynomial n.
+
+155
+00:08:02,850 --> 00:08:06,040
+That actually is the same class.
+
+156
+00:08:06,040 --> 00:08:11,940
+So FPT also equals the set
+of all parameterized problems
+
+157
+00:08:11,940 --> 00:08:20,810
+solvable in f of k
+plus n to order 1.
+
+158
+00:08:20,810 --> 00:08:22,060
+That's a nice general theorem.
+
+159
+00:08:22,060 --> 00:08:23,520
+I won't bother proving it here.
+
+160
+00:08:23,520 --> 00:08:26,680
+I think the f ends up becoming
+square of the original f.
+
+161
+00:08:26,680 --> 00:08:28,910
+It's a very easy case
+analysis based on whether
+
+162
+00:08:28,910 --> 00:08:31,876
+which of these two
+things is bigger.
+
+163
+00:08:31,876 --> 00:08:33,250
+I will leave that
+as an exercise.
+
+164
+00:08:33,250 --> 00:08:34,875
+It would be a good
+problem set problem.
+
+165
+00:08:34,875 --> 00:08:37,960
+
+166
+00:08:37,960 --> 00:08:43,890
+Cool, so that answers
+one plausible question.
+
+167
+00:08:43,890 --> 00:08:46,020
+Let me give you an example
+of an FPT algorithm,
+
+168
+00:08:46,020 --> 00:08:49,260
+let's say, for vertex cover.
+
+169
+00:08:49,260 --> 00:08:53,740
+So back over here
+to vertex cover.
+
+170
+00:08:53,740 --> 00:08:56,740
+How about an XP algorithm
+for vertex cover.
+
+171
+00:08:56,740 --> 00:09:00,070
+So that's really easy,
+not very interesting.
+
+172
+00:09:00,070 --> 00:09:04,110
+You could just guess a vertex
+cover, try all possible vertex
+
+173
+00:09:04,110 --> 00:09:05,190
+covers of size k.
+
+174
+00:09:05,190 --> 00:09:07,523
+Remember, we want to know
+whether there's a vertex cover
+
+175
+00:09:07,523 --> 00:09:10,870
+size k. k is given
+to us, so we could
+
+176
+00:09:10,870 --> 00:09:15,480
+try all vertex covers--
+or, I shouldn't
+
+177
+00:09:15,480 --> 00:09:18,810
+say that-- all vertex
+sets of size k.
+
+178
+00:09:18,810 --> 00:09:23,160
+
+179
+00:09:23,160 --> 00:09:25,620
+There's only n to the k of them.
+
+180
+00:09:25,620 --> 00:09:28,970
+And for each of them,
+we'll spend linear time
+
+181
+00:09:28,970 --> 00:09:30,770
+to check whether
+it's a vertex cover.
+
+182
+00:09:30,770 --> 00:09:33,740
+So this proves that
+the problem is in XP.
+
+183
+00:09:33,740 --> 00:09:34,640
+That's trivial.
+
+184
+00:09:34,640 --> 00:09:36,480
+Most problems you'll
+find are in XP
+
+185
+00:09:36,480 --> 00:09:38,710
+with reasonable
+parameterization.
+
+186
+00:09:38,710 --> 00:09:41,150
+On some, it's not obvious.
+
+187
+00:09:41,150 --> 00:09:44,214
+And now, let's prove
+that it's in FPT.
+
+188
+00:09:44,214 --> 00:09:45,630
+This is a little
+more interesting.
+
+189
+00:09:45,630 --> 00:09:47,730
+There are lots of FPT
+algorithms for vertex cover.
+
+190
+00:09:47,730 --> 00:09:49,100
+It's an active area.
+
+191
+00:09:49,100 --> 00:09:52,130
+Every year there's a better
+algorithm pretty much.
+
+192
+00:09:52,130 --> 00:09:52,988
+Question?
+
+193
+00:09:52,988 --> 00:09:56,264
+AUDIENCE: So in the inputs of
+the problem, the k is an input?
+
+194
+00:09:56,264 --> 00:09:58,899
+
+195
+00:09:58,899 --> 00:10:00,690
+PROFESSOR: For vertex
+cover, k is an input.
+
+196
+00:10:00,690 --> 00:10:02,742
+AUDIENCE: Oh, because you
+can also think of vertex
+
+197
+00:10:02,742 --> 00:10:03,882
+cover where k is not
+an input, but you
+
+198
+00:10:03,882 --> 00:10:04,794
+can analyze the run time.
+
+199
+00:10:04,794 --> 00:10:05,250
+PROFESSOR: Yes.
+
+200
+00:10:05,250 --> 00:10:05,749
+Right.
+
+201
+00:10:05,749 --> 00:10:13,490
+So you could also think about
+vertex cover with respect
+
+202
+00:10:13,490 --> 00:10:16,680
+to vertex cover.
+
+203
+00:10:16,680 --> 00:10:21,350
+So here, let's say-- this
+is a little bit funny,
+
+204
+00:10:21,350 --> 00:10:27,010
+but here the idea
+is k, the parameter,
+
+205
+00:10:27,010 --> 00:10:28,940
+is the minimum vertex cover.
+
+206
+00:10:28,940 --> 00:10:31,250
+Let me write minimum
+vertex cover.
+
+207
+00:10:31,250 --> 00:10:33,420
+And here, you're given
+some other value.
+
+208
+00:10:33,420 --> 00:10:34,820
+Let's call it j.
+
+209
+00:10:34,820 --> 00:10:38,460
+And you want to decide whether
+vertex cover is at most j,
+
+210
+00:10:38,460 --> 00:10:40,010
+but you're not told what k is.
+
+211
+00:10:40,010 --> 00:10:42,510
+You're not told what
+the optimal value is.
+
+212
+00:10:42,510 --> 00:10:43,940
+So this is a little bit subtle.
+
+213
+00:10:43,940 --> 00:10:45,490
+It's essentially
+the same problem.
+
+214
+00:10:45,490 --> 00:10:51,310
+You're just not told
+the critical value.
+
+215
+00:10:51,310 --> 00:10:56,180
+But if you can solve k
+vertex cover when k is given,
+
+216
+00:10:56,180 --> 00:10:59,910
+you can just run that
+algorithm for k equals 1, 2, 4,
+
+217
+00:10:59,910 --> 00:11:01,790
+and you'll end up
+solving this problem.
+
+218
+00:11:01,790 --> 00:11:04,330
+So even though--
+so in this problem,
+
+219
+00:11:04,330 --> 00:11:07,060
+you can say, well, if I discover
+there's no vertex cover of size
+
+220
+00:11:07,060 --> 00:11:09,530
+k, I can just return no.
+
+221
+00:11:09,530 --> 00:11:11,940
+Here, it's a little
+more annoying, but just
+
+222
+00:11:11,940 --> 00:11:14,766
+by iterating and stopping when
+you get the first vertex cover,
+
+223
+00:11:14,766 --> 00:11:16,140
+your algorithm
+will end up having
+
+224
+00:11:16,140 --> 00:11:18,020
+a good running time
+with respect to k
+
+225
+00:11:18,020 --> 00:11:19,940
+even though you didn't know it.
+
+226
+00:11:19,940 --> 00:11:21,120
+So it's a subtlety.
+
+227
+00:11:21,120 --> 00:11:23,080
+In general, this is
+messy to work with,
+
+228
+00:11:23,080 --> 00:11:25,650
+so we usually think
+about k being an input.
+
+229
+00:11:25,650 --> 00:11:28,820
+But that reduction shows
+they're more or less the same.
+
+230
+00:11:28,820 --> 00:11:31,160
+But the complexity theory
+for this is annoying.
+
+231
+00:11:31,160 --> 00:11:35,300
+In the same way that for NP, we
+restricted decision problems,
+
+232
+00:11:35,300 --> 00:11:36,960
+here we're going
+to usually restrict
+
+233
+00:11:36,960 --> 00:11:38,080
+to the natural parameter.
+
+234
+00:11:38,080 --> 00:11:41,400
+
+235
+00:11:41,400 --> 00:11:42,200
+So good question.
+
+236
+00:11:42,200 --> 00:11:44,770
+
+237
+00:11:44,770 --> 00:11:48,740
+Let me prove vertex cover is in
+FPT, so a much better running
+
+238
+00:11:48,740 --> 00:11:49,660
+time than n to the k.
+
+239
+00:11:49,660 --> 00:11:54,320
+I think I will get something
+like 2 to the k times n.
+
+240
+00:11:54,320 --> 00:11:56,760
+Look at an edge of
+the graph, any edge.
+
+241
+00:11:56,760 --> 00:11:58,500
+Pick an edge, any edge.
+
+242
+00:11:58,500 --> 00:12:00,830
+And we know for this
+to be a vertex cover,
+
+243
+00:12:00,830 --> 00:12:02,980
+one of the two endpoints
+has to be in there.
+
+244
+00:12:02,980 --> 00:12:03,620
+Which one?
+
+245
+00:12:03,620 --> 00:12:04,180
+I don't know.
+
+246
+00:12:04,180 --> 00:12:05,420
+Guess.
+
+247
+00:12:05,420 --> 00:12:10,180
+So I'm going to guess either
+the left guy or the right vertex
+
+248
+00:12:10,180 --> 00:12:12,990
+is in the vertex
+cover, and then repeat.
+
+249
+00:12:12,990 --> 00:12:15,100
+So when I put somebody
+in the vertex cover,
+
+250
+00:12:15,100 --> 00:12:18,075
+I delete all of
+the incident edges.
+
+251
+00:12:18,075 --> 00:12:21,860
+
+252
+00:12:21,860 --> 00:12:23,300
+That takes linear time.
+
+253
+00:12:23,300 --> 00:12:25,320
+Over here, I would
+delete whatever
+
+254
+00:12:25,320 --> 00:12:28,100
+edges are incident to this
+guy and the vertex itself,
+
+255
+00:12:28,100 --> 00:12:30,800
+of course.
+
+256
+00:12:30,800 --> 00:12:34,510
+And so I get a smaller graph.
+
+257
+00:12:34,510 --> 00:12:40,930
+I do this k times, so in
+general, my execution tree
+
+258
+00:12:40,930 --> 00:12:45,500
+will have two branches, every
+time I pick an edge and say,
+
+259
+00:12:45,500 --> 00:12:48,050
+do I put the left guy
+or the right guy in.
+
+260
+00:12:48,050 --> 00:12:52,746
+But I only need to worry
+about a tree of height k
+
+261
+00:12:52,746 --> 00:12:54,120
+because after I
+make k decisions,
+
+262
+00:12:54,120 --> 00:12:56,400
+I'm supposed to get a
+vertex cover of size k.
+
+263
+00:12:56,400 --> 00:12:57,900
+After I make k
+decisions, if there's
+
+264
+00:12:57,900 --> 00:12:59,441
+anything left to
+the graph that means
+
+265
+00:12:59,441 --> 00:13:02,220
+that wasn't a vertex cover of
+size k and I should backtrack.
+
+266
+00:13:02,220 --> 00:13:04,170
+So I just explore
+this tree, look
+
+267
+00:13:04,170 --> 00:13:05,530
+at all the different leaves.
+
+268
+00:13:05,530 --> 00:13:09,390
+If there's any vertex cover
+of size k, I will find it.
+
+269
+00:13:09,390 --> 00:13:13,840
+And so I only spend 2 to
+the k to explore this tree.
+
+270
+00:13:13,840 --> 00:13:15,770
+2 to the k is the size
+of the tree times n
+
+271
+00:13:15,770 --> 00:13:19,880
+because I maybe delete
+n things at every node.
+
+272
+00:13:19,880 --> 00:13:22,464
+And that's one of
+the simplest FPT
+
+273
+00:13:22,464 --> 00:13:23,630
+algorithms for vertex cover.
+
+274
+00:13:23,630 --> 00:13:25,259
+There are much
+cooler, fancier ones.
+
+275
+00:13:25,259 --> 00:13:27,050
+But this is now going
+to be about hardness,
+
+276
+00:13:27,050 --> 00:13:28,341
+so I will stop with algorithms.
+
+277
+00:13:28,341 --> 00:13:31,970
+
+278
+00:13:31,970 --> 00:13:38,270
+Also related is a
+stronger notion of PTAS.
+
+279
+00:13:38,270 --> 00:13:41,410
+
+280
+00:13:41,410 --> 00:13:45,970
+So I mentioned
+before, with PTAS, you
+
+281
+00:13:45,970 --> 00:13:51,001
+could have a running time
+something like n to the 2
+
+282
+00:13:51,001 --> 00:13:52,890
+to the 1 over epsilon--
+which is actually
+
+283
+00:13:52,890 --> 00:13:56,620
+fairly common in a lot
+of PTASes, not so great.
+
+284
+00:13:56,620 --> 00:13:59,600
+If epsilon is anything
+good, then this
+
+285
+00:13:59,600 --> 00:14:02,900
+is going to be a
+really huge polynomial.
+
+286
+00:14:02,900 --> 00:14:06,590
+Well, the corresponding
+notion in FPT land
+
+287
+00:14:06,590 --> 00:14:14,270
+is a running time
+of f of epsilon--
+
+288
+00:14:14,270 --> 00:14:15,520
+or, I'll write 1 over epsilon.
+
+289
+00:14:15,520 --> 00:14:20,130
+It doesn't matter--
+times n to the order 1.
+
+290
+00:14:20,130 --> 00:14:26,500
+So this is really saying that
+the approximation scheme is FPT
+
+291
+00:14:26,500 --> 00:14:29,250
+with respect to 1 over epsilon.
+
+292
+00:14:29,250 --> 00:14:33,130
+This is to get a 1 plus
+epsilon approximation.
+
+293
+00:14:33,130 --> 00:14:34,970
+So this is relating
+the two worlds.
+
+294
+00:14:34,970 --> 00:14:37,762
+If you want a FPT algorithm
+for approximating a problem
+
+295
+00:14:37,762 --> 00:14:39,970
+and getting within a factor
+of 1 over epsilon, if you
+
+296
+00:14:39,970 --> 00:14:42,690
+get this kind of
+running time verses
+
+297
+00:14:42,690 --> 00:14:47,440
+this kind of running time, I
+consider this good, this bad.
+
+298
+00:14:47,440 --> 00:14:53,190
+And in general, these are called
+Efficient PTASes, or EPTAS.
+
+299
+00:14:53,190 --> 00:14:56,920
+And in general, if
+you have an EPTAS,
+
+300
+00:14:56,920 --> 00:15:02,010
+you also have an FPT
+algorithm with respect
+
+301
+00:15:02,010 --> 00:15:12,980
+to the natural parameter,
+which is to basically compute
+
+302
+00:15:12,980 --> 00:15:18,680
+what the optimal value is,
+because you can let epsilon be
+
+303
+00:15:18,680 --> 00:15:26,560
+something like 1 over 2k--
+that ought to do it-- something
+
+304
+00:15:26,560 --> 00:15:29,300
+less than 1 over k.
+
+305
+00:15:29,300 --> 00:15:31,570
+You're trying to
+decide whether you
+
+306
+00:15:31,570 --> 00:15:34,140
+have a solution of less
+than or equal to k or not,
+
+307
+00:15:34,140 --> 00:15:36,380
+whether optimal is
+strictly greater than k.
+
+308
+00:15:36,380 --> 00:15:40,440
+And I said k is an
+integer, so this
+
+309
+00:15:40,440 --> 00:15:43,440
+is an integer valued problem
+you're trying to optimize.
+
+310
+00:15:43,440 --> 00:15:45,580
+And so the difference
+became k and k plus 1,
+
+311
+00:15:45,580 --> 00:15:50,262
+multiplicatively, is about
+1 plus 1 over k factor.
+
+312
+00:15:50,262 --> 00:15:52,270
+It's exactly 1 plus 1 over k.
+
+313
+00:15:52,270 --> 00:15:54,970
+So if we let epsilon be
+smaller than 1 over k,
+
+314
+00:15:54,970 --> 00:15:57,630
+then to get within a
+multiplicative factor of 1
+
+315
+00:15:57,630 --> 00:16:00,700
+plus 1/2 1 over k,
+you actually have
+
+316
+00:16:00,700 --> 00:16:04,510
+to be within an additive plus
+1 of the right answer at k.
+
+317
+00:16:04,510 --> 00:16:13,457
+So this will decide whether
+opt is less than or equal to k
+
+318
+00:16:13,457 --> 00:16:15,540
+based on whether that
+approximation algorithm will
+
+319
+00:16:15,540 --> 00:16:19,220
+give you something of value
+at most k or strictly bigger.
+
+320
+00:16:19,220 --> 00:16:22,980
+Strictly bigger
+would be k plus 1.
+
+321
+00:16:22,980 --> 00:16:25,700
+So this is particularly
+interesting
+
+322
+00:16:25,700 --> 00:16:31,130
+because it means if a
+problem is not in FPT,
+
+323
+00:16:31,130 --> 00:16:36,010
+then it does not have
+an Efficient PTAS.
+
+324
+00:16:36,010 --> 00:16:39,840
+So we can use-- before,
+in previous lectures,
+
+325
+00:16:39,840 --> 00:16:42,190
+PTAS was considered gold.
+
+326
+00:16:42,190 --> 00:16:45,240
+Now, we can distinguish
+between EPTAS and PTAS.
+
+327
+00:16:45,240 --> 00:16:47,160
+And there are problems
+that have PTASs
+
+328
+00:16:47,160 --> 00:16:50,960
+that do not have FPT
+algorithms assuming
+
+329
+00:16:50,960 --> 00:16:54,310
+FPT does not equal w1-- an
+assumption we will get to
+
+330
+00:16:54,310 --> 00:16:55,720
+in a moment.
+
+331
+00:16:55,720 --> 00:16:58,190
+So if you can, in general,
+establish something is probably
+
+332
+00:16:58,190 --> 00:17:00,690
+not in FPT, then we get
+it probably does not
+
+333
+00:17:00,690 --> 00:17:01,980
+have an Efficient PTAS.
+
+334
+00:17:01,980 --> 00:17:04,520
+So this is useful for lower
+bounds about approximation.
+
+335
+00:17:04,520 --> 00:17:07,210
+Even if you don't care about
+fixed parameter tractability,
+
+336
+00:17:07,210 --> 00:17:10,084
+this will give us cool
+things about approximability.
+
+337
+00:17:10,084 --> 00:17:14,812
+AUDIENCE: Can you give
+a few examples of EPTAS?
+
+338
+00:17:14,812 --> 00:17:16,270
+PROFESSOR: A few
+examples of EPTAS.
+
+339
+00:17:16,270 --> 00:17:19,370
+
+340
+00:17:19,370 --> 00:17:22,380
+For example, most of the planar
+results I've talked about,
+
+341
+00:17:22,380 --> 00:17:25,340
+planar independence set, planar
+vertex cover, those things all
+
+342
+00:17:25,340 --> 00:17:26,730
+have Efficient PTASs.
+
+343
+00:17:26,730 --> 00:17:29,224
+
+344
+00:17:29,224 --> 00:17:31,390
+But that gets us into the
+world of bounded treewidth
+
+345
+00:17:31,390 --> 00:17:33,010
+algorithms.
+
+346
+00:17:33,010 --> 00:17:35,740
+But in general, if you have like
+a-- a lot of bounded treewidth
+
+347
+00:17:35,740 --> 00:17:37,490
+algorithms are FPT.
+
+348
+00:17:37,490 --> 00:17:41,140
+There will be some exponential
+in treewidth times polynomial n
+
+349
+00:17:41,140 --> 00:17:43,990
+So a lot of times,
+you can use those
+
+350
+00:17:43,990 --> 00:17:47,800
+to get EPTASs for planar
+and h-minor free problems.
+
+351
+00:17:47,800 --> 00:17:49,670
+So that's one set of examples.
+
+352
+00:17:49,670 --> 00:17:51,760
+There's no short
+example I can give you,
+
+353
+00:17:51,760 --> 00:17:54,870
+but that's a big class.
+
+354
+00:17:54,870 --> 00:17:58,370
+So for either reason,
+either you want
+
+355
+00:17:58,370 --> 00:18:00,680
+to solve problems
+for small k or you
+
+356
+00:18:00,680 --> 00:18:03,320
+want to figure out
+whether there's an EPTAS,
+
+357
+00:18:03,320 --> 00:18:06,400
+how can we prove that problems
+are hard in this world using
+
+358
+00:18:06,400 --> 00:18:09,700
+reductions like usual?
+
+359
+00:18:09,700 --> 00:18:12,620
+So in this context,
+luckily, there's
+
+360
+00:18:12,620 --> 00:18:14,270
+only one type of
+reduction we need
+
+361
+00:18:14,270 --> 00:18:17,610
+to learn unlike approximation
+where there were a lot.
+
+362
+00:18:17,610 --> 00:18:22,360
+
+363
+00:18:22,360 --> 00:18:24,060
+And I'll call it
+parameterized reduction
+
+364
+00:18:24,060 --> 00:18:26,190
+although throughout this
+lecture and the next one
+
+365
+00:18:26,190 --> 00:18:29,360
+I'll just say reduction usually
+because we're always talking
+
+366
+00:18:29,360 --> 00:18:31,460
+about parameterized problems.
+
+367
+00:18:31,460 --> 00:18:35,420
+So in general, we have some
+problem A-- decision problem A
+
+368
+00:18:35,420 --> 00:18:36,830
+and parameter k.
+
+369
+00:18:36,830 --> 00:18:39,660
+And we want to convert into
+some decision problem B
+
+370
+00:18:39,660 --> 00:18:43,310
+with parameter k prime.
+
+371
+00:18:43,310 --> 00:18:48,300
+And of course, as usual,
+the set up is we're
+
+372
+00:18:48,300 --> 00:18:50,220
+given an instance x.
+
+373
+00:18:50,220 --> 00:18:54,070
+This is going to look almost
+identical to NP Karp-style
+
+374
+00:18:54,070 --> 00:18:58,090
+reductions, but then we're going
+to have one extra condition.
+
+375
+00:18:58,090 --> 00:19:00,960
+So instance x of
+A gets mapped to
+
+376
+00:19:00,960 --> 00:19:08,040
+by a function f to an
+instance x prime of B. X prime
+
+377
+00:19:08,040 --> 00:19:12,640
+is f o x as usual.
+
+378
+00:19:12,640 --> 00:19:18,650
+This needs to be a
+polynomial time function
+
+379
+00:19:18,650 --> 00:19:22,960
+just like for NP reductions,
+which means, in particular,
+
+380
+00:19:22,960 --> 00:19:26,340
+x prime has polynomials
+size reduced back to x.
+
+381
+00:19:26,340 --> 00:19:27,700
+It should be answer preserving.
+
+382
+00:19:27,700 --> 00:19:33,680
+
+383
+00:19:33,680 --> 00:19:39,840
+So x is yes instance
+for A if and only
+
+384
+00:19:39,840 --> 00:19:43,940
+x prime is a yes instance for B.
+
+385
+00:19:43,940 --> 00:19:46,980
+So, so far, exactly
+NP reductions.
+
+386
+00:19:46,980 --> 00:19:49,850
+And then when we
+need one extra thing
+
+387
+00:19:49,850 --> 00:19:52,470
+which is parameter preserving.
+
+388
+00:19:52,470 --> 00:19:58,240
+
+389
+00:19:58,240 --> 00:20:20,380
+This is there's some function
+g, which I'll call the parameter
+
+390
+00:20:20,380 --> 00:20:22,990
+blow up-- or, I guess you
+call it parameter growth
+
+391
+00:20:22,990 --> 00:20:26,490
+for g-- such that
+the new parameter
+
+392
+00:20:26,490 --> 00:20:28,950
+value for the
+converted instance is,
+
+393
+00:20:28,950 --> 00:20:31,010
+at most, that function
+of the original parameter
+
+394
+00:20:31,010 --> 00:20:32,940
+value of the original instance.
+
+395
+00:20:32,940 --> 00:20:33,440
+Question?
+
+396
+00:20:33,440 --> 00:20:35,606
+AUDIENCE: Are there any
+limits on the amount of time
+
+397
+00:20:35,606 --> 00:20:38,430
+that g can take to compute?
+
+398
+00:20:38,430 --> 00:20:41,740
+PROFESSOR: g should be
+a computable function.
+
+399
+00:20:41,740 --> 00:20:44,790
+I think that's all we need.
+
+400
+00:20:44,790 --> 00:20:47,470
+Probably polynomial
+time is also a fine,
+
+401
+00:20:47,470 --> 00:20:53,160
+but usually this is going to
+be like linear or polynomial
+
+402
+00:20:53,160 --> 00:20:54,440
+or exponential.
+
+403
+00:20:54,440 --> 00:20:57,060
+It's rarely some
+insanely large thing,
+
+404
+00:20:57,060 --> 00:20:59,000
+but computable would be nice.
+
+405
+00:20:59,000 --> 00:21:05,230
+
+406
+00:21:05,230 --> 00:21:05,990
+Cool.
+
+407
+00:21:05,990 --> 00:21:10,020
+So that is our notion of
+parameterized reduction.
+
+408
+00:21:10,020 --> 00:21:13,850
+And the consequence,
+if this exists
+
+409
+00:21:13,850 --> 00:21:16,660
+and B is fixed
+parameter tractable,
+
+410
+00:21:16,660 --> 00:21:23,640
+then A is because we can
+take an instance of A
+
+411
+00:21:23,640 --> 00:21:27,400
+converting it to B. If
+the original parameter was
+
+412
+00:21:27,400 --> 00:21:30,220
+founded by some k,
+this new parameter
+
+413
+00:21:30,220 --> 00:21:32,946
+will be bounded by g of k.
+
+414
+00:21:32,946 --> 00:21:34,570
+New instance will be
+bounded of g of k.
+
+415
+00:21:34,570 --> 00:21:37,620
+So we run the FPT
+algorithm for B,
+
+416
+00:21:37,620 --> 00:21:43,390
+and that gives us the answer
+to the original instance of A.
+
+417
+00:21:43,390 --> 00:21:51,520
+So if we don't care about
+what this function is,
+
+418
+00:21:51,520 --> 00:21:53,450
+we are basically
+composing functions.
+
+419
+00:21:53,450 --> 00:21:57,810
+So there's some f dependence
+on k in this algorithm,
+
+420
+00:21:57,810 --> 00:22:01,970
+and we're taking that function
+of g of k is our new function.
+
+421
+00:22:01,970 --> 00:22:07,110
+And we get a new dependence on
+k and the running time over FPT.
+
+422
+00:22:07,110 --> 00:22:09,200
+So what that means
+is if we believe
+
+423
+00:22:09,200 --> 00:22:13,320
+it A does not have an FPT, then
+B does not have an FPT if we
+
+424
+00:22:13,320 --> 00:22:14,320
+can do these reductions.
+
+425
+00:22:14,320 --> 00:22:15,860
+So same style, we're
+going to reduce
+
+426
+00:22:15,860 --> 00:22:18,740
+from a problem we know is
+hard, A, into a problem
+
+427
+00:22:18,740 --> 00:22:22,780
+that we don't know about, and
+that proves B is hard as well.
+
+428
+00:22:22,780 --> 00:22:23,280
+Yeah?
+
+429
+00:22:23,280 --> 00:22:24,696
+AUDIENCE: What is
+the relationship
+
+430
+00:22:24,696 --> 00:22:25,700
+between FPT and XP?
+
+431
+00:22:25,700 --> 00:22:28,412
+
+432
+00:22:28,412 --> 00:22:29,537
+Is there like a difference?
+
+433
+00:22:29,537 --> 00:22:30,161
+PROFESSOR: Yeah
+
+434
+00:22:30,161 --> 00:22:31,410
+AUDIENCE: If there's overlap.
+
+435
+00:22:31,410 --> 00:22:35,100
+PROFESSOR: Well, FPT
+is contained in XP.
+
+436
+00:22:35,100 --> 00:22:39,030
+And they are different if you
+believe the exponential time
+
+437
+00:22:39,030 --> 00:22:40,260
+hypothesis.
+
+438
+00:22:40,260 --> 00:22:42,940
+If you believe SAT
+does not have two
+
+439
+00:22:42,940 --> 00:22:49,790
+to the little of n algorithms--
+if that's not possible for SAT,
+
+440
+00:22:49,790 --> 00:22:53,957
+then XP and FPT are different,
+and much, much more things
+
+441
+00:22:53,957 --> 00:22:54,540
+are different.
+
+442
+00:22:54,540 --> 00:22:57,820
+But we'll talk about that
+more next class-- relating
+
+443
+00:22:57,820 --> 00:23:00,040
+to exponential time hypothesis.
+
+444
+00:23:00,040 --> 00:23:03,830
+So at this moment, we don't
+really care what g is.
+
+445
+00:23:03,830 --> 00:23:06,520
+But if you assume
+exponential time hypothesis,
+
+446
+00:23:06,520 --> 00:23:11,300
+then g matters, and you
+can get very explicit lower
+
+447
+00:23:11,300 --> 00:23:15,760
+bounds about how good an
+algorithm you could hope for.
+
+448
+00:23:15,760 --> 00:23:18,660
+So we won't just prove you're
+probably not an-- we won't just
+
+449
+00:23:18,660 --> 00:23:21,525
+prove you're not an FPT, but we
+will give an actual lower bound
+
+450
+00:23:21,525 --> 00:23:23,180
+and how much running
+time you need,
+
+451
+00:23:23,180 --> 00:23:25,100
+something like n
+to the little k.
+
+452
+00:23:25,100 --> 00:23:27,680
+But the running time we get
+will depend on this blow
+
+453
+00:23:27,680 --> 00:23:28,840
+up function.
+
+454
+00:23:28,840 --> 00:23:31,820
+So next class, we'll
+care about what g is.
+
+455
+00:23:31,820 --> 00:23:35,540
+So I do try to minimize it,
+but so far we don't care.
+
+456
+00:23:35,540 --> 00:23:36,516
+Any g is fine.
+
+457
+00:23:36,516 --> 00:23:42,120
+
+458
+00:23:42,120 --> 00:23:44,070
+XP will not turn
+out to be the class
+
+459
+00:23:44,070 --> 00:23:45,390
+that we think about very often.
+
+460
+00:23:45,390 --> 00:23:48,270
+There are things in between that
+are a lot easier to work with,
+
+461
+00:23:48,270 --> 00:23:49,550
+which we will get to.
+
+462
+00:23:49,550 --> 00:23:54,040
+In particular, W1
+is the most common.
+
+463
+00:23:54,040 --> 00:23:57,330
+So let me do two examples.
+
+464
+00:23:57,330 --> 00:24:00,370
+One of which is a correct
+example and the other is not.
+
+465
+00:24:00,370 --> 00:24:03,080
+And you can help me
+figure out which is which.
+
+466
+00:24:03,080 --> 00:24:06,650
+Independent set to
+vertex cover, these
+
+467
+00:24:06,650 --> 00:24:08,340
+are reductions
+we've seen before.
+
+468
+00:24:08,340 --> 00:24:10,290
+We have tons of
+reductions, but usually we
+
+469
+00:24:10,290 --> 00:24:12,330
+weren't thinking
+about parameters.
+
+470
+00:24:12,330 --> 00:24:18,040
+And independent set
+to clique, these
+
+471
+00:24:18,040 --> 00:24:21,590
+are basically identical
+problems left and right.
+
+472
+00:24:21,590 --> 00:24:24,040
+And I want the
+natural parameter.
+
+473
+00:24:24,040 --> 00:24:28,089
+Which of these is a parameter
+preserving reduction?
+
+474
+00:24:28,089 --> 00:24:29,255
+I need some quiz show music.
+
+475
+00:24:29,255 --> 00:24:34,742
+
+476
+00:24:34,742 --> 00:24:35,690
+AUDIENCE: The second.
+
+477
+00:24:35,690 --> 00:24:37,440
+PROFESSOR: The second, yeah.
+
+478
+00:24:37,440 --> 00:24:40,080
+Because if we take a
+graph and a parameter k,
+
+479
+00:24:40,080 --> 00:24:43,120
+what we convert it to
+is the complement graph
+
+480
+00:24:43,120 --> 00:24:45,700
+with the same parameter.
+
+481
+00:24:45,700 --> 00:24:47,840
+So that's obviously
+parameter preserving.
+
+482
+00:24:47,840 --> 00:24:50,090
+Whereas independence
+set, these are
+
+483
+00:24:50,090 --> 00:24:51,730
+complementary in
+a different sense
+
+484
+00:24:51,730 --> 00:24:54,146
+that if you take everything
+that's not in the independence
+
+485
+00:24:54,146 --> 00:24:55,250
+set is a vertex cover.
+
+486
+00:24:55,250 --> 00:24:58,440
+So it's actually the same
+graph but with n minus k
+
+487
+00:24:58,440 --> 00:25:00,040
+as the new parameter.
+
+488
+00:25:00,040 --> 00:25:04,450
+So this is not a
+parameterized reduction.
+
+489
+00:25:04,450 --> 00:25:07,570
+This is.
+
+490
+00:25:07,570 --> 00:25:12,410
+And in fact, vertex cover,
+we just showed is FPT.
+
+491
+00:25:12,410 --> 00:25:17,640
+Independence set is not, if you
+believe w1 does not equal FPT
+
+492
+00:25:17,640 --> 00:25:20,990
+or if you believe
+exponential time hypothesis.
+
+493
+00:25:20,990 --> 00:25:23,840
+And that would contradict
+this statement.
+
+494
+00:25:23,840 --> 00:25:27,006
+So this is definitely
+not a valid reduction.
+
+495
+00:25:27,006 --> 00:25:28,880
+But those are some pretty
+trivial reductions.
+
+496
+00:25:28,880 --> 00:25:34,960
+Let's do some more
+interesting things.
+
+497
+00:25:34,960 --> 00:25:37,310
+And I want to start to
+introduce the notion of w1.
+
+498
+00:25:37,310 --> 00:26:02,400
+
+499
+00:26:02,400 --> 00:26:05,040
+I won't define w1 yet.
+
+500
+00:26:05,040 --> 00:26:07,980
+I'd like to wait a little bit
+because the definition is not
+
+501
+00:26:07,980 --> 00:26:12,400
+super intuitive, but here is a
+fairly intuitive hard problem
+
+502
+00:26:12,400 --> 00:26:17,630
+that you should be fairly
+convinced is not FPT.
+
+503
+00:26:17,630 --> 00:26:25,641
+So I'll call this k-step
+non-deterministic Turing
+
+504
+00:26:25,641 --> 00:26:26,140
+machine.
+
+505
+00:26:26,140 --> 00:26:31,770
+
+506
+00:26:31,770 --> 00:26:34,950
+The one downside is I've never
+mentioned Turing machines
+
+507
+00:26:34,950 --> 00:26:35,640
+in this class.
+
+508
+00:26:35,640 --> 00:26:37,670
+I thought I could
+get away without it,
+
+509
+00:26:37,670 --> 00:26:39,290
+but I'm going to
+have mention them.
+
+510
+00:26:39,290 --> 00:26:41,575
+How many people
+know what they are?
+
+511
+00:26:41,575 --> 00:26:44,210
+Anyone does not?
+
+512
+00:26:44,210 --> 00:26:45,960
+OK, a couple.
+
+513
+00:26:45,960 --> 00:26:48,280
+Here's a Turing machine.
+
+514
+00:26:48,280 --> 00:26:52,090
+I will give you, very briefly,
+a very non-standard definition
+
+515
+00:26:52,090 --> 00:26:52,980
+of a Turing machine.
+
+516
+00:26:52,980 --> 00:26:56,320
+Let's think of-- so you
+have this infinite tape,
+
+517
+00:26:56,320 --> 00:26:59,380
+infinite memory, and
+for our purposes,
+
+518
+00:26:59,380 --> 00:27:01,270
+these are not just
+binary symbols,
+
+519
+00:27:01,270 --> 00:27:05,270
+you can write up to n different
+symbols on each of the squares.
+
+520
+00:27:05,270 --> 00:27:07,100
+So this is basically
+your memory,
+
+521
+00:27:07,100 --> 00:27:09,840
+but it's in the style of
+old-fashioned tape drives
+
+522
+00:27:09,840 --> 00:27:13,660
+in that you-- In order to get
+to position k away from you,
+
+523
+00:27:13,660 --> 00:27:14,780
+you have to spin k time.
+
+524
+00:27:14,780 --> 00:27:17,220
+So you can only step
+one unit at a time.
+
+525
+00:27:17,220 --> 00:27:22,130
+And this is basically
+computers that we are used to.
+
+526
+00:27:22,130 --> 00:27:25,240
+So let's say it has a
+sequence of instructions,
+
+527
+00:27:25,240 --> 00:27:27,070
+and it has an
+instruction pointer.
+
+528
+00:27:27,070 --> 00:27:31,770
+And in general, I
+want to the machine
+
+529
+00:27:31,770 --> 00:27:41,350
+to have order n
+stateS-- yeah, let's say
+
+530
+00:27:41,350 --> 00:27:58,147
+order n lines of code and order
+n options per cell of the tape.
+
+531
+00:27:58,147 --> 00:27:59,730
+This will look
+actually a little weird
+
+532
+00:27:59,730 --> 00:28:02,250
+if you're used to
+Turing machines,
+
+533
+00:28:02,250 --> 00:28:03,870
+but I want to use
+this definition.
+
+534
+00:28:03,870 --> 00:28:05,650
+So it's basically a
+regular algorithm,
+
+535
+00:28:05,650 --> 00:28:07,440
+but you're very limited
+the number-- in the amount
+
+536
+00:28:07,440 --> 00:28:08,190
+of internal state.
+
+537
+00:28:08,190 --> 00:28:10,400
+These are basically
+registers, but you
+
+538
+00:28:10,400 --> 00:28:12,570
+can have only a constant
+number of registers
+
+539
+00:28:12,570 --> 00:28:14,170
+that vary from one to n.
+
+540
+00:28:14,170 --> 00:28:16,960
+One of them will be what
+line of code are you on.
+
+541
+00:28:16,960 --> 00:28:20,890
+And then you have those lines of
+code are instructions like jump
+
+542
+00:28:20,890 --> 00:28:25,250
+here, compare these things,
+write a particular symbol
+
+543
+00:28:25,250 --> 00:28:28,140
+to the current square of the
+tape, move the tape left,
+
+544
+00:28:28,140 --> 00:28:29,010
+move the tape right.
+
+545
+00:28:29,010 --> 00:28:32,350
+So regular types of
+instructions, let's
+
+546
+00:28:32,350 --> 00:28:35,540
+say, except you have
+this weird tape thing.
+
+547
+00:28:35,540 --> 00:28:37,725
+Now, I mentioned
+these parameters.
+
+548
+00:28:37,725 --> 00:28:39,350
+And usually we think
+of Turing machines
+
+549
+00:28:39,350 --> 00:28:42,150
+of having constant size,
+but here I need an n,
+
+550
+00:28:42,150 --> 00:28:43,590
+and I need a k.
+
+551
+00:28:43,590 --> 00:28:44,340
+Question?
+
+552
+00:28:44,340 --> 00:28:45,600
+AUDIENCE: I was going
+to ask what n was.
+
+553
+00:28:45,600 --> 00:28:46,183
+PROFESSOR: OK.
+
+554
+00:28:46,183 --> 00:28:47,562
+So n is the input.
+
+555
+00:28:47,562 --> 00:28:49,020
+I mean basically
+the Turing machine
+
+556
+00:28:49,020 --> 00:28:50,990
+is specified by these things.
+
+557
+00:28:50,990 --> 00:28:54,640
+You have order n
+instructions, and we're
+
+558
+00:28:54,640 --> 00:28:58,150
+guaranteed there's only order
+n possible states, let's say.
+
+559
+00:28:58,150 --> 00:29:01,380
+And now what we-- and this is
+a non-deterministic machine.
+
+560
+00:29:01,380 --> 00:29:03,560
+Now non-determinism, we
+have talked about this
+
+561
+00:29:03,560 --> 00:29:05,100
+in the context of NP.
+
+562
+00:29:05,100 --> 00:29:08,630
+A non-deterministic
+Turing machine
+
+563
+00:29:08,630 --> 00:29:11,140
+has a funny
+instruction which says
+
+564
+00:29:11,140 --> 00:29:14,840
+non-deterministically branch
+to one of n different locations
+
+565
+00:29:14,840 --> 00:29:16,560
+in my memory.
+
+566
+00:29:16,560 --> 00:29:19,700
+Or, let's say choose
+a symbol from my-- I
+
+567
+00:29:19,700 --> 00:29:24,040
+have this alphabet that
+I'm using in my cell--
+
+568
+00:29:24,040 --> 00:29:27,530
+choose a symbol
+non-deterministically.
+
+569
+00:29:27,530 --> 00:29:35,280
+So I have order n choices
+made non-deterministically.
+
+570
+00:29:35,280 --> 00:29:37,830
+In the usual sense of
+NP, that if there's
+
+571
+00:29:37,830 --> 00:29:39,630
+any way for the Turing
+machine to output,
+
+572
+00:29:39,630 --> 00:29:43,410
+yes-- one of the instructions
+is output, yes-- then,
+
+573
+00:29:43,410 --> 00:29:45,349
+I will find it.
+
+574
+00:29:45,349 --> 00:29:46,890
+These are guesses,
+and they're always
+
+575
+00:29:46,890 --> 00:29:49,640
+lucky guesses, so I always
+end up finding the return,
+
+576
+00:29:49,640 --> 00:29:51,460
+yes, if there is such a path.
+
+577
+00:29:51,460 --> 00:29:54,390
+Otherwise, all paths return, no,
+and then the machine returns,
+
+578
+00:29:54,390 --> 00:29:55,951
+no.
+
+579
+00:29:55,951 --> 00:29:56,450
+Yeah?
+
+580
+00:29:56,450 --> 00:29:58,616
+AUDIENCE: What does it mean
+for the number of states
+
+581
+00:29:58,616 --> 00:30:00,180
+to change as the input changes?
+
+582
+00:30:00,180 --> 00:30:04,820
+PROFESSOR: I mean the
+states are also given to you
+
+583
+00:30:04,820 --> 00:30:06,730
+as part of the Turing machine.
+
+584
+00:30:06,730 --> 00:30:08,743
+There's not one
+turning machine-- well,
+
+585
+00:30:08,743 --> 00:30:10,993
+there is actually one Turing
+machine to rule them all,
+
+586
+00:30:10,993 --> 00:30:13,480
+but that's not the point here.
+
+587
+00:30:13,480 --> 00:30:17,900
+I give you a machine that has--
+think of this as firmware built
+
+588
+00:30:17,900 --> 00:30:20,810
+into the machine, and the
+number of states in the machine
+
+589
+00:30:20,810 --> 00:30:24,540
+includes which instruction
+you're currently executing.
+
+590
+00:30:24,540 --> 00:30:26,040
+So I mean this is
+just saying you're
+
+591
+00:30:26,040 --> 00:30:29,710
+given an arbitrary machine
+of size-- of complexity n.
+
+592
+00:30:29,710 --> 00:30:31,400
+And usual Turing
+machine land, there
+
+593
+00:30:31,400 --> 00:30:35,140
+are n states because I give you
+a state diagram with size n.
+
+594
+00:30:35,140 --> 00:30:37,730
+So you're given everything
+about the Turing machine.
+
+595
+00:30:37,730 --> 00:30:40,330
+So that is the input
+to this problem.
+
+596
+00:30:40,330 --> 00:30:45,590
+And the question is, can
+I find a return, yes,
+
+597
+00:30:45,590 --> 00:30:48,690
+solution that only
+is k steps long.
+
+598
+00:30:48,690 --> 00:30:51,170
+So I'm given this huge
+machine, and yet I
+
+599
+00:30:51,170 --> 00:30:53,710
+want a very short
+execution of the machine.
+
+600
+00:30:53,710 --> 00:30:57,400
+I want the running time to only
+be k. k, again, is parameter.
+
+601
+00:30:57,400 --> 00:30:59,540
+n is big. k is small.
+
+602
+00:30:59,540 --> 00:31:07,640
+So I want to know is there a
+yes path from the initial state
+
+603
+00:31:07,640 --> 00:31:09,795
+of length k.
+
+604
+00:31:09,795 --> 00:31:15,020
+
+605
+00:31:15,020 --> 00:31:17,970
+So this is basically--
+Yeah, question?
+
+606
+00:31:17,970 --> 00:31:21,240
+AUDIENCE: Are you given the
+input to the Turing machine?
+
+607
+00:31:21,240 --> 00:31:23,856
+PROFESSOR: Yeah, let's
+say it has no input.
+
+608
+00:31:23,856 --> 00:31:26,650
+Input is all
+embedded in the code.
+
+609
+00:31:26,650 --> 00:31:30,710
+So the tape is initially blank.
+
+610
+00:31:30,710 --> 00:31:32,217
+Good.
+
+611
+00:31:32,217 --> 00:31:34,300
+There's a reason I need
+to do Turing machines here
+
+612
+00:31:34,300 --> 00:31:38,000
+instead of usual algorithms,
+but if you define-- usually
+
+613
+00:31:38,000 --> 00:31:40,310
+NP is defined in
+terms of these things.
+
+614
+00:31:40,310 --> 00:31:45,470
+So by analogy to NP, we expect
+there are no lucky algorithms.
+
+615
+00:31:45,470 --> 00:31:48,002
+And so we expect
+that when you have
+
+616
+00:31:48,002 --> 00:31:50,210
+non-deterministic branches,
+the best thing you can do
+
+617
+00:31:50,210 --> 00:31:51,980
+is to try all the branches.
+
+618
+00:31:51,980 --> 00:31:55,680
+And so if I have an execution
+time of k, and at each step,
+
+619
+00:31:55,680 --> 00:31:57,780
+I can potentially make a
+non-deterministic choice
+
+620
+00:31:57,780 --> 00:32:00,950
+among n different
+options, then you
+
+621
+00:32:00,950 --> 00:32:04,780
+would expect the best
+algorithm is n to the k.
+
+622
+00:32:04,780 --> 00:32:08,420
+Try all the branches, that's
+just like our vertex cover
+
+623
+00:32:08,420 --> 00:32:12,430
+algorithm, but in the bad case
+where I have branching factor n
+
+624
+00:32:12,430 --> 00:32:14,760
+instead of branching factor 2.
+
+625
+00:32:14,760 --> 00:32:18,480
+So presumably, there's no way to
+replace a guess among n options
+
+626
+00:32:18,480 --> 00:32:22,170
+with a guess among two options.
+
+627
+00:32:22,170 --> 00:32:24,180
+That's an assumption.
+
+628
+00:32:24,180 --> 00:32:32,310
+And this problem is w1 complete.
+
+629
+00:32:32,310 --> 00:32:35,170
+I will to define
+w1 a little later,
+
+630
+00:32:35,170 --> 00:32:37,210
+but for now, just
+take this as given.
+
+631
+00:32:37,210 --> 00:32:40,180
+You could define w1
+complete to mean problems
+
+632
+00:32:40,180 --> 00:32:42,520
+that are reducible via
+parameterized reductions
+
+633
+00:32:42,520 --> 00:32:44,220
+to this problem.
+
+634
+00:32:44,220 --> 00:32:46,770
+And then we'll get lots
+of examples of problems
+
+635
+00:32:46,770 --> 00:32:48,420
+that are as hard as this.
+
+636
+00:32:48,420 --> 00:32:51,110
+
+637
+00:32:51,110 --> 00:32:54,720
+So a modulo the
+annoyance of having
+
+638
+00:32:54,720 --> 00:32:56,830
+to define Turing
+machines, I think
+
+639
+00:32:56,830 --> 00:33:00,280
+this is a pretty
+natural assumption.
+
+640
+00:33:00,280 --> 00:33:02,120
+It's stronger than
+p does not equal NP,
+
+641
+00:33:02,120 --> 00:33:05,700
+so we would imply that.
+
+642
+00:33:05,700 --> 00:33:09,926
+So let's do some
+simple reductions--
+
+643
+00:33:09,926 --> 00:33:11,690
+some reductions,
+maybe not simple.
+
+644
+00:33:11,690 --> 00:33:16,240
+
+645
+00:33:16,240 --> 00:33:19,740
+So I mentioned this
+problem independent set.
+
+646
+00:33:19,740 --> 00:33:23,480
+That's also w1 complete.
+
+647
+00:33:23,480 --> 00:33:28,690
+And to prove, first of
+all, that it's w1 hard,
+
+648
+00:33:28,690 --> 00:33:33,150
+I'm going to reduce this
+problem to independent set.
+
+649
+00:33:33,150 --> 00:33:36,590
+So I'm given a Turing
+machine and a number k.
+
+650
+00:33:36,590 --> 00:33:39,030
+I want to convert
+it into a graph,
+
+651
+00:33:39,030 --> 00:33:40,710
+and a number k such
+that if there's
+
+652
+00:33:40,710 --> 00:33:42,830
+an independent set of
+size k in that graph,
+
+653
+00:33:42,830 --> 00:33:44,380
+at most k in that
+graph if and only
+
+654
+00:33:44,380 --> 00:33:48,170
+if there's an accept
+path of length at most
+
+655
+00:33:48,170 --> 00:33:51,320
+k in the Turing machine.
+
+656
+00:33:51,320 --> 00:33:52,960
+So I'm going to skip
+a lot of details
+
+657
+00:33:52,960 --> 00:33:55,710
+because I've been a little vague
+about how Turing machines work,
+
+658
+00:33:55,710 --> 00:33:58,639
+but the idea is nice.
+
+659
+00:33:58,639 --> 00:34:12,239
+
+660
+00:34:12,239 --> 00:34:16,719
+So my graph is actually
+going to consist mostly
+
+661
+00:34:16,719 --> 00:34:20,980
+of k squared cliques.
+
+662
+00:34:20,980 --> 00:34:23,670
+The cliques are actually quite
+large because this graph has
+
+663
+00:34:23,670 --> 00:34:27,570
+size n, total size, but
+there's going to be k squared
+
+664
+00:34:27,570 --> 00:34:30,201
+clusters, which are cliques.
+
+665
+00:34:30,201 --> 00:34:35,350
+Plus cliques, not very many
+different cliques, only k
+
+666
+00:34:35,350 --> 00:34:36,280
+squared of them.
+
+667
+00:34:36,280 --> 00:34:39,880
+And my target independent
+set is size k squared,
+
+668
+00:34:39,880 --> 00:34:42,330
+which means if there's going
+to be an independent set,
+
+669
+00:34:42,330 --> 00:34:45,640
+I must choose exactly one
+vertex from each clique.
+
+670
+00:34:45,640 --> 00:34:48,370
+
+671
+00:34:48,370 --> 00:34:54,920
+So one vertex per clique.
+
+672
+00:34:54,920 --> 00:34:57,037
+Independence that has to
+have no edges among them.
+
+673
+00:34:57,037 --> 00:34:58,620
+So if I chose two
+from a clique, there
+
+674
+00:34:58,620 --> 00:35:02,920
+would be an edge among
+them, that's disallowed.
+
+675
+00:35:02,920 --> 00:35:06,070
+And so the cliques I'm
+going to parameterize
+
+676
+00:35:06,070 --> 00:35:10,060
+by two parameters i and
+j between one and k.
+
+677
+00:35:10,060 --> 00:35:25,650
+And the idea is that ij
+represents memory cell i
+
+678
+00:35:25,650 --> 00:35:31,380
+at time j plus the
+state of the machine.
+
+679
+00:35:31,380 --> 00:35:40,080
+
+680
+00:35:40,080 --> 00:35:45,650
+So what I mean is there are
+order n states in the machine,
+
+681
+00:35:45,650 --> 00:35:47,540
+in general, that
+completely characterize
+
+682
+00:35:47,540 --> 00:35:50,710
+what the machine is about to do
+and what it's thinking about,
+
+683
+00:35:50,710 --> 00:35:52,017
+all of its internal state.
+
+684
+00:35:52,017 --> 00:35:53,850
+And so I'm just going
+to take those n states
+
+685
+00:35:53,850 --> 00:35:55,550
+and plop them in.
+
+686
+00:35:55,550 --> 00:35:59,065
+And each node in this clique
+represents one of those states.
+
+687
+00:35:59,065 --> 00:36:01,680
+
+688
+00:36:01,680 --> 00:36:07,720
+But also I want to keep track
+of what symbol is written
+
+689
+00:36:07,720 --> 00:36:09,440
+on that square of the tape.
+
+690
+00:36:09,440 --> 00:36:12,184
+And so, in general,
+my running time
+
+691
+00:36:12,184 --> 00:36:14,350
+is bounded by k-- also the
+number of squares I write
+
+692
+00:36:14,350 --> 00:36:15,516
+to the tape is bounded by k.
+
+693
+00:36:15,516 --> 00:36:17,690
+Space is at most
+time-- so I only
+
+694
+00:36:17,690 --> 00:36:23,430
+have to worry about k different
+cells for times 1 up to k.
+
+695
+00:36:23,430 --> 00:36:26,080
+
+696
+00:36:26,080 --> 00:36:30,740
+So there are only order n
+states for this, only order n
+
+697
+00:36:30,740 --> 00:36:32,270
+states for this.
+
+698
+00:36:32,270 --> 00:36:36,210
+So the size of each clique is
+order n squared polynomial.
+
+699
+00:36:36,210 --> 00:36:37,400
+That's cool.
+
+700
+00:36:37,400 --> 00:36:39,100
+It's a messy clique.
+
+701
+00:36:39,100 --> 00:36:41,211
+I won't try to draw what
+it really looks like.
+
+702
+00:36:41,211 --> 00:36:42,710
+And then the general
+approach is I'm
+
+703
+00:36:42,710 --> 00:36:46,270
+going to add some edges
+between pairs of vertices
+
+704
+00:36:46,270 --> 00:36:50,100
+to say, well look, if this cell
+was this thing at this time,
+
+705
+00:36:50,100 --> 00:36:52,420
+and the state of the
+machine was move right,
+
+706
+00:36:52,420 --> 00:36:55,710
+then you better not change what
+was on the cell at that time
+
+707
+00:36:55,710 --> 00:36:56,960
+because nothing changed.
+
+708
+00:36:56,960 --> 00:36:58,810
+You weren't here.
+
+709
+00:36:58,810 --> 00:37:02,220
+So we can just forbid
+that by saying,
+
+710
+00:37:02,220 --> 00:37:04,400
+well, here is one state.
+
+711
+00:37:04,400 --> 00:37:06,530
+These two states should
+be mutually exclusive.
+
+712
+00:37:06,530 --> 00:37:09,060
+So if I choose this vertex
+in an independent set,
+
+713
+00:37:09,060 --> 00:37:10,660
+I can't choose this vertex.
+
+714
+00:37:10,660 --> 00:37:12,510
+So you just draw all
+these connections
+
+715
+00:37:12,510 --> 00:37:13,450
+of forbidden things.
+
+716
+00:37:13,450 --> 00:37:17,150
+If something is true
+time i, times j,
+
+717
+00:37:17,150 --> 00:37:20,180
+then something else should
+not be true at time j plus 1.
+
+718
+00:37:20,180 --> 00:37:23,610
+You draw in all those
+connections, and it works.
+
+719
+00:37:23,610 --> 00:37:27,010
+I'll leave it at that because
+the details are messy,
+
+720
+00:37:27,010 --> 00:37:29,760
+but it gives you some idea.
+
+721
+00:37:29,760 --> 00:37:34,840
+At this point, I can plug
+a book on this topic that
+
+722
+00:37:34,840 --> 00:37:39,722
+is coming out next year, a
+little bit far in the future
+
+723
+00:37:39,722 --> 00:37:49,060
+but it is-- I didn't write
+it down here of course.
+
+724
+00:37:49,060 --> 00:37:49,660
+Sorry.
+
+725
+00:37:49,660 --> 00:37:58,730
+It is by these guys again,
+Fomin, Kowalik, Lockshtanov,
+
+726
+00:37:58,730 --> 00:38:03,360
+Marx, Pilipczuck
+brothers, and Saurabh.
+
+727
+00:38:03,360 --> 00:38:07,564
+And it does go through the
+details, the gory details.
+
+728
+00:38:07,564 --> 00:38:09,730
+If you're interested in
+that, I could share with you
+
+729
+00:38:09,730 --> 00:38:12,300
+that section.
+
+730
+00:38:12,300 --> 00:38:14,990
+But unfortunately, the
+book is not released yet.
+
+731
+00:38:14,990 --> 00:38:15,800
+Cool.
+
+732
+00:38:15,800 --> 00:38:21,700
+So that was a reduction
+to independent set, which
+
+733
+00:38:21,700 --> 00:38:23,750
+shows the independence
+set is at least as
+
+734
+00:38:23,750 --> 00:38:27,790
+hard as this problem, which
+we think is hard, w1 hard.
+
+735
+00:38:27,790 --> 00:38:29,090
+So that proves w1 hardness.
+
+736
+00:38:29,090 --> 00:38:33,130
+But there's another question
+of is independent set in w1.
+
+737
+00:38:33,130 --> 00:38:36,190
+As you might guess from the name
+w1, there's more than just w1.
+
+738
+00:38:36,190 --> 00:38:41,000
+There's w2 and w3
+and w4 and even more.
+
+739
+00:38:41,000 --> 00:38:43,760
+And there's no one
+notion of hardness
+
+740
+00:38:43,760 --> 00:38:46,330
+like we had with NP here, so
+we get a bit of complexity
+
+741
+00:38:46,330 --> 00:38:48,090
+in that hierarchy.
+
+742
+00:38:48,090 --> 00:38:53,860
+But in fact, independent set is
+w1 hard-- sorry-- w1 complete.
+
+743
+00:38:53,860 --> 00:38:57,735
+So we can do a reduction
+from independence
+
+744
+00:38:57,735 --> 00:39:03,470
+set to Turing machine.
+
+745
+00:39:03,470 --> 00:39:08,140
+Let's say k-step
+non-deterministic Turing
+
+746
+00:39:08,140 --> 00:39:08,640
+machine.
+
+747
+00:39:08,640 --> 00:39:15,650
+
+748
+00:39:15,650 --> 00:39:17,670
+And the idea is pretty simple.
+
+749
+00:39:17,670 --> 00:39:38,830
+
+750
+00:39:38,830 --> 00:39:41,580
+We have k-steps, so let's
+guess all the vertices.
+
+751
+00:39:41,580 --> 00:39:44,626
+
+752
+00:39:44,626 --> 00:39:46,000
+You can see here
+this is where we
+
+753
+00:39:46,000 --> 00:39:48,570
+need the ability to guess
+among n different options
+
+754
+00:39:48,570 --> 00:39:49,801
+in each guess step.
+
+755
+00:39:49,801 --> 00:39:51,800
+So we're given-- we want
+to know whether there's
+
+756
+00:39:51,800 --> 00:39:53,910
+an independent set
+of size k, so guess
+
+757
+00:39:53,910 --> 00:39:56,850
+all those vertices of
+size k and then check it.
+
+758
+00:39:56,850 --> 00:39:58,700
+So this was our XP
+algorithm, but now
+
+759
+00:39:58,700 --> 00:40:03,860
+phrased as a non-deterministic
+Turing machine algorithm.
+
+760
+00:40:03,860 --> 00:40:06,310
+And it's a little bit subtle
+what it means to check.
+
+761
+00:40:06,310 --> 00:40:18,300
+
+762
+00:40:18,300 --> 00:40:20,050
+Of course, what we
+want to do is make sure
+
+763
+00:40:20,050 --> 00:40:25,080
+there's no edge between any
+pair of the chosen vertices.
+
+764
+00:40:25,080 --> 00:40:28,120
+So what we're going to do is
+when we guess these k vertices,
+
+765
+00:40:28,120 --> 00:40:30,920
+we're going to write them one
+at a time on the tape squares.
+
+766
+00:40:30,920 --> 00:40:33,270
+So we'll use k tape squares
+to store the k vertices
+
+767
+00:40:33,270 --> 00:40:34,430
+that we've chosen.
+
+768
+00:40:34,430 --> 00:40:37,880
+Then, we want to check
+each pair of them.
+
+769
+00:40:37,880 --> 00:40:39,550
+So this is like a
+doubly nested loop
+
+770
+00:40:39,550 --> 00:40:43,164
+for each vertex among the k,
+for each vertex among the k.
+
+771
+00:40:43,164 --> 00:40:44,580
+So what that means
+is you're going
+
+772
+00:40:44,580 --> 00:40:47,840
+to have to-- sorry,
+that's a little bit
+
+773
+00:40:47,840 --> 00:40:55,310
+annoying-- loop through
+the vertices on one tape.
+
+774
+00:40:55,310 --> 00:40:58,550
+And then the fun
+part is the graph
+
+775
+00:40:58,550 --> 00:41:00,770
+is encoded inside the machine.
+
+776
+00:41:00,770 --> 00:41:02,320
+You could think of
+there being a data
+
+777
+00:41:02,320 --> 00:41:05,980
+section within the code that
+says where all the edges are.
+
+778
+00:41:05,980 --> 00:41:08,790
+The graph is size n, and so
+you can put the entire graph
+
+779
+00:41:08,790 --> 00:41:10,610
+into the machine.
+
+780
+00:41:10,610 --> 00:41:12,690
+And then given two
+vertices, you could
+
+781
+00:41:12,690 --> 00:41:15,640
+check that there is indeed
+no edge between them
+
+782
+00:41:15,640 --> 00:41:18,120
+basically by using the
+code as a look-up table.
+
+783
+00:41:18,120 --> 00:41:23,350
+Say hey, is there a
+vertex from i to j.
+
+784
+00:41:23,350 --> 00:41:26,940
+If yes, then we're in
+trouble, abort this option,
+
+785
+00:41:26,940 --> 00:41:28,770
+try the other guesses.
+
+786
+00:41:28,770 --> 00:41:33,130
+If you look up in the table
+and it says there's no edge,
+
+787
+00:41:33,130 --> 00:41:33,970
+then you keep going.
+
+788
+00:41:33,970 --> 00:41:35,940
+So you test all the
+pairs, make sure there's
+
+789
+00:41:35,940 --> 00:41:40,290
+no edge by-- the code, as it
+is, is a constant size algorithm
+
+790
+00:41:40,290 --> 00:41:43,610
+which looks like this
+plus an order n size
+
+791
+00:41:43,610 --> 00:41:48,060
+thing, which is the
+look-up table for what
+
+792
+00:41:48,060 --> 00:41:49,590
+edges are in the graph.
+
+793
+00:41:49,590 --> 00:41:51,308
+So that part's a
+little bit weird.
+
+794
+00:41:51,308 --> 00:41:51,808
+Yeah?
+
+795
+00:41:51,808 --> 00:41:55,720
+AUDIENCE: So in case of the k
+in k vertices aren't the same k?
+
+796
+00:41:55,720 --> 00:41:56,760
+PROFESSOR: That's right.
+
+797
+00:41:56,760 --> 00:41:57,259
+I'm sorry.
+
+798
+00:41:57,259 --> 00:41:58,700
+This is k prime.
+
+799
+00:41:58,700 --> 00:42:02,370
+
+800
+00:42:02,370 --> 00:42:03,320
+Yes.
+
+801
+00:42:03,320 --> 00:42:06,906
+So probably k prime here
+is exactly order k squared.
+
+802
+00:42:06,906 --> 00:42:08,164
+Thank you.
+
+803
+00:42:08,164 --> 00:42:09,710
+It makes me a little happier.
+
+804
+00:42:09,710 --> 00:42:11,460
+Because I'm doing this
+doubly nested loop,
+
+805
+00:42:11,460 --> 00:42:13,810
+I'm going to have to loop
+over this thing several times.
+
+806
+00:42:13,810 --> 00:42:15,710
+I would look at
+the first vertex,
+
+807
+00:42:15,710 --> 00:42:18,220
+memorize it by reloading
+it into a register,
+
+808
+00:42:18,220 --> 00:42:20,772
+and then loop over all the
+other guys for each of them
+
+809
+00:42:20,772 --> 00:42:21,730
+check that they're bad.
+
+810
+00:42:21,730 --> 00:42:25,215
+So I'm going to have to go
+over the tape k squared steps.
+
+811
+00:42:25,215 --> 00:42:30,250
+
+812
+00:42:30,250 --> 00:42:33,200
+And also n prime is whatever.
+
+813
+00:42:33,200 --> 00:42:36,250
+We get a machine
+that's size-- basically
+
+814
+00:42:36,250 --> 00:42:42,860
+the size of the graph
+V plus E. So the point
+
+815
+00:42:42,860 --> 00:42:45,170
+of doing that was to
+show the independence set
+
+816
+00:42:45,170 --> 00:42:47,490
+is also w1 complete.
+
+817
+00:42:47,490 --> 00:42:50,080
+So if you were not happy
+with Turing machines,
+
+818
+00:42:50,080 --> 00:42:52,840
+now you can completely
+forget about them.
+
+819
+00:42:52,840 --> 00:42:55,160
+They are mainly used
+here as motivation
+
+820
+00:42:55,160 --> 00:42:57,630
+for why you should expect
+this problem to be hard.
+
+821
+00:42:57,630 --> 00:43:02,250
+But it's equally difficult from
+a parameterization perspective.
+
+822
+00:43:02,250 --> 00:43:04,580
+If you ignore how
+big the blow up is,
+
+823
+00:43:04,580 --> 00:43:06,710
+it's just as hard as
+an independence set.
+
+824
+00:43:06,710 --> 00:43:08,670
+So independence set
+is a problem we think
+
+825
+00:43:08,670 --> 00:43:10,560
+there's no good algorithm.
+
+826
+00:43:10,560 --> 00:43:16,250
+And by this reduction, and
+also the reverse reduction,
+
+827
+00:43:16,250 --> 00:43:18,880
+clique is also w1 complete.
+
+828
+00:43:18,880 --> 00:43:22,710
+
+829
+00:43:22,710 --> 00:43:26,590
+So a bunch more reductions.
+
+830
+00:43:26,590 --> 00:43:38,300
+
+831
+00:43:38,300 --> 00:43:43,081
+In general, most w1 hardness
+results start from clique.
+
+832
+00:43:43,081 --> 00:43:45,580
+So that's a good problem to
+know about, or independent sets,
+
+833
+00:43:45,580 --> 00:43:47,180
+I think.
+
+834
+00:43:47,180 --> 00:43:49,750
+And there are some
+simpler versions of clique
+
+835
+00:43:49,750 --> 00:43:51,300
+that are also hard.
+
+836
+00:43:51,300 --> 00:43:56,815
+So first one is clique
+in regular graphs.
+
+837
+00:43:56,815 --> 00:44:01,410
+
+838
+00:44:01,410 --> 00:44:05,370
+So it's helpful to assume
+all the vertices have
+
+839
+00:44:05,370 --> 00:44:07,180
+exactly the same degree.
+
+840
+00:44:07,180 --> 00:44:09,250
+Is it hard in three
+regular graphs?
+
+841
+00:44:09,250 --> 00:44:09,950
+No.
+
+842
+00:44:09,950 --> 00:44:12,330
+Because three regular is
+only a clique of size three.
+
+843
+00:44:12,330 --> 00:44:15,010
+So that's pretty easy.
+
+844
+00:44:15,010 --> 00:44:19,120
+But in s regular graphs, the
+degree is going to be huge,
+
+845
+00:44:19,120 --> 00:44:21,910
+going to be some function of n.
+
+846
+00:44:21,910 --> 00:44:26,690
+Clique is hard, and
+in general, let's say
+
+847
+00:44:26,690 --> 00:44:31,660
+capital delta is the maximum
+degree in your given graph,
+
+848
+00:44:31,660 --> 00:44:35,640
+and we want to convert it
+into a delta regular graph.
+
+849
+00:44:35,640 --> 00:44:38,910
+So we're going to increase all
+the lower degrees up to delta.
+
+850
+00:44:38,910 --> 00:44:45,050
+What we're going to do is take
+delta copies of the graph.
+
+851
+00:44:45,050 --> 00:44:48,390
+
+852
+00:44:48,390 --> 00:44:52,890
+So for every old vertex,
+we get delta copies of it.
+
+853
+00:44:52,890 --> 00:44:56,640
+
+854
+00:44:56,640 --> 00:44:59,750
+And then we do this reduction.
+
+855
+00:44:59,750 --> 00:45:02,440
+So the blue is the original--
+is the graph that's
+
+856
+00:45:02,440 --> 00:45:04,070
+been duplicated delta times.
+
+857
+00:45:04,070 --> 00:45:06,307
+Here, delta is 5.
+
+858
+00:45:06,307 --> 00:45:07,890
+But suppose, in the
+graph, this vertex
+
+859
+00:45:07,890 --> 00:45:10,820
+only had degree 3, some
+number less than 5.
+
+860
+00:45:10,820 --> 00:45:12,940
+Then, what we're
+going to do is create
+
+861
+00:45:12,940 --> 00:45:17,510
+delta minus d new vertices
+and then add a biclique here,
+
+862
+00:45:17,510 --> 00:45:21,430
+bipartite clique, connecting all
+of those delta minus d things
+
+863
+00:45:21,430 --> 00:45:23,650
+to all of these delta things.
+
+864
+00:45:23,650 --> 00:45:27,750
+They're delta copies
+of the original vertex.
+
+865
+00:45:27,750 --> 00:45:31,504
+This is v over here,
+v1 through v delta.
+
+866
+00:45:31,504 --> 00:45:33,170
+And so what that means
+is these vertices
+
+867
+00:45:33,170 --> 00:45:36,810
+will have entered degree delta
+because there were delta things
+
+868
+00:45:36,810 --> 00:45:38,400
+to connect to over there.
+
+869
+00:45:38,400 --> 00:45:40,210
+And now these things
+will have degree delta
+
+870
+00:45:40,210 --> 00:45:41,680
+because they used
+to have degree d,
+
+871
+00:45:41,680 --> 00:45:43,300
+and now they have
+an additional degree
+
+872
+00:45:43,300 --> 00:45:46,330
+delta minus d on the left.
+
+873
+00:45:46,330 --> 00:45:48,790
+So cool, everything's
+now delta regular.
+
+874
+00:45:48,790 --> 00:45:51,240
+And I claim that this
+reduction preserve cliques
+
+875
+00:45:51,240 --> 00:45:56,370
+because if you look at
+these added vertices,
+
+876
+00:45:56,370 --> 00:46:00,330
+they do not belong
+to any triangles.
+
+877
+00:46:00,330 --> 00:46:03,830
+This thing here is an
+induced bipartite graph,
+
+878
+00:46:03,830 --> 00:46:07,670
+and so there are no
+triangles, no things of size--
+
+879
+00:46:07,670 --> 00:46:11,100
+no cycles of size 3 because
+all cycles are even here,
+
+880
+00:46:11,100 --> 00:46:12,762
+which means if
+you're in a clique--
+
+881
+00:46:12,762 --> 00:46:14,220
+if you have three
+guys in a clique,
+
+882
+00:46:14,220 --> 00:46:18,715
+then they better have
+triangles everywhere.
+
+883
+00:46:18,715 --> 00:46:20,340
+So if you put one of
+these vertices in,
+
+884
+00:46:20,340 --> 00:46:22,890
+you'll have a very small
+clique, namely size 2.
+
+885
+00:46:22,890 --> 00:46:25,580
+And there are always cliques
+of size 2 in a graph.
+
+886
+00:46:25,580 --> 00:46:26,740
+There's at least one edge.
+
+887
+00:46:26,740 --> 00:46:28,690
+So if there was at
+least one edge before,
+
+888
+00:46:28,690 --> 00:46:32,250
+afterwards, we do not increase
+any of the clique sizes.
+
+889
+00:46:32,250 --> 00:46:34,100
+So clique size is preserved.
+
+890
+00:46:34,100 --> 00:46:36,590
+Everything's cool.
+
+891
+00:46:36,590 --> 00:46:38,480
+So in this situation
+k prime equals
+
+892
+00:46:38,480 --> 00:46:41,491
+k when you blow up anything,
+except the graph size,
+
+893
+00:46:41,491 --> 00:46:41,990
+of course.
+
+894
+00:46:41,990 --> 00:46:44,692
+That got a little bigger.
+
+895
+00:46:44,692 --> 00:46:46,150
+And now everything's
+delta regular.
+
+896
+00:46:46,150 --> 00:46:49,820
+Le me give you an example
+of why this is useful.
+
+897
+00:46:49,820 --> 00:46:54,357
+
+898
+00:46:54,357 --> 00:46:56,690
+Of course, every time I say
+something is true of clique,
+
+899
+00:46:56,690 --> 00:46:58,148
+it's also true of
+independence set.
+
+900
+00:46:58,148 --> 00:47:00,440
+You can just flip things.
+
+901
+00:47:00,440 --> 00:47:02,090
+Here, we have to be
+a little careful,
+
+902
+00:47:02,090 --> 00:47:04,630
+but when you complement
+a graph, if you
+
+903
+00:47:04,630 --> 00:47:06,530
+started with a regular
+graph, your new graph
+
+904
+00:47:06,530 --> 00:47:08,280
+will also be regular.
+
+905
+00:47:08,280 --> 00:47:11,335
+Every vertex would
+have degree n minus 1
+
+906
+00:47:11,335 --> 00:47:13,418
+minus delta or n minus
+delta, something like that.
+
+907
+00:47:13,418 --> 00:47:16,150
+
+908
+00:47:16,150 --> 00:47:24,594
+So here's another problem,
+eerily similar to vertex cover,
+
+909
+00:47:24,594 --> 00:47:26,490
+called partial vertex cover.
+
+910
+00:47:26,490 --> 00:47:30,270
+This is also w1 complete.
+
+911
+00:47:30,270 --> 00:47:39,245
+We want to know, can I choose
+k vertices that cover l edges?
+
+912
+00:47:39,245 --> 00:47:43,510
+
+913
+00:47:43,510 --> 00:47:46,450
+So usually vertex cover, you
+need to cover all the edges,
+
+914
+00:47:46,450 --> 00:47:48,685
+and that let us do some
+crazy things because whenever
+
+915
+00:47:48,685 --> 00:47:50,810
+we looked at an edge, we
+knew one of the two things
+
+916
+00:47:50,810 --> 00:47:52,170
+was in the vertex cover.
+
+917
+00:47:52,170 --> 00:47:54,600
+Now, we don't know that anymore.
+
+918
+00:47:54,600 --> 00:47:56,550
+Now, it's a matter
+of which vertices get
+
+919
+00:47:56,550 --> 00:47:58,710
+the most bang for your buck.
+
+920
+00:47:58,710 --> 00:48:16,950
+And this is easy to reduce from
+delta regular independence set
+
+921
+00:48:16,950 --> 00:48:21,280
+because-- k independence set
+if we want to be explicit.
+
+922
+00:48:21,280 --> 00:48:23,850
+We want to know is there an
+independent set of size k.
+
+923
+00:48:23,850 --> 00:48:26,710
+I just give that to
+partial vertex cover
+
+924
+00:48:26,710 --> 00:48:31,770
+with k prime equal
+to delta times k.
+
+925
+00:48:31,770 --> 00:48:37,470
+Sorry, that's l prime
+is delta times k.
+
+926
+00:48:37,470 --> 00:48:40,580
+So the idea is here I want
+to choose k vertices that
+
+927
+00:48:40,580 --> 00:48:41,760
+are independent.
+
+928
+00:48:41,760 --> 00:48:44,840
+And if I can do that, I will be
+able to choose k vertices that
+
+929
+00:48:44,840 --> 00:48:46,339
+cover exactly
+delta times k edges
+
+930
+00:48:46,339 --> 00:48:48,380
+because if they're
+independent, none of the edges
+
+931
+00:48:48,380 --> 00:48:50,210
+will be shared among
+my independence set.
+
+932
+00:48:50,210 --> 00:48:51,680
+And this is if and only if.
+
+933
+00:48:51,680 --> 00:48:55,130
+If I try to choose k vertices
+that cover exactly delta k
+
+934
+00:48:55,130 --> 00:48:58,690
+edges, then they
+can't be adjacent.
+
+935
+00:48:58,690 --> 00:49:00,340
+The vertices can be adjacent.
+
+936
+00:49:00,340 --> 00:49:02,990
+So these problems become
+the same under this mapping,
+
+937
+00:49:02,990 --> 00:49:04,500
+so I didn't even blow up.
+
+938
+00:49:04,500 --> 00:49:05,690
+My parameter here is k.
+
+939
+00:49:05,690 --> 00:49:07,490
+I forgot to mention.
+
+940
+00:49:07,490 --> 00:49:10,790
+I mean you could guess from the
+letter, but parameterized by k,
+
+941
+00:49:10,790 --> 00:49:12,710
+this problem is w1 complete.
+
+942
+00:49:12,710 --> 00:49:15,500
+Parameterized by l,
+this problem is FPT.
+
+943
+00:49:15,500 --> 00:49:18,350
+So be a little careful.
+
+944
+00:49:18,350 --> 00:49:21,870
+But here's the reduction for k.
+
+945
+00:49:21,870 --> 00:49:24,190
+There is no reduction
+for-- there's only
+
+946
+00:49:24,190 --> 00:49:28,030
+good reductions for l.
+
+947
+00:49:28,030 --> 00:49:31,060
+So there we are clearly using
+that the graph was regular.
+
+948
+00:49:31,060 --> 00:49:33,764
+Otherwise, it would be
+at most k-- at most delta
+
+949
+00:49:33,764 --> 00:49:35,430
+for everybody, and
+then it's hard to get
+
+950
+00:49:35,430 --> 00:49:36,429
+the actual independence.
+
+951
+00:49:36,429 --> 00:49:37,260
+Yeah.
+
+952
+00:49:37,260 --> 00:49:38,968
+AUDIENCE: Sorry, I'm
+still a bit confused
+
+953
+00:49:38,968 --> 00:49:42,250
+about the relationship
+between w1 and XP and FPT.
+
+954
+00:49:42,250 --> 00:49:44,230
+I don't know what w1 is.
+
+955
+00:49:44,230 --> 00:49:46,840
+PROFESSOR: Yeah,
+well we'll get there.
+
+956
+00:49:46,840 --> 00:49:49,260
+For now, you can think
+w1 is all problems they
+
+957
+00:49:49,260 --> 00:49:52,530
+can be parameterized, reduced to
+k-step non-deterministic Turing
+
+958
+00:49:52,530 --> 00:49:53,669
+machine.
+
+959
+00:49:53,669 --> 00:49:54,710
+That's a fine definition.
+
+960
+00:49:54,710 --> 00:49:56,650
+Some people use that.
+
+961
+00:49:56,650 --> 00:49:59,985
+And in general, FPT
+is contained in w1.
+
+962
+00:49:59,985 --> 00:50:02,670
+It's contained in other
+things, which we will get to.
+
+963
+00:50:02,670 --> 00:50:06,990
+w2 and so on is all
+contained in XP.
+
+964
+00:50:06,990 --> 00:50:09,380
+And these are strict if you
+believe exponential time
+
+965
+00:50:09,380 --> 00:50:10,510
+hypothesis.
+
+966
+00:50:10,510 --> 00:50:13,230
+So if you believe there are
+no sub exponential algorithms
+
+967
+00:50:13,230 --> 00:50:17,820
+for SAT, then this problem has
+no FPT algorithm with respect
+
+968
+00:50:17,820 --> 00:50:20,919
+to k and all the
+w1 complete things.
+
+969
+00:50:20,919 --> 00:50:22,710
+I mean from a complexity
+theory standpoint,
+
+970
+00:50:22,710 --> 00:50:25,300
+it will be fun to look
+at these larger classes.
+
+971
+00:50:25,300 --> 00:50:27,530
+From is there an FPT
+algorithm standpoint,
+
+972
+00:50:27,530 --> 00:50:30,040
+all you care about
+is it's not here.
+
+973
+00:50:30,040 --> 00:50:33,590
+And any hardness,
+w1 or worse, will
+
+974
+00:50:33,590 --> 00:50:36,760
+imply there's no FPT
+algorithm if you assume ETH.
+
+975
+00:50:36,760 --> 00:50:39,270
+AUDIENCE: Do you know if any
+of these inclusions are strict?
+
+976
+00:50:39,270 --> 00:50:41,020
+PROFESSOR: Like I said,
+they're all strict
+
+977
+00:50:41,020 --> 00:50:42,770
+if you assume exponential
+time hypothesis.
+
+978
+00:50:42,770 --> 00:50:45,140
+
+979
+00:50:45,140 --> 00:50:48,920
+If you prove XP is
+different from FPT,
+
+980
+00:50:48,920 --> 00:50:53,690
+then you prove P does not
+equal NP, I think, pretty sure.
+
+981
+00:50:53,690 --> 00:50:57,140
+So we're not going to
+non-categorically say
+
+982
+00:50:57,140 --> 00:51:00,620
+these things are strict, because
+these are all stronger versions
+
+983
+00:51:00,620 --> 00:51:02,010
+of P does not equal NP.
+
+984
+00:51:02,010 --> 00:51:04,740
+But if you believe
+exponential time hypothesis,
+
+985
+00:51:04,740 --> 00:51:06,610
+then they're all strict.
+
+986
+00:51:06,610 --> 00:51:09,725
+So that's one
+standard assumption
+
+987
+00:51:09,725 --> 00:51:12,700
+that gives us everything.
+
+988
+00:51:12,700 --> 00:51:15,940
+Cool, let me give you another
+version of clique that's hard.
+
+989
+00:51:15,940 --> 00:51:33,520
+
+990
+00:51:33,520 --> 00:51:45,340
+Mufti-colored clique if you
+remember way back to three
+
+991
+00:51:45,340 --> 00:51:48,100
+partition, we had a
+variation on three partition
+
+992
+00:51:48,100 --> 00:51:51,020
+called numerical
+three-dimensional matching
+
+993
+00:51:51,020 --> 00:51:54,200
+where you had to choose
+your triples from three
+
+994
+00:51:54,200 --> 00:51:55,890
+different sets.
+
+995
+00:51:55,890 --> 00:51:57,892
+So this is the analog
+of that, or the analog
+
+996
+00:51:57,892 --> 00:51:59,350
+of three-dimensional
+matching where
+
+997
+00:51:59,350 --> 00:52:01,730
+you had three different
+sets of vertices.
+
+998
+00:52:01,730 --> 00:52:05,910
+For clique here, set
+the vertices partition
+
+999
+00:52:05,910 --> 00:52:11,830
+into k clusters.
+
+1000
+00:52:11,830 --> 00:52:21,410
+And the question is, is there
+k clique with one vertex
+
+1001
+00:52:21,410 --> 00:52:24,200
+per cluster?
+
+1002
+00:52:24,200 --> 00:52:26,910
+
+1003
+00:52:26,910 --> 00:52:29,600
+And in fact, so you think of
+these things as being colored,
+
+1004
+00:52:29,600 --> 00:52:32,860
+color 1, and these
+are color k and so on.
+
+1005
+00:52:32,860 --> 00:52:36,240
+And in fact, we can assume
+this is a proper coloring
+
+1006
+00:52:36,240 --> 00:52:39,460
+because if you're not allowed
+to choose two vertices from one
+
+1007
+00:52:39,460 --> 00:52:42,770
+class, then there's no reason
+to have edges between vertices
+
+1008
+00:52:42,770 --> 00:52:44,010
+of the same color.
+
+1009
+00:52:44,010 --> 00:52:49,520
+So this is in fact a
+k-coloring of the graph.
+
+1010
+00:52:49,520 --> 00:52:51,870
+So we are given a k-color graph.
+
+1011
+00:52:51,870 --> 00:52:55,240
+And we want to know,
+does it have a k clique?
+
+1012
+00:52:55,240 --> 00:52:57,290
+And if it has a d clique
+and it's k-colored, then
+
+1013
+00:52:57,290 --> 00:53:00,290
+in particular, you will
+have exactly one vertex
+
+1014
+00:53:00,290 --> 00:53:01,280
+per color class.
+
+1015
+00:53:01,280 --> 00:53:04,520
+
+1016
+00:53:04,520 --> 00:53:09,705
+We can prove this is hard
+by a reduction from clique.
+
+1017
+00:53:09,705 --> 00:53:17,900
+
+1018
+00:53:17,900 --> 00:53:20,540
+Namely, if we have
+a vertex v, we're
+
+1019
+00:53:20,540 --> 00:53:22,580
+going to make k copies of it.
+
+1020
+00:53:22,580 --> 00:53:25,199
+
+1021
+00:53:25,199 --> 00:53:26,615
+You'll see this
+is a common trick.
+
+1022
+00:53:26,615 --> 00:53:31,760
+
+1023
+00:53:31,760 --> 00:53:37,260
+And we will color
+them 1 to up to k.
+
+1024
+00:53:37,260 --> 00:53:42,390
+So good, now we have
+vertices in each color class.
+
+1025
+00:53:42,390 --> 00:53:49,310
+And then if we have an edge
+(v,w) convert it into edges
+
+1026
+00:53:49,310 --> 00:53:55,920
+(vi, wj) for all
+i not equal to j.
+
+1027
+00:53:55,920 --> 00:53:58,050
+So pretty much the
+obvious reduction.
+
+1028
+00:53:58,050 --> 00:54:01,387
+Once you said make k copies,
+we'll also duplicate the edges
+
+1029
+00:54:01,387 --> 00:54:03,970
+in all versions except, because
+it's supposed to be a k-color,
+
+1030
+00:54:03,970 --> 00:54:07,690
+we're not allowed
+to connect (vi,wi).
+
+1031
+00:54:07,690 --> 00:54:10,630
+But otherwise, we'll just
+throw in all of those edges.
+
+1032
+00:54:10,630 --> 00:54:12,730
+And the point is this,
+again, doesn't really
+
+1033
+00:54:12,730 --> 00:54:14,620
+blow up your cliques
+because if you
+
+1034
+00:54:14,620 --> 00:54:16,760
+have some clique
+in this structure,
+
+1035
+00:54:16,760 --> 00:54:18,980
+you can just forget
+about the i indices.
+
+1036
+00:54:18,980 --> 00:54:21,900
+Because you know
+it's a clique, you
+
+1037
+00:54:21,900 --> 00:54:23,940
+will never choose two
+verses from the same color
+
+1038
+00:54:23,940 --> 00:54:26,235
+class, two vertices
+with the same index,
+
+1039
+00:54:26,235 --> 00:54:28,360
+and so you can take any
+clique here and collapse it
+
+1040
+00:54:28,360 --> 00:54:29,147
+to a clique here.
+
+1041
+00:54:29,147 --> 00:54:30,730
+Conversely, if you
+have a clique here,
+
+1042
+00:54:30,730 --> 00:54:33,513
+you can just assign those
+vertices arbitrary numbers
+
+1043
+00:54:33,513 --> 00:54:35,763
+as long as they're all
+distinct any permutation of one
+
+1044
+00:54:35,763 --> 00:54:37,800
+through k, and you'll
+get a clique down here.
+
+1045
+00:54:37,800 --> 00:54:38,860
+So it's the same problem.
+
+1046
+00:54:38,860 --> 00:54:39,360
+Question?
+
+1047
+00:54:39,360 --> 00:54:42,890
+AUDIENCE: That v is different
+from the v above it, right?
+
+1048
+00:54:42,890 --> 00:54:46,350
+PROFESSOR: Yeah, this is
+for all v and for all vw.
+
+1049
+00:54:46,350 --> 00:54:49,630
+
+1050
+00:54:49,630 --> 00:54:54,320
+If there's an edge in the
+graph, then we do that.
+
+1051
+00:54:54,320 --> 00:54:58,480
+And if there's a vertex
+in the graph, we do that.
+
+1052
+00:54:58,480 --> 00:55:00,770
+Cool.
+
+1053
+00:55:00,770 --> 00:55:04,212
+So k prime here equals
+k, no expansion.
+
+1054
+00:55:04,212 --> 00:55:07,590
+
+1055
+00:55:07,590 --> 00:55:10,760
+This may seem trivial,
+but it's actually
+
+1056
+00:55:10,760 --> 00:55:14,190
+a fairly recent innovation to
+think about multicolor clique
+
+1057
+00:55:14,190 --> 00:55:16,750
+and, in general, it
+simplifies proofs.
+
+1058
+00:55:16,750 --> 00:55:19,320
+I have heard of proofs
+simplifying from tens of pages
+
+1059
+00:55:19,320 --> 00:55:21,450
+to one page.
+
+1060
+00:55:21,450 --> 00:55:23,890
+We'll probably get to
+some more-- to such
+
+1061
+00:55:23,890 --> 00:55:25,920
+sophisticated example soon.
+
+1062
+00:55:25,920 --> 00:55:29,365
+But I can give you
+one simple example.
+
+1063
+00:55:29,365 --> 00:55:30,740
+Before I get to
+a simple example,
+
+1064
+00:55:30,740 --> 00:55:33,930
+I want to show
+you a fun example.
+
+1065
+00:55:33,930 --> 00:55:38,840
+Not simple, but let me tell
+you what the problem is.
+
+1066
+00:55:38,840 --> 00:55:40,305
+I won't cover that proof.
+
+1067
+00:55:40,305 --> 00:55:49,780
+
+1068
+00:55:49,780 --> 00:55:59,776
+The problem is shortest
+common super sequence.
+
+1069
+00:55:59,776 --> 00:56:03,500
+
+1070
+00:56:03,500 --> 00:56:06,990
+This is a problem that comes
+up in computational biology.
+
+1071
+00:56:06,990 --> 00:56:10,040
+Your given k strings.
+
+1072
+00:56:10,040 --> 00:56:13,990
+
+1073
+00:56:13,990 --> 00:56:19,750
+Let's say alphabet sigma.
+
+1074
+00:56:19,750 --> 00:56:28,980
+And yes, you're given a number,
+which I'm going to write l.
+
+1075
+00:56:28,980 --> 00:56:32,830
+
+1076
+00:56:32,830 --> 00:56:36,470
+You want to find
+a string of length
+
+1077
+00:56:36,470 --> 00:56:50,750
+l that's a super sequence
+of all input strings.
+
+1078
+00:56:50,750 --> 00:56:56,620
+
+1079
+00:56:56,620 --> 00:56:59,810
+So maybe you're given the
+DNA sequence of human and DNA
+
+1080
+00:56:59,810 --> 00:57:02,660
+sequence of mouse,
+and you want to know
+
+1081
+00:57:02,660 --> 00:57:04,490
+what is the shortest
+DNA sequence that
+
+1082
+00:57:04,490 --> 00:57:07,250
+contains all of the
+letters of those strings
+
+1083
+00:57:07,250 --> 00:57:09,020
+in the correct order.
+
+1084
+00:57:09,020 --> 00:57:11,580
+So this is often
+called an alignment.
+
+1085
+00:57:11,580 --> 00:57:15,700
+If you have ACGG--
+this is probably not
+
+1086
+00:57:15,700 --> 00:57:18,430
+valid, but whatever--
+And we have
+
+1087
+00:57:18,430 --> 00:57:20,520
+some other guy like CAGGAT.
+
+1088
+00:57:20,520 --> 00:57:26,686
+
+1089
+00:57:26,686 --> 00:57:28,060
+So I tried to draw
+those aligned.
+
+1090
+00:57:28,060 --> 00:57:32,290
+
+1091
+00:57:32,290 --> 00:57:34,780
+So then the common super
+string here is ACAGGACT.
+
+1092
+00:57:34,780 --> 00:57:40,320
+
+1093
+00:57:40,320 --> 00:57:42,670
+This is a super string,
+meaning I can drop letters
+
+1094
+00:57:42,670 --> 00:57:44,050
+from down here and get this.
+
+1095
+00:57:44,050 --> 00:57:46,180
+Or, I can drop letters from
+down here and get this.
+
+1096
+00:57:46,180 --> 00:57:48,150
+That was for k equals 2.
+
+1097
+00:57:48,150 --> 00:57:50,570
+In general, this
+problem does have
+
+1098
+00:57:50,570 --> 00:57:53,530
+an n to the k dynamic program.
+
+1099
+00:57:53,530 --> 00:57:55,660
+But the question is whether
+you could get FPT in k.
+
+1100
+00:57:55,660 --> 00:57:58,240
+Could you get a small dependence
+on the-- better dependence
+
+1101
+00:57:58,240 --> 00:57:59,440
+on the number of strings?
+
+1102
+00:57:59,440 --> 00:58:02,110
+And the answer is no
+because this is w1 complete.
+
+1103
+00:58:02,110 --> 00:58:06,580
+
+1104
+00:58:06,580 --> 00:58:08,340
+And this is a
+sketch of the proof.
+
+1105
+00:58:08,340 --> 00:58:11,269
+
+1106
+00:58:11,269 --> 00:58:13,060
+it's a reduction for
+a multicolored clique.
+
+1107
+00:58:13,060 --> 00:58:15,150
+I think this the paper that
+introduced multicolored clique
+
+1108
+00:58:15,150 --> 00:58:15,660
+in fact.
+
+1109
+00:58:15,660 --> 00:58:19,610
+It's the earliest one I
+could find, and this is 2003.
+
+1110
+00:58:19,610 --> 00:58:22,950
+It became more
+popular since 2009.
+
+1111
+00:58:22,950 --> 00:58:25,160
+So you're basically
+encoding the edges
+
+1112
+00:58:25,160 --> 00:58:28,980
+by whether there's a 0 here
+in between a huge set of ones.
+
+1113
+00:58:28,980 --> 00:58:32,710
+And then this is intuitively
+rep-- and then for every vertex
+
+1114
+00:58:32,710 --> 00:58:35,660
+you're looking at, all
+of the other vertices
+
+1115
+00:58:35,660 --> 00:58:37,790
+and encoding whether they
+have an edge to them.
+
+1116
+00:58:37,790 --> 00:58:39,165
+And so if you have
+a clique, that
+
+1117
+00:58:39,165 --> 00:58:41,930
+will be a pattern
+that you see repeated
+
+1118
+00:58:41,930 --> 00:58:43,672
+among multiple vertices.
+
+1119
+00:58:43,672 --> 00:58:45,380
+And so you'll end up
+being able to shrink
+
+1120
+00:58:45,380 --> 00:58:49,880
+your longest-- your shortest
+common super sequence.
+
+1121
+00:58:49,880 --> 00:58:51,100
+But the details are messy.
+
+1122
+00:58:51,100 --> 00:58:53,230
+It's a few pages to prove it.
+
+1123
+00:58:53,230 --> 00:58:54,755
+I will skip that
+and tell you why
+
+1124
+00:58:54,755 --> 00:58:56,380
+I wanted to tell you
+about this problem
+
+1125
+00:58:56,380 --> 00:58:59,180
+other than its computational
+biology and useful.
+
+1126
+00:58:59,180 --> 00:59:03,840
+Because it's used to prove
+that flood-it is hard.
+
+1127
+00:59:03,840 --> 00:59:05,810
+Time for some fun.
+
+1128
+00:59:05,810 --> 00:59:10,320
+So here is flood-it.
+
+1129
+00:59:10,320 --> 00:59:14,200
+
+1130
+00:59:14,200 --> 00:59:16,370
+You have a grid of
+colored squares.
+
+1131
+00:59:16,370 --> 00:59:19,520
+And in the top left,
+we have colors.
+
+1132
+00:59:19,520 --> 00:59:21,967
+And this is the special square.
+
+1133
+00:59:21,967 --> 00:59:24,050
+What I can do is control
+the color of that square.
+
+1134
+00:59:24,050 --> 00:59:26,470
+So for example, I
+could set it to red
+
+1135
+00:59:26,470 --> 00:59:28,900
+and then anything that was
+in that connected group
+
+1136
+00:59:28,900 --> 00:59:29,510
+becomes red.
+
+1137
+00:59:29,510 --> 00:59:31,260
+And now I've got a
+bigger connected group.
+
+1138
+00:59:31,260 --> 00:59:36,010
+So now I can make it blue,
+and then pink, and then red,
+
+1139
+00:59:36,010 --> 00:59:39,785
+and then blue, and then red.
+
+1140
+00:59:39,785 --> 00:59:41,560
+Let's see how well I can do.
+
+1141
+00:59:41,560 --> 00:59:43,900
+And the trouble is I have
+a limited number of moves.
+
+1142
+00:59:43,900 --> 00:59:46,810
+
+1143
+00:59:46,810 --> 00:59:55,210
+So this is a model for Ebola
+virus spreading or zombie
+
+1144
+00:59:55,210 --> 01:00:00,500
+infection or pick your favorite.
+
+1145
+01:00:00,500 --> 01:00:03,645
+I mean you imagine these are
+different species-- green.
+
+1146
+01:00:03,645 --> 01:00:05,490
+Thank you.
+
+1147
+01:00:05,490 --> 01:00:08,280
+A lot easier to play
+when I have an oracle.
+
+1148
+01:00:08,280 --> 01:00:10,342
+Yellow, that's better.
+
+1149
+01:00:10,342 --> 01:00:12,080
+I don't know.
+
+1150
+01:00:12,080 --> 01:00:13,580
+I'm actually doing
+pretty well here.
+
+1151
+01:00:13,580 --> 01:00:16,320
+
+1152
+01:00:16,320 --> 01:00:19,740
+I think now I just
+have to do them all.
+
+1153
+01:00:19,740 --> 01:00:20,660
+I made it!
+
+1154
+01:00:20,660 --> 01:00:22,440
+25 moves.
+
+1155
+01:00:22,440 --> 01:00:24,500
+Wow!
+
+1156
+01:00:24,500 --> 01:00:25,370
+Felicitations!
+
+1157
+01:00:25,370 --> 01:00:26,661
+That's the first time I've won.
+
+1158
+01:00:26,661 --> 01:00:29,110
+It's a good demo.
+
+1159
+01:00:29,110 --> 01:00:32,160
+Only played a few times,
+but-- this apparently
+
+1160
+01:00:32,160 --> 01:00:35,270
+became quite popular in 2006,
+a company called LabPixies,
+
+1161
+01:00:35,270 --> 01:00:36,995
+since bought by Google.
+
+1162
+01:00:36,995 --> 01:00:38,370
+But there's tons
+of free versions
+
+1163
+01:00:38,370 --> 01:00:40,790
+out there you can play.
+
+1164
+01:00:40,790 --> 01:00:47,900
+It's w1 complete with respect
+to number of colors and number
+
+1165
+01:00:47,900 --> 01:00:50,510
+of leaves.
+
+1166
+01:00:50,510 --> 01:00:52,780
+So I don't know if this
+is a generalization
+
+1167
+01:00:52,780 --> 01:00:55,810
+or specialization, but it's a
+variation of the problem that's
+
+1168
+01:00:55,810 --> 01:00:57,144
+been studied.
+
+1169
+01:00:57,144 --> 01:00:58,560
+It's the only one
+I could can that
+
+1170
+01:00:58,560 --> 01:01:02,930
+talked about parametrized
+complexity of flood-it.
+
+1171
+01:01:02,930 --> 01:01:06,392
+And so this is
+flood-it on trees.
+
+1172
+01:01:06,392 --> 01:01:11,090
+
+1173
+01:01:11,090 --> 01:01:15,430
+So same set up, but instead
+of being a square grid graph,
+
+1174
+01:01:15,430 --> 01:01:16,770
+I'm on a tree graph.
+
+1175
+01:01:16,770 --> 01:01:19,520
+And the root of the tree
+is the one I can control,
+
+1176
+01:01:19,520 --> 01:01:23,600
+and my graph is going to
+look like-- my tree is
+
+1177
+01:01:23,600 --> 01:01:24,600
+going to look like this.
+
+1178
+01:01:24,600 --> 01:01:29,455
+
+1179
+01:01:29,455 --> 01:01:30,830
+These are going
+to be my strings.
+
+1180
+01:01:30,830 --> 01:01:33,630
+
+1181
+01:01:33,630 --> 01:01:36,490
+And if I want to be
+able to solve this
+
+1182
+01:01:36,490 --> 01:01:41,300
+in some number of
+moves, l moves,
+
+1183
+01:01:41,300 --> 01:01:45,290
+then I need to-- the
+sequence of colors
+
+1184
+01:01:45,290 --> 01:01:48,480
+I do is a longest common
+subsequence, super sequence,
+
+1185
+01:01:48,480 --> 01:01:53,780
+of these strings because they
+all have to get to the bottom.
+
+1186
+01:01:53,780 --> 01:01:56,030
+They'll sit there and wait,
+and so you can essentially
+
+1187
+01:01:56,030 --> 01:01:57,930
+drop letters.
+
+1188
+01:01:57,930 --> 01:01:59,290
+And that's cool.
+
+1189
+01:01:59,290 --> 01:02:00,660
+Happy?
+
+1190
+01:02:00,660 --> 01:02:04,680
+This is not literally
+true because if I have,
+
+1191
+01:02:04,680 --> 01:02:08,840
+let's say, a zero and a zero
+here, both the same color--
+
+1192
+01:02:08,840 --> 01:02:12,370
+So I'm representing
+letters by colors,
+
+1193
+01:02:12,370 --> 01:02:15,050
+then when I play-- if I
+eventually play here and play
+
+1194
+01:02:15,050 --> 01:02:18,980
+zero, I actually get advanced
+two spaces instead of one.
+
+1195
+01:02:18,980 --> 01:02:25,030
+So for that, you need to
+first map every letter a.
+
+1196
+01:02:25,030 --> 01:02:30,680
+So let's say in string
+i, we map every letter
+
+1197
+01:02:30,680 --> 01:02:36,660
+to a followed by a special
+character for that string.
+
+1198
+01:02:36,660 --> 01:02:38,360
+And so this blows things up.
+
+1199
+01:02:38,360 --> 01:02:40,116
+In particular, it blows up l.
+
+1200
+01:02:40,116 --> 01:02:42,900
+l grows by a factor
+of the total length
+
+1201
+01:02:42,900 --> 01:02:45,320
+of all strings because of
+all these things that we add.
+
+1202
+01:02:45,320 --> 01:02:47,810
+These are not
+really compressible,
+
+1203
+01:02:47,810 --> 01:02:50,232
+but it means that we alternate
+between regular characters
+
+1204
+01:02:50,232 --> 01:02:51,190
+and special characters.
+
+1205
+01:02:51,190 --> 01:02:52,981
+And therefore, we never
+have two characters
+
+1206
+01:02:52,981 --> 01:02:54,480
+in a row that are the same.
+
+1207
+01:02:54,480 --> 01:02:56,670
+So first you take
+this problem, then
+
+1208
+01:02:56,670 --> 01:02:58,800
+you reduce it to the
+version of the problem that
+
+1209
+01:02:58,800 --> 01:03:01,250
+has no repeated characters.
+
+1210
+01:03:01,250 --> 01:03:03,704
+And then you can reduce that
+to flood-it because that's
+
+1211
+01:03:03,704 --> 01:03:04,495
+what we care about.
+
+1212
+01:03:04,495 --> 01:03:06,735
+AUDIENCE: Sorry, what's the
+parameter on the shortest
+
+1213
+01:03:06,735 --> 01:03:07,322
+common super--
+
+1214
+01:03:07,322 --> 01:03:08,030
+PROFESSOR: Right.
+
+1215
+01:03:08,030 --> 01:03:10,660
+Parameter is-- they're
+actually two parameters,
+
+1216
+01:03:10,660 --> 01:03:14,844
+so this is a fun
+thing, k and sigma.
+
+1217
+01:03:14,844 --> 01:03:16,510
+So two parameters,
+you can think of that
+
+1218
+01:03:16,510 --> 01:03:18,600
+as being parameterized
+by the sum or just
+
+1219
+01:03:18,600 --> 01:03:21,017
+by the vector k, sigma.
+
+1220
+01:03:21,017 --> 01:03:23,600
+Basically, we get to assume both
+of them are relatively small.
+
+1221
+01:03:23,600 --> 01:03:26,700
+We could be exponential
+in both k and sigma.
+
+1222
+01:03:26,700 --> 01:03:28,910
+If you put l in there,
+it would not be hard.
+
+1223
+01:03:28,910 --> 01:03:33,220
+But if you put k and sigma
+and it's still w1 complete.
+
+1224
+01:03:33,220 --> 01:03:36,020
+And so over here it's
+the number of leaves
+
+1225
+01:03:36,020 --> 01:03:38,542
+in the tree is one parameter
+and the number of colors
+
+1226
+01:03:38,542 --> 01:03:39,500
+is the other parameter.
+
+1227
+01:03:39,500 --> 01:03:41,500
+So we're fixed parameter
+tractable with respect
+
+1228
+01:03:41,500 --> 01:03:43,232
+to that joint parameter.
+
+1229
+01:03:43,232 --> 01:03:43,732
+Yeah?
+
+1230
+01:03:43,732 --> 01:03:46,065
+AUDIENCE: Why is it obvious
+that you can reduce flood-it
+
+1231
+01:03:46,065 --> 01:03:47,362
+on trees to not flood-it?
+
+1232
+01:03:47,362 --> 01:03:49,070
+PROFESSOR: It's not
+obvious that the grid
+
+1233
+01:03:49,070 --> 01:03:51,200
+problem is related to trees.
+
+1234
+01:03:51,200 --> 01:03:55,660
+There are hardness results
+for like 2 by n flood-it.
+
+1235
+01:03:55,660 --> 01:03:56,910
+But they're just NP hardness.
+
+1236
+01:03:56,910 --> 01:03:59,770
+I didn't see a w1 hardness
+for 2 by n flood-it.
+
+1237
+01:03:59,770 --> 01:04:02,770
+So as far as I
+know, 2 by n colored
+
+1238
+01:04:02,770 --> 01:04:05,486
+is hard-- is open from a
+parameterized complexity
+
+1239
+01:04:05,486 --> 01:04:05,985
+standpoint.
+
+1240
+01:04:05,985 --> 01:04:10,390
+
+1241
+01:04:10,390 --> 01:04:11,910
+Cool.
+
+1242
+01:04:11,910 --> 01:04:15,010
+I want to do one more
+reduction, and then I'll
+
+1243
+01:04:15,010 --> 01:04:16,050
+finally define w1.
+
+1244
+01:04:16,050 --> 01:04:38,280
+
+1245
+01:04:38,280 --> 01:04:44,510
+Dominating Set, this problem
+is actually w2 complete,
+
+1246
+01:04:44,510 --> 01:04:46,280
+so this is even harder.
+
+1247
+01:04:46,280 --> 01:04:52,690
+But before we worry about w2,
+let's prove that it's w1 hard.
+
+1248
+01:04:52,690 --> 01:04:58,126
+So we're going to reduce
+from multicolored clique
+
+1249
+01:04:58,126 --> 01:05:00,956
+to dominating set.
+
+1250
+01:05:00,956 --> 01:05:03,110
+I have a nice figure.
+
+1251
+01:05:03,110 --> 01:05:09,300
+This is a preview of this cool
+parameterized algorithms book.
+
+1252
+01:05:09,300 --> 01:05:17,984
+So I'm going to represent
+each-- got it right.
+
+1253
+01:05:17,984 --> 01:05:21,848
+
+1254
+01:05:21,848 --> 01:05:24,770
+Yeah, funny.
+
+1255
+01:05:24,770 --> 01:05:26,530
+I'm going to
+represent each vertex
+
+1256
+01:05:26,530 --> 01:05:28,870
+in the multicolored
+independence set problem
+
+1257
+01:05:28,870 --> 01:05:31,660
+by a vertex in the
+dominating set problem,
+
+1258
+01:05:31,660 --> 01:05:34,160
+so vertices mapped to vertices.
+
+1259
+01:05:34,160 --> 01:05:36,170
+This is the joy of
+multicolored cliques.
+
+1260
+01:05:36,170 --> 01:05:38,620
+We did all this k
+duplication stuff
+
+1261
+01:05:38,620 --> 01:05:41,490
+once so that we don't have to
+duplicate our graphic anymore.
+
+1262
+01:05:41,490 --> 01:05:42,490
+We just take this graph.
+
+1263
+01:05:42,490 --> 01:05:43,840
+We poured it over.
+
+1264
+01:05:43,840 --> 01:05:51,160
+Now, what that tells us is that
+the vi's form color classes.
+
+1265
+01:05:51,160 --> 01:05:54,230
+And what I'm going to do is
+connect each color class.
+
+1266
+01:05:54,230 --> 01:05:56,220
+So this is the set of
+all things of color one,
+
+1267
+01:05:56,220 --> 01:05:58,210
+set of all things of color two.
+
+1268
+01:05:58,210 --> 01:06:00,770
+First of all, I'm going to add
+2 dummy vertices to each color
+
+1269
+01:06:00,770 --> 01:06:02,530
+class just to hang out there.
+
+1270
+01:06:02,530 --> 01:06:05,540
+And then I'm going to connect
+everything in the color class
+
+1271
+01:06:05,540 --> 01:06:08,810
+by a clique.
+
+1272
+01:06:08,810 --> 01:06:12,570
+Before we only had edges
+between color classes,
+
+1273
+01:06:12,570 --> 01:06:15,600
+but now I want to color--
+
+1274
+01:06:15,600 --> 01:06:17,440
+I'm going to also
+change those edges.
+
+1275
+01:06:17,440 --> 01:06:18,940
+But the vertices
+mapped to vertices,
+
+1276
+01:06:18,940 --> 01:06:20,570
+I add two vertices
+of each color,
+
+1277
+01:06:20,570 --> 01:06:23,230
+and then this circle represents
+that there's a clique in here,
+
+1278
+01:06:23,230 --> 01:06:24,850
+clique in here, clique in here.
+
+1279
+01:06:24,850 --> 01:06:28,140
+Now, my goal is to
+find a dominating set.
+
+1280
+01:06:28,140 --> 01:06:30,480
+And so the intention
+is that you need
+
+1281
+01:06:30,480 --> 01:06:34,200
+to choose one vertex
+from each color class
+
+1282
+01:06:34,200 --> 01:06:36,327
+in the dominant set.
+
+1283
+01:06:36,327 --> 01:06:38,660
+And that's actually what these
+dummy vertices are doing.
+
+1284
+01:06:38,660 --> 01:06:41,380
+They are only going to be
+connect to things in here.
+
+1285
+01:06:41,380 --> 01:06:43,410
+They have to be
+covered by somebody,
+
+1286
+01:06:43,410 --> 01:06:45,810
+so that means you have to
+choose someone in this clique.
+
+1287
+01:06:45,810 --> 01:06:47,560
+You have to choose
+someone in this clique.
+
+1288
+01:06:47,560 --> 01:06:49,420
+When you do, it covers
+everybody in there.
+
+1289
+01:06:49,420 --> 01:06:51,253
+And there's going to
+be no point of choosing
+
+1290
+01:06:51,253 --> 01:06:53,410
+these dummy vertices because
+they're only connected
+
+1291
+01:06:53,410 --> 01:06:54,130
+to other things in the clique.
+
+1292
+01:06:54,130 --> 01:06:55,840
+You might as well
+choose these things.
+
+1293
+01:06:55,840 --> 01:07:01,650
+Now, how do I represent an edge
+in my independence set graph.
+
+1294
+01:07:01,650 --> 01:07:05,800
+If I have an edge
+between say u and v,
+
+1295
+01:07:05,800 --> 01:07:07,800
+that's in this color class
+and this color class.
+
+1296
+01:07:07,800 --> 01:07:09,550
+We know they're in
+different color classes
+
+1297
+01:07:09,550 --> 01:07:12,770
+by multicolored
+clique property--
+
+1298
+01:07:12,770 --> 01:07:14,710
+multicolored independent
+set property.
+
+1299
+01:07:14,710 --> 01:07:16,650
+Sorry, same thing.
+
+1300
+01:07:16,650 --> 01:07:20,670
+So I want to not
+choose both u and v.
+
+1301
+01:07:20,670 --> 01:07:23,180
+So I'm going to represent
+that by adding a vertex here,
+
+1302
+01:07:23,180 --> 01:07:25,610
+which must be dominated,
+and connect it
+
+1303
+01:07:25,610 --> 01:07:28,980
+to everyone except u over
+here and everyone except v
+
+1304
+01:07:28,980 --> 01:07:31,030
+over here, the red patches.
+
+1305
+01:07:31,030 --> 01:07:34,490
+So there are edges from this
+vertex to every red vertex
+
+1306
+01:07:34,490 --> 01:07:35,750
+here and here.
+
+1307
+01:07:35,750 --> 01:07:39,080
+So what that means is
+if I don't choose u,
+
+1308
+01:07:39,080 --> 01:07:41,440
+I will cover this added vertex.
+
+1309
+01:07:41,440 --> 01:07:45,910
+If I don't choose v, I will
+cover this added vertex.
+
+1310
+01:07:45,910 --> 01:07:50,350
+So I will cover it as long as
+I don't choose both u and v.
+
+1311
+01:07:50,350 --> 01:07:53,830
+So it's like I should choose
+at most one of these two guys,
+
+1312
+01:07:53,830 --> 01:07:55,326
+then this will be
+covered for free.
+
+1313
+01:07:55,326 --> 01:07:57,450
+And it has to be covered
+for free because we just--
+
+1314
+01:07:57,450 --> 01:08:01,540
+if I set k prime to be the
+number of color classes, which
+
+1315
+01:08:01,540 --> 01:08:04,689
+is k, then I don't
+have any flexibility.
+
+1316
+01:08:04,689 --> 01:08:07,220
+I can't choose any of
+these vertices to dominate.
+
+1317
+01:08:07,220 --> 01:08:10,229
+And so that simulates
+independence using dominating
+
+1318
+01:08:10,229 --> 01:08:13,930
+set, pretty simple and clean.
+
+1319
+01:08:13,930 --> 01:08:16,540
+So that gives you a
+flavor of nice reductions
+
+1320
+01:08:16,540 --> 01:08:21,930
+you can do with multicolored
+clique or independence set.
+
+1321
+01:08:21,930 --> 01:08:25,750
+AUDIENCE: What's
+two extra vertices?
+
+1322
+01:08:25,750 --> 01:08:28,560
+PROFESSOR: Why two?
+
+1323
+01:08:28,560 --> 01:08:30,167
+AUDIENCE: The two
+you added, it looks
+
+1324
+01:08:30,167 --> 01:08:32,169
+like are not adjacent so--
+
+1325
+01:08:32,169 --> 01:08:35,569
+AUDIENCE: Oh, so
+we derived them.
+
+1326
+01:08:35,569 --> 01:08:39,800
+PROFESSOR: Right We want
+them to be there in order
+
+1327
+01:08:39,800 --> 01:08:42,279
+to force choosing
+somebody down here,
+
+1328
+01:08:42,279 --> 01:08:44,330
+but we don't actually want
+to choose one of them.
+
+1329
+01:08:44,330 --> 01:08:46,350
+And so we emit that edge
+so if you choose one,
+
+1330
+01:08:46,350 --> 01:08:47,660
+you don't cover the other.
+
+1331
+01:08:47,660 --> 01:08:48,160
+Thanks.
+
+1332
+01:08:48,160 --> 01:08:52,672
+
+1333
+01:08:52,672 --> 01:08:54,130
+I think it simplifies
+the argument.
+
+1334
+01:08:54,130 --> 01:08:55,840
+It's probably not
+necessary because I
+
+1335
+01:08:55,840 --> 01:08:57,859
+think you could argue
+by replacement argument
+
+1336
+01:08:57,859 --> 01:09:02,670
+that you won't choose
+them, but anyway.
+
+1337
+01:09:02,670 --> 01:09:04,420
+Time for some definitions.
+
+1338
+01:09:04,420 --> 01:09:09,086
+I wanted to do some fun problems
+before we got to the somewhat
+
+1339
+01:09:09,086 --> 01:09:09,835
+weird definitions.
+
+1340
+01:09:09,835 --> 01:09:14,350
+
+1341
+01:09:14,350 --> 01:09:15,200
+The time has come.
+
+1342
+01:09:15,200 --> 01:09:21,770
+
+1343
+01:09:21,770 --> 01:09:25,060
+By the way, dominate set is
+w2 complete, so is set cover.
+
+1344
+01:09:25,060 --> 01:09:30,000
+And most w2 hardness reductions
+start from one of these two.
+
+1345
+01:09:30,000 --> 01:09:33,410
+We already know how to reduce
+dominating set to set cover.
+
+1346
+01:09:33,410 --> 01:09:36,600
+You make a set for every
+neighborhood set in the graph.
+
+1347
+01:09:36,600 --> 01:09:38,670
+So this reduction
+is easy, and that
+
+1348
+01:09:38,670 --> 01:09:42,080
+preserves a parameter so just
+from the same reduction we
+
+1349
+01:09:42,080 --> 01:09:43,450
+did two classes ago, I think.
+
+1350
+01:09:43,450 --> 01:09:46,680
+
+1351
+01:09:46,680 --> 01:09:51,250
+Here is a problem which
+will look familiar,
+
+1352
+01:09:51,250 --> 01:09:54,060
+but under a slightly
+different name.
+
+1353
+01:09:54,060 --> 01:09:57,775
+This is what I might
+call circuit ones.
+
+1354
+01:09:57,775 --> 01:10:02,160
+
+1355
+01:10:02,160 --> 01:10:05,690
+One's meaning you want to
+set some number of the inputs
+
+1356
+01:10:05,690 --> 01:10:08,620
+to be one, just like our
+optimization version.
+
+1357
+01:10:08,620 --> 01:10:10,906
+In this universe, it is
+called weighted circuit set.
+
+1358
+01:10:10,906 --> 01:10:12,530
+I'm not a fan of
+weighted because there
+
+1359
+01:10:12,530 --> 01:10:14,650
+aren't actual weights here.
+
+1360
+01:10:14,650 --> 01:10:16,400
+The goal is to get
+minimum hamming weight,
+
+1361
+01:10:16,400 --> 01:10:19,270
+meaning the minimum number
+of ones in your input.
+
+1362
+01:10:19,270 --> 01:10:25,280
+So I give you a circuit-- I'll
+draw a very simple circuit,
+
+1363
+01:10:25,280 --> 01:10:27,510
+and it has one output.
+
+1364
+01:10:27,510 --> 01:10:29,990
+It has some number of inputs.
+
+1365
+01:10:29,990 --> 01:10:37,380
+My goal is to set k
+ones and get a one out.
+
+1366
+01:10:37,380 --> 01:10:38,070
+Did I do it?
+
+1367
+01:10:38,070 --> 01:10:38,965
+I did it!
+
+1368
+01:10:38,965 --> 01:10:41,520
+! wasn't even looking.
+
+1369
+01:10:41,520 --> 01:10:43,541
+So that's an example of
+an input and an output
+
+1370
+01:10:43,541 --> 01:10:44,540
+to weighted circuit set.
+
+1371
+01:10:44,540 --> 01:10:52,014
+The parameter here, k, is the
+number of ones, one inputs.
+
+1372
+01:10:52,014 --> 01:10:53,430
+So the question
+is can you satisfy
+
+1373
+01:10:53,430 --> 01:10:56,400
+a circuit using only k ones.
+
+1374
+01:10:56,400 --> 01:10:58,050
+That's weighted circuit set.
+
+1375
+01:10:58,050 --> 01:11:01,900
+This problem defines
+the class called WP.
+
+1376
+01:11:01,900 --> 01:11:03,820
+This is the original
+definition of WP
+
+1377
+01:11:03,820 --> 01:11:08,150
+is all problems that reduce
+to weighted circuit set
+
+1378
+01:11:08,150 --> 01:11:10,520
+in a parameterized
+reduction sense.
+
+1379
+01:11:10,520 --> 01:11:14,900
+It's all parameterized
+problems that
+
+1380
+01:11:14,900 --> 01:11:16,680
+reduce to weighted circuit set.
+
+1381
+01:11:16,680 --> 01:11:25,010
+
+1382
+01:11:25,010 --> 01:11:26,370
+I lost my hierarchy.
+
+1383
+01:11:26,370 --> 01:11:29,100
+But this is even bigger
+than all the things.
+
+1384
+01:11:29,100 --> 01:11:33,240
+So we have FPT is
+contained in w1.
+
+1385
+01:11:33,240 --> 01:11:37,350
+It's contained in w2, et cetera.
+
+1386
+01:11:37,350 --> 01:11:41,800
+And then we have WP,
+and then we have XP.
+
+1387
+01:11:41,800 --> 01:11:43,345
+So it's not bigger
+than everything.
+
+1388
+01:11:43,345 --> 01:11:46,610
+It's not bigger than XP.
+
+1389
+01:11:46,610 --> 01:11:51,380
+I won't prove this
+here, but it is true.
+
+1390
+01:11:51,380 --> 01:11:53,410
+Now, I want to
+specialize this problem.
+
+1391
+01:11:53,410 --> 01:11:59,650
+I'm going to simplify it
+using a notion called weft.
+
+1392
+01:11:59,650 --> 01:12:03,800
+So first the depth
+of the circuit,
+
+1393
+01:12:03,800 --> 01:12:05,100
+this is the longest path.
+
+1394
+01:12:05,100 --> 01:12:10,900
+
+1395
+01:12:10,900 --> 01:12:12,000
+That's a normal notion.
+
+1396
+01:12:12,000 --> 01:12:16,960
+
+1397
+01:12:16,960 --> 01:12:25,630
+Then, the weft of a circuit
+is the maximum number
+
+1398
+01:12:25,630 --> 01:12:31,314
+of big gates on an
+input to output path.
+
+1399
+01:12:31,314 --> 01:12:39,680
+
+1400
+01:12:39,680 --> 01:12:46,714
+Big gates means let's
+say more than two inputs.
+
+1401
+01:12:46,714 --> 01:12:49,130
+In general, it's more than
+some constant number of inputs,
+
+1402
+01:12:49,130 --> 01:12:52,950
+but two is fine because if you
+use a bunch of two input gates,
+
+1403
+01:12:52,950 --> 01:12:55,490
+you can build a ten input gate.
+
+1404
+01:12:55,490 --> 01:12:57,920
+But there's a distinction
+between constant input gates
+
+1405
+01:12:57,920 --> 01:13:00,080
+and super constant input gates.
+
+1406
+01:13:00,080 --> 01:13:02,470
+So if you count how many
+super constant input gates
+
+1407
+01:13:02,470 --> 01:13:06,940
+you need in a constant
+depth circuit,
+
+1408
+01:13:06,940 --> 01:13:14,586
+then we get the w
+classes, w for weft.
+
+1409
+01:13:14,586 --> 01:13:20,420
+
+1410
+01:13:20,420 --> 01:13:28,000
+w(t) is the set of
+parameterized problems
+
+1411
+01:13:28,000 --> 01:13:41,670
+that reduce to constant depth
+weft-t weighted circuit set.
+
+1412
+01:13:41,670 --> 01:13:46,570
+
+1413
+01:13:46,570 --> 01:13:48,660
+t is not the parameter.
+
+1414
+01:13:48,660 --> 01:13:51,240
+K is still the parameter.
+k is the number of ones.
+
+1415
+01:13:51,240 --> 01:13:52,140
+t is the thing.
+
+1416
+01:13:52,140 --> 01:13:56,120
+
+1417
+01:13:56,120 --> 01:13:57,670
+Let's do some examples.
+
+1418
+01:13:57,670 --> 01:14:00,560
+AUDIENCE: Depth has to be
+larger than weft numbers?
+
+1419
+01:14:00,560 --> 01:14:02,730
+PROFESSOR: Yes, depth is
+always larger than weft.
+
+1420
+01:14:02,730 --> 01:14:05,480
+So we allow-- so t
+is a fixed constant.
+
+1421
+01:14:05,480 --> 01:14:07,755
+Depth could be 100
+times t or something.
+
+1422
+01:14:07,755 --> 01:14:10,984
+AUDIENCE: Then, w in WP is
+a different w than w(t)?
+
+1423
+01:14:10,984 --> 01:14:14,121
+
+1424
+01:14:14,121 --> 01:14:15,870
+PROFESSOR: They both
+have to do with weft,
+
+1425
+01:14:15,870 --> 01:14:18,740
+but that's the P
+is a polynomial.
+
+1426
+01:14:18,740 --> 01:14:22,220
+It corresponds to
+polynomial weft, which
+
+1427
+01:14:22,220 --> 01:14:24,325
+is basically unbounded weft.
+
+1428
+01:14:24,325 --> 01:14:25,859
+w does not stand for weighted.
+
+1429
+01:14:25,859 --> 01:14:27,275
+In both cases, it
+stands for weft.
+
+1430
+01:14:27,275 --> 01:14:30,650
+
+1431
+01:14:30,650 --> 01:14:32,020
+What is weft?
+
+1432
+01:14:32,020 --> 01:14:34,220
+Weft is the opposite of warp.
+
+1433
+01:14:34,220 --> 01:14:36,580
+When you're weaving,
+you've got the warp threads
+
+1434
+01:14:36,580 --> 01:14:39,190
+and then you've got this weft
+thread that goes back and forth
+
+1435
+01:14:39,190 --> 01:14:41,760
+and ties the whole
+circuit together.
+
+1436
+01:14:41,760 --> 01:14:45,810
+So that's sideways,
+so if you imagine
+
+1437
+01:14:45,810 --> 01:14:50,480
+that constant input gates do
+not need a weft to hold them in,
+
+1438
+01:14:50,480 --> 01:14:55,380
+but super constant ones do, then
+it's how many layers of wefting
+
+1439
+01:14:55,380 --> 01:14:57,840
+do you have to do to
+cover all those things?
+
+1440
+01:14:57,840 --> 01:15:02,230
+That's the larges the longest
+path in terms of counting
+
+1441
+01:15:02,230 --> 01:15:06,110
+the-- that's the term, OK?
+
+1442
+01:15:06,110 --> 01:15:08,550
+But it's actually fairly
+useful to think about.
+
+1443
+01:15:08,550 --> 01:15:12,050
+So for example, independence
+set, inputs are up here.
+
+1444
+01:15:12,050 --> 01:15:13,440
+Output is down here.
+
+1445
+01:15:13,440 --> 01:15:15,550
+I need to choose,
+for each vertex,
+
+1446
+01:15:15,550 --> 01:15:17,050
+whether it's in the
+independent set.
+
+1447
+01:15:17,050 --> 01:15:20,980
+And if I negate them, then
+I need various constraints.
+
+1448
+01:15:20,980 --> 01:15:23,990
+This is the graph that's
+being represented.
+
+1449
+01:15:23,990 --> 01:15:26,150
+I want to say either
+I don't choose this
+
+1450
+01:15:26,150 --> 01:15:29,060
+or I don't choose this.
+
+1451
+01:15:29,060 --> 01:15:31,910
+And then all of those
+clauses must be true.
+
+1452
+01:15:31,910 --> 01:15:33,670
+That's the and of those things.
+
+1453
+01:15:33,670 --> 01:15:35,200
+This is big.
+
+1454
+01:15:35,200 --> 01:15:36,040
+These are not big.
+
+1455
+01:15:36,040 --> 01:15:37,170
+They have two inputs.
+
+1456
+01:15:37,170 --> 01:15:38,640
+This has one input.
+
+1457
+01:15:38,640 --> 01:15:40,910
+So these are all free.
+
+1458
+01:15:40,910 --> 01:15:43,640
+And then we just do one
+in terms of the depth
+
+1459
+01:15:43,640 --> 01:15:46,880
+here where there's one
+level of big gates.
+
+1460
+01:15:46,880 --> 01:15:49,400
+So independent set is in w1.
+
+1461
+01:15:49,400 --> 01:15:52,109
+That's a proof that it's in w1.
+
+1462
+01:15:52,109 --> 01:15:54,400
+So that proves all the things
+we've been talking about,
+
+1463
+01:15:54,400 --> 01:15:58,540
+except dominating set, is in w1.
+
+1464
+01:15:58,540 --> 01:16:02,470
+Now dominating set,
+you need two levels.
+
+1465
+01:16:02,470 --> 01:16:06,320
+So we have the a constraint.
+
+1466
+01:16:06,320 --> 01:16:08,580
+So this is saying that
+a should be covered.
+
+1467
+01:16:08,580 --> 01:16:11,180
+a is adjacent to a, b, and c.
+
+1468
+01:16:11,180 --> 01:16:14,580
+I mean if I choose a, b, or
+c, then a will be dominated
+
+1469
+01:16:14,580 --> 01:16:17,140
+by the definition of
+dominating set because a
+
+1470
+01:16:17,140 --> 01:16:18,930
+is adjacent just to b and c.
+
+1471
+01:16:18,930 --> 01:16:21,040
+But also if I choose
+a, then it's dominated.
+
+1472
+01:16:21,040 --> 01:16:22,929
+So this is an or of
+those three things.
+
+1473
+01:16:22,929 --> 01:16:24,970
+And a should be dominated,
+b should be dominated,
+
+1474
+01:16:24,970 --> 01:16:25,886
+c should be dominated.
+
+1475
+01:16:25,886 --> 01:16:27,351
+So it's an and of
+all those things.
+
+1476
+01:16:27,351 --> 01:16:28,850
+But if we don't
+have bounded degree,
+
+1477
+01:16:28,850 --> 01:16:30,433
+which we can't because
+this problem is
+
+1478
+01:16:30,433 --> 01:16:36,640
+easy for bounded degree, then
+we have two levels of big gates.
+
+1479
+01:16:36,640 --> 01:16:39,330
+So this problem is in w2.
+
+1480
+01:16:39,330 --> 01:16:43,970
+Now, funnily enough, w1 and
+w2 are the most common things
+
+1481
+01:16:43,970 --> 01:16:44,640
+you see.
+
+1482
+01:16:44,640 --> 01:16:48,210
+I've never seen
+a paper about w3.
+
+1483
+01:16:48,210 --> 01:16:50,790
+Some statement, I
+think, about problems
+
+1484
+01:16:50,790 --> 01:16:55,490
+that we tend to care about,
+ands of ors are common.
+
+1485
+01:16:55,490 --> 01:16:59,010
+This, of course,
+CNF SAT is in w2.
+
+1486
+01:16:59,010 --> 01:17:01,710
+I should say weighted
+CNF SAT is in w2.
+
+1487
+01:17:01,710 --> 01:17:05,300
+It's actually w2 complete.
+
+1488
+01:17:05,300 --> 01:17:09,890
+Weighted three
+set is w1 complete
+
+1489
+01:17:09,890 --> 01:17:12,350
+because things of size 3 are OK.
+
+1490
+01:17:12,350 --> 01:17:14,710
+We can split those into
+two things of size 2.
+
+1491
+01:17:14,710 --> 01:17:21,860
+So in general, order one
+SAT, you have five SAT.
+
+1492
+01:17:21,860 --> 01:17:25,140
+That's w1 complete.
+
+1493
+01:17:25,140 --> 01:17:28,790
+And CNF SAT is w2 complete.
+
+1494
+01:17:28,790 --> 01:17:30,760
+And I think most of the
+problems we care about
+
+1495
+01:17:30,760 --> 01:17:34,505
+can be expressed as--
+this should be weighted.
+
+1496
+01:17:34,505 --> 01:17:38,320
+I'm going tow rite w,
+but I mean weighted.
+
+1497
+01:17:38,320 --> 01:17:40,960
+But this is a
+capital W, different.
+
+1498
+01:17:40,960 --> 01:17:43,310
+That's weft.
+
+1499
+01:17:43,310 --> 01:17:48,300
+So fine that's-- and most of the
+problems we care about can be
+
+1500
+01:17:48,300 --> 01:17:49,530
+represented as CNF SAT.
+
+1501
+01:17:49,530 --> 01:17:52,300
+I think that's why we
+rarely get outside of w2.
+
+1502
+01:17:52,300 --> 01:17:53,690
+But there are
+other things there.
+
+1503
+01:17:53,690 --> 01:17:59,220
+You could do an or of ands of
+ors or an and of ors of ands.
+
+1504
+01:17:59,220 --> 01:18:02,914
+Now, we know such formulas
+can be converted into CNF form
+
+1505
+01:18:02,914 --> 01:18:04,330
+and only get a
+polynomial blow up.
+
+1506
+01:18:04,330 --> 01:18:05,510
+What's going on?
+
+1507
+01:18:05,510 --> 01:18:08,540
+Well, when you do
+that inefficient form,
+
+1508
+01:18:08,540 --> 01:18:09,870
+you add extra variables.
+
+1509
+01:18:09,870 --> 01:18:11,920
+When you add extra
+variables, you are no longer
+
+1510
+01:18:11,920 --> 01:18:12,940
+preserving the weight.
+
+1511
+01:18:12,940 --> 01:18:15,520
+It would not be a
+parameterized reduction.
+
+1512
+01:18:15,520 --> 01:18:18,437
+So if you're just caring about
+satisfiability, that's fine.
+
+1513
+01:18:18,437 --> 01:18:20,520
+But if you're considering
+weighted satisfiability,
+
+1514
+01:18:20,520 --> 01:18:22,840
+you want to minimize
+the number of ones,
+
+1515
+01:18:22,840 --> 01:18:25,040
+it totally changes when
+you convert to CNF.
+
+1516
+01:18:25,040 --> 01:18:25,795
+So it matters.
+
+1517
+01:18:25,795 --> 01:18:28,720
+
+1518
+01:18:28,720 --> 01:18:35,600
+One more fun result, if you
+look at 2-tape non-deterministic
+
+1519
+01:18:35,600 --> 01:18:38,430
+Turing machines--
+the reason I had
+
+1520
+01:18:38,430 --> 01:18:40,389
+to define 1-tape
+non-deterministic Turing
+
+1521
+01:18:40,389 --> 01:18:41,930
+machines is because
+they're different
+
+1522
+01:18:41,930 --> 01:18:44,320
+from 2-tape non-deterministic
+Turing machines.
+
+1523
+01:18:44,320 --> 01:18:48,070
+These are w2 complete.
+
+1524
+01:18:48,070 --> 01:18:52,020
+The k-step version of 2-tape.
+
+1525
+01:18:52,020 --> 01:18:54,580
+2-tapes is you have 2-tapes
+that can advance independently.
+
+1526
+01:18:54,580 --> 01:18:57,130
+Or, you can think of there
+are two fingers you can
+
+1527
+01:18:57,130 --> 01:18:59,410
+independently move on one tape.
+
+1528
+01:18:59,410 --> 01:19:01,550
+Those are equivalent,
+and they give you w2.
+
+1529
+01:19:01,550 --> 01:19:04,810
+Three tapes, gives w2.
+
+1530
+01:19:04,810 --> 01:19:07,837
+Any constant number of
+tapes, you still get w2.
+
+1531
+01:19:07,837 --> 01:19:09,670
+And this is another, I
+think, natural reason
+
+1532
+01:19:09,670 --> 01:19:12,280
+why w2 comes up a lot.
+
+1533
+01:19:12,280 --> 01:19:16,810
+I have seen problems that are
+hard for what's called w-star.
+
+1534
+01:19:16,810 --> 01:19:19,920
+This w-star is wt
+for all fixed t.
+
+1535
+01:19:19,920 --> 01:19:24,820
+You can think of
+that as w order a.
+
+1536
+01:19:24,820 --> 01:19:26,370
+So it's the same thing.
+
+1537
+01:19:26,370 --> 01:19:28,810
+So I've seen problems that
+don't depend on what t is.
+
+1538
+01:19:28,810 --> 01:19:30,410
+They're hard for all of them.
+
+1539
+01:19:30,410 --> 01:19:32,560
+But I've never seen a
+w3 complete problem.
+
+1540
+01:19:32,560 --> 01:19:34,050
+Maybe we can think of one.
+
+1541
+01:19:34,050 --> 01:19:37,400
+I've also seen WP come
+up, and there's also
+
+1542
+01:19:37,400 --> 01:19:43,740
+a problem called W-SAT which
+is if you have weighted formula
+
+1543
+01:19:43,740 --> 01:19:47,340
+sat instead of weighted circuits
+sat, you get w-sat instead WP.
+
+1544
+01:19:47,340 --> 01:19:52,110
+I think it's a little weaker
+because in circuit SAT you can
+
+1545
+01:19:52,110 --> 01:19:54,164
+reuse things and in
+formula set, you can't.
+
+1546
+01:19:54,164 --> 01:19:56,330
+And it turns out to give
+slightly different classes.
+
+1547
+01:19:56,330 --> 01:19:58,032
+So things are messier here.
+
+1548
+01:19:58,032 --> 01:19:59,990
+But if you just care
+about whether a problem is
+
+1549
+01:19:59,990 --> 01:20:04,720
+fixed parameter tractable,
+these are all bad.
+
+1550
+01:20:04,720 --> 01:20:06,470
+But the point of knowing
+about them is you
+
+1551
+01:20:06,470 --> 01:20:09,410
+want to know if your
+problem-- first you
+
+1552
+01:20:09,410 --> 01:20:11,730
+should check where it
+fits in the w hierarchy
+
+1553
+01:20:11,730 --> 01:20:14,230
+by just thinking about what's
+a trivial way to write it down
+
+1554
+01:20:14,230 --> 01:20:15,690
+in the CNF style thing.
+
+1555
+01:20:15,690 --> 01:20:17,690
+Figure out whether
+it's w1 or w2.
+
+1556
+01:20:17,690 --> 01:20:20,280
+Then, you'll know which
+problems you should start from.
+
+1557
+01:20:20,280 --> 01:20:22,997
+If it's w1, probably want to
+start from a version of clique.
+
+1558
+01:20:22,997 --> 01:20:24,580
+If it's w2, you
+probably want to start
+
+1559
+01:20:24,580 --> 01:20:25,955
+from a version of
+dominating set.
+
+1560
+01:20:25,955 --> 01:20:27,530
+That's why we talked
+about them here.
+
+1561
+01:20:27,530 --> 01:20:29,140
+And usually it's w1 or w2.
+
+1562
+01:20:29,140 --> 01:20:31,820
+
+1563
+01:20:31,820 --> 01:20:32,710
+Cool.
+
+1564
+01:20:32,710 --> 01:20:35,320
+Questions?
+
+1565
+01:20:35,320 --> 01:20:36,860
+We'll do more next time.
+
+1566
+01:20:36,860 --> 01:20:38,500
+This is a fun area.
+
+1567
+01:20:38,500 --> 01:20:41,040
+And next time we'll talk
+about, in particular,
+
+1568
+01:20:41,040 --> 01:20:44,900
+how the exponential time
+hypothesis relates to all this.
+

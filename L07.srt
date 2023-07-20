@@ -1,0 +1,8626 @@
+1
+0-1:59:36,500 --> 0-1:59:36,580
+
+2
+0-1:59:36,580 --> 0-1:59:38,930
+The following content is
+provided under a Creative
+
+3
+0-1:59:38,930 --> 0-1:59:40,320
+Commons license.
+
+4
+0-1:59:40,320 --> 0-1:59:42,550
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:42,550 --> 0-1:59:46,650
+continue to offer high-quality
+educational resources for free.
+
+6
+0-1:59:46,650 --> 0-1:59:49,190
+To make a donation or to
+view additional materials
+
+7
+0-1:59:49,190 --> 0-1:59:53,100
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:53,100 --> 0-1:59:53,805
+at ocw.mit.edu.
+
+9
+0-1:59:53,805 --> 00:00:02,215
+
+10
+00:00:02,215 --> 00:00:03,140
+PROFESSOR: All right.
+
+11
+00:00:03,140 --> 00:00:04,410
+Welcome back.
+
+12
+00:00:04,410 --> 00:00:07,180
+Today is probably our
+last lecture about 3SAT,
+
+13
+00:00:07,180 --> 00:00:11,180
+but this time it's about
+planar 3SAT, which we've
+
+14
+00:00:11,180 --> 00:00:14,560
+sort of alluded to in the past.
+
+15
+00:00:14,560 --> 00:00:16,810
+And we saw a version
+of what you might
+
+16
+00:00:16,810 --> 00:00:20,750
+call planar 3SAT with planar
+CircuitSAT last class.
+
+17
+00:00:20,750 --> 00:00:25,900
+But planar 3SAT is a very
+useful special case of 3SAT.
+
+18
+00:00:25,900 --> 00:00:31,350
+It is just like
+3SAT, but you also
+
+19
+00:00:31,350 --> 00:00:46,130
+are told that the bipartite
+graph, let's say of variables
+
+20
+00:00:46,130 --> 00:00:50,820
+versus clauses is
+a planar graph.
+
+21
+00:00:50,820 --> 00:00:54,860
+
+22
+00:00:54,860 --> 00:01:03,910
+So the idea is you have
+some vertices representing
+
+23
+00:01:03,910 --> 00:01:04,790
+variables.
+
+24
+00:01:04,790 --> 00:01:06,850
+v for variable here.
+
+25
+00:01:06,850 --> 00:01:09,115
+And then you separately
+have some clauses.
+
+26
+00:01:09,115 --> 00:01:13,348
+
+27
+00:01:13,348 --> 00:01:18,662
+I guess I should really
+have more variables.
+
+28
+00:01:18,662 --> 00:01:25,990
+You have an edge between a
+variable and a clause whenever
+
+29
+00:01:25,990 --> 00:01:27,640
+that clause includes
+that variable,
+
+30
+00:01:27,640 --> 00:01:29,890
+either in positive
+or negative form.
+
+31
+00:01:29,890 --> 00:01:31,390
+So maybe some of
+these edges, I'll
+
+32
+00:01:31,390 --> 00:01:33,110
+draw a red to
+indicate, actually,
+
+33
+00:01:33,110 --> 00:01:38,140
+that's v bar that is
+included in this clause.
+
+34
+00:01:38,140 --> 00:01:46,610
+So this clause is
+vi or vj bar or vk.
+
+35
+00:01:46,610 --> 00:01:47,120
+And so on.
+
+36
+00:01:47,120 --> 00:01:49,965
+And this graph should be planar,
+shouldn't have any crossings.
+
+37
+00:01:49,965 --> 00:01:54,499
+
+38
+00:01:54,499 --> 00:02:00,111
+Something like that would be
+a valid input to planar 3SAT.
+
+39
+00:02:00,111 --> 00:02:00,610
+Question.
+
+40
+00:02:00,610 --> 00:02:04,610
+AUDIENCE: So if
+you're given the fact
+
+41
+00:02:04,610 --> 00:02:10,326
+that a particular
+bipartite graph is planar,
+
+42
+00:02:10,326 --> 00:02:14,956
+is there a polynomial operation
+to find a planar arrangement?
+
+43
+00:02:14,956 --> 00:02:15,580
+PROFESSOR: Yes.
+
+44
+00:02:15,580 --> 00:02:17,310
+Deciding whether
+a graph is planar
+
+45
+00:02:17,310 --> 00:02:20,470
+and finding a planar embedding
+when it is is linear time.
+
+46
+00:02:20,470 --> 00:02:23,197
+So here I'm just saying it's
+given as a planar graph,
+
+47
+00:02:23,197 --> 00:02:24,280
+but not with an embedding.
+
+48
+00:02:24,280 --> 00:02:26,160
+So we're going to use the
+embeddings in our reduction.
+
+49
+00:02:26,160 --> 00:02:26,880
+Yeah, good point.
+
+50
+00:02:26,880 --> 00:02:28,540
+So we do actually
+need the ability
+
+51
+00:02:28,540 --> 00:02:31,080
+to draw these things
+without crossings.
+
+52
+00:02:31,080 --> 00:02:32,740
+Good.
+
+53
+00:02:32,740 --> 00:02:35,890
+So first thing I'm going to
+do is prove that this is hard.
+
+54
+00:02:35,890 --> 00:02:38,170
+And usually I don't prove
+base problems are hard,
+
+55
+00:02:38,170 --> 00:02:42,100
+but this is a sufficiently
+sophisticated base problem.
+
+56
+00:02:42,100 --> 00:02:45,120
+I mean, we do lots of
+reductions from planar 3SAT.
+
+57
+00:02:45,120 --> 00:02:46,840
+But the proof is
+actually from 3SAT,
+
+58
+00:02:46,840 --> 00:02:48,840
+and I think it's a
+representative example of how
+
+59
+00:02:48,840 --> 00:02:51,470
+to build a crossover in
+this kind of setting,
+
+60
+00:02:51,470 --> 00:02:53,330
+and what kind of
+extra properties
+
+61
+00:02:53,330 --> 00:02:54,930
+you can get out of it.
+
+62
+00:02:54,930 --> 00:02:57,410
+So here it is.
+
+63
+00:02:57,410 --> 00:03:01,700
+This is the proof
+in a single diagram.
+
+64
+00:03:01,700 --> 00:03:04,320
+So the notation here is that
+the little green circles
+
+65
+00:03:04,320 --> 00:03:05,470
+are clauses.
+
+66
+00:03:05,470 --> 00:03:08,570
+And the bigger circles
+are the variables.
+
+67
+00:03:08,570 --> 00:03:10,320
+Purple circles are variables.
+
+68
+00:03:10,320 --> 00:03:13,445
+So the idea is it in
+your initial instance--
+
+69
+00:03:13,445 --> 00:03:14,930
+so we're going to
+reduce from 3SAT.
+
+70
+00:03:14,930 --> 00:03:17,830
+We're given an
+arbitrary 3SAT instance.
+
+71
+00:03:17,830 --> 00:03:20,840
+So that has a corresponding
+bipartite graph.
+
+72
+00:03:20,840 --> 00:03:21,920
+Variables versus clauses.
+
+73
+00:03:21,920 --> 00:03:23,100
+Just not planar.
+
+74
+00:03:23,100 --> 00:03:24,460
+So consider any drawing.
+
+75
+00:03:24,460 --> 00:03:26,811
+Actually, we'll look at a
+specific drawing in a moment.
+
+76
+00:03:26,811 --> 00:03:28,810
+But it's going to have
+some crossings like this.
+
+77
+00:03:28,810 --> 00:03:30,893
+This is a clause-variable
+connection, another one.
+
+78
+00:03:30,893 --> 00:03:31,670
+They cross here.
+
+79
+00:03:31,670 --> 00:03:35,080
+We're going to replace that
+with this picture, which
+
+80
+00:03:35,080 --> 00:03:39,207
+is technically not 3SAT, because
+there's a four-variable clause
+
+81
+00:03:39,207 --> 00:03:39,790
+in the center.
+
+82
+00:03:39,790 --> 00:03:40,900
+But we can fix that.
+
+83
+00:03:40,900 --> 00:03:42,380
+That's not too hard.
+
+84
+00:03:42,380 --> 00:03:44,810
+Let me first convince
+you-- and this'll
+
+85
+00:03:44,810 --> 00:03:48,430
+take a little while-- that
+this is equivalent to this.
+
+86
+00:03:48,430 --> 00:03:50,660
+So the ultimate
+claim-- so there's
+
+87
+00:03:50,660 --> 00:03:54,149
+four Greek letters in the
+center as extra variables.
+
+88
+00:03:54,149 --> 00:03:58,680
+The main claim is that
+a1 equals a2 equals a.
+
+89
+00:03:58,680 --> 00:04:01,480
+And b1 equals b2 equals b.
+
+90
+00:04:01,480 --> 00:04:04,320
+If that's true, then, of
+course, this connection
+
+91
+00:04:04,320 --> 00:04:06,510
+simulates that connection.
+
+92
+00:04:06,510 --> 00:04:09,450
+And that connection
+simulates this connection.
+
+93
+00:04:09,450 --> 00:04:11,250
+And the claim is as
+long as you satisfy
+
+94
+00:04:11,250 --> 00:04:13,250
+that, you can always set
+the stuff in the middle
+
+95
+00:04:13,250 --> 00:04:14,390
+to be happy.
+
+96
+00:04:14,390 --> 00:04:17,440
+So those are the only
+constraints, basically.
+
+97
+00:04:17,440 --> 00:04:23,560
+So let's start with
+over here and down here.
+
+98
+00:04:23,560 --> 00:04:28,650
+These little sort of length two
+paths-- sorry, so the coloring
+
+99
+00:04:28,650 --> 00:04:30,510
+is similar to what
+I did on the board.
+
+100
+00:04:30,510 --> 00:04:32,200
+The red are negative
+connections,
+
+101
+00:04:32,200 --> 00:04:35,580
+meaning that clause has not
+a and this clause has not a2.
+
+102
+00:04:35,580 --> 00:04:38,490
+And the blue connections
+are positive connections.
+
+103
+00:04:38,490 --> 00:04:42,920
+So when you have this sort of
+alternating four-cycle here,
+
+104
+00:04:42,920 --> 00:04:45,880
+you can read that
+as not a or a2,
+
+105
+00:04:45,880 --> 00:04:48,530
+which is the same as
+saying a implies a2.
+
+106
+00:04:48,530 --> 00:04:50,035
+And also, a2 implies a.
+
+107
+00:04:50,035 --> 00:04:52,200
+That means they
+have the same value.
+
+108
+00:04:52,200 --> 00:04:53,540
+a if and only if a2.
+
+109
+00:04:53,540 --> 00:04:56,470
+Or I'll just write equality
+of their truth values.
+
+110
+00:04:56,470 --> 00:04:57,170
+Same thing here.
+
+111
+00:04:57,170 --> 00:05:02,880
+So that part is just
+to get warmed up.
+
+112
+00:05:02,880 --> 00:05:05,630
+Now the fun part
+is on the inside.
+
+113
+00:05:05,630 --> 00:05:08,450
+And I think the next
+step is to think
+
+114
+00:05:08,450 --> 00:05:13,020
+about these sort of
+triangles in the corner.
+
+115
+00:05:13,020 --> 00:05:15,600
+If you stare at them
+for a little while,
+
+116
+00:05:15,600 --> 00:05:17,190
+you get these kinds
+of constraints.
+
+117
+00:05:17,190 --> 00:05:18,990
+So let's work through this one.
+
+118
+00:05:18,990 --> 00:05:22,760
+You'll see there's a certain
+symmetry among what the alpha,
+
+119
+00:05:22,760 --> 00:05:24,830
+beta, gamma, deltas are.
+
+120
+00:05:24,830 --> 00:05:29,720
+They're going to be all
+sort of all patterns of a2
+
+121
+00:05:29,720 --> 00:05:34,560
+possibly complemented, anded
+with b2 possibly complemented.
+
+122
+00:05:34,560 --> 00:05:37,405
+So these are supposed to be
+the four cases of a versus b.
+
+123
+00:05:37,405 --> 00:05:40,150
+The trick is that some of them
+are 2's and some of them are
+
+124
+00:05:40,150 --> 00:05:41,050
+1's.
+
+125
+00:05:41,050 --> 00:05:43,660
+So that's what makes it
+a little bit annoying.
+
+126
+00:05:43,660 --> 00:05:45,750
+It would be nice to make
+it perfectly symmetric,
+
+127
+00:05:45,750 --> 00:05:49,940
+but that would, in terms
+of these labels-- but that
+
+128
+00:05:49,940 --> 00:05:51,440
+would destroy planarity.
+
+129
+00:05:51,440 --> 00:05:54,440
+So this is the planar version.
+
+130
+00:05:54,440 --> 00:05:56,800
+So let's look at this.
+
+131
+00:05:56,800 --> 00:06:02,910
+We have, for example,
+not alpha or b2.
+
+132
+00:06:02,910 --> 00:06:05,020
+So alpha implies b2.
+
+133
+00:06:05,020 --> 00:06:07,240
+Also, alpha implies a2.
+
+134
+00:06:07,240 --> 00:06:11,230
+So if alpha is true, then
+they must both be true.
+
+135
+00:06:11,230 --> 00:06:15,570
+And conversely, I want
+a2 and b2 to imply alpha.
+
+136
+00:06:15,570 --> 00:06:16,070
+Right.
+
+137
+00:06:16,070 --> 00:06:18,240
+So if these are both
+true, then this guy's
+
+138
+00:06:18,240 --> 00:06:20,030
+unsatisfied from
+those two red clauses.
+
+139
+00:06:20,030 --> 00:06:20,950
+So alpha must be true.
+
+140
+00:06:20,950 --> 00:06:21,450
+Good.
+
+141
+00:06:21,450 --> 00:06:22,780
+So it works in both directions.
+
+142
+00:06:22,780 --> 00:06:23,730
+You get equality.
+
+143
+00:06:23,730 --> 00:06:25,896
+It's exactly the same in
+each of these four corners,
+
+144
+00:06:25,896 --> 00:06:28,750
+just the coloring is different.
+
+145
+00:06:28,750 --> 00:06:30,340
+And you're connected
+to a different b.
+
+146
+00:06:30,340 --> 00:06:33,460
+So here if you reflect, you're
+connected to b1 instead of b2.
+
+147
+00:06:33,460 --> 00:06:35,490
+And there's a complement
+here basically
+
+148
+00:06:35,490 --> 00:06:40,404
+because these two colors
+switched from here.
+
+149
+00:06:40,404 --> 00:06:41,820
+So it's exactly
+the same argument,
+
+150
+00:06:41,820 --> 00:06:44,560
+but you just imagine
+flipping the value of b1.
+
+151
+00:06:44,560 --> 00:06:46,620
+And then reflect over here.
+
+152
+00:06:46,620 --> 00:06:48,560
+Switch the value of the a's.
+
+153
+00:06:48,560 --> 00:06:51,530
+Reflect over here, switch
+the coloring of the b's.
+
+154
+00:06:51,530 --> 00:06:55,050
+So that's what's
+happening in the corners.
+
+155
+00:06:55,050 --> 00:06:59,430
+And at this point, I had to
+draw a table of all the cases.
+
+156
+00:06:59,430 --> 00:07:00,330
+Oh, sorry.
+
+157
+00:07:00,330 --> 00:07:03,095
+This is a little bit about
+what happens in the center.
+
+158
+00:07:03,095 --> 00:07:05,720
+So of course, the center clause
+says that at least one of these
+
+159
+00:07:05,720 --> 00:07:06,220
+is true.
+
+160
+00:07:06,220 --> 00:07:09,180
+We want exactly one to be
+true, because exactly one
+
+161
+00:07:09,180 --> 00:07:10,780
+of these cases should happen.
+
+162
+00:07:10,780 --> 00:07:12,850
+But that's a weak constraint.
+
+163
+00:07:12,850 --> 00:07:15,270
+And then we also
+have some constraints
+
+164
+00:07:15,270 --> 00:07:23,510
+like if alpha is true, then this
+is not satisfied from alpha.
+
+165
+00:07:23,510 --> 00:07:24,500
+And similarly, this.
+
+166
+00:07:24,500 --> 00:07:27,080
+And therefore,
+beta must be false.
+
+167
+00:07:27,080 --> 00:07:29,930
+So if alpha is true, then
+beta and delta are false.
+
+168
+00:07:29,930 --> 00:07:31,580
+I think that's
+actually all you need.
+
+169
+00:07:31,580 --> 00:07:33,220
+I think these might
+not be necessary.
+
+170
+00:07:33,220 --> 00:07:36,000
+But they make for a
+nice symmetric diagram.
+
+171
+00:07:36,000 --> 00:07:37,790
+And they don't hurt.
+
+172
+00:07:37,790 --> 00:07:42,826
+So now I drew a table-- there
+may be a more direct argument--
+
+173
+00:07:42,826 --> 00:07:46,210
+of all the possible
+settings a2 and b2,
+
+174
+00:07:46,210 --> 00:07:48,610
+and what you can
+derive from that.
+
+175
+00:07:48,610 --> 00:07:52,390
+And everything except this
+part is really easy to derive,
+
+176
+00:07:52,390 --> 00:07:55,420
+assuming I can remember
+what I did last night.
+
+177
+00:07:55,420 --> 00:07:58,920
+So let's say a2
+and b2 are false.
+
+178
+00:07:58,920 --> 00:08:02,490
+I claim alpha is false,
+because we have this equation.
+
+179
+00:08:02,490 --> 00:08:03,350
+That's easy.
+
+180
+00:08:03,350 --> 00:08:05,600
+And in general, you can
+compute alpha directly,
+
+181
+00:08:05,600 --> 00:08:07,460
+because it's just a
+function of a2 and b2.
+
+182
+00:08:07,460 --> 00:08:08,850
+It's the end function.
+
+183
+00:08:08,850 --> 00:08:10,159
+So that's good.
+
+184
+00:08:10,159 --> 00:08:10,909
+What about beta?
+
+185
+00:08:10,909 --> 00:08:18,929
+I claim if alpha is false here,
+then in this particular case--
+
+186
+00:08:18,929 --> 00:08:19,559
+well, OK.
+
+187
+00:08:19,559 --> 00:08:20,900
+Here's one thing we wrote.
+
+188
+00:08:20,900 --> 00:08:23,070
+Alpha implies not
+beta and not gamma.
+
+189
+00:08:23,070 --> 00:08:25,870
+So in this last row,
+if alpha is true,
+
+190
+00:08:25,870 --> 00:08:29,010
+we know that beta
+and gamma are false.
+
+191
+00:08:29,010 --> 00:08:29,620
+That's good.
+
+192
+00:08:29,620 --> 00:08:33,500
+We hope also that beta
+and delta are false.
+
+193
+00:08:33,500 --> 00:08:34,930
+We hope also that
+gamma is false.
+
+194
+00:08:34,930 --> 00:08:40,210
+But I don't think we
+need that, because if you
+
+195
+00:08:40,210 --> 00:08:44,420
+look at this equation
+on delta, which we know
+
+196
+00:08:44,420 --> 00:08:50,500
+is 0, that must mean that
+one of these two things is 0.
+
+197
+00:08:50,500 --> 00:08:52,410
+But b2 is true.
+
+198
+00:08:52,410 --> 00:08:52,910
+Sorry.
+
+199
+00:08:52,910 --> 00:08:54,743
+I'm going to use true
+and 1 interchangeably,
+
+200
+00:08:54,743 --> 00:08:58,130
+and 0 and false for
+whatever reason today.
+
+201
+00:08:58,130 --> 00:09:02,420
+So this needs to be
+0, but this is 1.
+
+202
+00:09:02,420 --> 00:09:06,190
+So this must be 0, which
+means that a1 is 1.
+
+203
+00:09:06,190 --> 00:09:09,600
+And symmetrically on the top,
+this is a symmetric between a
+
+204
+00:09:09,600 --> 00:09:10,100
+and b.
+
+205
+00:09:10,100 --> 00:09:15,540
+So up here, you
+know that a2 is 1.
+
+206
+00:09:15,540 --> 00:09:19,490
+And therefore, b1 bar must be 0.
+
+207
+00:09:19,490 --> 00:09:20,980
+So b1 must be 1.
+
+208
+00:09:20,980 --> 00:09:23,144
+So we transfer the information.
+
+209
+00:09:23,144 --> 00:09:25,310
+And the only other thing
+to check in all these cases
+
+210
+00:09:25,310 --> 00:09:27,018
+is that actually
+everything is satisfied.
+
+211
+00:09:27,018 --> 00:09:28,746
+But that's sort of boring.
+
+212
+00:09:28,746 --> 00:09:30,370
+I want to do the
+other direction, which
+
+213
+00:09:30,370 --> 00:09:32,650
+is that you are
+forced to communicate
+
+214
+00:09:32,650 --> 00:09:34,759
+the copies of a and
+the copies of b.
+
+215
+00:09:34,759 --> 00:09:35,800
+So that was the last row.
+
+216
+00:09:35,800 --> 00:09:37,174
+I think the first
+row should also
+
+217
+00:09:37,174 --> 00:09:40,470
+be easy for a slightly
+different reason.
+
+218
+00:09:40,470 --> 00:09:44,075
+So a2 and b2 are false.
+
+219
+00:09:44,075 --> 00:09:47,330
+
+220
+00:09:47,330 --> 00:09:48,410
+Alpha is false.
+
+221
+00:09:48,410 --> 00:09:49,330
+Beta is false.
+
+222
+00:09:49,330 --> 00:09:53,310
+That's as far as
+we've gotten so far.
+
+223
+00:09:53,310 --> 00:09:54,850
+Let's see.
+
+224
+00:09:54,850 --> 00:10:00,940
+Delta is a1 bar and b2, right?
+
+225
+00:10:00,940 --> 00:10:04,281
+
+226
+00:10:04,281 --> 00:10:04,780
+Right.
+
+227
+00:10:04,780 --> 00:10:08,335
+Because b2 is false, we
+know that delta is false.
+
+228
+00:10:08,335 --> 00:10:10,320
+So it doesn't matter what a1 is.
+
+229
+00:10:10,320 --> 00:10:12,150
+So it's sort of the
+reverse direction.
+
+230
+00:10:12,150 --> 00:10:15,990
+And similarly, we
+should be able to-- oh,
+
+231
+00:10:15,990 --> 00:10:18,721
+because from this, we know
+at least one of them is true,
+
+232
+00:10:18,721 --> 00:10:20,470
+at least one of the
+Greek letters is true,
+
+233
+00:10:20,470 --> 00:10:21,910
+then we've got three down.
+
+234
+00:10:21,910 --> 00:10:23,500
+So it must be
+gamma that is true.
+
+235
+00:10:23,500 --> 00:10:25,000
+And once you know
+gamma is true, you
+
+236
+00:10:25,000 --> 00:10:26,730
+know exactly what a1 and b1 are.
+
+237
+00:10:26,730 --> 00:10:29,010
+So that's another good case.
+
+238
+00:10:29,010 --> 00:10:30,440
+These are slightly
+more annoying,
+
+239
+00:10:30,440 --> 00:10:32,380
+at least as far as I could see.
+
+240
+00:10:32,380 --> 00:10:34,590
+Maybe there's a
+cleaner argument.
+
+241
+00:10:34,590 --> 00:10:36,320
+So let's say they're
+symmetric, though.
+
+242
+00:10:36,320 --> 00:10:38,140
+So let's do the second row.
+
+243
+00:10:38,140 --> 00:10:40,500
+So a2 is 0.
+
+244
+00:10:40,500 --> 00:10:42,720
+b2 is 0.
+
+245
+00:10:42,720 --> 00:10:45,210
+I think just like
+this argument, we
+
+246
+00:10:45,210 --> 00:10:49,970
+get that beta is 0,
+because beta involves a2.
+
+247
+00:10:49,970 --> 00:10:54,500
+We know a2 is 0, so beta
+equals 0, just like this case,
+
+248
+00:10:54,500 --> 00:10:55,510
+actually.
+
+249
+00:10:55,510 --> 00:10:56,010
+OK.
+
+250
+00:10:56,010 --> 00:10:57,980
+So that's good for that.
+
+251
+00:10:57,980 --> 00:11:00,090
+I think it's harder
+to figure out delta.
+
+252
+00:11:00,090 --> 00:11:03,200
+
+253
+00:11:03,200 --> 00:11:04,980
+Or here's one way to argue it.
+
+254
+00:11:04,980 --> 00:11:06,670
+Suppose that gamma were 1.
+
+255
+00:11:06,670 --> 00:11:11,200
+It should be 0, because
+gamma's supposed to be only 1
+
+256
+00:11:11,200 --> 00:11:12,980
+in this situation.
+
+257
+00:11:12,980 --> 00:11:19,790
+If it's 1, then I claim that
+alpha 1 and beta 1 must be 0.
+
+258
+00:11:19,790 --> 00:11:22,070
+That's from this equation.
+
+259
+00:11:22,070 --> 00:11:24,650
+And then we should
+get a contradiction.
+
+260
+00:11:24,650 --> 00:11:26,030
+Help me find the contradiction.
+
+261
+00:11:26,030 --> 00:11:28,000
+AUDIENCE: Delta becomes 1.
+
+262
+00:11:28,000 --> 00:11:29,560
+PROFESSOR: Delta becomes 1.
+
+263
+00:11:29,560 --> 00:11:32,420
+AUDIENCE: And then the clause
+between gamma and delta is--
+
+264
+00:11:32,420 --> 00:11:34,030
+PROFESSOR: And then
+this is unhappy.
+
+265
+00:11:34,030 --> 00:11:34,530
+Good.
+
+266
+00:11:34,530 --> 00:11:35,030
+OK.
+
+267
+00:11:35,030 --> 00:11:38,460
+So we do need a couple other
+constraints like this one.
+
+268
+00:11:38,460 --> 00:11:38,960
+Cool.
+
+269
+00:11:38,960 --> 00:11:40,120
+So that's the idea.
+
+270
+00:11:40,120 --> 00:11:42,210
+Therefore, gamma is 0.
+
+271
+00:11:42,210 --> 00:11:45,190
+And then by that,
+delta must be 1.
+
+272
+00:11:45,190 --> 00:11:46,906
+And then we're happy again.
+
+273
+00:11:46,906 --> 00:11:47,540
+OK?
+
+274
+00:11:47,540 --> 00:11:50,990
+So that's the idea
+in a nutshell.
+
+275
+00:11:50,990 --> 00:11:53,510
+There's maybe other
+ways to see it.
+
+276
+00:11:53,510 --> 00:11:57,430
+And this is an old proof
+by Lichtenstein in 1982.
+
+277
+00:11:57,430 --> 00:11:58,241
+It's a cool paper.
+
+278
+00:11:58,241 --> 00:11:59,490
+It has a lot of results in it.
+
+279
+00:11:59,490 --> 00:12:01,640
+We'll be covering a
+few different results.
+
+280
+00:12:01,640 --> 00:12:04,820
+But at this point,
+we have shown this.
+
+281
+00:12:04,820 --> 00:12:06,850
+You just apply this
+to each crossing.
+
+282
+00:12:06,850 --> 00:12:10,600
+Eventually you get a
+planar bipartite graph
+
+283
+00:12:10,600 --> 00:12:13,780
+that's satisfiable if and only
+if the original is a planar
+
+284
+00:12:13,780 --> 00:12:15,650
+3SAT is NP-hard.
+
+285
+00:12:15,650 --> 00:12:16,330
+Question?
+
+286
+00:12:16,330 --> 00:12:17,952
+So many questions.
+
+287
+00:12:17,952 --> 00:12:19,660
+AUDIENCE: I guess this
+is probably silly.
+
+288
+00:12:19,660 --> 00:12:22,044
+But [INAUDIBLE]
+3SAT, every clause
+
+289
+00:12:22,044 --> 00:12:23,210
+had to have three variables.
+
+290
+00:12:23,210 --> 00:12:23,560
+PROFESSOR: Yes.
+
+291
+00:12:23,560 --> 00:12:23,930
+OK.
+
+292
+00:12:23,930 --> 00:12:24,464
+Right.
+
+293
+00:12:24,464 --> 00:12:25,380
+AUDIENCE: Two or four.
+
+294
+00:12:25,380 --> 00:12:28,130
+PROFESSOR: I cheated
+a little bit here.
+
+295
+00:12:28,130 --> 00:12:28,630
+OK.
+
+296
+00:12:28,630 --> 00:12:29,520
+Yeah.
+
+297
+00:12:29,520 --> 00:12:30,195
+Some have two.
+
+298
+00:12:30,195 --> 00:12:33,010
+
+299
+00:12:33,010 --> 00:12:37,290
+So for that, I need to be able
+to construct the value false.
+
+300
+00:12:37,290 --> 00:12:38,460
+And some have four.
+
+301
+00:12:38,460 --> 00:12:42,940
+The four, I believe
+the claim is you
+
+302
+00:12:42,940 --> 00:12:45,960
+can take a little
+clause like this
+
+303
+00:12:45,960 --> 00:12:53,810
+and convert it into a clause
+with another variable.
+
+304
+00:12:53,810 --> 00:12:56,227
+AUDIENCE: And one of
+the two edges connecting
+
+305
+00:12:56,227 --> 00:12:57,310
+the variables [INAUDIBLE].
+
+306
+00:12:57,310 --> 00:12:58,018
+PROFESSOR: Right.
+
+307
+00:12:58,018 --> 00:13:00,630
+
+308
+00:13:00,630 --> 00:13:01,210
+Like this?
+
+309
+00:13:01,210 --> 00:13:07,220
+
+310
+00:13:07,220 --> 00:13:10,510
+So the claim is this four-way
+clause to the 4SAT clause
+
+311
+00:13:10,510 --> 00:13:13,070
+is equivalent to these
+two 3SAT clauses.
+
+312
+00:13:13,070 --> 00:13:14,710
+Let's call this new variable x.
+
+313
+00:13:14,710 --> 00:13:22,000
+
+314
+00:13:22,000 --> 00:13:23,770
+So the idea is x is
+going to represent
+
+315
+00:13:23,770 --> 00:13:27,140
+whether the left side satisfies
+the clause or the right side
+
+316
+00:13:27,140 --> 00:13:29,980
+satisfies the clause.
+
+317
+00:13:29,980 --> 00:13:32,555
+If x is 1, then it
+satisfies this for free.
+
+318
+00:13:32,555 --> 00:13:34,930
+But it doesn't satisfy this
+one, so at least one of these
+
+319
+00:13:34,930 --> 00:13:36,970
+must be satisfied.
+
+320
+00:13:36,970 --> 00:13:41,970
+On the other hand, if x is 0,
+then it satisfies this one.
+
+321
+00:13:41,970 --> 00:13:44,390
+And so at least one of these
+two should be satisfied.
+
+322
+00:13:44,390 --> 00:13:44,890
+OK?
+
+323
+00:13:44,890 --> 00:13:50,860
+So that's a reduction from
+4SAT to 3SAT, so to speak.
+
+324
+00:13:50,860 --> 00:13:55,080
+Now, I didn't create
+any degree-two clauses,
+
+325
+00:13:55,080 --> 00:13:57,550
+but I have tons of degree-two
+clauses over there.
+
+326
+00:13:57,550 --> 00:13:59,282
+AUDIENCE: Just use
+parallel edges.
+
+327
+00:13:59,282 --> 00:14:00,740
+PROFESSOR: Just
+use parallel edges.
+
+328
+00:14:00,740 --> 00:14:06,500
+So you could just repeat the
+same variable in the clause
+
+329
+00:14:06,500 --> 00:14:07,830
+multiple times.
+
+330
+00:14:07,830 --> 00:14:08,990
+That sounds good.
+
+331
+00:14:08,990 --> 00:14:11,840
+I don't know if there's an easy
+way to avoid multiple edges.
+
+332
+00:14:11,840 --> 00:14:13,060
+I think it's a little tricky.
+
+333
+00:14:13,060 --> 00:14:15,860
+You can't construct false
+in the CircuitSAT sense,
+
+334
+00:14:15,860 --> 00:14:19,042
+because everything you
+build should be satisfiable.
+
+335
+00:14:19,042 --> 00:14:20,500
+So you have to be
+a little careful.
+
+336
+00:14:20,500 --> 00:14:23,450
+But it might be possible
+to pair them up,
+
+337
+00:14:23,450 --> 00:14:30,272
+because there should be an
+even number of those guys.
+
+338
+00:14:30,272 --> 00:14:32,730
+And so maybe you pair them up
+and connect them in some way.
+
+339
+00:14:32,730 --> 00:14:34,760
+But let's just allow
+multiple edges here.
+
+340
+00:14:34,760 --> 00:14:36,215
+Yeah?
+
+341
+00:14:36,215 --> 00:14:38,155
+AUDIENCE: In the original
+instance of 3SAT,
+
+342
+00:14:38,155 --> 00:14:43,490
+does it allow two clauses
+with two variables?
+
+343
+00:14:43,490 --> 00:14:44,524
+For getting planar?
+
+344
+00:14:44,524 --> 00:14:45,190
+PROFESSOR: Yeah.
+
+345
+00:14:45,190 --> 00:14:49,080
+I mean, in general, this would
+work for any kind of SAT,
+
+346
+00:14:49,080 --> 00:14:50,830
+any kind of CNF-SAT.
+
+347
+00:14:50,830 --> 00:14:54,699
+We're not relying on three-ness
+at all in this picture.
+
+348
+00:14:54,699 --> 00:14:56,740
+But it's not going to
+split things up, of course.
+
+349
+00:14:56,740 --> 00:14:58,240
+AUDIENCE: But the
+definition of 3SAT
+
+350
+00:14:58,240 --> 00:15:00,510
+has three distinct
+variables in each clause.
+
+351
+00:15:00,510 --> 00:15:02,260
+PROFESSOR: There are
+a couple definitions.
+
+352
+00:15:02,260 --> 00:15:05,410
+One has exactly
+three, but we never, I
+
+353
+00:15:05,410 --> 00:15:07,632
+think, specify that
+they are distinct.
+
+354
+00:15:07,632 --> 00:15:09,590
+I think that is hard when
+they're all distinct.
+
+355
+00:15:09,590 --> 00:15:13,240
+But I don't know the
+reduction offhand.
+
+356
+00:15:13,240 --> 00:15:15,490
+I think the way we define
+it is there's exactly three,
+
+357
+00:15:15,490 --> 00:15:18,250
+but we didn't say
+any uniqueness.
+
+358
+00:15:18,250 --> 00:15:19,140
+So let's say that.
+
+359
+00:15:19,140 --> 00:15:21,170
+And then we're still
+happy here, because we
+
+360
+00:15:21,170 --> 00:15:23,988
+can duplicate variables.
+
+361
+00:15:23,988 --> 00:15:24,800
+Yeah?
+
+362
+00:15:24,800 --> 00:15:30,400
+AUDIENCE: Why did we include the
+a equals a2, and b equals b2?
+
+363
+00:15:30,400 --> 00:15:32,660
+PROFESSOR: I think it's
+for the next slide.
+
+364
+00:15:32,660 --> 00:15:35,360
+[LAUGHTER]
+
+365
+00:15:35,360 --> 00:15:41,260
+The next claim is that not only
+is that bipartite graph planar,
+
+366
+00:15:41,260 --> 00:15:44,850
+but it also remains planar if
+we connect all the variables
+
+367
+00:15:44,850 --> 00:15:58,430
+together in a cycle.
+
+368
+00:15:58,430 --> 00:16:11,240
+
+369
+00:16:11,240 --> 00:16:13,450
+So let's say we number
+the variables 1 through n.
+
+370
+00:16:13,450 --> 00:16:15,740
+It doesn't matter
+how you number them.
+
+371
+00:16:15,740 --> 00:16:17,620
+Well, in a certain sense.
+
+372
+00:16:17,620 --> 00:16:21,710
+You can restrict to
+instances of 3SAT
+
+373
+00:16:21,710 --> 00:16:28,440
+that this cycle plus the
+variable clause adjacency graph
+
+374
+00:16:28,440 --> 00:16:31,850
+is together planar.
+
+375
+00:16:31,850 --> 00:16:32,810
+OK?
+
+376
+00:16:32,810 --> 00:16:38,650
+So that's less clear here.
+
+377
+00:16:38,650 --> 00:16:40,180
+But let me prove it.
+
+378
+00:16:40,180 --> 00:16:43,500
+This is proved in
+the same paper.
+
+379
+00:16:43,500 --> 00:16:48,930
+So here's a top-level diagram
+of what we're trying to do.
+
+380
+00:16:48,930 --> 00:16:50,660
+So we have clauses on one hand.
+
+381
+00:16:50,660 --> 00:16:52,339
+Let's put them
+all on the y-axis.
+
+382
+00:16:52,339 --> 00:16:54,250
+We have variables
+on the other hand.
+
+383
+00:16:54,250 --> 00:16:57,869
+These are the original variables
+in the original 3SAT instance.
+
+384
+00:16:57,869 --> 00:16:59,560
+Put them on the x-axis.
+
+385
+00:16:59,560 --> 00:17:02,079
+Then draw all the connections
+in the bipartite graph.
+
+386
+00:17:02,079 --> 00:17:06,934
+And furthermore, draw this
+cycle on the vertices down here.
+
+387
+00:17:06,934 --> 00:17:07,850
+OK?
+
+388
+00:17:07,850 --> 00:17:09,740
+And obviously, we
+put them in the order
+
+389
+00:17:09,740 --> 00:17:10,990
+that they appear in the cycle.
+
+390
+00:17:10,990 --> 00:17:14,480
+Otherwise we're making
+our lives harder.
+
+391
+00:17:14,480 --> 00:17:16,320
+And here is that
+crossover gadget.
+
+392
+00:17:16,320 --> 00:17:18,980
+This is how it's
+originally drawn.
+
+393
+00:17:18,980 --> 00:17:22,080
+In this case, it's already
+been expanded in the center
+
+394
+00:17:22,080 --> 00:17:23,330
+into that picture over there.
+
+395
+00:17:23,330 --> 00:17:26,960
+This is where I got
+that reduction from.
+
+396
+00:17:26,960 --> 00:17:28,910
+And then there's no
+color here, but you'll
+
+397
+00:17:28,910 --> 00:17:34,300
+notice the curvy line is an
+attempt to connect together
+
+398
+00:17:34,300 --> 00:17:36,710
+all of the variables that
+appear in the crossover
+
+399
+00:17:36,710 --> 00:17:42,920
+gadget in linear order without
+introducing any crossings.
+
+400
+00:17:42,920 --> 00:17:48,290
+So that diagram is still planar
+when we add all of those edges.
+
+401
+00:17:48,290 --> 00:17:51,800
+And so what this says
+is that if we-- we're
+
+402
+00:17:51,800 --> 00:17:54,090
+trying to build a
+global cycle that
+
+403
+00:17:54,090 --> 00:17:55,452
+connects all the variables.
+
+404
+00:17:55,452 --> 00:17:57,410
+So obviously, we have
+this for these variables,
+
+405
+00:17:57,410 --> 00:17:59,910
+but we need to add
+into this cycle
+
+406
+00:17:59,910 --> 00:18:02,670
+all the variables that appear
+in all these crossings.
+
+407
+00:18:02,670 --> 00:18:05,520
+And so what this says is if
+we are coming in either here
+
+408
+00:18:05,520 --> 00:18:08,570
+or here into a1, we
+can follow this path
+
+409
+00:18:08,570 --> 00:18:12,400
+and then leave either
+here or here on a2.
+
+410
+00:18:12,400 --> 00:18:14,099
+OK?
+
+411
+00:18:14,099 --> 00:18:15,890
+And because the diagram
+is symmetric, also,
+
+412
+00:18:15,890 --> 00:18:20,120
+if you're coming into
+b1, you can end up in b2.
+
+413
+00:18:20,120 --> 00:18:24,570
+And I'm guessing this
+is why we separate b2.
+
+414
+00:18:24,570 --> 00:18:28,390
+The reason we separated
+b2 from b in general
+
+415
+00:18:28,390 --> 00:18:30,680
+is to basically add
+this connection,
+
+416
+00:18:30,680 --> 00:18:34,470
+so we can separate this
+gadget from this gadget.
+
+417
+00:18:34,470 --> 00:18:37,360
+So just showing that we
+can copy and extend things.
+
+418
+00:18:37,360 --> 00:18:39,160
+It may not be necessary,
+but it definitely
+
+419
+00:18:39,160 --> 00:18:40,830
+matches this diagram.
+
+420
+00:18:40,830 --> 00:18:41,330
+OK.
+
+421
+00:18:41,330 --> 00:18:43,660
+So this diagram is
+this diagram, but where
+
+422
+00:18:43,660 --> 00:18:47,710
+every intersection plus a few
+extra places, like over here,
+
+423
+00:18:47,710 --> 00:18:49,060
+we add these little diamonds.
+
+424
+00:18:49,060 --> 00:18:51,730
+The diamonds
+indicate that gadget.
+
+425
+00:18:51,730 --> 00:18:55,740
+Then sorry there's no
+color, but in curved lines
+
+426
+00:18:55,740 --> 00:18:58,450
+is the attempt to connect
+all the variables together
+
+427
+00:18:58,450 --> 00:18:59,760
+in one single path.
+
+428
+00:18:59,760 --> 00:19:00,435
+Question.
+
+429
+00:19:00,435 --> 00:19:02,610
+AUDIENCE: So what are the
+extra crossover gadgets
+
+430
+00:19:02,610 --> 00:19:04,070
+that don't cross anything over?
+
+431
+00:19:04,070 --> 00:19:06,790
+PROFESSOR: They're just
+to do this path thing.
+
+432
+00:19:06,790 --> 00:19:08,780
+So what are they?
+
+433
+00:19:08,780 --> 00:19:10,360
+I mean, they are
+exactly this gadget,
+
+434
+00:19:10,360 --> 00:19:11,984
+just there's no
+connection on the left.
+
+435
+00:19:11,984 --> 00:19:14,820
+AUDIENCE: So they're a crossover
+of the path on the variables.
+
+436
+00:19:14,820 --> 00:19:15,800
+Is that right?
+
+437
+00:19:15,800 --> 00:19:16,070
+PROFESSOR: Yeah.
+
+438
+00:19:16,070 --> 00:19:17,700
+So instead of going
+straight here,
+
+439
+00:19:17,700 --> 00:19:20,180
+you just put a crossover
+gadget in the middle.
+
+440
+00:19:20,180 --> 00:19:21,440
+You can still go through.
+
+441
+00:19:21,440 --> 00:19:23,760
+You're copying some
+arbitrary information here
+
+442
+00:19:23,760 --> 00:19:25,530
+to some arbitrary
+information here.
+
+443
+00:19:25,530 --> 00:19:27,970
+So you don't preserve the
+number of solutions, let's say.
+
+444
+00:19:27,970 --> 00:19:30,480
+But who cares?
+
+445
+00:19:30,480 --> 00:19:34,000
+The reason for that is so
+that we can take this path,
+
+446
+00:19:34,000 --> 00:19:36,200
+connect to this vertex,
+and then get out over here.
+
+447
+00:19:36,200 --> 00:19:38,970
+AUDIENCE: Yeah, that's
+what I meant by crossing.
+
+448
+00:19:38,970 --> 00:19:43,590
+PROFESSOR: So that we can
+do this kind of loop thing.
+
+449
+00:19:43,590 --> 00:19:45,030
+So how do we follow the path?
+
+450
+00:19:45,030 --> 00:19:47,440
+I mean, we basically do
+it in scan-line order.
+
+451
+00:19:47,440 --> 00:19:50,217
+It's like some
+printers used to do
+
+452
+00:19:50,217 --> 00:19:51,800
+this, where they
+print back and forth,
+
+453
+00:19:51,800 --> 00:19:53,290
+left and right, line printers.
+
+454
+00:19:53,290 --> 00:19:55,510
+So we come in here.
+
+455
+00:19:55,510 --> 00:19:58,450
+I don't know quite why they draw
+it coming in the middle here.
+
+456
+00:19:58,450 --> 00:20:00,910
+But it's essentially
+coming to this vertex.
+
+457
+00:20:00,910 --> 00:20:03,570
+Then ending on this
+vertex on the left side.
+
+458
+00:20:03,570 --> 00:20:08,024
+Then going into this vertex,
+which brings us to here.
+
+459
+00:20:08,024 --> 00:20:09,190
+Let's say coming on the top.
+
+460
+00:20:09,190 --> 00:20:10,170
+Doesn't matter.
+
+461
+00:20:10,170 --> 00:20:12,620
+And then we go to the right
+till we get to the end.
+
+462
+00:20:12,620 --> 00:20:15,640
+Here we add an extra crossover,
+so we can basically cross over
+
+463
+00:20:15,640 --> 00:20:17,460
+this line with our path.
+
+464
+00:20:17,460 --> 00:20:19,370
+And add another one.
+
+465
+00:20:19,370 --> 00:20:22,100
+And whenever we visit an
+intersection, we can just go.
+
+466
+00:20:22,100 --> 00:20:24,016
+And then we go to the
+next line and so on.
+
+467
+00:20:24,016 --> 00:20:25,100
+We clear?
+
+468
+00:20:25,100 --> 00:20:28,060
+Then at the very end, we're
+either on the right or left,
+
+469
+00:20:28,060 --> 00:20:29,950
+depending on parity.
+
+470
+00:20:29,950 --> 00:20:31,920
+Probably we want
+to be on the right.
+
+471
+00:20:31,920 --> 00:20:34,500
+So if we're on the left, we'll
+just add extra crossovers here
+
+472
+00:20:34,500 --> 00:20:35,870
+to end up on the right.
+
+473
+00:20:35,870 --> 00:20:38,840
+Then we can go through all
+these variables in reverse order
+
+474
+00:20:38,840 --> 00:20:40,550
+and then come back up here.
+
+475
+00:20:40,550 --> 00:20:45,200
+So that will be one non-crossing
+path in this planar embedding.
+
+476
+00:20:45,200 --> 00:20:48,680
+Therefore, we've
+constructed a new formula
+
+477
+00:20:48,680 --> 00:20:51,020
+where the bipartite graph
+plus the path through all
+
+478
+00:20:51,020 --> 00:20:52,720
+the variables is planar.
+
+479
+00:20:52,720 --> 00:20:55,730
+And so this new version
+of planar 3SAT is hard.
+
+480
+00:20:55,730 --> 00:20:58,546
+This version is usually
+called planar 3SAT, but if you
+
+481
+00:20:58,546 --> 00:20:59,920
+want to distinguish
+it, you could
+
+482
+00:20:59,920 --> 00:21:04,393
+call it planar 3SAT with a
+variable cycle or something.
+
+483
+00:21:04,393 --> 00:21:05,660
+Yeah?
+
+484
+00:21:05,660 --> 00:21:07,805
+AUDIENCE: Why is it
+that we care about this?
+
+485
+00:21:07,805 --> 00:21:08,930
+PROFESSOR: Why do you care?
+
+486
+00:21:08,930 --> 00:21:10,050
+Aha.
+
+487
+00:21:10,050 --> 00:21:12,180
+We'll get to that
+a little bit later.
+
+488
+00:21:12,180 --> 00:21:14,560
+Well, we've seen a lot
+of proofs, actually,
+
+489
+00:21:14,560 --> 00:21:18,000
+where you visit a variable
+and make a choice,
+
+490
+00:21:18,000 --> 00:21:21,360
+and then visit the next variable
+and make a choice, and so on.
+
+491
+00:21:21,360 --> 00:21:24,290
+And when you make a choice, you
+go visit the clauses and things
+
+492
+00:21:24,290 --> 00:21:25,040
+like that.
+
+493
+00:21:25,040 --> 00:21:27,670
+So when we're reducing
+from planar 3SAT,
+
+494
+00:21:27,670 --> 00:21:30,580
+it's often handy to have
+this traversable path.
+
+495
+00:21:30,580 --> 00:21:35,000
+If we have a robot or
+somebody moving around,
+
+496
+00:21:35,000 --> 00:21:39,120
+then we can guarantee
+planarity of that motion still.
+
+497
+00:21:39,120 --> 00:21:40,990
+And the connections
+between the variables
+
+498
+00:21:40,990 --> 00:21:42,290
+don't have to cross anything.
+
+499
+00:21:42,290 --> 00:21:45,550
+In general, our goal here is
+to avoid crossover gadgets
+
+500
+00:21:45,550 --> 00:21:48,760
+when we're reducing from
+3SAT to something else.
+
+501
+00:21:48,760 --> 00:21:51,580
+So this gives you kind
+of a generic crossover,
+
+502
+00:21:51,580 --> 00:21:54,100
+so that as long as you can
+do variables and clauses more
+
+503
+00:21:54,100 --> 00:21:57,341
+or less independently and
+you can build connections,
+
+504
+00:21:57,341 --> 00:21:59,840
+then you don't have to worry
+about the connections crossing.
+
+505
+00:21:59,840 --> 00:22:00,409
+Yeah?
+
+506
+00:22:00,409 --> 00:22:02,450
+AUDIENCE: When you're
+given this bipartite graph,
+
+507
+00:22:02,450 --> 00:22:07,000
+how do you actually tell whether
+an edge is negated or not?
+
+508
+00:22:07,000 --> 00:22:10,450
+
+509
+00:22:10,450 --> 00:22:13,480
+PROFESSOR: You're still
+given a formula, let's say.
+
+510
+00:22:13,480 --> 00:22:16,204
+And then you're just
+told this extra fact
+
+511
+00:22:16,204 --> 00:22:18,620
+that the bipartite graph plus
+this path and the variables,
+
+512
+00:22:18,620 --> 00:22:21,380
+in that order, is planar.
+
+513
+00:22:21,380 --> 00:22:23,394
+AUDIENCE: The
+variable nodes, you
+
+514
+00:22:23,394 --> 00:22:25,801
+have one for every variable
+and its first negation?
+
+515
+00:22:25,801 --> 00:22:26,570
+Or do you just--
+
+516
+00:22:26,570 --> 00:22:27,210
+PROFESSOR: No.
+
+517
+00:22:27,210 --> 00:22:28,140
+Sorry.
+
+518
+00:22:28,140 --> 00:22:31,550
+There's only vertices for
+variables and for clauses,
+
+519
+00:22:31,550 --> 00:22:33,630
+not for literals.
+
+520
+00:22:33,630 --> 00:22:36,230
+But the next version is
+actually about that case.
+
+521
+00:22:36,230 --> 00:22:40,390
+
+522
+00:22:40,390 --> 00:22:49,129
+The next one is-- so the
+idea, if you were just
+
+523
+00:22:49,129 --> 00:22:50,670
+given the bipartite
+graph, you'd have
+
+524
+00:22:50,670 --> 00:22:53,350
+to be told the coloring
+of the edges here
+
+525
+00:22:53,350 --> 00:22:55,190
+to know which literal
+you're talking about.
+
+526
+00:22:55,190 --> 00:22:57,740
+
+527
+00:22:57,740 --> 00:23:01,090
+But also, the problem
+remains planar
+
+528
+00:23:01,090 --> 00:23:18,220
+if we use literals
+instead of variables.
+
+529
+00:23:18,220 --> 00:23:21,490
+So if you were wondering
+about that version,
+
+530
+00:23:21,490 --> 00:23:24,040
+that will also be planar.
+
+531
+00:23:24,040 --> 00:23:25,900
+It doesn't follow immediately.
+
+532
+00:23:25,900 --> 00:23:29,025
+But the idea is
+suppose we have vi.
+
+533
+00:23:29,025 --> 00:23:31,430
+So in the regular
+bipartite graph,
+
+534
+00:23:31,430 --> 00:23:35,370
+we have some positive edges and
+we have some negative edges.
+
+535
+00:23:35,370 --> 00:23:44,490
+Instead, I want to represent
+that as vi and vi bar.
+
+536
+00:23:44,490 --> 00:23:46,676
+And the positive
+connections are over here.
+
+537
+00:23:46,676 --> 00:23:48,300
+The negative connections
+are over here.
+
+538
+00:23:48,300 --> 00:23:49,470
+Now I don't need
+the two coloring,
+
+539
+00:23:49,470 --> 00:23:51,760
+because I have the labels
+to tell me which is which.
+
+540
+00:23:51,760 --> 00:23:54,240
+And furthermore, I can add
+this edge connecting them.
+
+541
+00:23:54,240 --> 00:23:55,370
+That will still be planar.
+
+542
+00:23:55,370 --> 00:23:58,490
+So just split vi into two parts.
+
+543
+00:23:58,490 --> 00:24:02,100
+What this tells me is that
+the positive connections to vi
+
+544
+00:24:02,100 --> 00:24:04,280
+appear as a contiguous chunk.
+
+545
+00:24:04,280 --> 00:24:07,050
+And the negative connections
+appear as a contiguous chunk.
+
+546
+00:24:07,050 --> 00:24:09,420
+So it's not like alternating
+white, red, white, red.
+
+547
+00:24:09,420 --> 00:24:13,190
+So far, it is if you
+look at the reduction.
+
+548
+00:24:13,190 --> 00:24:15,700
+But we can fix that.
+
+549
+00:24:15,700 --> 00:24:16,200
+OK.
+
+550
+00:24:16,200 --> 00:24:19,140
+
+551
+00:24:19,140 --> 00:24:26,960
+So I just want to add, with an
+edge between the xi and xi bar.
+
+552
+00:24:26,960 --> 00:24:27,460
+Yeah?
+
+553
+00:24:27,460 --> 00:24:29,456
+AUDIENCE: When you say you
+add an edge between them,
+
+554
+00:24:29,456 --> 00:24:30,402
+what does that mean?
+
+555
+00:24:30,402 --> 00:24:31,818
+Because all the
+edges are supposed
+
+556
+00:24:31,818 --> 00:24:33,720
+to be in between
+literals and clauses.
+
+557
+00:24:33,720 --> 00:24:36,220
+PROFESSOR: Well, I mean, the
+graph already wasn't bipartite.
+
+558
+00:24:36,220 --> 00:24:38,930
+
+559
+00:24:38,930 --> 00:24:42,020
+We start with a bipartite graph
+between variables and literals.
+
+560
+00:24:42,020 --> 00:24:44,180
+Then we also add the
+edges between variables
+
+561
+00:24:44,180 --> 00:24:45,280
+and their complements.
+
+562
+00:24:45,280 --> 00:24:50,810
+And then we also add a cycle
+among all the variables,
+
+563
+00:24:50,810 --> 00:24:54,520
+among all the
+literals, let's say.
+
+564
+00:24:54,520 --> 00:24:57,330
+So I guess this could be part
+of the cycle, for example.
+
+565
+00:24:57,330 --> 00:25:00,484
+And that graph, which is not
+bipartite, must be planar.
+
+566
+00:25:00,484 --> 00:25:01,400
+That's the constraint.
+
+567
+00:25:01,400 --> 00:25:04,590
+The claim is that all
+such problems are NP-hard.
+
+568
+00:25:04,590 --> 00:25:08,190
+In general, we want to
+make as small a problem
+
+569
+00:25:08,190 --> 00:25:10,830
+as we can, as special a
+case as we can NP-hard,
+
+570
+00:25:10,830 --> 00:25:12,290
+because then we're reducing.
+
+571
+00:25:12,290 --> 00:25:15,000
+We have more structure
+that we get to exploit.
+
+572
+00:25:15,000 --> 00:25:18,810
+This is a special case of this
+is a special case of this.
+
+573
+00:25:18,810 --> 00:25:22,160
+So the more we can
+confine it, the better.
+
+574
+00:25:22,160 --> 00:25:23,060
+Cool.
+
+575
+00:25:23,060 --> 00:25:25,400
+So this is proved also in
+the Lichtenstein paper.
+
+576
+00:25:25,400 --> 00:25:27,840
+Although, we'll see a
+cleaner proof in a moment,
+
+577
+00:25:27,840 --> 00:25:29,810
+so I won't cover this
+in too much detail.
+
+578
+00:25:29,810 --> 00:25:34,150
+But the idea is this.
+
+579
+00:25:34,150 --> 00:25:38,160
+So we're taking
+each variable, we're
+
+580
+00:25:38,160 --> 00:25:40,699
+replacing it with a
+big cycle like this.
+
+581
+00:25:40,699 --> 00:25:42,740
+I think it's the same kind
+of trick as over here.
+
+582
+00:25:42,740 --> 00:25:46,760
+It doesn't matter.
+
+583
+00:25:46,760 --> 00:25:50,214
+All these a's should be the
+same or sort of alternating.
+
+584
+00:25:50,214 --> 00:25:51,880
+And we're connecting
+the negative side--
+
+585
+00:25:51,880 --> 00:25:54,420
+so this is really two
+vertices connected by an edge.
+
+586
+00:25:54,420 --> 00:25:56,180
+But I draw it like
+that to make clear
+
+587
+00:25:56,180 --> 00:26:00,970
+that that represents the same
+variable to literals of it.
+
+588
+00:26:00,970 --> 00:26:03,400
+And do this thing.
+
+589
+00:26:03,400 --> 00:26:06,180
+And then this is the path.
+
+590
+00:26:06,180 --> 00:26:09,790
+So suppose the path used
+to go through this way.
+
+591
+00:26:09,790 --> 00:26:12,340
+Then the path now bisects.
+
+592
+00:26:12,340 --> 00:26:14,990
+And you see that all
+of the positive copies
+
+593
+00:26:14,990 --> 00:26:19,132
+are on one side, and negative
+copies are on the other side.
+
+594
+00:26:19,132 --> 00:26:21,357
+That's the idea.
+
+595
+00:26:21,357 --> 00:26:23,440
+We will see another proof
+of a stronger statement,
+
+596
+00:26:23,440 --> 00:26:25,750
+so I think let's
+not worry about this
+
+597
+00:26:25,750 --> 00:26:28,365
+too much unless
+there are questions.
+
+598
+00:26:28,365 --> 00:26:33,760
+
+599
+00:26:33,760 --> 00:26:35,030
+Here's the stronger statement.
+
+600
+00:26:35,030 --> 00:27:19,470
+
+601
+00:27:19,470 --> 00:27:26,500
+So in general, the
+variable cycle--
+
+602
+00:27:26,500 --> 00:27:29,340
+so I'm going to not subdivide
+into literals for the moment.
+
+603
+00:27:29,340 --> 00:27:32,690
+But we could put that back.
+
+604
+00:27:32,690 --> 00:27:35,630
+So here's the variable cycle.
+
+605
+00:27:35,630 --> 00:27:37,870
+This decomposes the
+plane at two regions--
+
+606
+00:27:37,870 --> 00:27:39,515
+the interior and the exterior.
+
+607
+00:27:39,515 --> 00:27:40,890
+Or course, I could
+flip the edge,
+
+608
+00:27:40,890 --> 00:27:42,720
+and it doesn't matter which
+one's interior and exterior.
+
+609
+00:27:42,720 --> 00:27:44,280
+But there are two regions.
+
+610
+00:27:44,280 --> 00:27:48,110
+And what I'm going to
+require is that every clause
+
+611
+00:27:48,110 --> 00:27:53,230
+that I draw here should have
+entirely positive connections
+
+612
+00:27:53,230 --> 00:27:54,620
+on this side.
+
+613
+00:27:54,620 --> 00:27:58,820
+And every clause
+that I draw out here
+
+614
+00:27:58,820 --> 00:28:01,735
+should have entirely
+negative connections.
+
+615
+00:28:01,735 --> 00:28:04,650
+
+616
+00:28:04,650 --> 00:28:05,150
+OK?
+
+617
+00:28:05,150 --> 00:28:08,740
+This is monotone 3SAT again.
+
+618
+00:28:08,740 --> 00:28:10,950
+So this implies monotone.
+
+619
+00:28:10,950 --> 00:28:14,610
+
+620
+00:28:14,610 --> 00:28:15,897
+We know monotone 3SAT is hard.
+
+621
+00:28:15,897 --> 00:28:17,730
+Now we're claiming that
+planar monotone 3SAT
+
+622
+00:28:17,730 --> 00:28:22,170
+is hard when all the
+positive clauses are
+
+623
+00:28:22,170 --> 00:28:23,710
+on one side of the
+variable cycle,
+
+624
+00:28:23,710 --> 00:28:25,835
+and all the negative clauses
+are on the other side.
+
+625
+00:28:25,835 --> 00:28:28,954
+This is really helpful.
+
+626
+00:28:28,954 --> 00:28:30,620
+I haven't yet given
+this problem a name,
+
+627
+00:28:30,620 --> 00:28:32,750
+because it has a name that
+uses another word, which
+
+628
+00:28:32,750 --> 00:28:34,470
+I should first introduce.
+
+629
+00:28:34,470 --> 00:28:37,465
+So that's the next page.
+
+630
+00:28:37,465 --> 00:28:48,039
+
+631
+00:28:48,039 --> 00:28:52,730
+That word is
+"rectilinear." so this
+
+632
+00:28:52,730 --> 00:28:55,020
+is a relatively simple
+modification to what we
+
+633
+00:28:55,020 --> 00:28:57,540
+have already.
+
+634
+00:28:57,540 --> 00:29:01,190
+I want the variables
+to live on the x-axis.
+
+635
+00:29:01,190 --> 00:29:04,090
+You can think of them
+as horizontal segments
+
+636
+00:29:04,090 --> 00:29:05,310
+on the x-axis.
+
+637
+00:29:05,310 --> 00:29:07,930
+I prefer this drawing.
+
+638
+00:29:07,930 --> 00:29:10,950
+So imagine each variable is like
+a little horizontal segment,
+
+639
+00:29:10,950 --> 00:29:13,000
+or in this case, a box.
+
+640
+00:29:13,000 --> 00:29:15,490
+And the clauses are
+horizontal segments.
+
+641
+00:29:15,490 --> 00:29:18,040
+And then they're connected
+by vertical segments
+
+642
+00:29:18,040 --> 00:29:20,470
+between the clause
+and the variable.
+
+643
+00:29:20,470 --> 00:29:24,190
+And all of the clauses
+that are above the x-axis
+
+644
+00:29:24,190 --> 00:29:25,700
+should be all positive.
+
+645
+00:29:25,700 --> 00:29:27,520
+All the clauses that
+are below the x-axis
+
+646
+00:29:27,520 --> 00:29:29,020
+should be all negative.
+
+647
+00:29:29,020 --> 00:29:31,240
+That would be planar
+monotone rectilinear 3SAT,
+
+648
+00:29:31,240 --> 00:29:32,420
+and I jumped the gun.
+
+649
+00:29:32,420 --> 00:29:34,170
+Planar rectilinear has
+no such constraint.
+
+650
+00:29:34,170 --> 00:29:36,670
+Each of these could be
+positive or negative.
+
+651
+00:29:36,670 --> 00:29:37,500
+OK.
+
+652
+00:29:37,500 --> 00:29:42,650
+So variables are segments.
+
+653
+00:29:42,650 --> 00:29:43,150
+All right.
+
+654
+00:29:43,150 --> 00:29:47,205
+So each variable is a
+segment on the x-axis.
+
+655
+00:29:47,205 --> 00:29:50,130
+
+656
+00:29:50,130 --> 00:30:00,680
+And each clause is another
+horizontal segment,
+
+657
+00:30:00,680 --> 00:30:08,070
+plus vertical connections
+to the three variables
+
+658
+00:30:08,070 --> 00:30:10,910
+that it includes in
+positive or negative form.
+
+659
+00:30:10,910 --> 00:30:16,080
+
+660
+00:30:16,080 --> 00:30:16,780
+OK.
+
+661
+00:30:16,780 --> 00:30:30,720
+And then planar monotone
+rectilinear 3SAT
+
+662
+00:30:30,720 --> 00:30:33,530
+is a special case
+of monotone 3SAT,
+
+663
+00:30:33,530 --> 00:30:45,890
+where all positive
+clauses are above the line
+
+664
+00:30:45,890 --> 00:30:51,470
+and conversely, above x-axis.
+
+665
+00:30:51,470 --> 00:30:55,030
+Every clause above the x-axis
+should be all positive.
+
+666
+00:30:55,030 --> 00:31:00,310
+And every clause below the
+x-axis should be all negative.
+
+667
+00:31:00,310 --> 00:31:09,550
+
+668
+00:31:09,550 --> 00:31:10,270
+OK.
+
+669
+00:31:10,270 --> 00:31:13,310
+So I guess this one you
+could call monotone planar
+
+670
+00:31:13,310 --> 00:31:14,840
+3SAT without rectilinear.
+
+671
+00:31:14,840 --> 00:31:19,170
+But of course, rectilinear
+doesn't change much.
+
+672
+00:31:19,170 --> 00:31:23,270
+I didn't say why, but if
+you have a planar drawing
+
+673
+00:31:23,270 --> 00:31:27,050
+like we had before, this is
+just a particularly nice way
+
+674
+00:31:27,050 --> 00:31:28,890
+to make that drawing.
+
+675
+00:31:28,890 --> 00:31:32,400
+To go here, I just used the fact
+that there are no crossings.
+
+676
+00:31:32,400 --> 00:31:35,080
+And I stretched out the
+variables to decent lengths,
+
+677
+00:31:35,080 --> 00:31:37,880
+so that clauses can
+just go straight down.
+
+678
+00:31:37,880 --> 00:31:43,420
+You can prove any planar graph
+can be drawn in this way.
+
+679
+00:31:43,420 --> 00:31:47,870
+Any planar graph that has the
+vi cycle and has some degree--
+
+680
+00:31:47,870 --> 00:31:50,190
+three vertices that
+connect to variables.
+
+681
+00:31:50,190 --> 00:31:52,080
+They have to nest in
+this way, because if you
+
+682
+00:31:52,080 --> 00:31:53,650
+think of a clause,
+they could either
+
+683
+00:31:53,650 --> 00:31:59,040
+be in this pocket or outside
+of it, or down in this region.
+
+684
+00:31:59,040 --> 00:32:01,265
+And so you can just
+figure out how big
+
+685
+00:32:01,265 --> 00:32:03,890
+this thing needs to be, and then
+make the next one a little bit
+
+686
+00:32:03,890 --> 00:32:04,700
+bigger.
+
+687
+00:32:04,700 --> 00:32:06,300
+And so you can
+represent the nesting
+
+688
+00:32:06,300 --> 00:32:08,820
+in this nice orthogonal,
+or rectilinear structure.
+
+689
+00:32:08,820 --> 00:32:12,410
+Rectilinear just means
+horizontal and vertical lines.
+
+690
+00:32:12,410 --> 00:32:13,160
+Cool?
+
+691
+00:32:13,160 --> 00:32:17,340
+So that's planar rectilinear
+3SAT first observed
+
+692
+00:32:17,340 --> 00:32:20,770
+by Knuth and Raghunathan.
+
+693
+00:32:20,770 --> 00:32:24,340
+Now we want to-- let's
+prove that planar monotone
+
+694
+00:32:24,340 --> 00:32:26,390
+rectilinear 3SAT is also hard.
+
+695
+00:32:26,390 --> 00:32:26,890
+Question.
+
+696
+00:32:26,890 --> 00:32:27,515
+AUDIENCE: Wait.
+
+697
+00:32:27,515 --> 00:32:31,260
+If rectilinearity just is a
+nice way to draw the graph,
+
+698
+00:32:31,260 --> 00:32:33,880
+can we use the fact that it's
+rectilinear in our reductions?
+
+699
+00:32:33,880 --> 00:32:35,630
+I mean, is that going
+to help us any more?
+
+700
+00:32:35,630 --> 00:32:37,379
+PROFESSOR: The rectilinear
+helps us mainly
+
+701
+00:32:37,379 --> 00:32:41,100
+when we're reducing to a
+problem that lives on a grid.
+
+702
+00:32:41,100 --> 00:32:43,160
+It's just a convenient
+way of thinking about it.
+
+703
+00:32:43,160 --> 00:32:45,170
+It doesn't directly help us.
+
+704
+00:32:45,170 --> 00:32:47,390
+I mean, it's a linear
+time reduction.
+
+705
+00:32:47,390 --> 00:32:48,890
+I mean, all of these
+are reductions,
+
+706
+00:32:48,890 --> 00:32:51,700
+so of course, none of
+them help us in theory.
+
+707
+00:32:51,700 --> 00:32:54,400
+But the cleaner you can
+make the problem-- I mean,
+
+708
+00:32:54,400 --> 00:32:55,450
+this looks pretty.
+
+709
+00:32:55,450 --> 00:32:57,150
+And we'll see, I
+think at the end
+
+710
+00:32:57,150 --> 00:33:00,050
+of class, a proof that
+directly mimics this structure.
+
+711
+00:33:00,050 --> 00:33:01,309
+So that's the only reason.
+
+712
+00:33:01,309 --> 00:33:03,100
+You could, of course,
+as a first step, say,
+
+713
+00:33:03,100 --> 00:33:04,400
+hey, draw it rectilinearly.
+
+714
+00:33:04,400 --> 00:33:08,630
+But this saves you that step.
+
+715
+00:33:08,630 --> 00:33:10,300
+Cool.
+
+716
+00:33:10,300 --> 00:33:10,940
+All right.
+
+717
+00:33:10,940 --> 00:33:14,510
+So planar monotone
+rectilinear 3SAT.
+
+718
+00:33:14,510 --> 00:33:18,240
+
+719
+00:33:18,240 --> 00:33:19,865
+Here's an explicit example.
+
+720
+00:33:19,865 --> 00:33:21,490
+Although it's not
+going to be modified,
+
+721
+00:33:21,490 --> 00:33:24,980
+it's just another example
+of planar rectilinear 3SAT
+
+722
+00:33:24,980 --> 00:33:25,950
+without the monotone.
+
+723
+00:33:25,950 --> 00:33:29,420
+You see there's negations
+above, lack of negations below.
+
+724
+00:33:29,420 --> 00:33:31,785
+And here is the
+trick to fix things.
+
+725
+00:33:31,785 --> 00:33:34,630
+
+726
+00:33:34,630 --> 00:33:37,750
+So suppose you have a
+variable xi on the x-axis,
+
+727
+00:33:37,750 --> 00:33:40,470
+you have a clause above
+it that uses that variable
+
+728
+00:33:40,470 --> 00:33:42,050
+in the wrong orientation.
+
+729
+00:33:42,050 --> 00:33:44,325
+So of course, or the
+reflective picture.
+
+730
+00:33:44,325 --> 00:33:45,429
+But let's say it's above.
+
+731
+00:33:45,429 --> 00:33:47,110
+It's U is negated.
+
+732
+00:33:47,110 --> 00:33:49,290
+So in general, we have a
+bunch of connections up.
+
+733
+00:33:49,290 --> 00:33:51,110
+We have a bunch of
+connections down.
+
+734
+00:33:51,110 --> 00:33:53,770
+This one is somewhere
+in the middle.
+
+735
+00:33:53,770 --> 00:33:55,500
+These bold lines are
+just to distinguish
+
+736
+00:33:55,500 --> 00:33:58,166
+these are the ones to the right,
+these are the ones to the left.
+
+737
+00:33:58,166 --> 00:34:00,150
+They don't mean
+negation, necessarily.
+
+738
+00:34:00,150 --> 00:34:01,989
+Because this one
+should be negated.
+
+739
+00:34:01,989 --> 00:34:02,489
+OK.
+
+740
+00:34:02,489 --> 00:34:05,560
+So we're just going to
+replace it like this.
+
+741
+00:34:05,560 --> 00:34:08,549
+This is the trick that we
+saw in the right and bottom
+
+742
+00:34:08,549 --> 00:34:09,840
+corner of the crossover gadget.
+
+743
+00:34:09,840 --> 00:34:12,409
+We're going to duplicate
+xi, way except we'll
+
+744
+00:34:12,409 --> 00:34:13,760
+negate it at the same time.
+
+745
+00:34:13,760 --> 00:34:17,409
+So the other one had a negation
+here and one negation here,
+
+746
+00:34:17,409 --> 00:34:18,580
+not here.
+
+747
+00:34:18,580 --> 00:34:23,522
+This xi or a, together with
+xi bar or a bar-- again,
+
+748
+00:34:23,522 --> 00:34:24,480
+these are 2SAT clauses.
+
+749
+00:34:24,480 --> 00:34:29,020
+You have to duplicate
+an edge to make it 3SAT.
+
+750
+00:34:29,020 --> 00:34:32,739
+That forces xi to
+be not a, I think.
+
+751
+00:34:32,739 --> 00:34:35,253
+Maybe I even have
+that as a fate.
+
+752
+00:34:35,253 --> 00:34:37,210
+OK, xi is not equal to a.
+
+753
+00:34:37,210 --> 00:34:40,870
+Similarly, a does not equal
+b, which means b equals xi.
+
+754
+00:34:40,870 --> 00:34:41,370
+OK?
+
+755
+00:34:41,370 --> 00:34:45,420
+So we just duplicated xi to be
+used in all the old scenarios.
+
+756
+00:34:45,420 --> 00:34:47,220
+And maybe these guys
+still all go down.
+
+757
+00:34:47,220 --> 00:34:49,750
+We could move some of them
+over here if we wanted to.
+
+758
+00:34:49,750 --> 00:34:51,500
+The ones to the left
+have to be over here.
+
+759
+00:34:51,500 --> 00:34:53,620
+The ones to the right
+have to be over here.
+
+760
+00:34:53,620 --> 00:34:56,780
+This one gets to use
+a negated copy of xi.
+
+761
+00:34:56,780 --> 00:35:00,370
+So boom, one negation down.
+
+762
+00:35:00,370 --> 00:35:02,260
+One negation that was
+on the wrong side.
+
+763
+00:35:02,260 --> 00:35:06,316
+Repeat this n times.
+
+764
+00:35:06,316 --> 00:35:08,315
+Where you have a negation
+you're not supposed to
+
+765
+00:35:08,315 --> 00:35:10,481
+and everywhere you don't
+have a negation that you're
+
+766
+00:35:10,481 --> 00:35:12,506
+supposed to, apply this trick.
+
+767
+00:35:12,506 --> 00:35:14,130
+You'll increase the
+number of variables
+
+768
+00:35:14,130 --> 00:35:16,860
+by some constant factor.
+
+769
+00:35:16,860 --> 00:35:18,590
+And now you're in
+the monotone case.
+
+770
+00:35:18,590 --> 00:35:20,310
+So that's actually really easy.
+
+771
+00:35:20,310 --> 00:35:22,420
+It's our first proof that
+monotone 3SAT is hard.
+
+772
+00:35:22,420 --> 00:35:24,150
+But it's a pretty easy one.
+
+773
+00:35:24,150 --> 00:35:25,189
+Yeah?
+
+774
+00:35:25,189 --> 00:35:26,980
+AUDIENCE: Can we use
+a similar construction
+
+775
+00:35:26,980 --> 00:35:29,710
+to recover splitting the
+variables into literals?
+
+776
+00:35:29,710 --> 00:35:32,710
+
+777
+00:35:32,710 --> 00:35:34,530
+PROFESSOR: Oh, to do this?
+
+778
+00:35:34,530 --> 00:35:35,730
+AUDIENCE: Yeah.
+
+779
+00:35:35,730 --> 00:35:39,502
+Because we dropped that when
+we moved over here, right?
+
+780
+00:35:39,502 --> 00:35:41,460
+AUDIENCE: But you said
+it was just [INAUDIBLE].
+
+781
+00:35:41,460 --> 00:35:43,067
+PROFESSOR: Well, we sort of did.
+
+782
+00:35:43,067 --> 00:35:45,650
+No, actually, this is supposed
+to be a generalization of this,
+
+783
+00:35:45,650 --> 00:35:48,410
+because you could just
+split apart-- I mean, you
+
+784
+00:35:48,410 --> 00:35:51,200
+can carve vi in half
+to the positive side
+
+785
+00:35:51,200 --> 00:35:52,900
+and the negative side.
+
+786
+00:35:52,900 --> 00:35:54,700
+And all the negative
+sides are below,
+
+787
+00:35:54,700 --> 00:35:56,810
+and all the positive
+sides are above.
+
+788
+00:35:56,810 --> 00:35:59,670
+So yeah, we could
+already do that.
+
+789
+00:35:59,670 --> 00:36:02,950
+
+790
+00:36:02,950 --> 00:36:03,450
+Right.
+
+791
+00:36:03,450 --> 00:36:06,370
+Because this was not
+about having them--
+
+792
+00:36:06,370 --> 00:36:10,945
+it was about having the vertices
+labeled as literals instead of
+
+793
+00:36:10,945 --> 00:36:11,520
+as variables.
+
+794
+00:36:11,520 --> 00:36:14,160
+So we don't need to explicitly
+say that this one does not
+
+795
+00:36:14,160 --> 00:36:14,930
+equal that one.
+
+796
+00:36:14,930 --> 00:36:16,910
+That's already in the problem.
+
+797
+00:36:16,910 --> 00:36:19,500
+So we can combine all of
+the things I've said so far.
+
+798
+00:36:19,500 --> 00:36:23,310
+That may not always be the case,
+but so far, we can combine all.
+
+799
+00:36:23,310 --> 00:36:23,810
+Yeah?
+
+800
+00:36:23,810 --> 00:36:24,851
+AUDIENCE: Silly question.
+
+801
+00:36:24,851 --> 00:36:27,410
+If we're carving them into
+positive side of the variable
+
+802
+00:36:27,410 --> 00:36:28,670
+on one side and negative
+on the other side,
+
+803
+00:36:28,670 --> 00:36:30,270
+wouldn't that make
+all the connections
+
+804
+00:36:30,270 --> 00:36:32,120
+below that positive
+connections instead
+
+805
+00:36:32,120 --> 00:36:33,770
+of negative connections?
+
+806
+00:36:33,770 --> 00:36:34,740
+PROFESSOR: Sorry.
+
+807
+00:36:34,740 --> 00:36:37,330
+I don't mean split it in
+the way of that diagram.
+
+808
+00:36:37,330 --> 00:36:39,980
+I mean that we
+could, in this sense,
+
+809
+00:36:39,980 --> 00:36:43,410
+we could have vertices
+represent a positive vi
+
+810
+00:36:43,410 --> 00:36:45,577
+and a negative vi, and
+have the connections.
+
+811
+00:36:45,577 --> 00:36:47,160
+This was saying that
+we could separate
+
+812
+00:36:47,160 --> 00:36:49,350
+the positive connections
+from the negative ones.
+
+813
+00:36:49,350 --> 00:36:51,800
+And I'm just saying we
+already have that here.
+
+814
+00:36:51,800 --> 00:36:54,230
+This is a stronger property
+to say that they're also
+
+815
+00:36:54,230 --> 00:36:55,586
+all in the same direction.
+
+816
+00:36:55,586 --> 00:36:57,210
+If you just had this
+property, then you
+
+817
+00:36:57,210 --> 00:37:00,020
+could have some white
+here and some white here,
+
+818
+00:37:00,020 --> 00:37:01,462
+and red here and red here.
+
+819
+00:37:01,462 --> 00:37:03,420
+But this is saying you
+can get them all aligned
+
+820
+00:37:03,420 --> 00:37:06,331
+in the right direction.
+
+821
+00:37:06,331 --> 00:37:06,830
+Yeah.
+
+822
+00:37:06,830 --> 00:37:15,492
+In fact, if we look
+at this diagram,
+
+823
+00:37:15,492 --> 00:37:17,200
+maybe you didn't
+understand this diagram,
+
+824
+00:37:17,200 --> 00:37:20,860
+but it has the same issue.
+
+825
+00:37:20,860 --> 00:37:22,550
+Or this is exactly
+that kind of picture.
+
+826
+00:37:22,550 --> 00:37:23,970
+So here we have a5.
+
+827
+00:37:23,970 --> 00:37:26,830
+The positive is over here,
+the negative is over here.
+
+828
+00:37:26,830 --> 00:37:27,700
+Here we have a4.
+
+829
+00:37:27,700 --> 00:37:30,140
+The negative is there,
+and the positive is there.
+
+830
+00:37:30,140 --> 00:37:32,784
+So this was getting
+the weaker property.
+
+831
+00:37:32,784 --> 00:37:34,450
+Again, you don't have
+to worry about it,
+
+832
+00:37:34,450 --> 00:37:37,480
+because we got the stronger one.
+
+833
+00:37:37,480 --> 00:37:39,150
+But that's just to
+show that there's
+
+834
+00:37:39,150 --> 00:37:42,380
+a difference between the two.
+
+835
+00:37:42,380 --> 00:37:44,360
+Good.
+
+836
+00:37:44,360 --> 00:37:50,340
+So that was planar
+monotone rectilinear 3SAT.
+
+837
+00:37:50,340 --> 00:37:50,970
+OK.
+
+838
+00:37:50,970 --> 00:37:56,975
+I have a governor
+general's warning.
+
+839
+00:37:56,975 --> 00:38:02,570
+
+840
+00:38:02,570 --> 00:38:04,990
+So here's another problem.
+
+841
+00:38:04,990 --> 00:38:06,455
+Suppose we have
+the variable cycle.
+
+842
+00:38:06,455 --> 00:38:11,790
+
+843
+00:38:11,790 --> 00:38:15,870
+And I say, well, every
+clause is inside the cycle.
+
+844
+00:38:15,870 --> 00:38:19,490
+And you are free to have
+positive and negative
+
+845
+00:38:19,490 --> 00:38:19,990
+connections.
+
+846
+00:38:19,990 --> 00:38:25,760
+
+847
+00:38:25,760 --> 00:38:27,170
+It's going to get hard.
+
+848
+00:38:27,170 --> 00:38:27,870
+OK.
+
+849
+00:38:27,870 --> 00:38:30,400
+Something like that.
+
+850
+00:38:30,400 --> 00:38:32,500
+And it's planar.
+
+851
+00:38:32,500 --> 00:38:36,020
+That problem is
+polynomially solvable.
+
+852
+00:38:36,020 --> 00:38:38,940
+So I'll rephrase this.
+
+853
+00:38:38,940 --> 00:38:58,640
+If all the clauses are on one
+side, of the variable cycle,
+
+854
+00:38:58,640 --> 00:39:02,130
+then that version of 3SAT
+is polynomially solvable.
+
+855
+00:39:02,130 --> 00:39:06,300
+And the intuition is that
+this kind of nesting structure
+
+856
+00:39:06,300 --> 00:39:09,200
+is essentially a tree.
+
+857
+00:39:09,200 --> 00:39:11,835
+If you look at what
+nests inside of what,
+
+858
+00:39:11,835 --> 00:39:15,050
+what clauses fall
+underneath other clauses,
+
+859
+00:39:15,050 --> 00:39:18,960
+that is a nesting relation,
+which corresponds to a tree.
+
+860
+00:39:18,960 --> 00:39:22,030
+And then you just do dynamic
+programming over the tree.
+
+861
+00:39:22,030 --> 00:39:23,360
+That's easy.
+
+862
+00:39:23,360 --> 00:39:25,430
+The sort of surprising
+thing is that just
+
+863
+00:39:25,430 --> 00:39:28,140
+having two of these trees, one
+on the inside of the cycle, one
+
+864
+00:39:28,140 --> 00:39:30,715
+on the outside, is enough
+to make the problem hard.
+
+865
+00:39:30,715 --> 00:39:32,090
+That's a typical
+thing, actually,
+
+866
+00:39:32,090 --> 00:39:34,840
+because the trees interdigitate.
+
+867
+00:39:34,840 --> 00:39:36,740
+They have no real
+relation to each other,
+
+868
+00:39:36,740 --> 00:39:38,740
+and there's no way to
+keep track of both of them
+
+869
+00:39:38,740 --> 00:39:42,000
+simultaneously with the dynamic
+program unless P equals mp.
+
+870
+00:39:42,000 --> 00:39:46,580
+
+871
+00:39:46,580 --> 00:39:47,080
+OK.
+
+872
+00:39:47,080 --> 00:39:48,819
+So that's one gotcha
+to be careful of.
+
+873
+00:39:48,819 --> 00:39:50,360
+So when you're doing
+your reductions,
+
+874
+00:39:50,360 --> 00:39:52,880
+you have to worry about things
+above the line and things
+
+875
+00:39:52,880 --> 00:39:53,550
+below the line.
+
+876
+00:39:53,550 --> 00:39:57,350
+
+877
+00:39:57,350 --> 00:40:00,140
+Also, here's a
+special case of this.
+
+878
+00:40:00,140 --> 00:40:18,450
+
+879
+00:40:18,450 --> 00:40:21,170
+Suppose I phrase the
+following problem.
+
+880
+00:40:21,170 --> 00:40:24,190
+I want the bipartite graph
+on variables versus clauses,
+
+881
+00:40:24,190 --> 00:40:28,610
+plus the cycle v1
+through vn back to v1,
+
+882
+00:40:28,610 --> 00:40:32,960
+plus another cycle on the
+clause's c1 to cn and back
+
+883
+00:40:32,960 --> 00:40:33,490
+to c1.
+
+884
+00:40:33,490 --> 00:40:37,510
+I want that whole
+graph to be planar.
+
+885
+00:40:37,510 --> 00:40:39,570
+OK?
+
+886
+00:40:39,570 --> 00:40:41,320
+If you think about
+that for a second, that
+
+887
+00:40:41,320 --> 00:40:43,490
+would imply all the
+clauses are on one side
+
+888
+00:40:43,490 --> 00:40:44,942
+of the variable cycle.
+
+889
+00:40:44,942 --> 00:40:46,650
+And so we're in this
+case, which is easy.
+
+890
+00:40:46,650 --> 00:40:48,725
+So this is a special
+case of that case.
+
+891
+00:40:48,725 --> 00:40:52,150
+Now, this one I mentioned,
+because if this were hard,
+
+892
+00:40:52,150 --> 00:40:53,410
+life would be so easy.
+
+893
+00:40:53,410 --> 00:40:54,730
+It's not so life isn't easy.
+
+894
+00:40:54,730 --> 00:40:57,640
+But you already knew that.
+
+895
+00:40:57,640 --> 00:41:01,770
+Recall, say, proving
+push-1 is hard in 2D.
+
+896
+00:41:01,770 --> 00:41:04,889
+Well, first we did it in 3D and
+then we had a crossover gadget.
+
+897
+00:41:04,889 --> 00:41:06,930
+And most of the work was
+in the crossover gadget.
+
+898
+00:41:06,930 --> 00:41:09,030
+The base proof was
+trivial or very easy.
+
+899
+00:41:09,030 --> 00:41:12,680
+
+900
+00:41:12,680 --> 00:41:15,350
+So we can get all of these
+connections between variables
+
+901
+00:41:15,350 --> 00:41:17,060
+and clauses to be planar.
+
+902
+00:41:17,060 --> 00:41:19,370
+We can get all of these
+connections, the variables
+
+903
+00:41:19,370 --> 00:41:22,010
+in a line, to be
+planar together,
+
+904
+00:41:22,010 --> 00:41:23,480
+all of those things together.
+
+905
+00:41:23,480 --> 00:41:27,540
+But we cannot also have a path
+connecting all the clauses
+
+906
+00:41:27,540 --> 00:41:28,160
+together.
+
+907
+00:41:28,160 --> 00:41:28,920
+Even a path.
+
+908
+00:41:28,920 --> 00:41:35,340
+So I said a path here,
+which is what we want.
+
+909
+00:41:35,340 --> 00:41:37,347
+So that's annoying,
+because if we
+
+910
+00:41:37,347 --> 00:41:38,930
+could make all of
+these things planar,
+
+911
+00:41:38,930 --> 00:41:41,340
+we wouldn't have to worry
+about these crossovers.
+
+912
+00:41:41,340 --> 00:41:44,460
+Same thing with all the Nintendo
+proofs, like Super Mario
+
+913
+00:41:44,460 --> 00:41:46,070
+Brothers again.
+
+914
+00:41:46,070 --> 00:41:49,670
+The player is going from
+one variable to the next,
+
+915
+00:41:49,670 --> 00:41:52,820
+so you need those edges
+connecting all the variables
+
+916
+00:41:52,820 --> 00:41:53,642
+in a path.
+
+917
+00:41:53,642 --> 00:41:55,350
+You need the edges
+connecting the clauses
+
+918
+00:41:55,350 --> 00:41:57,240
+in a path for the final check.
+
+919
+00:41:57,240 --> 00:41:59,120
+So planar 3SAT
+basically doesn't buy
+
+920
+00:41:59,120 --> 00:42:01,050
+you anything in these proofs.
+
+921
+00:42:01,050 --> 00:42:04,830
+Now, if we could somehow avoid
+adding these connections,
+
+922
+00:42:04,830 --> 00:42:06,500
+everything else could be planar.
+
+923
+00:42:06,500 --> 00:42:08,440
+That's sort of the
+point of planar 3SAT.
+
+924
+00:42:08,440 --> 00:42:10,190
+So if you can avoid
+these things--
+
+925
+00:42:10,190 --> 00:42:12,398
+and there are a lot of games
+where that would happen.
+
+926
+00:42:12,398 --> 00:42:14,396
+Just you have to
+get a point here,
+
+927
+00:42:14,396 --> 00:42:16,020
+and it's just added
+to your total score
+
+928
+00:42:16,020 --> 00:42:18,940
+in some Never Never
+Land not in the plane,
+
+929
+00:42:18,940 --> 00:42:23,450
+then life would be much easier,
+because you wouldn't need
+
+930
+00:42:23,450 --> 00:42:26,070
+a crossover gadget,
+because you can just
+
+931
+00:42:26,070 --> 00:42:28,670
+reduce from planar 3SAT.
+
+932
+00:42:28,670 --> 00:42:30,202
+OK?
+
+933
+00:42:30,202 --> 00:42:31,660
+That should give
+you some intuition
+
+934
+00:42:31,660 --> 00:42:33,960
+why we care about
+planar 3SAT, but also
+
+935
+00:42:33,960 --> 00:42:36,325
+why we didn't use it
+for those problems.
+
+936
+00:42:36,325 --> 00:42:37,700
+As far as we know,
+there's no way
+
+937
+00:42:37,700 --> 00:42:40,515
+to use planar 3SAT and make a
+simpler Super Mario Brothers
+
+938
+00:42:40,515 --> 00:42:41,265
+proof or whatever.
+
+939
+00:42:41,265 --> 00:42:45,160
+
+940
+00:42:45,160 --> 00:42:47,490
+OK.
+
+941
+00:42:47,490 --> 00:42:50,530
+So next topic.
+
+942
+00:42:50,530 --> 00:43:01,500
+
+943
+00:43:01,500 --> 00:43:06,850
+We will see some
+planar 3SAT proofs,
+
+944
+00:43:06,850 --> 00:43:08,079
+reductions from planar 3SAT.
+
+945
+00:43:08,079 --> 00:43:10,370
+But let me first tell you
+about other versions of 3SAT.
+
+946
+00:43:10,370 --> 00:43:12,578
+Remember there are three
+main versions-- planar 3SAT,
+
+947
+00:43:12,578 --> 00:43:14,960
+planar 1-in-3SAT, and-- sorry.
+
+948
+00:43:14,960 --> 00:43:18,050
+There are three versions
+of 3SAT-- 3SAT, 1-in-3SAT,
+
+949
+00:43:18,050 --> 00:43:19,680
+and Not All Equal SAT.
+
+950
+00:43:19,680 --> 00:43:24,260
+Turns out 1-in-3SAT is hard
+when its graphs are planar.
+
+951
+00:43:24,260 --> 00:43:27,180
+Not All Equal SAT is easy
+when graphs are planar.
+
+952
+00:43:27,180 --> 00:43:29,631
+So I will show you both.
+
+953
+00:43:29,631 --> 00:43:31,130
+AUDIENCE: For this
+easy case, do you
+
+954
+00:43:31,130 --> 00:43:32,963
+have to have both the
+variables in the cycle
+
+955
+00:43:32,963 --> 00:43:34,780
+and a clauses in a cycle?
+
+956
+00:43:34,780 --> 00:43:37,880
+Or is it just like seeing the
+clauses in a path or cycle
+
+957
+00:43:37,880 --> 00:43:40,910
+immediately triggers
+this easy condition?
+
+958
+00:43:40,910 --> 00:43:44,140
+PROFESSOR: So I don't know.
+
+959
+00:43:44,140 --> 00:43:46,070
+I think if the
+clauses are in a path
+
+960
+00:43:46,070 --> 00:43:48,790
+and the variables are
+not connected at all,
+
+961
+00:43:48,790 --> 00:43:50,230
+it should still be hard.
+
+962
+00:43:50,230 --> 00:43:51,860
+But I couldn't find
+a proof of that.
+
+963
+00:43:51,860 --> 00:43:54,080
+It's just a vague recollection.
+
+964
+00:43:54,080 --> 00:43:56,520
+So I'm pretty sure if
+variables are in a path
+
+965
+00:43:56,520 --> 00:43:59,390
+and clauses are in a path,
+then that's enough to be toast.
+
+966
+00:43:59,390 --> 00:44:01,632
+But all I proved here was cycle.
+
+967
+00:44:01,632 --> 00:44:02,840
+But I think a path is enough.
+
+968
+00:44:02,840 --> 00:44:05,966
+It will still
+behave like a tree.
+
+969
+00:44:05,966 --> 00:44:06,465
+Mm.
+
+970
+00:44:06,465 --> 00:44:07,100
+Maybe not.
+
+971
+00:44:07,100 --> 00:44:10,191
+I'm not sure.
+
+972
+00:44:10,191 --> 00:44:10,690
+Yeah.
+
+973
+00:44:10,690 --> 00:44:12,530
+So it's a good question.
+
+974
+00:44:12,530 --> 00:44:13,230
+All right.
+
+975
+00:44:13,230 --> 00:44:15,210
+Let's do planar 1-in-3SAT.
+
+976
+00:44:15,210 --> 00:44:17,940
+So it's pretty much
+the same thing.
+
+977
+00:44:17,940 --> 00:44:19,780
+I won't duplicate
+all of the text here.
+
+978
+00:44:19,780 --> 00:44:25,020
+We take the bipartite graph
+of variables versus clauses.
+
+979
+00:44:25,020 --> 00:44:29,710
+And we also add
+a path, or cycle,
+
+980
+00:44:29,710 --> 00:44:32,350
+connecting all the variables.
+
+981
+00:44:32,350 --> 00:44:35,650
+And that graph should be planar.
+
+982
+00:44:35,650 --> 00:44:40,080
+And otherwise, it's
+1-in-3SAT, exactly 1-in-3SAT.
+
+983
+00:44:40,080 --> 00:44:42,290
+So here's the proof.
+
+984
+00:44:42,290 --> 00:44:45,402
+It's one of the easiest
+proofs we'll cover.
+
+985
+00:44:45,402 --> 00:44:46,485
+Suppose you have a clause.
+
+986
+00:44:46,485 --> 00:44:50,970
+
+987
+00:44:50,970 --> 00:44:56,760
+It's a reduction from planar
+3SAT to planar 1-in-3SAT.
+
+988
+00:44:56,760 --> 00:44:57,970
+OK?
+
+989
+00:44:57,970 --> 00:45:01,700
+So this is also our first
+proof of 1-in-3SAT being hard.
+
+990
+00:45:01,700 --> 00:45:05,080
+We are going to take
+a regular 3SAT clause
+
+991
+00:45:05,080 --> 00:45:09,020
+and turn it into three
+1-in-3SAT clauses.
+
+992
+00:45:09,020 --> 00:45:12,429
+And that transformation
+preserves planarity, so done.
+
+993
+00:45:12,429 --> 00:45:14,220
+So all of our proofs
+are going to just keep
+
+994
+00:45:14,220 --> 00:45:15,220
+building up in this way.
+
+995
+00:45:15,220 --> 00:45:16,940
+We've already proved
+this problem's hard
+
+996
+00:45:16,940 --> 00:45:18,600
+when the graph is planar.
+
+997
+00:45:18,600 --> 00:45:21,076
+So let's do this.
+
+998
+00:45:21,076 --> 00:45:22,450
+At least one of
+them should be 1.
+
+999
+00:45:22,450 --> 00:45:23,741
+We don't want them all to be 0.
+
+1000
+00:45:23,741 --> 00:45:26,700
+So let's try when they're all 0,
+see if something should break.
+
+1001
+00:45:26,700 --> 00:45:29,230
+Let's say this variable
+is 0, easier to reach.
+
+1002
+00:45:29,230 --> 00:45:34,880
+So that makes this
+guy satisfied,
+
+1003
+00:45:34,880 --> 00:45:36,750
+which means both of
+these must be false.
+
+1004
+00:45:36,750 --> 00:45:38,230
+This variable's
+just hanging out.
+
+1005
+00:45:38,230 --> 00:45:40,680
+It's just to make
+everything degree three.
+
+1006
+00:45:40,680 --> 00:45:46,180
+So if this is 0, this
+is 1, so this must be 0.
+
+1007
+00:45:46,180 --> 00:45:47,470
+So this is 0.
+
+1008
+00:45:47,470 --> 00:45:48,790
+This is 0.
+
+1009
+00:45:48,790 --> 00:45:51,220
+That means exactly one
+of these should be 1.
+
+1010
+00:45:51,220 --> 00:45:53,370
+If cp is 1, obviously,
+we're happy.
+
+1011
+00:45:53,370 --> 00:45:55,565
+But this will end up
+forcing this guy to be 0.
+
+1012
+00:45:55,565 --> 00:45:56,180
+Or sorry.
+
+1013
+00:45:56,180 --> 00:45:59,160
+Actually, it'll leave this
+guy free to do whatever.
+
+1014
+00:45:59,160 --> 00:46:05,150
+So if this is 0, 0, 0,
+then this must be 1.
+
+1015
+00:46:05,150 --> 00:46:06,410
+This is 1.
+
+1016
+00:46:06,410 --> 00:46:06,980
+This is 1.
+
+1017
+00:46:06,980 --> 00:46:08,420
+Therefore, both of these are 0.
+
+1018
+00:46:08,420 --> 00:46:12,280
+If zr bar is 0, that
+must mean this one is 1.
+
+1019
+00:46:12,280 --> 00:46:16,020
+So if both of these were 0,
+it forced this guy to be a 1.
+
+1020
+00:46:16,020 --> 00:46:19,675
+If this was 0 and this is
+1, for example, this is 1.
+
+1021
+00:46:19,675 --> 00:46:22,250
+
+1022
+00:46:22,250 --> 00:46:25,520
+Then this must be 0/ OK.
+
+1023
+00:46:25,520 --> 00:46:26,720
+This is 0.
+
+1024
+00:46:26,720 --> 00:46:28,820
+But we're free to set
+either one of these to 1.
+
+1025
+00:46:28,820 --> 00:46:31,920
+So zr is free, which
+is what we want to do.
+
+1026
+00:46:31,920 --> 00:46:33,200
+We're simulating regular 3SAT.
+
+1027
+00:46:33,200 --> 00:46:35,184
+If this is 1, then
+both of these guys
+
+1028
+00:46:35,184 --> 00:46:36,850
+should be able to do
+whatever they want.
+
+1029
+00:46:36,850 --> 00:46:39,650
+And that's what these
+guys let you do.
+
+1030
+00:46:39,650 --> 00:46:41,340
+They're free floating.
+
+1031
+00:46:41,340 --> 00:46:43,670
+This guy can toggle if
+it's not constrained
+
+1032
+00:46:43,670 --> 00:46:45,440
+to be the only guy that's 1.
+
+1033
+00:46:45,440 --> 00:46:46,350
+Yeah?
+
+1034
+00:46:46,350 --> 00:46:49,950
+AUDIENCE: What's the
+dashed line represent?
+
+1035
+00:46:49,950 --> 00:46:52,602
+PROFESSOR: Dashed line is
+the outline of the gadget.
+
+1036
+00:46:52,602 --> 00:46:57,250
+It's just saying you replace
+that blob with this blob.
+
+1037
+00:46:57,250 --> 00:46:59,445
+I mean, slightly
+more formally, I
+
+1038
+00:46:59,445 --> 00:47:00,820
+think it's saying
+something like,
+
+1039
+00:47:00,820 --> 00:47:03,452
+if you contract this to a
+point or if you contract this
+
+1040
+00:47:03,452 --> 00:47:05,410
+to a point, then it's
+exactly the same diagram.
+
+1041
+00:47:05,410 --> 00:47:06,951
+So it's one way to
+argue you preserve
+
+1042
+00:47:06,951 --> 00:47:08,670
+planarity, something like that.
+
+1043
+00:47:08,670 --> 00:47:11,650
+
+1044
+00:47:11,650 --> 00:47:14,130
+So ignore it, basically.
+
+1045
+00:47:14,130 --> 00:47:16,810
+Now, I guess you
+would have to argue
+
+1046
+00:47:16,810 --> 00:47:20,982
+that you can still have a path
+that visits all the variables.
+
+1047
+00:47:20,982 --> 00:47:21,690
+Another question?
+
+1048
+00:47:21,690 --> 00:47:22,674
+AUDIENCE: Yeah.
+
+1049
+00:47:22,674 --> 00:47:27,132
+What's preventing you from
+setting all three to false?
+
+1050
+00:47:27,132 --> 00:47:29,090
+PROFESSOR: That is one
+of the cases I just did.
+
+1051
+00:47:29,090 --> 00:47:34,050
+If these two are false,
+then these have to be true.
+
+1052
+00:47:34,050 --> 00:47:35,020
+No, sorry.
+
+1053
+00:47:35,020 --> 00:47:35,980
+These have to be 0.
+
+1054
+00:47:35,980 --> 00:47:37,420
+So these are both 0.
+
+1055
+00:47:37,420 --> 00:47:40,530
+And then this has to
+be a 1 or satisfy this.
+
+1056
+00:47:40,530 --> 00:47:43,150
+
+1057
+00:47:43,150 --> 00:47:45,320
+It's easy to get confused,
+because that one is 3SAT,
+
+1058
+00:47:45,320 --> 00:47:46,630
+this one is 1-in-3SAT.
+
+1059
+00:47:46,630 --> 00:47:49,990
+So these all have
+exactly 1 constraints.
+
+1060
+00:47:49,990 --> 00:47:51,240
+OK.
+
+1061
+00:47:51,240 --> 00:47:53,460
+Now, this proof has negations.
+
+1062
+00:47:53,460 --> 00:47:56,880
+And you may recall
+that monotone--
+
+1063
+00:47:56,880 --> 00:47:59,650
+I'm going to switch to saying
+positive 1-in-3SAT where you
+
+1064
+00:47:59,650 --> 00:48:02,220
+have no negations is also hard.
+
+1065
+00:48:02,220 --> 00:48:09,480
+So we can also define
+planar positive 1-in-3SAT.
+
+1066
+00:48:09,480 --> 00:48:16,670
+
+1067
+00:48:16,670 --> 00:48:21,610
+This is also hard by a slightly
+more complicated proof,
+
+1068
+00:48:21,610 --> 00:48:23,500
+more recent proof also.
+
+1069
+00:48:23,500 --> 00:48:27,880
+Surprisingly, this planar
+monotone rectilinear 3SAT,
+
+1070
+00:48:27,880 --> 00:48:30,790
+or just planar monotone
+3SAT, is also very recent.
+
+1071
+00:48:30,790 --> 00:48:32,460
+I think 2010.
+
+1072
+00:48:32,460 --> 00:48:35,060
+So a lot of these
+just fell recently
+
+1073
+00:48:35,060 --> 00:48:38,770
+but are a natural culmination
+of all these simplifications.
+
+1074
+00:48:38,770 --> 00:48:40,950
+So this is a version
+that-- well, these
+
+1075
+00:48:40,950 --> 00:48:42,590
+are some gadgets, actually.
+
+1076
+00:48:42,590 --> 00:48:45,510
+This is one way to force
+the two variables to have
+
+1077
+00:48:45,510 --> 00:48:48,270
+opposite values and force
+the two variables to have
+
+1078
+00:48:48,270 --> 00:48:52,840
+equal values, using--
+I guess this is really
+
+1079
+00:48:52,840 --> 00:48:58,230
+planar positive
+rectilinear 1-in-3SAT.
+
+1080
+00:48:58,230 --> 00:49:00,310
+It's the 1-in-3SAT
+version of this problem.
+
+1081
+00:49:00,310 --> 00:49:02,140
+So again, variables
+are on the x-axis.
+
+1082
+00:49:02,140 --> 00:49:04,070
+Everything above is
+implicitly all positive.
+
+1083
+00:49:04,070 --> 00:49:06,335
+Everything below is
+implicitly all negative.
+
+1084
+00:49:06,335 --> 00:49:07,860
+Oh, sorry.
+
+1085
+00:49:07,860 --> 00:49:09,556
+Here, everything
+is all positive.
+
+1086
+00:49:09,556 --> 00:49:10,486
+Yeah?
+
+1087
+00:49:10,486 --> 00:49:11,986
+AUDIENCE: Another
+nice thing to note
+
+1088
+00:49:11,986 --> 00:49:13,444
+about that particular
+construction
+
+1089
+00:49:13,444 --> 00:49:16,360
+is that each of the variables
+in the clauses are unique,
+
+1090
+00:49:16,360 --> 00:49:17,332
+so it's exactly 3.
+
+1091
+00:49:17,332 --> 00:49:20,734
+And they're all
+unique, which someone
+
+1092
+00:49:20,734 --> 00:49:22,014
+was asking about before.
+
+1093
+00:49:22,014 --> 00:49:22,680
+PROFESSOR: Good.
+
+1094
+00:49:22,680 --> 00:49:28,160
+So in this construction,
+1-in-3SAT, all of the clauses
+
+1095
+00:49:28,160 --> 00:49:30,400
+do not repeat any variables.
+
+1096
+00:49:30,400 --> 00:49:32,500
+Exactly three
+distinct guys, yeah.
+
+1097
+00:49:32,500 --> 00:49:36,750
+AUDIENCE: So to be clear,
+this problem is hard,
+
+1098
+00:49:36,750 --> 00:49:43,280
+but in this terminology, planar
+positive rectilinear 3SAT,
+
+1099
+00:49:43,280 --> 00:49:46,940
+not 1-in-3SAT, is easy.
+
+1100
+00:49:46,940 --> 00:49:49,920
+Because if everything was
+on one side of the line--
+
+1101
+00:49:49,920 --> 00:49:53,050
+PROFESSOR: I mean,
+positive 3SAT is easy.
+
+1102
+00:49:53,050 --> 00:49:56,872
+You set all the
+variables to true.
+
+1103
+00:49:56,872 --> 00:49:57,830
+AUDIENCE: I'm confused.
+
+1104
+00:49:57,830 --> 00:49:59,504
+Positive means that--
+
+1105
+00:49:59,504 --> 00:50:01,670
+PROFESSOR: Positive is sort
+of the 1-in-3SAT version
+
+1106
+00:50:01,670 --> 00:50:02,410
+of monotone.
+
+1107
+00:50:02,410 --> 00:50:05,760
+So 3SAT monotone
+means every clause is
+
+1108
+00:50:05,760 --> 00:50:07,270
+all positive or all negative.
+
+1109
+00:50:07,270 --> 00:50:10,570
+In 1-in-3SAT, you just
+need everything positive.
+
+1110
+00:50:10,570 --> 00:50:11,551
+And it's still hard.
+
+1111
+00:50:11,551 --> 00:50:13,425
+But with 3SAT, that
+doesn't work, because you
+
+1112
+00:50:13,425 --> 00:50:15,300
+can set everything to true.
+
+1113
+00:50:15,300 --> 00:50:19,590
+1-in-3SAT requires
+some false things.
+
+1114
+00:50:19,590 --> 00:50:21,820
+So it's sort of the analog.
+
+1115
+00:50:21,820 --> 00:50:26,150
+This is sometimes called planar
+monotone rectilinear 1-in-3SAT.
+
+1116
+00:50:26,150 --> 00:50:29,630
+But to avoid confusion, because
+they are somewhat different,
+
+1117
+00:50:29,630 --> 00:50:31,080
+I'm calling it positive.
+
+1118
+00:50:31,080 --> 00:50:33,050
+I think this paper
+actually calls it positive,
+
+1119
+00:50:33,050 --> 00:50:34,750
+which makes me happy.
+
+1120
+00:50:34,750 --> 00:50:38,060
+Anyway, you can check these
+gadgets that they force.
+
+1121
+00:50:38,060 --> 00:50:41,290
+In particular here, you're
+basically forcing a to b 0
+
+1122
+00:50:41,290 --> 00:50:43,380
+by this little construction.
+
+1123
+00:50:43,380 --> 00:50:45,430
+You can see as 1.
+
+1124
+00:50:45,430 --> 00:50:49,020
+Therefore, this clause
+forces exactly one of these
+
+1125
+00:50:49,020 --> 00:50:50,436
+to be true, the
+other to be false.
+
+1126
+00:50:50,436 --> 00:50:51,852
+So it forces them
+to be different.
+
+1127
+00:50:51,852 --> 00:50:53,640
+You repeat that twice,
+you get equality.
+
+1128
+00:50:53,640 --> 00:50:54,750
+Then you do this.
+
+1129
+00:50:54,750 --> 00:50:58,340
+
+1130
+00:50:58,340 --> 00:51:01,170
+First, you get rid
+of all negations,
+
+1131
+00:51:01,170 --> 00:51:02,600
+because you have
+this way to force
+
+1132
+00:51:02,600 --> 00:51:04,770
+two things to be different.
+
+1133
+00:51:04,770 --> 00:51:06,610
+These Xed out ones
+are the red lines.
+
+1134
+00:51:06,610 --> 00:51:09,450
+Those are connected
+to negated copies.
+
+1135
+00:51:09,450 --> 00:51:12,350
+You just duplicate the
+variable in negated form
+
+1136
+00:51:12,350 --> 00:51:14,360
+and then use a wire there.
+
+1137
+00:51:14,360 --> 00:51:16,170
+So this wire
+becomes that one. x2
+
+1138
+00:51:16,170 --> 00:51:18,650
+is different from x1.
+x3 is different from x2.
+
+1139
+00:51:18,650 --> 00:51:19,690
+So it's equal to x1.
+
+1140
+00:51:19,690 --> 00:51:21,550
+Same trick we saw before.
+
+1141
+00:51:21,550 --> 00:51:22,820
+Now you have no negations.
+
+1142
+00:51:22,820 --> 00:51:26,840
+So now this type of
+clause is a 3SAT clause.
+
+1143
+00:51:26,840 --> 00:51:27,960
+It's a little weird.
+
+1144
+00:51:27,960 --> 00:51:30,687
+Right of the arrows, these
+are 1-in-3SAT clauses.
+
+1145
+00:51:30,687 --> 00:51:32,520
+Left of the arrows are
+regular 3SAT clauses.
+
+1146
+00:51:32,520 --> 00:51:34,930
+So we replace this
+with this construction.
+
+1147
+00:51:34,930 --> 00:51:39,334
+
+1148
+00:51:39,334 --> 00:51:41,250
+It's sort of like the
+old one but a little bit
+
+1149
+00:51:41,250 --> 00:51:42,742
+spread out, with
+the duplications,
+
+1150
+00:51:42,742 --> 00:51:45,385
+with these equal gadgets.
+
+1151
+00:51:45,385 --> 00:51:47,760
+We get a copy of x over here.
+
+1152
+00:51:47,760 --> 00:51:50,320
+That's so that if we have
+more connections below,
+
+1153
+00:51:50,320 --> 00:51:54,070
+we can easily access x still.
+
+1154
+00:51:54,070 --> 00:51:57,530
+And yeah.
+
+1155
+00:51:57,530 --> 00:52:02,217
+These 1-in-3 gadgets
+constrain this.
+
+1156
+00:52:02,217 --> 00:52:03,550
+Yeah, there is an equal gadget--
+
+1157
+00:52:03,550 --> 00:52:03,970
+AUDIENCE: The equals
+and not equals
+
+1158
+00:52:03,970 --> 00:52:05,659
+are not part of the
+problem, they're
+
+1159
+00:52:05,659 --> 00:52:07,200
+just referring to
+the earlier gadget.
+
+1160
+00:52:07,200 --> 00:52:07,446
+PROFESSOR: No.
+
+1161
+00:52:07,446 --> 00:52:07,945
+Right.
+
+1162
+00:52:07,945 --> 00:52:10,080
+That's shorthand
+for these gadgets.
+
+1163
+00:52:10,080 --> 00:52:12,250
+So you would plug in
+each of those things
+
+1164
+00:52:12,250 --> 00:52:14,140
+into those little pictures.
+
+1165
+00:52:14,140 --> 00:52:14,640
+Yeah.
+
+1166
+00:52:14,640 --> 00:52:16,960
+
+1167
+00:52:16,960 --> 00:52:17,460
+OK.
+
+1168
+00:52:17,460 --> 00:52:19,570
+So let's skip those details.
+
+1169
+00:52:19,570 --> 00:52:25,340
+But you get that planar positive
+rectilinear 1-in-3SAT is hard.
+
+1170
+00:52:25,340 --> 00:52:28,861
+And that was 2008.
+
+1171
+00:52:28,861 --> 00:52:29,360
+Cool.
+
+1172
+00:52:29,360 --> 00:52:33,140
+
+1173
+00:52:33,140 --> 00:52:43,090
+Let's do planar
+Not All Equal 3SAT.
+
+1174
+00:52:43,090 --> 00:52:46,170
+
+1175
+00:52:46,170 --> 00:52:47,150
+This is polynomial.
+
+1176
+00:52:47,150 --> 00:52:49,520
+Important thing to remember--
+in the planar world,
+
+1177
+00:52:49,520 --> 00:52:53,320
+you have to be careful
+with all sorts of things.
+
+1178
+00:52:53,320 --> 00:52:55,900
+It would be nice to have
+a Schaefer-type dichotomy
+
+1179
+00:52:55,900 --> 00:53:00,110
+theorem for planar graphs, but I
+don't know of any such theorem.
+
+1180
+00:53:00,110 --> 00:53:02,965
+So meanwhile, this is the
+sort of main characterization.
+
+1181
+00:53:02,965 --> 00:53:05,320
+You have those three
+standard problems.
+
+1182
+00:53:05,320 --> 00:53:07,420
+This one falls in
+the planar case.
+
+1183
+00:53:07,420 --> 00:53:08,480
+Same setup.
+
+1184
+00:53:08,480 --> 00:53:11,180
+We have Not All Equal
+clauses and the connections
+
+1185
+00:53:11,180 --> 00:53:15,220
+between those and the
+variables negated or not.
+
+1186
+00:53:15,220 --> 00:53:19,190
+Even when you allow negations,
+this problem is polynomial.
+
+1187
+00:53:19,190 --> 00:53:23,389
+The fun thing is the proof of
+this theorem is a reduction,
+
+1188
+00:53:23,389 --> 00:53:25,180
+and it looks exactly
+like a hardness proof.
+
+1189
+00:53:25,180 --> 00:53:27,670
+I mean-- [LAUGHS]
+It just happens
+
+1190
+00:53:27,670 --> 00:53:31,830
+to be from this problem to a
+known polynomial time problem,
+
+1191
+00:53:31,830 --> 00:53:34,510
+namely, planar max cut.
+
+1192
+00:53:34,510 --> 00:53:37,310
+So we're going to
+reduce to-- this
+
+1193
+00:53:37,310 --> 00:53:42,870
+is one of the few times we will
+reduce to something-- planar
+
+1194
+00:53:42,870 --> 00:53:44,870
+max cut.
+
+1195
+00:53:44,870 --> 00:53:47,120
+So max cut is I
+give you a graph,
+
+1196
+00:53:47,120 --> 00:53:49,840
+and I want to color the
+vertices two different colors.
+
+1197
+00:53:49,840 --> 00:53:52,140
+Think of them as the
+two sides of a cut.
+
+1198
+00:53:52,140 --> 00:53:53,366
+Say red and blue.
+
+1199
+00:53:53,366 --> 00:53:54,740
+And I want to
+maximize the number
+
+1200
+00:53:54,740 --> 00:53:58,010
+of edges that are red, blue.
+
+1201
+00:53:58,010 --> 00:54:03,780
+So I want to maximize the number
+of, here, white-black edges,
+
+1202
+00:54:03,780 --> 00:54:05,580
+bichromatic edges.
+
+1203
+00:54:05,580 --> 00:54:06,387
+That's max cut.
+
+1204
+00:54:06,387 --> 00:54:08,720
+In general graphs, that's
+NP-hard, but in planar graphs,
+
+1205
+00:54:08,720 --> 00:54:11,960
+it's easy, because if you
+look at the dual graph
+
+1206
+00:54:11,960 --> 00:54:14,710
+and then solve the Chinese
+postman tour problem, which
+
+1207
+00:54:14,710 --> 00:54:17,170
+is the shortest path that
+visits all of the edges at least
+
+1208
+00:54:17,170 --> 00:54:19,020
+once, which you can
+do in polynomial time
+
+1209
+00:54:19,020 --> 00:54:23,430
+by perfect matching and a
+bipartite null in a cleek.
+
+1210
+00:54:23,430 --> 00:54:25,850
+Anyway, you do that.
+
+1211
+00:54:25,850 --> 00:54:29,240
+And then all the edges that
+you double are not in the cut,
+
+1212
+00:54:29,240 --> 00:54:29,740
+I think.
+
+1213
+00:54:29,740 --> 00:54:32,210
+And all the edges that you
+don't double in that tour
+
+1214
+00:54:32,210 --> 00:54:36,590
+are in the max cut.
+
+1215
+00:54:36,590 --> 00:54:37,540
+Fun fact.
+
+1216
+00:54:37,540 --> 00:54:40,990
+So this is a known fact.
+
+1217
+00:54:40,990 --> 00:54:42,470
+Planar max cut is easy.
+
+1218
+00:54:42,470 --> 00:54:46,160
+So if we reduce from planar
+Not Equal 3SAT to max cut,
+
+1219
+00:54:46,160 --> 00:54:47,230
+the problem is easy.
+
+1220
+00:54:47,230 --> 00:54:48,350
+And here's the proof.
+
+1221
+00:54:48,350 --> 00:54:53,220
+It's got a variable gadget and
+a Not All Equal clause gadget.
+
+1222
+00:54:53,220 --> 00:54:56,870
+So we want to represent
+Not All Equal.
+
+1223
+00:54:56,870 --> 00:54:59,580
+And so the idea is we're
+going to represent a variable
+
+1224
+00:54:59,580 --> 00:55:02,050
+with this alternating chain.
+
+1225
+00:55:02,050 --> 00:55:04,470
+And if you want to maximize
+the number of red-blue edges,
+
+1226
+00:55:04,470 --> 00:55:06,637
+you should alternate, because
+this have even length.
+
+1227
+00:55:06,637 --> 00:55:08,261
+If you don't alternate
+anywhere, you're
+
+1228
+00:55:08,261 --> 00:55:09,660
+going to not get as many edges.
+
+1229
+00:55:09,660 --> 00:55:12,882
+In general, we'll say,
+well, the target cut
+
+1230
+00:55:12,882 --> 00:55:14,840
+size you're trying to
+get, the decision problem
+
+1231
+00:55:14,840 --> 00:55:17,140
+is, is there a cut of
+size at least something?
+
+1232
+00:55:17,140 --> 00:55:19,380
+The something is going to
+be, in particular, it's
+
+1233
+00:55:19,380 --> 00:55:21,421
+going to be a sum of
+things, but for this gadget,
+
+1234
+00:55:21,421 --> 00:55:23,210
+it is two times the
+number of occurrences
+
+1235
+00:55:23,210 --> 00:55:27,010
+that the variable would
+say, or basically the length
+
+1236
+00:55:27,010 --> 00:55:29,049
+of this cycle.
+
+1237
+00:55:29,049 --> 00:55:30,590
+We'll just make the
+cycle big enough,
+
+1238
+00:55:30,590 --> 00:55:34,430
+so we get lots of copies of
+xi, lots of copies of xi bar.
+
+1239
+00:55:34,430 --> 00:55:36,800
+So this is one possible setting.
+
+1240
+00:55:36,800 --> 00:55:40,870
+If blue means true, this is like
+saying that we set xi to true.
+
+1241
+00:55:40,870 --> 00:55:41,900
+We could do the reverse.
+
+1242
+00:55:41,900 --> 00:55:46,410
+We could set xi to false
+and set xi bar to true.
+
+1243
+00:55:46,410 --> 00:55:47,760
+But they have to be opposites.
+
+1244
+00:55:47,760 --> 00:55:50,590
+So now we have-- this is
+basically a split gadget.
+
+1245
+00:55:50,590 --> 00:55:55,560
+We have several copies
+of xi and xi bar.
+
+1246
+00:55:55,560 --> 00:55:58,360
+Then we're going to connect them
+with this Not All Equal clause,
+
+1247
+00:55:58,360 --> 00:56:00,830
+which is just a triangle.
+
+1248
+00:56:00,830 --> 00:56:04,880
+And the idea is if these
+are-- so this is really
+
+1249
+00:56:04,880 --> 00:56:07,760
+a negated version of xi,
+but it doesn't matter.
+
+1250
+00:56:07,760 --> 00:56:10,920
+If you negate all the variables,
+they'll still be not all equal.
+
+1251
+00:56:10,920 --> 00:56:12,590
+And exactly when
+they're not all equal,
+
+1252
+00:56:12,590 --> 00:56:15,540
+we get two points
+out of this gadget.
+
+1253
+00:56:15,540 --> 00:56:17,390
+Well, we also have to
+get the three points
+
+1254
+00:56:17,390 --> 00:56:18,940
+from these connections.
+
+1255
+00:56:18,940 --> 00:56:20,250
+That forces this alternation.
+
+1256
+00:56:20,250 --> 00:56:22,150
+So we say the target
+in this gadget
+
+1257
+00:56:22,150 --> 00:56:24,080
+is to get a cut of size 5.
+
+1258
+00:56:24,080 --> 00:56:26,070
+We want five red-blue edges.
+
+1259
+00:56:26,070 --> 00:56:28,710
+That's the most you could hope
+for because of an odd cycle
+
+1260
+00:56:28,710 --> 00:56:29,530
+here.
+
+1261
+00:56:29,530 --> 00:56:34,270
+And if you get the sum of all
+these cut sizes, in total,
+
+1262
+00:56:34,270 --> 00:56:37,820
+you must have Not All
+Equal in every clause.
+
+1263
+00:56:37,820 --> 00:56:41,500
+So that's simulating
+Not All Equal-- planar
+
+1264
+00:56:41,500 --> 00:56:42,540
+Not All Equal 3SAT.
+
+1265
+00:56:42,540 --> 00:56:44,130
+This also preserves planarity.
+
+1266
+00:56:44,130 --> 00:56:45,692
+And we just contract
+the variable
+
+1267
+00:56:45,692 --> 00:56:47,150
+to a point, the
+clauses to a point.
+
+1268
+00:56:47,150 --> 00:56:51,400
+And it is the bipartite graph
+of the Not All Equal picture.
+
+1269
+00:56:51,400 --> 00:56:53,890
+And we've simulated that planar
+Not All Equal 3SAT instance
+
+1270
+00:56:53,890 --> 00:56:57,784
+with planar max cut,
+which here, we actually
+
+1271
+00:56:57,784 --> 00:56:58,950
+have a polynomial algorithm.
+
+1272
+00:56:58,950 --> 00:57:00,574
+So that gives us a
+polynomial algorithm
+
+1273
+00:57:00,574 --> 00:57:02,750
+for planar Not All Equal 3SAT.
+
+1274
+00:57:02,750 --> 00:57:04,780
+So that's kind of fun.
+
+1275
+00:57:04,780 --> 00:57:05,470
+Similar style.
+
+1276
+00:57:05,470 --> 00:57:09,180
+
+1277
+00:57:09,180 --> 00:57:10,700
+Yeah.
+
+1278
+00:57:10,700 --> 00:57:11,200
+Good.
+
+1279
+00:57:11,200 --> 00:57:14,830
+
+1280
+00:57:14,830 --> 00:57:16,080
+So many problems.
+
+1281
+00:57:16,080 --> 00:57:40,100
+
+1282
+00:57:40,100 --> 00:57:45,690
+So I guess now we're going
+to do some reductions
+
+1283
+00:57:45,690 --> 00:57:49,780
+from various planar 3SAT
+things to problems you might
+
+1284
+00:57:49,780 --> 00:57:52,190
+care a little bit more about.
+
+1285
+00:57:52,190 --> 00:57:53,730
+I'm going to
+start-- I mean, it's
+
+1286
+00:57:53,730 --> 00:57:55,800
+sort of a vague
+transition, because these,
+
+1287
+00:57:55,800 --> 00:57:58,620
+you could think of just more
+problems of the same type.
+
+1288
+00:57:58,620 --> 00:58:02,240
+X3C is something we talked about
+in the context of 3PARTITION.
+
+1289
+00:58:02,240 --> 00:58:06,540
+This was exact cover
+with sets of size 3.
+
+1290
+00:58:06,540 --> 00:58:10,120
+I think Exact Cover
+with sets of size 3.
+
+1291
+00:58:10,120 --> 00:58:13,074
+So this was-- you could
+think of it as a hyper-graph.
+
+1292
+00:58:13,074 --> 00:58:14,990
+Or you could think of
+it as a bipartite graph.
+
+1293
+00:58:14,990 --> 00:58:19,790
+You have sets of size 3
+which cover variables.
+
+1294
+00:58:19,790 --> 00:58:22,390
+You want every variable to
+be covered exactly once.
+
+1295
+00:58:22,390 --> 00:58:26,220
+
+1296
+00:58:26,220 --> 00:58:28,996
+But you can only
+choose sets of size 3.
+
+1297
+00:58:28,996 --> 00:58:30,710
+Yeah.
+
+1298
+00:58:30,710 --> 00:58:37,750
+So this is closely related,
+I guess, to planar 1-in-3SAT.
+
+1299
+00:58:37,750 --> 00:58:40,920
+Here, each of these
+things could have
+
+1300
+00:58:40,920 --> 00:58:42,980
+arbitrary degree--
+each element can
+
+1301
+00:58:42,980 --> 00:58:45,920
+appear in many different sets.
+
+1302
+00:58:45,920 --> 00:58:49,910
+Whereas over-- and you're
+covering these with these.
+
+1303
+00:58:49,910 --> 00:58:57,610
+I think this is the reverse
+setup, where every-- let's see.
+
+1304
+00:58:57,610 --> 00:59:00,120
+
+1305
+00:59:00,120 --> 00:59:02,730
+The clauses, again, have
+to be exactly covered
+
+1306
+00:59:02,730 --> 00:59:05,800
+by these things.
+
+1307
+00:59:05,800 --> 00:59:10,766
+And these things
+have arbitrary size.
+
+1308
+00:59:10,766 --> 00:59:12,640
+So these are the things
+that you're choosing.
+
+1309
+00:59:12,640 --> 00:59:14,556
+I'm choosing to make
+this variable true, which
+
+1310
+00:59:14,556 --> 00:59:15,889
+covers this guy.
+
+1311
+00:59:15,889 --> 00:59:17,180
+These have arbitrary size here.
+
+1312
+00:59:17,180 --> 00:59:20,090
+The thing that I'm
+choosing has size 3.
+
+1313
+00:59:20,090 --> 00:59:20,590
+OK?
+
+1314
+00:59:20,590 --> 00:59:21,947
+So it's sort of the dual of--
+
+1315
+00:59:21,947 --> 00:59:23,280
+AUDIENCE: What are you choosing?
+
+1316
+00:59:23,280 --> 00:59:25,900
+PROFESSOR: --of
+planar 1-in-3SAT.
+
+1317
+00:59:25,900 --> 00:59:31,560
+So the goal-- maybe I should
+write down the problem again.
+
+1318
+00:59:31,560 --> 00:59:33,350
+You're given three sets.
+
+1319
+00:59:33,350 --> 00:59:35,180
+These are sets of size 3.
+
+1320
+00:59:35,180 --> 00:59:40,320
+And you want to choose,
+let's say, k of them.
+
+1321
+00:59:40,320 --> 00:59:44,650
+
+1322
+00:59:44,650 --> 00:59:49,265
+Actually, it would be choose
+n/3 of them that are disjoint.
+
+1323
+00:59:49,265 --> 00:59:51,950
+
+1324
+00:59:51,950 --> 00:59:55,010
+And therefore, every
+element-- they're n elements--
+
+1325
+00:59:55,010 --> 01:00:00,070
+every element is covered exactly
+once by exactly one 3SAT.
+
+1326
+01:00:00,070 --> 01:00:01,840
+So it's, I think,
+sort of complementary
+
+1327
+01:00:01,840 --> 01:00:03,410
+to planar 1-in-3SAT.
+
+1328
+01:00:03,410 --> 01:00:07,850
+The planar version is that
+this bipartite graph is planar.
+
+1329
+01:00:07,850 --> 01:00:12,510
+And Dyer and Freeze,
+this is same people
+
+1330
+01:00:12,510 --> 01:00:16,740
+that approved one of these
+many problems is hard.
+
+1331
+01:00:16,740 --> 01:00:20,896
+I think the-- I'll look back.
+
+1332
+01:00:20,896 --> 01:00:24,390
+
+1333
+01:00:24,390 --> 01:00:26,570
+Planar 1-in-3SAT.
+
+1334
+01:00:26,570 --> 01:00:28,040
+So no surprise.
+
+1335
+01:00:28,040 --> 01:00:31,364
+So we're going to reduce
+from planar 1-in-3SAT
+
+1336
+01:00:31,364 --> 01:00:34,340
+to this problem, prove
+that this is hard.
+
+1337
+01:00:34,340 --> 01:00:36,100
+And here's a very simple proof.
+
+1338
+01:00:36,100 --> 01:00:37,440
+They make it more complicated.
+
+1339
+01:00:37,440 --> 01:00:41,610
+But for starters,
+let's make a variable
+
+1340
+01:00:41,610 --> 01:00:44,240
+by this kind of
+even cycle trick.
+
+1341
+01:00:44,240 --> 01:00:48,250
+And the picture here is that
+the big circles are 3SATs,
+
+1342
+01:00:48,250 --> 01:00:50,470
+the dots are the elements
+you're trying to cover.
+
+1343
+01:00:50,470 --> 01:00:52,261
+And every element should
+be covered exactly
+
+1344
+01:00:52,261 --> 01:00:54,200
+by exactly one set.
+
+1345
+01:00:54,200 --> 01:00:56,880
+So this looks good, because
+there are exactly two ways
+
+1346
+01:00:56,880 --> 01:00:58,470
+to solve this thing.
+
+1347
+01:00:58,470 --> 01:01:01,990
+You could choose these guys
+and cover those points exactly
+
+1348
+01:01:01,990 --> 01:01:05,487
+once, in which case, this
+is covered, this is covered,
+
+1349
+01:01:05,487 --> 01:01:06,320
+and this is covered.
+
+1350
+01:01:06,320 --> 01:01:08,340
+But these other
+guys are uncovered.
+
+1351
+01:01:08,340 --> 01:01:11,130
+Those are going to
+attach to other gadgets.
+
+1352
+01:01:11,130 --> 01:01:13,010
+Or you could do the reverse.
+
+1353
+01:01:13,010 --> 01:01:16,090
+So that's going to correspond
+to a true or false setting.
+
+1354
+01:01:16,090 --> 01:01:17,930
+And I think-- this is
+not in their paper,
+
+1355
+01:01:17,930 --> 01:01:22,540
+but I think this would be a
+clause for exactly one 3SAT.
+
+1356
+01:01:22,540 --> 01:01:28,370
+Just connect-- you
+could have even negated
+
+1357
+01:01:28,370 --> 01:01:30,200
+versions of your variables.
+
+1358
+01:01:30,200 --> 01:01:33,930
+But let's say we have all
+positive planar 1-in-3SAT.
+
+1359
+01:01:33,930 --> 01:01:36,200
+3, So I'll just
+take a positive copy
+
+1360
+01:01:36,200 --> 01:01:39,300
+of xi, a positive copy
+of xj from somewhere,
+
+1361
+01:01:39,300 --> 01:01:42,865
+and then just bring them
+together at a common dot.
+
+1362
+01:01:42,865 --> 01:01:44,240
+Then that point
+should be covered
+
+1363
+01:01:44,240 --> 01:01:46,573
+by exactly one of them, which
+means exactly one of those
+
+1364
+01:01:46,573 --> 01:01:47,839
+is true.
+
+1365
+01:01:47,839 --> 01:01:48,338
+Done.
+
+1366
+01:01:48,338 --> 01:01:49,820
+Very easy.
+
+1367
+01:01:49,820 --> 01:01:51,810
+Now, they want to
+prove more things,
+
+1368
+01:01:51,810 --> 01:01:56,650
+so they end up using-- I think
+I will just show you for fun.
+
+1369
+01:01:56,650 --> 01:02:01,020
+They end up using a more
+complicated clause and a more
+
+1370
+01:02:01,020 --> 01:02:05,900
+complicated way to connect
+these things into the clause,
+
+1371
+01:02:05,900 --> 01:02:09,900
+because they want to prove
+another problem hard,
+
+1372
+01:02:09,900 --> 01:02:16,097
+which is planar
+three-dimensional matching.
+
+1373
+01:02:16,097 --> 01:02:18,055
+Three-dimensional matching
+was a generalization
+
+1374
+01:02:18,055 --> 01:02:22,280
+of numerical three-dimensional
+matching, which was
+
+1375
+01:02:22,280 --> 01:02:24,800
+closely related to 3PARTITION.
+
+1376
+01:02:24,800 --> 01:02:28,670
+In general,
+three-dimensional matching,
+
+1377
+01:02:28,670 --> 01:02:29,980
+it's like this problem.
+
+1378
+01:02:29,980 --> 01:02:31,890
+But you also have
+the extra information
+
+1379
+01:02:31,890 --> 01:02:35,780
+that for every set of size
+3, one of these is red,
+
+1380
+01:02:35,780 --> 01:02:39,930
+another one is blue,
+another one is yellow.
+
+1381
+01:02:39,930 --> 01:02:42,760
+This paper uses the
+additive primary colors.
+
+1382
+01:02:42,760 --> 01:02:44,016
+I don't know why.
+
+1383
+01:02:44,016 --> 01:02:47,280
+It could be green if you prefer.
+
+1384
+01:02:47,280 --> 01:02:49,340
+So there are three
+types of elements.
+
+1385
+01:02:49,340 --> 01:02:52,230
+And you're told that every
+set has one of each type.
+
+1386
+01:02:52,230 --> 01:02:56,290
+So that's extra information
+that's useful in some proofs.
+
+1387
+01:02:56,290 --> 01:02:59,110
+So this is a better
+construction,
+
+1388
+01:02:59,110 --> 01:03:02,900
+because it's going to end
+up being three-colorable.
+
+1389
+01:03:02,900 --> 01:03:05,334
+Yeah.
+
+1390
+01:03:05,334 --> 01:03:07,500
+I don't know how much you
+care about this reduction.
+
+1391
+01:03:07,500 --> 01:03:10,600
+I think I will skip the
+details, although I spent
+
+1392
+01:03:10,600 --> 01:03:13,770
+a lot of time understanding it.
+
+1393
+01:03:13,770 --> 01:03:16,707
+The rough idea is that
+these connectors-- there's
+
+1394
+01:03:16,707 --> 01:03:18,790
+a positive and a negative
+version, because they're
+
+1395
+01:03:18,790 --> 01:03:19,789
+worried about negations.
+
+1396
+01:03:19,789 --> 01:03:22,690
+But these connections
+will attach
+
+1397
+01:03:22,690 --> 01:03:24,590
+to these three terminals
+for one variable,
+
+1398
+01:03:24,590 --> 01:03:26,006
+these three terminals
+for another,
+
+1399
+01:03:26,006 --> 01:03:27,220
+and these three for another.
+
+1400
+01:03:27,220 --> 01:03:30,030
+And just by a counting
+argument in here,
+
+1401
+01:03:30,030 --> 01:03:36,790
+there is 1, 2, 3, 4, 5,
+6, 7, 8, 9 of these guys.
+
+1402
+01:03:36,790 --> 01:03:39,955
+And there are however many--
+I guess I should really
+
+1403
+01:03:39,955 --> 01:03:41,080
+be counting the black dots.
+
+1404
+01:03:41,080 --> 01:03:47,860
+1, 2, 3, 4, 5, 6, 7, 8,
+9, 11, 12 points here.
+
+1405
+01:03:47,860 --> 01:03:53,710
+So the best you can do is
+to choose three of the sets
+
+1406
+01:03:53,710 --> 01:03:57,180
+inside that will cover
+all of the black dots
+
+1407
+01:03:57,180 --> 01:03:58,730
+except for three of them.
+
+1408
+01:03:58,730 --> 01:04:00,990
+And so from that, you
+get exactly one 1SAT.
+
+1409
+01:04:00,990 --> 01:04:04,696
+Exactly one of these should be
+covered from somewhere else.
+
+1410
+01:04:04,696 --> 01:04:06,320
+That would correspond
+to this situation
+
+1411
+01:04:06,320 --> 01:04:08,454
+where you cover
+these three points as
+
+1412
+01:04:08,454 --> 01:04:10,870
+opposed to this situation,
+where none of them get covered.
+
+1413
+01:04:10,870 --> 01:04:12,344
+That's like these guys.
+
+1414
+01:04:12,344 --> 01:04:14,010
+And then you can
+always satisfy the rest
+
+1415
+01:04:14,010 --> 01:04:15,630
+by adding three in there.
+
+1416
+01:04:15,630 --> 01:04:19,370
+So that's roughly how
+that clause works.
+
+1417
+01:04:19,370 --> 01:04:22,360
+Then that picture
+is three-colorable.
+
+1418
+01:04:22,360 --> 01:04:26,949
+And this way, you can color
+all the dots with three colors.
+
+1419
+01:04:26,949 --> 01:04:27,990
+And it pretty much works.
+
+1420
+01:04:27,990 --> 01:04:30,710
+The variable
+alternates red, yellow.
+
+1421
+01:04:30,710 --> 01:04:33,070
+So we always get blue
+connections, which is good.
+
+1422
+01:04:33,070 --> 01:04:35,750
+So we can attach to
+anything, except that the way
+
+1423
+01:04:35,750 --> 01:04:37,230
+that we attach is like this.
+
+1424
+01:04:37,230 --> 01:04:41,900
+And these are three
+colors which match here.
+
+1425
+01:04:41,900 --> 01:04:45,052
+And in this case, these
+three colors match here.
+
+1426
+01:04:45,052 --> 01:04:47,010
+But you might want to
+attach here, for example.
+
+1427
+01:04:47,010 --> 01:04:52,030
+So you need another connector,
+which is slightly different.
+
+1428
+01:04:52,030 --> 01:04:53,870
+This does exactly
+the same thing,
+
+1429
+01:04:53,870 --> 01:04:56,850
+but now this color
+pattern matches
+
+1430
+01:04:56,850 --> 01:04:58,520
+here, but in negated form.
+
+1431
+01:04:58,520 --> 01:05:05,010
+And if you switch these two
+colors, it matches here,
+
+1432
+01:05:05,010 --> 01:05:06,280
+I think when it's upside-down.
+
+1433
+01:05:06,280 --> 01:05:08,738
+So there's this version, and
+there's the reflected version.
+
+1434
+01:05:08,738 --> 01:05:13,630
+And then there's also this
+coloring of the same gadget.
+
+1435
+01:05:13,630 --> 01:05:14,962
+And so you do all these things.
+
+1436
+01:05:14,962 --> 01:05:16,670
+You know what you're
+supposed to connect,
+
+1437
+01:05:16,670 --> 01:05:18,753
+and so you just choose one
+of these three gadgets,
+
+1438
+01:05:18,753 --> 01:05:21,489
+and it connects to one of
+the three appropriate places.
+
+1439
+01:05:21,489 --> 01:05:22,280
+That's their proof.
+
+1440
+01:05:22,280 --> 01:05:23,980
+It was fun to read.
+
+1441
+01:05:23,980 --> 01:05:26,230
+And that proves that planar
+three-dimensional matching
+
+1442
+01:05:26,230 --> 01:05:27,770
+is hard.
+
+1443
+01:05:27,770 --> 01:05:28,370
+OK.
+
+1444
+01:05:28,370 --> 01:05:30,926
+Plus, in their
+diagrams, oh, they
+
+1445
+01:05:30,926 --> 01:05:32,800
+have dashed lines through
+everything in order
+
+1446
+01:05:32,800 --> 01:05:35,050
+to illustrate that you
+can have one path that
+
+1447
+01:05:35,050 --> 01:05:37,995
+visits all of the elements,
+just like in planar 3SAT.
+
+1448
+01:05:37,995 --> 01:05:41,130
+So also, both planar
+three-dimensional matching and
+
+1449
+01:05:41,130 --> 01:05:48,012
+planar exact cover by 3SATs,
+you can have one cycle
+
+1450
+01:05:48,012 --> 01:05:49,095
+that visits every element.
+
+1451
+01:05:49,095 --> 01:05:52,740
+
+1452
+01:05:52,740 --> 01:05:54,620
+Yeah.
+
+1453
+01:05:54,620 --> 01:05:55,800
+Cool.
+
+1454
+01:05:55,800 --> 01:05:58,885
+Here's another
+relatively simple proof.
+
+1455
+01:05:58,885 --> 01:06:00,760
+This is in the original
+Lichtenstein paper,
+
+1456
+01:06:00,760 --> 01:06:04,040
+so this is one of their
+motivations for planar 3SAT.
+
+1457
+01:06:04,040 --> 01:06:05,540
+Planar vertex cover.
+
+1458
+01:06:05,540 --> 01:06:08,690
+So what's vertex cover?
+
+1459
+01:06:08,690 --> 01:06:09,930
+You're given a graph.
+
+1460
+01:06:09,930 --> 01:06:12,940
+You want to choose
+a set of vertices
+
+1461
+01:06:12,940 --> 01:06:14,310
+that cover all of the edges.
+
+1462
+01:06:14,310 --> 01:06:16,450
+So for example, if
+you have a triangle,
+
+1463
+01:06:16,450 --> 01:06:18,585
+and I choose this vertex,
+it covers this edge,
+
+1464
+01:06:18,585 --> 01:06:19,970
+and it covers this edge.
+
+1465
+01:06:19,970 --> 01:06:21,160
+I have one edge uncovered.
+
+1466
+01:06:21,160 --> 01:06:23,290
+So I'm going to add
+this one and cover that.
+
+1467
+01:06:23,290 --> 01:06:25,940
+So I don't require
+exactly one cover.
+
+1468
+01:06:25,940 --> 01:06:28,650
+Just every edge has to be
+covered by at least one
+
+1469
+01:06:28,650 --> 01:06:30,310
+of its endpoints.
+
+1470
+01:06:30,310 --> 01:06:34,470
+So you can think of it as
+an oar of its two endpoints.
+
+1471
+01:06:34,470 --> 01:06:34,970
+OK.
+
+1472
+01:06:34,970 --> 01:06:38,250
+But this problem is NP-hard
+even for planar graphs.
+
+1473
+01:06:38,250 --> 01:06:40,210
+And here's one way to do.
+
+1474
+01:06:40,210 --> 01:06:42,410
+This is like the whole
+proof in one little picture.
+
+1475
+01:06:42,410 --> 01:06:44,950
+You have a variable
+gadget, which,
+
+1476
+01:06:44,950 --> 01:06:48,540
+again, is just a even cycle.
+
+1477
+01:06:48,540 --> 01:06:53,110
+And in an even cycle,
+the vertex cover--
+
+1478
+01:06:53,110 --> 01:06:54,850
+let's say this has size k.
+
+1479
+01:06:54,850 --> 01:06:58,070
+And I give you the budget of
+only k/2 for your vertex cover,
+
+1480
+01:06:58,070 --> 01:06:59,424
+then you have to alternate.
+
+1481
+01:06:59,424 --> 01:07:01,590
+So either these three guys
+are in your vertex cover,
+
+1482
+01:07:01,590 --> 01:07:03,294
+or these three guys are.
+
+1483
+01:07:03,294 --> 01:07:04,710
+This proof actually
+looks the same
+
+1484
+01:07:04,710 --> 01:07:06,620
+as the last one we saw, right?
+
+1485
+01:07:06,620 --> 01:07:09,120
+Then those things are just
+connected to triangles.
+
+1486
+01:07:09,120 --> 01:07:10,470
+Same deal here.
+
+1487
+01:07:10,470 --> 01:07:12,400
+I'm going to give
+you a budget of two
+
+1488
+01:07:12,400 --> 01:07:15,200
+for this clause, because to
+cover all three of these edges,
+
+1489
+01:07:15,200 --> 01:07:18,980
+you need at least two vertices,
+like we did over there.
+
+1490
+01:07:18,980 --> 01:07:22,252
+And if you're going to get
+away with only two-- so
+
+1491
+01:07:22,252 --> 01:07:23,960
+if I choose, for
+example, these two, that
+
+1492
+01:07:23,960 --> 01:07:26,520
+also covers this edge
+and this edge for free.
+
+1493
+01:07:26,520 --> 01:07:27,950
+But it does not cover this edge.
+
+1494
+01:07:27,950 --> 01:07:30,140
+This would be the one edge
+not covered by the clause
+
+1495
+01:07:30,140 --> 01:07:32,140
+alone if you only
+get a budget of two.
+
+1496
+01:07:32,140 --> 01:07:33,606
+And that's the
+one that better be
+
+1497
+01:07:33,606 --> 01:07:34,980
+covered by this
+side, which means
+
+1498
+01:07:34,980 --> 01:07:36,617
+this variable is set to true.
+
+1499
+01:07:36,617 --> 01:07:38,700
+And in general, at least
+one of these three things
+
+1500
+01:07:38,700 --> 01:07:39,460
+better be covered.
+
+1501
+01:07:39,460 --> 01:07:41,610
+Otherwise you won't
+have enough budget
+
+1502
+01:07:41,610 --> 01:07:44,120
+to finish that triangle clause.
+
+1503
+01:07:44,120 --> 01:07:44,920
+Question?
+
+1504
+01:07:44,920 --> 01:07:48,120
+AUDIENCE: So the hexagon
+versus square here
+
+1505
+01:07:48,120 --> 01:07:49,870
+is just to give you
+more connection points
+
+1506
+01:07:49,870 --> 01:07:50,310
+into other clauses?
+
+1507
+01:07:50,310 --> 01:07:50,530
+PROFESSOR: Yeah.
+
+1508
+01:07:50,530 --> 01:07:51,905
+Just make these
+cycles big enough
+
+1509
+01:07:51,905 --> 01:07:54,620
+to connect up to all the
+things you need it in.
+
+1510
+01:07:54,620 --> 01:07:56,840
+So if you have ni
+occurrences, you're
+
+1511
+01:07:56,840 --> 01:07:59,254
+going to do, like,
+2 ni or something.
+
+1512
+01:07:59,254 --> 01:08:02,470
+
+1513
+01:08:02,470 --> 01:08:02,970
+Cool.
+
+1514
+01:08:02,970 --> 01:08:04,830
+So that's planar vertex cover.
+
+1515
+01:08:04,830 --> 01:08:08,439
+And because this reduction
+preserved planarity,
+
+1516
+01:08:08,439 --> 01:08:11,680
+we get planar
+vertex cover's hard,
+
+1517
+01:08:11,680 --> 01:08:12,890
+because planar 3SAT is hard.
+
+1518
+01:08:12,890 --> 01:08:14,348
+Here we didn't need
+any connections
+
+1519
+01:08:14,348 --> 01:08:15,686
+between the variables.
+
+1520
+01:08:15,686 --> 01:08:17,310
+Here's one where we
+do need connections
+
+1521
+01:08:17,310 --> 01:08:18,830
+between the variables.
+
+1522
+01:08:18,830 --> 01:08:23,470
+So this is planar-directed
+Hamiltonian cycle.
+
+1523
+01:08:23,470 --> 01:08:26,310
+So I think you all know
+what Hamiltonian cycle is.
+
+1524
+01:08:26,310 --> 01:08:28,590
+And you're given a
+directed graph here.
+
+1525
+01:08:28,590 --> 01:08:31,060
+You want to find one path that
+visits every vertex exactly
+
+1526
+01:08:31,060 --> 01:08:31,990
+once.
+
+1527
+01:08:31,990 --> 01:08:33,649
+Don't care about edges.
+
+1528
+01:08:33,649 --> 01:08:36,480
+So we can do a
+similar kind of thing.
+
+1529
+01:08:36,480 --> 01:08:39,115
+The proof is a little bit--
+but checking this works is
+
+1530
+01:08:39,115 --> 01:08:40,240
+a little bit more annoying.
+
+1531
+01:08:40,240 --> 01:08:44,762
+But here's Lichtenstein's
+idea for variable.
+
+1532
+01:08:44,762 --> 01:08:45,595
+Essentially, a wire.
+
+1533
+01:08:45,595 --> 01:08:48,220
+
+1534
+01:08:48,220 --> 01:08:49,569
+The graph is directed here.
+
+1535
+01:08:49,569 --> 01:08:52,224
+So we get to say there's
+an incoming edge here.
+
+1536
+01:08:52,224 --> 01:08:53,140
+Then you get a choice.
+
+1537
+01:08:53,140 --> 01:08:54,840
+So which way it'll go.
+
+1538
+01:08:54,840 --> 01:08:56,914
+But then you basically
+have to alternate.
+
+1539
+01:08:56,914 --> 01:08:58,580
+Because of these
+vertices in the middle,
+
+1540
+01:08:58,580 --> 01:09:00,040
+you've got to visit all of them.
+
+1541
+01:09:00,040 --> 01:09:02,149
+And the only way to do
+that is to alternate.
+
+1542
+01:09:02,149 --> 01:09:04,020
+So you get this
+alternating pattern,
+
+1543
+01:09:04,020 --> 01:09:07,830
+which means if you look at
+these edges, a1 and a1 bar,
+
+1544
+01:09:07,830 --> 01:09:09,930
+exactly one of these is in.
+
+1545
+01:09:09,930 --> 01:09:12,399
+And then the opposite
+of these are in.
+
+1546
+01:09:12,399 --> 01:09:14,670
+The variable here is called a.
+
+1547
+01:09:14,670 --> 01:09:17,029
+So there's many instances of a.
+
+1548
+01:09:17,029 --> 01:09:20,939
+And these are going to
+be in-- they're going
+
+1549
+01:09:20,939 --> 01:09:22,130
+to be both in or both out.
+
+1550
+01:09:22,130 --> 01:09:25,200
+And then these are going to be
+both out or both in and so on.
+
+1551
+01:09:25,200 --> 01:09:28,069
+So because I have
+to zigzag, I made
+
+1552
+01:09:28,069 --> 01:09:32,590
+a bunch of copies, ni
+copies of the variable a.
+
+1553
+01:09:32,590 --> 01:09:34,960
+But you're free to choose
+one setting or the other.
+
+1554
+01:09:34,960 --> 01:09:37,920
+And then the clause is just
+going to be a single vertex.
+
+1555
+01:09:37,920 --> 01:09:44,117
+And the idea is if we want b
+bar to satisfy this clause,
+
+1556
+01:09:44,117 --> 01:09:45,700
+we're going to add
+in those two edges.
+
+1557
+01:09:45,700 --> 01:09:48,640
+So instead of going straight
+here, you could have done this
+
+1558
+01:09:48,640 --> 01:09:50,120
+and grabbed the clause for free.
+
+1559
+01:09:50,120 --> 01:09:51,680
+You don't have to.
+
+1560
+01:09:51,680 --> 01:09:54,150
+But this is going to
+get grabbed if and only
+
+1561
+01:09:54,150 --> 01:09:57,192
+if exactly-- at
+least one of these
+
+1562
+01:09:57,192 --> 01:09:58,400
+chooses the appropriate edge.
+
+1563
+01:09:58,400 --> 01:09:59,884
+If you're using
+this edge, there's
+
+1564
+01:09:59,884 --> 01:10:01,050
+no way to cover this clause.
+
+1565
+01:10:01,050 --> 01:10:03,510
+But if using this
+edge, you can do that.
+
+1566
+01:10:03,510 --> 01:10:06,215
+You have to check that you
+can't let go from here to there
+
+1567
+01:10:06,215 --> 01:10:07,380
+to over here.
+
+1568
+01:10:07,380 --> 01:10:08,970
+That's what this
+figure is about.
+
+1569
+01:10:08,970 --> 01:10:11,580
+So basically, if you're
+alternating here,
+
+1570
+01:10:11,580 --> 01:10:14,800
+you switch sides, and then
+you're alternating here,
+
+1571
+01:10:14,800 --> 01:10:16,920
+this guy is uncovered.
+
+1572
+01:10:16,920 --> 01:10:18,510
+And apparently, this
+proof works even
+
+1573
+01:10:18,510 --> 01:10:21,090
+when the graph is undirected,
+but that's even less clear.
+
+1574
+01:10:21,090 --> 01:10:23,454
+We'll see other
+Hamiltonian cycle proofs
+
+1575
+01:10:23,454 --> 01:10:24,620
+that are stronger than this.
+
+1576
+01:10:24,620 --> 01:10:26,150
+But it's a nice illustration.
+
+1577
+01:10:26,150 --> 01:10:29,410
+Here we're using that we
+can connect all the vertices
+
+1578
+01:10:29,410 --> 01:10:29,980
+together.
+
+1579
+01:10:29,980 --> 01:10:33,480
+That's what these
+connections are in the cycle.
+
+1580
+01:10:33,480 --> 01:10:36,842
+So there's this big
+vertex loop on the outside
+
+1581
+01:10:36,842 --> 01:10:38,800
+taking these gadgets,
+and pasting them together
+
+1582
+01:10:38,800 --> 01:10:42,610
+in a big loop, because we want
+an overall Hamiltonian cycle.
+
+1583
+01:10:42,610 --> 01:10:46,840
+Because we know that preserves
+linearity, life is good.
+
+1584
+01:10:46,840 --> 01:10:47,340
+OK.
+
+1585
+01:10:47,340 --> 01:10:49,050
+So there'll be some
+clauses inside the cycle,
+
+1586
+01:10:49,050 --> 01:10:50,341
+some clauses outside the cycle.
+
+1587
+01:10:50,341 --> 01:10:53,000
+But that doesn't matter.
+
+1588
+01:10:53,000 --> 01:10:53,500
+OK.
+
+1589
+01:10:53,500 --> 01:10:55,845
+That's planar-directed
+Hamiltonian cycle.
+
+1590
+01:10:55,845 --> 01:10:58,810
+
+1591
+01:10:58,810 --> 01:11:01,430
+Time for a Nikoli game.
+
+1592
+01:11:01,430 --> 01:11:04,560
+I bumped into this slide
+that I made a while ago.
+
+1593
+01:11:04,560 --> 01:11:07,110
+So for fun, these are
+all the Nikoli games
+
+1594
+01:11:07,110 --> 01:11:09,350
+I know that have been proved
+hard except the one I'm
+
+1595
+01:11:09,350 --> 01:11:10,680
+going to talk about.
+
+1596
+01:11:10,680 --> 01:11:13,800
+These are the references.
+
+1597
+01:11:13,800 --> 01:11:16,620
+We covered one of them,
+right, the Light Up.
+
+1598
+01:11:16,620 --> 01:11:19,300
+But there's a lot.
+
+1599
+01:11:19,300 --> 01:11:20,940
+And lots of papers proving them.
+
+1600
+01:11:20,940 --> 01:11:23,080
+So here's a relatively new game.
+
+1601
+01:11:23,080 --> 01:11:25,470
+It came out a couple
+years ago in Nikoli land,
+
+1602
+01:11:25,470 --> 01:11:27,020
+although it was
+invented before that.
+
+1603
+01:11:27,020 --> 01:11:31,300
+Shakashaka, which is
+like a shaking sound.
+
+1604
+01:11:31,300 --> 01:11:36,859
+So we have a square grid, blank
+squares, and obstacle squares.
+
+1605
+01:11:36,859 --> 01:11:39,400
+The obstacle squares, some of
+them have numbers, some of them
+
+1606
+01:11:39,400 --> 01:11:41,470
+are wild cards.
+
+1607
+01:11:41,470 --> 01:11:47,220
+And what you're allowed to do
+for a blank square-- or some
+
+1608
+01:11:47,220 --> 01:11:51,170
+of the blank squares,
+you can fill in one half.
+
+1609
+01:11:51,170 --> 01:11:53,040
+So you have like
+four different halves
+
+1610
+01:11:53,040 --> 01:11:54,840
+of the square you can choose.
+
+1611
+01:11:54,840 --> 01:11:57,540
+There they are-- this one, this
+one, this one, and this one.
+
+1612
+01:11:57,540 --> 01:12:00,230
+And you can fill it in
+half black, half white.
+
+1613
+01:12:00,230 --> 01:12:02,670
+So you cut along a
+diagonal, and then you
+
+1614
+01:12:02,670 --> 01:12:05,205
+choose one of the two
+halves to fill in black.
+
+1615
+01:12:05,205 --> 01:12:05,955
+You don't have to.
+
+1616
+01:12:05,955 --> 01:12:08,780
+You could just leave it white.
+
+1617
+01:12:08,780 --> 01:12:11,520
+And when you have
+a numbered square,
+
+1618
+01:12:11,520 --> 01:12:14,450
+then the number of filled things
+must be exactly that number.
+
+1619
+01:12:14,450 --> 01:12:18,650
+So here, there's one adjacent
+to it, and nothing down here.
+
+1620
+01:12:18,650 --> 01:12:22,620
+This guy has exactly two
+half-filled squares next to it.
+
+1621
+01:12:22,620 --> 01:12:23,880
+This one has exactly one.
+
+1622
+01:12:23,880 --> 01:12:27,400
+This one has exactly
+zero half-filled squares.
+
+1623
+01:12:27,400 --> 01:12:33,030
+Think of blank squares as zeros
+and these as counting as one.
+
+1624
+01:12:33,030 --> 01:12:35,940
+Plus, the goal is that the
+regions you make-- this
+
+1625
+01:12:35,940 --> 01:12:38,796
+would all be easy
+so far, I think.
+
+1626
+01:12:38,796 --> 01:12:41,170
+But the extra constraint is
+that all the regions you make
+
+1627
+01:12:41,170 --> 01:12:43,720
+must be rectangles.
+
+1628
+01:12:43,720 --> 01:12:44,220
+OK?
+
+1629
+01:12:44,220 --> 01:12:47,620
+This is a 45-degree-rotated
+rectangle.
+
+1630
+01:12:47,620 --> 01:12:48,960
+This is a regular rectangle.
+
+1631
+01:12:48,960 --> 01:12:50,230
+So you can use either one.
+
+1632
+01:12:50,230 --> 01:12:51,355
+So it's a funny constraint.
+
+1633
+01:12:51,355 --> 01:12:54,040
+It's actually quite
+a fun game to play.
+
+1634
+01:12:54,040 --> 01:12:56,470
+You're not allowed to
+fill in a square 100%.
+
+1635
+01:12:56,470 --> 01:12:58,750
+That one was already filled.
+
+1636
+01:12:58,750 --> 01:13:00,690
+That's the rules.
+
+1637
+01:13:00,690 --> 01:13:03,340
+Here's a reduction
+from planar 3SAT.
+
+1638
+01:13:03,340 --> 01:13:04,730
+Pretty simple.
+
+1639
+01:13:04,730 --> 01:13:07,330
+Looks a lot like
+Minesweeper, in some sense,
+
+1640
+01:13:07,330 --> 01:13:09,140
+a little bit thickened.
+
+1641
+01:13:09,140 --> 01:13:13,100
+But this is a
+wire, because the 1
+
+1642
+01:13:13,100 --> 01:13:15,110
+says that one of the two
+sides is half-filled.
+
+1643
+01:13:15,110 --> 01:13:17,568
+Once that's half-filled, you
+have to make this a rectangle.
+
+1644
+01:13:17,568 --> 01:13:19,800
+You can't just leave
+it as a pentagon.
+
+1645
+01:13:19,800 --> 01:13:22,330
+So you've got to fill that
+in to a rotated square.
+
+1646
+01:13:22,330 --> 01:13:24,530
+But because of the 1, this
+must be an empty square.
+
+1647
+01:13:24,530 --> 01:13:25,830
+So it alternates.
+
+1648
+01:13:25,830 --> 01:13:27,630
+You can do this or this.
+
+1649
+01:13:27,630 --> 01:13:28,130
+OK.
+
+1650
+01:13:28,130 --> 01:13:30,670
+You can easily split just
+by connecting those things
+
+1651
+01:13:30,670 --> 01:13:32,240
+in the obvious way.
+
+1652
+01:13:32,240 --> 01:13:33,710
+You can do 90-degree turns.
+
+1653
+01:13:33,710 --> 01:13:34,210
+No problem.
+
+1654
+01:13:34,210 --> 01:13:37,020
+
+1655
+01:13:37,020 --> 01:13:41,290
+Here's a slightly more
+sophisticated-- slightly more
+
+1656
+01:13:41,290 --> 01:13:42,850
+sophisticated gadget.
+
+1657
+01:13:42,850 --> 01:13:45,620
+You can think of
+this as a terminator.
+
+1658
+01:13:45,620 --> 01:13:48,572
+It would be hard to just
+stop this somewhere.
+
+1659
+01:13:48,572 --> 01:13:51,966
+Well, maybe you could
+just go all black.
+
+1660
+01:13:51,966 --> 01:13:54,060
+I think that's OK as well.
+
+1661
+01:13:54,060 --> 01:13:55,580
+This could also be a terminator.
+
+1662
+01:13:55,580 --> 01:14:00,010
+You can also think
+of this as a negator.
+
+1663
+01:14:00,010 --> 01:14:02,180
+Of course, also, the
+splitter's like a negator.
+
+1664
+01:14:02,180 --> 01:14:05,270
+This guide's just
+probably not so necessary.
+
+1665
+01:14:05,270 --> 01:14:07,840
+Let's get to Clause.
+
+1666
+01:14:07,840 --> 01:14:10,390
+So Clause is bringing
+three things together
+
+1667
+01:14:10,390 --> 01:14:11,470
+with one of these blocks.
+
+1668
+01:14:11,470 --> 01:14:12,980
+But we do it in a funny way.
+
+1669
+01:14:12,980 --> 01:14:14,700
+There's no 1's here or here.
+
+1670
+01:14:14,700 --> 01:14:16,460
+So we end up with
+this L blank shape.
+
+1671
+01:14:16,460 --> 01:14:19,020
+Everything else is
+now drawn as black.
+
+1672
+01:14:19,020 --> 01:14:19,950
+That's just obstacles.
+
+1673
+01:14:19,950 --> 01:14:22,550
+So this is not
+happy the way it is.
+
+1674
+01:14:22,550 --> 01:14:24,780
+There's lots of
+ways to resolve it.
+
+1675
+01:14:24,780 --> 01:14:26,770
+The one case where
+we can't resolve
+
+1676
+01:14:26,770 --> 01:14:33,860
+it is when all of these wires
+are 0's, because there's
+
+1677
+01:14:33,860 --> 01:14:36,370
+already stuff here, and
+stuff here, and stuff here,
+
+1678
+01:14:36,370 --> 01:14:37,980
+so we can't put anything here.
+
+1679
+01:14:37,980 --> 01:14:39,860
+Can't put anything
+here, or here, or here,
+
+1680
+01:14:39,860 --> 01:14:40,940
+because of those 1's.
+
+1681
+01:14:40,940 --> 01:14:44,300
+Then you're forced to have
+the L shape, and you're toast.
+
+1682
+01:14:44,300 --> 01:14:46,930
+In every other case,
+we can decompose
+
+1683
+01:14:46,930 --> 01:14:50,210
+into sometimes a big rectangle,
+sometimes little squares,
+
+1684
+01:14:50,210 --> 01:14:51,450
+sometimes rotated squares.
+
+1685
+01:14:51,450 --> 01:14:52,310
+But that's OK.
+
+1686
+01:14:52,310 --> 01:14:55,540
+So this is a
+regular 3SAT clause.
+
+1687
+01:14:55,540 --> 01:14:59,180
+The one thing that's
+missing at this point
+
+1688
+01:14:59,180 --> 01:15:03,790
+is a parity shift gadget,
+because a lot of these gadgets
+
+1689
+01:15:03,790 --> 01:15:07,380
+have very specific lengths,
+modular 3 or whatever.
+
+1690
+01:15:07,380 --> 01:15:11,860
+So it turns out this is a
+way to shift things slightly.
+
+1691
+01:15:11,860 --> 01:15:14,250
+It can be filled in two ways.
+
+1692
+01:15:14,250 --> 01:15:19,130
+You can fill in all of
+these guys like that
+
+1693
+01:15:19,130 --> 01:15:21,380
+and make this giant
+rotated square.
+
+1694
+01:15:21,380 --> 01:15:24,870
+Or if these are not allowed
+because these are here,
+
+1695
+01:15:24,870 --> 01:15:27,012
+then you can do
+this weird filling.
+
+1696
+01:15:27,012 --> 01:15:29,470
+You end up with a rectangle
+there, and two rotated squares,
+
+1697
+01:15:29,470 --> 01:15:32,159
+another rectangle.
+
+1698
+01:15:32,159 --> 01:15:33,450
+And you count the total length.
+
+1699
+01:15:33,450 --> 01:15:38,887
+This is length 4, whereas most
+of the things are length 2?
+
+1700
+01:15:38,887 --> 01:15:40,080
+AUDIENCE: 3 [INAUDIBLE].
+
+1701
+01:15:40,080 --> 01:15:40,680
+PROFESSOR: 3.
+
+1702
+01:15:40,680 --> 01:15:41,180
+OK.
+
+1703
+01:15:41,180 --> 01:15:44,532
+So that makes me happy.
+
+1704
+01:15:44,532 --> 01:15:45,240
+Shift the parity.
+
+1705
+01:15:45,240 --> 01:15:48,399
+And that is Shakashaka.
+
+1706
+01:15:48,399 --> 01:15:50,190
+Here's an overall
+picture where we actually
+
+1707
+01:15:50,190 --> 01:15:52,000
+plugged some gadgets together.
+
+1708
+01:15:52,000 --> 01:15:52,920
+That was fun.
+
+1709
+01:15:52,920 --> 01:15:55,870
+
+1710
+01:15:55,870 --> 01:16:02,950
+So I think I have one
+more proof to just sketch.
+
+1711
+01:16:02,950 --> 01:16:06,720
+So this is a problem of
+so-called fixed-angle chains.
+
+1712
+01:16:06,720 --> 01:16:08,820
+So you have this
+forced 90-degree angle.
+
+1713
+01:16:08,820 --> 01:16:11,060
+We had a similar thing
+with the Hamiltonian path
+
+1714
+01:16:11,060 --> 01:16:13,740
+with cubes and
+elastics between them.
+
+1715
+01:16:13,740 --> 01:16:16,880
+You could twist one
+edge around the other,
+
+1716
+01:16:16,880 --> 01:16:20,210
+one block around the other, but
+you couldn't adjust this angle.
+
+1717
+01:16:20,210 --> 01:16:20,710
+OK?
+
+1718
+01:16:20,710 --> 01:16:22,992
+So the problem is I give
+you such a chain, which
+
+1719
+01:16:22,992 --> 01:16:25,075
+is specified by lengths
+and then 90-degree angles.
+
+1720
+01:16:25,075 --> 01:16:27,780
+So it can be-- you don't know
+whether the 90-degree angle
+
+1721
+01:16:27,780 --> 01:16:29,370
+goes up or down.
+
+1722
+01:16:29,370 --> 01:16:33,350
+And you want to just put it into
+the plane without crossings.
+
+1723
+01:16:33,350 --> 01:16:35,530
+And this is an old
+proof from 2000.
+
+1724
+01:16:35,530 --> 01:16:37,650
+The problem is weakly NP-hard.
+
+1725
+01:16:37,650 --> 01:16:39,190
+It's basically a
+partition proof,
+
+1726
+01:16:39,190 --> 01:16:40,990
+so it is a partition proof.
+
+1727
+01:16:40,990 --> 01:16:43,650
+You get to choose, for
+each of these things,
+
+1728
+01:16:43,650 --> 01:16:45,050
+whether it goes left or right.
+
+1729
+01:16:45,050 --> 01:16:46,760
+And you need to line
+up this with that.
+
+1730
+01:16:46,760 --> 01:16:48,842
+Otherwise you get collisions.
+
+1731
+01:16:48,842 --> 01:16:50,050
+You would just need to argue.
+
+1732
+01:16:50,050 --> 01:16:52,760
+This outer structure has a
+unique embedding, roughly.
+
+1733
+01:16:52,760 --> 01:16:53,870
+Unique enough.
+
+1734
+01:16:53,870 --> 01:16:55,650
+It always looks like that.
+
+1735
+01:16:55,650 --> 01:17:00,680
+So we proved a few years ago
+that it is strongly NP-hard.
+
+1736
+01:17:00,680 --> 01:17:02,290
+And I will just
+sketch the proof,
+
+1737
+01:17:02,290 --> 01:17:04,940
+because it's fun and cool.
+
+1738
+01:17:04,940 --> 01:17:06,560
+So here's the rough idea.
+
+1739
+01:17:06,560 --> 01:17:09,410
+Imagine this is like
+a piece of wire.
+
+1740
+01:17:09,410 --> 01:17:12,110
+And you can flip it up or down.
+
+1741
+01:17:12,110 --> 01:17:14,200
+All the angles stay 90 degrees.
+
+1742
+01:17:14,200 --> 01:17:15,320
+These are the down-case.
+
+1743
+01:17:15,320 --> 01:17:16,790
+Here are some example up-cases.
+
+1744
+01:17:16,790 --> 01:17:19,240
+One of them's going to
+represent false, the other true.
+
+1745
+01:17:19,240 --> 01:17:19,740
+Question?
+
+1746
+01:17:19,740 --> 01:17:22,323
+AUDIENCE: What's the difference
+between this and the Carpenter
+
+1747
+01:17:22,323 --> 01:17:23,185
+Ruler problem?
+
+1748
+01:17:23,185 --> 01:17:24,310
+PROFESSOR: Which Carpenter?
+
+1749
+01:17:24,310 --> 01:17:26,640
+AUDIENCE: Like you have
+to fold the ruler to fit.
+
+1750
+01:17:26,640 --> 01:17:28,473
+PROFESSOR: Oh, to fit
+inside a given length.
+
+1751
+01:17:28,473 --> 01:17:31,454
+
+1752
+01:17:31,454 --> 01:17:32,620
+Well, the goal is different.
+
+1753
+01:17:32,620 --> 01:17:35,990
+Here, the goal is to draw it
+in the plane without crossings.
+
+1754
+01:17:35,990 --> 01:17:40,100
+Before, the goal was to draw it
+in the plane with minimum span.
+
+1755
+01:17:40,100 --> 01:17:42,720
+
+1756
+01:17:42,720 --> 01:17:43,830
+To fit inside box.
+
+1757
+01:17:43,830 --> 01:17:44,330
+Yeah.
+
+1758
+01:17:44,330 --> 01:17:46,290
+I mean, this proof is
+pretty much the same.
+
+1759
+01:17:46,290 --> 01:17:47,996
+This proof will be
+totally different.
+
+1760
+01:17:47,996 --> 01:17:49,620
+That problem was also
+only weakly hard.
+
+1761
+01:17:49,620 --> 01:17:51,560
+There was a pseudo
+poly-algorithm.
+
+1762
+01:17:51,560 --> 01:17:53,120
+This problem is
+strongly NP-hard.
+
+1763
+01:17:53,120 --> 01:17:54,494
+There is no pseudo
+poly-algorithm
+
+1764
+01:17:54,494 --> 01:17:55,640
+unless P equals np.
+
+1765
+01:17:55,640 --> 01:17:57,814
+So just a slightly
+different goal.
+
+1766
+01:17:57,814 --> 01:17:59,230
+That one was more
+one-dimensional.
+
+1767
+01:17:59,230 --> 01:18:01,396
+This is going to be much
+more two-dimensional That's
+
+1768
+01:18:01,396 --> 01:18:02,360
+the other difference.
+
+1769
+01:18:02,360 --> 01:18:02,860
+OK.
+
+1770
+01:18:02,860 --> 01:18:07,110
+So this is our some
+kind of variable gadget.
+
+1771
+01:18:07,110 --> 01:18:09,145
+This is the variables gadget.
+
+1772
+01:18:09,145 --> 01:18:11,070
+All n variables are
+represented here.
+
+1773
+01:18:11,070 --> 01:18:12,522
+This represents one variable.
+
+1774
+01:18:12,522 --> 01:18:14,730
+At this point, I only have
+one copy of each variable,
+
+1775
+01:18:14,730 --> 01:18:17,100
+because there's no
+constraint between these.
+
+1776
+01:18:17,100 --> 01:18:19,560
+Each of them can
+independently flip up or down.
+
+1777
+01:18:19,560 --> 01:18:20,620
+Next, we have a clause.
+
+1778
+01:18:20,620 --> 01:18:23,010
+This is where things get fun.
+
+1779
+01:18:23,010 --> 01:18:27,740
+So there's some infrastructure,
+but the main action is here.
+
+1780
+01:18:27,740 --> 01:18:29,750
+Each of these is
+sort of independently
+
+1781
+01:18:29,750 --> 01:18:31,770
+pop in or outable.
+
+1782
+01:18:31,770 --> 01:18:34,310
+It's like some kind
+of pleated form.
+
+1783
+01:18:34,310 --> 01:18:36,800
+It can either pleat back and
+forth, like it's doing here,
+
+1784
+01:18:36,800 --> 01:18:39,280
+where it pleats in and
+out and out and in.
+
+1785
+01:18:39,280 --> 01:18:42,620
+And that gets this
+to this position.
+
+1786
+01:18:42,620 --> 01:18:44,530
+With a slightly
+different pleating,
+
+1787
+01:18:44,530 --> 01:18:45,995
+it ends up in this position.
+
+1788
+01:18:45,995 --> 01:18:47,370
+Or a slightly
+different pleating,
+
+1789
+01:18:47,370 --> 01:18:50,200
+where they're all out, you
+end up in this position.
+
+1790
+01:18:50,200 --> 01:18:53,600
+And notice this structure.
+
+1791
+01:18:53,600 --> 01:18:55,430
+So I'll go through it again.
+
+1792
+01:18:55,430 --> 01:18:57,110
+Here's the left one.
+
+1793
+01:18:57,110 --> 01:19:00,910
+And then the middle one.
+
+1794
+01:19:00,910 --> 01:19:03,040
+And then the last one.
+
+1795
+01:19:03,040 --> 01:19:06,010
+What ends up happening is
+that these pegs, in order
+
+1796
+01:19:06,010 --> 01:19:13,200
+to avoid hitting that peg, I
+occupy either P1 or P2 or P3.
+
+1797
+01:19:13,200 --> 01:19:15,140
+So I'll go through
+it one more time.
+
+1798
+01:19:15,140 --> 01:19:17,400
+Here it's hitting P1,
+because this basically
+
+1799
+01:19:17,400 --> 01:19:20,076
+pushes this thing down.
+
+1800
+01:19:20,076 --> 01:19:21,700
+Whereas the other
+ones can be up-- this
+
+1801
+01:19:21,700 --> 01:19:24,940
+is up and up and up and up.
+
+1802
+01:19:24,940 --> 01:19:26,890
+Or if we shift it
+into the middle,
+
+1803
+01:19:26,890 --> 01:19:28,720
+then this one has to be down.
+
+1804
+01:19:28,720 --> 01:19:32,540
+But this guy can be up
+and avoid P1 but hit P2.
+
+1805
+01:19:32,540 --> 01:19:37,030
+Or this one's down, these
+are up, and we hit P3.
+
+1806
+01:19:37,030 --> 01:19:39,240
+We want to avoid
+collisions, so we
+
+1807
+01:19:39,240 --> 01:19:42,940
+have to collide with
+exactly one of these things,
+
+1808
+01:19:42,940 --> 01:19:45,290
+or at least one
+of them, I guess.
+
+1809
+01:19:45,290 --> 01:19:48,390
+So that's the sort of picture.
+
+1810
+01:19:48,390 --> 01:19:51,210
+This is a bunch
+of those clauses.
+
+1811
+01:19:51,210 --> 01:19:57,927
+There's one here, there's one
+here, and there's one here.
+
+1812
+01:19:57,927 --> 01:19:58,510
+Look familiar?
+
+1813
+01:19:58,510 --> 01:20:04,580
+This is planar monotone
+rectilinear 3SAT, I think.
+
+1814
+01:20:04,580 --> 01:20:07,660
+
+1815
+01:20:07,660 --> 01:20:09,410
+So far so good,
+except this chain
+
+1816
+01:20:09,410 --> 01:20:10,880
+is separate from
+this one, so we're
+
+1817
+01:20:10,880 --> 01:20:12,171
+going to connect them together.
+
+1818
+01:20:12,171 --> 01:20:14,480
+
+1819
+01:20:14,480 --> 01:20:16,050
+Is a little more, I think.
+
+1820
+01:20:16,050 --> 01:20:16,900
+Yeah.
+
+1821
+01:20:16,900 --> 01:20:18,290
+Connect them together.
+
+1822
+01:20:18,290 --> 01:20:20,490
+So now it is one big chain.
+
+1823
+01:20:20,490 --> 01:20:22,840
+What I ended up doing,
+there's still this big thing
+
+1824
+01:20:22,840 --> 01:20:24,680
+to represent the
+entire variable.
+
+1825
+01:20:24,680 --> 01:20:27,270
+But I basically made a
+whole bunch of copies of it,
+
+1826
+01:20:27,270 --> 01:20:30,570
+so that I could
+attach things here.
+
+1827
+01:20:30,570 --> 01:20:33,620
+But for example, when this
+is up, all of these guys
+
+1828
+01:20:33,620 --> 01:20:35,130
+have to simultaneously be up.
+
+1829
+01:20:35,130 --> 01:20:38,480
+So it forces all the
+copies of the variable
+
+1830
+01:20:38,480 --> 01:20:39,930
+here to be one way or the other.
+
+1831
+01:20:39,930 --> 01:20:42,169
+This is one variable,
+this is another variable,
+
+1832
+01:20:42,169 --> 01:20:44,460
+this is another variable,
+and this is another variable,
+
+1833
+01:20:44,460 --> 01:20:45,870
+just like before.
+
+1834
+01:20:45,870 --> 01:20:48,280
+So same thing, but now I can
+connect them all together.
+
+1835
+01:20:48,280 --> 01:20:53,330
+Up here, these are all the
+negative, I think, clauses.
+
+1836
+01:20:53,330 --> 01:20:54,010
+Doesn't matter.
+
+1837
+01:20:54,010 --> 01:20:56,570
+And then down here, you put
+all the positive clauses.
+
+1838
+01:20:56,570 --> 01:20:57,628
+And that's the proof.
+
+1839
+01:20:57,628 --> 01:20:58,127
+Question.
+
+1840
+01:20:58,127 --> 01:20:59,763
+AUDIENCE: --all those
+three dots in a row?
+
+1841
+01:20:59,763 --> 01:21:02,179
+Like, it seems to me that if
+you have two dots [INAUDIBLE]
+
+1842
+01:21:02,179 --> 01:21:05,440
+straight line, they might as
+well just merge into one dot.
+
+1843
+01:21:05,440 --> 01:21:07,570
+PROFESSOR: I think the
+idea is, yeah, this
+
+1844
+01:21:07,570 --> 01:21:08,970
+could be a single line.
+
+1845
+01:21:08,970 --> 01:21:11,470
+We subdivide it just to point
+out that you can attach things
+
+1846
+01:21:11,470 --> 01:21:12,470
+to it.
+
+1847
+01:21:12,470 --> 01:21:13,310
+Yeah.
+
+1848
+01:21:13,310 --> 01:21:17,760
+There's extra dots, but just
+for consistency's sake, I guess.
+
+1849
+01:21:17,760 --> 01:21:21,742
+So now everywhere here, you
+can attach one of the clauses.
+
+1850
+01:21:21,742 --> 01:21:23,200
+And that way, they
+all kind of hold
+
+1851
+01:21:23,200 --> 01:21:24,738
+to the same infrastructure.
+
+1852
+01:21:24,738 --> 01:21:27,730
+Yeah.
+
+1853
+01:21:27,730 --> 01:21:28,330
+Clear?
+
+1854
+01:21:28,330 --> 01:21:29,429
+[LAUGHS]
+
+1855
+01:21:29,429 --> 01:21:31,470
+So obviously, you get
+pretty complicated pictures
+
+1856
+01:21:31,470 --> 01:21:31,970
+in the end.
+
+1857
+01:21:31,970 --> 01:21:34,480
+But this is a proof
+that clearly benefited
+
+1858
+01:21:34,480 --> 01:21:37,900
+from the rectilinear aspect
+and the monotone aspect
+
+1859
+01:21:37,900 --> 01:21:41,420
+that all the true thing-- we
+could not get some true above
+
+1860
+01:21:41,420 --> 01:21:42,570
+and some true below.
+
+1861
+01:21:42,570 --> 01:21:44,332
+They all wanted to
+go the same way.
+
+1862
+01:21:44,332 --> 01:21:45,790
+And the rectilinear
+was nice, so we
+
+1863
+01:21:45,790 --> 01:21:48,070
+could draw this all
+on a horizontal line
+
+1864
+01:21:48,070 --> 01:21:50,160
+and only have to worry
+about vertical connections
+
+1865
+01:21:50,160 --> 01:21:51,490
+between the top and the bottom.
+
+1866
+01:21:51,490 --> 01:21:52,990
+So that gets to
+your question about,
+
+1867
+01:21:52,990 --> 01:21:56,070
+why do we need rectilinear?
+
+1868
+01:21:56,070 --> 01:21:56,860
+But there you go.
+
+1869
+01:21:56,860 --> 01:22:01,810
+So that was just a few
+examples of planar 3SAT.
+
+1870
+01:22:01,810 --> 01:22:04,740
+But in general, the idea
+is that a lot of 3SAT--
+
+1871
+01:22:04,740 --> 01:22:07,820
+or many 3SAT proofs
+get easier when you use
+
+1872
+01:22:07,820 --> 01:22:09,370
+the appropriate planar version.
+
+1873
+01:22:09,370 --> 01:22:12,790
+You just have to be careful
+of ones that are not hard.
+
+1874
+01:22:12,790 --> 01:22:14,630
+As long as you
+avoid that and you
+
+1875
+01:22:14,630 --> 01:22:16,710
+have the right sort
+of graph setup,
+
+1876
+01:22:16,710 --> 01:22:18,850
+you don't have to add
+too many extra edges.
+
+1877
+01:22:18,850 --> 01:22:20,610
+Then you'll have
+planarity and not
+
+1878
+01:22:20,610 --> 01:22:21,901
+have to worry about crossovers.
+
+1879
+01:22:21,901 --> 01:22:23,650
+And crossover, it
+wouldn't have a clue
+
+1880
+01:22:23,650 --> 01:22:27,339
+how to do a crossover
+in a problem like this.
+
+1881
+01:22:27,339 --> 01:22:29,880
+And other times, it just makes
+your life a little bit easier,
+
+1882
+01:22:29,880 --> 01:22:32,050
+because you skip one gadget.
+
+1883
+01:22:32,050 --> 01:22:34,630
+But that is planar 3SAT.
+

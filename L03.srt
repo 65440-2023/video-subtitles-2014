@@ -1,0 +1,8605 @@
+1
+0-1:59:39,100 --> 0-1:59:39,240
+
+2
+0-1:59:39,240 --> 0-1:59:41,570
+The following content is
+provided under a Creative
+
+3
+0-1:59:41,570 --> 0-1:59:42,960
+Commons license.
+
+4
+0-1:59:42,960 --> 0-1:59:45,190
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:45,190 --> 0-1:59:49,280
+continue to offer high quality,
+educational resources for free.
+
+6
+0-1:59:49,280 --> 0-1:59:51,830
+To make a donation or to
+view additional materials
+
+7
+0-1:59:51,830 --> 0-1:59:55,730
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:55,730 --> 0-1:59:56,437
+at ocw.mit.edu.
+
+9
+0-1:59:56,437 --> 00:00:05,660
+
+10
+00:00:05,660 --> 00:00:07,860
+PROFESSOR: All right,
+welcome back to 6.890.
+
+11
+00:00:07,860 --> 00:00:11,020
+Today we continue our theme
+of reductions-- NP-hardness
+
+12
+00:00:11,020 --> 00:00:13,920
+reductions from three partition.
+
+13
+00:00:13,920 --> 00:00:16,714
+Yesterday we saw a couple of
+different reductions from three
+
+14
+00:00:16,714 --> 00:00:18,380
+partition and then a
+bunch of reductions
+
+15
+00:00:18,380 --> 00:00:21,000
+from those problems,
+various puzzles.
+
+16
+00:00:21,000 --> 00:00:24,300
+The last one we covered was
+packing squares into a square.
+
+17
+00:00:24,300 --> 00:00:27,110
+This is just a reminder
+visually of what it looks like.
+
+18
+00:00:27,110 --> 00:00:30,220
+But we're going to just
+take this result as given.
+
+19
+00:00:30,220 --> 00:00:32,560
+And our first
+NP-hardness reduction
+
+20
+00:00:32,560 --> 00:00:34,900
+will be from packing
+squares into a square.
+
+21
+00:00:34,900 --> 00:00:37,410
+And then we will see
+a bunch of-- possibly
+
+22
+00:00:37,410 --> 00:00:40,730
+as many as eight-- reductions
+from three partition.
+
+23
+00:00:40,730 --> 00:00:44,720
+So without further
+ado, let's get started.
+
+24
+00:00:44,720 --> 00:00:48,200
+The first problem we're
+going to talk about
+
+25
+00:00:48,200 --> 00:00:50,180
+is edge-unfolding polyhedra.
+
+26
+00:00:50,180 --> 00:00:53,780
+This is a geometric
+folding problem.
+
+27
+00:00:53,780 --> 00:00:58,500
+So if you're interested in
+more, you can take 6.849.
+
+28
+00:00:58,500 --> 00:01:01,500
+But here's a simple-- if you've
+ever made a cube out of paper,
+
+29
+00:01:01,500 --> 00:01:04,370
+probably you cut
+out a cross shape
+
+30
+00:01:04,370 --> 00:01:07,130
+and then folded
+it into the cube.
+
+31
+00:01:07,130 --> 00:01:09,940
+But if you want to know
+what shape should I cut out
+
+32
+00:01:09,940 --> 00:01:11,610
+to make a cube, then
+you want to know
+
+33
+00:01:11,610 --> 00:01:14,700
+where should I cut, which
+edges of the cube should I cut?
+
+34
+00:01:14,700 --> 00:01:16,080
+They're drawn in red here.
+
+35
+00:01:16,080 --> 00:01:18,920
+So that, when I unfold it,
+I get one connected piece
+
+36
+00:01:18,920 --> 00:01:21,100
+without overlap.
+
+37
+00:01:21,100 --> 00:01:24,540
+So for surfaces that are
+topologically a sphere,
+
+38
+00:01:24,540 --> 00:01:27,820
+you want to cut along a
+spanning tree of the edges.
+
+39
+00:01:27,820 --> 00:01:29,630
+And for a cube, that
+will always work.
+
+40
+00:01:29,630 --> 00:01:33,070
+But for some polyhedra like
+these two, when you unfold,
+
+41
+00:01:33,070 --> 00:01:34,240
+you get overlap.
+
+42
+00:01:34,240 --> 00:01:35,950
+And in fact, no
+matter which spanning
+
+43
+00:01:35,950 --> 00:01:39,950
+tree of the edges you take for
+either of these two polyhedra,
+
+44
+00:01:39,950 --> 00:01:41,240
+you're guaranteed to fail.
+
+45
+00:01:41,240 --> 00:01:44,780
+You cannot make these out of
+one piece of paper by folding
+
+46
+00:01:44,780 --> 00:01:46,930
+and get an exact cover.
+
+47
+00:01:46,930 --> 00:01:47,810
+So that's bad news.
+
+48
+00:01:47,810 --> 00:01:48,893
+And these are old results.
+
+49
+00:01:48,893 --> 00:01:51,280
+These are back in 1998.
+
+50
+00:01:51,280 --> 00:01:54,620
+But it remained an
+open problem, how many
+
+51
+00:01:54,620 --> 00:01:56,070
+other examples are there?
+
+52
+00:01:56,070 --> 00:01:59,100
+If I give you a polyhedron, I
+want to know is there an edge
+
+53
+00:01:59,100 --> 00:01:59,650
+unfolding?
+
+54
+00:01:59,650 --> 00:02:01,820
+We only cut along the edges.
+
+55
+00:02:01,820 --> 00:02:03,640
+What's the complexity of that?
+
+56
+00:02:03,640 --> 00:02:07,640
+And the answer is, it's
+NP-complete, strongly
+
+57
+00:02:07,640 --> 00:02:09,560
+NP-complete, slightly stronger.
+
+58
+00:02:09,560 --> 00:02:11,710
+This is not, obviously,
+a number problem.
+
+59
+00:02:11,710 --> 00:02:13,767
+But in geometry,
+you have this issue
+
+60
+00:02:13,767 --> 00:02:15,600
+of what are the coordinates
+of the vertices.
+
+61
+00:02:15,600 --> 00:02:17,630
+So the coordinates could
+be exponentially large
+
+62
+00:02:17,630 --> 00:02:19,670
+or they could just be
+polynomially large.
+
+63
+00:02:19,670 --> 00:02:23,120
+Here they only be polynomially
+large, so strongly NP-complete.
+
+64
+00:02:23,120 --> 00:02:26,120
+This is a complicated
+proof so I'm just
+
+65
+00:02:26,120 --> 00:02:30,212
+going to sketch the
+idea of how it works.
+
+66
+00:02:30,212 --> 00:02:31,670
+At the beginning,
+like most proofs,
+
+67
+00:02:31,670 --> 00:02:33,670
+there's some kind of like
+overall infrastructure
+
+68
+00:02:33,670 --> 00:02:35,590
+the holds all the
+pieces together.
+
+69
+00:02:35,590 --> 00:02:37,670
+This is one part of that.
+
+70
+00:02:37,670 --> 00:02:39,220
+Well, this is the
+main infrastructure
+
+71
+00:02:39,220 --> 00:02:40,900
+in this reduction.
+
+72
+00:02:40,900 --> 00:02:42,810
+There's some stuff
+around the side.
+
+73
+00:02:42,810 --> 00:02:47,320
+This is mainly to make the
+surface topologically a sphere.
+
+74
+00:02:47,320 --> 00:02:52,260
+The focus is on a
+square face here
+
+75
+00:02:52,260 --> 00:02:54,160
+that has a little slit in it.
+
+76
+00:02:54,160 --> 00:02:55,620
+And there's a tower coming out.
+
+77
+00:02:55,620 --> 00:02:58,080
+It's drawn edge-on here.
+
+78
+00:02:58,080 --> 00:03:00,610
+This is the part we
+actually care about.
+
+79
+00:03:00,610 --> 00:03:03,090
+I think, actually, it
+will be redrawn here.
+
+80
+00:03:03,090 --> 00:03:05,080
+So we'll really just
+be thinking about this.
+
+81
+00:03:05,080 --> 00:03:07,050
+And then, there's some
+stuff that wraps around
+
+82
+00:03:07,050 --> 00:03:09,450
+it makes it a sphere
+without changing unfoldings
+
+83
+00:03:09,450 --> 00:03:11,880
+So don't worry too
+much about that.
+
+84
+00:03:11,880 --> 00:03:15,020
+Mainly we have this
+giant-- think of it
+
+85
+00:03:15,020 --> 00:03:16,500
+as an obstacle
+because we are not
+
+86
+00:03:16,500 --> 00:03:19,500
+allowed to overlap when
+we unfold this thing.
+
+87
+00:03:19,500 --> 00:03:21,669
+So this shape can't
+be cut up because it
+
+88
+00:03:21,669 --> 00:03:22,967
+has no edges except for here.
+
+89
+00:03:22,967 --> 00:03:24,300
+So this part can move around it.
+
+90
+00:03:24,300 --> 00:03:26,170
+It turns out that it
+can just stay in there
+
+91
+00:03:26,170 --> 00:03:27,270
+but it might move up.
+
+92
+00:03:27,270 --> 00:03:29,670
+So we'll make a little
+bit of space here.
+
+93
+00:03:29,670 --> 00:03:32,730
+There's this hole of this face.
+
+94
+00:03:32,730 --> 00:03:34,830
+Then there is this tower
+that is sticking out
+
+95
+00:03:34,830 --> 00:03:37,315
+into the third dimension and
+we need to somehow unfold
+
+96
+00:03:37,315 --> 00:03:39,140
+that thing and fit it in here.
+
+97
+00:03:39,140 --> 00:03:41,630
+Doesn't look possible
+because this is not
+
+98
+00:03:41,630 --> 00:03:43,360
+quite drawn to scale.
+
+99
+00:03:43,360 --> 00:03:45,480
+This is going to be super long.
+
+100
+00:03:45,480 --> 00:03:48,465
+So a lot of the stuff here
+is just going to be stuffed
+
+101
+00:03:48,465 --> 00:03:52,090
+up the chimney, so to speak,
+but also on the surface
+
+102
+00:03:52,090 --> 00:03:53,750
+there is more stuff going on.
+
+103
+00:03:53,750 --> 00:03:56,300
+So let's zoom into this thing.
+
+104
+00:03:56,300 --> 00:03:59,700
+If we unfold that
+tower into a plus sign.
+
+105
+00:03:59,700 --> 00:04:02,940
+Most of it is lots
+of tiny stuff called
+
+106
+00:04:02,940 --> 00:04:06,150
+atoms, which we will get to.
+
+107
+00:04:06,150 --> 00:04:09,170
+And then, the interesting
+part from a three partition
+
+108
+00:04:09,170 --> 00:04:12,050
+standpoint-- or sorry, from
+a square packing standpoint--
+
+109
+00:04:12,050 --> 00:04:13,740
+is there are some square faces.
+
+110
+00:04:13,740 --> 00:04:17,180
+And because we're edge
+cutting our surface
+
+111
+00:04:17,180 --> 00:04:18,960
+those squares will
+remain squares.
+
+112
+00:04:18,960 --> 00:04:20,260
+There's no edges on them.
+
+113
+00:04:20,260 --> 00:04:24,980
+So those guys somehow have to
+move around when you unfold.
+
+114
+00:04:24,980 --> 00:04:27,660
+And it's not drawn this
+way, but the squares
+
+115
+00:04:27,660 --> 00:04:30,810
+are large enough that they
+can't fit up the chimney.
+
+116
+00:04:30,810 --> 00:04:34,750
+OK, this chimney's actually
+pretty narrow, constant width,
+
+117
+00:04:34,750 --> 00:04:37,320
+and those guys are
+all really big.
+
+118
+00:04:37,320 --> 00:04:40,190
+So this other stuff can
+move up the chimney,
+
+119
+00:04:40,190 --> 00:04:42,420
+but the squares will have
+to stay in this square.
+
+120
+00:04:42,420 --> 00:04:43,794
+And that's how
+we're going to get
+
+121
+00:04:43,794 --> 00:04:45,480
+packing squares into squares.
+
+122
+00:04:45,480 --> 00:04:46,240
+OK?
+
+123
+00:04:46,240 --> 00:04:49,190
+Now, the challenge is, what
+we want to be able to do
+
+124
+00:04:49,190 --> 00:04:51,900
+is move the squares
+around freely.
+
+125
+00:04:51,900 --> 00:04:55,410
+But in reality, we need to
+make a connected 2D shape.
+
+126
+00:04:55,410 --> 00:04:58,710
+So somehow, we need to
+connect together these squares
+
+127
+00:04:58,710 --> 00:05:03,940
+by some stuff-- that's
+the mystery atoms--
+
+128
+00:05:03,940 --> 00:05:06,070
+so that, basically,
+for any square packing,
+
+129
+00:05:06,070 --> 00:05:08,430
+we can arrange to
+have those faces
+
+130
+00:05:08,430 --> 00:05:10,267
+in that rough arrangement.
+
+131
+00:05:10,267 --> 00:05:12,850
+And then the other stuff somehow
+connects everything together.
+
+132
+00:05:12,850 --> 00:05:16,130
+And whatever doesn't fit in
+here goes up the chimney.
+
+133
+00:05:16,130 --> 00:05:17,800
+So that's the plan.
+
+134
+00:05:17,800 --> 00:05:20,840
+If we zoom in--
+all right, so this
+
+135
+00:05:20,840 --> 00:05:23,030
+is sort of the
+diagram of that plan.
+
+136
+00:05:23,030 --> 00:05:27,280
+Imagine you have some
+placement of the squares.
+
+137
+00:05:27,280 --> 00:05:30,950
+And we're going to try to
+connect all the pieces together
+
+138
+00:05:30,950 --> 00:05:34,390
+maybe to some common root
+in the lower left corner.
+
+139
+00:05:34,390 --> 00:05:37,830
+First we're just going to
+draw some L's conceptually
+
+140
+00:05:37,830 --> 00:05:40,520
+to connect them all to here.
+
+141
+00:05:40,520 --> 00:05:42,650
+Those cross, which
+is not allowed.
+
+142
+00:05:42,650 --> 00:05:45,070
+But then we're going to
+reroute the L's to go around
+
+143
+00:05:45,070 --> 00:05:47,320
+the-- so, to get up
+to this box, we're
+
+144
+00:05:47,320 --> 00:05:51,360
+going to go around all
+the other boxes below it.
+
+145
+00:05:51,360 --> 00:05:54,020
+And in this way, we get a
+non-crossing arrangement.
+
+146
+00:05:54,020 --> 00:05:56,370
+If we zoom in even closer,
+these, I've drawn as lines,
+
+147
+00:05:56,370 --> 00:05:58,290
+but really they're
+little strips of paper.
+
+148
+00:05:58,290 --> 00:06:01,810
+And they may do weird things
+like zigzag back and forth.
+
+149
+00:06:01,810 --> 00:06:04,750
+How that happens
+we'll see in a moment.
+
+150
+00:06:04,750 --> 00:06:06,440
+But this is to
+convince you that,
+
+151
+00:06:06,440 --> 00:06:07,880
+at least if we
+could place squares
+
+152
+00:06:07,880 --> 00:06:10,660
+and they're not like
+right touching each other.
+
+153
+00:06:10,660 --> 00:06:12,710
+So we're going to shrink
+each square a tiny bit,
+
+154
+00:06:12,710 --> 00:06:14,168
+which I won't get
+into the details.
+
+155
+00:06:14,168 --> 00:06:17,350
+But if they're integer
+square, let's say,
+
+156
+00:06:17,350 --> 00:06:21,340
+then we'll shrink them, maybe,
+by minus 1 over n or something
+
+157
+00:06:21,340 --> 00:06:24,230
+polynomially small.
+
+158
+00:06:24,230 --> 00:06:26,530
+And then, that gives
+us a little bit of room
+
+159
+00:06:26,530 --> 00:06:29,260
+to route all of these paths
+if make them like 1 over n
+
+160
+00:06:29,260 --> 00:06:31,670
+squared or 1 over n
+cubed in thickness.
+
+161
+00:06:31,670 --> 00:06:33,760
+Still polynomial, so
+still strongly NP-hard.
+
+162
+00:06:33,760 --> 00:06:36,360
+
+163
+00:06:36,360 --> 00:06:39,460
+So if we have a
+square packing, we
+
+164
+00:06:39,460 --> 00:06:42,000
+can connect them
+all up in this way
+
+165
+00:06:42,000 --> 00:06:43,890
+if we have these
+magical atoms that
+
+166
+00:06:43,890 --> 00:06:46,740
+can do whatever we want freely.
+
+167
+00:06:46,740 --> 00:06:53,730
+And that's the-- so, in a little
+more detail, in this picture,
+
+168
+00:06:53,730 --> 00:06:57,020
+we imagine the atoms as somehow
+being connected together
+
+169
+00:06:57,020 --> 00:06:58,620
+in a chain, potentially.
+
+170
+00:06:58,620 --> 00:07:01,540
+And then when they unfold,
+this is the fun part.
+
+171
+00:07:01,540 --> 00:07:05,120
+So we maybe-- for
+connectivity purposes,
+
+172
+00:07:05,120 --> 00:07:08,030
+maybe first we want to visit
+B1, then we want to visit B2,
+
+173
+00:07:08,030 --> 00:07:08,540
+and so on.
+
+174
+00:07:08,540 --> 00:07:11,830
+
+175
+00:07:11,830 --> 00:07:13,420
+And that corresponds
+to some traversal
+
+176
+00:07:13,420 --> 00:07:17,650
+on the surface of this
+plus sign or the tower
+
+177
+00:07:17,650 --> 00:07:19,330
+that's sticking out.
+
+178
+00:07:19,330 --> 00:07:21,310
+And then, in 2D
+when we unfold it,
+
+179
+00:07:21,310 --> 00:07:23,334
+we have a different thing
+in mind of whether we
+
+180
+00:07:23,334 --> 00:07:24,500
+want it to go left or right.
+
+181
+00:07:24,500 --> 00:07:27,830
+So there's moving left or right
+intrinsically on the surface.
+
+182
+00:07:27,830 --> 00:07:30,740
+And then there's moving left
+and right in the unfolding.
+
+183
+00:07:30,740 --> 00:07:32,260
+So two separate things.
+
+184
+00:07:32,260 --> 00:07:35,420
+And conveniently,
+this one structure
+
+185
+00:07:35,420 --> 00:07:38,970
+is one of these boxes-- this
+is what we call the atom- can
+
+186
+00:07:38,970 --> 00:07:41,220
+do all of those things.
+
+187
+00:07:41,220 --> 00:07:43,190
+Certainly not obvious
+from the picture,
+
+188
+00:07:43,190 --> 00:07:45,750
+it's just a little bumpy square.
+
+189
+00:07:45,750 --> 00:07:49,680
+But you just trial the cases,
+these are three of the cases.
+
+190
+00:07:49,680 --> 00:07:51,940
+Not obvious, but there
+turn out to be 10
+
+191
+00:07:51,940 --> 00:07:55,740
+after you remove
+reflections and rotations.
+
+192
+00:07:55,740 --> 00:07:58,520
+There's a few things going on,
+but the main thing going on
+
+193
+00:07:58,520 --> 00:08:05,260
+is whether you're going left or
+right in the-- let me get this
+
+194
+00:08:05,260 --> 00:08:07,842
+straight-- whether you're going
+left or right intrinsically
+
+195
+00:08:07,842 --> 00:08:10,050
+on the surface and whether
+you're going left or right
+
+196
+00:08:10,050 --> 00:08:12,300
+or straight in the unfolding.
+
+197
+00:08:12,300 --> 00:08:14,920
+So here you can see you're
+turning left in the unfolding,
+
+198
+00:08:14,920 --> 00:08:16,710
+you're going straight
+in the unfolding,
+
+199
+00:08:16,710 --> 00:08:18,610
+and you're turning
+left in the unfolding.
+
+200
+00:08:18,610 --> 00:08:21,580
+So the second coordinate
+is L, S, and L.
+
+201
+00:08:21,580 --> 00:08:23,610
+What's less obvious
+is if you fold this up
+
+202
+00:08:23,610 --> 00:08:27,500
+and you get the atom
+structure, but the thing
+
+203
+00:08:27,500 --> 00:08:30,790
+that you attach to here
+is on the folded structure
+
+204
+00:08:30,790 --> 00:08:36,340
+either to the left or to
+the left or to the right.
+
+205
+00:08:36,340 --> 00:08:38,280
+So you just check
+all these things.
+
+206
+00:08:38,280 --> 00:08:40,880
+And then, this is like
+a universal glue that
+
+207
+00:08:40,880 --> 00:08:43,900
+can connect together the
+squares however you want,
+
+208
+00:08:43,900 --> 00:08:47,730
+both on the surface where they
+have to be connected originally
+
+209
+00:08:47,730 --> 00:08:50,640
+and in the unfolding
+where you want
+
+210
+00:08:50,640 --> 00:08:52,700
+to match some square packing.
+
+211
+00:08:52,700 --> 00:08:55,740
+So we'll have a little bit of
+hand waving there, lots of hand
+
+212
+00:08:55,740 --> 00:08:59,270
+waving, but in the end, you
+get NP-strong, NP-completeness
+
+213
+00:08:59,270 --> 00:09:00,940
+of edge-unfolding polyhedra.
+
+214
+00:09:00,940 --> 00:09:04,070
+
+215
+00:09:04,070 --> 00:09:04,690
+Any questions?
+
+216
+00:09:04,690 --> 00:09:09,020
+
+217
+00:09:09,020 --> 00:09:11,510
+All right, perfectly
+clear, then?
+
+218
+00:09:11,510 --> 00:09:13,630
+Let's move to another puzzle.
+
+219
+00:09:13,630 --> 00:09:17,860
+This is called the snake cube
+puzzle or the cubra puzzle.
+
+220
+00:09:17,860 --> 00:09:20,340
+Here is one instantiation of it.
+
+221
+00:09:20,340 --> 00:09:25,937
+So we have-- it's
+a chain of blocks--
+
+222
+00:09:25,937 --> 00:09:27,520
+I'm going to try to
+unfold it in a way
+
+223
+00:09:27,520 --> 00:09:29,769
+that I can put it back
+together, because it's actually
+
+224
+00:09:29,769 --> 00:09:31,040
+quite tricky to solve.
+
+225
+00:09:31,040 --> 00:09:32,456
+It's a chain of
+blocks and there's
+
+226
+00:09:32,456 --> 00:09:35,360
+an elastic through the centers,
+going through the center
+
+227
+00:09:35,360 --> 00:09:36,020
+of the faces.
+
+228
+00:09:36,020 --> 00:09:39,460
+And so, the result is you can't
+really pull the squares apart,
+
+229
+00:09:39,460 --> 00:09:40,820
+it's a pretty tights elastic.
+
+230
+00:09:40,820 --> 00:09:41,664
+But you can spin.
+
+231
+00:09:41,664 --> 00:09:43,330
+Because from the
+elastics point-of-view,
+
+232
+00:09:43,330 --> 00:09:46,180
+these are all equally happy.
+
+233
+00:09:46,180 --> 00:09:49,270
+So you're basically told
+that-- I could also spin here,
+
+234
+00:09:49,270 --> 00:09:52,210
+but it doesn't do anything if
+I stop at a 90 degree angle.
+
+235
+00:09:52,210 --> 00:09:54,090
+So I'm forced to
+be straight here.
+
+236
+00:09:54,090 --> 00:09:56,552
+And then I'm forced to
+have a 90 degree turn.
+
+237
+00:09:56,552 --> 00:09:58,760
+And then I'm forced to go
+straight and then have a 90
+
+238
+00:09:58,760 --> 00:10:01,650
+degree turn and then go straight
+and then have a 90 degree turn.
+
+239
+00:10:01,650 --> 00:10:05,680
+Here I have a few 90
+degree turns in a row.
+
+240
+00:10:05,680 --> 00:10:07,345
+And that's the
+general structure.
+
+241
+00:10:07,345 --> 00:10:08,800
+And can I still solve it?
+
+242
+00:10:08,800 --> 00:10:09,870
+Maybe.
+
+243
+00:10:09,870 --> 00:10:13,840
+The goal is to get into a cube.
+
+244
+00:10:13,840 --> 00:10:17,240
+And there are a bunch of
+different versions, plastic,
+
+245
+00:10:17,240 --> 00:10:17,920
+wood, whatever.
+
+246
+00:10:17,920 --> 00:10:20,590
+This one is not solved and
+so I will not do so well,
+
+247
+00:10:20,590 --> 00:10:22,740
+but you get an idea
+of what it looks
+
+248
+00:10:22,740 --> 00:10:26,340
+like in its sort of flat state.
+
+249
+00:10:26,340 --> 00:10:28,730
+I can make it into
+a kind of staircase.
+
+250
+00:10:28,730 --> 00:10:32,670
+So in general, this puzzle
+is specified by a sequence
+
+251
+00:10:32,670 --> 00:10:34,620
+of lengths of straits.
+
+252
+00:10:34,620 --> 00:10:36,230
+And then, in between
+those lengths
+
+253
+00:10:36,230 --> 00:10:37,760
+are the 90 degree turns.
+
+254
+00:10:37,760 --> 00:10:38,260
+OK?
+
+255
+00:10:38,260 --> 00:10:40,904
+So that's the puzzle,
+pretty simple specification.
+
+256
+00:10:40,904 --> 00:10:42,570
+And your goal is to
+fold it into a cube.
+
+257
+00:10:42,570 --> 00:10:43,778
+You know how big the cube is.
+
+258
+00:10:43,778 --> 00:10:45,920
+You just take the
+number of little cubes
+
+259
+00:10:45,920 --> 00:10:48,250
+and take the cube root.
+
+260
+00:10:48,250 --> 00:10:55,140
+So this puzzle maybe goes, is at
+least 1990, but could be older.
+
+261
+00:10:55,140 --> 00:10:57,780
+We don't know exactly.
+
+262
+00:10:57,780 --> 00:11:02,350
+And this puzzle is
+also NP-complete.
+
+263
+00:11:02,350 --> 00:11:05,520
+And this proof is
+also complicated
+
+264
+00:11:05,520 --> 00:11:06,980
+so we won't see all the details.
+
+265
+00:11:06,980 --> 00:11:10,940
+But this one, we'll probably
+see a little bit clearer.
+
+266
+00:11:10,940 --> 00:11:14,330
+This is a proof by, in
+particular, the three of us
+
+267
+00:11:14,330 --> 00:11:18,290
+and Marty in the back,
+so all four of us.
+
+268
+00:11:18,290 --> 00:11:22,110
+And let's see, so this
+doesn't look like a cube.
+
+269
+00:11:22,110 --> 00:11:25,350
+So lets-- before we try to
+solve the problem of folding
+
+270
+00:11:25,350 --> 00:11:28,980
+into a cube shape, let's suppose
+I give you one of these chains
+
+271
+00:11:28,980 --> 00:11:31,790
+and I want to know, can
+it fold into this shape?
+
+272
+00:11:31,790 --> 00:11:33,340
+Let's say this is the target.
+
+273
+00:11:33,340 --> 00:11:35,840
+So it's a big box down here.
+
+274
+00:11:35,840 --> 00:11:37,100
+I think we call it the hub.
+
+275
+00:11:37,100 --> 00:11:40,630
+And then there are these
+spokes, or just big boxes,
+
+276
+00:11:40,630 --> 00:11:43,420
+long boxes, sticking
+out of the hub.
+
+277
+00:11:43,420 --> 00:11:44,570
+There's a hold here.
+
+278
+00:11:44,570 --> 00:11:47,190
+They're connected to
+the main structure.
+
+279
+00:11:47,190 --> 00:11:49,750
+And you want to fold that.
+
+280
+00:11:49,750 --> 00:11:54,750
+And let's see, so
+the big idea-- we're
+
+281
+00:11:54,750 --> 00:11:56,670
+reducing from three
+partition here--
+
+282
+00:11:56,670 --> 00:12:02,660
+we're going to represent a
+number, ai, as a zigzag--
+
+283
+00:12:02,660 --> 00:12:05,630
+well, sorry, shouldn't
+call it a zigzag--
+
+284
+00:12:05,630 --> 00:12:09,390
+but we have a really long
+bar, then a length 1 bar.
+
+285
+00:12:09,390 --> 00:12:11,700
+And then a really long
+bar and a length 1 bar.
+
+286
+00:12:11,700 --> 00:12:13,640
+I'm drawing sort of
+the thinned version.
+
+287
+00:12:13,640 --> 00:12:15,170
+This is really a little cube.
+
+288
+00:12:15,170 --> 00:12:16,300
+This is a little cube.
+
+289
+00:12:16,300 --> 00:12:20,020
+These are lots of cubes,
+huge number of cubes.
+
+290
+00:12:20,020 --> 00:12:21,090
+OK?
+
+291
+00:12:21,090 --> 00:12:23,610
+So that's really, really big.
+
+292
+00:12:23,610 --> 00:12:25,320
+So big that the only
+place it could fit
+
+293
+00:12:25,320 --> 00:12:27,520
+is down one of these spokes.
+
+294
+00:12:27,520 --> 00:12:31,160
+So of course, the idea is
+these represent our triples
+
+295
+00:12:31,160 --> 00:12:34,470
+whose sum is equal to t.
+
+296
+00:12:34,470 --> 00:12:36,930
+And so, we have to
+take these things
+
+297
+00:12:36,930 --> 00:12:39,510
+and because these
+are so short, you
+
+298
+00:12:39,510 --> 00:12:42,460
+can't like go out of one
+hub and jump to the next one
+
+299
+00:12:42,460 --> 00:12:46,170
+because there's a gap
+there that's bigger than 1.
+
+300
+00:12:46,170 --> 00:12:49,440
+So once you commit to having
+one of these long bars
+
+301
+00:12:49,440 --> 00:12:52,124
+into one of these
+pockets, then all of them
+
+302
+00:12:52,124 --> 00:12:53,290
+have to go into the pockets.
+
+303
+00:12:53,290 --> 00:12:57,010
+So this is, in general, a big
+issue with three partition
+
+304
+00:12:57,010 --> 00:13:00,080
+proofs is you want to
+represent the number ai
+
+305
+00:13:00,080 --> 00:13:04,150
+in some way that's
+not divisible.
+
+306
+00:13:04,150 --> 00:13:05,705
+If you could take
+ai and split it
+
+307
+00:13:05,705 --> 00:13:08,080
+into two parts, than the
+packing problem becomes trivial.
+
+308
+00:13:08,080 --> 00:13:10,610
+You'd split everything
+into units or something.
+
+309
+00:13:10,610 --> 00:13:14,180
+So we have to make sure
+ai remains a single chunk.
+
+310
+00:13:14,180 --> 00:13:16,420
+We are, of course, encoding
+ai in your unary here,
+
+311
+00:13:16,420 --> 00:13:19,030
+because we have one
+long bar per each ai.
+
+312
+00:13:19,030 --> 00:13:22,450
+But for three
+partition, unary is OK.
+
+313
+00:13:22,450 --> 00:13:26,020
+There's some things going
+on here a little bit weird.
+
+314
+00:13:26,020 --> 00:13:29,970
+So you see this thing is
+occupying the full length.
+
+315
+00:13:29,970 --> 00:13:34,420
+And the length here is going
+to be 8 times the target sum
+
+316
+00:13:34,420 --> 00:13:36,190
+instead of just the target sum.
+
+317
+00:13:36,190 --> 00:13:37,830
+And we're multiplying this by 8.
+
+318
+00:13:37,830 --> 00:13:39,950
+So those are equal, we're fine.
+
+319
+00:13:39,950 --> 00:13:43,070
+There's a reason for the
+8 which we will get to.
+
+320
+00:13:43,070 --> 00:13:45,870
+OK, now, like the
+previous proof,
+
+321
+00:13:45,870 --> 00:13:50,800
+the edge-unfolding polyhedra,
+we have these great units.
+
+322
+00:13:50,800 --> 00:13:52,890
+And we just like them
+to be free floating.
+
+323
+00:13:52,890 --> 00:13:55,930
+And if you generalize this
+puzzle little bit and say,
+
+324
+00:13:55,930 --> 00:13:58,250
+well, actually, I don't
+just have one chain.
+
+325
+00:13:58,250 --> 00:13:59,510
+I have two chains.
+
+326
+00:13:59,510 --> 00:14:01,460
+Or I have n chains.
+
+327
+00:14:01,460 --> 00:14:04,640
+And together, collectively, they
+have to fold into this shape,
+
+328
+00:14:04,640 --> 00:14:08,380
+then we're done except that
+you would remove the box,
+
+329
+00:14:08,380 --> 00:14:11,639
+the box over here.
+
+330
+00:14:11,639 --> 00:14:13,180
+Because then, these
+guys just somehow
+
+331
+00:14:13,180 --> 00:14:17,260
+have to be assigned to these
+little pockets and we're happy.
+
+332
+00:14:17,260 --> 00:14:18,707
+OK.
+
+333
+00:14:18,707 --> 00:14:20,290
+All of these numbers--
+although again,
+
+334
+00:14:20,290 --> 00:14:21,990
+not drawn to scale--
+all these numbers
+
+335
+00:14:21,990 --> 00:14:23,620
+are much smaller than huge.
+
+336
+00:14:23,620 --> 00:14:26,650
+So you can't like take
+this guy and put it here,
+
+337
+00:14:26,650 --> 00:14:28,150
+even though in this
+picture it looks
+
+338
+00:14:28,150 --> 00:14:29,800
+like you might be able to.
+
+339
+00:14:29,800 --> 00:14:30,300
+All right.
+
+340
+00:14:30,300 --> 00:14:32,790
+So the issue is, now we want
+to connect this together
+
+341
+00:14:32,790 --> 00:14:34,150
+into one big chain.
+
+342
+00:14:34,150 --> 00:14:35,290
+We have these units.
+
+343
+00:14:35,290 --> 00:14:38,170
+For each i, we have
+one of these units.
+
+344
+00:14:38,170 --> 00:14:39,500
+That's cool.
+
+345
+00:14:39,500 --> 00:14:41,190
+And we want to
+attach them together
+
+346
+00:14:41,190 --> 00:14:42,770
+in a way that is
+super flexible, just
+
+347
+00:14:42,770 --> 00:14:45,217
+like the atoms we had before.
+
+348
+00:14:45,217 --> 00:14:46,800
+Now we're going to
+use something which
+
+349
+00:14:46,800 --> 00:14:48,508
+we called the zigzag,
+that's why I didn't
+
+350
+00:14:48,508 --> 00:14:50,680
+want to call this a zigzag.
+
+351
+00:14:50,680 --> 00:14:52,570
+This is all unit segments.
+
+352
+00:14:52,570 --> 00:14:55,070
+So you have 90 degree turn, 90
+degree turn, 90 degree turn,
+
+353
+00:14:55,070 --> 00:14:55,740
+90 degree turn.
+
+354
+00:14:55,740 --> 00:14:57,170
+No straits.
+
+355
+00:14:57,170 --> 00:15:00,180
+This turns out to be
+universal in a strong sense.
+
+356
+00:15:00,180 --> 00:15:02,960
+It can fold into anything.
+
+357
+00:15:02,960 --> 00:15:07,050
+And so, we can use it to
+connect these parts together.
+
+358
+00:15:07,050 --> 00:15:10,349
+So what we're going to
+do is have the A1 gadget.
+
+359
+00:15:10,349 --> 00:15:12,390
+Then we're going to have
+a whole bunch of zigzags
+
+360
+00:15:12,390 --> 00:15:14,474
+so you can go wherever
+you need to go.
+
+361
+00:15:14,474 --> 00:15:15,890
+And then we'll
+have the A2 gadget.
+
+362
+00:15:15,890 --> 00:15:17,840
+And then we'll have
+the universal zigzag
+
+363
+00:15:17,840 --> 00:15:20,860
+gadget for a long length of it.
+
+364
+00:15:20,860 --> 00:15:21,870
+And then the A3.
+
+365
+00:15:21,870 --> 00:15:25,580
+And then alternating
+between zigzags and the ai.
+
+366
+00:15:25,580 --> 00:15:27,700
+And at the end, we'll
+have enough zigzag
+
+367
+00:15:27,700 --> 00:15:31,050
+that we can fill all this
+sort of extra garbage space.
+
+368
+00:15:31,050 --> 00:15:34,500
+But we will use this garbage
+space in order to route around.
+
+369
+00:15:34,500 --> 00:15:36,340
+So maybe A1's going to go here.
+
+370
+00:15:36,340 --> 00:15:40,720
+And so we do this
+thing, this, yeah,
+
+371
+00:15:40,720 --> 00:15:42,400
+looks like some kind of cooker.
+
+372
+00:15:42,400 --> 00:15:44,340
+We go back and forth like that.
+
+373
+00:15:44,340 --> 00:15:46,070
+Then we'll have the
+zigzag and say, OK, I
+
+374
+00:15:46,070 --> 00:15:47,300
+want to go over here next.
+
+375
+00:15:47,300 --> 00:15:49,360
+And then we'll do A2 there.
+
+376
+00:15:49,360 --> 00:15:50,930
+And then we'll route over here.
+
+377
+00:15:50,930 --> 00:15:53,240
+And because this is in 3D,
+crossings are not an issue.
+
+378
+00:15:53,240 --> 00:15:56,800
+I can just got out into
+the third dimension.
+
+379
+00:15:56,800 --> 00:15:59,680
+We don't need much of a
+third dimension, 8 is enough.
+
+380
+00:15:59,680 --> 00:16:03,340
+You can just, enough
+to go over each other.
+
+381
+00:16:03,340 --> 00:16:03,840
+OK.
+
+382
+00:16:03,840 --> 00:16:06,650
+And then at the end,
+we're going to fill in all
+
+383
+00:16:06,650 --> 00:16:08,690
+this space with the zigzag.
+
+384
+00:16:08,690 --> 00:16:11,090
+So let's talk about the zigzag.
+
+385
+00:16:11,090 --> 00:16:13,510
+What we claim-- there's
+a couple different senses
+
+386
+00:16:13,510 --> 00:16:16,260
+in which it's universal.
+
+387
+00:16:16,260 --> 00:16:21,320
+But the key idea are
+these sets of gadgets.
+
+388
+00:16:21,320 --> 00:16:22,860
+So we're drawing
+here a two by two
+
+389
+00:16:22,860 --> 00:16:30,170
+by two cube made up
+of 8 little cubes.
+
+390
+00:16:30,170 --> 00:16:34,460
+And if you look at the--
+what we've drawn here
+
+391
+00:16:34,460 --> 00:16:37,020
+is the elastic that goes through
+the centers of the cubes.
+
+392
+00:16:37,020 --> 00:16:40,400
+And notice it turns 90
+degrees at every voxel,
+
+393
+00:16:40,400 --> 00:16:42,150
+at every little cube.
+
+394
+00:16:42,150 --> 00:16:46,189
+So this is part of-- these
+are zigzag constructions.
+
+395
+00:16:46,189 --> 00:16:50,280
+So what we want to
+say is that, if you
+
+396
+00:16:50,280 --> 00:16:55,130
+sort of-- so one
+sense of universality
+
+397
+00:16:55,130 --> 00:16:57,350
+is that the zigzag
+structure can fold
+
+398
+00:16:57,350 --> 00:16:59,050
+into any polycube structure.
+
+399
+00:16:59,050 --> 00:17:01,630
+Polycube is the 3D
+generalization of polyominoes
+
+400
+00:17:01,630 --> 00:17:06,750
+that we saw last time
+from polyominoe packing.
+
+401
+00:17:06,750 --> 00:17:08,080
+That's not true.
+
+402
+00:17:08,080 --> 00:17:10,810
+But if you take any
+polycube structure
+
+403
+00:17:10,810 --> 00:17:12,780
+and you just scale
+it by a factor of 2--
+
+404
+00:17:12,780 --> 00:17:14,620
+so you replace
+every cube with a 2
+
+405
+00:17:14,620 --> 00:17:17,550
+by 2 by 2 grid
+like this picture--
+
+406
+00:17:17,550 --> 00:17:19,760
+then it's still not true.
+
+407
+00:17:19,760 --> 00:17:21,870
+But it's better.
+
+408
+00:17:21,870 --> 00:17:26,250
+So what's true at that point
+is if you take any path of two
+
+409
+00:17:26,250 --> 00:17:28,880
+by two by two
+cubes, this is what
+
+410
+00:17:28,880 --> 00:17:30,360
+we would call a
+Hamiltonian shape,
+
+411
+00:17:30,360 --> 00:17:32,450
+because there's one path
+that visits everything
+
+412
+00:17:32,450 --> 00:17:33,500
+with no collisions.
+
+413
+00:17:33,500 --> 00:17:37,570
+So it has to be a path that
+does not hit itself in 3D.
+
+414
+00:17:37,570 --> 00:17:40,200
+Then you can follow
+these gadgets
+
+415
+00:17:40,200 --> 00:17:42,210
+in order to make any
+turns you need to do.
+
+416
+00:17:42,210 --> 00:17:45,620
+Or you can go straight,
+everything is possible.
+
+417
+00:17:45,620 --> 00:17:48,140
+I will talk a little bit
+more about that in a moment.
+
+418
+00:17:48,140 --> 00:17:51,080
+So 2 by 2 by 2 refinement,
+meaning scaling everything
+
+419
+00:17:51,080 --> 00:17:53,770
+by a factor of 2,
+allows the zigzag
+
+420
+00:17:53,770 --> 00:17:56,880
+to make any Hamiltonian
+shape scaled by 2.
+
+421
+00:17:56,880 --> 00:17:59,480
+
+422
+00:17:59,480 --> 00:18:00,987
+But that's Hamiltonian shapes.
+
+423
+00:18:00,987 --> 00:18:02,570
+Now conveniently,
+there's this theorem
+
+424
+00:18:02,570 --> 00:18:04,445
+which is used a lot in
+computational geometry
+
+425
+00:18:04,445 --> 00:18:06,880
+and we use it in
+this harness proof,
+
+426
+00:18:06,880 --> 00:18:09,690
+that if you take any shape and
+you refine it by two by two
+
+427
+00:18:09,690 --> 00:18:12,290
+by two, every scale
+by a factor of 2, then
+
+428
+00:18:12,290 --> 00:18:15,290
+it becomes Hamiltonian
+by a similar kind
+
+429
+00:18:15,290 --> 00:18:16,270
+of gadget construction.
+
+430
+00:18:16,270 --> 00:18:18,782
+Although it's easier-- if you
+just want Hamiltonian paths,
+
+431
+00:18:18,782 --> 00:18:20,490
+you don't care about
+where you're turning
+
+432
+00:18:20,490 --> 00:18:24,250
+and where you're not turning,
+so that's a pretty easy proof
+
+433
+00:18:24,250 --> 00:18:27,630
+left as an exercise to
+you and sort of an aside
+
+434
+00:18:27,630 --> 00:18:28,710
+from this issue.
+
+435
+00:18:28,710 --> 00:18:31,610
+So we take any shape we 2 by
+2 by 2, refine it, we make it
+
+436
+00:18:31,610 --> 00:18:32,500
+Hamiltonian.
+
+437
+00:18:32,500 --> 00:18:34,930
+Then we two by two
+refine it again.
+
+438
+00:18:34,930 --> 00:18:37,030
+In total 4 by 4 by 4 refinement.
+
+439
+00:18:37,030 --> 00:18:41,230
+And then, a zigzag path can
+make that polycube shape.
+
+440
+00:18:41,230 --> 00:18:43,060
+And this is for any polycube.
+
+441
+00:18:43,060 --> 00:18:44,800
+So that's cool.
+
+442
+00:18:44,800 --> 00:18:47,710
+Now, I'll mention
+here in this proof,
+
+443
+00:18:47,710 --> 00:18:51,850
+one of the issues which
+we'll see a bunch of times,
+
+444
+00:18:51,850 --> 00:18:54,170
+I'm just going to
+mention it here,
+
+445
+00:18:54,170 --> 00:19:01,800
+is we have a parity issue
+because the cubicle grid is
+
+446
+00:19:01,800 --> 00:19:04,450
+two-colorable, right,
+you can checkerboard
+
+447
+00:19:04,450 --> 00:19:08,140
+the 3D grid of squares.
+
+448
+00:19:08,140 --> 00:19:09,880
+And so, what that
+means is every time
+
+449
+00:19:09,880 --> 00:19:12,421
+you go from one cube on the grid
+to another cube on the grid,
+
+450
+00:19:12,421 --> 00:19:13,440
+you're switching parity.
+
+451
+00:19:13,440 --> 00:19:16,239
+If you checkerboard the
+3D space black and white,
+
+452
+00:19:16,239 --> 00:19:18,780
+you're always going from white
+to black, then black to white,
+
+453
+00:19:18,780 --> 00:19:23,620
+then black to white, sorry,
+alternating black and white,
+
+454
+00:19:23,620 --> 00:19:25,470
+easier to do than to say.
+
+455
+00:19:25,470 --> 00:19:28,510
+And so, that's a constraint.
+
+456
+00:19:28,510 --> 00:19:37,890
+So for example, it is impossible
+in a 2 by 2 by 2 thing,
+
+457
+00:19:37,890 --> 00:19:41,700
+to enter from this
+cube, the front cube,
+
+458
+00:19:41,700 --> 00:19:46,470
+and exit from this one just
+by a counting argument.
+
+459
+00:19:46,470 --> 00:19:48,460
+So you start, let's say
+this is a black cube.
+
+460
+00:19:48,460 --> 00:19:49,941
+This one also a black cube.
+
+461
+00:19:49,941 --> 00:19:52,440
+And so, you start black and
+then you alternate black, white,
+
+462
+00:19:52,440 --> 00:19:53,905
+black, white, and
+there's 8 things to visit
+
+463
+00:19:53,905 --> 00:19:55,890
+and you want to end black,
+that's not possible.
+
+464
+00:19:55,890 --> 00:19:57,350
+You have to end white.
+
+465
+00:19:57,350 --> 00:20:00,190
+So if you enter on a black cube,
+you will leave on a white cube.
+
+466
+00:20:00,190 --> 00:20:01,340
+And if you enter
+on a while cube,
+
+467
+00:20:01,340 --> 00:20:02,650
+you will leave on a black cube.
+
+468
+00:20:02,650 --> 00:20:05,082
+So that's a constraint.
+
+469
+00:20:05,082 --> 00:20:06,540
+Doesn't really get
+in the way here,
+
+470
+00:20:06,540 --> 00:20:07,870
+but it's something you
+have to keep track of.
+
+471
+00:20:07,870 --> 00:20:09,362
+And the theorem
+wouldn't be-- what
+
+472
+00:20:09,362 --> 00:20:11,570
+you'd like to say is, well,
+I can enter from any cube
+
+473
+00:20:11,570 --> 00:20:12,870
+and leave from any cube.
+
+474
+00:20:12,870 --> 00:20:15,640
+And you could actually
+prove that by induction,
+
+475
+00:20:15,640 --> 00:20:17,500
+except the base
+case would be wrong.
+
+476
+00:20:17,500 --> 00:20:19,400
+So this is something
+to be careful about.
+
+477
+00:20:19,400 --> 00:20:20,360
+This is the base case.
+
+478
+00:20:20,360 --> 00:20:22,680
+This is 1 cube, can I
+enter from anywhere?
+
+479
+00:20:22,680 --> 00:20:24,879
+One 2 by 2 by 2
+super cube, can I
+
+480
+00:20:24,879 --> 00:20:26,170
+enter anywhere, leave anywhere?
+
+481
+00:20:26,170 --> 00:20:29,220
+The answer is no, but
+I can enter and exit
+
+482
+00:20:29,220 --> 00:20:31,140
+anywhere that have
+the right parity.
+
+483
+00:20:31,140 --> 00:20:33,215
+So if the entrance
+cubes and the exit cubes
+
+484
+00:20:33,215 --> 00:20:37,130
+have opposite parity, then this
+is actually all of the cases.
+
+485
+00:20:37,130 --> 00:20:39,570
+These four are where the
+entrance and exit cube
+
+486
+00:20:39,570 --> 00:20:41,860
+are adjacent to each other.
+
+487
+00:20:41,860 --> 00:20:44,550
+And these two cases are
+where they're opposite
+
+488
+00:20:44,550 --> 00:20:46,870
+from each other, not touching.
+
+489
+00:20:46,870 --> 00:20:49,700
+And that's all the cases
+with all the rotations
+
+490
+00:20:49,700 --> 00:20:51,670
+and reflections.
+
+491
+00:20:51,670 --> 00:20:54,230
+So once you prove that, base
+case is actually really easy
+
+492
+00:20:54,230 --> 00:20:56,650
+to do by induction, you
+just are essentially
+
+493
+00:20:56,650 --> 00:21:00,226
+pasting all these things
+together to make any path.
+
+494
+00:21:00,226 --> 00:21:02,100
+And then we could make
+any Hamiltonian shape.
+
+495
+00:21:02,100 --> 00:21:05,630
+And then further refinement,
+any shape becomes Hamiltonian.
+
+496
+00:21:05,630 --> 00:21:07,930
+So that's how we prove
+zigzags are universal.
+
+497
+00:21:07,930 --> 00:21:13,842
+And this connects together
+all of these gadgets.
+
+498
+00:21:13,842 --> 00:21:15,550
+There's really two
+gadgets in this proof,
+
+499
+00:21:15,550 --> 00:21:18,730
+the ai gadgets--
+there's n of n copies
+
+500
+00:21:18,730 --> 00:21:20,370
+of that-- and the
+zigzag gadget--
+
+501
+00:21:20,370 --> 00:21:24,112
+there's n copies
+of that as well.
+
+502
+00:21:24,112 --> 00:21:25,570
+Now there are some
+details to check
+
+503
+00:21:25,570 --> 00:21:28,710
+here, of course, that the
+zigzag gadgets can actually
+
+504
+00:21:28,710 --> 00:21:33,890
+navigate around and not cross
+each other with height, 8,
+
+505
+00:21:33,890 --> 00:21:36,140
+and that at the end, you can
+fill all the blank space.
+
+506
+00:21:36,140 --> 00:21:38,740
+If you're just organized
+about how you traverse each
+
+507
+00:21:38,740 --> 00:21:41,270
+of the ai's and where
+you put the blank space,
+
+508
+00:21:41,270 --> 00:21:42,900
+I think we just
+leave some headroom.
+
+509
+00:21:42,900 --> 00:21:45,120
+So you can just go
+up, walk over to where
+
+510
+00:21:45,120 --> 00:21:47,700
+all the blank space is, just
+serve do a scan line traversal.
+
+511
+00:21:47,700 --> 00:21:50,090
+Wherever there's blank
+space, you eat it up
+
+512
+00:21:50,090 --> 00:21:51,840
+with your zigzag at the end.
+
+513
+00:21:51,840 --> 00:21:54,700
+So what this does is it
+let's the ai's move around
+
+514
+00:21:54,700 --> 00:21:56,330
+completely freely.
+
+515
+00:21:56,330 --> 00:21:58,730
+There shouldn't be any
+constraints on how the ai's
+
+516
+00:21:58,730 --> 00:22:01,027
+are assigned to these pockets.
+
+517
+00:22:01,027 --> 00:22:03,610
+Because we want every solution
+to the three partition instance
+
+518
+00:22:03,610 --> 00:22:05,020
+to work here.
+
+519
+00:22:05,020 --> 00:22:09,740
+And the zigzags let us do that
+because they're so universal.
+
+520
+00:22:09,740 --> 00:22:11,300
+Cool?
+
+521
+00:22:11,300 --> 00:22:16,470
+So I think that's what I
+wanted to say about this proof.
+
+522
+00:22:16,470 --> 00:22:18,185
+Double check my notes.
+
+523
+00:22:18,185 --> 00:22:21,740
+Ah, there was one
+other thing which
+
+524
+00:22:21,740 --> 00:22:26,374
+I found a little funny
+re-reading this paper is why 8?
+
+525
+00:22:26,374 --> 00:22:30,440
+Because we know everything has
+to scale up by a factor of 4.
+
+526
+00:22:30,440 --> 00:22:32,600
+And that's all we're
+doing in some sense.
+
+527
+00:22:32,600 --> 00:22:38,130
+But we do make these-- we scale
+all the ai's by a factor of 8.
+
+528
+00:22:38,130 --> 00:22:40,860
+Not a big deal, but
+there's a reason for 8.
+
+529
+00:22:40,860 --> 00:22:51,300
+If we just did 4 and
+say-- so we want to go,
+
+530
+00:22:51,300 --> 00:22:54,460
+so this thing gets mapped onto
+here and we go out and back
+
+531
+00:22:54,460 --> 00:22:55,200
+and out and back.
+
+532
+00:22:55,200 --> 00:22:57,420
+If we just did it
+four times, we would
+
+533
+00:22:57,420 --> 00:23:01,320
+be arriving at basically
+the same position in the 4
+
+534
+00:23:01,320 --> 00:23:02,650
+by 4 by 4 block.
+
+535
+00:23:02,650 --> 00:23:05,010
+Or sorry, we would be
+arriving at the same 4
+
+536
+00:23:05,010 --> 00:23:06,990
+by 4 by 4 block that
+we started from.
+
+537
+00:23:06,990 --> 00:23:09,680
+And that's not good because we
+can only visit a block once.
+
+538
+00:23:09,680 --> 00:23:12,549
+So this is sort of an interface
+issue between the zigzag--
+
+539
+00:23:12,549 --> 00:23:14,340
+which is nice and
+universal, you can always
+
+540
+00:23:14,340 --> 00:23:16,220
+paste two of these
+chains together,
+
+541
+00:23:16,220 --> 00:23:18,925
+no problem-- with this thing,
+which is not universal.
+
+542
+00:23:18,925 --> 00:23:21,600
+It folds into
+basically this shape.
+
+543
+00:23:21,600 --> 00:23:22,370
+That's it.
+
+544
+00:23:22,370 --> 00:23:25,980
+So we need to make
+sure that, I mean,
+
+545
+00:23:25,980 --> 00:23:29,014
+we can universally do
+whatever we want in here.
+
+546
+00:23:29,014 --> 00:23:30,430
+But we need to
+make sure that when
+
+547
+00:23:30,430 --> 00:23:32,690
+we connect between this
+zigzag structure and then
+
+548
+00:23:32,690 --> 00:23:35,280
+we paste in one of these
+and then we come back,
+
+549
+00:23:35,280 --> 00:23:37,720
+that we do that in a valid
+way from the perspective
+
+550
+00:23:37,720 --> 00:23:40,730
+of this big trunk
+So the factor of 8
+
+551
+00:23:40,730 --> 00:23:45,410
+makes sure that if we leave
+from one 4 by 4 by 4 chunk,
+
+552
+00:23:45,410 --> 00:23:46,880
+we come back on a different one.
+
+553
+00:23:46,880 --> 00:23:50,220
+And then it's easy to paste
+all the paths together.
+
+554
+00:23:50,220 --> 00:23:53,570
+So that is [INAUDIBLE].
+
+555
+00:23:53,570 --> 00:23:54,444
+Yeah.
+
+556
+00:23:54,444 --> 00:23:56,180
+AUDIENCE: So, I don't
+quite see that this
+
+557
+00:23:56,180 --> 00:23:58,052
+proves that snake cube is NP.
+
+558
+00:23:58,052 --> 00:23:58,760
+PROFESSOR: Right.
+
+559
+00:23:58,760 --> 00:24:00,350
+Ah, yeah there's one
+more issue, which
+
+560
+00:24:00,350 --> 00:24:02,260
+is this was folding this shape.
+
+561
+00:24:02,260 --> 00:24:04,260
+But we want to fold a cube.
+
+562
+00:24:04,260 --> 00:24:05,620
+Yeah.
+
+563
+00:24:05,620 --> 00:24:08,290
+This is the kind of
+annoying part of the proof.
+
+564
+00:24:08,290 --> 00:24:10,450
+It's very hard to draw.
+
+565
+00:24:10,450 --> 00:24:12,480
+This isn't my attempt
+at drawing it.
+
+566
+00:24:12,480 --> 00:24:19,330
+And yeah, I will
+sketch the idea.
+
+567
+00:24:19,330 --> 00:24:22,630
+I tell you, the first part is
+conceptually easy, again, hard
+
+568
+00:24:22,630 --> 00:24:24,260
+to draw.
+
+569
+00:24:24,260 --> 00:24:27,970
+The issue is forcing this
+chain of blocks to do anything.
+
+570
+00:24:27,970 --> 00:24:29,640
+And one key idea is
+if you want to fold,
+
+571
+00:24:29,640 --> 00:24:33,270
+let's say, a k by
+k by k box, if you
+
+572
+00:24:33,270 --> 00:24:37,082
+have a straight
+path of length k,
+
+573
+00:24:37,082 --> 00:24:39,040
+there aren't very many
+places you can put that.
+
+574
+00:24:39,040 --> 00:24:43,440
+I mean, I guess there are still
+k or there's k squared of them.
+
+575
+00:24:43,440 --> 00:24:46,850
+But you have to start
+and end at the beginning
+
+576
+00:24:46,850 --> 00:24:48,770
+and end of the
+overall cube, if you
+
+577
+00:24:48,770 --> 00:24:51,460
+have a full length of straight.
+
+578
+00:24:51,460 --> 00:24:55,430
+So the first step we do
+is take your-- sorry,
+
+579
+00:24:55,430 --> 00:24:56,910
+this is the first step.
+
+580
+00:24:56,910 --> 00:24:59,830
+It's upside down because we're
+doing things in reverse order.
+
+581
+00:24:59,830 --> 00:25:02,180
+First thing we do is
+we take a target cube
+
+582
+00:25:02,180 --> 00:25:05,480
+and we're basically going to
+have a lot of really long guys
+
+583
+00:25:05,480 --> 00:25:08,054
+will force you to in a row.
+
+584
+00:25:08,054 --> 00:25:09,720
+And you see then these
+kinds of puzzles.
+
+585
+00:25:09,720 --> 00:25:15,190
+You tend to have straits
+of length 3 like this.
+
+586
+00:25:15,190 --> 00:25:17,250
+These are three 3's in a row.
+
+587
+00:25:17,250 --> 00:25:18,840
+And we're making a
+3 by 3 by 3 cube.
+
+588
+00:25:18,840 --> 00:25:24,990
+So that sort of has to live in,
+well, it can do weird things.
+
+589
+00:25:24,990 --> 00:25:26,760
+But it's relatively restricted.
+
+590
+00:25:26,760 --> 00:25:28,470
+Maybe you can do
+something like this.
+
+591
+00:25:28,470 --> 00:25:31,750
+But then, these must be the
+edges of the cube in that case.
+
+592
+00:25:31,750 --> 00:25:36,250
+So we have a bunch of
+those and lots of care,
+
+593
+00:25:36,250 --> 00:25:39,150
+and we end up reducing
+the cube to a box,
+
+594
+00:25:39,150 --> 00:25:41,720
+meaning we cover
+all of the cube.
+
+595
+00:25:41,720 --> 00:25:43,390
+We're forced to cover
+all of the cubic
+
+596
+00:25:43,390 --> 00:25:45,760
+and leave exactly a box behind.
+
+597
+00:25:45,760 --> 00:25:48,490
+Sort of like what we did when we
+were doing squares into square.
+
+598
+00:25:48,490 --> 00:25:52,080
+We put a bunch of big boxes
+that were relatively constrained
+
+599
+00:25:52,080 --> 00:25:54,270
+and it just left empty
+space, which is a box.
+
+600
+00:25:54,270 --> 00:25:56,920
+Here it's actually
+forced exactly.
+
+601
+00:25:56,920 --> 00:26:00,480
+Then, once we have a box, so
+the box will be this wide.
+
+602
+00:26:00,480 --> 00:26:03,340
+And it will go over this way.
+
+603
+00:26:03,340 --> 00:26:05,930
+But it won't have this
+sort of fine feature stuff.
+
+604
+00:26:05,930 --> 00:26:08,960
+This will just all be
+filled in as a box.
+
+605
+00:26:08,960 --> 00:26:14,580
+Then this step that's drawn
+is to carve out this hub
+
+606
+00:26:14,580 --> 00:26:16,530
+and spoke shape.
+
+607
+00:26:16,530 --> 00:26:18,560
+And that's based on a
+structure like this.
+
+608
+00:26:18,560 --> 00:26:20,660
+We have a huge thing.
+
+609
+00:26:20,660 --> 00:26:23,810
+And then a relatively
+short thing of length
+
+610
+00:26:23,810 --> 00:26:26,302
+about 8t, And then we go down.
+
+611
+00:26:26,302 --> 00:26:27,510
+And then immediately back up.
+
+612
+00:26:27,510 --> 00:26:30,410
+And then over and
+down and up and so on.
+
+613
+00:26:30,410 --> 00:26:34,736
+And that roughly carves
+out this structure.
+
+614
+00:26:34,736 --> 00:26:37,110
+Now, you have to be careful
+that this is actually unique.
+
+615
+00:26:37,110 --> 00:26:39,630
+
+616
+00:26:39,630 --> 00:26:42,899
+This is why we only want the
+height of this box to be 8,
+
+617
+00:26:42,899 --> 00:26:44,940
+because then you can't go
+out of plane very much.
+
+618
+00:26:44,940 --> 00:26:47,780
+And while this is short,
+it's longer than 8
+
+619
+00:26:47,780 --> 00:26:49,200
+if t is bigger than 1.
+
+620
+00:26:49,200 --> 00:26:53,490
+So you can't have
+this spoke go up.
+
+621
+00:26:53,490 --> 00:26:57,360
+So it does have to
+live in a plane.
+
+622
+00:26:57,360 --> 00:26:58,170
+Sounds right.
+
+623
+00:26:58,170 --> 00:26:59,640
+And this is much
+smaller than huge,
+
+624
+00:26:59,640 --> 00:27:02,232
+so you can't fold
+it some other way.
+
+625
+00:27:02,232 --> 00:27:03,440
+So that's pretty much forced.
+
+626
+00:27:03,440 --> 00:27:07,130
+And then we have to get rid of
+the other seven planes, which
+
+627
+00:27:07,130 --> 00:27:09,472
+we do with really long guys.
+
+628
+00:27:09,472 --> 00:27:11,430
+Unfortunately, we don't
+have all of that drawn,
+
+629
+00:27:11,430 --> 00:27:13,560
+so it's especially hard to see.
+
+630
+00:27:13,560 --> 00:27:16,550
+But this is a rough idea
+of how you start with a box
+
+631
+00:27:16,550 --> 00:27:19,390
+and you do these sort of
+infrastructure gadgets
+
+632
+00:27:19,390 --> 00:27:21,380
+to just carve out
+the shape you want.
+
+633
+00:27:21,380 --> 00:27:25,250
+And then you go into the
+interesting part of the chain.
+
+634
+00:27:25,250 --> 00:27:27,000
+This is all at the
+beginning of the chain.
+
+635
+00:27:27,000 --> 00:27:28,990
+And as you show, it's
+forced to do all this.
+
+636
+00:27:28,990 --> 00:27:31,940
+And then we start say here
+with some zigzag and then
+
+637
+00:27:31,940 --> 00:27:35,626
+an ai gadget and so on.
+
+638
+00:27:35,626 --> 00:27:37,480
+Whew.
+
+639
+00:27:37,480 --> 00:27:39,270
+Easy, right?
+
+640
+00:27:39,270 --> 00:27:42,670
+So, you do see
+here, I would say,
+
+641
+00:27:42,670 --> 00:27:45,190
+a very algorithmic approach.
+
+642
+00:27:45,190 --> 00:27:48,610
+I mean, this idea of showing
+that zigzags are universal,
+
+643
+00:27:48,610 --> 00:27:50,360
+they can make any
+shape, this is something
+
+644
+00:27:50,360 --> 00:27:52,260
+we do in computational
+geometry all the time.
+
+645
+00:27:52,260 --> 00:27:53,843
+We prove that these
+folding structures
+
+646
+00:27:53,843 --> 00:27:55,350
+fold into whatever we want.
+
+647
+00:27:55,350 --> 00:27:57,610
+So we're-- and we hadn't
+prove this one before,
+
+648
+00:27:57,610 --> 00:28:00,670
+but we were armed with a lot of
+algorithmic tools to do this.
+
+649
+00:28:00,670 --> 00:28:02,500
+And that let us
+do this reduction.
+
+650
+00:28:02,500 --> 00:28:04,470
+So lower bounds in
+our case is really
+
+651
+00:28:04,470 --> 00:28:08,420
+all about designing the
+right algorithms to give you
+
+652
+00:28:08,420 --> 00:28:10,760
+powerful gadgets like this.
+
+653
+00:28:10,760 --> 00:28:14,920
+That's why this is the class
+called algorithmic lower bound.
+
+654
+00:28:14,920 --> 00:28:18,251
+Other questions
+about snake cubes?
+
+655
+00:28:18,251 --> 00:28:18,750
+Adam.
+
+656
+00:28:18,750 --> 00:28:21,750
+AUDIENCE: Why 8 instead of 6?
+
+657
+00:28:21,750 --> 00:28:25,550
+PROFESSOR: I think we want
+it to be a multiple of 4
+
+658
+00:28:25,550 --> 00:28:27,700
+so that it's compatible
+with the grid.
+
+659
+00:28:27,700 --> 00:28:30,000
+6, yeah, that seems cleaner.
+
+660
+00:28:30,000 --> 00:28:32,750
+
+661
+00:28:32,750 --> 00:28:34,900
+That way we can predict
+if we leave on this 4 by 4
+
+662
+00:28:34,900 --> 00:28:36,941
+by 4 thing, we know which
+one we'll come back on.
+
+663
+00:28:36,941 --> 00:28:39,290
+Whereas, if it could be
+in a half-grid position,
+
+664
+00:28:39,290 --> 00:28:41,400
+that would be messy.
+
+665
+00:28:41,400 --> 00:28:43,135
+Other questions?
+
+666
+00:28:43,135 --> 00:28:44,760
+You might be able to
+make that to work,
+
+667
+00:28:44,760 --> 00:28:47,470
+but the advantage of hardness
+proofs, because it's not
+
+668
+00:28:47,470 --> 00:28:48,570
+a real algorithm.
+
+669
+00:28:48,570 --> 00:28:49,960
+I mean, it's an algorithm
+that you'd want to run.
+
+670
+00:28:49,960 --> 00:28:51,800
+The point is to show
+this problem is hard.
+
+671
+00:28:51,800 --> 00:28:53,536
+You can be inefficient
+in lots of places.
+
+672
+00:28:53,536 --> 00:28:54,910
+As long as it's
+still polynomial,
+
+673
+00:28:54,910 --> 00:28:56,480
+it doesn't really matter.
+
+674
+00:28:56,480 --> 00:28:58,390
+Except for drawing
+the pictures, that's
+
+675
+00:28:58,390 --> 00:29:01,490
+one place where it matters.
+
+676
+00:29:01,490 --> 00:29:02,300
+All right.
+
+677
+00:29:02,300 --> 00:29:04,780
+That's snake cubes.
+
+678
+00:29:04,780 --> 00:29:07,550
+I'm gonna go on to
+another packing problem.
+
+679
+00:29:07,550 --> 00:29:11,580
+So we've seen rectangles into
+squares, squares into squares,
+
+680
+00:29:11,580 --> 00:29:15,220
+how about circles into squares?
+
+681
+00:29:15,220 --> 00:29:18,660
+So this is a real
+life puzzle where
+
+682
+00:29:18,660 --> 00:29:23,330
+you have these-- I think they're
+water jet cut or laser cut--
+
+683
+00:29:23,330 --> 00:29:24,710
+metal disks.
+
+684
+00:29:24,710 --> 00:29:27,260
+And you have to fit
+them into this box.
+
+685
+00:29:27,260 --> 00:29:28,870
+So these are real life puzzles.
+
+686
+00:29:28,870 --> 00:29:30,147
+That's one motivation.
+
+687
+00:29:30,147 --> 00:29:32,480
+There's a stronger motivation
+for studying this problem,
+
+688
+00:29:32,480 --> 00:29:35,050
+because it's related to
+computational origami.
+
+689
+00:29:35,050 --> 00:29:37,942
+There's this method called the
+tree method of origami design.
+
+690
+00:29:37,942 --> 00:29:39,400
+If you're interested
+in it, you can
+
+691
+00:29:39,400 --> 00:29:43,910
+take 6.849 or read Robert Lang's
+book, Origami Design Secrets.
+
+692
+00:29:43,910 --> 00:29:47,500
+And basically, it lets
+you fold things like this.
+
+693
+00:29:47,500 --> 00:29:49,680
+That's at a high level.
+
+694
+00:29:49,680 --> 00:29:54,430
+And a key component of it is
+to pack disks into a square.
+
+695
+00:29:54,430 --> 00:29:56,080
+The square is your
+piece of paper.
+
+696
+00:29:56,080 --> 00:30:00,170
+The disks correspond to sort
+of the limbs of your creature.
+
+697
+00:30:00,170 --> 00:30:02,749
+And you can't use the
+same piece of paper
+
+698
+00:30:02,749 --> 00:30:04,290
+to represent this
+limb and this limb,
+
+699
+00:30:04,290 --> 00:30:06,200
+so the disks have
+to be disjoint.
+
+700
+00:30:06,200 --> 00:30:10,240
+So it's all about packing
+those disks into given square.
+
+701
+00:30:10,240 --> 00:30:13,550
+And yeah, so that's
+at a high level
+
+702
+00:30:13,550 --> 00:30:15,810
+why we care about disk packing.
+
+703
+00:30:15,810 --> 00:30:18,814
+And people have thought
+about disk packing a lot.
+
+704
+00:30:18,814 --> 00:30:20,480
+But surprisingly, it
+hadn't been proofed
+
+705
+00:30:20,480 --> 00:30:22,990
+hard until four years ago.
+
+706
+00:30:22,990 --> 00:30:28,750
+So this proof is
+also complicated.
+
+707
+00:30:28,750 --> 00:30:31,000
+And it involves a lot of
+geometry and trigonometry
+
+708
+00:30:31,000 --> 00:30:33,350
+and some calculus and fun stuff.
+
+709
+00:30:33,350 --> 00:30:35,220
+So I'm going to give
+you a sketch of it.
+
+710
+00:30:35,220 --> 00:30:37,200
+You should be believable
+that this works,
+
+711
+00:30:37,200 --> 00:30:40,170
+but the details,
+again, are messy.
+
+712
+00:30:40,170 --> 00:30:42,170
+For starters, let's say
+that we're packing disks
+
+713
+00:30:42,170 --> 00:30:44,110
+into an equilateral triangle.
+
+714
+00:30:44,110 --> 00:30:46,490
+This is much easier
+to work with.
+
+715
+00:30:46,490 --> 00:30:48,300
+I'll go to a square in a second.
+
+716
+00:30:48,300 --> 00:30:50,390
+So if I have this
+equilateral triangle, what
+
+717
+00:30:50,390 --> 00:30:51,420
+I'm going to do is,
+first, I'm going
+
+718
+00:30:51,420 --> 00:30:52,910
+to give you a
+bunch of disks that
+
+719
+00:30:52,910 --> 00:30:57,790
+are forced to pack in this nice,
+triangular, grid arrangement,
+
+720
+00:30:57,790 --> 00:31:01,044
+leaving these dark holes.
+
+721
+00:31:01,044 --> 00:31:02,585
+And I'm going to
+give you more disks,
+
+722
+00:31:02,585 --> 00:31:04,780
+and so the more disks have
+to go into those holes.
+
+723
+00:31:04,780 --> 00:31:07,850
+And these are actually kissing
+disks, they're touching.
+
+724
+00:31:07,850 --> 00:31:11,210
+So you can only put-- every
+disk you put from now on
+
+725
+00:31:11,210 --> 00:31:12,930
+will be in one of these holes.
+
+726
+00:31:12,930 --> 00:31:16,600
+And I'm just going to do this
+big enough so that I have
+
+727
+00:31:16,600 --> 00:31:18,940
+at least n over three holes.
+
+728
+00:31:18,940 --> 00:31:21,380
+Each hole is going
+to represent a bin
+
+729
+00:31:21,380 --> 00:31:23,830
+that I'm trying to put a
+triple of numbers into.
+
+730
+00:31:23,830 --> 00:31:29,570
+And then, here is the
+construction for, I guess,
+
+731
+00:31:29,570 --> 00:31:32,090
+this would be a three
+partition gadget.
+
+732
+00:31:32,090 --> 00:31:37,480
+We want to get that-- oh, slight
+typo there-- ai plus aj plus ak
+
+733
+00:31:37,480 --> 00:31:40,290
+is less than or equal to t.
+
+734
+00:31:40,290 --> 00:31:42,840
+And so, these are
+the three disks
+
+735
+00:31:42,840 --> 00:31:45,610
+representing ai, aj, and ak.
+
+736
+00:31:45,610 --> 00:31:49,070
+And there's an extra
+disk in the center.
+
+737
+00:31:49,070 --> 00:31:51,890
+And what's drawn here is
+everything is maybe tight,
+
+738
+00:31:51,890 --> 00:31:53,470
+almost as touching.
+
+739
+00:31:53,470 --> 00:31:56,890
+But we're going to shrink
+these disks a little bit--
+
+740
+00:31:56,890 --> 00:31:59,340
+or rather, I'm going
+to shrink-- yeah,
+
+741
+00:31:59,340 --> 00:32:02,630
+I guess I'll shrink--
+I'll get this right-- I'm
+
+742
+00:32:02,630 --> 00:32:04,824
+going to shrink this
+disk a little bit.
+
+743
+00:32:04,824 --> 00:32:06,740
+And I'm going to make
+these one's a little bit
+
+744
+00:32:06,740 --> 00:32:11,380
+bigger according
+to the ai values.
+
+745
+00:32:11,380 --> 00:32:15,104
+So this one will be
+proportional to ak larger
+
+746
+00:32:15,104 --> 00:32:16,520
+than the disk that
+would perfectly
+
+747
+00:32:16,520 --> 00:32:19,760
+fit here if this one
+was maximally-sized.
+
+748
+00:32:19,760 --> 00:32:24,160
+And so, that's going to
+force this guy to move away.
+
+749
+00:32:24,160 --> 00:32:26,680
+Well, he's a little
+bit shrunk, so maybe he
+
+750
+00:32:26,680 --> 00:32:28,560
+doesn't have to move away.
+
+751
+00:32:28,560 --> 00:32:30,390
+But this center disk,
+when it shrunk down,
+
+752
+00:32:30,390 --> 00:32:31,380
+it has a little
+bit of flexibility.
+
+753
+00:32:31,380 --> 00:32:32,800
+It could move more this way.
+
+754
+00:32:32,800 --> 00:32:35,133
+And if this disk is smaller,
+it will move more this way.
+
+755
+00:32:35,133 --> 00:32:37,130
+It could move more this
+way, more this way.
+
+756
+00:32:37,130 --> 00:32:40,855
+And in general, you show
+that-- so these guys
+
+757
+00:32:40,855 --> 00:32:43,230
+are sort of placing demands
+by being a little bit bigger.
+
+758
+00:32:43,230 --> 00:32:45,900
+They need to push out.
+
+759
+00:32:45,900 --> 00:32:49,370
+And this one is a
+little bit smaller.
+
+760
+00:32:49,370 --> 00:32:52,660
+And its size is just
+a function of t.
+
+761
+00:32:52,660 --> 00:32:54,730
+And so, it's going
+to move around.
+
+762
+00:32:54,730 --> 00:32:57,800
+And the claim is, it has a
+valid position if and only
+
+763
+00:32:57,800 --> 00:33:00,912
+if ai plus aj plus ak is
+less than or equal to t.
+
+764
+00:33:00,912 --> 00:33:03,235
+I have written down a
+little bit of the details.
+
+765
+00:33:03,235 --> 00:33:15,470
+
+766
+00:33:15,470 --> 00:33:18,280
+So we're going to choose some
+big number capital N, maybe
+
+767
+00:33:18,280 --> 00:33:21,080
+it's like n to the 100,
+little n to the 100, something
+
+768
+00:33:21,080 --> 00:33:21,860
+like that.
+
+769
+00:33:21,860 --> 00:33:25,070
+And we'll shrink the
+big disk by that amount.
+
+770
+00:33:25,070 --> 00:33:29,085
+I'm going to scale everything
+so that t equals 1.
+
+771
+00:33:29,085 --> 00:33:31,120
+That will simplify
+things a little bit.
+
+772
+00:33:31,120 --> 00:33:34,010
+So just shrink everything,
+all the values, down,
+
+773
+00:33:34,010 --> 00:33:38,340
+divide everything
+by t, ai's in the t.
+
+774
+00:33:38,340 --> 00:33:51,029
+And then, I think we're going
+to shrink the ai disk by minus 1
+
+775
+00:33:51,029 --> 00:33:57,210
+over n squared plus ai over n.
+
+776
+00:33:57,210 --> 00:33:59,150
+This is a funny
+notion of shrink.
+
+777
+00:33:59,150 --> 00:34:01,839
+I'm going to first make it
+smaller by 1 over n squared.
+
+778
+00:34:01,839 --> 00:34:05,170
+And then I'm going to
+grow it by ai over n.
+
+779
+00:34:05,170 --> 00:34:09,069
+This term, I believe,
+is to get rid
+
+780
+00:34:09,069 --> 00:34:11,390
+of smaller things in
+the Taylor expansion.
+
+781
+00:34:11,390 --> 00:34:15,799
+So disks are annoying
+because they're circular.
+
+782
+00:34:15,799 --> 00:34:17,920
+Because they're
+quadratic curves.
+
+783
+00:34:17,920 --> 00:34:22,190
+And so, you get-- you know, it's
+an awkward shape to deal with.
+
+784
+00:34:22,190 --> 00:34:24,310
+And you're worried about
+how I move this center
+
+785
+00:34:24,310 --> 00:34:25,739
+relative to how I
+move the other centers
+
+786
+00:34:25,739 --> 00:34:27,110
+and whether they're
+hitting each other.
+
+787
+00:34:27,110 --> 00:34:29,380
+And whether hitting each other
+is a quadratic constraint.
+
+788
+00:34:29,380 --> 00:34:31,796
+You have to measure the distance
+between these two points.
+
+789
+00:34:31,796 --> 00:34:36,320
+It should be greater than or
+equal to the sum of the radii.
+
+790
+00:34:36,320 --> 00:34:38,730
+So that's tough to work with.
+
+791
+00:34:38,730 --> 00:34:41,180
+So to simplify things,
+we take first derivatives
+
+792
+00:34:41,180 --> 00:34:43,650
+and say, well, to the first
+order, what's happening
+
+793
+00:34:43,650 --> 00:34:45,200
+when I move these disks around?
+
+794
+00:34:45,200 --> 00:34:47,280
+And when you say
+first derivatives,
+
+795
+00:34:47,280 --> 00:34:49,340
+you get an approximation
+to the truth.
+
+796
+00:34:49,340 --> 00:34:51,910
+And the second derivative, it
+tells you a little bit more
+
+797
+00:34:51,910 --> 00:34:52,790
+of the truth.
+
+798
+00:34:52,790 --> 00:34:55,570
+And if you've ever
+done Taylor series,
+
+799
+00:34:55,570 --> 00:34:57,467
+you know you get
+something like 1
+
+800
+00:34:57,467 --> 00:35:00,050
+over n, something times 1 over
+n plus something times 1 over n
+
+801
+00:35:00,050 --> 00:35:01,980
+squared and so on.
+
+802
+00:35:01,980 --> 00:35:04,250
+And so, if we just
+subtract off this term,
+
+803
+00:35:04,250 --> 00:35:07,110
+make these disks a little bit
+smaller than they need to be,
+
+804
+00:35:07,110 --> 00:35:09,790
+that lets you deal with all
+those terms all at once.
+
+805
+00:35:09,790 --> 00:35:13,340
+So it lets us focus
+on the lead term.
+
+806
+00:35:13,340 --> 00:35:16,700
+And to the first order, the
+claim is, what happens is,
+
+807
+00:35:16,700 --> 00:35:18,470
+well, we made this
+disk smaller by 1.
+
+808
+00:35:18,470 --> 00:35:20,090
+Remember 1 is t.
+
+809
+00:35:20,090 --> 00:35:23,120
+We made the other
+guys larger by ai.
+
+810
+00:35:23,120 --> 00:35:25,890
+So that's going to
+work out exactly
+
+811
+00:35:25,890 --> 00:35:28,730
+when the sum of the three ai's
+is less than or equal to 1.
+
+812
+00:35:28,730 --> 00:35:29,952
+Then this will have room.
+
+813
+00:35:29,952 --> 00:35:31,410
+And that's true to
+the first order.
+
+814
+00:35:31,410 --> 00:35:33,000
+And you have to do
+this ugly business
+
+815
+00:35:33,000 --> 00:35:35,260
+to make it true exactly.
+
+816
+00:35:35,260 --> 00:35:38,340
+So I think, without going
+into vector algebra,
+
+817
+00:35:38,340 --> 00:35:42,660
+this is the intuition
+of what's going on.
+
+818
+00:35:42,660 --> 00:35:46,910
+And that's that proof.
+
+819
+00:35:46,910 --> 00:35:48,415
+Any questions?
+
+820
+00:35:48,415 --> 00:35:50,790
+The point here is to expose
+you to lots of different ways
+
+821
+00:35:50,790 --> 00:35:54,700
+to represent numbers
+and three partition.
+
+822
+00:35:54,700 --> 00:35:58,650
+And a lot of times it comes
+up in geometric settings.
+
+823
+00:35:58,650 --> 00:36:01,300
+But so far, we've seen rather
+different ways to represent it.
+
+824
+00:36:01,300 --> 00:36:04,020
+We'll see graph
+theory in a moment.
+
+825
+00:36:04,020 --> 00:36:06,930
+Probably, next up is
+games and puzzles.
+
+826
+00:36:06,930 --> 00:36:08,430
+So let's play some games.
+
+827
+00:36:08,430 --> 00:36:11,630
+
+828
+00:36:11,630 --> 00:36:14,229
+Right, there was one more
+part of this proof I forgot.
+
+829
+00:36:14,229 --> 00:36:15,770
+What if you're
+packing into a square?
+
+830
+00:36:15,770 --> 00:36:17,790
+This is particularly
+important for origami.
+
+831
+00:36:17,790 --> 00:36:19,740
+This paper appeared in
+an origami conference,
+
+832
+00:36:19,740 --> 00:36:23,460
+so we needed to solve the
+case of square packing.
+
+833
+00:36:23,460 --> 00:36:25,860
+This is more awkward.
+
+834
+00:36:25,860 --> 00:36:29,960
+The idea, because you can't make
+a nice, regular grid on a-- you
+
+835
+00:36:29,960 --> 00:36:33,390
+know, square grid packing is
+not very efficient for disks.
+
+836
+00:36:33,390 --> 00:36:35,752
+But if you have these
+four really big disks,
+
+837
+00:36:35,752 --> 00:36:37,710
+I should mention here
+the goal is for the disks
+
+838
+00:36:37,710 --> 00:36:40,352
+to fit-- the centers of the
+disks to fit inside the square.
+
+839
+00:36:40,352 --> 00:36:42,060
+That turns out to be
+the right constraint
+
+840
+00:36:42,060 --> 00:36:45,250
+from an origami perspective.
+
+841
+00:36:45,250 --> 00:36:46,890
+So, we would make
+these four big disks,
+
+842
+00:36:46,890 --> 00:36:48,450
+they have to be at the corners.
+
+843
+00:36:48,450 --> 00:36:50,800
+Then we make this big disk,
+it has to be in the center.
+
+844
+00:36:50,800 --> 00:36:52,670
+These are all
+perfectly touching.
+
+845
+00:36:52,670 --> 00:36:54,309
+Then we add these
+four disks and it
+
+846
+00:36:54,309 --> 00:36:55,850
+forces a particular
+arrangement here,
+
+847
+00:36:55,850 --> 00:36:59,080
+which is a little awkward
+to compute but you can.
+
+848
+00:36:59,080 --> 00:37:02,757
+And yes, we do that four times.
+
+849
+00:37:02,757 --> 00:37:04,340
+Then, for each of
+these constructions,
+
+850
+00:37:04,340 --> 00:37:05,910
+this is the shape that we want.
+
+851
+00:37:05,910 --> 00:37:10,405
+We want these kind of
+equilateral triangle-ish gaps.
+
+852
+00:37:10,405 --> 00:37:12,280
+I say ish because they're
+not straight sides,
+
+853
+00:37:12,280 --> 00:37:13,720
+they're arc sides.
+
+854
+00:37:13,720 --> 00:37:18,310
+But it is-- the centers form an
+equilateral triangle perfectly.
+
+855
+00:37:18,310 --> 00:37:19,850
+Then we recurse.
+
+856
+00:37:19,850 --> 00:37:24,870
+So wherever we have a gap like
+that, which is this thing,
+
+857
+00:37:24,870 --> 00:37:26,420
+then we add the center guy.
+
+858
+00:37:26,420 --> 00:37:28,420
+And then we add these
+four disks again,
+
+859
+00:37:28,420 --> 00:37:31,385
+just like over here,
+three times now.
+
+860
+00:37:31,385 --> 00:37:34,760
+Now, of course, we can't
+force the disks to go here.
+
+861
+00:37:34,760 --> 00:37:38,690
+But they will.
+
+862
+00:37:38,690 --> 00:37:40,530
+This is a very
+symmetric construction.
+
+863
+00:37:40,530 --> 00:37:42,446
+So we're going to do
+this symmetrically in all
+
+864
+00:37:42,446 --> 00:37:43,690
+the things.
+
+865
+00:37:43,690 --> 00:37:47,360
+The other challenge is we left
+these rather large gaps here.
+
+866
+00:37:47,360 --> 00:37:48,990
+I mean, relative to
+these tiny disks,
+
+867
+00:37:48,990 --> 00:37:53,290
+which are all fit inside that
+gap, this is pretty big gap.
+
+868
+00:37:53,290 --> 00:37:54,950
+So we also have
+to make these gaps
+
+869
+00:37:54,950 --> 00:37:57,102
+unusable by adding
+a maximal disk
+
+870
+00:37:57,102 --> 00:37:58,310
+and then adding maximal disk.
+
+871
+00:37:58,310 --> 00:38:00,800
+And just recursively
+adding maximal disks
+
+872
+00:38:00,800 --> 00:38:03,970
+until the gaps that are left
+are tinier than all the ones
+
+873
+00:38:03,970 --> 00:38:06,060
+that we're going to
+produce in this recursion.
+
+874
+00:38:06,060 --> 00:38:09,640
+This recursion has depth
+like log n, so in the end,
+
+875
+00:38:09,640 --> 00:38:14,260
+we get roughly n of
+these things or n over 3.
+
+876
+00:38:14,260 --> 00:38:16,800
+If we have extras, we'll
+just throw in maximum disks
+
+877
+00:38:16,800 --> 00:38:19,790
+and make them unusable.
+
+878
+00:38:19,790 --> 00:38:22,112
+So that's it.
+
+879
+00:38:22,112 --> 00:38:23,570
+So this is a lot
+harder because you
+
+880
+00:38:23,570 --> 00:38:25,044
+have to fill in
+all of these gaps
+
+881
+00:38:25,044 --> 00:38:26,960
+and make sure everything
+is going to be happy.
+
+882
+00:38:26,960 --> 00:38:28,640
+And no disk can go
+in the wrong place.
+
+883
+00:38:28,640 --> 00:38:30,720
+But if you sort of do
+it in the right order,
+
+884
+00:38:30,720 --> 00:38:32,560
+you can be convinced
+at every stage
+
+885
+00:38:32,560 --> 00:38:34,984
+you're disk has to go
+where you're putting it.
+
+886
+00:38:34,984 --> 00:38:36,900
+Except at the very end
+where you have freedom.
+
+887
+00:38:36,900 --> 00:38:39,520
+The freedom you have is where
+the ai's go, which pocket they
+
+888
+00:38:39,520 --> 00:38:40,760
+belong to.
+
+889
+00:38:40,760 --> 00:38:42,360
+That's the only
+freedom you have.
+
+890
+00:38:42,360 --> 00:38:45,000
+It's the only freedom
+we want you to have.
+
+891
+00:38:45,000 --> 00:38:46,710
+OK.
+
+892
+00:38:46,710 --> 00:38:48,560
+So that was disk packing.
+
+893
+00:38:48,560 --> 00:38:50,650
+Next is Clickomania .
+
+894
+00:38:50,650 --> 00:38:52,530
+How many people have
+played Clickomania?
+
+895
+00:38:52,530 --> 00:38:53,500
+A few.
+
+896
+00:38:53,500 --> 00:38:54,520
+Good.
+
+897
+00:38:54,520 --> 00:38:57,900
+It's not completely obscure yet.
+
+898
+00:38:57,900 --> 00:38:59,850
+So here I have the
+real thing, I think
+
+899
+00:38:59,850 --> 00:39:02,292
+this is called Clickomania,
+Next Generation.
+
+900
+00:39:02,292 --> 00:39:03,750
+And I want to start
+a new game so I
+
+901
+00:39:03,750 --> 00:39:05,800
+don't have a really bad score.
+
+902
+00:39:05,800 --> 00:39:07,300
+So the idea is
+you're going to click
+
+903
+00:39:07,300 --> 00:39:10,020
+on a group, a connected
+group, of one color.
+
+904
+00:39:10,020 --> 00:39:11,250
+That group is destroyed.
+
+905
+00:39:11,250 --> 00:39:14,890
+And then things fall vertically.
+
+906
+00:39:14,890 --> 00:39:16,630
+So column-by-column.
+
+907
+00:39:16,630 --> 00:39:19,350
+
+908
+00:39:19,350 --> 00:39:21,120
+Rules clear?
+
+909
+00:39:21,120 --> 00:39:28,660
+Your goal is to remove all of
+the blocks, which I probably
+
+910
+00:39:28,660 --> 00:39:30,210
+won't succeed in doing.
+
+911
+00:39:30,210 --> 00:39:32,940
+I haven't played in a long time.
+
+912
+00:39:32,940 --> 00:39:36,080
+But let's-- I would like
+to show you one other rule,
+
+913
+00:39:36,080 --> 00:39:37,530
+but I may fail to do so.
+
+914
+00:39:37,530 --> 00:39:43,930
+
+915
+00:39:43,930 --> 00:39:48,350
+This kind of
+checkerboarding, not so good.
+
+916
+00:39:48,350 --> 00:39:50,580
+Don't do that when you play.
+
+917
+00:39:50,580 --> 00:39:52,080
+Also very bad.
+
+918
+00:39:52,080 --> 00:39:53,060
+OK.
+
+919
+00:39:53,060 --> 00:39:55,820
+The one rule, which I
+won't demonstrate here,
+
+920
+00:39:55,820 --> 00:39:59,110
+is if you clear a
+column, then these guys
+
+921
+00:39:59,110 --> 00:40:00,490
+just sort of eat the column.
+
+922
+00:40:00,490 --> 00:40:02,240
+They just move
+closer to each other.
+
+923
+00:40:02,240 --> 00:40:04,750
+I think usually the right
+moves to the left one step.
+
+924
+00:40:04,750 --> 00:40:09,670
+OK, so that's-- here's a
+successful execution from
+
+925
+00:40:09,670 --> 00:40:11,330
+the Clickomania website.
+
+926
+00:40:11,330 --> 00:40:13,340
+But I have done it a few times.
+
+927
+00:40:13,340 --> 00:40:14,590
+I just haven't in a long time.
+
+928
+00:40:14,590 --> 00:40:17,410
+The only rule is, the
+group that you click on,
+
+929
+00:40:17,410 --> 00:40:20,870
+the connected color chunk has
+to be of size greater than 1.
+
+930
+00:40:20,870 --> 00:40:23,970
+Otherwise you could just
+keep clicking on everything.
+
+931
+00:40:23,970 --> 00:40:26,690
+So that's why the
+checkerboarding is bad,
+
+932
+00:40:26,690 --> 00:40:30,120
+because there you
+have singleton guys.
+
+933
+00:40:30,120 --> 00:40:31,620
+So you may have
+some singleton guys.
+
+934
+00:40:31,620 --> 00:40:34,130
+But if you're careful, you
+sometimes can get rid of them.
+
+935
+00:40:34,130 --> 00:40:36,260
+The question is, when can you?
+
+936
+00:40:36,260 --> 00:40:38,610
+And the answer is,
+it's NP-complete.
+
+937
+00:40:38,610 --> 00:40:44,160
+So this is actually my
+first NP-hardness proof,
+
+938
+00:40:44,160 --> 00:40:44,940
+I think ever.
+
+939
+00:40:44,940 --> 00:40:47,140
+Definitely of a game.
+
+940
+00:40:47,140 --> 00:40:48,300
+I think ever.
+
+941
+00:40:48,300 --> 00:40:49,760
+So there's a few results here.
+
+942
+00:40:49,760 --> 00:40:53,130
+One is that, if you have
+a single column, that case
+
+943
+00:40:53,130 --> 00:40:53,750
+we can solve.
+
+944
+00:40:53,750 --> 00:40:58,940
+A single row actually behaves
+the same as a single column,
+
+945
+00:40:58,940 --> 00:41:01,580
+because even though they're
+asymmetric in general, for when
+
+946
+00:41:01,580 --> 00:41:03,300
+it's 1, they're the same.
+
+947
+00:41:03,300 --> 00:41:05,770
+And if you happen to know
+context-free grammars,
+
+948
+00:41:05,770 --> 00:41:08,900
+then here's the answer.
+
+949
+00:41:08,900 --> 00:41:10,660
+It's not obvious that
+this is the answer.
+
+950
+00:41:10,660 --> 00:41:12,789
+But this is saying something
+like, well, it could
+
+951
+00:41:12,789 --> 00:41:14,080
+be you already solved the game.
+
+952
+00:41:14,080 --> 00:41:15,370
+That's the empty string.
+
+953
+00:41:15,370 --> 00:41:17,399
+Or it could be you have
+a solvable game followed
+
+954
+00:41:17,399 --> 00:41:18,190
+by a solvable game.
+
+955
+00:41:18,190 --> 00:41:20,030
+You could just sort
+of do them separately.
+
+956
+00:41:20,030 --> 00:41:22,470
+And if you're careful, they
+won't mess each other up.
+
+957
+00:41:22,470 --> 00:41:24,350
+And then you solve
+the overall game.
+
+958
+00:41:24,350 --> 00:41:26,400
+Or it could be you
+have a solvable game
+
+959
+00:41:26,400 --> 00:41:30,240
+and you have the same color,
+one block of the same color,
+
+960
+00:41:30,240 --> 00:41:31,177
+on either side.
+
+961
+00:41:31,177 --> 00:41:33,260
+That would also be solvable
+because you could just
+
+962
+00:41:33,260 --> 00:41:34,420
+solve the center thing.
+
+963
+00:41:34,420 --> 00:41:35,990
+Then these two
+guys come together.
+
+964
+00:41:35,990 --> 00:41:38,400
+And then you click
+that group of size 2.
+
+965
+00:41:38,400 --> 00:41:40,830
+Or this could also happen
+where you solve two things
+
+966
+00:41:40,830 --> 00:41:42,476
+and then three
+blocks come together.
+
+967
+00:41:42,476 --> 00:41:44,100
+And you could also
+imagine other rules.
+
+968
+00:41:44,100 --> 00:41:45,725
+But it turns out
+these are enough rules
+
+969
+00:41:45,725 --> 00:41:48,880
+to capture all solvable
+puzzles for one row or column.
+
+970
+00:41:48,880 --> 00:41:52,210
+But that's not a hardness proof
+so we won't talk about it.
+
+971
+00:41:52,210 --> 00:41:54,610
+We have two NP hardness results.
+
+972
+00:41:54,610 --> 00:41:58,740
+One is for two columns
+and five colors.
+
+973
+00:41:58,740 --> 00:42:00,560
+And the other one
+is a hardness proof
+
+974
+00:42:00,560 --> 00:42:05,410
+for five columns
+and three colors.
+
+975
+00:42:05,410 --> 00:42:07,980
+And these are the proofs.
+
+976
+00:42:07,980 --> 00:42:09,830
+This one is three partition.
+
+977
+00:42:09,830 --> 00:42:11,147
+This one is three set.
+
+978
+00:42:11,147 --> 00:42:12,980
+So we might talk about
+that in the three set
+
+979
+00:42:12,980 --> 00:42:14,800
+section of the class.
+
+980
+00:42:14,800 --> 00:42:17,260
+But I'm going to focus here
+on the three partition--
+
+981
+00:42:17,260 --> 00:42:19,350
+two columns, five colors.
+
+982
+00:42:19,350 --> 00:42:22,240
+Open problem is
+whether two colors,
+
+983
+00:42:22,240 --> 00:42:23,670
+you can get any hardness.
+
+984
+00:42:23,670 --> 00:42:25,403
+Question?
+
+985
+00:42:25,403 --> 00:42:27,987
+AUDIENCE: Is it obvious
+that S to SS is--
+
+986
+00:42:27,987 --> 00:42:28,570
+PROFESSOR: No.
+
+987
+00:42:28,570 --> 00:42:30,710
+It's not obvious that
+S to SS is valid.
+
+988
+00:42:30,710 --> 00:42:32,980
+Because you worry that
+when you solve one of them,
+
+989
+00:42:32,980 --> 00:42:36,086
+you might eat a group
+from the right-hand side.
+
+990
+00:42:36,086 --> 00:42:37,710
+But you can prove
+it's always possible.
+
+991
+00:42:37,710 --> 00:42:39,293
+I don't remember how
+that proof works,
+
+992
+00:42:39,293 --> 00:42:42,310
+but you can check the paper.
+
+993
+00:42:42,310 --> 00:42:43,420
+Yeah.
+
+994
+00:42:43,420 --> 00:42:46,260
+If you look at the-- if you
+ever go to the course website
+
+995
+00:42:46,260 --> 00:42:48,230
+and watch this lecture
+or click around
+
+996
+00:42:48,230 --> 00:42:50,680
+the slides of this lecture,
+it has links to all the papers
+
+997
+00:42:50,680 --> 00:42:51,680
+that I'm talking about.
+
+998
+00:42:51,680 --> 00:42:53,640
+So if you ever want to know
+more details, just go there.
+
+999
+00:42:53,640 --> 00:42:54,520
+Link is right there.
+
+1000
+00:42:54,520 --> 00:42:59,260
+You don't have to type in all
+these names and Google for it.
+
+1001
+00:42:59,260 --> 00:42:59,760
+Cool.
+
+1002
+00:42:59,760 --> 00:43:03,240
+So this is my attempt at
+drawing the hardness proof.
+
+1003
+00:43:03,240 --> 00:43:06,230
+
+1004
+00:43:06,230 --> 00:43:07,930
+This was challenging.
+
+1005
+00:43:07,930 --> 00:43:12,090
+And I should say, it's
+not drawn to scale.
+
+1006
+00:43:12,090 --> 00:43:13,610
+So it's not exactly right.
+
+1007
+00:43:13,610 --> 00:43:15,940
+But it gives you a
+flavor of what happens.
+
+1008
+00:43:15,940 --> 00:43:19,000
+And I believe all the
+braces are correct.
+
+1009
+00:43:19,000 --> 00:43:20,990
+But it just wouldn't
+fit on the screen
+
+1010
+00:43:20,990 --> 00:43:24,180
+if we drew everything
+properly to scale.
+
+1011
+00:43:24,180 --> 00:43:27,510
+So reduction from
+three partition.
+
+1012
+00:43:27,510 --> 00:43:30,860
+We have n numbers, ai
+through an integers.
+
+1013
+00:43:30,860 --> 00:43:32,350
+We're going to
+scale everything up.
+
+1014
+00:43:32,350 --> 00:43:37,000
+We're going to scale the
+ai's and t by a factor of b.
+
+1015
+00:43:37,000 --> 00:43:38,880
+b is 4/3n.
+
+1016
+00:43:38,880 --> 00:43:42,780
+I don't totally know
+why, but you know.
+
+1017
+00:43:42,780 --> 00:43:45,925
+It's n plus the
+number of groups.
+
+1018
+00:43:45,925 --> 00:43:47,800
+I'm guessing a larger
+number would also work,
+
+1019
+00:43:47,800 --> 00:43:51,880
+but that's definitely enough.
+
+1020
+00:43:51,880 --> 00:43:52,390
+OK.
+
+1021
+00:43:52,390 --> 00:43:54,732
+So basically, there's
+two columns, remember.
+
+1022
+00:43:54,732 --> 00:43:56,440
+It's always going to
+stay in two columns.
+
+1023
+00:43:56,440 --> 00:43:58,580
+It never increases.
+
+1024
+00:43:58,580 --> 00:44:01,560
+There are some clickable
+blocks, clickable groups,
+
+1025
+00:44:01,560 --> 00:44:02,980
+which correspond to the ai's.
+
+1026
+00:44:02,980 --> 00:44:05,540
+So for every day ai, we're
+going to have exactly one block,
+
+1027
+00:44:05,540 --> 00:44:09,806
+which is b times ai by 1.
+
+1028
+00:44:09,806 --> 00:44:11,180
+Don't draw the
+lines when they're
+
+1029
+00:44:11,180 --> 00:44:14,180
+in the same connected component.
+
+1030
+00:44:14,180 --> 00:44:17,920
+But technically, these
+are separate squares.
+
+1031
+00:44:17,920 --> 00:44:21,120
+There's also some
+clickable things up here.
+
+1032
+00:44:21,120 --> 00:44:22,600
+Those are not too essential.
+
+1033
+00:44:22,600 --> 00:44:26,550
+They're basically to spread
+out these red blocks.
+
+1034
+00:44:26,550 --> 00:44:28,380
+There are n over
+three red blocks here.
+
+1035
+00:44:28,380 --> 00:44:31,220
+And there are n over
+3 red blocks here.
+
+1036
+00:44:31,220 --> 00:44:32,930
+You will never win
+the game unless you
+
+1037
+00:44:32,930 --> 00:44:35,460
+destroy these red blocks.
+
+1038
+00:44:35,460 --> 00:44:38,721
+So for example, you could
+click all these blue things,
+
+1039
+00:44:38,721 --> 00:44:40,720
+make the red together,
+and then destroy the red.
+
+1040
+00:44:40,720 --> 00:44:43,370
+But that's not a good idea.
+
+1041
+00:44:43,370 --> 00:44:47,080
+Because these are only,
+this is a very small space.
+
+1042
+00:44:47,080 --> 00:44:48,780
+This is a relatively large gap.
+
+1043
+00:44:48,780 --> 00:44:50,480
+I know it doesn't
+look like it, but this
+
+1044
+00:44:50,480 --> 00:44:52,440
+is only n over 3 total.
+
+1045
+00:44:52,440 --> 00:44:54,280
+The gap between
+these two things is
+
+1046
+00:44:54,280 --> 00:44:58,210
+b times t, which is way
+bigger than n over 3.
+
+1047
+00:44:58,210 --> 00:45:01,870
+OK, so there's big gaps
+between these red guys.
+
+1048
+00:45:01,870 --> 00:45:03,970
+So what you're
+basically going to do
+
+1049
+00:45:03,970 --> 00:45:08,890
+is make this column fall down
+until the first red guy aligns
+
+1050
+00:45:08,890 --> 00:45:09,680
+with this one.
+
+1051
+00:45:09,680 --> 00:45:11,255
+Then you delete those two.
+
+1052
+00:45:11,255 --> 00:45:12,630
+Then you're going
+to make it fall
+
+1053
+00:45:12,630 --> 00:45:15,894
+down farther until this
+red guy hits this one.
+
+1054
+00:45:15,894 --> 00:45:17,310
+And then you can
+delete those two.
+
+1055
+00:45:17,310 --> 00:45:18,946
+Just two at a time.
+
+1056
+00:45:18,946 --> 00:45:21,320
+And we're going to bring it
+down until the third guy hits
+
+1057
+00:45:21,320 --> 00:45:24,600
+third guy, and then the fourth
+guy hits the fourth guy.
+
+1058
+00:45:24,600 --> 00:45:27,056
+Then the reds are gone.
+
+1059
+00:45:27,056 --> 00:45:28,430
+Before I get to
+how that happens,
+
+1060
+00:45:28,430 --> 00:45:30,950
+let me tell you what happens
+when the reds are gone.
+
+1061
+00:45:30,950 --> 00:45:32,850
+When the reds are gone, I mean,
+if there are any purples left--
+
+1062
+00:45:32,850 --> 00:45:34,860
+turns out there won't be--
+but you could click them all.
+
+1063
+00:45:34,860 --> 00:45:36,276
+Then you could
+click all the blue.
+
+1064
+00:45:36,276 --> 00:45:38,210
+Then you're done on
+the right column.
+
+1065
+00:45:38,210 --> 00:45:41,580
+So right column was
+finishable, no problem,
+
+1066
+00:45:41,580 --> 00:45:44,260
+once you've gotten
+rid of the red.
+
+1067
+00:45:44,260 --> 00:45:49,715
+Now the left column is
+mostly checkerboard.
+
+1068
+00:45:49,715 --> 00:45:53,420
+And if you remove
+the red pixels,
+
+1069
+00:45:53,420 --> 00:45:57,520
+you're left with exactly a
+checkerboard except here,
+
+1070
+00:45:57,520 --> 00:45:59,030
+the topmost red guy.
+
+1071
+00:45:59,030 --> 00:46:01,490
+It's white on either side.
+
+1072
+00:46:01,490 --> 00:46:03,920
+And in general, everything
+below this point
+
+1073
+00:46:03,920 --> 00:46:06,701
+is the same as everything
+above this point upside down.
+
+1074
+00:46:06,701 --> 00:46:09,200
+And so then you can always just
+click on the center, center,
+
+1075
+00:46:09,200 --> 00:46:09,830
+center, center.
+
+1076
+00:46:09,830 --> 00:46:12,205
+I guess you have to move your
+mouse down as that happens,
+
+1077
+00:46:12,205 --> 00:46:16,500
+but you will then destroy
+the black and white part.
+
+1078
+00:46:16,500 --> 00:46:17,770
+Total is five colors.
+
+1079
+00:46:17,770 --> 00:46:21,540
+We've got red, purple,
+blue, black and white.
+
+1080
+00:46:21,540 --> 00:46:25,360
+OK, now this is my
+attempt at showing you
+
+1081
+00:46:25,360 --> 00:46:28,190
+how we get the red
+things to align.
+
+1082
+00:46:28,190 --> 00:46:29,780
+But the idea is simple.
+
+1083
+00:46:29,780 --> 00:46:32,360
+
+1084
+00:46:32,360 --> 00:46:34,301
+The initial gap from
+this guy to this guy.
+
+1085
+00:46:34,301 --> 00:46:36,050
+And then, the gap
+henceforth from this one
+
+1086
+00:46:36,050 --> 00:46:37,545
+to this one to
+this one is always
+
+1087
+00:46:37,545 --> 00:46:40,320
+b times t plus some constant.
+
+1088
+00:46:40,320 --> 00:46:43,070
+The constants are just annoying.
+
+1089
+00:46:43,070 --> 00:46:44,450
+So they're not essential.
+
+1090
+00:46:44,450 --> 00:46:47,255
+The idea is, well, I've got
+to bring this down b times t.
+
+1091
+00:46:47,255 --> 00:46:48,630
+So in order to do
+that, I'm going
+
+1092
+00:46:48,630 --> 00:46:52,640
+to click on some purple things
+whose total size is b times t.
+
+1093
+00:46:52,640 --> 00:46:55,400
+In other words, the sum of
+the ai's that I'm clicking on
+
+1094
+00:46:55,400 --> 00:46:57,840
+should be equal to t.
+
+1095
+00:46:57,840 --> 00:46:59,840
+And we happen to know
+that will be three things,
+
+1096
+00:46:59,840 --> 00:47:01,724
+but that's not essential here.
+
+1097
+00:47:01,724 --> 00:47:03,140
+We can just use
+the simple version
+
+1098
+00:47:03,140 --> 00:47:05,370
+of three partition, where
+you're asking for sets
+
+1099
+00:47:05,370 --> 00:47:08,010
+that happened to sum to t.
+
+1100
+00:47:08,010 --> 00:47:11,105
+Because everything is scaled up
+so big by these factors of b,
+
+1101
+00:47:11,105 --> 00:47:13,420
+I mean, these
+gaps-- you have to,
+
+1102
+00:47:13,420 --> 00:47:16,760
+even to get in the right
+proximity, you have to choose
+
+1103
+00:47:16,760 --> 00:47:19,620
+ai's that sum to exactly t.
+
+1104
+00:47:19,620 --> 00:47:22,440
+
+1105
+00:47:22,440 --> 00:47:23,710
+Yes.
+
+1106
+00:47:23,710 --> 00:47:28,080
+So the constants are annoying
+because you want to make sure--
+
+1107
+00:47:28,080 --> 00:47:29,380
+so here's an example.
+
+1108
+00:47:29,380 --> 00:47:31,580
+Here are, in this
+particular picture,
+
+1109
+00:47:31,580 --> 00:47:34,770
+the height of one of
+these things is 6.
+
+1110
+00:47:34,770 --> 00:47:37,740
+And so, I click on one
+purple thing of size 4
+
+1111
+00:47:37,740 --> 00:47:39,112
+and one purple thing of size 2.
+
+1112
+00:47:39,112 --> 00:47:41,070
+In reality, these numbers
+would be much bigger,
+
+1113
+00:47:41,070 --> 00:47:42,870
+but for the picture, that works.
+
+1114
+00:47:42,870 --> 00:47:44,620
+Then things fall.
+
+1115
+00:47:44,620 --> 00:47:46,690
+And we get this picture.
+
+1116
+00:47:46,690 --> 00:47:49,480
+And these red things are almost
+aligned, but they're off by 2,
+
+1117
+00:47:49,480 --> 00:47:52,180
+so I click on this
+little 1 by 2 block.
+
+1118
+00:47:52,180 --> 00:47:53,390
+And then they're aligned.
+
+1119
+00:47:53,390 --> 00:47:55,660
+Then I can click
+on the red thing.
+
+1120
+00:47:55,660 --> 00:47:58,420
+I also click on this blue
+thing to sort of advance
+
+1121
+00:47:58,420 --> 00:47:59,570
+to the next red thing.
+
+1122
+00:47:59,570 --> 00:48:02,370
+And then these guys fall
+and I get this picture.
+
+1123
+00:48:02,370 --> 00:48:04,560
+I could click on the
+white but it won't matter.
+
+1124
+00:48:04,560 --> 00:48:06,660
+That's just, I could do
+that all at the end later.
+
+1125
+00:48:06,660 --> 00:48:09,530
+Now my goal is to get
+this red thing to here.
+
+1126
+00:48:09,530 --> 00:48:12,680
+Again, the gap is exactly 5.
+
+1127
+00:48:12,680 --> 00:48:17,500
+So I click on, let's say, 6.
+
+1128
+00:48:17,500 --> 00:48:20,880
+Let's say I click on
+2 things of size 3.
+
+1129
+00:48:20,880 --> 00:48:23,580
+And so then everything falls.
+
+1130
+00:48:23,580 --> 00:48:24,580
+And the reds align.
+
+1131
+00:48:24,580 --> 00:48:25,590
+Then I delete it.
+
+1132
+00:48:25,590 --> 00:48:28,770
+I also delete the
+blue thing to advance.
+
+1133
+00:48:28,770 --> 00:48:30,910
+And I think that works.
+
+1134
+00:48:30,910 --> 00:48:31,856
+Yeah, question.
+
+1135
+00:48:31,856 --> 00:48:32,740
+AUDIENCE: How do you
+ensure that it's always
+
+1136
+00:48:32,740 --> 00:48:34,544
+the leading red
+block that has to go
+
+1137
+00:48:34,544 --> 00:48:36,312
+with the trailing red
+block on the left?
+
+1138
+00:48:36,312 --> 00:48:37,020
+PROFESSOR: Right.
+
+1139
+00:48:37,020 --> 00:48:40,340
+So it could be you take some
+other block, other red block,
+
+1140
+00:48:40,340 --> 00:48:42,980
+and align it with this one.
+
+1141
+00:48:42,980 --> 00:48:47,880
+That is mostly a worry from
+a construction standpoint.
+
+1142
+00:48:47,880 --> 00:48:50,480
+If you did that,
+you might get stuck.
+
+1143
+00:48:50,480 --> 00:48:53,810
+But I claim if I did that, it's
+never a problem to do that.
+
+1144
+00:48:53,810 --> 00:48:58,870
+Because this length is, this
+total extent of these red guys,
+
+1145
+00:48:58,870 --> 00:49:00,620
+is relatively small.
+
+1146
+00:49:00,620 --> 00:49:03,390
+The whole length here is n.
+
+1147
+00:49:03,390 --> 00:49:06,430
+Sorry, it's 3 times n over 3.
+
+1148
+00:49:06,430 --> 00:49:08,170
+Whole length is n
+whereas all these ai's
+
+1149
+00:49:08,170 --> 00:49:11,040
+are scaled by a factor
+of much bigger than n.
+
+1150
+00:49:11,040 --> 00:49:13,310
+Well, not a huge amount
+bigger, but bigger than n.
+
+1151
+00:49:13,310 --> 00:49:15,110
+So even to get them
+vaguely to the right--
+
+1152
+00:49:15,110 --> 00:49:17,950
+this is what I was saying--
+to get this red block or any
+
+1153
+00:49:17,950 --> 00:49:20,130
+of these red blocks
+near this one,
+
+1154
+00:49:20,130 --> 00:49:24,300
+because these things
+are scaled so huge,
+
+1155
+00:49:24,300 --> 00:49:28,540
+to get one close is the same
+as getting all of them close.
+
+1156
+00:49:28,540 --> 00:49:32,180
+If you happen to succeed in a
+way that gets the reds to align
+
+1157
+00:49:32,180 --> 00:49:35,232
+in an out of order, that would
+still give a valid solution
+
+1158
+00:49:35,232 --> 00:49:36,190
+to the three partition.
+
+1159
+00:49:36,190 --> 00:49:36,880
+That's the point.
+
+1160
+00:49:36,880 --> 00:49:38,421
+Because we scaled
+everything so huge.
+
+1161
+00:49:38,421 --> 00:49:42,116
+
+1162
+00:49:42,116 --> 00:49:44,740
+To do the other direction, say,
+if you have a solution of three
+
+1163
+00:49:44,740 --> 00:49:47,520
+partition, then there's a
+solution to this instance,
+
+1164
+00:49:47,520 --> 00:49:50,150
+there we do it in order so that
+we're in control and make sure
+
+1165
+00:49:50,150 --> 00:49:53,140
+all the constants add up right.
+
+1166
+00:49:53,140 --> 00:49:55,520
+And that's sort of the
+annoying part of this proof.
+
+1167
+00:49:55,520 --> 00:49:58,480
+But this is a
+relatively easy proof,
+
+1168
+00:49:58,480 --> 00:50:00,460
+except for these little
+additive constants
+
+1169
+00:50:00,460 --> 00:50:02,010
+to make sure
+everything lines up.
+
+1170
+00:50:02,010 --> 00:50:03,730
+It would be great if I
+could just put these reds
+
+1171
+00:50:03,730 --> 00:50:04,580
+on top of each other.
+
+1172
+00:50:04,580 --> 00:50:07,050
+But then they're one group and
+you delete them all at once.
+
+1173
+00:50:07,050 --> 00:50:08,950
+So I have to put these
+things in between.
+
+1174
+00:50:08,950 --> 00:50:11,075
+They have to be length 2
+so that I can destroy them
+
+1175
+00:50:11,075 --> 00:50:12,370
+whenever I want to.
+
+1176
+00:50:12,370 --> 00:50:13,950
+And so, all these
+additive constants
+
+1177
+00:50:13,950 --> 00:50:14,908
+kind of get in the way.
+
+1178
+00:50:14,908 --> 00:50:18,280
+But it's not too bad.
+
+1179
+00:50:18,280 --> 00:50:19,700
+Other questions
+about this proof?
+
+1180
+00:50:19,700 --> 00:50:22,299
+
+1181
+00:50:22,299 --> 00:50:23,090
+That's Clickomania.
+
+1182
+00:50:23,090 --> 00:50:27,950
+
+1183
+00:50:27,950 --> 00:50:29,160
+Cool.
+
+1184
+00:50:29,160 --> 00:50:38,380
+Next is Tetris, as advertised
+in the original, first lecture.
+
+1185
+00:50:38,380 --> 00:50:41,580
+So if you haven't
+played Tetris, here
+
+1186
+00:50:41,580 --> 00:50:44,620
+is the-- I hope
+you've played Tetris.
+
+1187
+00:50:44,620 --> 00:50:46,690
+I played a lot as a kid.
+
+1188
+00:50:46,690 --> 00:50:48,210
+You have these
+tetragonal blocks.
+
+1189
+00:50:48,210 --> 00:50:49,660
+You can rotate them.
+
+1190
+00:50:49,660 --> 00:50:53,140
+And then you can force
+drop them or you can slowly
+
+1191
+00:50:53,140 --> 00:50:55,235
+drop them and do weird
+things like that,
+
+1192
+00:50:55,235 --> 00:50:59,136
+you know, sort of
+last minute moves.
+
+1193
+00:50:59,136 --> 00:51:01,360
+Let's see.
+
+1194
+00:51:01,360 --> 00:51:04,760
+I don't think that's-- yeah,
+the rotation centers are always
+
+1195
+00:51:04,760 --> 00:51:07,360
+a bit funny, so you
+can do cool things.
+
+1196
+00:51:07,360 --> 00:51:09,240
+So let's have some fun.
+
+1197
+00:51:09,240 --> 00:51:15,141
+
+1198
+00:51:15,141 --> 00:51:17,140
+I'll just play Tetris for
+the rest of the class.
+
+1199
+00:51:17,140 --> 00:51:20,310
+
+1200
+00:51:20,310 --> 00:51:23,050
+So important rule is
+when you complete a line,
+
+1201
+00:51:23,050 --> 00:51:24,410
+then that line disappears.
+
+1202
+00:51:24,410 --> 00:51:28,274
+Although in the proof, we will
+prevent that from happening,
+
+1203
+00:51:28,274 --> 00:51:31,400
+it is a rule of the game.
+
+1204
+00:51:31,400 --> 00:51:34,140
+That's annoying.
+
+1205
+00:51:34,140 --> 00:51:36,850
+Also annoying.
+
+1206
+00:51:36,850 --> 00:51:38,560
+OK, well, you get the idea.
+
+1207
+00:51:38,560 --> 00:51:40,460
+You're super impressed
+by my Tetris skills.
+
+1208
+00:51:40,460 --> 00:51:43,420
+
+1209
+00:51:43,420 --> 00:51:46,180
+All right, so cool.
+
+1210
+00:51:46,180 --> 00:51:49,990
+I used to play it on
+GameBoy and then NES.
+
+1211
+00:51:49,990 --> 00:51:52,600
+You can play it on
+the green building.
+
+1212
+00:51:52,600 --> 00:51:55,640
+This happened in 2012
+finally, after it
+
+1213
+00:51:55,640 --> 00:51:58,460
+was dreamed for many years.
+
+1214
+00:51:58,460 --> 00:52:03,360
+I am a Tetris master according
+to the Harvard Tetris Society.
+
+1215
+00:52:03,360 --> 00:52:05,560
+This was a for proving.
+
+1216
+00:52:05,560 --> 00:52:09,940
+I didn't have to play a game
+to win this as you can tell,
+
+1217
+00:52:09,940 --> 00:52:13,490
+for proofing NP-completeness and
+maximization of aligns Tetris's
+
+1218
+00:52:13,490 --> 00:52:15,490
+pieces played, or
+minimization of square height,
+
+1219
+00:52:15,490 --> 00:52:17,532
+we masters of the
+Harvard Tetris Society
+
+1220
+00:52:17,532 --> 00:52:19,740
+hereby confer the title of
+Tetris Master upon Erik D.
+
+1221
+00:52:19,740 --> 00:52:22,390
+Demaine on the 16th day of
+the 12 month in the year 17
+
+1222
+00:52:22,390 --> 00:52:27,784
+Ano Tetri, which is since
+the invention of Tetris.
+
+1223
+00:52:27,784 --> 00:52:30,080
+OK.
+
+1224
+00:52:30,080 --> 00:52:33,030
+This is a proof done
+early in my career
+
+1225
+00:52:33,030 --> 00:52:36,790
+at MIT with two MIT students,
+David Liben-Nowell and Susan
+
+1226
+00:52:36,790 --> 00:52:40,610
+Hohenberger, now professors
+at other schools.
+
+1227
+00:52:40,610 --> 00:52:42,560
+This was a first
+attempt at a proof.
+
+1228
+00:52:42,560 --> 00:52:45,380
+We had many attempts at
+a proof, all of which
+
+1229
+00:52:45,380 --> 00:52:48,470
+were wrong except the last one.
+
+1230
+00:52:48,470 --> 00:52:50,330
+Yeah, anyway, you
+could try to see
+
+1231
+00:52:50,330 --> 00:52:51,680
+what's wrong with that proof.
+
+1232
+00:52:51,680 --> 00:52:53,610
+But here is a working proof.
+
+1233
+00:52:53,610 --> 00:52:57,340
+This is actually not the
+first working proof we had.
+
+1234
+00:52:57,340 --> 00:53:00,000
+So there is me,
+David, and Susan.
+
+1235
+00:53:00,000 --> 00:53:02,990
+And then we published a much
+harder version of the proof,
+
+1236
+00:53:02,990 --> 00:53:06,540
+with like 500 cases, and then
+these three guys read our paper
+
+1237
+00:53:06,540 --> 00:53:08,810
+and said, hey, I think we
+can simplify it like this.
+
+1238
+00:53:08,810 --> 00:53:10,640
+And then we wrote a
+joint, journal version.
+
+1239
+00:53:10,640 --> 00:53:16,430
+So reduction is from
+three partition, surprise.
+
+1240
+00:53:16,430 --> 00:53:17,820
+So I should say,
+what does Tetris
+
+1241
+00:53:17,820 --> 00:53:20,100
+mean from a computational
+complexity standpoint?
+
+1242
+00:53:20,100 --> 00:53:22,000
+There are multiple
+interpretations.
+
+1243
+00:53:22,000 --> 00:53:24,290
+Our interpretation is, I
+give you an initial board.
+
+1244
+00:53:24,290 --> 00:53:26,040
+If you've already been
+playing for awhile,
+
+1245
+00:53:26,040 --> 00:53:27,520
+here's what you have.
+
+1246
+00:53:27,520 --> 00:53:29,300
+And then I give you
+the entire sequence
+
+1247
+00:53:29,300 --> 00:53:30,850
+of pieces that's going to come.
+
+1248
+00:53:30,850 --> 00:53:32,670
+And I want to know,
+can you survive
+
+1249
+00:53:32,670 --> 00:53:34,864
+maximized number of lines.
+
+1250
+00:53:34,864 --> 00:53:36,530
+This is not yet the
+approximability part
+
+1251
+00:53:36,530 --> 00:53:38,988
+of the class, but we get some
+really easy inapproximability
+
+1252
+00:53:38,988 --> 00:53:40,350
+results, so I will mention them.
+
+1253
+00:53:40,350 --> 00:53:42,300
+For now, it's just
+can you survive.
+
+1254
+00:53:42,300 --> 00:53:46,760
+The ceiling is like
+here, a couple rows
+
+1255
+00:53:46,760 --> 00:53:48,000
+above this initial picture.
+
+1256
+00:53:48,000 --> 00:53:49,300
+So you're almost dead.
+
+1257
+00:53:49,300 --> 00:53:51,610
+So it's like every
+second counts.
+
+1258
+00:53:51,610 --> 00:53:52,420
+All right?
+
+1259
+00:53:52,420 --> 00:53:58,490
+Your goal is to fill up
+these chambers, these bins,
+
+1260
+00:53:58,490 --> 00:54:00,450
+exactly, with no holes.
+
+1261
+00:54:00,450 --> 00:54:02,550
+So if you could
+do it, at the end
+
+1262
+00:54:02,550 --> 00:54:04,072
+I'm going to give
+you a T and then
+
+1263
+00:54:04,072 --> 00:54:05,840
+a whole bunch of straights.
+
+1264
+00:54:05,840 --> 00:54:08,860
+And then you can win the game.
+
+1265
+00:54:08,860 --> 00:54:11,070
+All right?
+
+1266
+00:54:11,070 --> 00:54:15,550
+So we have n over
+3 of these buckets.
+
+1267
+00:54:15,550 --> 00:54:19,300
+Each one is roughly t tall.
+
+1268
+00:54:19,300 --> 00:54:21,700
+There's some additive constant
+to deal with some stuff,
+
+1269
+00:54:21,700 --> 00:54:24,860
+but there's t notches.
+
+1270
+00:54:24,860 --> 00:54:26,880
+Each of these is
+basically counting
+
+1271
+00:54:26,880 --> 00:54:29,300
+one unit of an integer.
+
+1272
+00:54:29,300 --> 00:54:31,641
+OK?
+
+1273
+00:54:31,641 --> 00:54:32,140
+Yeah.
+
+1274
+00:54:32,140 --> 00:54:35,010
+The point is, if you
+don't open this thing,
+
+1275
+00:54:35,010 --> 00:54:36,730
+where are the i's going to go?
+
+1276
+00:54:36,730 --> 00:54:39,700
+And you will only be able to
+open this thing if this is full
+
+1277
+00:54:39,700 --> 00:54:42,010
+and this is full and this
+is full and this is full.
+
+1278
+00:54:42,010 --> 00:54:45,450
+So you've got to get these
+perfect so that at the top,
+
+1279
+00:54:45,450 --> 00:54:49,952
+you can open this and
+then clear everything.
+
+1280
+00:54:49,952 --> 00:54:51,360
+OK.
+
+1281
+00:54:51,360 --> 00:54:55,250
+So here are the gadgets
+from the piece perspective.
+
+1282
+00:54:55,250 --> 00:54:57,020
+That was the initial
+configuration.
+
+1283
+00:54:57,020 --> 00:54:58,920
+Of course, there
+are no ai's yet.
+
+1284
+00:54:58,920 --> 00:55:03,190
+So the piece sequence has
+to encode the ai's in unary.
+
+1285
+00:55:03,190 --> 00:55:05,060
+Because if there are
+only a constant number
+
+1286
+00:55:05,060 --> 00:55:09,700
+of different tetromino pieces,
+so you have to encode-- well,
+
+1287
+00:55:09,700 --> 00:55:11,600
+I guess you could try
+to encode in binary.
+
+1288
+00:55:11,600 --> 00:55:14,840
+It's very hard to add when
+you're working with tetrominoes
+
+1289
+00:55:14,840 --> 00:55:16,520
+unless you do it in unary.
+
+1290
+00:55:16,520 --> 00:55:18,940
+So here's the idea.
+
+1291
+00:55:18,940 --> 00:55:20,660
+We have an initial
+set-up like this.
+
+1292
+00:55:20,660 --> 00:55:22,960
+It will always have this
+little thing in the corner.
+
+1293
+00:55:22,960 --> 00:55:25,350
+And so to say, hey,
+a new ai is starting,
+
+1294
+00:55:25,350 --> 00:55:27,630
+we're going to
+give you, you might
+
+1295
+00:55:27,630 --> 00:55:29,730
+call this a
+right-ward pointing L.
+
+1296
+00:55:29,730 --> 00:55:32,220
+If you look from the
+barrel of the gun,
+
+1297
+00:55:32,220 --> 00:55:34,450
+then it goes to the right.
+
+1298
+00:55:34,450 --> 00:55:37,120
+So that makes a
+nice flat face here.
+
+1299
+00:55:37,120 --> 00:55:40,160
+Because the next piece that's
+coming is a 2 by 2 square.
+
+1300
+00:55:40,160 --> 00:55:42,410
+So what you're going to do
+is let it drop all the way.
+
+1301
+00:55:42,410 --> 00:55:43,880
+And then at the
+very last second,
+
+1302
+00:55:43,880 --> 00:55:45,400
+you slide it to the right.
+
+1303
+00:55:45,400 --> 00:55:46,794
+OK?
+
+1304
+00:55:46,794 --> 00:55:48,460
+And in general, we're
+going to represent
+
+1305
+00:55:48,460 --> 00:55:52,850
+ai by this pattern--
+square, left
+
+1306
+00:55:52,850 --> 00:55:55,780
+L, square, to the power ai.
+
+1307
+00:55:55,780 --> 00:55:57,790
+Like we're going to
+repeat that ai times.
+
+1308
+00:55:57,790 --> 00:56:00,960
+So here I repeated it twice
+and then dot, dot, dot.
+
+1309
+00:56:00,960 --> 00:56:01,460
+OK?
+
+1310
+00:56:01,460 --> 00:56:03,615
+That is encoding
+ai in unary-- or I
+
+1311
+00:56:03,615 --> 00:56:05,740
+don't know if there's
+something smaller than unary,
+
+1312
+00:56:05,740 --> 00:56:10,160
+where you use three objects
+to represent one unit,
+
+1313
+00:56:10,160 --> 00:56:11,750
+but there you go.
+
+1314
+00:56:11,750 --> 00:56:14,410
+And then at the end
+of the ai, we're
+
+1315
+00:56:14,410 --> 00:56:16,650
+going to sort of finish
+things off and reset
+
+1316
+00:56:16,650 --> 00:56:22,250
+to this original kind of
+configuration by saying square
+
+1317
+00:56:22,250 --> 00:56:24,780
+and straight.
+
+1318
+00:56:24,780 --> 00:56:25,280
+OK?
+
+1319
+00:56:25,280 --> 00:56:26,930
+So the square nestles in there.
+
+1320
+00:56:26,930 --> 00:56:28,530
+We get a straight.
+
+1321
+00:56:28,530 --> 00:56:31,010
+And if all goes according
+to plan, what you've done
+
+1322
+00:56:31,010 --> 00:56:34,390
+is filled up basically
+ai units of this thing.
+
+1323
+00:56:34,390 --> 00:56:36,610
+And maybe plus 1.
+
+1324
+00:56:36,610 --> 00:56:39,090
+But we know there's only three
+ai's going into each bucket,
+
+1325
+00:56:39,090 --> 00:56:43,190
+so we can deal with a plus
+additive 3, that's no big deal.
+
+1326
+00:56:43,190 --> 00:56:46,560
+And that's good.
+
+1327
+00:56:46,560 --> 00:56:48,390
+So now you have a choice.
+
+1328
+00:56:48,390 --> 00:56:50,640
+You have this long sequence
+of pieces representing ai.
+
+1329
+00:56:50,640 --> 00:56:53,181
+In general, the piece sequences
+is the piece sequence for a1,
+
+1330
+00:56:53,181 --> 00:56:55,640
+the piece sequence for
+a2, piece sequence for a3.
+
+1331
+00:56:55,640 --> 00:56:58,220
+The intent is, you put
+all of these pieces
+
+1332
+00:56:58,220 --> 00:57:02,220
+into one column, one
+of these buckets.
+
+1333
+00:57:02,220 --> 00:57:05,860
+The claim is you can't against
+the divisibility issue.
+
+1334
+00:57:05,860 --> 00:57:09,092
+The big issue is, can we
+divide ai into two parts?
+
+1335
+00:57:09,092 --> 00:57:11,550
+Put part of it in one bucket,
+part of it in another bucket.
+
+1336
+00:57:11,550 --> 00:57:14,320
+That would not give us a
+solution to three partition.
+
+1337
+00:57:14,320 --> 00:57:16,400
+But the claim is you can't.
+
+1338
+00:57:16,400 --> 00:57:19,480
+And the proof of this claim is
+not too hard for this proof.
+
+1339
+00:57:19,480 --> 00:57:22,950
+It was much more tedious
+for the original proof.
+
+1340
+00:57:22,950 --> 00:57:25,340
+But basically, you
+try everything else
+
+1341
+00:57:25,340 --> 00:57:27,560
+and show that you're doomed.
+
+1342
+00:57:27,560 --> 00:57:30,480
+So every other possible move.
+
+1343
+00:57:30,480 --> 00:57:36,580
+So one type of bad
+move, so when you
+
+1344
+00:57:36,580 --> 00:57:40,930
+do this thing of putting
+in the right-ward facing L,
+
+1345
+00:57:40,930 --> 00:57:43,160
+remember, there's only
+right-ward facing L's, there's
+
+1346
+00:57:43,160 --> 00:57:45,761
+only n of them, one per ai.
+
+1347
+00:57:45,761 --> 00:57:47,670
+So that's the only
+sort of nice piece.
+
+1348
+00:57:47,670 --> 00:57:50,620
+We call this priming a bucket.
+
+1349
+00:57:50,620 --> 00:57:53,340
+Because now it has a
+nice flat bottom and so,
+
+1350
+00:57:53,340 --> 00:57:56,210
+these pieces fit nicely,
+especially the squares.
+
+1351
+00:57:56,210 --> 00:57:58,500
+So one issue is, what if
+you have an unprimed bucket?
+
+1352
+00:57:58,500 --> 00:58:00,730
+It still has this
+stuff over on the left,
+
+1353
+00:58:00,730 --> 00:58:02,530
+and you try to just
+insert into it.
+
+1354
+00:58:02,530 --> 00:58:05,710
+Because the first ai comes,
+you prime one of the buckets.
+
+1355
+00:58:05,710 --> 00:58:07,220
+What if you switch
+midstream and try
+
+1356
+00:58:07,220 --> 00:58:09,360
+to move the rest into
+an unprimed bucket?
+
+1357
+00:58:09,360 --> 00:58:10,675
+The claim is, you die.
+
+1358
+00:58:10,675 --> 00:58:12,300
+You look at the
+squares, you say, well,
+
+1359
+00:58:12,300 --> 00:58:14,720
+if could go here
+or here or higher.
+
+1360
+00:58:14,720 --> 00:58:16,370
+And they're all bad.
+
+1361
+00:58:16,370 --> 00:58:19,300
+This one means you'll
+never fill this stuff,
+
+1362
+00:58:19,300 --> 00:58:21,400
+so you're basically
+going to run out of area.
+
+1363
+00:58:21,400 --> 00:58:24,160
+Something's going to
+have to go into the sky.
+
+1364
+00:58:24,160 --> 00:58:26,390
+If you put this here, you'll
+never get anything here.
+
+1365
+00:58:26,390 --> 00:58:28,730
+Put that there, you'll
+never get anything here.
+
+1366
+00:58:28,730 --> 00:58:31,610
+The squares won't fit
+anymore and so on.
+
+1367
+00:58:31,610 --> 00:58:34,210
+L's can't go pass
+through that thing.
+
+1368
+00:58:34,210 --> 00:58:34,710
+OK.
+
+1369
+00:58:34,710 --> 00:58:37,060
+Similarly, if you try to
+put a straight away in,
+
+1370
+00:58:37,060 --> 00:58:38,580
+something bad happens.
+
+1371
+00:58:38,580 --> 00:58:41,640
+I don't quite remember
+what the bad thing is here,
+
+1372
+00:58:41,640 --> 00:58:44,460
+but that looks-- right.
+
+1373
+00:58:44,460 --> 00:58:46,910
+Once you cover one, you
+can't cover the other.
+
+1374
+00:58:46,910 --> 00:58:47,410
+Yeah.
+
+1375
+00:58:47,410 --> 00:58:49,285
+It's not even obvious
+you can cover this one,
+
+1376
+00:58:49,285 --> 00:58:52,591
+but I think with some
+clever rotation you can.
+
+1377
+00:58:52,591 --> 00:58:55,660
+Tetris is a little
+weird in that respect.
+
+1378
+00:58:55,660 --> 00:58:58,722
+And then, with the
+left-ward facing L's, you
+
+1379
+00:58:58,722 --> 00:58:59,680
+can try all the things.
+
+1380
+00:58:59,680 --> 00:59:02,110
+And again, you're toast.
+
+1381
+00:59:02,110 --> 00:59:06,140
+So that's one type of bad thing,
+where you switch midstream
+
+1382
+00:59:06,140 --> 00:59:09,032
+from one of-- you start
+putting an ai into a bucket,
+
+1383
+00:59:09,032 --> 00:59:10,990
+and then you try to put
+it into a bucket that's
+
+1384
+00:59:10,990 --> 00:59:13,900
+currently unprimed.
+
+1385
+00:59:13,900 --> 00:59:21,340
+So what's left is, if
+you stick to one bucket,
+
+1386
+00:59:21,340 --> 00:59:24,070
+do you have to play
+like we want to play?
+
+1387
+00:59:24,070 --> 00:59:27,056
+And so, in the
+sequence of pieces,
+
+1388
+00:59:27,056 --> 00:59:28,430
+when you haven't
+placed anything,
+
+1389
+00:59:28,430 --> 00:59:30,888
+well, maybe you try to prime
+it in a different way and then
+
+1390
+00:59:30,888 --> 00:59:32,117
+that opens up something else.
+
+1391
+00:59:32,117 --> 00:59:34,200
+Then you'd have to go
+through that entire analysis
+
+1392
+00:59:34,200 --> 00:59:38,460
+in the last side again for
+however the unprimed bucket
+
+1393
+00:59:38,460 --> 00:59:39,280
+might look.
+
+1394
+00:59:39,280 --> 00:59:42,740
+But it turns out, however
+you do it, you're toast.
+
+1395
+00:59:42,740 --> 00:59:47,660
+You've hidden some square which
+you won't be able to open up.
+
+1396
+00:59:47,660 --> 00:59:49,400
+Unless you do it the right way.
+
+1397
+00:59:49,400 --> 00:59:51,030
+And once you've
+done that piece, you
+
+1398
+00:59:51,030 --> 00:59:53,940
+check that the next piece
+has only one place to go.
+
+1399
+00:59:53,940 --> 00:59:56,880
+Obviously if it's to the
+left, then those are not good.
+
+1400
+00:59:56,880 --> 00:59:58,390
+And then, the next
+piece and so on.
+
+1401
+00:59:58,390 --> 00:59:59,957
+So you check all these things.
+
+1402
+00:59:59,957 --> 01:00:01,790
+And you conclude there's
+really only one way
+
+1403
+01:00:01,790 --> 01:00:03,600
+to play this sequence.
+
+1404
+01:00:03,600 --> 01:00:06,860
+Except for the flexibility of
+when a new ai stream comes,
+
+1405
+01:00:06,860 --> 01:00:08,700
+which bucket do I put it in?
+
+1406
+01:00:08,700 --> 01:00:10,340
+We're assuming here
+infinite dexterity.
+
+1407
+01:00:10,340 --> 01:00:12,350
+So you can slide to
+the left and right,
+
+1408
+01:00:12,350 --> 01:00:16,010
+pick the bucket you want,
+and then let it fall.
+
+1409
+01:00:16,010 --> 01:00:17,100
+Questions?
+
+1410
+01:00:17,100 --> 01:00:17,600
+Yeah.
+
+1411
+01:00:17,600 --> 01:00:19,840
+AUDIENCE: So you set
+up the infrastructure
+
+1412
+01:00:19,840 --> 01:00:23,999
+so that if you leave even
+one space unfilled, then
+
+1413
+01:00:23,999 --> 01:00:26,550
+you're going to die
+before you get the T?
+
+1414
+01:00:26,550 --> 01:00:28,570
+PROFESSOR: Yes.
+
+1415
+01:00:28,570 --> 01:00:34,860
+So the idea is that if you
+leave any square out here,
+
+1416
+01:00:34,860 --> 01:00:38,280
+you will be in trouble.
+
+1417
+01:00:38,280 --> 01:00:42,290
+And there are probably
+many ways to do this.
+
+1418
+01:00:42,290 --> 01:00:44,480
+And I forget exactly
+what we do in the paper.
+
+1419
+01:00:44,480 --> 01:00:49,130
+I think the easy one would be
+that, if you put any square up
+
+1420
+01:00:49,130 --> 01:00:50,960
+here, you die.
+
+1421
+01:00:50,960 --> 01:00:53,550
+So you're right at
+the limit of the game.
+
+1422
+01:00:53,550 --> 01:00:56,130
+If anything doesn't go into
+a bucket, you're in trouble.
+
+1423
+01:00:56,130 --> 01:00:58,029
+And then it's just
+a volume argument.
+
+1424
+01:00:58,029 --> 01:00:59,320
+So you've got all these pieces.
+
+1425
+01:00:59,320 --> 01:01:01,090
+The total volume
+of them is exactly
+
+1426
+01:01:01,090 --> 01:01:03,150
+the sum of the bucket sizes.
+
+1427
+01:01:03,150 --> 01:01:06,140
+So if you leave any
+blank space, that
+
+1428
+01:01:06,140 --> 01:01:08,400
+means that the
+material that was there
+
+1429
+01:01:08,400 --> 01:01:10,150
+is going to somehow
+end up on the top row.
+
+1430
+01:01:10,150 --> 01:01:12,182
+And then you're dead.
+
+1431
+01:01:12,182 --> 01:01:14,140
+I don't remember if that's
+exactly what we did,
+
+1432
+01:01:14,140 --> 01:01:15,960
+but that certainly
+seems to work.
+
+1433
+01:01:15,960 --> 01:01:17,320
+Adam?
+
+1434
+01:01:17,320 --> 01:01:21,630
+AUDIENCE: If you place something
+to high, but at the same time
+
+1435
+01:01:21,630 --> 01:01:23,790
+finish a line, do you die?
+
+1436
+01:01:23,790 --> 01:01:28,040
+And assuming not,
+could we force our way
+
+1437
+01:01:28,040 --> 01:01:31,040
+through the block early?
+
+1438
+01:01:31,040 --> 01:01:32,810
+PROFESSOR: I believe
+in real Tetris,
+
+1439
+01:01:32,810 --> 01:01:35,350
+if you clear a line, that
+happens before you potentially
+
+1440
+01:01:35,350 --> 01:01:36,200
+die.
+
+1441
+01:01:36,200 --> 01:01:37,810
+I don't think that's
+an issue here,
+
+1442
+01:01:37,810 --> 01:01:40,530
+because you won't be
+able to clear anything
+
+1443
+01:01:40,530 --> 01:01:41,810
+until the T piece.
+
+1444
+01:01:41,810 --> 01:01:46,040
+So I think you use the
+argument I said up to here.
+
+1445
+01:01:46,040 --> 01:01:48,290
+There are no other T's
+in the construction.
+
+1446
+01:01:48,290 --> 01:01:51,120
+So any other piece you try
+to put in here, I think,
+
+1447
+01:01:51,120 --> 01:01:53,470
+will get you above this row.
+
+1448
+01:01:53,470 --> 01:01:54,660
+And then you die.
+
+1449
+01:01:54,660 --> 01:01:57,284
+So that's essentially
+unusable space until the T
+
+1450
+01:01:57,284 --> 01:01:58,700
+And then, up until
+that point, you
+
+1451
+01:01:58,700 --> 01:02:00,940
+have to exactly
+fill all the stuff.
+
+1452
+01:02:00,940 --> 01:02:01,850
+Yeah.
+
+1453
+01:02:01,850 --> 01:02:04,420
+AUDIENCE: So if we
+ignore filling the lower
+
+1454
+01:02:04,420 --> 01:02:09,520
+stuff in the main
+gadgets and just
+
+1455
+01:02:09,520 --> 01:02:11,340
+stick something up
+high and just try
+
+1456
+01:02:11,340 --> 01:02:14,170
+to fill just the
+tops of each of them,
+
+1457
+01:02:14,170 --> 01:02:20,186
+so that with and L or something
+we can clear one space of the--
+
+1458
+01:02:20,186 --> 01:02:21,060
+PROFESSOR: Oh, I see.
+
+1459
+01:02:21,060 --> 01:02:23,595
+You could try to put an
+L like that or like this.
+
+1460
+01:02:23,595 --> 01:02:28,630
+
+1461
+01:02:28,630 --> 01:02:31,870
+Yeah, but it if the row
+clears first-- all right.
+
+1462
+01:02:31,870 --> 01:02:35,490
+Now I have to look up
+the rules, I guess.
+
+1463
+01:02:35,490 --> 01:02:35,990
+Yeah.
+
+1464
+01:02:35,990 --> 01:02:38,490
+AUDIENCE: I think it might be
+OK because then there's no way
+
+1465
+01:02:38,490 --> 01:02:40,752
+ever to fill the next part.
+
+1466
+01:02:40,752 --> 01:02:42,460
+PROFESSOR: Let's talk
+about this offline.
+
+1467
+01:02:42,460 --> 01:02:45,482
+I think there's something to
+check here, which hopefully we
+
+1468
+01:02:45,482 --> 01:02:46,190
+did in the paper.
+
+1469
+01:02:46,190 --> 01:02:49,250
+But I've by now forgotten.
+
+1470
+01:02:49,250 --> 01:02:52,100
+Just for fun, if you
+succeed, at the end,
+
+1471
+01:02:52,100 --> 01:02:54,230
+you get all of these
+right-ward facing L's.
+
+1472
+01:02:54,230 --> 01:02:56,114
+Then you get the T.
+Those lines clear
+
+1473
+01:02:56,114 --> 01:02:58,280
+and then you get all the
+I's and it's so satisfying,
+
+1474
+01:02:58,280 --> 01:02:59,220
+all those Tetrises.
+
+1475
+01:02:59,220 --> 01:03:02,040
+
+1476
+01:03:02,040 --> 01:03:06,020
+And then, if you're-- so a
+Tetris is when you get four
+
+1477
+01:03:06,020 --> 01:03:10,550
+rows in one move, which can
+only be done with the straights.
+
+1478
+01:03:10,550 --> 01:03:12,730
+So this is, if you
+survive, then you
+
+1479
+01:03:12,730 --> 01:03:14,990
+clear a whole bunch of columns.
+
+1480
+01:03:14,990 --> 01:03:17,850
+But if you want to make
+it really embarrassing,
+
+1481
+01:03:17,850 --> 01:03:19,620
+then you put this
+entire construction
+
+1482
+01:03:19,620 --> 01:03:23,620
+over a nice big wall,
+big empty space,
+
+1483
+01:03:23,620 --> 01:03:26,390
+and you put a whole bunch
+of pieces at the end,
+
+1484
+01:03:26,390 --> 01:03:30,650
+like let's say L's all of the
+same orientation or something.
+
+1485
+01:03:30,650 --> 01:03:32,250
+Those are really easy to pack.
+
+1486
+01:03:32,250 --> 01:03:34,370
+So if you want to
+maximize your score
+
+1487
+01:03:34,370 --> 01:03:36,970
+and you don't solve
+this thing, then you're
+
+1488
+01:03:36,970 --> 01:03:38,250
+really going to lose bad.
+
+1489
+01:03:38,250 --> 01:03:39,904
+Because if you do
+solve this thing,
+
+1490
+01:03:39,904 --> 01:03:41,320
+you're going to
+get tons of points
+
+1491
+01:03:41,320 --> 01:03:44,110
+by just playing in here forever.
+
+1492
+01:03:44,110 --> 01:03:48,270
+So n to the 1 minus epsilon
+of the game is down here.
+
+1493
+01:03:48,270 --> 01:03:50,970
+And if you can't solve
+this thing at the top,
+
+1494
+01:03:50,970 --> 01:03:53,920
+then you're getting a
+score of basically zero.
+
+1495
+01:03:53,920 --> 01:03:55,680
+I mean, you do
+place a few pieces,
+
+1496
+01:03:55,680 --> 01:03:58,145
+but very small compared to the
+number of things down here,
+
+1497
+01:03:58,145 --> 01:03:59,770
+you place like n to
+the epsilon pieces.
+
+1498
+01:03:59,770 --> 01:04:04,765
+Whereas if you do succeed, then
+you get to place all n pieces.
+
+1499
+01:04:04,765 --> 01:04:08,860
+
+1500
+01:04:08,860 --> 01:04:10,910
+This is just the
+initial configuration,
+
+1501
+01:04:10,910 --> 01:04:13,210
+or which floating square?
+
+1502
+01:04:13,210 --> 01:04:15,230
+This thing?
+
+1503
+01:04:15,230 --> 01:04:16,980
+Oh, this one.
+
+1504
+01:04:16,980 --> 01:04:19,750
+That is possible to
+construct, I believe.
+
+1505
+01:04:19,750 --> 01:04:23,300
+
+1506
+01:04:23,300 --> 01:04:24,200
+This is a challenge.
+
+1507
+01:04:24,200 --> 01:04:27,170
+It's a whole industry of
+making cool initial patterns
+
+1508
+01:04:27,170 --> 01:04:28,670
+by playing a lot of things.
+
+1509
+01:04:28,670 --> 01:04:31,130
+So in fact, there's a paper
+by Hoogeboom and Kosters
+
+1510
+01:04:31,130 --> 01:04:33,250
+that shows that any
+reasonable Tetris
+
+1511
+01:04:33,250 --> 01:04:37,100
+configuration can be constructed
+from an initially empty board.
+
+1512
+01:04:37,100 --> 01:04:44,470
+And so, what we get is
+to approximate Tetris,
+
+1513
+01:04:44,470 --> 01:04:55,500
+let's say the number of pieces
+that you play, less than n
+
+1514
+01:04:55,500 --> 01:05:04,840
+to the 1 minus epsilon
+factor is NP-hard.
+
+1515
+01:05:04,840 --> 01:05:07,810
+That's what we just
+showed or sketched.
+
+1516
+01:05:07,810 --> 01:05:10,470
+So this is an example of an
+inapproximability result.
+
+1517
+01:05:10,470 --> 01:05:11,720
+This is a relatively easy one.
+
+1518
+01:05:11,720 --> 01:05:14,037
+We just need to assume
+P does not equal NP.
+
+1519
+01:05:14,037 --> 01:05:15,870
+And we get that you
+really can't approximate
+
+1520
+01:05:15,870 --> 01:05:17,150
+within a very good factor.
+
+1521
+01:05:17,150 --> 01:05:20,170
+It's sort of all or
+nothing in this game.
+
+1522
+01:05:20,170 --> 01:05:23,040
+Later in the class, we'll
+see much more subtle
+
+1523
+01:05:23,040 --> 01:05:24,145
+inapproximability results.
+
+1524
+01:05:24,145 --> 01:05:27,470
+
+1525
+01:05:27,470 --> 01:05:28,180
+Other questions?
+
+1526
+01:05:28,180 --> 01:05:31,320
+Hopefully no more issues.
+
+1527
+01:05:31,320 --> 01:05:34,110
+There are a lot of other
+open problems about Tetris.
+
+1528
+01:05:34,110 --> 01:05:35,820
+You mentioned construction.
+
+1529
+01:05:35,820 --> 01:05:37,740
+What if the board
+is initially empty?
+
+1530
+01:05:37,740 --> 01:05:40,091
+Seems like quite a challenging
+problem, constant number
+
+1531
+01:05:40,091 --> 01:05:41,090
+of rows or columns here.
+
+1532
+01:05:41,090 --> 01:05:43,540
+We assume that both dimensions
+are arbitrarily large,
+
+1533
+01:05:43,540 --> 01:05:44,980
+it's part of the input.
+
+1534
+01:05:44,980 --> 01:05:48,410
+But these seem very annoying.
+
+1535
+01:05:48,410 --> 01:05:49,500
+Interesting.
+
+1536
+01:05:49,500 --> 01:05:52,660
+If you just have straights, I
+imagine Tetris is pretty easy.
+
+1537
+01:05:52,660 --> 01:05:54,940
+So how many of the
+Tetris pieces do you
+
+1538
+01:05:54,940 --> 01:05:57,870
+need to get a harness
+proof or are there certain
+
+1539
+01:05:57,870 --> 01:05:59,970
+small combinations
+that are easy?
+
+1540
+01:05:59,970 --> 01:06:02,012
+We need this ability to
+slide at the last minute.
+
+1541
+01:06:02,012 --> 01:06:04,220
+Be nice if you could just
+always be hitting space bar
+
+1542
+01:06:04,220 --> 01:06:06,346
+and always drop your pieces
+from positive infinity.
+
+1543
+01:06:06,346 --> 01:06:08,428
+We don't know whether that
+problem is NP-complete.
+
+1544
+01:06:08,428 --> 01:06:09,960
+That might be the
+most tractable,
+
+1545
+01:06:09,960 --> 01:06:12,360
+but it's proof would have
+to be a little different.
+
+1546
+01:06:12,360 --> 01:06:14,699
+Two-player Tetris,
+online Tetris where
+
+1547
+01:06:14,699 --> 01:06:16,240
+you don't know the
+pieces in advance,
+
+1548
+01:06:16,240 --> 01:06:19,540
+that's something we might
+get to later in the class.
+
+1549
+01:06:19,540 --> 01:06:22,360
+But these are all open.
+
+1550
+01:06:22,360 --> 01:06:24,660
+OK.
+
+1551
+01:06:24,660 --> 01:06:27,670
+So next topic is
+in graph theory.
+
+1552
+01:06:27,670 --> 01:06:30,910
+So suppose you have a
+graph, vertices and edges,
+
+1553
+01:06:30,910 --> 01:06:33,990
+you want to draw it in the
+plane of no two vertices
+
+1554
+01:06:33,990 --> 01:06:35,430
+touching, no vertex on an edge.
+
+1555
+01:06:35,430 --> 01:06:37,090
+That's a regular
+notion I'm drawing,
+
+1556
+01:06:37,090 --> 01:06:38,550
+but edges are allowed to cross.
+
+1557
+01:06:38,550 --> 01:06:40,420
+If you're lucky,
+graph is planar.
+
+1558
+01:06:40,420 --> 01:06:41,510
+Don't need any crossings.
+
+1559
+01:06:41,510 --> 01:06:43,830
+There's this notion of
+1-planarity, which goes back
+
+1560
+01:06:43,830 --> 01:06:46,080
+to the '80s, where
+every edge can
+
+1561
+01:06:46,080 --> 01:06:49,000
+cross at most one other edge.
+
+1562
+01:06:49,000 --> 01:06:51,050
+So this is an example
+of a one-planar drawing.
+
+1563
+01:06:51,050 --> 01:06:54,045
+Some edges don't cross
+anything, but any edge that
+
+1564
+01:06:54,045 --> 01:06:56,620
+has a crossing only has one.
+
+1565
+01:06:56,620 --> 01:06:57,120
+OK?
+
+1566
+01:06:57,120 --> 01:07:01,816
+So this is NP-complete.
+
+1567
+01:07:01,816 --> 01:07:05,030
+On a notion of strong
+here, there's no numbers.
+
+1568
+01:07:05,030 --> 01:07:09,540
+This is from 2007 and a
+reduction from three partition.
+
+1569
+01:07:09,540 --> 01:07:14,200
+So here are two gadgets.
+
+1570
+01:07:14,200 --> 01:07:16,450
+This is a double--
+well, OK, we'll
+
+1571
+01:07:16,450 --> 01:07:19,440
+get to this one in a moment.
+
+1572
+01:07:19,440 --> 01:07:21,390
+Here's a gadget which
+is the complete graph
+
+1573
+01:07:21,390 --> 01:07:23,500
+on six vertices, K6.
+
+1574
+01:07:23,500 --> 01:07:27,410
+And the idea is that we're
+going to plug this in instead
+
+1575
+01:07:27,410 --> 01:07:29,180
+of a single, bold edge.
+
+1576
+01:07:29,180 --> 01:07:31,870
+So wherever there's a bold
+edge here, what it really means
+
+1577
+01:07:31,870 --> 01:07:33,260
+is this gadget.
+
+1578
+01:07:33,260 --> 01:07:33,760
+OK?
+
+1579
+01:07:33,760 --> 01:07:35,950
+This is meant to be
+an uncrossable edge,
+
+1580
+01:07:35,950 --> 01:07:38,570
+because usually an edge can
+take up to one crossing.
+
+1581
+01:07:38,570 --> 01:07:40,820
+What we're going to replace
+this edge with this thing,
+
+1582
+01:07:40,820 --> 01:07:42,700
+which has a bunch
+of crossings in it,
+
+1583
+01:07:42,700 --> 01:07:43,800
+no matter how you draw it.
+
+1584
+01:07:43,800 --> 01:07:45,220
+K6 is very symmetric,
+so it's not
+
+1585
+01:07:45,220 --> 01:07:47,810
+too hard to argue about
+the different drawings.
+
+1586
+01:07:47,810 --> 01:07:50,030
+We see a crossing
+there, a crossing there,
+
+1587
+01:07:50,030 --> 01:07:51,560
+and a crossing there.
+
+1588
+01:07:51,560 --> 01:07:54,240
+And in general, if you look
+at any path from this vertex
+
+1589
+01:07:54,240 --> 01:07:58,039
+to this vertex, you
+visit a crossing.
+
+1590
+01:07:58,039 --> 01:08:03,209
+There's no way to get--
+wait, what about this one?
+
+1591
+01:08:03,209 --> 01:08:04,020
+What do I mean?
+
+1592
+01:08:04,020 --> 01:08:07,680
+If I attempt to draw
+an edge through here,
+
+1593
+01:08:07,680 --> 01:08:09,999
+I will hit an edge that
+has a crossing on it.
+
+1594
+01:08:09,999 --> 01:08:11,169
+That's what I want.
+
+1595
+01:08:11,169 --> 01:08:13,520
+So in other words, it's
+not possible to draw
+
+1596
+01:08:13,520 --> 01:08:15,910
+an edge across here
+and still be 1-planer
+
+1597
+01:08:15,910 --> 01:08:18,180
+So this effectively becomes
+an uncrossable edge.
+
+1598
+01:08:18,180 --> 01:08:19,050
+This is notation.
+
+1599
+01:08:19,050 --> 01:08:20,430
+This is super useful.
+
+1600
+01:08:20,430 --> 01:08:22,520
+When you have a
+complicated construction,
+
+1601
+01:08:22,520 --> 01:08:24,340
+if you use the
+right notation, it's
+
+1602
+01:08:24,340 --> 01:08:25,999
+not necessarily so complicated.
+
+1603
+01:08:25,999 --> 01:08:28,230
+If we drew this everywhere
+in these pictures,
+
+1604
+01:08:28,230 --> 01:08:30,329
+it would be really hard
+to see what's going on.
+
+1605
+01:08:30,329 --> 01:08:34,660
+So we use this visual idea
+that this is a symbol for that.
+
+1606
+01:08:34,660 --> 01:08:36,660
+And then we can draw
+really simple pictures,
+
+1607
+01:08:36,660 --> 01:08:37,938
+relatively simple pictures.
+
+1608
+01:08:37,938 --> 01:10:28,130
+
+1609
+01:10:28,130 --> 01:10:33,909
+the thing to the end of
+the thing over there.
+
+1610
+01:10:33,909 --> 01:10:35,450
+I mean, this looks
+a little bit weird
+
+1611
+01:10:35,450 --> 01:10:38,479
+like, OK, how do the ai's choose
+which side they're on here?
+
+1612
+01:10:38,479 --> 01:10:40,520
+Well, they just choose
+whichever side they're on.
+
+1613
+01:10:40,520 --> 01:10:43,510
+If they're in the
+bottom chunk over here,
+
+1614
+01:10:43,510 --> 01:10:45,940
+then they'll just connect to
+the bottom chunk over here.
+
+1615
+01:10:45,940 --> 01:10:47,523
+If they're in the
+top chunk over here,
+
+1616
+01:10:47,523 --> 01:10:50,440
+they'll connect to the
+corresponding chunk over there.
+
+1617
+01:10:50,440 --> 01:10:52,930
+This is basically
+to force the ai's
+
+1618
+01:10:52,930 --> 01:10:56,710
+to start on the outside
+of this construction.
+
+1619
+01:10:56,710 --> 01:10:59,544
+So there's a lot of, again,
+there's a lot of cases
+
+1620
+01:10:59,544 --> 01:11:01,960
+here to worry about, about
+other ways you might draw this.
+
+1621
+01:11:01,960 --> 01:11:03,810
+Maybe you'd take
+this entire picture
+
+1622
+01:11:03,810 --> 01:11:05,820
+and stuff it into
+this little triangle.
+
+1623
+01:11:05,820 --> 01:11:09,360
+They all end up with lots of
+crossings on a single edge.
+
+1624
+01:11:09,360 --> 01:11:11,390
+If you do that,
+then you have to go,
+
+1625
+01:11:11,390 --> 01:11:15,350
+you have to cross this edge
+many times, for example.
+
+1626
+01:11:15,350 --> 01:11:18,090
+I think we convinced ourselves
+that with a single wheel,
+
+1627
+01:11:18,090 --> 01:11:23,407
+without this extra thing,
+the construction, I think,
+
+1628
+01:11:23,407 --> 01:11:25,740
+we are not certain about
+whether the construction works.
+
+1629
+01:11:25,740 --> 01:11:28,054
+There's definitely
+more cases to consider.
+
+1630
+01:11:28,054 --> 01:11:29,720
+So at the very least,
+it simplify things
+
+1631
+01:11:29,720 --> 01:11:31,220
+by adding a second wheel.
+
+1632
+01:11:31,220 --> 01:11:34,140
+It would also mean you'd have
+to have multiple edges here
+
+1633
+01:11:34,140 --> 01:11:35,430
+between the same two vertices.
+
+1634
+01:11:35,430 --> 01:11:38,060
+So maybe that's why they
+did the double wheel,
+
+1635
+01:11:38,060 --> 01:11:40,230
+so that you have these
+paths of length 2 connecting
+
+1636
+01:11:40,230 --> 01:11:44,120
+the same thing instead
+of the exact same edge.
+
+1637
+01:11:44,120 --> 01:11:47,520
+Anyway, so again,
+you have to proof.
+
+1638
+01:11:47,520 --> 01:11:49,410
+This is essentially
+only one planar bedding
+
+1639
+01:11:49,410 --> 01:11:52,380
+for each of these wheels.
+
+1640
+01:11:52,380 --> 01:11:54,760
+And for these things to
+connect them together.
+
+1641
+01:11:54,760 --> 01:11:56,970
+And so, the ai's have the
+freedom of which bucket
+
+1642
+01:11:56,970 --> 01:11:57,950
+they go into.
+
+1643
+01:11:57,950 --> 01:12:01,630
+But because each of these
+edges can only be crossed once,
+
+1644
+01:12:01,630 --> 01:12:05,910
+each unit of each
+ai-- only one unit
+
+1645
+01:12:05,910 --> 01:12:07,940
+can occupy each of these cells.
+
+1646
+01:12:07,940 --> 01:12:10,300
+So you get three partition.
+
+1647
+01:12:10,300 --> 01:12:11,520
+Cool?
+
+1648
+01:12:11,520 --> 01:12:15,680
+Yet another way to
+represent numbers in unary.
+
+1649
+01:12:15,680 --> 01:12:17,484
+Question?
+
+1650
+01:12:17,484 --> 01:12:20,760
+AUDIENCE: I don't understand
+how-- what those numbers are.
+
+1651
+01:12:20,760 --> 01:12:25,140
+PROFESSOR: So OK, so these are
+the ai's-- A1 is 2, A2 is 3,
+
+1652
+01:12:25,140 --> 01:12:29,140
+A3 is 3, A4 is 3, A5
+is 4, and A6 is 5.
+
+1653
+01:12:29,140 --> 01:12:34,050
+And they are represented
+by, this thing is a 2,
+
+1654
+01:12:34,050 --> 01:12:37,920
+this thing is a 3, this thing
+is 3, this thing is a 4,
+
+1655
+01:12:37,920 --> 01:12:41,260
+and this is a 5.
+
+1656
+01:12:41,260 --> 01:12:43,610
+And that should be
+in the same sequence.
+
+1657
+01:12:43,610 --> 01:12:44,610
+I think I missed this 3.
+
+1658
+01:12:44,610 --> 01:12:47,410
+
+1659
+01:12:47,410 --> 01:12:49,920
+Good.
+
+1660
+01:12:49,920 --> 01:12:51,290
+OK, that was 1-planarity.
+
+1661
+01:12:51,290 --> 01:12:56,030
+
+1662
+01:12:56,030 --> 01:12:57,990
+Four minutes-- which
+proofs to cover?
+
+1663
+01:12:57,990 --> 01:13:00,770
+
+1664
+01:13:00,770 --> 01:13:04,710
+I will wave my
+hands at this one.
+
+1665
+01:13:04,710 --> 01:13:07,790
+This is a chain of blocks
+with hinges on them.
+
+1666
+01:13:07,790 --> 01:13:08,890
+And it has colors on it.
+
+1667
+01:13:08,890 --> 01:13:12,660
+Your goal is to form a
+particular pattern of colors.
+
+1668
+01:13:12,660 --> 01:13:15,860
+I find it interesting,
+this is our hardness proof.
+
+1669
+01:13:15,860 --> 01:13:18,395
+It's interesting in that
+it's-- a lot of the proofs
+
+1670
+01:13:18,395 --> 01:13:20,730
+you've seen, it's all
+about making the ai's being
+
+1671
+01:13:20,730 --> 01:13:21,890
+a straight line.
+
+1672
+01:13:21,890 --> 01:13:23,610
+Here, that's not a big deal.
+
+1673
+01:13:23,610 --> 01:13:28,157
+We've sort of drawn out--
+this is, again, a kind
+
+1674
+01:13:28,157 --> 01:13:29,240
+of universal construction.
+
+1675
+01:13:29,240 --> 01:13:30,970
+You could build any
+polyomino with it.
+
+1676
+01:13:30,970 --> 01:13:32,610
+It's all about the colors.
+
+1677
+01:13:32,610 --> 01:13:34,100
+And so, the idea
+is that the ai's
+
+1678
+01:13:34,100 --> 01:13:36,260
+are represented by how
+long of a blue segment
+
+1679
+01:13:36,260 --> 01:13:39,850
+you have here in the
+overall chain of pieces.
+
+1680
+01:13:39,850 --> 01:13:42,190
+And these are the buckets.
+
+1681
+01:13:42,190 --> 01:13:44,460
+And so, you just
+come in at some point
+
+1682
+01:13:44,460 --> 01:13:48,045
+and fill in however big
+your ai is and then leave.
+
+1683
+01:13:48,045 --> 01:13:50,170
+And there's just enough
+blue to cover all the blue.
+
+1684
+01:13:50,170 --> 01:13:52,139
+So you'd better not waste it.
+
+1685
+01:13:52,139 --> 01:13:54,430
+But all the other stuff, you
+have a lot of flexibility.
+
+1686
+01:13:54,430 --> 01:13:58,710
+So it's all about just kind of
+filling these amorphous blobs
+
+1687
+01:13:58,710 --> 01:14:01,510
+that have exactly the right
+area to fill these blue regions.
+
+1688
+01:14:01,510 --> 01:14:03,600
+And there's three times
+you're allowed to visit.
+
+1689
+01:14:03,600 --> 01:14:05,058
+And that gives you
+three partition.
+
+1690
+01:14:05,058 --> 01:14:06,447
+So I want-- it's
+hard, especially
+
+1691
+01:14:06,447 --> 01:14:08,280
+without a physical
+model, to understand what
+
+1692
+01:14:08,280 --> 01:14:09,404
+the rules are at this game.
+
+1693
+01:14:09,404 --> 01:14:11,132
+But it gives you some
+idea of another way
+
+1694
+01:14:11,132 --> 01:14:12,340
+to represent three partition.
+
+1695
+01:14:12,340 --> 01:14:15,400
+
+1696
+01:14:15,400 --> 01:14:18,620
+Next, you may have seen
+this kind of object.
+
+1697
+01:14:18,620 --> 01:14:22,510
+It is called a
+carpenter's ruler or rule.
+
+1698
+01:14:22,510 --> 01:14:23,650
+It's got hinges.
+
+1699
+01:14:23,650 --> 01:14:24,960
+It's got rigid bars.
+
+1700
+01:14:24,960 --> 01:14:27,000
+And usually, when you're
+not using it-- I mean,
+
+1701
+01:14:27,000 --> 01:14:29,340
+you can measure lengths,
+that's the ruler part.
+
+1702
+01:14:29,340 --> 01:14:31,050
+And when you're not
+using it, it folds
+
+1703
+01:14:31,050 --> 01:14:32,740
+into this nice, compact form.
+
+1704
+01:14:32,740 --> 01:14:33,400
+It's great.
+
+1705
+01:14:33,400 --> 01:14:35,340
+And everyone used these
+until the invention
+
+1706
+01:14:35,340 --> 01:14:36,670
+of the retractable one.
+
+1707
+01:14:36,670 --> 01:14:39,880
+Though they still use
+these a lot in Europe.
+
+1708
+01:14:39,880 --> 01:14:42,270
+So has unit length in this case.
+
+1709
+01:14:42,270 --> 01:14:46,200
+But what if you have a really
+annoying carpenter's rule
+
+1710
+01:14:46,200 --> 01:14:47,810
+and the lengths
+are not all equal?
+
+1711
+01:14:47,810 --> 01:14:50,610
+
+1712
+01:14:50,610 --> 01:14:53,480
+And you have this nice box which
+is unit length or, you know,
+
+1713
+01:14:53,480 --> 01:14:54,350
+some length.
+
+1714
+01:14:54,350 --> 01:14:59,100
+You'd like to fit your ruler
+into that one-dimensional box.
+
+1715
+01:14:59,100 --> 01:15:00,980
+Let's ignore the thickness here.
+
+1716
+01:15:00,980 --> 01:15:01,890
+OK?
+
+1717
+01:15:01,890 --> 01:15:05,410
+Then this problem is hard.
+
+1718
+01:15:05,410 --> 01:15:06,900
+It is weakly NP-hard.
+
+1719
+01:15:06,900 --> 01:15:09,460
+You can solve it in
+pseudo-polynomial time.
+
+1720
+01:15:09,460 --> 01:15:12,440
+So this is what-- this is like
+one of the very few problems
+
+1721
+01:15:12,440 --> 01:15:14,120
+we'll see of this type.
+
+1722
+01:15:14,120 --> 01:15:15,340
+And this is the proof.
+
+1723
+01:15:15,340 --> 01:15:19,580
+It's one of the simplest proofs
+from reduction from partition,
+
+1724
+01:15:19,580 --> 01:15:22,721
+which is two partition, which
+is divide your numbers into two
+
+1725
+01:15:22,721 --> 01:15:23,220
+groups.
+
+1726
+01:15:23,220 --> 01:15:24,200
+And I apologize here.
+
+1727
+01:15:24,200 --> 01:15:27,370
+In this book of ours,
+we use x instead of a.
+
+1728
+01:15:27,370 --> 01:15:29,130
+So those are ai's.
+
+1729
+01:15:29,130 --> 01:15:30,240
+So you're given some ai's.
+
+1730
+01:15:30,240 --> 01:15:32,510
+And the idea is,
+well, if I would
+
+1731
+01:15:32,510 --> 01:15:35,900
+like to partition the ai's
+into two groups of equal sums,
+
+1732
+01:15:35,900 --> 01:15:38,210
+like so, that's
+the same as saying,
+
+1733
+01:15:38,210 --> 01:15:41,630
+well, some of the ai's, or the
+xi's, are going to go left.
+
+1734
+01:15:41,630 --> 01:15:43,180
+Some of them are
+going to go right.
+
+1735
+01:15:43,180 --> 01:15:46,430
+And whether I fold something--
+I could either leave it
+
+1736
+01:15:46,430 --> 01:15:49,379
+at 180 degrees or I could
+fold it to 0 degrees, that's
+
+1737
+01:15:49,379 --> 01:15:50,920
+sort of my binary
+choice if I'm going
+
+1738
+01:15:50,920 --> 01:15:53,360
+to go into one-dimensional
+box-- if I fold it,
+
+1739
+01:15:53,360 --> 01:15:54,640
+I change direction.
+
+1740
+01:15:54,640 --> 01:15:56,820
+If I don't fold it, I stay
+in the same direction.
+
+1741
+01:15:56,820 --> 01:16:00,900
+But what that really means is,
+by something running summation
+
+1742
+01:16:00,900 --> 01:16:04,650
+thing, I can choose for each ai
+whether it goes left or right.
+
+1743
+01:16:04,650 --> 01:16:05,150
+OK?
+
+1744
+01:16:05,150 --> 01:16:07,690
+And then, this is
+gonna-- if this happens,
+
+1745
+01:16:07,690 --> 01:16:11,040
+what it means is my starting
+point is equal to my ending
+
+1746
+01:16:11,040 --> 01:16:11,860
+point.
+
+1747
+01:16:11,860 --> 01:16:12,950
+Now, could be in between.
+
+1748
+01:16:12,950 --> 01:16:15,020
+I go left and right and
+who knows what happens.
+
+1749
+01:16:15,020 --> 01:16:19,070
+But the point is, if they sum up
+to the lefts equal the rights,
+
+1750
+01:16:19,070 --> 01:16:21,930
+then my starting point will
+be horizontally aligned
+
+1751
+01:16:21,930 --> 01:16:23,850
+with my ending point.
+
+1752
+01:16:23,850 --> 01:16:25,620
+So that's not the problem.
+
+1753
+01:16:25,620 --> 01:16:28,490
+The problem is to fit into
+a box of a given size.
+
+1754
+01:16:28,490 --> 01:16:30,570
+So this says nothing
+about the box.
+
+1755
+01:16:30,570 --> 01:16:32,740
+But, if you do this very
+simple construction,
+
+1756
+01:16:32,740 --> 01:16:35,640
+which is add a super-long
+length and then add
+
+1757
+01:16:35,640 --> 01:16:37,750
+half of that at the beginning.
+
+1758
+01:16:37,750 --> 01:16:39,410
+And then, at the
+end, you add half
+
+1759
+01:16:39,410 --> 01:16:43,050
+of the long length and
+then the super-long length,
+
+1760
+01:16:43,050 --> 01:16:45,460
+and your goal is to fit
+it in a box of equal
+
+1761
+01:16:45,460 --> 01:16:48,560
+to the super-long length, that
+will be possible if and only
+
+1762
+01:16:48,560 --> 01:16:49,740
+if these are aligned.
+
+1763
+01:16:49,740 --> 01:16:53,932
+If they're not aligned, then
+if you go halfway left or right
+
+1764
+01:16:53,932 --> 01:16:55,390
+and then add the
+super-long length,
+
+1765
+01:16:55,390 --> 01:16:56,880
+if it's not aligned
+with this one,
+
+1766
+01:16:56,880 --> 01:16:58,379
+then you'll be a
+little bit too big.
+
+1767
+01:16:58,379 --> 01:16:59,650
+And you won't fit in the box.
+
+1768
+01:16:59,650 --> 01:17:00,150
+OK?
+
+1769
+01:17:00,150 --> 01:17:03,280
+So that represents
+two partition.
+
+1770
+01:17:03,280 --> 01:17:04,710
+Cool.
+
+1771
+01:17:04,710 --> 01:17:08,480
+20 seconds, one more proof.
+
+1772
+01:17:08,480 --> 01:17:10,070
+So here's another problem.
+
+1773
+01:17:10,070 --> 01:17:12,425
+Map folding.
+
+1774
+01:17:12,425 --> 01:17:13,800
+You've probably
+done this before.
+
+1775
+01:17:13,800 --> 01:17:17,604
+Easiest way to refold a
+roadmap is differently.
+
+1776
+01:17:17,604 --> 01:17:19,270
+Generally, what we're
+interested in here
+
+1777
+01:17:19,270 --> 01:17:20,540
+is just very simple folds.
+
+1778
+01:17:20,540 --> 01:17:23,370
+Fold along one line, then fold
+along another line and so on.
+
+1779
+01:17:23,370 --> 01:17:24,070
+OK?
+
+1780
+01:17:24,070 --> 01:17:27,250
+So, this is NP-hard.
+
+1781
+01:17:27,250 --> 01:17:28,780
+If I give you a
+crease pattern, this
+
+1782
+01:17:28,780 --> 01:17:32,820
+doesn't look much like a map,
+but we can talk about that.
+
+1783
+01:17:32,820 --> 01:17:37,250
+If I give you a map, a polygon,
+and some creases on it.
+
+1784
+01:17:37,250 --> 01:17:39,870
+And I want to fold
+all of these creases,
+
+1785
+01:17:39,870 --> 01:17:43,950
+this is possible if and only
+if two partition is solvable.
+
+1786
+01:17:43,950 --> 01:17:46,350
+Notice these lengths--
+here we used a's.
+
+1787
+01:17:46,350 --> 01:17:47,810
+That's smart of us.
+
+1788
+01:17:47,810 --> 01:17:50,800
+So these are the ai's
+down the distances
+
+1789
+01:17:50,800 --> 01:17:52,730
+between these creases,
+consecutive creases.
+
+1790
+01:17:52,730 --> 01:17:56,180
+And again, the idea is, well,
+I can fold each one or not.
+
+1791
+01:17:56,180 --> 01:17:58,940
+And just like the carpenters
+rule, I can fold or not.
+
+1792
+01:17:58,940 --> 01:18:03,160
+And if I am clever and I do
+it with the right choice,
+
+1793
+01:18:03,160 --> 01:18:04,980
+then this endpoint.
+
+1794
+01:18:04,980 --> 01:18:08,660
+Will be vertically aligned,
+have the same y-coordinate
+
+1795
+01:18:08,660 --> 01:18:10,980
+as this endpoint.
+
+1796
+01:18:10,980 --> 01:18:13,647
+And if I do that--
+and again, we've
+
+1797
+01:18:13,647 --> 01:18:15,480
+added half of the
+super-long length and then
+
+1798
+01:18:15,480 --> 01:18:16,850
+the super-long length here.
+
+1799
+01:18:16,850 --> 01:18:19,000
+There's also the half
+of the super-long length
+
+1800
+01:18:19,000 --> 01:18:20,830
+and the super-long length there.
+
+1801
+01:18:20,830 --> 01:18:23,010
+And now I can fold
+these two folds.
+
+1802
+01:18:23,010 --> 01:18:25,420
+So when I fold one,
+it's going to go here.
+
+1803
+01:18:25,420 --> 01:18:29,810
+And it won't hit anything if and
+only if I solve two partition.
+
+1804
+01:18:29,810 --> 01:18:30,310
+Right?
+
+1805
+01:18:30,310 --> 01:18:33,880
+Again, this is the box that I'm
+trying to fit everything into
+
+1806
+01:18:33,880 --> 01:18:35,739
+and this is the
+thing that I'm trying
+
+1807
+01:18:35,739 --> 01:18:38,030
+to shift up and down to be
+perfectly aligned with that.
+
+1808
+01:18:38,030 --> 01:18:39,620
+If I can perfectly
+aligned it, then I
+
+1809
+01:18:39,620 --> 01:18:44,710
+fold this, miss, then fold
+this and it's out again.
+
+1810
+01:18:44,710 --> 01:18:46,670
+And then I can finish
+these other creases
+
+1811
+01:18:46,670 --> 01:18:48,350
+that I haven't folded yet.
+
+1812
+01:18:48,350 --> 01:18:48,850
+OK?
+
+1813
+01:18:48,850 --> 01:18:52,215
+So it's all about when do
+you execute these two folds?
+
+1814
+01:18:52,215 --> 01:18:55,480
+And so I'm going to do some
+of the horizontal folds
+
+1815
+01:18:55,480 --> 01:18:57,020
+so that things fit nicely.
+
+1816
+01:18:57,020 --> 01:18:58,930
+Then I'll do the
+two vertical folds.
+
+1817
+01:18:58,930 --> 01:19:01,080
+Then I'll do the rest
+of the horizontal folds.
+
+1818
+01:19:01,080 --> 01:19:04,250
+And that will work if and only
+if two partition is solvable.
+
+1819
+01:19:04,250 --> 01:19:06,410
+Now, this may look
+like a weird map,
+
+1820
+01:19:06,410 --> 01:19:12,733
+but it turns out if you have a
+regular rectangular map-- this
+
+1821
+01:19:12,733 --> 01:19:15,470
+is not maybe a regular
+one, but-- and you
+
+1822
+01:19:15,470 --> 01:19:20,850
+have some diagonal
+folds, 45 degree, then
+
+1823
+01:19:20,850 --> 01:19:33,710
+that will basically force you
+to fold something like this.
+
+1824
+01:19:33,710 --> 01:19:37,180
+
+1825
+01:19:37,180 --> 01:19:38,690
+Oops, I did it again.
+
+1826
+01:19:38,690 --> 01:19:43,100
+
+1827
+01:19:43,100 --> 01:19:48,010
+One, two, and then here.
+
+1828
+01:19:48,010 --> 01:19:49,750
+So you can put in
+diagonal faults
+
+1829
+01:19:49,750 --> 01:19:52,620
+to force you to fold into
+this initial structure.
+
+1830
+01:19:52,620 --> 01:19:54,810
+And then add folds
+on top of that.
+
+1831
+01:19:54,810 --> 01:19:56,911
+So this is like
+composing two gadgets.
+
+1832
+01:19:56,911 --> 01:19:58,660
+Then you add horizontal
+and vertical folds
+
+1833
+01:19:58,660 --> 01:20:00,060
+just like that picture.
+
+1834
+01:20:00,060 --> 01:20:02,000
+And then you'll have
+a rectangular map
+
+1835
+01:20:02,000 --> 01:20:04,660
+with horizontal, vertical,
+and diagonal creases
+
+1836
+01:20:04,660 --> 01:20:07,270
+that you can fold all the
+creases by simple folds if
+
+1837
+01:20:07,270 --> 01:20:09,820
+and only if two
+partition is solvable.
+
+1838
+01:20:09,820 --> 01:20:12,530
+Open problem, is this
+strongly NP-hard?
+
+1839
+01:20:12,530 --> 01:20:13,375
+We don't know.
+
+1840
+01:20:13,375 --> 01:20:15,000
+Is there a
+pseudo-polynomial algorithm?
+
+1841
+01:20:15,000 --> 01:20:17,570
+Obviously we don't know.
+
+1842
+01:20:17,570 --> 01:20:19,680
+It's quite tantalizing.
+
+1843
+01:20:19,680 --> 01:20:22,360
+But this is basically why maps
+don't have diagonal folds.
+
+1844
+01:20:22,360 --> 01:20:25,060
+
+1845
+01:20:25,060 --> 01:20:27,730
+And that's it for today.
+

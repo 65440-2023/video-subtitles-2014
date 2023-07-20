@@ -1,0 +1,8251 @@
+1
+0-1:59:36,500 --> 0-1:59:36,580
+
+2
+0-1:59:36,580 --> 0-1:59:38,930
+The following content is
+provided under a Creative
+
+3
+0-1:59:38,930 --> 0-1:59:40,320
+Commons license.
+
+4
+0-1:59:40,320 --> 0-1:59:42,560
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:42,560 --> 0-1:59:46,650
+continue to offer high-quality
+educational resources for free.
+
+6
+0-1:59:46,650 --> 0-1:59:49,190
+To make a donation or to
+view additional materials
+
+7
+0-1:59:49,190 --> 0-1:59:53,041
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:53,041 --> 0-1:59:53,666
+at ocw.mit.edu.
+
+9
+0-1:59:53,666 --> 00:00:02,365
+
+10
+00:00:02,365 --> 00:00:03,240
+PROFESSOR: All right.
+
+11
+00:00:03,240 --> 00:00:07,744
+Today we go back to fun with
+hardness proofs in games.
+
+12
+00:00:07,744 --> 00:00:10,160
+It's been a while since we've
+done many games and puzzles.
+
+13
+00:00:10,160 --> 00:00:12,210
+So today we're
+going to talk mostly
+
+14
+00:00:12,210 --> 00:00:14,980
+about this one paper, which
+has a ton of results in it,
+
+15
+00:00:14,980 --> 00:00:18,090
+by Giovanni Viglietta.
+
+16
+00:00:18,090 --> 00:00:21,500
+"Gaming's a hard job, but
+someone has to do it!"
+
+17
+00:00:21,500 --> 00:00:23,680
+What's particularly
+cool about this paper
+
+18
+00:00:23,680 --> 00:00:25,740
+is it shows a bunch
+of metatheorems,
+
+19
+00:00:25,740 --> 00:00:28,360
+which you can think of as
+general techniques for proving
+
+20
+00:00:28,360 --> 00:00:29,100
+hardness.
+
+21
+00:00:29,100 --> 00:00:32,960
+And I'm going to talk
+about essentially
+
+22
+00:00:32,960 --> 00:00:34,960
+two main metatheorems,
+although there'll
+
+23
+00:00:34,960 --> 00:00:37,610
+be a few different versions--
+one for NP-hardness
+
+24
+00:00:37,610 --> 00:00:39,140
+and one for PSPACE-hardness.
+
+25
+00:00:39,140 --> 00:00:41,430
+And this'll be our first
+real PSPACE-hardness
+
+26
+00:00:41,430 --> 00:00:44,400
+proof other than lecture one.
+
+27
+00:00:44,400 --> 00:00:46,860
+And the proofs here
+aren't very hard,
+
+28
+00:00:46,860 --> 00:00:49,470
+and the fun part is applying
+them to various games.
+
+29
+00:00:49,470 --> 00:00:51,615
+And they apply to a
+lot of different games.
+
+30
+00:00:51,615 --> 00:00:54,620
+
+31
+00:00:54,620 --> 00:00:59,515
+So metatheorem we're using
+here in a somewhat vague sense.
+
+32
+00:00:59,515 --> 00:01:01,730
+This won't be a formal
+theorem, because it's
+
+33
+00:01:01,730 --> 00:01:03,240
+hard to state all
+of the assumptions
+
+34
+00:01:03,240 --> 00:01:04,690
+you need about your game.
+
+35
+00:01:04,690 --> 00:01:08,160
+But it's sort of-- think of
+it as a roughly true theorem.
+
+36
+00:01:08,160 --> 00:01:10,410
+We're not going to state all
+the assumptions you need.
+
+37
+00:01:10,410 --> 00:01:15,630
+But the general setup
+for metatheorem one
+
+38
+00:01:15,630 --> 00:01:20,010
+is that you have a player-- or
+the paper calls it an avatar,
+
+39
+00:01:20,010 --> 00:01:23,190
+you know, a little
+guy walking around.
+
+40
+00:01:23,190 --> 00:01:24,705
+You're traversing
+a 2D environment.
+
+41
+00:01:24,705 --> 00:01:29,790
+
+42
+00:01:29,790 --> 00:01:33,280
+So you're not allowed
+to have crossovers.
+
+43
+00:01:33,280 --> 00:01:34,615
+From a given start location.
+
+44
+00:01:34,615 --> 00:01:40,100
+
+45
+00:01:40,100 --> 00:01:47,229
+And given that setup, if you
+have two features in your game,
+
+46
+00:01:47,229 --> 00:01:52,110
+one is called
+location traversal,
+
+47
+00:01:52,110 --> 00:01:54,450
+and the other is called
+single-use paths.
+
+48
+00:01:54,450 --> 00:02:00,420
+
+49
+00:02:00,420 --> 00:02:03,470
+Then your game is NP-hard.
+
+50
+00:02:03,470 --> 00:02:05,470
+That's the metatheorem.
+
+51
+00:02:05,470 --> 00:02:07,940
+So location traversal
+means that there
+
+52
+00:02:07,940 --> 00:02:11,800
+are some locations on the board
+that you have to visit in order
+
+53
+00:02:11,800 --> 00:02:12,820
+to win the level.
+
+54
+00:02:12,820 --> 00:02:14,440
+So there's no target location.
+
+55
+00:02:14,440 --> 00:02:16,277
+Your goal is to visit
+all of the locations.
+
+56
+00:02:16,277 --> 00:02:17,860
+Once you do that,
+potentially you win.
+
+57
+00:02:17,860 --> 00:02:19,526
+Or maybe there is
+also a target location
+
+58
+00:02:19,526 --> 00:02:20,965
+you have to get to at the end.
+
+59
+00:02:20,965 --> 00:02:21,465
+Question?
+
+60
+00:02:21,465 --> 00:02:23,339
+AUDIENCE: Does planar
+mean you're on a plane,
+
+61
+00:02:23,339 --> 00:02:25,634
+or like a planar graph
+kind of environment?
+
+62
+00:02:25,634 --> 00:02:26,550
+PROFESSOR: Either way.
+
+63
+00:02:26,550 --> 00:02:28,190
+You could be sort of in a grid.
+
+64
+00:02:28,190 --> 00:02:30,350
+You could be in a planar graph.
+
+65
+00:02:30,350 --> 00:02:32,430
+It's vague.
+
+66
+00:02:32,430 --> 00:02:34,560
+But the goal is
+two-dimensional, so the point
+
+67
+00:02:34,560 --> 00:02:37,760
+is we don't need crossovers
+for this reduction.
+
+68
+00:02:37,760 --> 00:02:40,440
+
+69
+00:02:40,440 --> 00:02:42,900
+So location traversal, you have
+to visit certain locations.
+
+70
+00:02:42,900 --> 00:02:45,882
+Single-use paths, you
+can only use them once.
+
+71
+00:02:45,882 --> 00:02:48,090
+They're traversable, but
+once you traverse them once,
+
+72
+00:02:48,090 --> 00:02:50,520
+they're no longer traversable.
+
+73
+00:02:50,520 --> 00:02:52,270
+So from this, you
+can get NP-hardness.
+
+74
+00:02:52,270 --> 00:02:55,190
+Any guesses how?
+
+75
+00:02:55,190 --> 00:02:56,380
+What should I reduce from?
+
+76
+00:02:56,380 --> 00:02:57,560
+AUDIENCE: Hamiltonian.
+
+77
+00:02:57,560 --> 00:02:58,960
+PROFESSOR: Hamiltonicity, yup.
+
+78
+00:02:58,960 --> 00:03:01,780
+
+79
+00:03:01,780 --> 00:03:04,857
+AUDIENCE: All paths
+are single-use?
+
+80
+00:03:04,857 --> 00:03:05,440
+PROFESSOR: No.
+
+81
+00:03:05,440 --> 00:03:09,415
+Not all paths are single-use,
+although it will work here.
+
+82
+00:03:09,415 --> 00:03:11,540
+The idea is that you mark
+some paths as single-use,
+
+83
+00:03:11,540 --> 00:03:14,010
+others not.
+
+84
+00:03:14,010 --> 00:03:21,120
+So reduction from planar,
+let's say, max degree three.
+
+85
+00:03:21,120 --> 00:03:26,227
+
+86
+00:03:26,227 --> 00:03:26,810
+Hamiltonicity.
+
+87
+00:03:26,810 --> 00:03:32,490
+
+88
+00:03:32,490 --> 00:03:35,950
+And so the idea is whenever I
+have a vertex in my Hamiltonian
+
+89
+00:03:35,950 --> 00:03:41,180
+graph, I'm going to turn
+that into a location that
+
+90
+00:03:41,180 --> 00:03:46,530
+must be traversed, because we
+want to visit all the vertices.
+
+91
+00:03:46,530 --> 00:03:47,270
+So there you go.
+
+92
+00:03:47,270 --> 00:03:48,840
+That's where to put them.
+
+93
+00:03:48,840 --> 00:03:54,829
+And whenever I have an edge,
+I'm going to convert that
+
+94
+00:03:54,829 --> 00:03:56,130
+into a single-use path.
+
+95
+00:03:56,130 --> 00:04:00,480
+
+96
+00:04:00,480 --> 00:04:04,520
+And because I'm maximum degree
+three and each of these edges
+
+97
+00:04:04,520 --> 00:04:07,510
+is single-use, once I
+use one of the edges
+
+98
+00:04:07,510 --> 00:04:11,480
+and it disappears, and
+then I use another edge,
+
+99
+00:04:11,480 --> 00:04:15,560
+and I get the treat
+that was in that node,
+
+100
+00:04:15,560 --> 00:04:18,554
+and then I use another
+edge and that disappears,
+
+101
+00:04:18,554 --> 00:04:20,720
+it's a really bad idea for
+me to use the third edge,
+
+102
+00:04:20,720 --> 00:04:22,344
+because then I'm
+trapped there forever.
+
+103
+00:04:22,344 --> 00:04:25,500
+So I would have had to have
+already solved the puzzle.
+
+104
+00:04:25,500 --> 00:04:28,410
+I would have had to already
+get all of the vertices
+
+105
+00:04:28,410 --> 00:04:29,550
+before going here.
+
+106
+00:04:29,550 --> 00:04:32,050
+So there was no reason
+to traverse that edge.
+
+107
+00:04:32,050 --> 00:04:34,390
+Therefore, you're effectively
+doing a Hamiltonian path
+
+108
+00:04:34,390 --> 00:04:36,490
+from the given start
+position, which
+
+109
+00:04:36,490 --> 00:04:39,690
+we know how to reduce
+from Hamiltonian cycle.
+
+110
+00:04:39,690 --> 00:04:43,310
+And because we can do planar
+graphs, this is planar setup,
+
+111
+00:04:43,310 --> 00:04:45,680
+max degree three
+is critical for not
+
+112
+00:04:45,680 --> 00:04:48,200
+being able to revisit a vertex.
+
+113
+00:04:48,200 --> 00:04:48,700
+OK?
+
+114
+00:04:48,700 --> 00:04:50,640
+We've seen a very similar
+proof to this back
+
+115
+00:04:50,640 --> 00:04:53,400
+in the Hamiltonicity lecture,
+but there, the assumption
+
+116
+00:04:53,400 --> 00:04:56,430
+was that there was a time
+limit, plus collectibles,
+
+117
+00:04:56,430 --> 00:05:00,450
+plus location traversal.
+
+118
+00:05:00,450 --> 00:05:03,180
+This is another way to do
+the same kind of proof.
+
+119
+00:05:03,180 --> 00:05:05,840
+And it makes it a little
+easier to be convinced
+
+120
+00:05:05,840 --> 00:05:08,957
+that your proofs work perfectly,
+because with time limits,
+
+121
+00:05:08,957 --> 00:05:10,290
+you're very sensitive to timing.
+
+122
+00:05:10,290 --> 00:05:12,850
+Every edge has to be
+exactly the same length.
+
+123
+00:05:12,850 --> 00:05:15,310
+Here we're adding
+single-use paths
+
+124
+00:05:15,310 --> 00:05:19,860
+instead of that to force
+you to finish the level.
+
+125
+00:05:19,860 --> 00:05:22,690
+The claim is also it makes
+the puzzles more fun.
+
+126
+00:05:22,690 --> 00:05:24,950
+So that's, of course,
+up to interpretation.
+
+127
+00:05:24,950 --> 00:05:27,370
+But at the very least,
+using this proof,
+
+128
+00:05:27,370 --> 00:05:30,290
+we can get a whole bunch more
+games that we haven't seen.
+
+129
+00:05:30,290 --> 00:05:32,340
+So one of them is Boulder Dash.
+
+130
+00:05:32,340 --> 00:05:35,650
+How many people have played
+Boulder Dash, let's say?
+
+131
+00:05:35,650 --> 00:05:36,150
+Yeah.
+
+132
+00:05:36,150 --> 00:05:38,090
+Only-- not very many.
+
+133
+00:05:38,090 --> 00:05:41,650
+I used to play this in
+C64 days, Commodore 64.
+
+134
+00:05:41,650 --> 00:05:44,590
+But you are walking
+around these boulders.
+
+135
+00:05:44,590 --> 00:05:47,810
+You can hold them up, but as
+soon as you let go, they fall.
+
+136
+00:05:47,810 --> 00:05:49,400
+And if they fall
+on you, you die.
+
+137
+00:05:49,400 --> 00:05:50,990
+So you don't want
+that to happen.
+
+138
+00:05:50,990 --> 00:05:54,020
+And the goal is to collect
+all the diamonds, roughly,
+
+139
+00:05:54,020 --> 00:05:56,070
+and then to get it
+to a target location.
+
+140
+00:05:56,070 --> 00:05:59,040
+There's some weird physics
+about how boulders fall.
+
+141
+00:05:59,040 --> 00:06:03,509
+But basically, here
+are the two gadgets.
+
+142
+00:06:03,509 --> 00:06:05,550
+Location traversal, you
+just put a diamond there,
+
+143
+00:06:05,550 --> 00:06:07,360
+and then you have to get it.
+
+144
+00:06:07,360 --> 00:06:09,820
+And then this is
+a single-use path.
+
+145
+00:06:09,820 --> 00:06:12,780
+The idea is you can
+come from either side,
+
+146
+00:06:12,780 --> 00:06:14,010
+push this out of the way.
+
+147
+00:06:14,010 --> 00:06:15,610
+The boulder is then in the way.
+
+148
+00:06:15,610 --> 00:06:17,940
+So if you then tried
+to traverse it,
+
+149
+00:06:17,940 --> 00:06:21,200
+you can't turn around the
+corner, so you get stuck.
+
+150
+00:06:21,200 --> 00:06:21,700
+OK.
+
+151
+00:06:21,700 --> 00:06:23,500
+So once you have
+those two gadgets,
+
+152
+00:06:23,500 --> 00:06:24,970
+you get an NP-hardness proof.
+
+153
+00:06:24,970 --> 00:06:28,260
+So Boulder Dash is NP-hard.
+
+154
+00:06:28,260 --> 00:06:29,034
+Lode Runner.
+
+155
+00:06:29,034 --> 00:06:30,700
+How many people have
+played Lode Runner?
+
+156
+00:06:30,700 --> 00:06:31,710
+A few more.
+
+157
+00:06:31,710 --> 00:06:35,160
+I used to play
+these in, I think,
+
+158
+00:06:35,160 --> 00:06:38,260
+Apple IIe days or something.
+
+159
+00:06:38,260 --> 00:06:40,990
+Well, originally C64 again.
+
+160
+00:06:40,990 --> 00:06:43,530
+So you have this guy who walks
+around, has to collect all
+
+161
+00:06:43,530 --> 00:06:46,234
+the parts again, these things.
+
+162
+00:06:46,234 --> 00:06:48,650
+And the fun thing about Lode
+Runner is you can dig a hole,
+
+163
+00:06:48,650 --> 00:06:49,910
+and then the monsters fall in.
+
+164
+00:06:49,910 --> 00:06:52,300
+They'll drop their
+diamond if they have one.
+
+165
+00:06:52,300 --> 00:06:54,040
+And they might be able
+to climb back out.
+
+166
+00:06:54,040 --> 00:06:57,170
+Eventually, that
+square will refill.
+
+167
+00:06:57,170 --> 00:06:58,670
+So it's a timed thing.
+
+168
+00:06:58,670 --> 00:07:00,960
+And so based on that
+kind of physics,
+
+169
+00:07:00,960 --> 00:07:03,300
+we can build the
+two gadgets again.
+
+170
+00:07:03,300 --> 00:07:06,780
+You put gold wherever you
+want to make the thing.
+
+171
+00:07:06,780 --> 00:07:09,286
+And this is a
+single-traversal gadget.
+
+172
+00:07:09,286 --> 00:07:10,910
+This is after it's
+been traversed once.
+
+173
+00:07:10,910 --> 00:07:12,569
+You get stuck in the hole.
+
+174
+00:07:12,569 --> 00:07:15,110
+But if there's a monster there,
+you can actually stand on it,
+
+175
+00:07:15,110 --> 00:07:16,680
+dig the hole, let the guy fall.
+
+176
+00:07:16,680 --> 00:07:18,800
+This will regenerate.
+
+177
+00:07:18,800 --> 00:07:22,030
+This guy's stuck, but now you
+cannot traverse this thing.
+
+178
+00:07:22,030 --> 00:07:25,190
+There's no jumping in this game.
+
+179
+00:07:25,190 --> 00:07:26,920
+You can't jump over there.
+
+180
+00:07:26,920 --> 00:07:29,960
+You have to get to the
+other side by falling.
+
+181
+00:07:29,960 --> 00:07:32,570
+And that's only possible in
+the initial configuration.
+
+182
+00:07:32,570 --> 00:07:35,421
+So Lode Runner's NP-hard.
+
+183
+00:07:35,421 --> 00:07:35,920
+Questions?
+
+184
+00:07:35,920 --> 00:07:38,780
+
+185
+00:07:38,780 --> 00:07:39,410
+Cool.
+
+186
+00:07:39,410 --> 00:07:45,550
+Also, Legend of Zelda II,
+Adventures of Link is NP-hard.
+
+187
+00:07:45,550 --> 00:07:48,561
+On the one hand, we
+have single-use paths
+
+188
+00:07:48,561 --> 00:07:49,560
+illustrated on the left.
+
+189
+00:07:49,560 --> 00:07:52,570
+And location traversal
+we're going to do by keys.
+
+190
+00:07:52,570 --> 00:07:54,750
+If you get enough keys,
+you can open enough doors.
+
+191
+00:07:54,750 --> 00:07:56,125
+At the end of the
+puzzle, there's
+
+192
+00:07:56,125 --> 00:07:58,282
+going to be a whole
+bunch of doors.
+
+193
+00:07:58,282 --> 00:08:02,000
+Let me get this one going again.
+
+194
+00:08:02,000 --> 00:08:03,735
+For single-traversal
+paths, there
+
+195
+00:08:03,735 --> 00:08:05,580
+are actually these
+bridges that disappear
+
+196
+00:08:05,580 --> 00:08:07,470
+after you traverse them.
+
+197
+00:08:07,470 --> 00:08:09,220
+So you can do some
+amount of jumping,
+
+198
+00:08:09,220 --> 00:08:11,464
+but if you make it
+really long, you
+
+199
+00:08:11,464 --> 00:08:15,020
+will be prevented from
+re-traversing that path.
+
+200
+00:08:15,020 --> 00:08:17,730
+So we're going to put
+a key at each vertex.
+
+201
+00:08:17,730 --> 00:08:20,049
+And then at some
+finishing location,
+
+202
+00:08:20,049 --> 00:08:23,380
+we'll have end doors,
+one for each vertex.
+
+203
+00:08:23,380 --> 00:08:27,410
+And that should do Zelda II.
+
+204
+00:08:27,410 --> 00:08:27,910
+OK.
+
+205
+00:08:27,910 --> 00:08:32,060
+So that is metatheorem one.
+
+206
+00:08:32,060 --> 00:08:34,690
+I want to tell you
+about a slight variation
+
+207
+00:08:34,690 --> 00:08:38,610
+on this metatheorem, and then
+another result based on it.
+
+208
+00:08:38,610 --> 00:08:50,490
+
+209
+00:08:50,490 --> 00:08:54,050
+So metatheorem two is
+same kind of setup.
+
+210
+00:08:54,050 --> 00:09:22,270
+
+211
+00:09:22,270 --> 00:09:26,921
+So slightly different.
+
+212
+00:09:26,921 --> 00:09:27,420
+Yeah.
+
+213
+00:09:27,420 --> 00:09:30,402
+
+214
+00:09:30,402 --> 00:09:31,920
+I'll keep a little
+bit of suspense
+
+215
+00:09:31,920 --> 00:09:33,780
+about why we care about this.
+
+216
+00:09:33,780 --> 00:09:36,200
+Instead of single-use
+paths, suppose
+
+217
+00:09:36,200 --> 00:09:40,986
+that you could
+build tokens, which
+
+218
+00:09:40,986 --> 00:09:42,110
+are things you can pick up.
+
+219
+00:09:42,110 --> 00:09:43,890
+And for this
+reduction, let's say
+
+220
+00:09:43,890 --> 00:09:47,210
+you can only pick up one at a
+time, though it won't matter.
+
+221
+00:09:47,210 --> 00:09:50,190
+And toll roads, where you have
+to pay with a token in order
+
+222
+00:09:50,190 --> 00:09:52,910
+to traverse the edge,
+this essentially
+
+223
+00:09:52,910 --> 00:09:55,090
+can be used to simulate
+a single-use path,
+
+224
+00:09:55,090 --> 00:09:59,210
+but it's a slightly different
+perspective in that you can
+
+225
+00:09:59,210 --> 00:10:02,125
+visit an edge if
+you-- well, what
+
+226
+00:10:02,125 --> 00:10:04,750
+we're going to imagine doing is
+putting tokens at the vertices,
+
+227
+00:10:04,750 --> 00:10:06,522
+but just one at each vertex.
+
+228
+00:10:06,522 --> 00:10:08,230
+When you pick up that
+token, you can then
+
+229
+00:10:08,230 --> 00:10:11,210
+traverse one of
+the incident edges.
+
+230
+00:10:11,210 --> 00:10:15,690
+So again, every edge
+will become a toll road.
+
+231
+00:10:15,690 --> 00:10:18,370
+
+232
+00:10:18,370 --> 00:10:21,000
+And every vertex will
+become a location traversal
+
+233
+00:10:21,000 --> 00:10:22,670
+point that has to be traversed.
+
+234
+00:10:22,670 --> 00:10:26,430
+And it will have one token.
+
+235
+00:10:26,430 --> 00:10:28,370
+And so you can use this
+same kind of proof.
+
+236
+00:10:28,370 --> 00:10:29,890
+It's just a
+different perspective
+
+237
+00:10:29,890 --> 00:10:32,400
+on the same kind of thing.
+
+238
+00:10:32,400 --> 00:10:37,330
+And we can use this to prove
+that Pac-Man is NP-hard.
+
+239
+00:10:37,330 --> 00:10:38,340
+This is the motivation.
+
+240
+00:10:38,340 --> 00:10:41,560
+So again, you have to get
+all the dots in Pac-Man.
+
+241
+00:10:41,560 --> 00:10:44,090
+So you, in particular,
+have to get that one.
+
+242
+00:10:44,090 --> 00:10:48,180
+When you get that one, this
+edge becomes traversable.
+
+243
+00:10:48,180 --> 00:10:50,870
+So this is a somewhat
+generalized version of Tetris.
+
+244
+00:10:50,870 --> 00:10:54,480
+You have lots of houses for
+the ghosts, lots of ghosts,
+
+245
+00:10:54,480 --> 00:10:55,710
+obviously.
+
+246
+00:10:55,710 --> 00:10:58,710
+The algorithms that the ghosts
+follow doesn't matter too much.
+
+247
+00:10:58,710 --> 00:11:01,520
+The only constraint is that
+ghosts change direction
+
+248
+00:11:01,520 --> 00:11:04,170
+if and only if
+the state changes,
+
+249
+00:11:04,170 --> 00:11:06,780
+like you turn them into--
+I forget the names of all
+
+250
+00:11:06,780 --> 00:11:09,530
+the modes-- but you turn
+them into the blue mode
+
+251
+00:11:09,530 --> 00:11:12,320
+or they turn back, then
+they will switch direction
+
+252
+00:11:12,320 --> 00:11:14,199
+in their tunnel.
+
+253
+00:11:14,199 --> 00:11:15,740
+And that is the only
+setting in which
+
+254
+00:11:15,740 --> 00:11:19,850
+ghosts will reverse direction,
+double-back on themselves.
+
+255
+00:11:19,850 --> 00:11:22,360
+They never
+double-back otherwise.
+
+256
+00:11:22,360 --> 00:11:25,190
+And given that setup, if we
+make these edges really long,
+
+257
+00:11:25,190 --> 00:11:28,250
+we can make sure that the ghosts
+always stay within their edge,
+
+258
+00:11:28,250 --> 00:11:31,300
+because you're basically
+alternating between switching
+
+259
+00:11:31,300 --> 00:11:33,920
+the state, turning the
+directions of the ghosts,
+
+260
+00:11:33,920 --> 00:11:36,510
+traversing an edge, and then
+doing it again and again,
+
+261
+00:11:36,510 --> 00:11:38,882
+so that the ghosts always
+sort of go back and forth.
+
+262
+00:11:38,882 --> 00:11:40,840
+If you happen to capture
+one, it doesn't really
+
+263
+00:11:40,840 --> 00:11:42,548
+change its location
+much, because it just
+
+264
+00:11:42,548 --> 00:11:44,210
+goes back to the house.
+
+265
+00:11:44,210 --> 00:11:47,230
+But you obviously need one
+of these in your possession.
+
+266
+00:11:47,230 --> 00:11:49,690
+You end up using
+the token right away
+
+267
+00:11:49,690 --> 00:11:51,700
+to traverse one of
+the incident edges,
+
+268
+00:11:51,700 --> 00:11:53,680
+so you can actually get across.
+
+269
+00:11:53,680 --> 00:11:56,710
+But it's long enough, so that
+by the time you cross over,
+
+270
+00:11:56,710 --> 00:11:59,020
+the ghosts have reset.
+
+271
+00:11:59,020 --> 00:12:02,590
+So that is metatheorem
+two applied to Pac-Man,
+
+272
+00:12:02,590 --> 00:12:04,830
+in case you were wondering.
+
+273
+00:12:04,830 --> 00:12:07,880
+This is, I think,
+quite clever, to get
+
+274
+00:12:07,880 --> 00:12:09,110
+these things to work out.
+
+275
+00:12:09,110 --> 00:12:11,470
+OK.
+
+276
+00:12:11,470 --> 00:12:13,910
+NP-hardness, we're used to that.
+
+277
+00:12:13,910 --> 00:12:16,750
+The next metatheorems are
+about PSPACE-hardness.
+
+278
+00:12:16,750 --> 00:12:19,570
+And before I get there,
+I need to tell you
+
+279
+00:12:19,570 --> 00:12:23,720
+a little bit about some
+basic PSPACE-hard problems.
+
+280
+00:12:23,720 --> 00:12:30,080
+Like, we have SAT and
+Hamiltonicity for NP-hardness.
+
+281
+00:12:30,080 --> 00:12:35,320
+For PSPACE-hardness, there are
+a couple of natural problems.
+
+282
+00:12:35,320 --> 00:12:36,830
+First, let me remind
+you, because it
+
+283
+00:12:36,830 --> 00:12:39,610
+was lecture one that
+I defined PSPACE,
+
+284
+00:12:39,610 --> 00:12:42,165
+these are all problems
+solvable in polynomial space.
+
+285
+00:12:42,165 --> 00:12:53,070
+
+286
+00:12:53,070 --> 00:12:55,550
+And so we're measuring
+space instead of time.
+
+287
+00:12:55,550 --> 00:12:59,190
+This is contained
+in exponential time,
+
+288
+00:12:59,190 --> 00:13:02,150
+because there are, at most,
+exponentially many states
+
+289
+00:13:02,150 --> 00:13:05,100
+of a polynomial space machine.
+
+290
+00:13:05,100 --> 00:13:07,600
+And it contains NP.
+
+291
+00:13:07,600 --> 00:13:09,640
+In particular,
+every NP problem can
+
+292
+00:13:09,640 --> 00:13:13,280
+be simulated on
+a PSPACE computer
+
+293
+00:13:13,280 --> 00:13:15,580
+just by trying all possible
+options for the guests,
+
+294
+00:13:15,580 --> 00:13:17,140
+but backtracking
+and throwing away
+
+295
+00:13:17,140 --> 00:13:19,717
+the information from
+the other guests' paths,
+
+296
+00:13:19,717 --> 00:13:21,800
+and just keeping one bit
+of state, which is, did I
+
+297
+00:13:21,800 --> 00:13:24,570
+find a yes solution yet?
+
+298
+00:13:24,570 --> 00:13:29,110
+So you can turn any NP
+machine into a PSPACE machine.
+
+299
+00:13:29,110 --> 00:13:30,690
+So it's somewhere in between.
+
+300
+00:13:30,690 --> 00:13:33,220
+The other fun fact
+is that it equals
+
+301
+00:13:33,220 --> 00:13:34,985
+non-deterministic
+polynomial space.
+
+302
+00:13:34,985 --> 00:13:39,170
+
+303
+00:13:39,170 --> 00:13:41,180
+So non-deterministic
+in the sense of NP.
+
+304
+00:13:41,180 --> 00:13:44,685
+If you add guessing to a PSPACE
+machine, that doesn't help you.
+
+305
+00:13:44,685 --> 00:13:47,810
+You can always simulate it
+with a deterministic machine,
+
+306
+00:13:47,810 --> 00:13:51,110
+at most, blowing up
+the space by a square.
+
+307
+00:13:51,110 --> 00:13:54,370
+So if you had SSPACE before,
+you have S squared space after.
+
+308
+00:13:54,370 --> 00:13:57,220
+
+309
+00:13:57,220 --> 00:14:00,580
+Our polynomials are
+closed under squaring.
+
+310
+00:14:00,580 --> 00:14:03,270
+So this is especially useful
+for showing that a lot of games
+
+311
+00:14:03,270 --> 00:14:04,368
+are in PSPACE.
+
+312
+00:14:04,368 --> 00:14:05,826
+It's a lot easier,
+usually, to give
+
+313
+00:14:05,826 --> 00:14:08,640
+a non-deterministic
+polynomial space algorithm.
+
+314
+00:14:08,640 --> 00:14:11,160
+You have the freedom to
+guess whenever you like, just
+
+315
+00:14:11,160 --> 00:14:14,410
+like with proving
+containment in NP.
+
+316
+00:14:14,410 --> 00:14:16,450
+And if you prove
+containment in NP space,
+
+317
+00:14:16,450 --> 00:14:19,360
+you are also proving
+containment in PSPACE.
+
+318
+00:14:19,360 --> 00:14:21,026
+This is called Savage's theorem.
+
+319
+00:14:21,026 --> 00:14:21,820
+OK.
+
+320
+00:14:21,820 --> 00:14:27,650
+So that was just some
+recall from lecture one.
+
+321
+00:14:27,650 --> 00:14:31,600
+And now let's talk
+about some sort of base
+
+322
+00:14:31,600 --> 00:14:34,290
+problems,
+PSPACE-complete problems
+
+323
+00:14:34,290 --> 00:14:35,720
+that we can reduce from.
+
+324
+00:14:35,720 --> 00:14:45,380
+
+325
+00:14:45,380 --> 00:14:49,640
+I would say the most
+obvious one is to simulate
+
+326
+00:14:49,640 --> 00:14:51,095
+a polynomial space algorithm.
+
+327
+00:14:51,095 --> 00:14:55,890
+
+328
+00:14:55,890 --> 00:14:57,680
+You can relax it
+slightly to say,
+
+329
+00:14:57,680 --> 00:15:05,860
+simulate a linear space
+algorithm or a Turing machine,
+
+330
+00:15:05,860 --> 00:15:07,770
+if you prefer that.
+
+331
+00:15:07,770 --> 00:15:09,780
+Of course, you are
+PSPACE-complete if you
+
+332
+00:15:09,780 --> 00:15:12,210
+can simulate all algorithms
+that run in polynomial space.
+
+333
+00:15:12,210 --> 00:15:14,130
+And there are some proofs
+that work that way.
+
+334
+00:15:14,130 --> 00:15:16,410
+It takes some simple
+model of a computer,
+
+335
+00:15:16,410 --> 00:15:18,700
+like a Turing
+machine, typically.
+
+336
+00:15:18,700 --> 00:15:21,101
+Like your reading and
+writing cells on a tape.
+
+337
+00:15:21,101 --> 00:15:22,600
+And you're doing
+whatever you can do
+
+338
+00:15:22,600 --> 00:15:24,950
+in that linear amount of space.
+
+339
+00:15:24,950 --> 00:15:28,090
+And just simulate those
+transitions one at a time.
+
+340
+00:15:28,090 --> 00:15:29,970
+But it's usually pretty
+tedious to do that.
+
+341
+00:15:29,970 --> 00:15:32,300
+I don't think we will
+see any proofs directly
+
+342
+00:15:32,300 --> 00:15:36,050
+of simulating a Turing machine.
+
+343
+00:15:36,050 --> 00:15:43,270
+Usually simpler way to go
+is a problem called Q SAT.
+
+344
+00:15:43,270 --> 00:15:46,600
+It's actually
+usually called QBF,
+
+345
+00:15:46,600 --> 00:15:51,000
+and sometimes called TQBF,
+and occasionally called Q SAT.
+
+346
+00:15:51,000 --> 00:15:53,280
+But I'm growing
+on the name Q SAT,
+
+347
+00:15:53,280 --> 00:15:55,467
+because we can specify things.
+
+348
+00:15:55,467 --> 00:15:57,300
+It's consistent with
+our naming terminology.
+
+349
+00:15:57,300 --> 00:16:00,050
+We can say Q 3SAT, and
+we can say Q 1-in-3SAT,
+
+350
+00:16:00,050 --> 00:16:02,180
+and we can say planar Q SAT.
+
+351
+00:16:02,180 --> 00:16:06,370
+Whereas QBF, usually people
+mean Q 3SAT, I guess.
+
+352
+00:16:06,370 --> 00:16:09,050
+But this is a little more
+explicit what kind of SAT
+
+353
+00:16:09,050 --> 00:16:10,370
+we want.
+
+354
+00:16:10,370 --> 00:16:14,200
+So we're adding the letter
+Q, which is Quantified.
+
+355
+00:16:14,200 --> 00:16:20,400
+So the general problem is,
+given a fully quantified Boolean
+
+356
+00:16:20,400 --> 00:16:35,210
+formula, you want to
+decide, is it true?
+
+357
+00:16:35,210 --> 00:16:40,609
+
+358
+00:16:40,609 --> 00:16:45,849
+That's the T in TQBF,
+if you prefer that term.
+
+359
+00:16:45,849 --> 00:16:49,440
+So for example, here is
+a quantified formula.
+
+360
+00:16:49,440 --> 00:17:00,586
+
+361
+00:17:00,586 --> 00:17:02,210
+It took me a little
+thinking to come up
+
+362
+00:17:02,210 --> 00:17:07,480
+with one that is actually true
+and in not a quite trivial way.
+
+363
+00:17:07,480 --> 00:17:09,036
+This is a 2SAT formula.
+
+364
+00:17:09,036 --> 00:17:10,660
+And so in particular,
+you can read this
+
+365
+00:17:10,660 --> 00:17:15,850
+as x implies y, and y implies x.
+
+366
+00:17:15,850 --> 00:17:17,470
+And we're saying
+for every x, there
+
+367
+00:17:17,470 --> 00:17:19,414
+is a y, such that
+this is satisfied.
+
+368
+00:17:19,414 --> 00:17:20,080
+And that's true.
+
+369
+00:17:20,080 --> 00:17:24,089
+Namely, y equals x would
+be the correct choice.
+
+370
+00:17:24,089 --> 00:17:26,130
+But it's not totally
+obvious, given that formula,
+
+371
+00:17:26,130 --> 00:17:26,754
+that it's true.
+
+372
+00:17:26,754 --> 00:17:28,810
+And in general, given
+such a formula-- probably
+
+373
+00:17:28,810 --> 00:17:32,450
+not with 2SAT in here,
+but with 3SAT formula--
+
+374
+00:17:32,450 --> 00:17:35,260
+it's going to be
+PSPACE-complete.
+
+375
+00:17:35,260 --> 00:17:38,020
+To contrast with SAT,
+essentially, there
+
+376
+00:17:38,020 --> 00:17:41,110
+are a bunch of There
+Exists at the beginning.
+
+377
+00:17:41,110 --> 00:17:44,030
+With Q SAT, you can have For
+Alls in addition to Exists.
+
+378
+00:17:44,030 --> 00:17:48,010
+That's what we're changing.
+
+379
+00:17:48,010 --> 00:17:51,590
+And we can simplify
+things a little bit.
+
+380
+00:17:51,590 --> 00:17:55,820
+
+381
+00:17:55,820 --> 00:18:01,100
+We can assume a
+prenex form, which
+
+382
+00:18:01,100 --> 00:18:03,260
+just means that all
+the quantifiers are
+
+383
+00:18:03,260 --> 00:18:06,010
+in the beginning, and then
+we have a 3SAT formula,
+
+384
+00:18:06,010 --> 00:18:07,940
+or whatever.
+
+385
+00:18:07,940 --> 00:18:13,810
+And we can assume that
+the quantifiers alternate
+
+386
+00:18:13,810 --> 00:18:21,003
+between For All and There Exists
+just by adding in extra dummies
+
+387
+00:18:21,003 --> 00:18:23,002
+if we happen to use a
+bunch of For Alls in a row
+
+388
+00:18:23,002 --> 00:18:24,501
+or a bunch of There
+Exists in a row.
+
+389
+00:18:24,501 --> 00:18:27,350
+But really, the hard case is
+when you have lots of both,
+
+390
+00:18:27,350 --> 00:18:29,250
+and they are interwoven.
+
+391
+00:18:29,250 --> 00:18:31,660
+So it's not enough
+to look at formulas
+
+392
+00:18:31,660 --> 00:18:34,347
+that have a bunch of For Alls
+and then a bunch of Exists.
+
+393
+00:18:34,347 --> 00:18:35,930
+You have to think
+about the case where
+
+394
+00:18:35,930 --> 00:18:37,888
+there are lots of
+alternations between the two.
+
+395
+00:18:37,888 --> 00:18:40,060
+
+396
+00:18:40,060 --> 00:18:43,022
+We'll talk more about that when
+we get to two-player games,
+
+397
+00:18:43,022 --> 00:18:44,950
+because that relates
+to two-player games.
+
+398
+00:18:44,950 --> 00:18:47,610
+But for now, we're going to
+stick to one-player games.
+
+399
+00:18:47,610 --> 00:18:50,190
+And this is just something
+we need to simulate
+
+400
+00:18:50,190 --> 00:18:51,270
+by our single player.
+
+401
+00:18:51,270 --> 00:18:54,620
+
+402
+00:18:54,620 --> 00:18:58,970
+So now the question is, what
+forms can this formula take?
+
+403
+00:18:58,970 --> 00:19:01,930
+Because we have lots of forms
+of SAT that we know are hard.
+
+404
+00:19:01,930 --> 00:19:04,580
+And pretty much all of them
+remain hard in this setting
+
+405
+00:19:04,580 --> 00:19:07,850
+as well, when you add
+in the quantifiers.
+
+406
+00:19:07,850 --> 00:19:11,290
+And in fact, there is a
+Schaefer-style dichotomy
+
+407
+00:19:11,290 --> 00:19:26,650
+theorem, like we
+had with SAT and NP.
+
+408
+00:19:26,650 --> 00:19:30,650
+And basically,
+this quantified SAT
+
+409
+00:19:30,650 --> 00:19:34,310
+is polynomial if and only if
+the types of clauses you allow
+
+410
+00:19:34,310 --> 00:19:38,840
+are all Horn clauses, or
+all dual-Horn clauses,
+
+411
+00:19:38,840 --> 00:19:48,160
+or all 2SAT clauses, or a system
+of linear equalities mod 2 X
+
+412
+00:19:48,160 --> 00:19:52,560
+or and x nor
+quality constraints.
+
+413
+00:19:52,560 --> 00:19:54,130
+Those could all
+be solved before.
+
+414
+00:19:54,130 --> 00:19:56,890
+They can still be solved in
+this setting in polynomial time,
+
+415
+00:19:56,890 --> 00:19:59,800
+even with alternating
+quantifiers.
+
+416
+00:19:59,800 --> 00:20:01,410
+So that's cool.
+
+417
+00:20:01,410 --> 00:20:04,310
+However, it is no
+longer polynomial time
+
+418
+00:20:04,310 --> 00:20:06,920
+if your clauses are satisfied
+when you set the variables all
+
+419
+00:20:06,920 --> 00:20:09,540
+true or all false.
+
+420
+00:20:09,540 --> 00:20:12,880
+Because we have these For All
+quantifiers now, being all true
+
+421
+00:20:12,880 --> 00:20:18,010
+is not the panacea
+that it was before.
+
+422
+00:20:18,010 --> 00:20:19,000
+So that's one case.
+
+423
+00:20:19,000 --> 00:20:21,650
+And otherwise, you
+are PSPACE-complete.
+
+424
+00:20:21,650 --> 00:20:25,640
+All other versions of SAT
+are PSPACE-complete-- sorry,
+
+425
+00:20:25,640 --> 00:20:27,930
+of Q SAT.
+
+426
+00:20:27,930 --> 00:20:29,930
+So it's almost the same
+as the Schaefer theorem,
+
+427
+00:20:29,930 --> 00:20:34,330
+but there's one
+case that differs.
+
+428
+00:20:34,330 --> 00:20:37,730
+It's hard where
+it wasn't before.
+
+429
+00:20:37,730 --> 00:20:43,990
+So that's cool for general,
+from a formula perspective.
+
+430
+00:20:43,990 --> 00:20:45,530
+But we, of course,
+typically care
+
+431
+00:20:45,530 --> 00:20:50,220
+about planar bipartite graphs
+expressing those clauses
+
+432
+00:20:50,220 --> 00:20:51,650
+and their variables.
+
+433
+00:20:51,650 --> 00:20:55,530
+And good news is
+everything works as before.
+
+434
+00:20:55,530 --> 00:21:05,350
+So planar Q SAT and planar
+1-in-3 Q SAT are hard.
+
+435
+00:21:05,350 --> 00:21:07,610
+Planar not all equal.
+
+436
+00:21:07,610 --> 00:21:12,390
+Q SAT is also going to be
+easy like it was before.
+
+437
+00:21:12,390 --> 00:21:17,510
+But planar Q SAT, we can use
+the usual crossover gadget.
+
+438
+00:21:17,510 --> 00:21:20,320
+What that crossover
+gadget does, it
+
+439
+00:21:20,320 --> 00:21:21,870
+forces some variables
+to be the same,
+
+440
+00:21:21,870 --> 00:21:23,600
+but it also creates
+new variables.
+
+441
+00:21:23,600 --> 00:21:25,740
+And those variables
+need to be quantified.
+
+442
+00:21:25,740 --> 00:21:28,090
+All you need to do to
+simulate our old proof
+
+443
+00:21:28,090 --> 00:21:30,620
+is put a whole bunch of
+existential quantifiers
+
+444
+00:21:30,620 --> 00:21:32,259
+at the end of the
+quantifier list.
+
+445
+00:21:32,259 --> 00:21:33,800
+So for every new
+variable you create,
+
+446
+00:21:33,800 --> 00:21:37,010
+you put There Exists at the
+end for those variables.
+
+447
+00:21:37,010 --> 00:21:38,810
+And we know those
+variables are forced
+
+448
+00:21:38,810 --> 00:21:44,510
+to be equal to other copies of
+variables that are given to us.
+
+449
+00:21:44,510 --> 00:21:48,890
+And so it stimulates the
+old planar SAT proof,
+
+450
+00:21:48,890 --> 00:21:50,250
+but in a quantified setting.
+
+451
+00:21:50,250 --> 00:21:52,200
+And that was actually
+done by Lichtenstein
+
+452
+00:21:52,200 --> 00:21:55,280
+in the original
+planar SAT paper.
+
+453
+00:21:55,280 --> 00:21:58,560
+It also talked
+about planar Q SAT.
+
+454
+00:21:58,560 --> 00:22:00,480
+And then once you have
+this problem is hard,
+
+455
+00:22:00,480 --> 00:22:05,060
+the same reaction we had for
+1-in-3 Q SAT also just works.
+
+456
+00:22:05,060 --> 00:22:10,080
+So with the same idea.
+
+457
+00:22:10,080 --> 00:22:11,900
+So there are some base problems.
+
+458
+00:22:11,900 --> 00:22:15,230
+Now we can do so reductions.
+
+459
+00:22:15,230 --> 00:22:17,970
+First we'll prove a theorem.
+
+460
+00:22:17,970 --> 00:22:19,690
+And then we'll apply
+that metatheorem
+
+461
+00:22:19,690 --> 00:22:22,230
+to a bunch of different games.
+
+462
+00:22:22,230 --> 00:22:26,100
+
+463
+00:22:26,100 --> 00:22:26,955
+One-player games.
+
+464
+00:22:26,955 --> 00:22:39,330
+
+465
+00:22:39,330 --> 00:22:45,210
+So for next metatheorem, we're
+going to have a similar setup.
+
+466
+00:22:45,210 --> 00:22:48,640
+
+467
+00:22:48,640 --> 00:22:50,410
+We're traversing a
+planar environment.
+
+468
+00:22:50,410 --> 00:22:52,990
+
+469
+00:22:52,990 --> 00:22:57,830
+But this time we are
+given a start location
+
+470
+00:22:57,830 --> 00:22:58,610
+and a destination.
+
+471
+00:22:58,610 --> 00:23:06,920
+
+472
+00:23:06,920 --> 00:23:10,040
+Because we're no longer going
+to have the location traversal
+
+473
+00:23:10,040 --> 00:23:12,470
+goal, we need to add
+some kind of goal.
+
+474
+00:23:12,470 --> 00:23:14,470
+Otherwise, you've solved
+the game by starting.
+
+475
+00:23:14,470 --> 00:23:15,534
+[LAUGHTER]
+
+476
+00:23:15,534 --> 00:23:16,340
+
+477
+00:23:16,340 --> 00:23:18,030
+So it's a path traversal.
+
+478
+00:23:18,030 --> 00:23:25,180
+Get from A to B. And
+what we're going to need
+
+479
+00:23:25,180 --> 00:23:30,900
+is a door plus a pressure plate.
+
+480
+00:23:30,900 --> 00:23:39,330
+
+481
+00:23:39,330 --> 00:23:43,490
+So the idea is that there
+is an obstacle, a door,
+
+482
+00:23:43,490 --> 00:23:46,100
+which is either open or closed.
+
+483
+00:23:46,100 --> 00:23:48,640
+And there's a
+pressure plate, where
+
+484
+00:23:48,640 --> 00:23:53,240
+if you step on a pressure
+plate marked open--
+
+485
+00:23:53,240 --> 00:23:54,730
+so you're walking
+along here, you
+
+486
+00:23:54,730 --> 00:23:57,445
+step on this square,
+that will open this door
+
+487
+00:23:57,445 --> 00:23:59,550
+and make it traversable.
+
+488
+00:23:59,550 --> 00:24:03,380
+As you go across it, you're
+forced to open the door.
+
+489
+00:24:03,380 --> 00:24:07,170
+And there's going to be another
+pressure plate marked closed,
+
+490
+00:24:07,170 --> 00:24:10,100
+which, as you traverse it,
+you step on that plate,
+
+491
+00:24:10,100 --> 00:24:12,050
+it forces the door to close.
+
+492
+00:24:12,050 --> 00:24:13,860
+So in order to get to
+the other side here,
+
+493
+00:24:13,860 --> 00:24:16,882
+usually this is in
+some kind of tunnel.
+
+494
+00:24:16,882 --> 00:24:18,840
+So in order to get from
+this side to this side,
+
+495
+00:24:18,840 --> 00:24:20,630
+you must close this door.
+
+496
+00:24:20,630 --> 00:24:21,980
+And we have more than one.
+
+497
+00:24:21,980 --> 00:24:23,215
+So there are many such doors.
+
+498
+00:24:23,215 --> 00:24:26,270
+
+499
+00:24:26,270 --> 00:24:29,920
+I'll say A, B, C.
+And this is going
+
+500
+00:24:29,920 --> 00:24:33,730
+to say Open A. This is
+going to say Close B.
+
+501
+00:24:33,730 --> 00:24:35,990
+And we can furthermore
+assume that there's exactly
+
+502
+00:24:35,990 --> 00:24:41,036
+one open and exactly
+one close for each door.
+
+503
+00:24:41,036 --> 00:24:42,460
+OK?
+
+504
+00:24:42,460 --> 00:24:44,900
+So maybe I should
+have written A here.
+
+505
+00:24:44,900 --> 00:24:47,249
+So this is the
+complete story for A.
+
+506
+00:24:47,249 --> 00:24:49,790
+And there's a similar open and
+close for B, an open and close
+
+507
+00:24:49,790 --> 00:24:52,880
+for C. And otherwise,
+you can just walk around.
+
+508
+00:24:52,880 --> 00:24:54,740
+And your goal is to
+get to destinations.
+
+509
+00:24:54,740 --> 00:24:56,070
+Sounds pretty simple.
+
+510
+00:24:56,070 --> 00:24:58,090
+And this is a very
+powerful metatheorem.
+
+511
+00:24:58,090 --> 00:25:01,760
+This is PSPACE-complete.
+
+512
+00:25:01,760 --> 00:25:03,630
+This applies to a lot of games.
+
+513
+00:25:03,630 --> 00:25:09,810
+
+514
+00:25:09,810 --> 00:25:12,170
+But before I get to what
+games it applies to,
+
+515
+00:25:12,170 --> 00:25:17,220
+let's prove that this is indeed
+PSPACE-complete by a reduction
+
+516
+00:25:17,220 --> 00:25:20,770
+from Q 3SAT.
+
+517
+00:25:20,770 --> 00:25:26,260
+
+518
+00:25:26,260 --> 00:25:30,730
+We won't even need planar here.
+
+519
+00:25:30,730 --> 00:25:32,230
+We won't need planar,
+because we can
+
+520
+00:25:32,230 --> 00:25:33,420
+open doors kind of remotely.
+
+521
+00:25:33,420 --> 00:25:36,190
+When I step on this button,
+which could be far, far away,
+
+522
+00:25:36,190 --> 00:25:37,420
+I open this door.
+
+523
+00:25:37,420 --> 00:25:40,700
+So effectively, the connections
+between variables and clauses
+
+524
+00:25:40,700 --> 00:25:43,280
+can be crossing.
+
+525
+00:25:43,280 --> 00:25:44,780
+There's no restriction
+on that here.
+
+526
+00:25:44,780 --> 00:25:56,310
+
+527
+00:25:56,310 --> 00:25:59,890
+So you're going to see a few
+different proofs like this.
+
+528
+00:25:59,890 --> 00:26:02,100
+We'll see others
+in future lectures.
+
+529
+00:26:02,100 --> 00:26:06,670
+But this is a typical prototype
+for how to reduce from Q3SAT.
+
+530
+00:26:06,670 --> 00:26:09,170
+You have your start location,
+you have your finish location.
+
+531
+00:26:09,170 --> 00:26:11,080
+Your goal is to
+traverse this thing.
+
+532
+00:26:11,080 --> 00:26:13,800
+It's sort of like a circuit.
+
+533
+00:26:13,800 --> 00:26:16,680
+And then you have these blocks
+which represent quantifiers.
+
+534
+00:26:16,680 --> 00:26:18,240
+We'll talk about
+those in a moment.
+
+535
+00:26:18,240 --> 00:26:20,100
+In the end, you exit here.
+
+536
+00:26:20,100 --> 00:26:22,830
+And you have to satisfy
+this formula in order
+
+537
+00:26:22,830 --> 00:26:24,890
+to get through.
+
+538
+00:26:24,890 --> 00:26:31,210
+If you get through, then you are
+able to enter this quantifier
+
+539
+00:26:31,210 --> 00:26:32,480
+gadget.
+
+540
+00:26:32,480 --> 00:26:34,430
+And these are kind of
+in a nested structure.
+
+541
+00:26:34,430 --> 00:26:36,055
+You can think of this
+quantifier gadget
+
+542
+00:26:36,055 --> 00:26:39,280
+as calling this one by
+traversing this path.
+
+543
+00:26:39,280 --> 00:26:42,200
+You're recursively calling
+the rest of the formula.
+
+544
+00:26:42,200 --> 00:26:43,950
+And then this is sort
+of the return value.
+
+545
+00:26:43,950 --> 00:26:44,690
+Yes, I did it.
+
+546
+00:26:44,690 --> 00:26:46,080
+I succeeded, I got a yes.
+
+547
+00:26:46,080 --> 00:26:48,740
+
+548
+00:26:48,740 --> 00:26:50,200
+So for the existential
+quantifier,
+
+549
+00:26:50,200 --> 00:26:52,705
+what this is essentially
+doing is, say, OK, I
+
+550
+00:26:52,705 --> 00:26:54,080
+don't know what
+x is going to be,
+
+551
+00:26:54,080 --> 00:26:55,650
+I'm going to let
+the player decide
+
+552
+00:26:55,650 --> 00:26:57,510
+between two different paths.
+
+553
+00:26:57,510 --> 00:26:59,360
+Set x to true or set x to false.
+
+554
+00:26:59,360 --> 00:27:01,900
+So there'll be two
+ways to go here.
+
+555
+00:27:01,900 --> 00:27:04,460
+And then you'll exit
+along the same path.
+
+556
+00:27:04,460 --> 00:27:06,930
+But x will be set
+one way or the other.
+
+557
+00:27:06,930 --> 00:27:09,130
+Recursively, you want
+that formula to be true.
+
+558
+00:27:09,130 --> 00:27:10,630
+And if that happens,
+then the player
+
+559
+00:27:10,630 --> 00:27:12,540
+will be able to come back here.
+
+560
+00:27:12,540 --> 00:27:18,420
+And if you successfully set the
+rest of the formula to be true,
+
+561
+00:27:18,420 --> 00:27:20,170
+then it means the
+overall formula is true,
+
+562
+00:27:20,170 --> 00:27:22,100
+because you just wanted to check
+that there was at least one
+
+563
+00:27:22,100 --> 00:27:23,910
+setting for x that made it true.
+
+564
+00:27:23,910 --> 00:27:26,860
+And so this is just
+a direct connection.
+
+565
+00:27:26,860 --> 00:27:30,030
+On the other hand, for
+the universal quantifier,
+
+566
+00:27:30,030 --> 00:27:31,490
+this a little bit trickier.
+
+567
+00:27:31,490 --> 00:27:34,310
+And it's drawn at a
+very high level here.
+
+568
+00:27:34,310 --> 00:27:37,240
+You need to check
+both settings of y.
+
+569
+00:27:37,240 --> 00:27:39,000
+So what you're going
+to end up doing
+
+570
+00:27:39,000 --> 00:27:42,030
+is if you enter
+this gadget, you're
+
+571
+00:27:42,030 --> 00:27:46,830
+first going to set y to
+true and exit out here.
+
+572
+00:27:46,830 --> 00:27:49,560
+And then recursively,
+the rest better be true.
+
+573
+00:27:49,560 --> 00:27:51,880
+If it is, you come back here.
+
+574
+00:27:51,880 --> 00:27:53,800
+When you come back
+here, you mark the fact
+
+575
+00:27:53,800 --> 00:27:55,810
+that you got one
+setting correct.
+
+576
+00:27:55,810 --> 00:27:58,950
+Then you set y to false,
+or the other setting.
+
+577
+00:27:58,950 --> 00:28:01,720
+And then you go out here again.
+
+578
+00:28:01,720 --> 00:28:03,550
+And if the formula
+is again true,
+
+579
+00:28:03,550 --> 00:28:04,730
+you'd be able to come back.
+
+580
+00:28:04,730 --> 00:28:08,350
+And if you've accumulated
+two correct answers internal
+
+581
+00:28:08,350 --> 00:28:10,860
+to this gadget, you know that
+the overall formula is true,
+
+582
+00:28:10,860 --> 00:28:13,170
+with a universal
+quantifier here.
+
+583
+00:28:13,170 --> 00:28:16,780
+And then you'll be able to
+return out to the caller.
+
+584
+00:28:16,780 --> 00:28:19,000
+So that's sort of the
+recursive algorithm
+
+585
+00:28:19,000 --> 00:28:21,340
+view of what's going on here.
+
+586
+00:28:21,340 --> 00:28:24,490
+Let's do that with
+pressure plates.
+
+587
+00:28:24,490 --> 00:28:28,537
+So it looks a little bit messy,
+but the idea is very simple.
+
+588
+00:28:28,537 --> 00:28:30,120
+It's to implement
+exactly what I said.
+
+589
+00:28:30,120 --> 00:28:34,000
+First, these clause gadgets,
+these are 3SAT clauses.
+
+590
+00:28:34,000 --> 00:28:36,790
+And what we're going to do
+is just have three doors,
+
+591
+00:28:36,790 --> 00:28:39,389
+and you have to-- this is drawn
+in the reverse order of what
+
+592
+00:28:39,389 --> 00:28:39,930
+it should be.
+
+593
+00:28:39,930 --> 00:28:41,470
+It's going right
+to left usually,
+
+594
+00:28:41,470 --> 00:28:43,590
+but it also works in
+the other direction.
+
+595
+00:28:43,590 --> 00:28:46,714
+If any of these doors is open,
+you can get to the other side.
+
+596
+00:28:46,714 --> 00:28:48,380
+And in order to get
+through all of them,
+
+597
+00:28:48,380 --> 00:28:50,260
+all the clauses
+must be satisfied.
+
+598
+00:28:50,260 --> 00:28:52,090
+So that's the 3SAT part.
+
+599
+00:28:52,090 --> 00:28:54,130
+Really easy in this setting.
+
+600
+00:28:54,130 --> 00:28:56,710
+Where door open means that
+the variable was set true.
+
+601
+00:28:56,710 --> 00:29:02,140
+In fact, we will have both
+an xi and an xi bar door.
+
+602
+00:29:02,140 --> 00:29:06,530
+And so you use the
+corresponding literals there.
+
+603
+00:29:06,530 --> 00:29:09,831
+
+604
+00:29:09,831 --> 00:29:10,330
+Cool.
+
+605
+00:29:10,330 --> 00:29:15,160
+So now this is an existential
+quantifier, an easier case
+
+606
+00:29:15,160 --> 00:29:16,860
+to think about.
+
+607
+00:29:16,860 --> 00:29:20,230
+So let's say we come in
+from the left, as in here.
+
+608
+00:29:20,230 --> 00:29:22,640
+And that's coming into
+this part of the gadget.
+
+609
+00:29:22,640 --> 00:29:24,852
+And we have to give
+the player a choice.
+
+610
+00:29:24,852 --> 00:29:27,060
+They can either take the
+top path or the bottom path.
+
+611
+00:29:27,060 --> 00:29:29,960
+Now, there's a worry that maybe
+you go a little bit this way
+
+612
+00:29:29,960 --> 00:29:30,840
+and then double-back.
+
+613
+00:29:30,840 --> 00:29:32,339
+But that's not going
+to be possible.
+
+614
+00:29:32,339 --> 00:29:34,400
+We need to argue that.
+
+615
+00:29:34,400 --> 00:29:38,720
+And negative means close,
+and positive means open.
+
+616
+00:29:38,720 --> 00:29:43,720
+So if I come in here, the first
+thing I do is close the A door.
+
+617
+00:29:43,720 --> 00:29:46,140
+That's going to prevent
+me from later coming back
+
+618
+00:29:46,140 --> 00:29:47,080
+through this way.
+
+619
+00:29:47,080 --> 00:29:51,000
+I can only have one
+door for each button.
+
+620
+00:29:51,000 --> 00:29:55,580
+But I want a literal to be
+able to appear in many classes.
+
+621
+00:29:55,580 --> 00:29:58,080
+So in fact, I'm going to have
+several copies of x here.
+
+622
+00:29:58,080 --> 00:30:01,520
+So this is the first
+occurrence of x1 bar,
+
+623
+00:30:01,520 --> 00:30:03,870
+and the first occurrence
+of x2 bar, and so on.
+
+624
+00:30:03,870 --> 00:30:06,160
+I want to open all
+of those doors,
+
+625
+00:30:06,160 --> 00:30:10,680
+so I can use individual copies
+of the variable up there.
+
+626
+00:30:10,680 --> 00:30:14,790
+And then I'm going to close all
+of the positive versions of x.
+
+627
+00:30:14,790 --> 00:30:17,050
+This corresponds to
+setting x to false.
+
+628
+00:30:17,050 --> 00:30:19,600
+And then at the very
+end, I open the B door,
+
+629
+00:30:19,600 --> 00:30:20,850
+which lets me go through here.
+
+630
+00:30:20,850 --> 00:30:25,544
+
+631
+00:30:25,544 --> 00:30:27,210
+The reason you can't
+mess up this gadget
+
+632
+00:30:27,210 --> 00:30:30,049
+is if I went part way
+and then doubled back,
+
+633
+00:30:30,049 --> 00:30:31,590
+I would immediately
+close the B door,
+
+634
+00:30:31,590 --> 00:30:33,540
+which means I can't really
+exit this way, which
+
+635
+00:30:33,540 --> 00:30:35,790
+means I'm going to have to
+go all the way through here
+
+636
+00:30:35,790 --> 00:30:37,710
+and reset all of the variables.
+
+637
+00:30:37,710 --> 00:30:40,750
+And this is exactly
+the complement of this.
+
+638
+00:30:40,750 --> 00:30:44,330
+And so exactly one of these
+will be fully traversed.
+
+639
+00:30:44,330 --> 00:30:46,630
+The other one will be nullified.
+
+640
+00:30:46,630 --> 00:30:49,870
+And then that corresponds
+to existential quantifier.
+
+641
+00:30:49,870 --> 00:30:50,520
+Question?
+
+642
+00:30:50,520 --> 00:30:52,822
+AUDIENCE: The doors
+start in a closed state?
+
+643
+00:30:52,822 --> 00:30:55,280
+PROFESSOR: Let's say all the
+doors start in a closed state.
+
+644
+00:30:55,280 --> 00:30:56,460
+Although, I don't think--
+
+645
+00:30:56,460 --> 00:30:58,754
+AUDIENCE: Can you close
+things more than once?
+
+646
+00:30:58,754 --> 00:30:59,420
+PROFESSOR: Yeah.
+
+647
+00:30:59,420 --> 00:31:00,260
+Sorry.
+
+648
+00:31:00,260 --> 00:31:02,910
+One important thing is if
+you click on Open when it's
+
+649
+00:31:02,910 --> 00:31:04,470
+already open, nothing happens.
+
+650
+00:31:04,470 --> 00:31:05,950
+If you click on Close
+when it's already closed,
+
+651
+00:31:05,950 --> 00:31:06,658
+nothing happened.
+
+652
+00:31:06,658 --> 00:31:08,869
+So you can close multiple times.
+
+653
+00:31:08,869 --> 00:31:10,160
+It doesn't make it more closed.
+
+654
+00:31:10,160 --> 00:31:11,200
+It's just closed.
+
+655
+00:31:11,200 --> 00:31:12,866
+AUDIENCE: Stepping
+on the Close and then
+
+656
+00:31:12,866 --> 00:31:16,790
+going back and opening
+B seems to work?
+
+657
+00:31:16,790 --> 00:31:19,429
+PROFESSOR: So you could do some
+of this and then double-back.
+
+658
+00:31:19,429 --> 00:31:19,970
+You're right.
+
+659
+00:31:19,970 --> 00:31:21,660
+B will open up again.
+
+660
+00:31:21,660 --> 00:31:24,320
+But by traversing all of these,
+you undo all of the things
+
+661
+00:31:24,320 --> 00:31:27,020
+you did up there, because
+these are complementary.
+
+662
+00:31:27,020 --> 00:31:29,840
+So you've fully traversed one
+as the last thing you did.
+
+663
+00:31:29,840 --> 00:31:31,970
+That's going to be
+the one that sticks.
+
+664
+00:31:31,970 --> 00:31:32,500
+Yeah.
+
+665
+00:31:32,500 --> 00:31:36,260
+So that's pretty nice.
+
+666
+00:31:36,260 --> 00:31:40,370
+And on the other hand, here
+is a universal quantifier.
+
+667
+00:31:40,370 --> 00:31:41,775
+Not that much harder.
+
+668
+00:31:41,775 --> 00:31:43,150
+But this is
+essentially-- there's
+
+669
+00:31:43,150 --> 00:31:46,150
+one door inside here
+which is keeping track of,
+
+670
+00:31:46,150 --> 00:31:49,020
+am I going through this
+for the second time?
+
+671
+00:31:49,020 --> 00:31:51,080
+So in this case,
+there's no choice.
+
+672
+00:31:51,080 --> 00:31:53,130
+We just have to
+try both settings.
+
+673
+00:31:53,130 --> 00:31:56,580
+The first thing we do
+is set x to be true.
+
+674
+00:31:56,580 --> 00:31:57,950
+That's this setting.
+
+675
+00:31:57,950 --> 00:32:01,210
+And we also open
+door-- or sorry,
+
+676
+00:32:01,210 --> 00:32:03,010
+we close door D. Oh, right.
+
+677
+00:32:03,010 --> 00:32:03,510
+Sorry.
+
+678
+00:32:03,510 --> 00:32:06,270
+Your other question is, do the
+doors start open or closed?
+
+679
+00:32:06,270 --> 00:32:07,770
+I don't think it
+matters, because we
+
+680
+00:32:07,770 --> 00:32:10,360
+have these close things in
+the beginning, essentially,
+
+681
+00:32:10,360 --> 00:32:12,097
+everything gets closed
+at the beginning.
+
+682
+00:32:12,097 --> 00:32:14,430
+So here we're going to close
+D, which is our final exit.
+
+683
+00:32:14,430 --> 00:32:15,596
+That's where we want to get.
+
+684
+00:32:15,596 --> 00:32:17,580
+So that's going to be hard.
+
+685
+00:32:17,580 --> 00:32:20,310
+We have to get to
+the open D spot.
+
+686
+00:32:20,310 --> 00:32:22,260
+Then we set x to our setting.
+
+687
+00:32:22,260 --> 00:32:26,049
+Then we open A. And now
+we're allowed to go here.
+
+688
+00:32:26,049 --> 00:32:27,840
+You could try to go
+this way, but it's just
+
+689
+00:32:27,840 --> 00:32:29,090
+going to close a couple doors.
+
+690
+00:32:29,090 --> 00:32:31,490
+So it doesn't really help you.
+
+691
+00:32:31,490 --> 00:32:33,800
+So we recursively call
+the thing with x true.
+
+692
+00:32:33,800 --> 00:32:37,990
+If it comes back with the
+thing being satisfied,
+
+693
+00:32:37,990 --> 00:32:40,480
+we can't go through here,
+because D is closed.
+
+694
+00:32:40,480 --> 00:32:42,230
+So we're going to have
+to go through here.
+
+695
+00:32:42,230 --> 00:32:44,040
+We open B. We
+immediately go through B.
+
+696
+00:32:44,040 --> 00:32:49,250
+We immediately close B. So it's
+like that's a one-way gadget.
+
+697
+00:32:49,250 --> 00:32:53,820
+Now we set x to false, the
+opposite of this thing.
+
+698
+00:32:53,820 --> 00:32:56,430
+And we can't go backwards,
+because B is closed.
+
+699
+00:32:56,430 --> 00:32:59,930
+Now we open D. So if we
+can get through again,
+
+700
+00:32:59,930 --> 00:33:01,230
+we'll be able to exit.
+
+701
+00:33:01,230 --> 00:33:04,040
+We can't immediately turn back,
+because again, B is closed.
+
+702
+00:33:04,040 --> 00:33:08,060
+We open C, visit C, close C.
+So another one-way gadget.
+
+703
+00:33:08,060 --> 00:33:10,710
+And we also close A to
+prevent other weird things
+
+704
+00:33:10,710 --> 00:33:12,310
+from happening.
+
+705
+00:33:12,310 --> 00:33:14,070
+So now we go through again.
+
+706
+00:33:14,070 --> 00:33:18,100
+If we get back with D open, then
+we can return and we're happy.
+
+707
+00:33:18,100 --> 00:33:21,687
+And this gadget in the actual
+construction, keep in mind,
+
+708
+00:33:21,687 --> 00:33:23,270
+what's happening
+here is we are making
+
+709
+00:33:23,270 --> 00:33:25,480
+an exponential-length puzzle.
+
+710
+00:33:25,480 --> 00:33:28,050
+The length of the solution
+is going to be exponential,
+
+711
+00:33:28,050 --> 00:33:30,170
+because you have to try
+both settings of all
+
+712
+00:33:30,170 --> 00:33:31,980
+the universal quantifiers.
+
+713
+00:33:31,980 --> 00:33:35,090
+So any gadget is going to be
+visited many, many, many times.
+
+714
+00:33:35,090 --> 00:33:39,050
+But each time, we're completely
+resetting x, resetting x again,
+
+715
+00:33:39,050 --> 00:33:40,300
+and then returning.
+
+716
+00:33:40,300 --> 00:33:43,680
+So we'll revisit, will
+reset x to true, and then
+
+717
+00:33:43,680 --> 00:33:45,440
+later to false, and so on.
+
+718
+00:33:45,440 --> 00:33:48,360
+But we are checking all the
+possible assignments for here.
+
+719
+00:33:48,360 --> 00:33:51,540
+And we're letting the player
+non-deterministically guess
+
+720
+00:33:51,540 --> 00:33:56,659
+assignment for the
+existential quantifiers.
+
+721
+00:33:56,659 --> 00:34:00,199
+So that is pressure
+plates in the abstract
+
+722
+00:34:00,199 --> 00:34:02,152
+PSPACE-completeness.
+
+723
+00:34:02,152 --> 00:34:03,876
+AUDIENCE: Sorry for
+another question.
+
+724
+00:34:03,876 --> 00:34:06,409
+In our usual sense of
+reduction, you usually
+
+725
+00:34:06,409 --> 00:34:10,064
+think of a polynomial
+size thing that we make.
+
+726
+00:34:10,064 --> 00:34:10,730
+PROFESSOR: Good.
+
+727
+00:34:10,730 --> 00:34:11,400
+Yeah.
+
+728
+00:34:11,400 --> 00:34:14,370
+I didn't mention
+it, but there are
+
+729
+00:34:14,370 --> 00:34:17,172
+different notions of reductions
+for PSPACE-completeness.
+
+730
+00:34:17,172 --> 00:34:18,630
+But for the most
+part, we will just
+
+731
+00:34:18,630 --> 00:34:20,610
+use the same notion of
+reduction we did before,
+
+732
+00:34:20,610 --> 00:34:24,350
+which is the running
+time of the reduction
+
+733
+00:34:24,350 --> 00:34:26,540
+should be polynomial time.
+
+734
+00:34:26,540 --> 00:34:29,300
+So here we're given a
+formula which is expressed
+
+735
+00:34:29,300 --> 00:34:31,440
+in this kind of succinct form.
+
+736
+00:34:31,440 --> 00:34:34,480
+And we're producing
+a level whose
+
+737
+00:34:34,480 --> 00:34:36,750
+size is polynomial in that.
+
+738
+00:34:36,750 --> 00:34:42,080
+Now, the actual
+execution of the game,
+
+739
+00:34:42,080 --> 00:34:45,570
+the trace of what happens,
+or the certificate that
+
+740
+00:34:45,570 --> 00:34:47,650
+is solvable, that has
+exponential length.
+
+741
+00:34:47,650 --> 00:34:49,150
+But we're not talking
+about MP here,
+
+742
+00:34:49,150 --> 00:34:50,858
+so we don't need
+polynomial certificates.
+
+743
+00:34:50,858 --> 00:34:53,720
+But the reduction
+itself is polynomial.
+
+744
+00:34:53,720 --> 00:34:58,060
+And again, of course, you need
+to preserve the yes/no answer.
+
+745
+00:34:58,060 --> 00:34:59,530
+So that's our
+notion of reduction.
+
+746
+00:34:59,530 --> 00:35:00,030
+Question?
+
+747
+00:35:00,030 --> 00:35:01,830
+AUDIENCE: Is there a way
+to make this reduction work
+
+748
+00:35:01,830 --> 00:35:03,310
+where you just
+have toggle plates
+
+749
+00:35:03,310 --> 00:35:06,700
+rather than-- so that they're
+not marked with Open or Closed,
+
+750
+00:35:06,700 --> 00:35:09,130
+but just change the
+state of the door?
+
+751
+00:35:09,130 --> 00:35:13,797
+
+752
+00:35:13,797 --> 00:35:15,630
+PROFESSOR: Let's come
+back to your question.
+
+753
+00:35:15,630 --> 00:35:17,970
+I have a proof that
+does essentially that.
+
+754
+00:35:17,970 --> 00:35:21,640
+I was wondering the same thing,
+but I'm not totally sure.
+
+755
+00:35:21,640 --> 00:35:26,480
+So let's come back to that and
+try to figure out the answer.
+
+756
+00:35:26,480 --> 00:35:31,920
+So this applies to
+many, many, many games.
+
+757
+00:35:31,920 --> 00:35:35,400
+Here is an example of an
+RPG, one of the earliest--
+
+758
+00:35:35,400 --> 00:35:36,330
+Eye of the Beholder.
+
+759
+00:35:36,330 --> 00:35:38,650
+I think it's officially
+DND-licensed.
+
+760
+00:35:38,650 --> 00:35:40,680
+It has a small number
+of pressure plates.
+
+761
+00:35:40,680 --> 00:35:42,430
+Here you are.
+
+762
+00:35:42,430 --> 00:35:45,284
+You touch the pressure
+plate, and this door opens.
+
+763
+00:35:45,284 --> 00:35:45,784
+Ta-da!
+
+764
+00:35:45,784 --> 00:35:48,500
+
+765
+00:35:48,500 --> 00:35:51,360
+We don't know to what
+extent these things exist,
+
+766
+00:35:51,360 --> 00:35:53,184
+but reasonable to
+assume you have
+
+767
+00:35:53,184 --> 00:35:54,350
+this kind of infrastructure.
+
+768
+00:35:54,350 --> 00:35:57,130
+And then PSPACE-complete.
+
+769
+00:35:57,130 --> 00:36:00,540
+Even back in the early '90s.
+
+770
+00:36:00,540 --> 00:36:04,090
+A lot of first-person
+shooters have pressure plates.
+
+771
+00:36:04,090 --> 00:36:06,550
+Doom doesn't have
+literal pressure plates,
+
+772
+00:36:06,550 --> 00:36:07,405
+but it has triggers.
+
+773
+00:36:07,405 --> 00:36:10,560
+There's like walls that
+if you walk through them,
+
+774
+00:36:10,560 --> 00:36:11,350
+something happens.
+
+775
+00:36:11,350 --> 00:36:13,245
+A block can appear, or
+a monster can appear.
+
+776
+00:36:13,245 --> 00:36:15,870
+If you make a block appear, that
+will essentially close a door.
+
+777
+00:36:15,870 --> 00:36:17,369
+If you make a block
+disappear, which
+
+778
+00:36:17,369 --> 00:36:19,540
+is also possible on the
+general script editor,
+
+779
+00:36:19,540 --> 00:36:22,670
+then you can do
+all this in Doom.
+
+780
+00:36:22,670 --> 00:36:24,880
+Quake is the first
+one I know that has
+
+781
+00:36:24,880 --> 00:36:27,809
+actual physical representations
+of a pressure plate.
+
+782
+00:36:27,809 --> 00:36:29,600
+You touch this-- it's
+a little hard to see,
+
+783
+00:36:29,600 --> 00:36:32,820
+but this drawbridge is opening.
+
+784
+00:36:32,820 --> 00:36:35,730
+And a little more far.
+
+785
+00:36:35,730 --> 00:36:38,060
+Adventure games.
+
+786
+00:36:38,060 --> 00:36:40,720
+It's hard to define the
+generalization of an adventure
+
+787
+00:36:40,720 --> 00:36:44,420
+game, but one definition
+is that there's
+
+788
+00:36:44,420 --> 00:36:47,110
+an older engine for
+adventure games called SCUMM
+
+789
+00:36:47,110 --> 00:36:49,310
+for all the old Sierra games.
+
+790
+00:36:49,310 --> 00:36:52,477
+This, I think, stands
+for Maniac Mansion.
+
+791
+00:36:52,477 --> 00:36:54,310
+That was the original
+game they read it for.
+
+792
+00:36:54,310 --> 00:36:57,630
+But if you ever played Monkey
+Island or Space Quest XII,
+
+793
+00:36:57,630 --> 00:36:58,980
+which that doesn't exist.
+
+794
+00:36:58,980 --> 00:37:00,570
+But there was Space
+Quest IV where
+
+795
+00:37:00,570 --> 00:37:05,094
+they time-traveled to the future
+and played Space Quest XII.
+
+796
+00:37:05,094 --> 00:37:06,510
+It's a very good
+game, by the way.
+
+797
+00:37:06,510 --> 00:37:09,510
+
+798
+00:37:09,510 --> 00:37:12,770
+A lot of these are actually
+freely available now.
+
+799
+00:37:12,770 --> 00:37:15,130
+And anyway, it's an engine.
+
+800
+00:37:15,130 --> 00:37:18,180
+It has a very restricted
+set of scripting languages.
+
+801
+00:37:18,180 --> 00:37:20,660
+And in particular, it
+lets you do, effectively,
+
+802
+00:37:20,660 --> 00:37:22,510
+the style of pressure
+plate things, where
+
+803
+00:37:22,510 --> 00:37:24,310
+if you talk to
+someone, then they
+
+804
+00:37:24,310 --> 00:37:26,550
+make you go to a new
+place, and they open up
+
+805
+00:37:26,550 --> 00:37:29,180
+some other traversal
+options, or vice versa.
+
+806
+00:37:29,180 --> 00:37:32,990
+So you have to take this
+a little bit liberally,
+
+807
+00:37:32,990 --> 00:37:35,300
+but you can
+essentially implement
+
+808
+00:37:35,300 --> 00:37:37,830
+these kinds of things,
+because you have rooms.
+
+809
+00:37:37,830 --> 00:37:39,850
+Here you don't even
+need planarity,
+
+810
+00:37:39,850 --> 00:37:41,930
+and you can implement
+pressure plates.
+
+811
+00:37:41,930 --> 00:37:44,570
+So that's cool.
+
+812
+00:37:44,570 --> 00:37:47,260
+A little more literally
+pressure plates.
+
+813
+00:37:47,260 --> 00:37:52,450
+Prince of Persia, one of the
+first platform PC video games,
+
+814
+00:37:52,450 --> 00:37:53,460
+I guess.
+
+815
+00:37:53,460 --> 00:37:55,400
+I don't know exactly
+the right qualifiers.
+
+816
+00:37:55,400 --> 00:37:57,619
+This, I think, they
+even did motion capture.
+
+817
+00:37:57,619 --> 00:37:59,660
+It's one of the first
+instances of motion capture
+
+818
+00:37:59,660 --> 00:38:03,227
+for video games in the very
+early days of graphics.
+
+819
+00:38:03,227 --> 00:38:05,810
+And you see in particular, this
+was a pressure plate literally
+
+820
+00:38:05,810 --> 00:38:08,860
+that opens up that door.
+
+821
+00:38:08,860 --> 00:38:10,750
+So that's pretty cool.
+
+822
+00:38:10,750 --> 00:38:13,360
+One catch is that pressure
+plates-- in this game,
+
+823
+00:38:13,360 --> 00:38:16,900
+you can jump, so maybe
+you skip a pressure plate.
+
+824
+00:38:16,900 --> 00:38:19,210
+But if you put a pressure
+plate on the top of a ledge
+
+825
+00:38:19,210 --> 00:38:21,710
+that you have to climb up, that
+will force you to touch it.
+
+826
+00:38:21,710 --> 00:38:25,240
+So that's Prince of
+Persia, PSPACE-complete.
+
+827
+00:38:25,240 --> 00:38:28,520
+
+828
+00:38:28,520 --> 00:38:31,700
+All of these games pretty
+much are in PSPACE,
+
+829
+00:38:31,700 --> 00:38:35,240
+because the state of the
+game is some polynomial space
+
+830
+00:38:35,240 --> 00:38:38,630
+thing-- which things have been
+pressed, or opened, or closed.
+
+831
+00:38:38,630 --> 00:38:41,560
+The total space of the
+game is usually polynomial.
+
+832
+00:38:41,560 --> 00:38:44,350
+Each thing has some,
+at most, linear number
+
+833
+00:38:44,350 --> 00:38:45,100
+of bits of states.
+
+834
+00:38:45,100 --> 00:38:47,530
+So the overall
+thing is polynomial.
+
+835
+00:38:47,530 --> 00:38:50,327
+Or I should say
+constant number of bits.
+
+836
+00:38:50,327 --> 00:38:51,160
+That doesn't matter.
+
+837
+00:38:51,160 --> 00:38:52,980
+I get to take a log.
+
+838
+00:38:52,980 --> 00:38:55,885
+And so you're just traversing
+this giant state machine.
+
+839
+00:38:55,885 --> 00:38:58,940
+
+840
+00:38:58,940 --> 00:39:00,720
+To store the current
+state of the game
+
+841
+00:39:00,720 --> 00:39:02,770
+only requires polynomial space.
+
+842
+00:39:02,770 --> 00:39:05,160
+And at best, you're making
+a non-deterministic choice
+
+843
+00:39:05,160 --> 00:39:07,660
+at each step, of whether I push
+this button, or that button,
+
+844
+00:39:07,660 --> 00:39:09,200
+or wait.
+
+845
+00:39:09,200 --> 00:39:10,880
+As long as you
+discretize time, you
+
+846
+00:39:10,880 --> 00:39:13,490
+get an easy NPSPACE
+algorithm for pretty much all
+
+847
+00:39:13,490 --> 00:39:15,050
+single-player video games.
+
+848
+00:39:15,050 --> 00:39:19,530
+Not quite all, but all the
+ones I've talked about here.
+
+849
+00:39:19,530 --> 00:39:21,660
+Cool.
+
+850
+00:39:21,660 --> 00:39:26,490
+So that is metatheorem three.
+
+851
+00:39:26,490 --> 00:39:33,780
+But this issue of having to
+force someone to pressure plate
+
+852
+00:39:33,780 --> 00:39:34,960
+is a little bit restrictive.
+
+853
+00:39:34,960 --> 00:39:37,830
+And that you can
+definitely get rid of.
+
+854
+00:39:37,830 --> 00:39:42,850
+And this is what Giovanni calls
+buttons in metatheorem four.
+
+855
+00:39:42,850 --> 00:40:08,685
+
+856
+00:40:08,685 --> 00:40:10,310
+If instead of doors
+and pressure plates
+
+857
+00:40:10,310 --> 00:40:13,110
+you have doors and buttons,
+you get PSPACE-completeness.
+
+858
+00:40:13,110 --> 00:40:15,240
+Now, this is a little
+bit more restrictive
+
+859
+00:40:15,240 --> 00:40:26,140
+in that we're going to allow
+a button to, let's say,
+
+860
+00:40:26,140 --> 00:40:32,390
+open or close three doors.
+
+861
+00:40:32,390 --> 00:40:35,130
+So pressing one button
+has a bulk effect.
+
+862
+00:40:35,130 --> 00:40:36,800
+It affects three things at once.
+
+863
+00:40:36,800 --> 00:40:39,652
+This has since been
+improved down to two.
+
+864
+00:40:39,652 --> 00:40:41,110
+But that hasn't
+been published yet.
+
+865
+00:40:41,110 --> 00:40:45,220
+So I am going to cover the
+published version, which
+
+866
+00:40:45,220 --> 00:40:47,390
+is this one, where
+you manipulate
+
+867
+00:40:47,390 --> 00:40:49,941
+three doors for every
+button that you press.
+
+868
+00:40:49,941 --> 00:40:51,690
+And here we're drawing
+it with the buttons
+
+869
+00:40:51,690 --> 00:40:52,977
+on the sides of the walls.
+
+870
+00:40:52,977 --> 00:40:55,060
+There are many, of course,
+physical manifestations
+
+871
+00:40:55,060 --> 00:40:56,080
+of this.
+
+872
+00:40:56,080 --> 00:40:59,500
+And the proof is a reduction
+from pressure plates.
+
+873
+00:40:59,500 --> 00:41:00,730
+Question?
+
+874
+00:41:00,730 --> 00:41:03,260
+AUDIENCE: The buttons are
+allowed to close one door
+
+875
+00:41:03,260 --> 00:41:04,000
+and open another?
+
+876
+00:41:04,000 --> 00:41:04,790
+PROFESSOR: Yes.
+
+877
+00:41:04,790 --> 00:41:06,170
+So you can see that here.
+
+878
+00:41:06,170 --> 00:41:08,245
+One button will close
+some doors, open others.
+
+879
+00:41:08,245 --> 00:41:10,915
+
+880
+00:41:10,915 --> 00:41:13,240
+This is one gadget.
+
+881
+00:41:13,240 --> 00:41:14,720
+Here's the gadget
+on the top-left,
+
+882
+00:41:14,720 --> 00:41:17,350
+and this is a sample
+execution going left to right.
+
+883
+00:41:17,350 --> 00:41:20,655
+This simulates a pressure plate.
+
+884
+00:41:20,655 --> 00:41:22,530
+And in this case, you
+can enter from the left
+
+885
+00:41:22,530 --> 00:41:24,164
+and go to the right,
+or vice versa.
+
+886
+00:41:24,164 --> 00:41:26,580
+Although, in the proof, we
+actually only need one of those
+
+887
+00:41:26,580 --> 00:41:27,080
+traversals.
+
+888
+00:41:27,080 --> 00:41:31,640
+So you could just stick with
+the top half of the gadget.
+
+889
+00:41:31,640 --> 00:41:35,100
+And the white means open,
+the black means closed here.
+
+890
+00:41:35,100 --> 00:41:37,960
+So the initial state is supposed
+to be A is open, B is closed,
+
+891
+00:41:37,960 --> 00:41:39,210
+C is closed.
+
+892
+00:41:39,210 --> 00:41:40,780
+So you come in here.
+
+893
+00:41:40,780 --> 00:41:42,914
+If you want to
+traverse, you have
+
+894
+00:41:42,914 --> 00:41:44,080
+to hit one of these buttons.
+
+895
+00:41:44,080 --> 00:41:46,070
+Let's say you hit the top one.
+
+896
+00:41:46,070 --> 00:41:48,320
+And we're going to
+do this plus or minus
+
+897
+00:41:48,320 --> 00:41:52,080
+x, which is the actual thing
+you wanted this pressure plate
+
+898
+00:41:52,080 --> 00:41:54,620
+to do-- open or close door x.
+
+899
+00:41:54,620 --> 00:41:58,500
+If this wasn't open for x,
+there would be a plus x here.
+
+900
+00:41:58,500 --> 00:42:00,050
+But then also, we
+will close the door
+
+901
+00:42:00,050 --> 00:42:01,890
+we just came through
+and open the door
+
+902
+00:42:01,890 --> 00:42:03,250
+to go to the next spot.
+
+903
+00:42:03,250 --> 00:42:04,670
+Then you go to the next spot.
+
+904
+00:42:04,670 --> 00:42:06,420
+Let's say you press
+the bottom button.
+
+905
+00:42:06,420 --> 00:42:09,260
+
+906
+00:42:09,260 --> 00:42:12,254
+Because that opens C. And
+you want to go forward.
+
+907
+00:42:12,254 --> 00:42:13,670
+So it's the only
+one that opens C.
+
+908
+00:42:13,670 --> 00:42:16,610
+This one would have
+closed C. And we also
+
+909
+00:42:16,610 --> 00:42:20,082
+closed D and opened B, which
+gets us to the next stage.
+
+910
+00:42:20,082 --> 00:42:21,540
+And let's say we
+press this button,
+
+911
+00:42:21,540 --> 00:42:24,370
+because this is the only
+one that opens D. Then we
+
+912
+00:42:24,370 --> 00:42:27,070
+close C and open A.
+The point of that
+
+913
+00:42:27,070 --> 00:42:30,170
+is to reset the gadget to
+its original state of open,
+
+914
+00:42:30,170 --> 00:42:32,490
+closed, closed, open.
+
+915
+00:42:32,490 --> 00:42:37,570
+And then along the way, we
+also activated x in the way
+
+916
+00:42:37,570 --> 00:42:39,980
+that we wanted it
+to be activated.
+
+917
+00:42:39,980 --> 00:42:42,710
+So that was pretty easy.
+
+918
+00:42:42,710 --> 00:42:46,480
+Now we have buttons which
+you can press or not.
+
+919
+00:42:46,480 --> 00:42:50,740
+But when you press them, it
+activates three things at once.
+
+920
+00:42:50,740 --> 00:42:52,970
+And this also exists
+in many video games.
+
+921
+00:42:52,970 --> 00:42:55,610
+Here were a few that I found.
+
+922
+00:42:55,610 --> 00:42:58,362
+We have the original
+Tomb Raider,
+
+923
+00:42:58,362 --> 00:43:00,070
+and I think all the
+Tomb Raiders probably
+
+924
+00:43:00,070 --> 00:43:02,720
+have some notion of switch,
+which opens, in this case,
+
+925
+00:43:02,720 --> 00:43:03,320
+one door.
+
+926
+00:43:03,320 --> 00:43:06,190
+But you could imagine
+generalizing to more doors.
+
+927
+00:43:06,190 --> 00:43:07,720
+We have Sonic the Hedgehog here.
+
+928
+00:43:07,720 --> 00:43:09,980
+When you press that
+button, it opens that door.
+
+929
+00:43:09,980 --> 00:43:12,360
+You can use that to
+simulate the same effect.
+
+930
+00:43:12,360 --> 00:43:14,222
+And this game,
+Lost Vikings, which
+
+931
+00:43:14,222 --> 00:43:15,680
+I barely remember
+playing, but I do
+
+932
+00:43:15,680 --> 00:43:18,830
+remember in particular that
+the main character here
+
+933
+00:43:18,830 --> 00:43:19,945
+is called Erik the Swift.
+
+934
+00:43:19,945 --> 00:43:22,280
+[LAUGHTER]
+
+935
+00:43:22,280 --> 00:43:24,670
+And you see him pressing a
+button which, in this case,
+
+936
+00:43:24,670 --> 00:43:27,560
+actually opens two doors.
+
+937
+00:43:27,560 --> 00:43:30,270
+So that's pretty compelling.
+
+938
+00:43:30,270 --> 00:43:32,050
+And in general, tons
+of video-- I mean,
+
+939
+00:43:32,050 --> 00:43:34,940
+almost every video game
+with some puzzle element
+
+940
+00:43:34,940 --> 00:43:36,000
+has buttons in it.
+
+941
+00:43:36,000 --> 00:43:39,735
+So now you know a ton of video
+games that are PSPACE-complete.
+
+942
+00:43:39,735 --> 00:43:42,490
+
+943
+00:43:42,490 --> 00:43:42,990
+Questions?
+
+944
+00:43:42,990 --> 00:43:46,150
+
+945
+00:43:46,150 --> 00:43:47,230
+All right.
+
+946
+00:43:47,230 --> 00:43:52,520
+So the next metatheorem
+is going to be
+
+947
+00:43:52,520 --> 00:43:55,840
+a specific kind
+of implementation
+
+948
+00:43:55,840 --> 00:43:58,300
+of that same construction.
+
+949
+00:43:58,300 --> 00:44:01,110
+It's more of a physical
+realization of a door.
+
+950
+00:44:01,110 --> 00:44:03,450
+It's a door that can
+be opened or closed.
+
+951
+00:44:03,450 --> 00:44:07,230
+And it has various ways to
+interact with that door.
+
+952
+00:44:07,230 --> 00:44:09,324
+If it's open, you can
+traverse through it.
+
+953
+00:44:09,324 --> 00:44:10,990
+If you go through the
+clause connection,
+
+954
+00:44:10,990 --> 00:44:13,774
+you are forced to close
+the door, in which case
+
+955
+00:44:13,774 --> 00:44:14,690
+you can't traverse it.
+
+956
+00:44:14,690 --> 00:44:15,910
+If you go through
+the open connection,
+
+957
+00:44:15,910 --> 00:44:17,493
+you can either just
+go through, or you
+
+958
+00:44:17,493 --> 00:44:19,820
+can open the door if you want.
+
+959
+00:44:19,820 --> 00:44:22,315
+That doesn't really-- you
+don't need this connection,
+
+960
+00:44:22,315 --> 00:44:24,650
+but a lot of gadgets
+will end up doing that.
+
+961
+00:44:24,650 --> 00:44:26,150
+So this is just
+one bit of state.
+
+962
+00:44:26,150 --> 00:44:28,320
+Door is open or closed.
+
+963
+00:44:28,320 --> 00:44:31,210
+And we can simulate
+this kind of thing,
+
+964
+00:44:31,210 --> 00:44:37,540
+or simulate the previous type
+of pressure plates if you have
+
+965
+00:44:37,540 --> 00:44:39,890
+a door, and an open
+pressure plate,
+
+966
+00:44:39,890 --> 00:44:41,240
+and a closed pressure plate.
+
+967
+00:44:41,240 --> 00:44:46,470
+We're just sort of remapping
+that into this gadget.
+
+968
+00:44:46,470 --> 00:44:49,910
+When you go through
+the open traversal,
+
+969
+00:44:49,910 --> 00:44:52,250
+that's just visiting here.
+
+970
+00:44:52,250 --> 00:44:54,700
+And when you go through
+the traverse connection,
+
+971
+00:44:54,700 --> 00:44:56,140
+that's going through the door.
+
+972
+00:44:56,140 --> 00:44:59,270
+And when you go through
+the close connection,
+
+973
+00:44:59,270 --> 00:45:00,950
+that's visiting
+that pressure plate.
+
+974
+00:45:00,950 --> 00:45:01,970
+And vice versa.
+
+975
+00:45:01,970 --> 00:45:04,120
+So you can take the
+previous reduction,
+
+976
+00:45:04,120 --> 00:45:05,429
+translate it into this view.
+
+977
+00:45:05,429 --> 00:45:07,470
+Of course, you're going
+to end up with crossings,
+
+978
+00:45:07,470 --> 00:45:08,780
+and it will be kind of ugly.
+
+979
+00:45:08,780 --> 00:45:10,580
+But you can do this.
+
+980
+00:45:10,580 --> 00:45:13,330
+So as long as you have
+a crossover gadget,
+
+981
+00:45:13,330 --> 00:45:16,850
+doors-- this is called a
+door gadget-- by themselves
+
+982
+00:45:16,850 --> 00:45:18,794
+are PSPACE-complete.
+
+983
+00:45:18,794 --> 00:45:21,210
+So we'll call this
+metatheorem five.
+
+984
+00:45:21,210 --> 00:45:24,340
+
+985
+00:45:24,340 --> 00:45:27,760
+I mean, this is very similar
+to metatheorem three,
+
+986
+00:45:27,760 --> 00:45:29,720
+just like two and one
+were very similar.
+
+987
+00:45:29,720 --> 00:45:31,590
+But just give it another name.
+
+988
+00:45:31,590 --> 00:45:34,230
+
+989
+00:45:34,230 --> 00:45:41,330
+Doors plus crossover
+are PSPACE-complete.
+
+990
+00:45:41,330 --> 00:45:43,950
+
+991
+00:45:43,950 --> 00:45:46,300
+So this is sort of a
+reinterpretation, if you will,
+
+992
+00:45:46,300 --> 00:45:48,560
+of the original Viglietta paper.
+
+993
+00:45:48,560 --> 00:45:51,490
+Viglietta's a co-author, but
+this is the Nintendo Games
+
+994
+00:45:51,490 --> 00:45:53,300
+paper.
+
+995
+00:45:53,300 --> 00:45:55,730
+So this is-- you can think
+of as a simplification
+
+996
+00:45:55,730 --> 00:46:00,600
+of that previous metatheorem
+with pressure plates.
+
+997
+00:46:00,600 --> 00:46:04,060
+And then that has been
+implemented in even more games
+
+998
+00:46:04,060 --> 00:46:06,440
+than you've seen so far.
+
+999
+00:46:06,440 --> 00:46:08,435
+So one of the first
+ones we did was Legend
+
+1000
+00:46:08,435 --> 00:46:12,620
+of Zelda-- A Link to the Past.
+
+1001
+00:46:12,620 --> 00:46:16,310
+So a few things going on here.
+
+1002
+00:46:16,310 --> 00:46:18,150
+But this is basically
+the door gadget.
+
+1003
+00:46:18,150 --> 00:46:19,419
+And then you're done.
+
+1004
+00:46:19,419 --> 00:46:21,710
+There are lots of ways to do
+crossovers in Zelda that's
+
+1005
+00:46:21,710 --> 00:46:22,300
+not too hard.
+
+1006
+00:46:22,300 --> 00:46:26,230
+We showed a hook-shot
+version some time ago.
+
+1007
+00:46:26,230 --> 00:46:28,000
+But anyway.
+
+1008
+00:46:28,000 --> 00:46:30,620
+So there are these
+notion of doors in Zelda.
+
+1009
+00:46:30,620 --> 00:46:32,620
+These are currently
+in the closed state.
+
+1010
+00:46:32,620 --> 00:46:34,740
+And when you walk through
+this in the open state,
+
+1011
+00:46:34,740 --> 00:46:38,320
+you'd come out on
+the other side.
+
+1012
+00:46:38,320 --> 00:46:40,580
+And so in particular,
+the to traversal
+
+1013
+00:46:40,580 --> 00:46:43,140
+is going to be whether this
+door is currently open.
+
+1014
+00:46:43,140 --> 00:46:45,720
+Now, getting back
+to the question,
+
+1015
+00:46:45,720 --> 00:46:50,120
+in Zelda-- A Link to the
+Past, you only have toggles.
+
+1016
+00:46:50,120 --> 00:46:55,960
+If I press this button, all the
+doors labeled one switch state.
+
+1017
+00:46:55,960 --> 00:46:58,870
+But you can't jump and then
+land on the thing again.
+
+1018
+00:46:58,870 --> 00:47:00,880
+In this case, you
+are falling down.
+
+1019
+00:47:00,880 --> 00:47:02,030
+The drawing isn't clear.
+
+1020
+00:47:02,030 --> 00:47:05,730
+This is the 2D drawing
+of falling down a tunnel.
+
+1021
+00:47:05,730 --> 00:47:08,790
+And then the only thing
+you can do is walk down.
+
+1022
+00:47:08,790 --> 00:47:11,460
+And then you hit a teleport,
+and you immediately go here.
+
+1023
+00:47:11,460 --> 00:47:13,400
+So this is one way to
+get traversals to work
+
+1024
+00:47:13,400 --> 00:47:16,750
+by preventing backtracking.
+
+1025
+00:47:16,750 --> 00:47:20,840
+Sorry-- getting toggles to work
+by preventing backtracking.
+
+1026
+00:47:20,840 --> 00:47:23,285
+So the intent of
+this gadget is there
+
+1027
+00:47:23,285 --> 00:47:24,870
+are doors labeled one and two.
+
+1028
+00:47:24,870 --> 00:47:27,750
+And it should always be
+exactly one of those is closed.
+
+1029
+00:47:27,750 --> 00:47:32,930
+Either the one is closed or the
+two is closed, but not both.
+
+1030
+00:47:32,930 --> 00:47:37,730
+And in Zelda, all the
+games are initially closed.
+
+1031
+00:47:37,730 --> 00:47:39,390
+So this is annoying.
+
+1032
+00:47:39,390 --> 00:47:42,200
+So we have to build
+this initialize gadget
+
+1033
+00:47:42,200 --> 00:47:46,390
+through all of these doors,
+where you come in here.
+
+1034
+00:47:46,390 --> 00:47:48,561
+This is the end.
+
+1035
+00:47:48,561 --> 00:47:49,810
+These are one-way teleporters.
+
+1036
+00:47:49,810 --> 00:47:51,190
+You can't go up here.
+
+1037
+00:47:51,190 --> 00:47:53,630
+So you have to go
+here, toggle two.
+
+1038
+00:47:53,630 --> 00:47:55,140
+Then go to this
+teleporter, go here.
+
+1039
+00:47:55,140 --> 00:47:58,492
+This is a block, so you
+have to go over this way.
+
+1040
+00:47:58,492 --> 00:48:00,450
+We're going to chain all
+these gadgets together
+
+1041
+00:48:00,450 --> 00:48:03,280
+through these initialize
+paths, so that all of the doors
+
+1042
+00:48:03,280 --> 00:48:05,170
+are initially in
+the closed state,
+
+1043
+00:48:05,170 --> 00:48:08,680
+with one closed and two open.
+
+1044
+00:48:08,680 --> 00:48:12,640
+And then there's a
+crystal-something
+
+1045
+00:48:12,640 --> 00:48:14,070
+that you break.
+
+1046
+00:48:14,070 --> 00:48:15,600
+And it flips.
+
+1047
+00:48:15,600 --> 00:48:18,550
+All of these blue blocks
+become these, and all of these
+
+1048
+00:48:18,550 --> 00:48:19,490
+become blue blocks.
+
+1049
+00:48:19,490 --> 00:48:21,270
+And that only happens once.
+
+1050
+00:48:21,270 --> 00:48:23,840
+So now, basically, the
+initialize paths are destroyed.
+
+1051
+00:48:23,840 --> 00:48:25,685
+So now think of this
+as being untraversable,
+
+1052
+00:48:25,685 --> 00:48:28,060
+and this is traversable.
+
+1053
+00:48:28,060 --> 00:48:28,640
+OK?
+
+1054
+00:48:28,640 --> 00:48:32,220
+So now, if the doors open,
+door number one is open,
+
+1055
+00:48:32,220 --> 00:48:33,610
+then we can traverse it.
+
+1056
+00:48:33,610 --> 00:48:35,430
+That's cool.
+
+1057
+00:48:35,430 --> 00:48:37,830
+Let's look at the closed paths.
+
+1058
+00:48:37,830 --> 00:48:41,300
+The closed path-- exactly one
+of these is going to be open.
+
+1059
+00:48:41,300 --> 00:48:43,840
+So if the door was
+already closed,
+
+1060
+00:48:43,840 --> 00:48:45,560
+that means two will be open.
+
+1061
+00:48:45,560 --> 00:48:46,610
+We go down here.
+
+1062
+00:48:46,610 --> 00:48:48,240
+We teleport to here.
+
+1063
+00:48:48,240 --> 00:48:52,720
+And then again, because
+two is the only thing open,
+
+1064
+00:48:52,720 --> 00:48:56,120
+we go out through
+the close exit.
+
+1065
+00:48:56,120 --> 00:48:59,770
+On the other hand,
+if the door was open
+
+1066
+00:48:59,770 --> 00:49:02,640
+and we're trying to close it, we
+have to be forced to close it.
+
+1067
+00:49:02,640 --> 00:49:04,390
+And indeed, we'll
+go through door one.
+
+1068
+00:49:04,390 --> 00:49:05,579
+Can't go through door two.
+
+1069
+00:49:05,579 --> 00:49:06,370
+We'll go down here.
+
+1070
+00:49:06,370 --> 00:49:07,420
+We'll toggle door one.
+
+1071
+00:49:07,420 --> 00:49:09,580
+Now door one is closed.
+
+1072
+00:49:09,580 --> 00:49:10,390
+And so is two.
+
+1073
+00:49:10,390 --> 00:49:13,690
+We'll teleport to here.
+
+1074
+00:49:13,690 --> 00:49:15,170
+Remember this is blocked now?
+
+1075
+00:49:15,170 --> 00:49:17,590
+Now we're forced to
+switch two as well.
+
+1076
+00:49:17,590 --> 00:49:19,360
+So we're effectively
+simulating the effect
+
+1077
+00:49:19,360 --> 00:49:24,190
+of doing two doors with
+one choice of a thing.
+
+1078
+00:49:24,190 --> 00:49:26,070
+First we flip one,
+then we flip two.
+
+1079
+00:49:26,070 --> 00:49:29,170
+Then we teleport here.
+
+1080
+00:49:29,170 --> 00:49:30,620
+One was open.
+
+1081
+00:49:30,620 --> 00:49:31,540
+We flipped everything.
+
+1082
+00:49:31,540 --> 00:49:33,623
+Now two is open, and we
+go out through the closed.
+
+1083
+00:49:33,623 --> 00:49:35,300
+So in both cases, we
+exit through close.
+
+1084
+00:49:35,300 --> 00:49:35,800
+Yeah?
+
+1085
+00:49:35,800 --> 00:49:37,850
+AUDIENCE: How do you
+ensure that the blocks only
+
+1086
+00:49:37,850 --> 00:49:39,200
+get flipped once?
+
+1087
+00:49:39,200 --> 00:49:42,378
+Because the crystals can be
+hit as many times as you want,
+
+1088
+00:49:42,378 --> 00:49:43,290
+right?
+
+1089
+00:49:43,290 --> 00:49:45,030
+PROFESSOR: OK.
+
+1090
+00:49:45,030 --> 00:49:47,390
+I had forgotten that detail.
+
+1091
+00:49:47,390 --> 00:49:50,180
+Essentially, we want to
+just put a one-way gadget.
+
+1092
+00:49:50,180 --> 00:49:52,059
+So when you hit the
+crystal-- I mean,
+
+1093
+00:49:52,059 --> 00:49:54,100
+either you hit it or you
+don't but if you hit it,
+
+1094
+00:49:54,100 --> 00:49:56,390
+then we have a cliff that
+you fall off of and visit
+
+1095
+00:49:56,390 --> 00:49:57,710
+the rest of the game.
+
+1096
+00:49:57,710 --> 00:49:59,790
+So you can't go back
+and flip the crystal.
+
+1097
+00:49:59,790 --> 00:50:01,970
+If you don't flip the
+crystal, then the gadget
+
+1098
+00:50:01,970 --> 00:50:03,080
+will break in other ways.
+
+1099
+00:50:03,080 --> 00:50:05,060
+If you didn't flip
+everything, you
+
+1100
+00:50:05,060 --> 00:50:07,740
+won't be able to traverse again.
+
+1101
+00:50:07,740 --> 00:50:08,310
+Yeah.
+
+1102
+00:50:08,310 --> 00:50:12,260
+I should have that
+drawn, but I don't.
+
+1103
+00:50:12,260 --> 00:50:12,819
+OK.
+
+1104
+00:50:12,819 --> 00:50:14,360
+So there's just one
+crystal, and it's
+
+1105
+00:50:14,360 --> 00:50:16,210
+hidden in between
+the initializer
+
+1106
+00:50:16,210 --> 00:50:19,000
+and the rest of the traversal.
+
+1107
+00:50:19,000 --> 00:50:20,990
+OK.
+
+1108
+00:50:20,990 --> 00:50:22,310
+So what haven't we done?
+
+1109
+00:50:22,310 --> 00:50:23,810
+The open case.
+
+1110
+00:50:23,810 --> 00:50:26,300
+So maybe we come
+in the open door.
+
+1111
+00:50:26,300 --> 00:50:28,715
+
+1112
+00:50:28,715 --> 00:50:30,340
+Well, we're not going
+to have a choice.
+
+1113
+00:50:30,340 --> 00:50:31,550
+Either it's already open.
+
+1114
+00:50:31,550 --> 00:50:34,040
+Then we'll go through
+here, teleport to here.
+
+1115
+00:50:34,040 --> 00:50:36,860
+And we can go through
+the one, and we're out.
+
+1116
+00:50:36,860 --> 00:50:40,420
+Or it's closed, in
+which case two is open.
+
+1117
+00:50:40,420 --> 00:50:42,480
+Then we can't go here,
+so we go down here.
+
+1118
+00:50:42,480 --> 00:50:44,760
+We toggle one, we toggle two.
+
+1119
+00:50:44,760 --> 00:50:47,220
+And then we go out here.
+
+1120
+00:50:47,220 --> 00:50:48,470
+And now one is open.
+
+1121
+00:50:48,470 --> 00:50:49,480
+So it's kind of cool.
+
+1122
+00:50:49,480 --> 00:50:50,871
+When we're going
+through open, we
+
+1123
+00:50:50,871 --> 00:50:52,120
+know that we'll end up opened.
+
+1124
+00:50:52,120 --> 00:50:53,924
+And so we'll go out the open.
+
+1125
+00:50:53,924 --> 00:50:55,590
+When we go through
+the closed traversal,
+
+1126
+00:50:55,590 --> 00:50:57,380
+we know we will end up closed.
+
+1127
+00:50:57,380 --> 00:51:00,490
+And so we will always
+go out the closed exit.
+
+1128
+00:51:00,490 --> 00:51:03,290
+And traverse is just
+completely separate.
+
+1129
+00:51:03,290 --> 00:51:03,790
+Cool?
+
+1130
+00:51:03,790 --> 00:51:07,120
+So this is a door
+in Link to the Past.
+
+1131
+00:51:07,120 --> 00:51:14,680
+
+1132
+00:51:14,680 --> 00:51:19,700
+And so that's a good
+example of toggles.
+
+1133
+00:51:19,700 --> 00:51:23,790
+If you, again, have sufficient
+crossovers and so on forced,
+
+1134
+00:51:23,790 --> 00:51:26,990
+I think you could argue this is
+more generally letting you deal
+
+1135
+00:51:26,990 --> 00:51:30,610
+with toggles as long as you
+can, right next to a toggle,
+
+1136
+00:51:30,610 --> 00:51:32,730
+put a-- after traversing
+it, you essentially
+
+1137
+00:51:32,730 --> 00:51:36,180
+have-- say you have a one-way
+gadget before and after it,
+
+1138
+00:51:36,180 --> 00:51:37,210
+in a certain sense.
+
+1139
+00:51:37,210 --> 00:51:39,207
+Here in Zelda, there's
+only two levels.
+
+1140
+00:51:39,207 --> 00:51:41,040
+So we can't make you
+fall off another cliff.
+
+1141
+00:51:41,040 --> 00:51:44,070
+But it's the same thing
+with the teleporter.
+
+1142
+00:51:44,070 --> 00:51:46,570
+We have a one-way right before
+it, a one-way right after it.
+
+1143
+00:51:46,570 --> 00:51:48,694
+You could only hit it once,
+then you're essentially
+
+1144
+00:51:48,694 --> 00:51:50,210
+doing toggles.
+
+1145
+00:51:50,210 --> 00:51:50,710
+Cool.
+
+1146
+00:51:50,710 --> 00:51:55,220
+
+1147
+00:51:55,220 --> 00:51:57,430
+Next one is Donkey Kong Country.
+
+1148
+00:51:57,430 --> 00:52:01,420
+This is a recall of the
+physics of Donkey Kong.
+
+1149
+00:52:01,420 --> 00:52:04,200
+You can jump around and
+kill enemies and stuff.
+
+1150
+00:52:04,200 --> 00:52:08,480
+But the main goal is to get to
+a destination other than points.
+
+1151
+00:52:08,480 --> 00:52:10,860
+There are these bees which
+kill you if you touch them.
+
+1152
+00:52:10,860 --> 00:52:12,740
+There are ropes and
+things you can climb.
+
+1153
+00:52:12,740 --> 00:52:15,600
+And there are also barrels
+that you can throw at things.
+
+1154
+00:52:15,600 --> 00:52:18,200
+
+1155
+00:52:18,200 --> 00:52:22,340
+And there are three main Donkey
+Kong Countries, 1, 2, and 3.
+
+1156
+00:52:22,340 --> 00:52:25,130
+And they each add an
+additional feature.
+
+1157
+00:52:25,130 --> 00:52:27,830
+But none of them
+share that feature.
+
+1158
+00:52:27,830 --> 00:52:30,640
+So there are three different
+PSPACE-hardness proofs, each
+
+1159
+00:52:30,640 --> 00:52:31,995
+with an additional feature.
+
+1160
+00:52:31,995 --> 00:52:35,080
+
+1161
+00:52:35,080 --> 00:52:36,480
+This is Donkey Kong Country 1.
+
+1162
+00:52:36,480 --> 00:52:37,690
+Let me tell you the notation.
+
+1163
+00:52:37,690 --> 00:52:40,300
+We have these bees,
+which are stationary.
+
+1164
+00:52:40,300 --> 00:52:42,650
+So those serve as
+obstacles you can't touch.
+
+1165
+00:52:42,650 --> 00:52:44,910
+Then there are these
+bees highlighted in red.
+
+1166
+00:52:44,910 --> 00:52:46,200
+They're not red bees.
+
+1167
+00:52:46,200 --> 00:52:47,610
+That's different.
+
+1168
+00:52:47,610 --> 00:52:51,730
+But they are moving,
+according to this arrow.
+
+1169
+00:52:51,730 --> 00:52:55,090
+So you imagine this whole
+thing shifting over to here,
+
+1170
+00:52:55,090 --> 00:52:57,230
+and then shifting all
+the way over to here,
+
+1171
+00:52:57,230 --> 00:52:58,370
+and back and forth.
+
+1172
+00:52:58,370 --> 00:53:01,200
+And this is naturally occurring
+in Donkey Kong Country.
+
+1173
+00:53:01,200 --> 00:53:03,765
+You have bees which have
+some horizontal path
+
+1174
+00:53:03,765 --> 00:53:05,610
+that they traverse.
+
+1175
+00:53:05,610 --> 00:53:07,370
+But we're going to
+generalize a little bit
+
+1176
+00:53:07,370 --> 00:53:09,244
+and allow the bees to
+move different amounts.
+
+1177
+00:53:09,244 --> 00:53:11,640
+This one only moves a
+little bit back and forth--
+
+1178
+00:53:11,640 --> 00:53:14,310
+I guess between here and here.
+
+1179
+00:53:14,310 --> 00:53:16,010
+All right.
+
+1180
+00:53:16,010 --> 00:53:21,350
+Then there's this additional
+feature, which is this tire.
+
+1181
+00:53:21,350 --> 00:53:24,610
+And the tire, if you
+land on it, you basically
+
+1182
+00:53:24,610 --> 00:53:26,380
+bounce back up very high.
+
+1183
+00:53:26,380 --> 00:53:28,290
+And that's going to be annoying.
+
+1184
+00:53:28,290 --> 00:53:29,790
+From the traversal
+standpoint, we're
+
+1185
+00:53:29,790 --> 00:53:30,914
+going to be in this barrel.
+
+1186
+00:53:30,914 --> 00:53:33,480
+It's going to shoot us-- we're
+forced to shoot straight down.
+
+1187
+00:53:33,480 --> 00:53:35,300
+And if we hit this
+thing, we are basically
+
+1188
+00:53:35,300 --> 00:53:37,810
+stuck in this
+connected component.
+
+1189
+00:53:37,810 --> 00:53:38,810
+There's bees everywhere.
+
+1190
+00:53:38,810 --> 00:53:40,070
+We can't get out.
+
+1191
+00:53:40,070 --> 00:53:40,570
+OK?
+
+1192
+00:53:40,570 --> 00:53:44,130
+On the other hand, if
+the tire were up here,
+
+1193
+00:53:44,130 --> 00:53:49,220
+then if we shoot down,
+we can time it right,
+
+1194
+00:53:49,220 --> 00:53:51,860
+wait for the bees to be
+going to the right here.
+
+1195
+00:53:51,860 --> 00:53:54,050
+And then we can run
+down here and fall down,
+
+1196
+00:53:54,050 --> 00:53:56,510
+and go through the traverse out.
+
+1197
+00:53:56,510 --> 00:54:00,510
+Because of these bees, which are
+going to go most over to here,
+
+1198
+00:54:00,510 --> 00:54:04,800
+we can't go out through the
+open setting from traverse.
+
+1199
+00:54:04,800 --> 00:54:06,520
+But if we come from
+the open setting,
+
+1200
+00:54:06,520 --> 00:54:09,190
+because these bees are
+going to go way over here,
+
+1201
+00:54:09,190 --> 00:54:13,020
+we can run over and push the
+tire up to this position.
+
+1202
+00:54:13,020 --> 00:54:14,580
+So if you land on
+it, you bounce.
+
+1203
+00:54:14,580 --> 00:54:18,780
+But if you come from the side,
+you can push the tire however
+
+1204
+00:54:18,780 --> 00:54:20,550
+much you want.
+
+1205
+00:54:20,550 --> 00:54:23,264
+So that will be pushing
+it into the open state.
+
+1206
+00:54:23,264 --> 00:54:24,930
+And these bees will
+go right up to here.
+
+1207
+00:54:24,930 --> 00:54:27,306
+And that's as far as we can
+push it, right on that ledge.
+
+1208
+00:54:27,306 --> 00:54:29,346
+Because you don't want it
+to fall down the ledge,
+
+1209
+00:54:29,346 --> 00:54:31,380
+which also happens in
+Donkey Kong physics.
+
+1210
+00:54:31,380 --> 00:54:31,880
+OK.
+
+1211
+00:54:31,880 --> 00:54:33,180
+So that's open.
+
+1212
+00:54:33,180 --> 00:54:35,520
+You don't have to
+open, but you can.
+
+1213
+00:54:35,520 --> 00:54:36,820
+Now, close.
+
+1214
+00:54:36,820 --> 00:54:39,010
+You have to close the door.
+
+1215
+00:54:39,010 --> 00:54:41,560
+And this corresponds
+to coming through here.
+
+1216
+00:54:41,560 --> 00:54:44,210
+If there was a tire here, if
+we were in the open state,
+
+1217
+00:54:44,210 --> 00:54:47,900
+we have to push the tire
+off of the edge here.
+
+1218
+00:54:47,900 --> 00:54:51,180
+And then it will roll
+down to that position.
+
+1219
+00:54:51,180 --> 00:54:54,630
+And if we time it right, the
+bees will be right over here.
+
+1220
+00:54:54,630 --> 00:54:56,020
+And then we can jump around.
+
+1221
+00:54:56,020 --> 00:54:57,624
+You can climb the rope.
+
+1222
+00:54:57,624 --> 00:54:59,790
+And if you're really fast,
+you're climbing the rope.
+
+1223
+00:54:59,790 --> 00:55:02,184
+And these bees are
+really slow, rather.
+
+1224
+00:55:02,184 --> 00:55:03,100
+Then you go over here.
+
+1225
+00:55:03,100 --> 00:55:04,224
+This might not be to scale.
+
+1226
+00:55:04,224 --> 00:55:05,975
+Maybe you want to
+widen the section here,
+
+1227
+00:55:05,975 --> 00:55:07,850
+so that you have more
+time to climb the rope.
+
+1228
+00:55:07,850 --> 00:55:10,520
+But that's just
+constant factors.
+
+1229
+00:55:10,520 --> 00:55:12,870
+Either you allow me
+to slow down bees,
+
+1230
+00:55:12,870 --> 00:55:16,170
+or you stretch this
+diagram a little bit.
+
+1231
+00:55:16,170 --> 00:55:16,670
+OK?
+
+1232
+00:55:16,670 --> 00:55:17,480
+So that's close.
+
+1233
+00:55:17,480 --> 00:55:18,896
+In order to get
+from here to here,
+
+1234
+00:55:18,896 --> 00:55:20,715
+you must push the
+tire off the edge.
+
+1235
+00:55:20,715 --> 00:55:22,340
+And then it will roll
+to exactly there,
+
+1236
+00:55:22,340 --> 00:55:24,260
+preventing you from traversal.
+
+1237
+00:55:24,260 --> 00:55:25,850
+So that's a door.
+
+1238
+00:55:25,850 --> 00:55:28,870
+Donkey Kong Country
+1 is PSPACE-complete.
+
+1239
+00:55:28,870 --> 00:55:30,330
+What about Donkey
+Kong Country 2?
+
+1240
+00:55:30,330 --> 00:55:31,920
+It has no tires.
+
+1241
+00:55:31,920 --> 00:55:35,080
+But it has the balloon.
+
+1242
+00:55:35,080 --> 00:55:40,840
+The balloon-- normally,
+balloons go down,
+
+1243
+00:55:40,840 --> 00:55:43,100
+as you might know, from gravity.
+
+1244
+00:55:43,100 --> 00:55:45,490
+But if you have
+these air currents,
+
+1245
+00:55:45,490 --> 00:55:48,440
+the balloon will rise.
+
+1246
+00:55:48,440 --> 00:55:50,390
+And when you're on
+the balloon, you
+
+1247
+00:55:50,390 --> 00:55:52,260
+can use it as sort of a ledge.
+
+1248
+00:55:52,260 --> 00:55:54,120
+It may still go
+down, but you can
+
+1249
+00:55:54,120 --> 00:55:56,642
+control whether it falls to
+the left or to the right,
+
+1250
+00:55:56,642 --> 00:55:58,100
+according to whether
+you press left
+
+1251
+00:55:58,100 --> 00:56:00,940
+or right on the controller.
+
+1252
+00:56:00,940 --> 00:56:04,700
+So this is actually
+the closed state.
+
+1253
+00:56:04,700 --> 00:56:06,890
+Again, there are these bees.
+
+1254
+00:56:06,890 --> 00:56:08,060
+They're moving a little bit.
+
+1255
+00:56:08,060 --> 00:56:10,146
+But if you time it right,
+you can get down here.
+
+1256
+00:56:10,146 --> 00:56:11,770
+But if you land on
+the balloon, there's
+
+1257
+00:56:11,770 --> 00:56:13,190
+no way to get
+beyond this barrel.
+
+1258
+00:56:13,190 --> 00:56:15,970
+And so you're stuck.
+
+1259
+00:56:15,970 --> 00:56:17,400
+If the balloon is
+out of the way,
+
+1260
+00:56:17,400 --> 00:56:20,050
+it will end up being
+here at position A.
+
+1261
+00:56:20,050 --> 00:56:22,830
+Then when you shoot
+from this barrel,
+
+1262
+00:56:22,830 --> 00:56:25,410
+you end up in this barrel,
+and you get to traverse out.
+
+1263
+00:56:25,410 --> 00:56:26,530
+So that's good.
+
+1264
+00:56:26,530 --> 00:56:28,765
+Again, these barrels
+is a forced shot.
+
+1265
+00:56:28,765 --> 00:56:32,780
+So you can't make any decision
+at those types of barrels.
+
+1266
+00:56:32,780 --> 00:56:33,530
+OK.
+
+1267
+00:56:33,530 --> 00:56:34,840
+Good.
+
+1268
+00:56:34,840 --> 00:56:39,580
+So the idea with the open
+clause is that there's
+
+1269
+00:56:39,580 --> 00:56:40,900
+a little bit of rope here.
+
+1270
+00:56:40,900 --> 00:56:42,909
+So you would climb
+this rope, jump.
+
+1271
+00:56:42,909 --> 00:56:44,950
+When the bees are over to
+the right a little bit,
+
+1272
+00:56:44,950 --> 00:56:47,030
+they get over to here.
+
+1273
+00:56:47,030 --> 00:56:50,790
+Then go on this balloon,
+push it over to the left
+
+1274
+00:56:50,790 --> 00:56:56,520
+here, and then jump back out,
+and grab the rope, and leave.
+
+1275
+00:56:56,520 --> 00:56:58,770
+And if you get the
+balloon to here,
+
+1276
+00:56:58,770 --> 00:57:02,640
+it will settle to this position,
+so that you've successfully
+
+1277
+00:57:02,640 --> 00:57:05,020
+opened the gadget even
+though you couldn't get here
+
+1278
+00:57:05,020 --> 00:57:06,870
+from there.
+
+1279
+00:57:06,870 --> 00:57:09,460
+On the other hand,
+the close is going
+
+1280
+00:57:09,460 --> 00:57:10,870
+to force you to reset that.
+
+1281
+00:57:10,870 --> 00:57:14,390
+So we get shot over this
+way, shot down here.
+
+1282
+00:57:14,390 --> 00:57:16,390
+Now, it could be we just
+get shot, shot, shot,
+
+1283
+00:57:16,390 --> 00:57:17,390
+and we're out.
+
+1284
+00:57:17,390 --> 00:57:22,270
+But if there was a balloon
+here, we will land on it.
+
+1285
+00:57:22,270 --> 00:57:25,290
+In order to get to this
+barrel or the next one,
+
+1286
+00:57:25,290 --> 00:57:27,270
+we have to push
+the balloon over.
+
+1287
+00:57:27,270 --> 00:57:31,030
+Then we can go here or go here.
+
+1288
+00:57:31,030 --> 00:57:33,944
+And we'll end up getting shot
+to this position and out.
+
+1289
+00:57:33,944 --> 00:57:35,360
+But because of
+these air currents,
+
+1290
+00:57:35,360 --> 00:57:41,030
+the balloon will go up to
+here in Donkey Kong physics.
+
+1291
+00:57:41,030 --> 00:57:42,570
+And so when you
+do close, you are
+
+1292
+00:57:42,570 --> 00:57:44,650
+forced to put the
+balloon back here, which
+
+1293
+00:57:44,650 --> 00:57:46,510
+is annoying for traversal.
+
+1294
+00:57:46,510 --> 00:57:48,620
+So that's a door.
+
+1295
+00:57:48,620 --> 00:57:49,120
+Question?
+
+1296
+00:57:49,120 --> 00:57:51,393
+AUDIENCE: Is there any reason
+you need the [INAUDIBLE]
+
+1297
+00:57:51,393 --> 00:57:51,892
+at the top?
+
+1298
+00:57:51,892 --> 00:57:54,329
+
+1299
+00:57:54,329 --> 00:57:55,870
+PROFESSOR: Why do
+we need this exact?
+
+1300
+00:57:55,870 --> 00:57:57,840
+I don't remember.
+
+1301
+00:57:57,840 --> 00:58:01,070
+I was wondering that as well.
+
+1302
+00:58:01,070 --> 00:58:02,380
+Yeah.
+
+1303
+00:58:02,380 --> 00:58:05,151
+What it does do is force a
+particular sort of timing
+
+1304
+00:58:05,151 --> 00:58:07,400
+maybe, about whether it's
+to the left or to the right.
+
+1305
+00:58:07,400 --> 00:58:10,387
+But not sure.
+
+1306
+00:58:10,387 --> 00:58:11,470
+I'll bet there's a reason.
+
+1307
+00:58:11,470 --> 00:58:14,327
+
+1308
+00:58:14,327 --> 00:58:15,910
+But this figure was
+drawn by Giovanni.
+
+1309
+00:58:15,910 --> 00:58:18,580
+
+1310
+00:58:18,580 --> 00:58:19,080
+Cool.
+
+1311
+00:58:19,080 --> 00:58:20,580
+What about Donkey
+Kong Country 3?
+
+1312
+00:58:20,580 --> 00:58:24,940
+Well, Donkey Kong Country 3
+has neither balloons nor tires,
+
+1313
+00:58:24,940 --> 00:58:29,300
+but it has tracking
+barrels, with a T on it.
+
+1314
+00:58:29,300 --> 00:58:33,820
+So tracking barrels,
+if you land in one,
+
+1315
+00:58:33,820 --> 00:58:36,960
+you can then slide
+it left or right.
+
+1316
+00:58:36,960 --> 00:58:41,730
+And when you leave it,
+you always get shot up.
+
+1317
+00:58:41,730 --> 00:58:45,690
+And even if you jump out
+and then, say, go over here
+
+1318
+00:58:45,690 --> 00:58:48,220
+and fall, the tracking
+barrel tracks you.
+
+1319
+00:58:48,220 --> 00:58:50,807
+So if you're coming
+from traversal
+
+1320
+00:58:50,807 --> 00:58:53,140
+and you get shot down here,
+if the tracking barrel's out
+
+1321
+00:58:53,140 --> 00:58:55,440
+of the way, then I traverse.
+
+1322
+00:58:55,440 --> 00:58:59,539
+Then I'm forced to go down here
+and leave via the close exit,
+
+1323
+00:58:59,539 --> 00:59:00,580
+which is not what I want.
+
+1324
+00:59:00,580 --> 00:59:03,102
+I want to leave according
+to the traversal exit.
+
+1325
+00:59:03,102 --> 00:59:04,560
+Now, this has some
+leakage, but you
+
+1326
+00:59:04,560 --> 00:59:06,770
+can show this leakage is OK.
+
+1327
+00:59:06,770 --> 00:59:09,590
+You can go from traverse
+in to close out.
+
+1328
+00:59:09,590 --> 00:59:11,789
+But that won't end
+up helping you,
+
+1329
+00:59:11,789 --> 00:59:14,330
+because you were already close,
+so you knew you could already
+
+1330
+00:59:14,330 --> 00:59:16,130
+get to close out.
+
+1331
+00:59:16,130 --> 00:59:19,770
+So this is the closed state when
+the tracker barrel's over here.
+
+1332
+00:59:19,770 --> 00:59:21,300
+This is the open state.
+
+1333
+00:59:21,300 --> 00:59:23,591
+When we're in the open state,
+we come through traverse.
+
+1334
+00:59:23,591 --> 00:59:24,925
+We can jump out and leave here.
+
+1335
+00:59:24,925 --> 00:59:27,310
+So that's good.
+
+1336
+00:59:27,310 --> 00:59:33,260
+On the other hand, if we
+come via the open position,
+
+1337
+00:59:33,260 --> 00:59:36,490
+we can go get shot down here.
+
+1338
+00:59:36,490 --> 00:59:38,300
+And if the barrel
+was there, we're
+
+1339
+00:59:38,300 --> 00:59:39,849
+going to have to
+move it over here.
+
+1340
+00:59:39,849 --> 00:59:40,890
+I guess we don't have to.
+
+1341
+00:59:40,890 --> 00:59:41,890
+We could leave it there.
+
+1342
+00:59:41,890 --> 00:59:43,690
+But we are able to
+bring the barrel over
+
+1343
+00:59:43,690 --> 00:59:45,300
+here and leave through open.
+
+1344
+00:59:45,300 --> 00:59:47,150
+And now we're in the open state.
+
+1345
+00:59:47,150 --> 00:59:48,760
+That's good.
+
+1346
+00:59:48,760 --> 00:59:51,860
+On the other hand, if
+we come from close,
+
+1347
+00:59:51,860 --> 00:59:55,790
+if it's currently open, we
+will be shot into the barrel.
+
+1348
+00:59:55,790 --> 00:59:57,730
+And then to get
+over here, we have
+
+1349
+00:59:57,730 --> 00:59:59,870
+to bring the barrel
+over here, putting it
+
+1350
+00:59:59,870 --> 01:00:02,180
+into the close state.
+
+1351
+01:00:02,180 --> 01:00:06,410
+Now, this is the relevant part,
+where the tracking hurts you.
+
+1352
+01:00:06,410 --> 01:00:07,050
+You go in here.
+
+1353
+01:00:07,050 --> 01:00:10,030
+You'd like to just jump
+out and get out here,
+
+1354
+01:00:10,030 --> 01:00:12,880
+but because it's a tracking
+barrel, if you jump out here,
+
+1355
+01:00:12,880 --> 01:00:16,080
+the barrel will come over anyway
+even though you don't go back
+
+1356
+01:00:16,080 --> 01:00:17,040
+into it.
+
+1357
+01:00:17,040 --> 01:00:19,520
+So if you leave
+through the close exit,
+
+1358
+01:00:19,520 --> 01:00:21,670
+you have to bring the
+barrel over to the right.
+
+1359
+01:00:21,670 --> 01:00:25,772
+So that forces the clothes,
+preventing traversal.
+
+1360
+01:00:25,772 --> 01:00:26,980
+That's Donkey Kong Country 3.
+
+1361
+01:00:26,980 --> 01:00:32,030
+
+1362
+01:00:32,030 --> 01:00:38,060
+But there's one Nintendo
+game that rules them all,
+
+1363
+01:00:38,060 --> 01:00:40,440
+and that is Super Mario Bros.
+
+1364
+01:00:40,440 --> 01:00:44,305
+And for the first
+time, we are announcing
+
+1365
+01:00:44,305 --> 01:00:48,620
+a PSPACE-completeness
+result for Super Mario Bros.
+
+1366
+01:00:48,620 --> 01:00:52,210
+So the Nintendo paper
+and another paper
+
+1367
+01:00:52,210 --> 01:00:55,870
+by Giovanni, which I
+will talk about next,
+
+1368
+01:00:55,870 --> 01:00:59,400
+was prevented at Fun with
+Algorithms earlier this summer.
+
+1369
+01:00:59,400 --> 01:01:02,360
+Two people were there.
+
+1370
+01:01:02,360 --> 01:01:04,825
+And then we started
+talking, oh, we
+
+1371
+01:01:04,825 --> 01:01:07,500
+should really prove Mario Bros.
+is also a PSPACE-complete.
+
+1372
+01:01:07,500 --> 01:01:11,010
+So this is our
+current reduction.
+
+1373
+01:01:11,010 --> 01:01:13,560
+You may recall another
+crossover gadget
+
+1374
+01:01:13,560 --> 01:01:16,960
+that involved invincibility
+stars, or mushrooms,
+
+1375
+01:01:16,960 --> 01:01:17,724
+or something.
+
+1376
+01:01:17,724 --> 01:01:18,640
+Those are consumables.
+
+1377
+01:01:18,640 --> 01:01:21,330
+We can't afford consumables
+in a PSPACE reduction,
+
+1378
+01:01:21,330 --> 01:01:23,530
+because we have to visit
+the same thing many times.
+
+1379
+01:01:23,530 --> 01:01:27,450
+But using Mario physics,
+we designed this crossover.
+
+1380
+01:01:27,450 --> 01:01:30,710
+You're going to be small Mario
+throughout this reduction.
+
+1381
+01:01:30,710 --> 01:01:34,940
+If you come up here and you
+run, you will fall here.
+
+1382
+01:01:34,940 --> 01:01:37,190
+And if you come over there,
+you run, you'll fall here.
+
+1383
+01:01:37,190 --> 01:01:39,240
+But you can't jump
+around and land here.
+
+1384
+01:01:39,240 --> 01:01:40,240
+You'll end up down here.
+
+1385
+01:01:40,240 --> 01:01:43,171
+And that's larger than
+your jump distance.
+
+1386
+01:01:43,171 --> 01:01:43,670
+OK?
+
+1387
+01:01:43,670 --> 01:01:46,290
+So as long as you can't
+glitch through walls,
+
+1388
+01:01:46,290 --> 01:01:49,280
+this is a valid crossover
+and it's reusable.
+
+1389
+01:01:49,280 --> 01:01:50,407
+It's a one-way crossover.
+
+1390
+01:01:50,407 --> 01:01:51,740
+You can only go from up to down.
+
+1391
+01:01:51,740 --> 01:01:55,020
+
+1392
+01:01:55,020 --> 01:01:56,490
+OK.
+
+1393
+01:01:56,490 --> 01:01:57,475
+Now the door.
+
+1394
+01:01:57,475 --> 01:01:59,930
+The door's a little bit weird.
+
+1395
+01:01:59,930 --> 01:02:04,020
+But it has actually been built
+by modifying the Super Mario
+
+1396
+01:02:04,020 --> 01:02:04,520
+Bros.
+
+1397
+01:02:04,520 --> 01:02:12,180
+ROM, so it does exist in the
+physics of the real Mario.
+
+1398
+01:02:12,180 --> 01:02:15,740
+This doesn't have to be
+length, but this is a fire bar,
+
+1399
+01:02:15,740 --> 01:02:16,984
+which is normally rotating.
+
+1400
+01:02:16,984 --> 01:02:18,900
+But if it has size one,
+then it doesn't really
+
+1401
+01:02:18,900 --> 01:02:20,350
+do much rotating.
+
+1402
+01:02:20,350 --> 01:02:22,350
+So these are things you're
+not allowed to touch.
+
+1403
+01:02:22,350 --> 01:02:26,250
+
+1404
+01:02:26,250 --> 01:02:29,160
+The version we
+implemented has fire bars.
+
+1405
+01:02:29,160 --> 01:02:30,340
+Those do exist in the ROM.
+
+1406
+01:02:30,340 --> 01:02:33,070
+But even if you have fire
+bars that are much bigger,
+
+1407
+01:02:33,070 --> 01:02:35,653
+you can still do all the things
+you need to do in this gadget.
+
+1408
+01:02:35,653 --> 01:02:37,990
+It's just a lot harder
+to do correctly.
+
+1409
+01:02:37,990 --> 01:02:39,240
+I was trying it earlier today.
+
+1410
+01:02:39,240 --> 01:02:41,550
+[LAUGHTER]
+
+1411
+01:02:41,550 --> 01:02:43,569
+And then we have this guy.
+
+1412
+01:02:43,569 --> 01:02:45,610
+I forget what they're
+called, but they're dropped
+
+1413
+01:02:45,610 --> 01:02:47,391
+by the cloud thing in the sky.
+
+1414
+01:02:47,391 --> 01:02:49,640
+You can also create them at
+the beginning of the level
+
+1415
+01:02:49,640 --> 01:02:52,920
+even though that doesn't
+appear in the true levels.
+
+1416
+01:02:52,920 --> 01:02:56,476
+You can make a new level that
+has these guys initially.
+
+1417
+01:02:56,476 --> 01:02:58,850
+It'll just be the case that
+there's also a cloud floating
+
+1418
+01:02:58,850 --> 01:03:00,210
+around at the top.
+
+1419
+01:03:00,210 --> 01:03:02,890
+But if you shield
+from that, you're OK.
+
+1420
+01:03:02,890 --> 01:03:05,350
+So there's one of these
+guys, and he can basically
+
+1421
+01:03:05,350 --> 01:03:10,360
+be walking back and
+forth here or over here.
+
+1422
+01:03:10,360 --> 01:03:12,650
+And you can flip
+that by if you hit
+
+1423
+01:03:12,650 --> 01:03:15,830
+this block with
+the right timing,
+
+1424
+01:03:15,830 --> 01:03:19,040
+this guy will end up bouncing
+and walking over here.
+
+1425
+01:03:19,040 --> 01:03:19,609
+And practice.
+
+1426
+01:03:19,609 --> 01:03:20,900
+You have to hit it a few times.
+
+1427
+01:03:20,900 --> 01:03:22,724
+Sometimes he'll walk back over.
+
+1428
+01:03:22,724 --> 01:03:24,890
+But if you get the direction
+that he's facing right,
+
+1429
+01:03:24,890 --> 01:03:26,550
+he'll jump up and
+then keep going.
+
+1430
+01:03:26,550 --> 01:03:29,030
+And then he'll be over
+in the other side.
+
+1431
+01:03:29,030 --> 01:03:29,792
+OK.
+
+1432
+01:03:29,792 --> 01:03:31,500
+But you can't just
+reach everything here.
+
+1433
+01:03:31,500 --> 01:03:34,512
+If you are on the open side,
+you can hit him if you want
+
+1434
+01:03:34,512 --> 01:03:35,470
+and put him over there.
+
+1435
+01:03:35,470 --> 01:03:38,100
+That's going to be
+the open setting.
+
+1436
+01:03:38,100 --> 01:03:40,997
+The traversal requires
+you to go through this way
+
+1437
+01:03:40,997 --> 01:03:42,580
+without the ability
+to hit this thing.
+
+1438
+01:03:42,580 --> 01:03:46,310
+And so if the spiny guy
+is over on the left,
+
+1439
+01:03:46,310 --> 01:03:48,220
+you will die, guaranteed.
+
+1440
+01:03:48,220 --> 01:03:50,270
+We checked.
+
+1441
+01:03:50,270 --> 01:03:52,779
+And otherwise, you
+jump-- if he's not there,
+
+1442
+01:03:52,779 --> 01:03:54,820
+if it's on the right side,
+then you can traverse.
+
+1443
+01:03:54,820 --> 01:03:57,270
+So this is the open
+state that's drawn.
+
+1444
+01:03:57,270 --> 01:03:58,640
+So this is the tricky part.
+
+1445
+01:03:58,640 --> 01:04:01,010
+We need something that's
+untraversable by the player
+
+1446
+01:04:01,010 --> 01:04:02,670
+but traversable by the monster.
+
+1447
+01:04:02,670 --> 01:04:05,080
+And this could be a fire
+bar that's rotating.
+
+1448
+01:04:05,080 --> 01:04:08,750
+If you time it right, you
+could still rush by it.
+
+1449
+01:04:08,750 --> 01:04:10,540
+And of course, close.
+
+1450
+01:04:10,540 --> 01:04:13,160
+Close, we need to force this
+guy to be on the other side.
+
+1451
+01:04:13,160 --> 01:04:15,285
+And so we do the same thing
+that we did on the left
+
+1452
+01:04:15,285 --> 01:04:16,430
+to go through to close.
+
+1453
+01:04:16,430 --> 01:04:18,930
+Just like on the left, this guy
+has to be on the other side.
+
+1454
+01:04:18,930 --> 01:04:21,340
+So first, you can knock
+him over to the other side.
+
+1455
+01:04:21,340 --> 01:04:24,540
+And then you can go back
+and jump through there.
+
+1456
+01:04:24,540 --> 01:04:26,885
+So Super Mario Bros.
+is PSPACE-complete.
+
+1457
+01:04:26,885 --> 01:04:27,385
+Yeah?
+
+1458
+01:04:27,385 --> 01:04:29,860
+AUDIENCE: What was the advantage
+of the rotating fire bar?
+
+1459
+01:04:29,860 --> 01:04:32,717
+PROFESSOR: Oh, it's more
+naturally occurring.
+
+1460
+01:04:32,717 --> 01:04:34,550
+In real Mario, there
+are rotating fire bars.
+
+1461
+01:04:34,550 --> 01:04:38,160
+There's never this single
+fire just floating in midair.
+
+1462
+01:04:38,160 --> 01:04:39,530
+Fire bars can float in midair.
+
+1463
+01:04:39,530 --> 01:04:43,180
+
+1464
+01:04:43,180 --> 01:04:45,760
+In all the levels that
+exist in Super Mario Bros.,
+
+1465
+01:04:45,760 --> 01:04:48,530
+fire bars are a fixed length.
+
+1466
+01:04:48,530 --> 01:04:51,140
+We have six fire
+things or whatever.
+
+1467
+01:04:51,140 --> 01:04:53,830
+But in the ROM, it
+has support for making
+
+1468
+01:04:53,830 --> 01:04:56,519
+fire bars of arbitrary
+length or up to some size.
+
+1469
+01:04:56,519 --> 01:04:59,060
+So you can make this in the ROM,
+or you can have it rotating.
+
+1470
+01:04:59,060 --> 01:05:01,120
+And then it's a more
+intense experience.
+
+1471
+01:05:01,120 --> 01:05:03,910
+AUDIENCE: Why are there
+fire bars [INAUDIBLE]
+
+1472
+01:05:03,910 --> 01:05:05,260
+that they're hitting?
+
+1473
+01:05:05,260 --> 01:05:07,090
+PROFESSOR: Yeah.
+
+1474
+01:05:07,090 --> 01:05:08,450
+That's dealing with glitches.
+
+1475
+01:05:08,450 --> 01:05:08,950
+Yeah?
+
+1476
+01:05:08,950 --> 01:05:11,408
+AUDIENCE: What is the shell
+guy dropped by the cloud thing?
+
+1477
+01:05:11,408 --> 01:05:12,800
+Or I don't know the game.
+
+1478
+01:05:12,800 --> 01:05:15,310
+PROFESSOR: Oh, in the game,
+the cloud is up there.
+
+1479
+01:05:15,310 --> 01:05:17,610
+And every few seconds,
+he throws one,
+
+1480
+01:05:17,610 --> 01:05:20,790
+and it falls in some
+kind of random spot.
+
+1481
+01:05:20,790 --> 01:05:24,790
+And then he traverses left and
+right like a regular turtle.
+
+1482
+01:05:24,790 --> 01:05:28,370
+But in this, we're assuming
+that you can have him initially
+
+1483
+01:05:28,370 --> 01:05:30,020
+appear there.
+
+1484
+01:05:30,020 --> 01:05:31,390
+So he's not thrown by the cloud.
+
+1485
+01:05:31,390 --> 01:05:33,670
+There would also be a
+cloud throwing spiny guys.
+
+1486
+01:05:33,670 --> 01:05:36,289
+
+1487
+01:05:36,289 --> 01:05:37,830
+We're assuming that
+this guy can just
+
+1488
+01:05:37,830 --> 01:05:39,162
+be there from the beginning.
+
+1489
+01:05:39,162 --> 01:05:41,637
+AUDIENCE: So it
+drops more than one?
+
+1490
+01:05:41,637 --> 01:05:42,470
+PROFESSOR: Oh, yeah.
+
+1491
+01:05:42,470 --> 01:05:44,803
+It drops one, and then drops
+another, and drops another.
+
+1492
+01:05:44,803 --> 01:05:45,790
+I think it's unlimited.
+
+1493
+01:05:45,790 --> 01:05:48,250
+I mean, there might
+be a practical limit
+
+1494
+01:05:48,250 --> 01:05:51,990
+given by the memory of an
+NES, which is pretty small.
+
+1495
+01:05:51,990 --> 01:05:55,215
+But I think it limits to like
+eight creatures on screen
+
+1496
+01:05:55,215 --> 01:05:56,090
+at once or something.
+
+1497
+01:05:56,090 --> 01:05:59,960
+But we're generalizing
+that as well.
+
+1498
+01:05:59,960 --> 01:06:01,260
+Are there questions?
+
+1499
+01:06:01,260 --> 01:06:02,170
+OK.
+
+1500
+01:06:02,170 --> 01:06:04,900
+I have one more proof
+I want to cover.
+
+1501
+01:06:04,900 --> 01:06:08,010
+And this is the other Giovanni
+paper, and Fun with Algorithms
+
+1502
+01:06:08,010 --> 01:06:09,300
+is here.
+
+1503
+01:06:09,300 --> 01:06:11,160
+And it's about Lemmings.
+
+1504
+01:06:11,160 --> 01:06:12,960
+If you haven't
+played Lemmings, it's
+
+1505
+01:06:12,960 --> 01:06:15,320
+sort of the first
+real-time strategy game.
+
+1506
+01:06:15,320 --> 01:06:18,562
+So you have these characters
+which appear periodically.
+
+1507
+01:06:18,562 --> 01:06:20,270
+Then you can click on
+characters and make
+
+1508
+01:06:20,270 --> 01:06:21,090
+them do different things.
+
+1509
+01:06:21,090 --> 01:06:22,280
+You can make them build bridges.
+
+1510
+01:06:22,280 --> 01:06:23,738
+You can make them
+dig horizontally.
+
+1511
+01:06:23,738 --> 01:06:26,377
+You can make them
+dig vertically.
+
+1512
+01:06:26,377 --> 01:06:27,710
+And so going through that again.
+
+1513
+01:06:27,710 --> 01:06:31,950
+Here we're making this guy
+climb, and then digging down.
+
+1514
+01:06:31,950 --> 01:06:34,490
+And then digging left.
+
+1515
+01:06:34,490 --> 01:06:35,660
+And then digging down.
+
+1516
+01:06:35,660 --> 01:06:37,710
+And then they can dig
+left to switch directions.
+
+1517
+01:06:37,710 --> 01:06:39,240
+And then make them
+dig down again.
+
+1518
+01:06:39,240 --> 01:06:41,082
+And then build bridge
+and dig through.
+
+1519
+01:06:41,082 --> 01:06:42,790
+This is, I think,
+level two or something.
+
+1520
+01:06:42,790 --> 01:06:44,810
+It's quite challenging.
+
+1521
+01:06:44,810 --> 01:06:47,010
+And your goal is to get as
+many lemmings as possible
+
+1522
+01:06:47,010 --> 01:06:48,510
+to the exit.
+
+1523
+01:06:48,510 --> 01:06:50,560
+And the way you do it is
+you select the ability
+
+1524
+01:06:50,560 --> 01:06:52,351
+you want, and then you
+click on the lemming
+
+1525
+01:06:52,351 --> 01:06:53,570
+that you want to do it on.
+
+1526
+01:06:53,570 --> 01:06:56,220
+And otherwise, they
+are walking around.
+
+1527
+01:06:56,220 --> 01:06:58,075
+So how many people
+have played Lemmings?
+
+1528
+01:06:58,075 --> 01:06:59,450
+Yeah, this is more popular one.
+
+1529
+01:06:59,450 --> 01:07:00,866
+If you haven't
+played, you should.
+
+1530
+01:07:00,866 --> 01:07:03,820
+It's really hard, though.
+
+1531
+01:07:03,820 --> 01:07:05,160
+I was reading Wikipedia.
+
+1532
+01:07:05,160 --> 01:07:06,660
+Sarah, one of your
+favorite authors,
+
+1533
+01:07:06,660 --> 01:07:09,180
+Terry Pratchett was
+playing Lemmings.
+
+1534
+01:07:09,180 --> 01:07:11,720
+He wrote a book that is
+clearly inspired by Lemmings.
+
+1535
+01:07:11,720 --> 01:07:13,850
+And then he said he
+had to delete Lemmings
+
+1536
+01:07:13,850 --> 01:07:17,957
+from his computer and override
+it in order to stop playing.
+
+1537
+01:07:17,957 --> 01:07:18,790
+It was so addictive.
+
+1538
+01:07:18,790 --> 01:07:19,956
+There are a bunch of levels.
+
+1539
+01:07:19,956 --> 01:07:21,831
+It's fun.
+
+1540
+01:07:21,831 --> 01:07:23,330
+There are many free
+versions as well
+
+1541
+01:07:23,330 --> 01:07:25,880
+that have duplicated the
+Lemmings physics and so
+
+1542
+01:07:25,880 --> 01:07:28,910
+on, with new levels, and there
+are level editors, and all
+
+1543
+01:07:28,910 --> 01:07:30,240
+that good stuff.
+
+1544
+01:07:30,240 --> 01:07:33,360
+So you might expect this
+game is pretty hard.
+
+1545
+01:07:33,360 --> 01:07:37,250
+Here we're going to
+prove PSPACE-hardness.
+
+1546
+01:07:37,250 --> 01:07:41,530
+There was the first paper
+by a Graham Cormode,
+
+1547
+01:07:41,530 --> 01:07:45,419
+which showed NP-hardness and
+conjectured PSPACE-hardness.
+
+1548
+01:07:45,419 --> 01:07:46,710
+So this was the results before.
+
+1549
+01:07:46,710 --> 01:07:48,845
+
+1550
+01:07:48,845 --> 01:07:50,220
+So there are all
+these abilities.
+
+1551
+01:07:50,220 --> 01:07:51,550
+I haven't defined all of them.
+
+1552
+01:07:51,550 --> 01:07:53,719
+I'll show you just
+a few of them.
+
+1553
+01:07:53,719 --> 01:07:55,260
+If they're unlimited,
+normally you're
+
+1554
+01:07:55,260 --> 01:07:57,470
+given a limit to
+how many you have.
+
+1555
+01:07:57,470 --> 01:08:00,100
+But even when they're unlimited
+and you have arbitrary time,
+
+1556
+01:08:00,100 --> 01:08:03,420
+the game is still in PSPACE,
+because again, the state
+
+1557
+01:08:03,420 --> 01:08:07,300
+is polynomial number of bits.
+
+1558
+01:08:07,300 --> 01:08:08,220
+OK.
+
+1559
+01:08:08,220 --> 01:08:11,279
+There's another thing I didn't
+mention, which is hazards.
+
+1560
+01:08:11,279 --> 01:08:13,120
+These are traps.
+
+1561
+01:08:13,120 --> 01:08:15,830
+If your lemming
+goes there, you die.
+
+1562
+01:08:15,830 --> 01:08:19,720
+So those are also important
+for some of the proofs.
+
+1563
+01:08:19,720 --> 01:08:23,961
+And so Graham showed that if you
+have diggers and a time-bound,
+
+1564
+01:08:23,961 --> 01:08:25,460
+then you get NP
+equal to time-bound,
+
+1565
+01:08:25,460 --> 01:08:28,300
+you actually get
+NP-completeness.
+
+1566
+01:08:28,300 --> 01:08:30,529
+And you can convert that
+into other abilities.
+
+1567
+01:08:30,529 --> 01:08:33,930
+But the [INAUDIBLE] new
+results are this one.
+
+1568
+01:08:33,930 --> 01:08:37,970
+We're going to focus on this
+column, which is given builders
+
+1569
+01:08:37,970 --> 01:08:41,899
+and bashers, either unlimited
+or given an exponential number
+
+1570
+01:08:41,899 --> 01:08:45,439
+of them-- because we need to
+run for exponential time--
+
+1571
+01:08:45,439 --> 01:08:48,140
+and hazards, and
+just one lemming,
+
+1572
+01:08:48,140 --> 01:08:50,590
+the game is PSPACE-complete.
+
+1573
+01:08:50,590 --> 01:08:53,377
+Another result in the same
+paper that might interest you--
+
+1574
+01:08:53,377 --> 01:08:55,460
+but we're no longer in the
+Approximation section--
+
+1575
+01:08:55,460 --> 01:09:01,430
+is APX-hardness for
+any ability you want.
+
+1576
+01:09:01,430 --> 01:09:05,790
+And a polynomial number
+of lemmings, and time,
+
+1577
+01:09:05,790 --> 01:09:06,890
+and hazards.
+
+1578
+01:09:06,890 --> 01:09:09,729
+And it's based on this
+weird thing about hazards
+
+1579
+01:09:09,729 --> 01:09:12,540
+that if you have many lemmings
+go through a trap at once,
+
+1580
+01:09:12,540 --> 01:09:13,990
+then only one of them dies.
+
+1581
+01:09:13,990 --> 01:09:15,391
+[LAUGHTER]
+
+1582
+01:09:15,391 --> 01:09:16,765
+Because the trap
+has to activate,
+
+1583
+01:09:16,765 --> 01:09:18,290
+and it takes a certain
+amount of time.
+
+1584
+01:09:18,290 --> 01:09:20,370
+So if they're really bunched
+up, then most of them
+
+1585
+01:09:20,370 --> 01:09:21,036
+can get through.
+
+1586
+01:09:21,036 --> 01:09:24,444
+So you can use that to reduce
+the number of lemmings.
+
+1587
+01:09:24,444 --> 01:09:27,069
+And you're trying to approximate
+how many lemmings get through.
+
+1588
+01:09:27,069 --> 01:09:27,569
+OK.
+
+1589
+01:09:27,569 --> 01:09:28,779
+So that's fun.
+
+1590
+01:09:28,779 --> 01:09:31,082
+But I don't have
+those pictures here,
+
+1591
+01:09:31,082 --> 01:09:33,040
+because the PSPACE-hardness
+is kind of the more
+
+1592
+01:09:33,040 --> 01:09:34,630
+impressive technical thing.
+
+1593
+01:09:34,630 --> 01:09:36,750
+And it's already
+quite complicated.
+
+1594
+01:09:36,750 --> 01:09:41,280
+So in order to really
+get this proof right,
+
+1595
+01:09:41,280 --> 01:09:43,340
+Giovanni went through
+an incredible effort
+
+1596
+01:09:43,340 --> 01:09:48,240
+of documenting Lemming physics
+at a pixel-by-pixel level,
+
+1597
+01:09:48,240 --> 01:09:50,310
+because it is pretty
+weird, especially
+
+1598
+01:09:50,310 --> 01:09:52,480
+when you start using
+the bridge building.
+
+1599
+01:09:52,480 --> 01:09:54,290
+If you've ever
+played this game, it
+
+1600
+01:09:54,290 --> 01:09:56,526
+will stop at kind
+of weird moments.
+
+1601
+01:09:56,526 --> 01:09:58,150
+So here is the physics
+of what happens.
+
+1602
+01:09:58,150 --> 01:10:01,100
+In general, the lemming is
+represented by a pin right
+
+1603
+01:10:01,100 --> 01:10:02,720
+under its left foot.
+
+1604
+01:10:02,720 --> 01:10:03,430
+I don't know.
+
+1605
+01:10:03,430 --> 01:10:05,740
+Maybe that's the right foot.
+
+1606
+01:10:05,740 --> 01:10:10,145
+And that pin should
+always be on the ground.
+
+1607
+01:10:10,145 --> 01:10:12,186
+If it's not on the ground,
+the lemming will fall.
+
+1608
+01:10:12,186 --> 01:10:13,394
+If it falls too far, it dies.
+
+1609
+01:10:13,394 --> 01:10:14,970
+But that's not relevant here.
+
+1610
+01:10:14,970 --> 01:10:19,540
+So the general walking-- all
+lemmings start as walkers.
+
+1611
+01:10:19,540 --> 01:10:22,516
+And what they do is
+basically move left to right.
+
+1612
+01:10:22,516 --> 01:10:23,390
+There's an animation.
+
+1613
+01:10:23,390 --> 01:10:25,170
+But mostly, this pin
+is moving one pixel
+
+1614
+01:10:25,170 --> 01:10:26,394
+to the right at a time.
+
+1615
+01:10:26,394 --> 01:10:27,810
+And so it's visiting
+these things.
+
+1616
+01:10:27,810 --> 01:10:30,620
+Once it sees, oh, there's no
+longer an obstacle beneath me,
+
+1617
+01:10:30,620 --> 01:10:32,540
+I'm going to fall
+this amount, and then
+
+1618
+01:10:32,540 --> 01:10:35,190
+I will fall one pixel at a
+time until I hit the ground.
+
+1619
+01:10:35,190 --> 01:10:36,230
+So there's a gap here.
+
+1620
+01:10:36,230 --> 01:10:39,450
+That won't be important here,
+but this is the real physics.
+
+1621
+01:10:39,450 --> 01:10:44,410
+If I hit a step-- and this is,
+at most, eight pixels up-- then
+
+1622
+01:10:44,410 --> 01:10:47,922
+I will rise up and go over.
+
+1623
+01:10:47,922 --> 01:10:50,130
+But if I have two big a
+step, more than eight pixels,
+
+1624
+01:10:50,130 --> 01:10:53,680
+then when I hit the wall,
+I will switch directions.
+
+1625
+01:10:53,680 --> 01:10:57,440
+So in this case, he will hit
+here and then climb back up.
+
+1626
+01:10:57,440 --> 01:10:59,695
+That is the regular
+walker physics.
+
+1627
+01:10:59,695 --> 01:11:02,710
+
+1628
+01:11:02,710 --> 01:11:05,010
+Now, we're going to
+use two abilities.
+
+1629
+01:11:05,010 --> 01:11:07,650
+One is called basher.
+
+1630
+01:11:07,650 --> 01:11:12,600
+And there's some animations here
+of what happens with bashers.
+
+1631
+01:11:12,600 --> 01:11:14,780
+In general, it's
+horizontal digging.
+
+1632
+01:11:14,780 --> 01:11:17,010
+But it's kind of weird
+horizontal digging.
+
+1633
+01:11:17,010 --> 01:11:19,200
+There's this particular
+pattern that you dig,
+
+1634
+01:11:19,200 --> 01:11:24,650
+which ends up tunneling a
+big horizontal rectangle more
+
+1635
+01:11:24,650 --> 01:11:25,560
+or less.
+
+1636
+01:11:25,560 --> 01:11:27,470
+But the way it tells
+whether it's finished
+
+1637
+01:11:27,470 --> 01:11:29,210
+is it looks at
+these four positions
+
+1638
+01:11:29,210 --> 01:11:32,230
+right in front of the dig mask.
+
+1639
+01:11:32,230 --> 01:11:35,640
+And if at least one of them is
+solid, you will keep digging.
+
+1640
+01:11:35,640 --> 01:11:37,756
+If they're all empty,
+you will stop digging.
+
+1641
+01:11:37,756 --> 01:11:39,130
+That's important,
+because we need
+
+1642
+01:11:39,130 --> 01:11:41,820
+to see exactly when these
+things stop happening.
+
+1643
+01:11:41,820 --> 01:11:43,640
+Then you return
+to being a walker.
+
+1644
+01:11:43,640 --> 01:11:46,650
+So if everything is normal,
+you just dig through.
+
+1645
+01:11:46,650 --> 01:11:49,887
+Here, that position was
+when all four were empty.
+
+1646
+01:11:49,887 --> 01:11:51,720
+One was empty, but then
+all four were empty.
+
+1647
+01:11:51,720 --> 01:11:54,580
+And so then you stop
+digging and keep walking.
+
+1648
+01:11:54,580 --> 01:11:55,080
+OK.
+
+1649
+01:11:55,080 --> 01:11:57,240
+But there's also
+this notion of steel.
+
+1650
+01:11:57,240 --> 01:11:59,030
+Any pixel can be
+marked as steel.
+
+1651
+01:11:59,030 --> 01:12:00,712
+It's a separate,
+independent bit.
+
+1652
+01:12:00,712 --> 01:12:02,920
+Usually there's some graphics
+to indicate your steel.
+
+1653
+01:12:02,920 --> 01:12:05,300
+But here we're
+going to use blue.
+
+1654
+01:12:05,300 --> 01:12:08,250
+And there's this
+one steel check.
+
+1655
+01:12:08,250 --> 01:12:11,185
+And if that position
+is steel, you
+
+1656
+01:12:11,185 --> 01:12:12,480
+will immediately stop digging.
+
+1657
+01:12:12,480 --> 01:12:14,146
+Or you will stop
+digging when that start
+
+1658
+01:12:14,146 --> 01:12:16,690
+position hits a steel pixel.
+
+1659
+01:12:16,690 --> 01:12:18,675
+So we're going to use
+that in the proof.
+
+1660
+01:12:18,675 --> 01:12:22,230
+But that's how bashers work.
+
+1661
+01:12:22,230 --> 01:12:24,010
+Next we have builders.
+
+1662
+01:12:24,010 --> 01:12:26,400
+These are building
+the staircases.
+
+1663
+01:12:26,400 --> 01:12:28,950
+And there's this subtlety
+that the solidity check
+
+1664
+01:12:28,950 --> 01:12:31,830
+are these three points.
+
+1665
+01:12:31,830 --> 01:12:36,000
+If any of them is solid,
+it will stop digging.
+
+1666
+01:12:36,000 --> 01:12:39,790
+And if this one's solid,
+you'll also switch directions.
+
+1667
+01:12:39,790 --> 01:12:41,550
+There's also a limited
+number of stairs,
+
+1668
+01:12:41,550 --> 01:12:43,716
+because you can only fit
+so many in this little bag.
+
+1669
+01:12:43,716 --> 01:12:45,697
+[LAUGHTER]
+
+1670
+01:12:45,697 --> 01:12:47,030
+That won't matter for the proof.
+
+1671
+01:12:47,030 --> 01:12:48,800
+We're always going
+to stop before we
+
+1672
+01:12:48,800 --> 01:12:54,110
+hit the 15 stairs or so, 10
+stairs, something like that.
+
+1673
+01:12:54,110 --> 01:12:55,910
+So you can see it
+in action here.
+
+1674
+01:12:55,910 --> 01:12:59,480
+You place the step.
+
+1675
+01:12:59,480 --> 01:13:03,460
+The initial step overlaps
+your feet by two pixels.
+
+1676
+01:13:03,460 --> 01:13:07,350
+And then you do this offset
+of two to the right, one up
+
+1677
+01:13:07,350 --> 01:13:08,840
+until you hit
+something like that.
+
+1678
+01:13:08,840 --> 01:13:11,830
+And then in that
+case, you turn around,
+
+1679
+01:13:11,830 --> 01:13:13,760
+because you hit the
+wall, so to speak.
+
+1680
+01:13:13,760 --> 01:13:17,370
+But notice there's
+this big gap here.
+
+1681
+01:13:17,370 --> 01:13:19,620
+OK.
+
+1682
+01:13:19,620 --> 01:13:24,400
+So now we want to
+use metatheorem five.
+
+1683
+01:13:24,400 --> 01:13:28,744
+We want to build a door
+and crossover, I guess.
+
+1684
+01:13:28,744 --> 01:13:31,160
+I don't know if I have the--
+I do have the crossover here.
+
+1685
+01:13:31,160 --> 01:13:32,650
+It's not so hard.
+
+1686
+01:13:32,650 --> 01:13:35,240
+First we just need to be
+able to move lemmings around.
+
+1687
+01:13:35,240 --> 01:13:36,710
+And they move in
+a very simple way.
+
+1688
+01:13:36,710 --> 01:13:37,260
+So yeah.
+
+1689
+01:13:37,260 --> 01:13:40,158
+AUDIENCE: How did he check
+all these pixel things?
+
+1690
+01:13:40,158 --> 01:13:45,522
+PROFESSOR: [LAUGHS]
+That's a good question.
+
+1691
+01:13:45,522 --> 01:13:46,980
+Definitely one
+thing he did is look
+
+1692
+01:13:46,980 --> 01:13:50,750
+at one of the clones of lemmings
+and read the source code.
+
+1693
+01:13:50,750 --> 01:13:53,940
+How that clone was done to mimic
+exactly the original lemmings
+
+1694
+01:13:53,940 --> 01:13:55,790
+I'm not sure.
+
+1695
+01:13:55,790 --> 01:13:57,530
+So I don't know
+whether this has been
+
+1696
+01:13:57,530 --> 01:14:03,130
+compared against disassembled,
+original Lemmings code or what.
+
+1697
+01:14:03,130 --> 01:14:04,130
+I'll follow up with him.
+
+1698
+01:14:04,130 --> 01:14:06,840
+I was talking to
+him earlier today.
+
+1699
+01:14:06,840 --> 01:14:07,340
+OK.
+
+1700
+01:14:07,340 --> 01:14:11,320
+So we are only going to
+give the player the ability
+
+1701
+01:14:11,320 --> 01:14:14,060
+to do builders or bashers.
+
+1702
+01:14:14,060 --> 01:14:16,660
+And we want to prevent the
+player from doing builders
+
+1703
+01:14:16,660 --> 01:14:17,880
+in random places.
+
+1704
+01:14:17,880 --> 01:14:19,820
+So these red things are traps.
+
+1705
+01:14:19,820 --> 01:14:24,210
+If you ever at any point
+decide to become a builder,
+
+1706
+01:14:24,210 --> 01:14:25,600
+your dot will not be here.
+
+1707
+01:14:25,600 --> 01:14:26,990
+Your dot will be above.
+
+1708
+01:14:26,990 --> 01:14:29,480
+And then it will be touching
+the trap, and then you die.
+
+1709
+01:14:29,480 --> 01:14:31,340
+So these red things
+are to prevent you
+
+1710
+01:14:31,340 --> 01:14:33,060
+from building anywhere.
+
+1711
+01:14:33,060 --> 01:14:36,570
+You also can't bash
+anywhere, because let's say
+
+1712
+01:14:36,570 --> 01:14:39,040
+this is all steel.
+
+1713
+01:14:39,040 --> 01:14:39,714
+OK.
+
+1714
+01:14:39,714 --> 01:14:41,630
+Or actually, I think the
+whole background here
+
+1715
+01:14:41,630 --> 01:14:45,670
+is steel except in specific
+places in the gadget.
+
+1716
+01:14:45,670 --> 01:14:47,110
+So this is a small thing.
+
+1717
+01:14:47,110 --> 01:14:49,260
+This basically lets
+us ascend slightly.
+
+1718
+01:14:49,260 --> 01:14:51,218
+Because lemmings only
+like to go left and right
+
+1719
+01:14:51,218 --> 01:14:56,350
+and there's no jump
+ability, we want
+
+1720
+01:14:56,350 --> 01:14:57,980
+to be able to build a graph.
+
+1721
+01:14:57,980 --> 01:14:59,660
+So this will let us
+go up a little bit.
+
+1722
+01:14:59,660 --> 01:15:01,470
+This will let us go
+down a little bit.
+
+1723
+01:15:01,470 --> 01:15:04,210
+This will let us change
+directions into going up,
+
+1724
+01:15:04,210 --> 01:15:05,850
+change directions in going down.
+
+1725
+01:15:05,850 --> 01:15:07,830
+This is a crossover,
+because lemmings will just
+
+1726
+01:15:07,830 --> 01:15:08,630
+proceed to the right.
+
+1727
+01:15:08,630 --> 01:15:10,463
+There's no way to make
+them change direction
+
+1728
+01:15:10,463 --> 01:15:12,310
+unless they hit something.
+
+1729
+01:15:12,310 --> 01:15:15,290
+So that's basic lemming driving.
+
+1730
+01:15:15,290 --> 01:15:19,715
+
+1731
+01:15:19,715 --> 01:15:21,840
+These are not explicitly
+stated in the metatheorem.
+
+1732
+01:15:21,840 --> 01:15:24,464
+You see here the vagueness
+of the metatheorem.
+
+1733
+01:15:24,464 --> 01:15:25,880
+We need the ability
+for the player
+
+1734
+01:15:25,880 --> 01:15:28,530
+to choose whether lemmings
+go one way or another way.
+
+1735
+01:15:28,530 --> 01:15:31,234
+We need that, for example, in
+the existential quantifier.
+
+1736
+01:15:31,234 --> 01:15:32,900
+But in general, we
+were kind of assuming
+
+1737
+01:15:32,900 --> 01:15:36,060
+that the player has this kind
+of agency to choose directions
+
+1738
+01:15:36,060 --> 01:15:36,910
+of lemmings.
+
+1739
+01:15:36,910 --> 01:15:40,210
+So for that, we need
+a kind of fork gadget.
+
+1740
+01:15:40,210 --> 01:15:45,950
+And you can either do a build
+immediately followed by a bash,
+
+1741
+01:15:45,950 --> 01:15:49,110
+or you can do a bash
+in order to get down.
+
+1742
+01:15:49,110 --> 01:15:50,590
+So if I do a build
+and then a bash,
+
+1743
+01:15:50,590 --> 01:15:53,030
+I will stop building and
+then just make one step.
+
+1744
+01:15:53,030 --> 01:15:56,180
+Because if I made a second step,
+I would die from the traps.
+
+1745
+01:15:56,180 --> 01:15:59,050
+That will let me choose
+to go to the top path.
+
+1746
+01:15:59,050 --> 01:16:01,460
+Or even if this is already
+there, I could bash it away.
+
+1747
+01:16:01,460 --> 01:16:03,060
+Or if it isn't there, just wait.
+
+1748
+01:16:03,060 --> 01:16:04,931
+And then I will go down here.
+
+1749
+01:16:04,931 --> 01:16:05,430
+OK?
+
+1750
+01:16:05,430 --> 01:16:07,460
+So no matter what the
+state of this gadget is,
+
+1751
+01:16:07,460 --> 01:16:11,020
+I can either take the top path
+or go down to the bottom path.
+
+1752
+01:16:11,020 --> 01:16:14,340
+Because here I have
+unlimited bashes and builds.
+
+1753
+01:16:14,340 --> 01:16:16,490
+So those are the two states.
+
+1754
+01:16:16,490 --> 01:16:21,360
+This is the non-steel part.
+
+1755
+01:16:21,360 --> 01:16:27,300
+We need that for
+the bash to succeed.
+
+1756
+01:16:27,300 --> 01:16:32,800
+So it ends up bashing, but
+because it's all empty here,
+
+1757
+01:16:32,800 --> 01:16:35,791
+you immediately stop bashing.
+
+1758
+01:16:35,791 --> 01:16:36,290
+OK.
+
+1759
+01:16:36,290 --> 01:16:37,440
+That's the fork.
+
+1760
+01:16:37,440 --> 01:16:39,596
+And finally, the door.
+
+1761
+01:16:39,596 --> 01:16:43,110
+So if the door was
+open, you go through it.
+
+1762
+01:16:43,110 --> 01:16:45,620
+If it's closed, you die, even
+if you try to build a bridge.
+
+1763
+01:16:45,620 --> 01:16:48,180
+If I go this way, I
+can either fall down,
+
+1764
+01:16:48,180 --> 01:16:50,460
+or I could bash it away
+and then open the door.
+
+1765
+01:16:50,460 --> 01:16:52,310
+But I still fall to the bottom.
+
+1766
+01:16:52,310 --> 01:16:55,910
+If I come from here with a
+closed door, fine, I can exit.
+
+1767
+01:16:55,910 --> 01:16:59,360
+If it's an open door, I
+better build this thing.
+
+1768
+01:16:59,360 --> 01:17:01,540
+If I build too far,
+I'm in trouble.
+
+1769
+01:17:01,540 --> 01:17:04,182
+But if I build just once
+and then immediately bash,
+
+1770
+01:17:04,182 --> 01:17:05,390
+then I will get to the right.
+
+1771
+01:17:05,390 --> 01:17:07,090
+What did I just
+do in rapid fire?
+
+1772
+01:17:07,090 --> 01:17:10,590
+That was the closed path,
+where I must put this
+
+1773
+01:17:10,590 --> 01:17:12,850
+back in in order to survive.
+
+1774
+01:17:12,850 --> 01:17:14,550
+The open, I had a choice.
+
+1775
+01:17:14,550 --> 01:17:15,630
+I could bash it.
+
+1776
+01:17:15,630 --> 01:17:17,980
+In either case, I end
+up to the open exit.
+
+1777
+01:17:17,980 --> 01:17:21,560
+And for traversal, you will only
+survive if this is not there.
+
+1778
+01:17:21,560 --> 01:17:23,450
+And you get out.
+
+1779
+01:17:23,450 --> 01:17:25,010
+So lots of crossing paths.
+
+1780
+01:17:25,010 --> 01:17:28,180
+But you can see why you need
+this pixel-by-pixel analysis
+
+1781
+01:17:28,180 --> 01:17:31,530
+to really be sure that this
+gadget does exactly what you
+
+1782
+01:17:31,530 --> 01:17:32,520
+want.
+
+1783
+01:17:32,520 --> 01:17:34,040
+And that is a door for Lemmings.
+
+1784
+01:17:34,040 --> 01:17:37,552
+And therefore, Lemmings
+is PSPACE-complete.
+
+1785
+01:17:37,552 --> 01:17:38,880
+Pretty epic.
+
+1786
+01:17:38,880 --> 01:17:41,240
+And that's all for today.
+
+1787
+01:17:41,240 --> 01:17:43,350
+Yay, video games.
+
+1788
+01:17:43,350 --> 01:17:53,293
+

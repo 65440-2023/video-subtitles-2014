@@ -1,0 +1,8027 @@
+1
+0-1:59:36,500 --> 0-1:59:36,580
+
+2
+0-1:59:36,580 --> 0-1:59:38,930
+The following content is
+provided under a Creative
+
+3
+0-1:59:38,930 --> 0-1:59:40,310
+Commons license.
+
+4
+0-1:59:40,310 --> 0-1:59:42,560
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:42,560 --> 0-1:59:46,650
+continue to offer high quality
+educational resources for free.
+
+6
+0-1:59:46,650 --> 0-1:59:49,190
+To make a donation or to
+view additional materials
+
+7
+0-1:59:49,190 --> 0-1:59:53,100
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:53,100 --> 0-1:59:53,830
+at ocw.mit.edu.
+
+9
+0-1:59:53,830 --> 00:00:02,455
+
+10
+00:00:02,455 --> 00:00:03,330
+PROFESSOR: All right.
+
+11
+00:00:03,330 --> 00:00:07,160
+So today we finish our
+game characterization.
+
+12
+00:00:07,160 --> 00:00:08,810
+We have this giant table.
+
+13
+00:00:08,810 --> 00:00:13,520
+We've done two players, zero
+players, one player, of course.
+
+14
+00:00:13,520 --> 00:00:14,760
+That's the oldest.
+
+15
+00:00:14,760 --> 00:00:17,610
+Today we're going to do
+team imperfect information
+
+16
+00:00:17,610 --> 00:00:20,370
+games, which when you
+have a polynomial bound
+
+17
+00:00:20,370 --> 00:00:22,840
+on the number of moves,
+you get NEXPTIME--
+
+18
+00:00:22,840 --> 00:00:24,740
+nondeterministic
+exponential time.
+
+19
+00:00:24,740 --> 00:00:27,230
+This is the exponential
+version of NP.
+
+20
+00:00:27,230 --> 00:00:31,035
+And for games with unbounded
+number of moves-- normally,
+
+21
+00:00:31,035 --> 00:00:33,160
+I would say exponentially
+many moves, but, in fact,
+
+22
+00:00:33,160 --> 00:00:35,180
+this will be really
+unbounded, could
+
+23
+00:00:35,180 --> 00:00:40,050
+be close to infinitely many
+moves-- we get Undecidability,
+
+24
+00:00:40,050 --> 00:00:42,310
+so no algorithm,
+whatsoever, to solve it.
+
+25
+00:00:42,310 --> 00:00:45,640
+We don't know any natural
+games in these classes.
+
+26
+00:00:45,640 --> 00:00:47,490
+But I have a couple of
+question marks here.
+
+27
+00:00:47,490 --> 00:00:51,170
+Bridge is an example of a game
+with imperfect information
+
+28
+00:00:51,170 --> 00:00:53,890
+and teams in one hand.
+
+29
+00:00:53,890 --> 00:00:55,060
+And it has bounded play.
+
+30
+00:00:55,060 --> 00:00:57,440
+Once you play your cards--
+all of the cards are down--
+
+31
+00:00:57,440 --> 00:00:58,200
+you're done.
+
+32
+00:00:58,200 --> 00:01:00,450
+So potentially, it
+falls in this class.
+
+33
+00:01:00,450 --> 00:01:02,840
+Although, I don't know if
+Bridge is sophisticated enough
+
+34
+00:01:02,840 --> 00:01:06,780
+or-- it depends on your
+notion of the bidding rules
+
+35
+00:01:06,780 --> 00:01:09,300
+and what can be
+communicated there.
+
+36
+00:01:09,300 --> 00:01:12,330
+On the other hand, for
+the unbounded game,
+
+37
+00:01:12,330 --> 00:01:15,130
+one candidate problem is
+called Rengo Kriegspiel.
+
+38
+00:01:15,130 --> 00:01:17,220
+Kriegspiel is blind chess.
+
+39
+00:01:17,220 --> 00:01:20,540
+Rengo Kriegspiel is
+blind Go with teams.
+
+40
+00:01:20,540 --> 00:01:22,900
+So there are two black
+players, two white players.
+
+41
+00:01:22,900 --> 00:01:24,901
+And you make moves
+without knowing
+
+42
+00:01:24,901 --> 00:01:26,900
+what the other moves of
+any of the other players
+
+43
+00:01:26,900 --> 00:01:28,691
+are, usually by writing
+on a piece of paper
+
+44
+00:01:28,691 --> 00:01:30,730
+and giving it to some
+referee who tells you
+
+45
+00:01:30,730 --> 00:01:33,890
+whether that was valid.
+
+46
+00:01:33,890 --> 00:01:36,490
+This is a game
+people actually play.
+
+47
+00:01:36,490 --> 00:01:39,270
+And I'm told-- I know
+Bob Hearn has played it.
+
+48
+00:01:39,270 --> 00:01:42,290
+He likes playing Go.
+
+49
+00:01:42,290 --> 00:01:45,419
+But it's open, whether that
+problem is Undecidable.
+
+50
+00:01:45,419 --> 00:01:47,289
+Potentially, yes.
+
+51
+00:01:47,289 --> 00:01:49,580
+That seems more likely.
+
+52
+00:01:49,580 --> 00:01:52,210
+And then finally, one other
+cell that we didn't do,
+
+53
+00:01:52,210 --> 00:01:53,800
+which I'll get to
+after those two,
+
+54
+00:01:53,800 --> 00:01:59,020
+is this box, which sounds
+pretty boring because it's just
+
+55
+00:01:59,020 --> 00:02:03,240
+polynomial time things--
+polynomial bounded zero player
+
+56
+00:02:03,240 --> 00:02:03,750
+games.
+
+57
+00:02:03,750 --> 00:02:06,790
+It's just like Game of Life
+running for a polynomial amount
+
+58
+00:02:06,790 --> 00:02:07,550
+of time.
+
+59
+00:02:07,550 --> 00:02:11,140
+You can generate-- I mean,
+you can solve those problems
+
+60
+00:02:11,140 --> 00:02:11,976
+in polynomial time.
+
+61
+00:02:11,976 --> 00:02:14,350
+But there's a stronger sense
+in which all polynomial time
+
+62
+00:02:14,350 --> 00:02:17,230
+problems can be represented,
+say, by Game of Life.
+
+63
+00:02:17,230 --> 00:02:20,220
+And this, actually, is
+relevant to parallel computing.
+
+64
+00:02:20,220 --> 00:02:22,850
+And it essentially says,
+there's no good way
+
+65
+00:02:22,850 --> 00:02:26,370
+to parallelize Game of
+Life, among other problems.
+
+66
+00:02:26,370 --> 00:02:28,561
+So I mentioned that way
+back in lecture one.
+
+67
+00:02:28,561 --> 00:02:30,060
+And a lot of people
+said, oh, what's
+
+68
+00:02:30,060 --> 00:02:31,520
+this P-completeness business?
+
+69
+00:02:31,520 --> 00:02:34,350
+And so today we will
+cover that, as well.
+
+70
+00:02:34,350 --> 00:02:39,490
+But let's start with
+NEXPTIME and Undecidability.
+
+71
+00:02:39,490 --> 00:02:41,290
+Let's start with a bounded case.
+
+72
+00:02:41,290 --> 00:02:49,570
+
+73
+00:02:49,570 --> 00:02:52,720
+So in the bounded case,
+there's this cool paper
+
+74
+00:02:52,720 --> 00:02:55,180
+by Peterson and
+Reif, introducing
+
+75
+00:02:55,180 --> 00:02:58,460
+a problem variation of QSAT.
+
+76
+00:02:58,460 --> 00:03:03,690
+
+77
+00:03:03,690 --> 00:03:06,160
+Remember, QSAT,
+also known as QBF.
+
+78
+00:03:06,160 --> 00:03:07,310
+So this is DQBF.
+
+79
+00:03:07,310 --> 00:03:10,080
+
+80
+00:03:10,080 --> 00:03:13,160
+And it's a funny problem.
+
+81
+00:03:13,160 --> 00:03:16,520
+First, I'll phrase it
+as a formula problem.
+
+82
+00:03:16,520 --> 00:03:18,620
+And then I'll talk
+about it as a game.
+
+83
+00:03:18,620 --> 00:03:35,130
+
+84
+00:03:35,130 --> 00:03:39,710
+So normally, in QSAT QBF, we
+have N alternating quantifiers.
+
+85
+00:03:39,710 --> 00:03:41,410
+And that's PSACE complete.
+
+86
+00:03:41,410 --> 00:03:45,830
+And every quantifier can depend
+on all of the previous values.
+
+87
+00:03:45,830 --> 00:03:47,400
+But now we're going
+to have two sort
+
+88
+00:03:47,400 --> 00:03:49,970
+of in parallel
+existential quantifiers.
+
+89
+00:03:49,970 --> 00:03:52,671
+So we have two universal--
+I should mention the capital
+
+90
+00:03:52,671 --> 00:03:53,170
+letters.
+
+91
+00:03:53,170 --> 00:03:54,336
+That's a bunch of variables.
+
+92
+00:03:54,336 --> 00:03:57,500
+So there's like N bits
+here, N bits here that
+
+93
+00:03:57,500 --> 00:03:59,756
+has to work for all
+choices of those.
+
+94
+00:03:59,756 --> 00:04:00,880
+Why do I separate them out?
+
+95
+00:04:00,880 --> 00:04:03,210
+Because over here, I'm
+going to separate them out.
+
+96
+00:04:03,210 --> 00:04:07,170
+And Y1-- the choice of Y1 is
+only allowed to depend on X1.
+
+97
+00:04:07,170 --> 00:04:11,529
+And the choice of Y2 is only
+allowed to depend on X2.
+
+98
+00:04:11,529 --> 00:04:13,070
+And then we're going
+to have some CNF
+
+99
+00:04:13,070 --> 00:04:15,490
+formula on the X1, X2, Y1, Y2.
+
+100
+00:04:15,490 --> 00:04:23,640
+
+101
+00:04:23,640 --> 00:04:28,980
+So we can think of that
+as this is one player.
+
+102
+00:04:28,980 --> 00:04:29,980
+It could be two players.
+
+103
+00:04:29,980 --> 00:04:32,600
+But it doesn't really matter.
+
+104
+00:04:32,600 --> 00:04:34,270
+So make it one-- simpler.
+
+105
+00:04:34,270 --> 00:04:35,880
+It's going to be a
+three player game.
+
+106
+00:04:35,880 --> 00:04:38,800
+Black makes these choices.
+
+107
+00:04:38,800 --> 00:04:45,900
+And then white player
+1 chooses the Y1s.
+
+108
+00:04:45,900 --> 00:04:49,110
+And the private information
+aspect of this game
+
+109
+00:04:49,110 --> 00:04:52,920
+is that the white player one
+can only see the X1 variables--
+
+110
+00:04:52,920 --> 00:04:55,404
+choices made by black.
+
+111
+00:04:55,404 --> 00:04:56,820
+Maybe it's more
+intuitive to think
+
+112
+00:04:56,820 --> 00:04:58,070
+of this as a four player game.
+
+113
+00:04:58,070 --> 00:04:59,280
+There are two black players.
+
+114
+00:04:59,280 --> 00:05:01,770
+And the white 1 player
+can see the values chosen
+
+115
+00:05:01,770 --> 00:05:03,710
+by the black 1 player
+but not the values
+
+116
+00:05:03,710 --> 00:05:05,480
+chosen by the black 2 player.
+
+117
+00:05:05,480 --> 00:05:10,360
+And then, over here, we have
+white player two, who can only
+
+118
+00:05:10,360 --> 00:05:13,070
+see the variables chosen-- X2.
+
+119
+00:05:13,070 --> 00:05:13,570
+Question?
+
+120
+00:05:13,570 --> 00:05:15,819
+AUDIENCE: Does the black
+team have full information?
+
+121
+00:05:15,819 --> 00:05:17,610
+PROFESSOR: Black team
+has full information.
+
+122
+00:05:17,610 --> 00:05:19,026
+I mean, the black
+team goes first.
+
+123
+00:05:19,026 --> 00:05:21,014
+So it doesn't,
+obviously, see Y1 and Y2.
+
+124
+00:05:21,014 --> 00:05:22,180
+But they can see each other.
+
+125
+00:05:22,180 --> 00:05:22,680
+Yeah.
+
+126
+00:05:22,680 --> 00:05:25,426
+So X2 can see X1.
+
+127
+00:05:25,426 --> 00:05:26,330
+Yeah.
+
+128
+00:05:26,330 --> 00:05:29,190
+So if I don't write a
+parenthetical dependency,
+
+129
+00:05:29,190 --> 00:05:32,130
+then it can depend
+on everything.
+
+130
+00:05:32,130 --> 00:05:32,630
+Yeah.
+
+131
+00:05:32,630 --> 00:05:33,820
+Really, this is one player.
+
+132
+00:05:33,820 --> 00:05:37,611
+So they get to choose
+everything in the X [INAUDIBLE].
+
+133
+00:05:37,611 --> 00:05:38,110
+OK?
+
+134
+00:05:38,110 --> 00:05:39,960
+So then the question
+is given this--
+
+135
+00:05:39,960 --> 00:05:45,080
+I mean, this quantified
+formula's equivalent to saying,
+
+136
+00:05:45,080 --> 00:05:53,290
+can white force a
+win, where white wins
+
+137
+00:05:53,290 --> 00:05:55,670
+if that formula is satisfied?
+
+138
+00:05:55,670 --> 00:05:58,330
+And white collectively
+needs to make these choices.
+
+139
+00:05:58,330 --> 00:06:00,800
+But it's acting as a team
+with impartial information.
+
+140
+00:06:00,800 --> 00:06:02,510
+So it's not acting
+as a single player
+
+141
+00:06:02,510 --> 00:06:05,650
+anymore, unlike when we
+had full information.
+
+142
+00:06:05,650 --> 00:06:09,090
+Then three players
+was the same as two.
+
+143
+00:06:09,090 --> 00:06:09,880
+OK?
+
+144
+00:06:09,880 --> 00:06:13,710
+So let's first observe
+that this is in NEXPTIME.
+
+145
+00:06:13,710 --> 00:06:16,220
+And then, furthermore, the
+claim, which I won't prove,
+
+146
+00:06:16,220 --> 00:06:20,320
+is that this is
+NEXPTIME complete.
+
+147
+00:06:20,320 --> 00:06:24,910
+So the idea is there are only
+exponentially many choices
+
+148
+00:06:24,910 --> 00:06:26,740
+for these variables.
+
+149
+00:06:26,740 --> 00:06:30,710
+So then I can guess--
+both player 1 and player 2
+
+150
+00:06:30,710 --> 00:06:33,480
+can guess what--
+white 1 and white 2
+
+151
+00:06:33,480 --> 00:06:37,470
+can guess what the possibilities
+are for all possible choices
+
+152
+00:06:37,470 --> 00:06:38,590
+of X1 and X2.
+
+153
+00:06:38,590 --> 00:06:41,190
+So they're making
+exponentially many guesses.
+
+154
+00:06:41,190 --> 00:06:45,790
+For every state of X1, X2, guess
+what the right strategy is.
+
+155
+00:06:45,790 --> 00:06:50,790
+And then just combine--
+then check whether everyone
+
+156
+00:06:50,790 --> 00:06:52,570
+plays properly.
+
+157
+00:06:52,570 --> 00:06:54,600
+So then white can decide
+whether they can win.
+
+158
+00:06:54,600 --> 00:06:58,780
+
+159
+00:06:58,780 --> 00:06:59,755
+That's cool.
+
+160
+00:06:59,755 --> 00:07:03,200
+
+161
+00:07:03,200 --> 00:07:08,050
+This can be reduced to a bounded
+team, private information
+
+162
+00:07:08,050 --> 00:07:11,420
+version of constraint
+logic-- TPCL.
+
+163
+00:07:11,420 --> 00:07:13,550
+Let me define that.
+
+164
+00:07:13,550 --> 00:07:22,650
+
+165
+00:07:22,650 --> 00:07:29,660
+We're going to do this
+with three players
+
+166
+00:07:29,660 --> 00:07:31,150
+And a plane or a graph.
+
+167
+00:07:31,150 --> 00:07:34,570
+
+168
+00:07:34,570 --> 00:07:37,610
+I think just and/or
+graph is enough.
+
+169
+00:07:37,610 --> 00:07:39,801
+But it's a team.
+
+170
+00:07:39,801 --> 00:07:41,800
+There are going to be,
+again, two white players,
+
+171
+00:07:41,800 --> 00:07:43,450
+one black player.
+
+172
+00:07:43,450 --> 00:07:46,180
+And it's private
+information, meaning
+
+173
+00:07:46,180 --> 00:07:49,930
+that each edge is marked
+as visible to white
+
+174
+00:07:49,930 --> 00:07:51,120
+or visible to black.
+
+175
+00:07:51,120 --> 00:07:53,210
+Now, the figures-- it's
+a little hard to draw.
+
+176
+00:07:53,210 --> 00:07:54,930
+So the figures--
+the color is just
+
+177
+00:07:54,930 --> 00:07:57,930
+indicating whether that player
+is allowed to flip that edge.
+
+178
+00:07:57,930 --> 00:08:00,472
+Each player can only flip--
+each white player can only
+
+179
+00:08:00,472 --> 00:08:01,180
+flip white edges.
+
+180
+00:08:01,180 --> 00:08:04,380
+Black player can only flip
+black edges, just like before.
+
+181
+00:08:04,380 --> 00:08:06,580
+Well, now it's
+white team can only
+
+182
+00:08:06,580 --> 00:08:08,450
+flip-- either of
+the white players
+
+183
+00:08:08,450 --> 00:08:11,000
+can only flip a white edge.
+
+184
+00:08:11,000 --> 00:08:15,120
+So some edges are
+flippable by two players.
+
+185
+00:08:15,120 --> 00:08:17,390
+But then, in addition, some
+edges-- some white edges
+
+186
+00:08:17,390 --> 00:08:19,380
+are going to be marked
+as invisible to black.
+
+187
+00:08:19,380 --> 00:08:20,730
+And some black edges
+are going to be
+
+188
+00:08:20,730 --> 00:08:21,938
+marked as invisible to white.
+
+189
+00:08:21,938 --> 00:08:24,460
+And furthermore, you can say
+invisible to this white player
+
+190
+00:08:24,460 --> 00:08:26,380
+or this white player.
+
+191
+00:08:26,380 --> 00:08:26,880
+OK?
+
+192
+00:08:26,880 --> 00:08:28,760
+So it's a little
+bit more general.
+
+193
+00:08:28,760 --> 00:08:31,130
+And the rules of the
+game are pretty simple.
+
+194
+00:08:31,130 --> 00:08:33,220
+You can make moves
+just like before.
+
+195
+00:08:33,220 --> 00:08:38,850
+But you must be able to know
+that that move is legal.
+
+196
+00:08:38,850 --> 00:08:44,160
+
+197
+00:08:44,160 --> 00:08:46,130
+So unlike Rengo
+Kriegspiel, you're
+
+198
+00:08:46,130 --> 00:08:48,885
+not allowed to make
+impossible moves.
+
+199
+00:08:48,885 --> 00:08:52,420
+
+200
+00:08:52,420 --> 00:08:56,580
+You must know, based on the
+information that you can see,
+
+201
+00:08:56,580 --> 00:08:59,294
+that the movie is valid.
+
+202
+00:08:59,294 --> 00:09:01,210
+There are probably other
+variations that work.
+
+203
+00:09:01,210 --> 00:09:03,820
+But this is a clean
+one to work with.
+
+204
+00:09:03,820 --> 00:09:05,740
+So if you can see
+all of the edges,
+
+205
+00:09:05,740 --> 00:09:07,590
+or you see that there's enough
+incoming white to an edge,
+
+206
+00:09:07,590 --> 00:09:10,048
+then you can reverse one of
+the ones you have control over.
+
+207
+00:09:10,048 --> 00:09:12,450
+
+208
+00:09:12,450 --> 00:09:16,820
+So this problem-- I mean,
+so a funny thing about DQBF
+
+209
+00:09:16,820 --> 00:09:19,420
+is that there's sort of
+only one round to the game--
+
+210
+00:09:19,420 --> 00:09:22,030
+I mean, black plays,
+white plays, white plays,
+
+211
+00:09:22,030 --> 00:09:25,760
+and then you see who won--
+whereas most games we think
+
+212
+00:09:25,760 --> 00:09:27,410
+of as having many rounds.
+
+213
+00:09:27,410 --> 00:09:30,920
+And in particular, bounded
+TPCL has many rounds.
+
+214
+00:09:30,920 --> 00:09:32,000
+They play in round robin.
+
+215
+00:09:32,000 --> 00:09:34,540
+You've got black, white 1, white
+2, black, white 1, white two.
+
+216
+00:09:34,540 --> 00:09:36,414
+And you play in that
+sequence, over and over.
+
+217
+00:09:36,414 --> 00:09:38,720
+Each turn, someone's just
+reversing a single edge,
+
+218
+00:09:38,720 --> 00:09:42,220
+whereas over here, you're
+choosing a ton of variables.
+
+219
+00:09:42,220 --> 00:09:46,810
+Turns out this problem
+is also in NEXPTIME,
+
+220
+00:09:46,810 --> 00:09:53,830
+essentially because if there is
+a winning strategy for white,
+
+221
+00:09:53,830 --> 00:09:57,830
+over here, that winning
+strategy is deterministic.
+
+222
+00:09:57,830 --> 00:10:01,410
+And it's just a function
+of the visible state.
+
+223
+00:10:01,410 --> 00:10:04,480
+And there are at most
+N different edges
+
+224
+00:10:04,480 --> 00:10:05,630
+that you can see.
+
+225
+00:10:05,630 --> 00:10:07,660
+So the number of possible
+states is exponential.
+
+226
+00:10:07,660 --> 00:10:12,570
+So at the beginning, you
+just guess your strategy.
+
+227
+00:10:12,570 --> 00:10:14,550
+That's exponentially
+many bits to guess.
+
+228
+00:10:14,550 --> 00:10:16,510
+So in NEXPTIME, you can do that.
+
+229
+00:10:16,510 --> 00:10:18,789
+And then you just play
+deterministically,
+
+230
+00:10:18,789 --> 00:10:19,580
+with that strategy.
+
+231
+00:10:19,580 --> 00:10:22,030
+So even though the game may
+run for a very long time,
+
+232
+00:10:22,030 --> 00:10:23,894
+and you do many,
+many rounds, still,
+
+233
+00:10:23,894 --> 00:10:26,185
+the information you need to
+guess was only exponential.
+
+234
+00:10:26,185 --> 00:10:28,130
+So you can do this in NEXPTIME.
+
+235
+00:10:28,130 --> 00:10:30,110
+So it's a funny thing here.
+
+236
+00:10:30,110 --> 00:10:31,950
+In this particular
+world, unlike all
+
+237
+00:10:31,950 --> 00:10:35,970
+of the other cells
+of that matrix,
+
+238
+00:10:35,970 --> 00:10:38,750
+one round versus many
+rounds is the same.
+
+239
+00:10:38,750 --> 00:10:42,050
+You get NEXPTIME
+completeness in both cases.
+
+240
+00:10:42,050 --> 00:10:42,550
+OK.
+
+241
+00:10:42,550 --> 00:10:49,342
+So let me tell you how we reduce
+from DQBF to bounded TPCL.
+
+242
+00:10:49,342 --> 00:10:50,050
+So many acronyms.
+
+243
+00:10:50,050 --> 00:10:53,690
+
+244
+00:10:53,690 --> 00:10:58,080
+So the idea's pretty simple.
+
+245
+00:10:58,080 --> 00:11:01,590
+Again, we want
+black to play first.
+
+246
+00:11:01,590 --> 00:11:04,190
+So there's a bunch of
+black variables, here,
+
+247
+00:11:04,190 --> 00:11:06,780
+which are represented by this.
+
+248
+00:11:06,780 --> 00:11:08,570
+These two figures
+are almost the same.
+
+249
+00:11:08,570 --> 00:11:11,590
+Just these edges are blacked
+down here and white down here.
+
+250
+00:11:11,590 --> 00:11:14,385
+That's going to correspond
+to the variable setting.
+
+251
+00:11:14,385 --> 00:11:17,150
+In this context, we only want
+variables to be set once.
+
+252
+00:11:17,150 --> 00:11:21,350
+You don't get to reset them
+because it's a bounded game.
+
+253
+00:11:21,350 --> 00:11:23,510
+As in all of the bounded
+constraint logic games,
+
+254
+00:11:23,510 --> 00:11:25,260
+you can only flip
+each edge once.
+
+255
+00:11:25,260 --> 00:11:25,800
+Question?
+
+256
+00:11:25,800 --> 00:11:27,201
+AUDIENCE: It's kind of a
+question about your earlier
+
+257
+00:11:27,201 --> 00:11:28,992
+point, but could you
+clarify the difference
+
+258
+00:11:28,992 --> 00:11:31,507
+between why having one
+round of one of the games
+
+259
+00:11:31,507 --> 00:11:36,369
+is equivalent to having
+all-around [INAUDIBLE] game?
+
+260
+00:11:36,369 --> 00:11:38,160
+PROFESSOR: I don't have
+an intuitive reason
+
+261
+00:11:38,160 --> 00:11:43,210
+why-- only that this game
+is in NEXPTIME and this game
+
+262
+00:11:43,210 --> 00:11:44,650
+is NEXPTIME complete.
+
+263
+00:11:44,650 --> 00:11:46,470
+I mean, they both are
+NEXPTIME complete.
+
+264
+00:11:46,470 --> 00:11:49,470
+So in that sense,
+they're equivalent.
+
+265
+00:11:49,470 --> 00:11:50,280
+Yeah.
+
+266
+00:11:50,280 --> 00:11:52,060
+So we're going to
+simulate this one round
+
+267
+00:11:52,060 --> 00:11:55,940
+game with multiple
+rounds, over here.
+
+268
+00:11:55,940 --> 00:11:56,610
+But yeah.
+
+269
+00:11:56,610 --> 00:11:59,630
+It's a little bit odd that
+alternation doesn't help.
+
+270
+00:11:59,630 --> 00:12:01,080
+It doesn't give you more power.
+
+271
+00:12:01,080 --> 00:12:03,270
+All of the other game
+settings that it does.
+
+272
+00:12:03,270 --> 00:12:06,100
+So it's just a weird
+thing about team.
+
+273
+00:12:06,100 --> 00:12:06,910
+Yeah.
+
+274
+00:12:06,910 --> 00:12:11,192
+AUDIENCE: So are you [INAUDIBLE]
+kind of rely on the fact
+
+275
+00:12:11,192 --> 00:12:13,820
+that white doesn't learn
+anything from black's moves
+
+276
+00:12:13,820 --> 00:12:15,790
+when black moves on
+an invisible edge?
+
+277
+00:12:15,790 --> 00:12:16,290
+Sorry.
+
+278
+00:12:16,290 --> 00:12:17,650
+It seems like in some
+board configurations,
+
+279
+00:12:17,650 --> 00:12:18,860
+if black moves on
+an invisible edge,
+
+280
+00:12:18,860 --> 00:12:20,470
+you can actually
+learn something based
+
+281
+00:12:20,470 --> 00:12:24,711
+on what moves were allowed,
+and not allowed, for black.
+
+282
+00:12:24,711 --> 00:12:26,460
+PROFESSOR: Maybe I
+should say that passing
+
+283
+00:12:26,460 --> 00:12:28,530
+is allowed in this game.
+
+284
+00:12:28,530 --> 00:12:31,749
+Otherwise, the fact that you
+moved does tell you something.
+
+285
+00:12:31,749 --> 00:12:33,290
+But if you're always
+allowed to pass,
+
+286
+00:12:33,290 --> 00:12:35,670
+you really have no idea
+whether something happened,
+
+287
+00:12:35,670 --> 00:12:37,001
+except by what was visible.
+
+288
+00:12:37,001 --> 00:12:37,500
+Yeah.
+
+289
+00:12:37,500 --> 00:12:40,460
+So that's-- make explicit,
+passing is allowed.
+
+290
+00:12:40,460 --> 00:12:45,540
+
+291
+00:12:45,540 --> 00:12:48,801
+Yeah, these are a bit subtle.
+
+292
+00:12:48,801 --> 00:12:49,300
+OK.
+
+293
+00:12:49,300 --> 00:12:53,380
+So the intent is, first, we
+let black choose variables,
+
+294
+00:12:53,380 --> 00:12:55,650
+either by flipping true edge,
+flipping the false edge.
+
+295
+00:12:55,650 --> 00:12:57,820
+We want to set it up
+so you can't do-- well,
+
+296
+00:12:57,820 --> 00:13:00,425
+you can't do both because
+of this vertex constraint.
+
+297
+00:13:00,425 --> 00:13:01,050
+So that's cool.
+
+298
+00:13:01,050 --> 00:13:05,180
+As soon as that
+happens, probably, white
+
+299
+00:13:05,180 --> 00:13:08,000
+will flip this edge and
+black will flip this edge.
+
+300
+00:13:08,000 --> 00:13:12,390
+That's a split, activating--
+well, not yet activating
+
+301
+00:13:12,390 --> 00:13:16,960
+the formula part, but enabling
+black to activate the chosen
+
+302
+00:13:16,960 --> 00:13:20,130
+edge, saying that this
+variable has been chosen.
+
+303
+00:13:20,130 --> 00:13:23,970
+And so black will
+sort of output that.
+
+304
+00:13:23,970 --> 00:13:27,420
+Then in here, so there's
+n such variables.
+
+305
+00:13:27,420 --> 00:13:30,230
+And B1 and B2 are both in here.
+
+306
+00:13:30,230 --> 00:13:33,530
+And we take the and of
+all of those chosen edges.
+
+307
+00:13:33,530 --> 00:13:36,270
+And that's this chosen wire.
+
+308
+00:13:36,270 --> 00:13:38,590
+So this-- black is
+motivated to do this.
+
+309
+00:13:38,590 --> 00:13:41,440
+Black wants to set
+their variable some way.
+
+310
+00:13:41,440 --> 00:13:43,429
+And they could, I
+guess, set them back
+
+311
+00:13:43,429 --> 00:13:44,470
+and change the variables.
+
+312
+00:13:44,470 --> 00:13:46,650
+But there won't be any
+motivation to do that.
+
+313
+00:13:46,650 --> 00:13:48,870
+The goal for black is
+to flip this edge, which
+
+314
+00:13:48,870 --> 00:13:52,040
+is connected by a long path from
+the AND of all of the chosen
+
+315
+00:13:52,040 --> 00:13:52,540
+wires.
+
+316
+00:13:52,540 --> 00:13:55,230
+So basically, B has to
+choose all of the variables,
+
+317
+00:13:55,230 --> 00:13:57,850
+get this AND to be true,
+and then just sit there,
+
+318
+00:13:57,850 --> 00:14:00,200
+flipping these edges,
+until this edge is flipped.
+
+319
+00:14:00,200 --> 00:14:04,770
+So that's a threat line, once
+B has set their variables.
+
+320
+00:14:04,770 --> 00:14:06,790
+So B is going to
+race to do that.
+
+321
+00:14:06,790 --> 00:14:09,280
+White is going to have
+just enough time to satisfy
+
+322
+00:14:09,280 --> 00:14:13,240
+the formula and flip this
+edge if the formula was true,
+
+323
+00:14:13,240 --> 00:14:15,530
+obviously.
+
+324
+00:14:15,530 --> 00:14:19,190
+So what happens next--
+white will basically
+
+325
+00:14:19,190 --> 00:14:23,240
+sit there and
+twiddle their thumbs,
+
+326
+00:14:23,240 --> 00:14:26,526
+flipping some useless
+edge, until all
+
+327
+00:14:26,526 --> 00:14:27,940
+of the black variables are set.
+
+328
+00:14:27,940 --> 00:14:29,523
+They could actually
+do something else.
+
+329
+00:14:29,523 --> 00:14:31,630
+But there's going to
+be enough time to wait.
+
+330
+00:14:31,630 --> 00:14:33,280
+So it's better to wait.
+
+331
+00:14:33,280 --> 00:14:37,910
+Then the white variables can
+depend on the black variables
+
+332
+00:14:37,910 --> 00:14:40,000
+that it can see.
+
+333
+00:14:40,000 --> 00:14:44,340
+Obviously, pretty much
+all of the edges in here
+
+334
+00:14:44,340 --> 00:14:46,545
+are visible to only one
+of the white players.
+
+335
+00:14:46,545 --> 00:14:49,980
+If this is a B1
+variable, then this
+
+336
+00:14:49,980 --> 00:14:52,330
+is only visible the white 1.
+
+337
+00:14:52,330 --> 00:14:54,200
+White 1 can see
+that it was chosen
+
+338
+00:14:54,200 --> 00:14:55,750
+but can't see which
+of these edges
+
+339
+00:14:55,750 --> 00:14:57,860
+got flipped and can't
+see which of these edges
+
+340
+00:14:57,860 --> 00:15:00,960
+got flipped or these ones.
+
+341
+00:15:00,960 --> 00:15:01,460
+OK?
+
+342
+00:15:01,460 --> 00:15:04,720
+So that's representing
+the visibility.
+
+343
+00:15:04,720 --> 00:15:06,910
+And so then white will
+set their variables,
+
+344
+00:15:06,910 --> 00:15:09,170
+the same kind of construction.
+
+345
+00:15:09,170 --> 00:15:15,140
+And once chosen is
+activated for both of them,
+
+346
+00:15:15,140 --> 00:15:19,710
+we take the AND here, and
+we trigger the unlock paths.
+
+347
+00:15:19,710 --> 00:15:23,610
+It's going to unlock the white
+1, unlock the white 2, unlock
+
+348
+00:15:23,610 --> 00:15:26,330
+all of the black variables.
+
+349
+00:15:26,330 --> 00:15:31,690
+And the unlock part is what
+lets you trigger the formula
+
+350
+00:15:31,690 --> 00:15:32,830
+activation.
+
+351
+00:15:32,830 --> 00:15:36,990
+So if true was selected
+here, and this was flipped,
+
+352
+00:15:36,990 --> 00:15:39,240
+once the unlock is
+flipped, then this guy
+
+353
+00:15:39,240 --> 00:15:42,060
+can activate and start inputting
+all of the true variables
+
+354
+00:15:42,060 --> 00:15:43,450
+into the formula.
+
+355
+00:15:43,450 --> 00:15:46,210
+And then white will sit there
+and evaluate the formula.
+
+356
+00:15:46,210 --> 00:15:50,850
+It has just enough time, if it's
+satisfied, to flip and be done.
+
+357
+00:15:50,850 --> 00:15:53,600
+So that's how we
+represent dependency QBF.
+
+358
+00:15:53,600 --> 00:15:56,300
+I mean, it's pretty natural.
+
+359
+00:15:56,300 --> 00:15:59,625
+It's just some fun stuff
+to get these to happen
+
+360
+00:15:59,625 --> 00:16:01,550
+in essentially two rounds.
+
+361
+00:16:01,550 --> 00:16:04,500
+The visibility constraints of
+the partial-- the privateness
+
+362
+00:16:04,500 --> 00:16:08,169
+of visible information
+makes this part really easy
+
+363
+00:16:08,169 --> 00:16:08,710
+to implement.
+
+364
+00:16:08,710 --> 00:16:11,430
+So no big surprises.
+
+365
+00:16:11,430 --> 00:16:13,974
+Questions?
+
+366
+00:16:13,974 --> 00:16:15,450
+OK.
+
+367
+00:16:15,450 --> 00:16:17,250
+Let's go to the
+unbounded case, which
+
+368
+00:16:17,250 --> 00:16:19,320
+is the much more exciting one.
+
+369
+00:16:19,320 --> 00:16:25,020
+
+370
+00:16:25,020 --> 00:16:29,850
+So I mean, Undecidability
+is weird and unusual.
+
+371
+00:16:29,850 --> 00:16:32,910
+It's weird in this
+context because this game
+
+372
+00:16:32,910 --> 00:16:34,700
+has finite resources.
+
+373
+00:16:34,700 --> 00:16:36,340
+All of our games--
+in particular,
+
+374
+00:16:36,340 --> 00:16:40,190
+in constraint logic-- you
+have some graph of size n.
+
+375
+00:16:40,190 --> 00:16:42,829
+And Undecidability is
+about, essentially,
+
+376
+00:16:42,829 --> 00:16:47,264
+simulating a Turing machine
+for arbitrary amounts of time
+
+377
+00:16:47,264 --> 00:16:48,555
+and arbitrary amounts of space.
+
+378
+00:16:48,555 --> 00:16:51,354
+
+379
+00:16:51,354 --> 00:16:52,520
+It's bigger than 2 to the n.
+
+380
+00:16:52,520 --> 00:16:53,895
+It's bigger than
+2 to 2 to the n.
+
+381
+00:16:53,895 --> 00:16:55,400
+It's bigger than 2 tower.
+
+382
+00:16:55,400 --> 00:16:58,000
+And it's bigger than
+any-- I guess, it's
+
+383
+00:16:58,000 --> 00:17:00,740
+any computable function of
+n is how far you have to go.
+
+384
+00:17:00,740 --> 00:17:02,680
+So a little bit less
+than busy beaver.
+
+385
+00:17:02,680 --> 00:17:05,210
+
+386
+00:17:05,210 --> 00:17:06,990
+That's a lot of space.
+
+387
+00:17:06,990 --> 00:17:11,679
+So in game graph,
+we can't represent
+
+388
+00:17:11,679 --> 00:17:13,970
+the state of the machine that
+we're trying to simulate.
+
+389
+00:17:13,970 --> 00:17:20,020
+So I should say-- we haven't
+done Undecidability at all,
+
+390
+00:17:20,020 --> 00:17:25,350
+but the canonical
+problem to start from
+
+391
+00:17:25,350 --> 00:17:27,270
+is a halting problem.
+
+392
+00:17:27,270 --> 00:17:29,970
+You're given a Turing machine.
+
+393
+00:17:29,970 --> 00:17:31,990
+And here, I'd like
+to say algorithm,
+
+394
+00:17:31,990 --> 00:17:34,590
+but we need some model
+of the machine growing
+
+395
+00:17:34,590 --> 00:17:36,110
+to arbitrarily large sizes.
+
+396
+00:17:36,110 --> 00:17:40,270
+And this Turing machine
+is really ideal for this.
+
+397
+00:17:40,270 --> 00:17:43,235
+Given the Turing machine,
+does it ever halt?
+
+398
+00:17:43,235 --> 00:17:48,540
+
+399
+00:17:48,540 --> 00:17:52,670
+So remember, a Turing
+machine, you have some tape.
+
+400
+00:17:52,670 --> 00:17:56,270
+Let's say, initially, all of
+the tape squares are empty.
+
+401
+00:17:56,270 --> 00:17:58,490
+You have some pointer
+into the tape, starts
+
+402
+00:17:58,490 --> 00:18:01,010
+at some canonical position.
+
+403
+00:18:01,010 --> 00:18:04,510
+And you can read and
+write squares in the tape.
+
+404
+00:18:04,510 --> 00:18:05,980
+And you can move left and right.
+
+405
+00:18:05,980 --> 00:18:08,800
+And that's it.
+
+406
+00:18:08,800 --> 00:18:10,980
+The feeling, as this
+corresponds-- this
+
+407
+00:18:10,980 --> 00:18:13,520
+includes all
+possible computation.
+
+408
+00:18:13,520 --> 00:18:16,347
+And so deciding whether
+this machine will ever
+
+409
+00:18:16,347 --> 00:18:18,430
+finish-- so there's an
+instruction that just says,
+
+410
+00:18:18,430 --> 00:18:24,250
+halt-- or whether to just
+keep going on forever seems--
+
+411
+00:18:24,250 --> 00:18:25,960
+is provably impossible.
+
+412
+00:18:25,960 --> 00:18:27,860
+There is no algorithm
+to decide that,
+
+413
+00:18:27,860 --> 00:18:30,390
+essentially because it's an
+algorithm to study algorithms.
+
+414
+00:18:30,390 --> 00:18:32,440
+But I won't prove that here.
+
+415
+00:18:32,440 --> 00:18:34,245
+I'm going to reduce
+from this problem.
+
+416
+00:18:34,245 --> 00:18:36,825
+And so I need to be able to
+simulate a Turing machine
+
+417
+00:18:36,825 --> 00:18:38,970
+of arbitrary size and time.
+
+418
+00:18:38,970 --> 00:18:42,050
+
+419
+00:18:42,050 --> 00:18:43,580
+Cool.
+
+420
+00:18:43,580 --> 00:18:47,980
+So while most of the time
+I don't show you the source
+
+421
+00:18:47,980 --> 00:18:51,467
+problem, I think, here, it's
+instructive to see-- well,
+
+422
+00:18:51,467 --> 00:18:53,300
+I guess I'm not proving
+this as undecidable.
+
+423
+00:18:53,300 --> 00:18:57,220
+But it's instructive to see
+how we turn this into a game,
+
+424
+00:18:57,220 --> 00:18:58,350
+with bounded resources.
+
+425
+00:18:58,350 --> 00:19:01,440
+So before I get to the
+constrain logic version,
+
+426
+00:19:01,440 --> 00:19:04,160
+I'm going to talk about
+something called a team
+
+427
+00:19:04,160 --> 00:19:14,170
+computation game-- this is
+from our book, Games, Puzzles,
+
+428
+00:19:14,170 --> 00:19:19,760
+Computation-- that will allow
+us to simulate the halting
+
+429
+00:19:19,760 --> 00:19:21,440
+problem, but using
+finite resources.
+
+430
+00:19:21,440 --> 00:19:23,170
+This is where the action is.
+
+431
+00:19:23,170 --> 00:19:24,740
+Going from here to
+a constrain logic
+
+432
+00:19:24,740 --> 00:19:28,270
+is not that hard and
+not super interesting.
+
+433
+00:19:28,270 --> 00:19:29,890
+But this part is
+quite interesting.
+
+434
+00:19:29,890 --> 00:19:33,600
+
+435
+00:19:33,600 --> 00:19:34,100
+OK.
+
+436
+00:19:34,100 --> 00:19:35,910
+So in team computation
+game, there's
+
+437
+00:19:35,910 --> 00:19:39,500
+going to be three players--
+one black player, two
+
+438
+00:19:39,500 --> 00:19:41,380
+white players.
+
+439
+00:19:41,380 --> 00:19:46,400
+And the instance to the game--
+sort of the board set up,
+
+440
+00:19:46,400 --> 00:19:53,240
+whatever-- is
+going to be-- here,
+
+441
+00:19:53,240 --> 00:19:55,900
+I could use any algorithm
+or Turing machine.
+
+442
+00:19:55,900 --> 00:19:58,090
+It's going to be machine.
+
+443
+00:19:58,090 --> 00:20:01,820
+And it has some
+space bound which
+
+444
+00:20:01,820 --> 00:20:05,040
+are called k. k is going to
+be, essentially, a constant.
+
+445
+00:20:05,040 --> 00:20:06,180
+But it's part of the input.
+
+446
+00:20:06,180 --> 00:20:09,060
+
+447
+00:20:09,060 --> 00:20:10,704
+And the idea-- if
+this is an algorithm,
+
+448
+00:20:10,704 --> 00:20:11,870
+it starts with blank memory.
+
+449
+00:20:11,870 --> 00:20:15,850
+If it's a Turing machine,
+it starts with a blank tape.
+
+450
+00:20:15,850 --> 00:20:19,180
+And then we're going to define
+black moves and white moves.
+
+451
+00:20:19,180 --> 00:20:21,870
+
+452
+00:20:21,870 --> 00:20:24,800
+So remember, there's
+one black player.
+
+453
+00:20:24,800 --> 00:20:29,900
+And what the black player does,
+or what the black player's
+
+454
+00:20:29,900 --> 00:20:33,660
+forced to do, is run the
+algorithm or the machine
+
+455
+00:20:33,660 --> 00:20:36,580
+for k time steps.
+
+456
+00:20:36,580 --> 00:20:41,080
+
+457
+00:20:41,080 --> 00:20:43,490
+So k obviously is an input.
+
+458
+00:20:43,490 --> 00:20:46,880
+So black is forced to do that.
+
+459
+00:20:46,880 --> 00:20:49,810
+Now, that algorithm
+may return an answer.
+
+460
+00:20:49,810 --> 00:20:52,960
+And the answer is always
+black wins or white wins.
+
+461
+00:20:52,960 --> 00:20:54,989
+Or it may not do
+anything, in which case
+
+462
+00:20:54,989 --> 00:20:56,030
+it wants to keep running.
+
+463
+00:20:56,030 --> 00:20:58,366
+In the next black
+move, it's going
+
+464
+00:20:58,366 --> 00:20:59,490
+to run for another k steps.
+
+465
+00:20:59,490 --> 00:21:01,350
+And in the next black moves,
+it runs for another k steps,
+
+466
+00:21:01,350 --> 00:21:02,279
+and so on.
+
+467
+00:21:02,279 --> 00:21:03,320
+Think of k as a constant.
+
+468
+00:21:03,320 --> 00:21:06,050
+
+469
+00:21:06,050 --> 00:21:13,839
+So if there's output from
+this algorithm or machine,
+
+470
+00:21:13,839 --> 00:21:15,130
+that will determine the winner.
+
+471
+00:21:15,130 --> 00:21:22,050
+
+472
+00:21:22,050 --> 00:21:22,680
+OK?
+
+473
+00:21:22,680 --> 00:21:27,190
+And otherwise, black actually
+gets to make a choice.
+
+474
+00:21:27,190 --> 00:21:29,500
+This was completely forced,
+what black had to do here.
+
+475
+00:21:29,500 --> 00:21:31,416
+You could think of it
+as part of black's move.
+
+476
+00:21:31,416 --> 00:21:36,180
+But it's really-- the game
+mechanics make this happen.
+
+477
+00:21:36,180 --> 00:21:42,070
+And in this case, black can
+set two variables-- X1 and X2--
+
+478
+00:21:42,070 --> 00:21:47,460
+to be anything in
+the set A, B. OK?
+
+479
+00:21:47,460 --> 00:21:51,030
+Black gets to choose two
+bits if the machine doesn't
+
+480
+00:21:51,030 --> 00:21:52,890
+say that the game is over.
+
+481
+00:21:52,890 --> 00:21:53,390
+OK?
+
+482
+00:21:53,390 --> 00:21:55,140
+We'll see what those
+bits do, in a moment.
+
+483
+00:21:55,140 --> 00:22:00,460
+
+484
+00:22:00,460 --> 00:22:03,310
+So that was black's move.
+
+485
+00:22:03,310 --> 00:22:05,570
+Now, what about white?
+
+486
+00:22:05,570 --> 00:22:08,870
+Again, there are two
+players-- white 1 and white 2.
+
+487
+00:22:08,870 --> 00:22:15,370
+And white i is basically blind.
+
+488
+00:22:15,370 --> 00:22:18,530
+White i can only see Xi.
+
+489
+00:22:18,530 --> 00:22:21,004
+These Xis are messages
+to the white players.
+
+490
+00:22:21,004 --> 00:22:22,420
+And that's all
+that white can see.
+
+491
+00:22:22,420 --> 00:22:25,520
+White can't see anything
+else about the machine.
+
+492
+00:22:25,520 --> 00:22:27,850
+Good that it knows what
+the machine is, knows what
+
+493
+00:22:27,850 --> 00:22:29,175
+it's doing, probably knows k.
+
+494
+00:22:29,175 --> 00:22:31,300
+But that's because that's
+all part of the instance.
+
+495
+00:22:31,300 --> 00:22:36,040
+But you don't know anything else
+about the state of the machine.
+
+496
+00:22:36,040 --> 00:22:38,270
+And white can also
+do one other thing.
+
+497
+00:22:38,270 --> 00:22:44,270
+
+498
+00:22:44,270 --> 00:22:47,840
+There's one memory cell
+in the machine, called M1.
+
+499
+00:22:47,840 --> 00:22:49,440
+And there's another
+one called M2.
+
+500
+00:22:49,440 --> 00:22:54,730
+And player white i can set Mi.
+
+501
+00:22:54,730 --> 00:22:56,270
+And so that will
+communicate, back
+
+502
+00:22:56,270 --> 00:23:00,050
+into the machine,
+what white i did.
+
+503
+00:23:00,050 --> 00:23:03,620
+And that is exactly
+the move of white i.
+
+504
+00:23:03,620 --> 00:23:09,690
+White i move is just set Mi.
+
+505
+00:23:09,690 --> 00:23:11,360
+And I'm not specifying
+how big that is.
+
+506
+00:23:11,360 --> 00:23:13,330
+It's not just a single bit.
+
+507
+00:23:13,330 --> 00:23:18,770
+It could be some stuff.
+
+508
+00:23:18,770 --> 00:23:22,950
+In particular, it's going to be
+one cell in the Turing machine
+
+509
+00:23:22,950 --> 00:23:24,990
+we want to simulate,
+essentially.
+
+510
+00:23:24,990 --> 00:23:27,520
+But OK.
+
+511
+00:23:27,520 --> 00:23:30,360
+So now the question is, does
+white have a forced win?
+
+512
+00:23:30,360 --> 00:23:35,520
+
+513
+00:23:35,520 --> 00:23:38,840
+So this is the problem I
+want to prove undecidable
+
+514
+00:23:38,840 --> 00:23:42,310
+by a reduction from
+halting problem.
+
+515
+00:23:42,310 --> 00:23:46,202
+
+516
+00:23:46,202 --> 00:23:46,702
+OK.
+
+517
+00:23:46,702 --> 00:23:59,410
+
+518
+00:23:59,410 --> 00:24:01,430
+So is the problem clear?
+
+519
+00:24:01,430 --> 00:24:05,830
+We have a finite setup, which
+is this space k situation,
+
+520
+00:24:05,830 --> 00:24:08,990
+that the entire state of
+the game is, in some sense,
+
+521
+00:24:08,990 --> 00:24:13,400
+encoded by that-- the state of
+that algorithm, it would seem.
+
+522
+00:24:13,400 --> 00:24:16,140
+
+523
+00:24:16,140 --> 00:24:20,340
+And black is just
+telling-- in each turn,
+
+524
+00:24:20,340 --> 00:24:25,200
+white 1 says A or B, white 2, it
+says A or B. White 1 and 2 then
+
+525
+00:24:25,200 --> 00:24:27,190
+respond with some symbol.
+
+526
+00:24:27,190 --> 00:24:29,170
+And then the game continues.
+
+527
+00:24:29,170 --> 00:24:31,200
+So a pretty simple setup.
+
+528
+00:24:31,200 --> 00:24:35,070
+But amazingly, this can
+simulate any Turing machine.
+
+529
+00:24:35,070 --> 00:24:38,430
+
+530
+00:24:38,430 --> 00:24:39,370
+So let's do it.
+
+531
+00:24:39,370 --> 00:24:51,200
+
+532
+00:24:51,200 --> 00:24:53,379
+So this algorithm is
+going to be a function.
+
+533
+00:24:53,379 --> 00:24:54,920
+Given the Turing
+machine, we're going
+
+534
+00:24:54,920 --> 00:24:57,070
+to construct the
+algorithm, naturally.
+
+535
+00:24:57,070 --> 00:25:04,430
+So we basically need a
+constant space algorithm
+
+536
+00:25:04,430 --> 00:25:14,216
+to check that the
+white players produce--
+
+537
+00:25:14,216 --> 00:25:17,460
+so the white players are
+outputting a strain of symbols.
+
+538
+00:25:17,460 --> 00:25:19,710
+White 1 is outputting M1 and
+then outputting something
+
+539
+00:25:19,710 --> 00:25:21,280
+else to M1, and so on.
+
+540
+00:25:21,280 --> 00:25:24,960
+That strain of symbols,
+for both white players,
+
+541
+00:25:24,960 --> 00:25:28,700
+should essentially form a
+valid computation history,
+
+542
+00:25:28,700 --> 00:25:31,650
+an execution trace
+of the Turing machine
+
+543
+00:25:31,650 --> 00:25:33,620
+we want to simulate--
+the given Turing machine.
+
+544
+00:25:33,620 --> 00:25:37,085
+
+545
+00:25:37,085 --> 00:25:38,960
+It's a little bit more
+complicated than that.
+
+546
+00:25:38,960 --> 00:25:40,810
+But that's the idea.
+
+547
+00:25:40,810 --> 00:26:19,100
+
+548
+00:26:19,100 --> 00:26:21,780
+And we'd like it to
+end in a halt state.
+
+549
+00:26:21,780 --> 00:26:23,710
+So there are lots
+of canonical ways
+
+550
+00:26:23,710 --> 00:26:26,320
+to write down the state
+of the Turing machine.
+
+551
+00:26:26,320 --> 00:26:27,870
+Basically, you
+write down the tape
+
+552
+00:26:27,870 --> 00:26:31,740
+and what instruction it's on.
+
+553
+00:26:31,740 --> 00:26:33,824
+And that should be about it.
+
+554
+00:26:33,824 --> 00:26:35,740
+And we're going to put
+a special symbol-- hash
+
+555
+00:26:35,740 --> 00:26:37,414
+mark-- in between
+each of these states.
+
+556
+00:26:37,414 --> 00:26:39,330
+So this is the state of
+the machine at time 0.
+
+557
+00:26:39,330 --> 00:26:40,759
+It's going to be a blank tape.
+
+558
+00:26:40,759 --> 00:26:43,050
+And you only have to write
+as many symbols as you need.
+
+559
+00:26:43,050 --> 00:26:45,320
+So in the beginning,
+don't write any symbols.
+
+560
+00:26:45,320 --> 00:26:48,890
+As you start writing stuff to
+tape, this will get longer.
+
+561
+00:26:48,890 --> 00:26:50,722
+And yeah.
+
+562
+00:26:50,722 --> 00:26:52,680
+And then the goal is to
+get it to a halt state.
+
+563
+00:26:52,680 --> 00:26:56,550
+Each of these states should be
+the uniquely determined state
+
+564
+00:26:56,550 --> 00:26:58,930
+from the previous one, which
+is, if I do one instruction,
+
+565
+00:26:58,930 --> 00:27:00,572
+what happens?
+
+566
+00:27:00,572 --> 00:27:01,480
+OK?
+
+567
+00:27:01,480 --> 00:27:04,800
+Now, this is problematic.
+
+568
+00:27:04,800 --> 00:27:07,750
+So our goal-- we're trying
+to design this algorithm
+
+569
+00:27:07,750 --> 00:27:12,664
+to confirm that these states
+are being generated correctly.
+
+570
+00:27:12,664 --> 00:27:15,330
+That's really hard to do because
+we can't compute the next state
+
+571
+00:27:15,330 --> 00:27:17,121
+from the previous one
+because we can't even
+
+572
+00:27:17,121 --> 00:27:21,060
+store the previous
+state in space k.
+
+573
+00:27:21,060 --> 00:27:22,700
+We have constant space.
+
+574
+00:27:22,700 --> 00:27:25,610
+Very soon, the state
+is going to get huge.
+
+575
+00:27:25,610 --> 00:27:28,150
+So you think of this as kind
+of a streaming [INAUDIBLE]
+
+576
+00:27:28,150 --> 00:27:30,140
+We're just seeing
+these characters go by.
+
+577
+00:27:30,140 --> 00:27:32,980
+And we can't remember the
+entire previous states.
+
+578
+00:27:32,980 --> 00:27:35,500
+So the fact-- to check
+that the next state is
+
+579
+00:27:35,500 --> 00:27:38,850
+almost the same as the
+previous one is very hard.
+
+580
+00:27:38,850 --> 00:27:42,780
+And that's where we're going
+to use this A, B thing.
+
+581
+00:27:42,780 --> 00:27:45,430
+This is not literally true.
+
+582
+00:27:45,430 --> 00:27:48,080
+The sequence of
+characters-- M1, say--
+
+583
+00:27:48,080 --> 00:27:51,170
+will not produce a valid state.
+
+584
+00:27:51,170 --> 00:27:55,090
+Essentially, what we
+want player white 1
+
+585
+00:27:55,090 --> 00:27:59,590
+to do is to maintain two
+pointers into this state--
+
+586
+00:27:59,590 --> 00:28:06,300
+A and B. And when we-- I'm
+identifying with black here.
+
+587
+00:28:06,300 --> 00:28:09,180
+When we specify X1
+equals A, we would
+
+588
+00:28:09,180 --> 00:28:13,470
+like to know what character's
+being pointed to by pointer A.
+
+589
+00:28:13,470 --> 00:28:17,140
+And then we'd like to advance
+A to the next character.
+
+590
+00:28:17,140 --> 00:28:17,640
+OK?
+
+591
+00:28:17,640 --> 00:28:20,680
+When we request B,
+with X1 equals B,
+
+592
+00:28:20,680 --> 00:28:22,895
+we want to know what
+character is at position B,
+
+593
+00:28:22,895 --> 00:28:24,520
+and then advance to
+the next character.
+
+594
+00:28:24,520 --> 00:28:28,440
+So there's one strain that
+we're trying to look at.
+
+595
+00:28:28,440 --> 00:28:31,700
+And each white player has to
+maintain an A pointer and a B
+
+596
+00:28:31,700 --> 00:28:32,970
+pointer.
+
+597
+00:28:32,970 --> 00:28:35,990
+And as black, we can
+make independent requests
+
+598
+00:28:35,990 --> 00:28:37,030
+to each of the two.
+
+599
+00:28:37,030 --> 00:28:44,220
+It's like you have two disks
+with two heads on the disk.
+
+600
+00:28:44,220 --> 00:28:46,310
+And they both have
+the exact same data.
+
+601
+00:28:46,310 --> 00:28:47,900
+Or they're supposed to.
+
+602
+00:28:47,900 --> 00:28:49,820
+And I can say, give
+me the next character
+
+603
+00:28:49,820 --> 00:28:51,200
+at this pointer from this disk.
+
+604
+00:28:51,200 --> 00:28:54,170
+And I can give you-- ask for
+what is-- simultaneously,
+
+605
+00:28:54,170 --> 00:28:56,530
+I get one character
+from one of the two
+
+606
+00:28:56,530 --> 00:28:57,910
+pointers on the other disk.
+
+607
+00:28:57,910 --> 00:29:00,006
+And then it advances by one.
+
+608
+00:29:00,006 --> 00:29:00,570
+OK?
+
+609
+00:29:00,570 --> 00:29:02,329
+Seems almost the same.
+
+610
+00:29:02,329 --> 00:29:04,120
+But that's what will
+make this undecidable.
+
+611
+00:29:04,120 --> 00:29:16,110
+
+612
+00:29:16,110 --> 00:29:16,610
+OK.
+
+613
+00:29:16,610 --> 00:29:21,470
+
+614
+00:29:21,470 --> 00:29:26,440
+So here's the trick, how we're
+going to build this algorithm.
+
+615
+00:29:26,440 --> 00:29:29,390
+I mean, the real trick is
+that we have nondeterminism.
+
+616
+00:29:29,390 --> 00:29:33,440
+We're asking whether white wins.
+
+617
+00:29:33,440 --> 00:29:36,270
+That means-- or whether
+white has a winning strategy.
+
+618
+00:29:36,270 --> 00:29:38,160
+For white to have
+a winning strategy,
+
+619
+00:29:38,160 --> 00:29:43,110
+that must mean it can win or the
+white team can win, no matter
+
+620
+00:29:43,110 --> 00:29:45,630
+how black plays.
+
+621
+00:29:45,630 --> 00:29:48,280
+And black is just non--
+so basically, black
+
+622
+00:29:48,280 --> 00:29:51,140
+is nondeterministically
+choosing between the A
+
+623
+00:29:51,140 --> 00:29:55,910
+and the B pointer requests.
+
+624
+00:29:55,910 --> 00:29:57,590
+And so what this is
+saying is, no matter
+
+625
+00:29:57,590 --> 00:30:03,390
+what sequence of As and Bs
+you get, white must win.
+
+626
+00:30:03,390 --> 00:30:05,400
+And winning is going
+to happen because we
+
+627
+00:30:05,400 --> 00:30:10,370
+will build this algorithm to
+only output yes when it gets
+
+628
+00:30:10,370 --> 00:30:11,620
+to a halt state, basically.
+
+629
+00:30:11,620 --> 00:30:16,200
+
+630
+00:30:16,200 --> 00:30:19,550
+The algorithm must not
+complain, no matter how
+
+631
+00:30:19,550 --> 00:30:21,694
+we choose the A and B sequence.
+
+632
+00:30:21,694 --> 00:30:23,360
+So let me get to what
+we're going to do.
+
+633
+00:30:23,360 --> 00:30:30,350
+
+634
+00:30:30,350 --> 00:30:47,225
+So the algorithm maintains--
+let's call this white 1.
+
+635
+00:30:47,225 --> 00:30:56,600
+
+636
+00:30:56,600 --> 00:31:00,320
+I would like to
+know when-- let me
+
+637
+00:31:00,320 --> 00:31:05,312
+be specific-- when white 1's A
+state equals white 2's B state.
+
+638
+00:31:05,312 --> 00:31:07,020
+But in fact, we'll do
+this for all pairs.
+
+639
+00:31:07,020 --> 00:31:08,030
+It'll be four different things.
+
+640
+00:31:08,030 --> 00:31:08,640
+A, B here.
+
+641
+00:31:08,640 --> 00:31:10,480
+A, B here.
+
+642
+00:31:10,480 --> 00:31:12,360
+But let's say I want to
+know when white 1's A
+
+643
+00:31:12,360 --> 00:31:17,500
+state is in exactly the same
+place as white 2's B state.
+
+644
+00:31:17,500 --> 00:31:22,385
+So we have-- in
+some sense, there
+
+645
+00:31:22,385 --> 00:31:27,506
+are two of the strains, one
+for white 1, one for white 2.
+
+646
+00:31:27,506 --> 00:31:34,510
+And I want to know when I have
+just to read through a state
+
+647
+00:31:34,510 --> 00:31:38,200
+by white 1 and I've also read
+through the exact same state
+
+648
+00:31:38,200 --> 00:31:40,240
+from white 2.
+
+649
+00:31:40,240 --> 00:31:44,750
+So that will happen when--
+first of all, both white players
+
+650
+00:31:44,750 --> 00:31:47,540
+should have just
+returned a hash mark.
+
+651
+00:31:47,540 --> 00:31:50,580
+And then-- hash
+tag, if you prefer.
+
+652
+00:31:50,580 --> 00:31:55,990
+And then also, while we were
+running through this tape,
+
+653
+00:31:55,990 --> 00:31:59,350
+I see whether they happen to
+always return the same result.
+
+654
+00:31:59,350 --> 00:32:17,790
+So this will basically
+happen when-- so whenever
+
+655
+00:32:17,790 --> 00:32:23,040
+both A and-- so if we just ask
+for A, A, and white 1 returns
+
+656
+00:32:23,040 --> 00:32:25,160
+a hash mark and white
+2 returns a hash mark,
+
+657
+00:32:25,160 --> 00:32:26,910
+then we're going to
+start paying attention
+
+658
+00:32:26,910 --> 00:32:28,880
+to every single
+character we see.
+
+659
+00:32:28,880 --> 00:32:32,300
+If-- assuming we keep
+playing A, A, is black.
+
+660
+00:32:32,300 --> 00:32:35,000
+And this has to work for all
+possible assigned choices of A,
+
+661
+00:32:35,000 --> 00:32:38,120
+B. So in particular,
+it will be an execution
+
+662
+00:32:38,120 --> 00:32:41,465
+where we play A, A
+throughout this entire state.
+
+663
+00:32:41,465 --> 00:32:44,090
+And as we're doing that, we just
+check, character by character,
+
+664
+00:32:44,090 --> 00:32:45,970
+are they returning
+exactly the same result,
+
+665
+00:32:45,970 --> 00:32:49,010
+and have they, so
+far-- have they always,
+
+666
+00:32:49,010 --> 00:32:50,370
+since the last hash mark?
+
+667
+00:32:50,370 --> 00:32:55,230
+
+668
+00:32:55,230 --> 00:32:55,730
+OK?
+
+669
+00:32:55,730 --> 00:32:57,860
+And if they did, that's a
+constant space algorithm.
+
+670
+00:32:57,860 --> 00:32:59,443
+I just compare
+character by character.
+
+671
+00:32:59,443 --> 00:33:02,980
+Remember the AND of all
+of those comparisons.
+
+672
+00:33:02,980 --> 00:33:05,720
+If they were all the same,
+and I reach a hash mark,
+
+673
+00:33:05,720 --> 00:33:12,010
+that means I know that both
+the W1 strain and the W2
+
+674
+00:33:12,010 --> 00:33:15,137
+strain just output
+the same state.
+
+675
+00:33:15,137 --> 00:33:16,720
+So that means the A
+and the A pointers
+
+676
+00:33:16,720 --> 00:33:20,075
+are in the same
+place at this moment.
+
+677
+00:33:20,075 --> 00:33:23,480
+
+678
+00:33:23,480 --> 00:33:24,040
+Cool.
+
+679
+00:33:24,040 --> 00:33:25,580
+That's not quite
+where I want them.
+
+680
+00:33:25,580 --> 00:33:27,620
+But at least I can detect that.
+
+681
+00:33:27,620 --> 00:33:28,120
+OK?
+
+682
+00:33:28,120 --> 00:33:29,760
+I can detect identical states.
+
+683
+00:33:29,760 --> 00:33:31,880
+Remember, I can't even
+store-- I can't even
+
+684
+00:33:31,880 --> 00:33:33,340
+count A and B
+because these could
+
+685
+00:33:33,340 --> 00:33:34,960
+get to really huge numbers.
+
+686
+00:33:34,960 --> 00:33:38,280
+That only buys me an exponential
+when I write things in binary.
+
+687
+00:33:38,280 --> 00:33:41,160
+So I can't afford to write
+down the A and the B pointers.
+
+688
+00:33:41,160 --> 00:33:42,270
+It's what I'd like to do.
+
+689
+00:33:42,270 --> 00:33:46,080
+But I can check, oh, did they
+just output the same state?
+
+690
+00:33:46,080 --> 00:33:47,360
+So far so good?
+
+691
+00:33:47,360 --> 00:33:51,020
+Now, what I'd really like them
+to be is one step out of sync
+
+692
+00:33:51,020 --> 00:33:54,649
+because what I do have a
+streaming algorithm for is
+
+693
+00:33:54,649 --> 00:33:56,690
+if I have the previous
+data of the Turing machine
+
+694
+00:33:56,690 --> 00:33:58,969
+and the proposed next date
+of this Turing machine,
+
+695
+00:33:58,969 --> 00:34:02,590
+and I compare them letter
+by letter, I can just check,
+
+696
+00:34:02,590 --> 00:34:05,159
+are all of the tape squares
+identical except for the one
+
+697
+00:34:05,159 --> 00:34:06,870
+that the pointer's on?
+
+698
+00:34:06,870 --> 00:34:09,550
+And that got changed
+by a simple rule.
+
+699
+00:34:09,550 --> 00:34:11,870
+And then all the others
+should be identical.
+
+700
+00:34:11,870 --> 00:34:13,590
+So it's very easy,
+in a streaming sense.
+
+701
+00:34:13,590 --> 00:34:16,239
+If I'm giving the previous
+state and the next state,
+
+702
+00:34:16,239 --> 00:34:17,760
+I'd be happy.
+
+703
+00:34:17,760 --> 00:34:23,080
+So my goal is to get W1 state
+to be one step out of sync,
+
+704
+00:34:23,080 --> 00:34:24,546
+one step behind W2 state.
+
+705
+00:34:24,546 --> 00:34:27,561
+
+706
+00:34:27,561 --> 00:34:28,060
+OK.
+
+707
+00:34:28,060 --> 00:34:32,460
+So how can I make that happen?
+
+708
+00:34:32,460 --> 00:34:51,650
+
+709
+00:34:51,650 --> 00:34:55,250
+Again, so I mean, black
+isn't really making-- well,
+
+710
+00:34:55,250 --> 00:34:57,870
+black is making all possible
+choices among A and B,
+
+711
+00:34:57,870 --> 00:34:59,490
+at all times.
+
+712
+00:34:59,490 --> 00:35:02,390
+So in particular, we can
+consider the situation
+
+713
+00:35:02,390 --> 00:35:08,870
+in which black plays, let's
+say A for the W1 player,
+
+714
+00:35:08,870 --> 00:35:10,600
+and plays B on the other player.
+
+715
+00:35:10,600 --> 00:35:15,280
+W2's A state does not change
+because we're advancing B.
+
+716
+00:35:15,280 --> 00:35:19,267
+And then W1's
+state is advancing.
+
+717
+00:35:19,267 --> 00:35:21,350
+And if I keep doing that,
+and then, at some point,
+
+718
+00:35:21,350 --> 00:35:23,016
+I get a hash mark,
+which I can obviously
+
+719
+00:35:23,016 --> 00:35:27,330
+detect in constant space,
+then I advance my finite state
+
+720
+00:35:27,330 --> 00:35:29,820
+machine, and say,
+OK, cool, that means
+
+721
+00:35:29,820 --> 00:35:34,030
+W1 is one step ahead--
+one state ahead of W2.
+
+722
+00:35:34,030 --> 00:35:36,850
+
+723
+00:35:36,850 --> 00:35:40,290
+And now I'm going to compare.
+
+724
+00:35:40,290 --> 00:35:47,510
+So when that happens, so
+then out of sync by 1.
+
+725
+00:35:47,510 --> 00:35:53,920
+
+726
+00:35:53,920 --> 00:35:58,160
+And now what I'd like to
+happen next is X1 and X2 moves.
+
+727
+00:35:58,160 --> 00:36:03,280
+
+728
+00:36:03,280 --> 00:36:06,260
+Then now I'm going to run
+my streaming algorithm
+
+729
+00:36:06,260 --> 00:36:09,460
+to check that this was
+a valid transition.
+
+730
+00:36:09,460 --> 00:36:28,710
+
+731
+00:36:28,710 --> 00:36:31,970
+So from whatever
+W2 is outputting
+
+732
+00:36:31,970 --> 00:36:36,030
+to whatever W1 is outputting
+because W1 is ahead,
+
+733
+00:36:36,030 --> 00:36:37,430
+that should be a valid state.
+
+734
+00:36:37,430 --> 00:36:41,950
+So basically, I had--
+I ran for some time.
+
+735
+00:36:41,950 --> 00:36:43,400
+Who knows what happened.
+
+736
+00:36:43,400 --> 00:36:49,050
+Then I got this thing which
+is identical to this thing.
+
+737
+00:36:49,050 --> 00:36:49,840
+I detect that.
+
+738
+00:36:49,840 --> 00:36:50,790
+And I see a hash mark.
+
+739
+00:36:50,790 --> 00:36:54,070
+So I say, OK, they must
+be in the same state.
+
+740
+00:36:54,070 --> 00:36:56,990
+Now I'm going to
+skip over whatever
+
+741
+00:36:56,990 --> 00:36:59,150
+state was written here.
+
+742
+00:36:59,150 --> 00:37:04,240
+And then I'm going to check
+that every thing I get here
+
+743
+00:37:04,240 --> 00:37:06,440
+is a valid transition
+for whenever I get here.
+
+744
+00:37:06,440 --> 00:37:09,330
+
+745
+00:37:09,330 --> 00:37:10,740
+So this should go to that.
+
+746
+00:37:10,740 --> 00:37:12,000
+This should go to that.
+
+747
+00:37:12,000 --> 00:37:14,530
+And I don't need any
+memory to do this.
+
+748
+00:37:14,530 --> 00:37:16,530
+I'm just looking at
+this square, knowing
+
+749
+00:37:16,530 --> 00:37:20,250
+the state of this machine,
+looking at this square,
+
+750
+00:37:20,250 --> 00:37:22,520
+making sure that was
+a valid transition.
+
+751
+00:37:22,520 --> 00:37:25,022
+Usually, it's just that
+this is equal to that,
+
+752
+00:37:25,022 --> 00:37:26,980
+except at the one place
+where the tape head is,
+
+753
+00:37:26,980 --> 00:37:30,690
+which is written in
+that little symbol.
+
+754
+00:37:30,690 --> 00:37:32,847
+And in that spot, I do
+whatever the Turing machine
+
+755
+00:37:32,847 --> 00:37:33,680
+does to that symbol.
+
+756
+00:37:33,680 --> 00:37:36,010
+If the writes to
+it, it might change.
+
+757
+00:37:36,010 --> 00:37:37,980
+Maybe it moves the
+pointer left or right.
+
+758
+00:37:37,980 --> 00:37:39,590
+But in constant
+space, I just need
+
+759
+00:37:39,590 --> 00:37:41,150
+to know what's happening here.
+
+760
+00:37:41,150 --> 00:37:43,060
+And maybe it's
+neighboring squares.
+
+761
+00:37:43,060 --> 00:37:45,010
+I can figure out what
+should be written here.
+
+762
+00:37:45,010 --> 00:37:47,310
+And if white 1 ever
+does the wrong thing,
+
+763
+00:37:47,310 --> 00:37:50,600
+if it's not a valid
+transition, then I
+
+764
+00:37:50,600 --> 00:37:54,780
+will say black wins
+as this algorithm.
+
+765
+00:37:54,780 --> 00:38:00,660
+So for white to win, it
+can't make any mistakes.
+
+766
+00:38:00,660 --> 00:38:04,170
+White has to conform to this
+idea that basically, first,
+
+767
+00:38:04,170 --> 00:38:07,190
+it-- well, it basically--
+as it's playing,
+
+768
+00:38:07,190 --> 00:38:10,620
+it must be computing whatever
+the Turing machine that's
+
+769
+00:38:10,620 --> 00:38:13,150
+part of the game, essentially.
+
+770
+00:38:13,150 --> 00:38:17,110
+It's embedded in this
+algorithm, the Turing machine.
+
+771
+00:38:17,110 --> 00:38:22,430
+And so we have to-- it has to be
+simulating the Turing machine,
+
+772
+00:38:22,430 --> 00:38:25,370
+maintaining these pointers,
+A and B, and running through.
+
+773
+00:38:25,370 --> 00:38:27,740
+It has to do that
+because it has to win,
+
+774
+00:38:27,740 --> 00:38:29,760
+no matter what black does.
+
+775
+00:38:29,760 --> 00:38:33,030
+And it could be that black
+does this really weird sequence
+
+776
+00:38:33,030 --> 00:38:37,400
+of As and Bs in order to
+verify the one place where
+
+777
+00:38:37,400 --> 00:38:40,607
+you lied about one of these
+being an invalid transition.
+
+778
+00:38:40,607 --> 00:38:42,940
+It will eventually check for
+some choices of the A and B
+
+779
+00:38:42,940 --> 00:38:44,000
+moves.
+
+780
+00:38:44,000 --> 00:38:45,970
+It will check that it
+was a valid transition,
+
+781
+00:38:45,970 --> 00:38:48,720
+from here to here.
+
+782
+00:38:48,720 --> 00:38:54,370
+And therefore, all
+transitions must be valid.
+
+783
+00:38:54,370 --> 00:38:56,990
+So it's a pretty crazy
+use of essentially
+
+784
+00:38:56,990 --> 00:38:59,580
+the universal quantifier
+that's given to black.
+
+785
+00:38:59,580 --> 00:39:02,601
+
+786
+00:39:02,601 --> 00:39:04,790
+White has to win, no matter
+what black's moves are.
+
+787
+00:39:04,790 --> 00:39:07,700
+
+788
+00:39:07,700 --> 00:39:15,190
+So you might ask, where is
+the Turing machine state.
+
+789
+00:39:15,190 --> 00:39:17,060
+And it's essentially
+in the heads
+
+790
+00:39:17,060 --> 00:39:20,000
+of the white players, which
+are not represented directly
+
+791
+00:39:20,000 --> 00:39:21,250
+by the game.
+
+792
+00:39:21,250 --> 00:39:25,160
+The game is just, you know, what
+is the state of this algorithm?
+
+793
+00:39:25,160 --> 00:39:27,950
+And it's, in some sense,
+informed by the history
+
+794
+00:39:27,950 --> 00:39:30,500
+of the plays, the sequence
+of moves that have been made.
+
+795
+00:39:30,500 --> 00:39:35,060
+
+796
+00:39:35,060 --> 00:39:37,990
+That's, in some sense,
+where you can also see
+
+797
+00:39:37,990 --> 00:39:41,170
+this long sequence of moves.
+
+798
+00:39:41,170 --> 00:39:43,816
+I mean, each of these
+got output at some point.
+
+799
+00:39:43,816 --> 00:39:46,440
+But initially, you could sort of
+think of, all of the execution
+
+800
+00:39:46,440 --> 00:39:47,684
+was in the players' heads.
+
+801
+00:39:47,684 --> 00:39:49,850
+Then they're just maintaining
+these A and B pointers
+
+802
+00:39:49,850 --> 00:39:50,840
+and playing.
+
+803
+00:39:50,840 --> 00:39:53,950
+And there must be such an
+execution in order for white
+
+804
+00:39:53,950 --> 00:39:54,840
+to win.
+
+805
+00:39:54,840 --> 00:39:58,770
+So white will win, if, and only
+if, there's a-- the machine
+
+806
+00:39:58,770 --> 00:40:03,360
+halts, basically, because this
+algorithm only output yes--
+
+807
+00:40:03,360 --> 00:40:06,610
+output that white wins
+when the machine halts.
+
+808
+00:40:06,610 --> 00:40:09,660
+And it will report that black
+wins, if you ever cheat.
+
+809
+00:40:09,660 --> 00:40:12,470
+So you have to not cheat.
+
+810
+00:40:12,470 --> 00:40:16,140
+And you have to get
+to a halting state.
+
+811
+00:40:16,140 --> 00:40:16,970
+It's pretty crazy.
+
+812
+00:40:16,970 --> 00:40:19,490
+And this probably won't make
+sense the first or second time.
+
+813
+00:40:19,490 --> 00:40:23,500
+But it's clear to me,
+again, every time I learn.
+
+814
+00:40:23,500 --> 00:40:25,735
+It's like, oh, yeah,
+that's really cool.
+
+815
+00:40:25,735 --> 00:40:27,360
+Hopefully, it will
+become clear to you.
+
+816
+00:40:27,360 --> 00:40:28,620
+But if there are any questions--
+
+817
+00:40:28,620 --> 00:40:30,620
+AUDIENCE: Why is it
+important that the algorithm
+
+818
+00:40:30,620 --> 00:40:33,230
+is only one space, in
+the first place, though?
+
+819
+00:40:33,230 --> 00:40:36,990
+PROFESSOR: I mean,
+it's not technically--
+
+820
+00:40:36,990 --> 00:40:39,790
+the overall algorithm is not
+technically constant space
+
+821
+00:40:39,790 --> 00:40:42,950
+because it needs to include the
+entire Turing machine as part
+
+822
+00:40:42,950 --> 00:40:45,250
+of it, to know how to run.
+
+823
+00:40:45,250 --> 00:40:48,400
+But I mentioned that
+the checking algorithm
+
+824
+00:40:48,400 --> 00:40:49,680
+is constant space.
+
+825
+00:40:49,680 --> 00:40:55,480
+And the point is, really, that
+the size of this space key
+
+826
+00:40:55,480 --> 00:40:58,940
+algorithm has to be only a
+function of the given Turing
+
+827
+00:40:58,940 --> 00:41:00,390
+machine.
+
+828
+00:41:00,390 --> 00:41:03,280
+It can't depend on the
+execution time or the execution
+
+829
+00:41:03,280 --> 00:41:04,800
+space of the Turing machine.
+
+830
+00:41:04,800 --> 00:41:06,790
+But that's all I
+want to emphasize.
+
+831
+00:41:06,790 --> 00:41:10,226
+So effectively, I mean, if you
+think of the Turing machine
+
+832
+00:41:10,226 --> 00:41:11,850
+as being pretty small,
+but it's running
+
+833
+00:41:11,850 --> 00:41:16,400
+for some huge amount of
+time, like busy beaver time,
+
+834
+00:41:16,400 --> 00:41:18,300
+relative to that, we're
+thinking, basically,
+
+835
+00:41:18,300 --> 00:41:20,190
+constant space.
+
+836
+00:41:20,190 --> 00:41:22,240
+And in fact, we can get
+away with constant space.
+
+837
+00:41:22,240 --> 00:41:23,940
+That's for the checking part.
+
+838
+00:41:23,940 --> 00:41:25,860
+That's my point.
+
+839
+00:41:25,860 --> 00:41:28,890
+If you view the Turing machine
+execution as an oracle.
+
+840
+00:41:28,890 --> 00:41:33,060
+So when I check that this
+goes to this-- in fact,
+
+841
+00:41:33,060 --> 00:41:36,710
+I have to run the Turing
+machine on this tape head input,
+
+842
+00:41:36,710 --> 00:41:38,800
+to see what it would output.
+
+843
+00:41:38,800 --> 00:41:41,780
+But the Turing machine
+is inside the algorithm.
+
+844
+00:41:41,780 --> 00:41:44,760
+So I can do that and
+[INAUDIBLE] some time
+
+845
+00:41:44,760 --> 00:41:48,020
+with the lookup table.
+
+846
+00:41:48,020 --> 00:41:50,830
+So the point is, really, you
+need, effectively, a streaming
+
+847
+00:41:50,830 --> 00:41:53,860
+algorithm to do this
+because these states get
+
+848
+00:41:53,860 --> 00:41:59,370
+to be really, really
+huge, because we
+
+849
+00:41:59,370 --> 00:42:03,280
+want this reduction
+to be polynomial time.
+
+850
+00:42:03,280 --> 00:42:06,464
+And it is.
+
+851
+00:42:06,464 --> 00:42:08,130
+Basically, copy the
+Turing machine over,
+
+852
+00:42:08,130 --> 00:42:11,310
+write some constant amount
+of code to do this checking,
+
+853
+00:42:11,310 --> 00:42:14,190
+and that's all you need.
+
+854
+00:42:14,190 --> 00:42:16,200
+I guess we don't need it
+to be polynomial time.
+
+855
+00:42:16,200 --> 00:42:16,940
+But it is.
+
+856
+00:42:16,940 --> 00:42:18,570
+So it's kind of nice.
+
+857
+00:42:18,570 --> 00:42:21,940
+But we need that
+it's finite time.
+
+858
+00:42:21,940 --> 00:42:24,590
+And there's no finite way
+to give an upper bound
+
+859
+00:42:24,590 --> 00:42:26,340
+on the running time
+of the Turing machine,
+
+860
+00:42:26,340 --> 00:42:27,480
+other than running it.
+
+861
+00:42:27,480 --> 00:42:32,030
+So polynomial time is good.
+
+862
+00:42:32,030 --> 00:42:35,240
+
+863
+00:42:35,240 --> 00:42:37,310
+OK.
+
+864
+00:42:37,310 --> 00:42:40,350
+Let me briefly mention a
+more formula-oriented game.
+
+865
+00:42:40,350 --> 00:42:48,290
+
+866
+00:42:48,290 --> 00:42:49,765
+This is not terribly exciting.
+
+867
+00:42:49,765 --> 00:42:54,067
+
+868
+00:42:54,067 --> 00:42:55,400
+I'll just write it down quickly.
+
+869
+00:42:55,400 --> 00:43:15,070
+
+870
+00:43:15,070 --> 00:43:20,780
+Basically, you can convert this
+problem-- team computation game
+
+871
+00:43:20,780 --> 00:43:23,770
+where black is forced to run
+a particular machine-- you can
+
+872
+00:43:23,770 --> 00:43:26,080
+convert machines into formulas.
+
+873
+00:43:26,080 --> 00:43:29,370
+So it ends up looking
+something like this.
+
+874
+00:43:29,370 --> 00:43:30,815
+It might be possible
+to simplify.
+
+875
+00:43:30,815 --> 00:43:40,279
+
+876
+00:43:40,279 --> 00:43:41,945
+This is one thing
+that definitely works.
+
+877
+00:43:41,945 --> 00:44:09,160
+
+878
+00:44:09,160 --> 00:44:09,660
+OK.
+
+879
+00:44:09,660 --> 00:44:15,170
+So again, white 1 can only
+see one variable-- X1--
+
+880
+00:44:15,170 --> 00:44:16,560
+that is set by black.
+
+881
+00:44:16,560 --> 00:44:18,980
+And white 2 can only
+see one variable-- X2--
+
+882
+00:44:18,980 --> 00:44:21,010
+that's set by black.
+
+883
+00:44:21,010 --> 00:44:25,210
+Black can set a bunch of
+variables in one round.
+
+884
+00:44:25,210 --> 00:44:27,330
+And there's some condition
+that it has to satisfy.
+
+885
+00:44:27,330 --> 00:44:29,829
+This will basically force you
+to simulate the Turing machine
+
+886
+00:44:29,829 --> 00:44:32,060
+and not break any rules.
+
+887
+00:44:32,060 --> 00:44:34,710
+And if black ever
+satisfies something,
+
+888
+00:44:34,710 --> 00:44:37,820
+which is when the Turing
+machine's, hey, black wins.
+
+889
+00:44:37,820 --> 00:44:38,870
+Then black wins.
+
+890
+00:44:38,870 --> 00:44:41,220
+And then you just turn
+that into a formula.
+
+891
+00:44:41,220 --> 00:44:44,530
+And then black sets
+some other stuff.
+
+892
+00:44:44,530 --> 00:44:48,490
+And so this is more in the
+style of the dependency QBF.
+
+893
+00:44:48,490 --> 00:44:50,204
+Again, you have this
+kind of dependency.
+
+894
+00:44:50,204 --> 00:44:51,620
+But now there are
+multiple rounds.
+
+895
+00:44:51,620 --> 00:44:55,330
+And now there's no bound to
+the number of moves you make.
+
+896
+00:44:55,330 --> 00:44:57,940
+We can reset
+variables many times.
+
+897
+00:44:57,940 --> 00:45:01,490
+And this is undecidable
+by essentially simulating
+
+898
+00:45:01,490 --> 00:45:04,600
+this machine, turning that
+machine into a formula.
+
+899
+00:45:04,600 --> 00:45:07,540
+
+900
+00:45:07,540 --> 00:45:12,051
+So once we have that, we can
+turn it into a constraint logic
+
+901
+00:45:12,051 --> 00:45:12,550
+version.
+
+902
+00:45:12,550 --> 00:45:16,770
+This is the team private but
+not bounded constraint logic.
+
+903
+00:45:16,770 --> 00:45:18,800
+Pretty much the same setup.
+
+904
+00:45:18,800 --> 00:45:21,270
+Black has these
+variables, X and X prime.
+
+905
+00:45:21,270 --> 00:45:23,860
+Y1 has these variables, Y1.
+
+906
+00:45:23,860 --> 00:45:26,120
+Y2 has these variables, Y2.
+
+907
+00:45:26,120 --> 00:45:27,390
+They're fed into this formula.
+
+908
+00:45:27,390 --> 00:45:29,740
+And there are various
+things to-- that
+
+909
+00:45:29,740 --> 00:45:32,510
+when those conditions
+that I wrote down happen,
+
+910
+00:45:32,510 --> 00:45:35,190
+you trigger the
+appropriate target edge.
+
+911
+00:45:35,190 --> 00:45:38,170
+And then black wins, up there,
+or white wins, down there.
+
+912
+00:45:38,170 --> 00:45:41,290
+So not too exciting to go
+through the details of that.
+
+913
+00:45:41,290 --> 00:45:46,570
+But the result is team private
+information constraint logic is
+
+914
+00:45:46,570 --> 00:45:49,320
+undecidable for three players.
+
+915
+00:45:49,320 --> 00:45:51,250
+And you can use a crossover.
+
+916
+00:45:51,250 --> 00:45:53,815
+And you can make this
+planar graphs if you want.
+
+917
+00:45:53,815 --> 00:45:56,670
+
+918
+00:45:56,670 --> 00:46:01,284
+Any more questions
+about Undecidability?
+
+919
+00:46:01,284 --> 00:46:02,784
+AUDIENCE: Are you
+ever going to give
+
+920
+00:46:02,784 --> 00:46:07,557
+some examples of
+undecidable-- like real games?
+
+921
+00:46:07,557 --> 00:46:08,140
+PROFESSOR: No.
+
+922
+00:46:08,140 --> 00:46:10,790
+There are no known
+good examples of games.
+
+923
+00:46:10,790 --> 00:46:13,452
+These are the games, I'm afraid.
+
+924
+00:46:13,452 --> 00:46:14,670
+Yeah.
+
+925
+00:46:14,670 --> 00:46:16,540
+Sorry.
+
+926
+00:46:16,540 --> 00:46:21,690
+So I would like to switch gears
+and go to the extreme opposite.
+
+927
+00:46:21,690 --> 00:46:24,530
+Instead of Undecidability,
+when there's no algorithm,
+
+928
+00:46:24,530 --> 00:46:27,160
+let's go back to good
+old-fashioned polynomial time
+
+929
+00:46:27,160 --> 00:46:28,800
+algorithms.
+
+930
+00:46:28,800 --> 00:46:30,455
+I think you remember what P is.
+
+931
+00:46:30,455 --> 00:46:33,800
+
+932
+00:46:33,800 --> 00:46:38,060
+But let me tell you a stronger
+notion of P, which comes up
+
+933
+00:46:38,060 --> 00:46:39,800
+in parallel algorithms.
+
+934
+00:46:39,800 --> 00:46:43,080
+There are many different
+models of parallel computing.
+
+935
+00:46:43,080 --> 00:46:47,180
+So it's a little
+bit-- you know, it's
+
+936
+00:46:47,180 --> 00:46:51,600
+hard to write down one
+good model of computation
+
+937
+00:46:51,600 --> 00:46:53,150
+for parallel computing.
+
+938
+00:46:53,150 --> 00:46:55,330
+But fortunately, if we're
+proving lower bounds,
+
+939
+00:46:55,330 --> 00:46:57,330
+it doesn't matter whether
+our model is good.
+
+940
+00:46:57,330 --> 00:47:01,510
+It really matters that our
+model is super powerful.
+
+941
+00:47:01,510 --> 00:47:03,200
+If we can prove
+something is impossible
+
+942
+00:47:03,200 --> 00:47:06,450
+in a super powerful model, that
+means it's impossible in weaker
+
+943
+00:47:06,450 --> 00:47:07,290
+models too.
+
+944
+00:47:07,290 --> 00:47:11,750
+So I'm going to give you a
+super powerful model called NC.
+
+945
+00:47:11,750 --> 00:47:14,280
+So NC is Nick's class,
+named after Nick Pippinger,
+
+946
+00:47:14,280 --> 00:47:16,860
+who did a lot of
+parallel algorithms.
+
+947
+00:47:16,860 --> 00:47:20,630
+And there are a few
+equivalent definitions.
+
+948
+00:47:20,630 --> 00:47:22,180
+Let me give you two of them.
+
+949
+00:47:22,180 --> 00:47:33,350
+
+950
+00:47:33,350 --> 00:47:35,530
+I would like my
+problem to be solvable.
+
+951
+00:47:35,530 --> 00:47:38,480
+With P, we wanted things to
+be solvable in poly time.
+
+952
+00:47:38,480 --> 00:47:40,700
+So a natural
+improvement is that I
+
+953
+00:47:40,700 --> 00:47:44,700
+want to run in poly log time
+for parallel algorithms,
+
+954
+00:47:44,700 --> 00:47:46,810
+given a huge number
+of processors,
+
+955
+00:47:46,810 --> 00:47:49,340
+but not incredibly huge--
+just polynomial number
+
+956
+00:47:49,340 --> 00:47:51,050
+of processors.
+
+957
+00:47:51,050 --> 00:47:51,550
+OK?
+
+958
+00:47:51,550 --> 00:47:54,215
+
+959
+00:47:54,215 --> 00:47:56,340
+If I was given an exponential
+number of processors,
+
+960
+00:47:56,340 --> 00:47:59,460
+I could solve SAT and all
+sorts of crazy things.
+
+961
+00:47:59,460 --> 00:48:02,040
+So shouldn't go too extreme.
+
+962
+00:48:02,040 --> 00:48:05,300
+But let's say polynomial--
+not problems but processors.
+
+963
+00:48:05,300 --> 00:48:10,094
+
+964
+00:48:10,094 --> 00:48:12,260
+Polynomial number of
+processors is reasonable, maybe
+
+965
+00:48:12,260 --> 00:48:13,849
+a little overkill, but OK.
+
+966
+00:48:13,849 --> 00:48:15,390
+With polynomial
+number of processors,
+
+967
+00:48:15,390 --> 00:48:17,160
+I'd like to get poly log time.
+
+968
+00:48:17,160 --> 00:48:20,970
+That's a pretty
+natural, good situation.
+
+969
+00:48:20,970 --> 00:48:23,100
+I let these processors
+communicate however
+
+970
+00:48:23,100 --> 00:48:25,300
+they want, super fast.
+
+971
+00:48:25,300 --> 00:48:28,915
+You can think of
+it as a circuit.
+
+972
+00:48:28,915 --> 00:48:32,092
+
+973
+00:48:32,092 --> 00:48:33,550
+If you're thinking
+about the p-set,
+
+974
+00:48:33,550 --> 00:48:35,670
+you'll be thinking about
+small weft circuits.
+
+975
+00:48:35,670 --> 00:48:40,190
+But here, it's just good
+old-fashioned depth.
+
+976
+00:48:40,190 --> 00:48:41,720
+We want poly log depth.
+
+977
+00:48:41,720 --> 00:48:46,430
+That will be the running time
+if every gate of the circuit
+
+978
+00:48:46,430 --> 00:48:48,590
+can run in parallel.
+
+979
+00:48:48,590 --> 00:48:51,250
+You still have to run in
+sequence, along the depth
+
+980
+00:48:51,250 --> 00:48:51,750
+lines.
+
+981
+00:48:51,750 --> 00:48:54,611
+But if there are a polynomial
+number of gates-- OK,
+
+982
+00:48:54,611 --> 00:48:57,280
+that should be, of size.
+
+983
+00:48:57,280 --> 00:49:00,260
+Polynomial number of
+gates and poly log depth,
+
+984
+00:49:00,260 --> 00:49:04,214
+then in particular, this
+gives you an algorithm.
+
+985
+00:49:04,214 --> 00:49:06,380
+Each processor just waits
+for the inputs to be ready
+
+986
+00:49:06,380 --> 00:49:09,390
+and then writes out the output
+to the next gate that it--
+
+987
+00:49:09,390 --> 00:49:14,024
+or to whatever gates it has that
+it's connected to by a wire.
+
+988
+00:49:14,024 --> 00:49:15,440
+And you get an
+algorithm that runs
+
+989
+00:49:15,440 --> 00:49:17,523
+in poly log time, polynomial
+number of processors.
+
+990
+00:49:17,523 --> 00:49:19,690
+So whichever you think
+of is more intuitive.
+
+991
+00:49:19,690 --> 00:49:22,450
+
+992
+00:49:22,450 --> 00:49:24,760
+OK.
+
+993
+00:49:24,760 --> 00:49:27,160
+So I have a small example here.
+
+994
+00:49:27,160 --> 00:49:30,860
+Suppose you want to sort n
+numbers in the comparison
+
+995
+00:49:30,860 --> 00:49:32,480
+model.
+
+996
+00:49:32,480 --> 00:49:33,486
+You can do that.
+
+997
+00:49:33,486 --> 00:49:35,110
+And there are good
+algorithms to do it.
+
+998
+00:49:35,110 --> 00:49:36,818
+I will give you a not
+so great algorithm.
+
+999
+00:49:36,818 --> 00:49:39,120
+But at least it works in NC.
+
+1000
+00:49:39,120 --> 00:49:41,230
+Namely, with n
+squared processors,
+
+1001
+00:49:41,230 --> 00:49:45,410
+I'm going to compare, in
+parallel, all pairs of items.
+
+1002
+00:49:45,410 --> 00:49:48,670
+I'm going to compare ai
+to aj for all i and j.
+
+1003
+00:49:48,670 --> 00:49:51,620
+Now I know which items
+are less than which.
+
+1004
+00:49:51,620 --> 00:49:53,700
+And now, for each
+item i, I basically
+
+1005
+00:49:53,700 --> 00:49:58,215
+just want to compute how many
+items are smaller than it.
+
+1006
+00:49:58,215 --> 00:50:00,840
+If there are items smaller than
+it-- let's say all of the items
+
+1007
+00:50:00,840 --> 00:50:03,020
+are distinct-- then
+that item should
+
+1008
+00:50:03,020 --> 00:50:06,120
+go to the I-th
+position in the array.
+
+1009
+00:50:06,120 --> 00:50:10,200
+So it's going to compute
+this matrix, i versus j.
+
+1010
+00:50:10,200 --> 00:50:15,170
+Each one says ai is
+smaller or greater than aj.
+
+1011
+00:50:15,170 --> 00:50:18,090
+And now, for a
+given-- what do I say,
+
+1012
+00:50:18,090 --> 00:50:21,710
+a given row-- I want to compute
+how many less than signs
+
+1013
+00:50:21,710 --> 00:50:23,120
+are in that row.
+
+1014
+00:50:23,120 --> 00:50:26,050
+This is basically computing a
+sum where I view less than as 1
+
+1015
+00:50:26,050 --> 00:50:27,820
+and greater than as 0.
+
+1016
+00:50:27,820 --> 00:50:31,390
+And you can compute a sum
+of n items in log n time,
+
+1017
+00:50:31,390 --> 00:50:33,099
+just by building a binary tree.
+
+1018
+00:50:33,099 --> 00:50:34,890
+I'm going to add these
+two guys in parallel
+
+1019
+00:50:34,890 --> 00:50:37,390
+with these two guys, and so on.
+
+1020
+00:50:37,390 --> 00:50:39,155
+And then I compute my sum.
+
+1021
+00:50:39,155 --> 00:50:41,860
+
+1022
+00:50:41,860 --> 00:50:44,500
+And I can do each of
+these rows in parallel.
+
+1023
+00:50:44,500 --> 00:50:47,350
+So in log n time, I can
+compute all of these sums.
+
+1024
+00:50:47,350 --> 00:50:50,920
+Then I know where every item
+needs to go and put it there.
+
+1025
+00:50:50,920 --> 00:50:54,270
+So this is a little overkill,
+that I use a ton of processors.
+
+1026
+00:50:54,270 --> 00:50:55,320
+But still polynomial.
+
+1027
+00:50:55,320 --> 00:50:58,640
+So in n square processors,
+I can easily, in log n time,
+
+1028
+00:50:58,640 --> 00:50:59,480
+sort n numbers.
+
+1029
+00:50:59,480 --> 00:51:00,980
+There are more
+efficient algorithms.
+
+1030
+00:51:00,980 --> 00:51:03,880
+But the point is when
+you have a par-- when
+
+1031
+00:51:03,880 --> 00:51:07,040
+there is a parallel algorithm,
+in this powerful model,
+
+1032
+00:51:07,040 --> 00:51:09,660
+you can do it without
+too much effort.
+
+1033
+00:51:09,660 --> 00:51:11,450
+But what we're
+going to show, here,
+
+1034
+00:51:11,450 --> 00:51:17,640
+is something called
+P-hardness, which,
+
+1035
+00:51:17,640 --> 00:51:21,280
+assuming not all problems
+can be solved in this--
+
+1036
+00:51:21,280 --> 00:51:23,470
+not all polynomial time
+algorithms can be solved
+
+1037
+00:51:23,470 --> 00:51:27,270
+in this model, these
+problems can't.
+
+1038
+00:51:27,270 --> 00:51:29,180
+Just like NP hardness.
+
+1039
+00:51:29,180 --> 00:51:31,020
+Note, in particular,
+NC is contained
+
+1040
+00:51:31,020 --> 00:51:33,390
+in P. If I had
+such an algorithm,
+
+1041
+00:51:33,390 --> 00:51:34,790
+I could simulate this algorithm.
+
+1042
+00:51:34,790 --> 00:51:36,997
+Because I have parallelism
+only polynomial,
+
+1043
+00:51:36,997 --> 00:51:39,330
+I could simulate the whole
+algorithm in polynomial time,
+
+1044
+00:51:39,330 --> 00:51:39,830
+still.
+
+1045
+00:51:39,830 --> 00:51:42,660
+So this is stronger
+than being in P.
+
+1046
+00:51:42,660 --> 00:51:48,860
+And P hardness means
+that all problems in NC
+
+1047
+00:51:48,860 --> 00:51:54,470
+can be reduced in the
+usual Karp-style reduction,
+
+1048
+00:51:54,470 --> 00:51:55,720
+in P reduction.
+
+1049
+00:51:55,720 --> 00:52:00,660
+But now the reduction must
+be a parallel time reduction.
+
+1050
+00:52:00,660 --> 00:52:09,800
+So it must be an NC
+algorithm to your problem.
+
+1051
+00:52:09,800 --> 00:52:14,550
+
+1052
+00:52:14,550 --> 00:52:17,440
+So P-hard means you're as
+hard as all problems in P.
+
+1053
+00:52:17,440 --> 00:52:19,520
+And reductions must be
+parallel algorithms.
+
+1054
+00:52:19,520 --> 00:52:22,120
+They must in NC.
+
+1055
+00:52:22,120 --> 00:52:27,100
+And so this implies
+that you're not in NC,
+
+1056
+00:52:27,100 --> 00:52:34,700
+assuming NC does
+not equal P, which
+
+1057
+00:52:34,700 --> 00:52:38,310
+is another standard complexity
+theoretic assumption.
+
+1058
+00:52:38,310 --> 00:52:41,400
+Makes sense-- not all problems
+should be parallelizable.
+
+1059
+00:52:41,400 --> 00:52:44,240
+So in particular,
+P-hard problems
+
+1060
+00:52:44,240 --> 00:52:45,590
+would be such problems.
+
+1061
+00:52:45,590 --> 00:52:50,080
+And P-complete, of course,
+means you're in P and P-hard.
+
+1062
+00:52:50,080 --> 00:52:50,580
+OK.
+
+1063
+00:52:50,580 --> 00:52:54,412
+
+1064
+00:52:54,412 --> 00:52:56,412
+AUDIENCE: Shouldn't it
+be that all problems in P
+
+1065
+00:52:56,412 --> 00:52:58,356
+can be reduced by
+an NC algorithm?
+
+1066
+00:52:58,356 --> 00:53:01,580
+
+1067
+00:53:01,580 --> 00:53:03,122
+PROFESSOR: Yes.
+
+1068
+00:53:03,122 --> 00:53:03,990
+Thank you.
+
+1069
+00:53:03,990 --> 00:53:07,140
+
+1070
+00:53:07,140 --> 00:53:08,740
+All problems in P. Yeah.
+
+1071
+00:53:08,740 --> 00:53:09,380
+Cool.
+
+1072
+00:53:09,380 --> 00:53:12,170
+So all problems, presumably
+including the ones
+
+1073
+00:53:12,170 --> 00:53:15,736
+that are hard to parallelize--
+not just the NC ones-- can
+
+1074
+00:53:15,736 --> 00:53:16,860
+be reduced to your problem.
+
+1075
+00:53:16,860 --> 00:53:21,880
+And so that means your problem
+is probably in P minus NC.
+
+1076
+00:53:21,880 --> 00:53:22,380
+Good.
+
+1077
+00:53:22,380 --> 00:53:39,000
+
+1078
+00:53:39,000 --> 00:53:53,090
+So let me give you some
+base P-complete problems,
+
+1079
+00:53:53,090 --> 00:53:57,910
+starting with a very natural
+one-- general machine
+
+1080
+00:53:57,910 --> 00:54:00,365
+simulation, sequential machine.
+
+1081
+00:54:00,365 --> 00:54:08,300
+
+1082
+00:54:08,300 --> 00:54:08,800
+OK?
+
+1083
+00:54:08,800 --> 00:54:16,560
+So given a sequential algorithm,
+such as a Turing machine,
+
+1084
+00:54:16,560 --> 00:54:18,720
+run it for t steps.
+
+1085
+00:54:18,720 --> 00:54:20,610
+Now, this is a
+little bit subtle.
+
+1086
+00:54:20,610 --> 00:54:29,432
+
+1087
+00:54:29,432 --> 00:54:30,390
+Let me write this down.
+
+1088
+00:54:30,390 --> 00:54:31,723
+And then I'm going to modify it.
+
+1089
+00:54:31,723 --> 00:54:35,890
+
+1090
+00:54:35,890 --> 00:54:40,455
+Does the algorithm, say,
+halt within t steps?
+
+1091
+00:54:40,455 --> 00:54:44,510
+
+1092
+00:54:44,510 --> 00:54:46,320
+Or does it keep running
+for longer than t?
+
+1093
+00:54:46,320 --> 00:54:48,153
+So this is a version
+of the halting problem.
+
+1094
+00:54:48,153 --> 00:54:51,670
+I mean, we-- same thing with
+a nondeterministic Turing
+
+1095
+00:54:51,670 --> 00:54:52,600
+machine.
+
+1096
+00:54:52,600 --> 00:54:56,657
+Running for polynomial time was
+our prototype for NP problems.
+
+1097
+00:54:56,657 --> 00:54:58,240
+We've done this kind
+of problem a lot.
+
+1098
+00:54:58,240 --> 00:54:59,989
+We did a similar thing with W1.
+
+1099
+00:54:59,989 --> 00:55:01,030
+It was a run for k steps.
+
+1100
+00:55:01,030 --> 00:55:02,910
+And k was a parameter.
+
+1101
+00:55:02,910 --> 00:55:08,240
+I want this problem to be in
+P. But if I phrase it this way,
+
+1102
+00:55:08,240 --> 00:55:12,060
+it would be X time complete
+because t could represent
+
+1103
+00:55:12,060 --> 00:55:14,080
+an exponentially large value.
+
+1104
+00:55:14,080 --> 00:55:16,690
+So what I want is for
+this to be encoded
+
+1105
+00:55:16,690 --> 00:55:19,807
+in unary, which usually,
+we're not supposed to do.
+
+1106
+00:55:19,807 --> 00:55:21,640
+But here, I'm going to
+explicitly say, look,
+
+1107
+00:55:21,640 --> 00:55:26,410
+t is bounded by a polynomial
+in the size of the machine--
+
+1108
+00:55:26,410 --> 00:55:29,730
+or equivalently, it's
+written in unary.
+
+1109
+00:55:29,730 --> 00:55:32,470
+And now I can do this
+in polynomial time.
+
+1110
+00:55:32,470 --> 00:55:34,370
+Because I have t
+steps to do it, I'll
+
+1111
+00:55:34,370 --> 00:55:36,430
+just run the machine t steps.
+
+1112
+00:55:36,430 --> 00:55:36,930
+OK?
+
+1113
+00:55:36,930 --> 00:55:40,600
+So this is in P. And if
+you believe anything is not
+
+1114
+00:55:40,600 --> 00:55:42,920
+parallelizable, then this
+shouldn't be because this
+
+1115
+00:55:42,920 --> 00:55:44,260
+lets you simulate all things.
+
+1116
+00:55:44,260 --> 00:55:48,136
+So pretty easy to reduce
+all problems in P.
+
+1117
+00:55:48,136 --> 00:55:50,510
+If they're in P, that means
+there's an algorithm to solve
+
+1118
+00:55:50,510 --> 00:55:51,820
+them, sequential algorithm.
+
+1119
+00:55:51,820 --> 00:55:52,949
+So you plug it in here.
+
+1120
+00:55:52,949 --> 00:55:54,740
+It's going to run for
+only polynomial time.
+
+1121
+00:55:54,740 --> 00:55:56,520
+So you can set t
+to that polynomial.
+
+1122
+00:55:56,520 --> 00:55:58,470
+And boom.
+
+1123
+00:55:58,470 --> 00:56:02,930
+You know, the algorithm
+halting is it's answering, yes.
+
+1124
+00:56:02,930 --> 00:56:06,071
+Or you could change this
+to returning s or whatever.
+
+1125
+00:56:06,071 --> 00:56:09,450
+
+1126
+00:56:09,450 --> 00:56:09,950
+OK?
+
+1127
+00:56:09,950 --> 00:56:12,160
+So that's actually how
+you prove this problem is
+
+1128
+00:56:12,160 --> 00:56:14,725
+P-hard, or actually P-complete.
+
+1129
+00:56:14,725 --> 00:56:16,558
+AUDIENCE: Is there any
+problem with symmetry
+
+1130
+00:56:16,558 --> 00:56:18,022
+between yea and
+no answers, here?
+
+1131
+00:56:18,022 --> 00:56:20,740
+
+1132
+00:56:20,740 --> 00:56:23,280
+PROFESSOR: Here, yes
+and no are the same.
+
+1133
+00:56:23,280 --> 00:56:23,840
+Yeah.
+
+1134
+00:56:23,840 --> 00:56:25,400
+Unlike NP.
+
+1135
+00:56:25,400 --> 00:56:27,082
+NP had an asymmetry
+between yes and no.
+
+1136
+00:56:27,082 --> 00:56:28,790
+So I could also change
+this to return no.
+
+1137
+00:56:28,790 --> 00:56:30,795
+That would also be as hard.
+
+1138
+00:56:30,795 --> 00:56:31,294
+Yeah.
+
+1139
+00:56:31,294 --> 00:56:42,400
+
+1140
+00:56:42,400 --> 00:56:44,490
+But of course, this is
+not a very useful problem.
+
+1141
+00:56:44,490 --> 00:56:45,615
+It's just a starting point.
+
+1142
+00:56:45,615 --> 00:56:49,970
+And it's a very natural
+P-complete problem.
+
+1143
+00:56:49,970 --> 00:56:53,390
+More useful for reductions
+are these circuit
+
+1144
+00:56:53,390 --> 00:56:58,145
+value problems, CVP.
+
+1145
+00:56:58,145 --> 00:57:04,600
+
+1146
+00:57:04,600 --> 00:57:07,160
+This is going to be
+like circuit set.
+
+1147
+00:57:07,160 --> 00:57:09,960
+So with circuit set, we were
+given an acyclic Boolean
+
+1148
+00:57:09,960 --> 00:57:15,931
+circuit which had one output.
+
+1149
+00:57:15,931 --> 00:57:17,930
+Or maybe we're given a
+particular output we care
+
+1150
+00:57:17,930 --> 00:57:19,184
+about.
+
+1151
+00:57:19,184 --> 00:57:21,600
+And we wanted to know whether
+there was some input setting
+
+1152
+00:57:21,600 --> 00:57:22,960
+that made the output true.
+
+1153
+00:57:22,960 --> 00:57:24,680
+Here, we are given
+the input setting.
+
+1154
+00:57:24,680 --> 00:57:32,420
+
+1155
+00:57:32,420 --> 00:57:36,520
+So I mean, the circuit actually
+has the inputs written down,
+
+1156
+00:57:36,520 --> 00:57:38,750
+like 0, 1, 1.
+
+1157
+00:57:38,750 --> 00:57:41,590
+And then let's say
+we take an AND,
+
+1158
+00:57:41,590 --> 00:57:44,810
+and then we take an OR,
+something like that.
+
+1159
+00:57:44,810 --> 00:57:47,300
+And we want to know, what
+is this thing at the output?
+
+1160
+00:57:47,300 --> 00:57:49,341
+Of course, this can be
+solved in polynomial time.
+
+1161
+00:57:49,341 --> 00:57:51,530
+You compute this
+AND, and you get a 0.
+
+1162
+00:57:51,530 --> 00:57:52,785
+This was a 1.
+
+1163
+00:57:52,785 --> 00:57:55,340
+So you compute this
+OR, and you get 1.
+
+1164
+00:57:55,340 --> 00:57:56,705
+So the answer is 1.
+
+1165
+00:57:56,705 --> 00:57:57,205
+OK?
+
+1166
+00:57:57,205 --> 00:58:00,440
+And you can do that
+in linear time.
+
+1167
+00:58:00,440 --> 00:58:02,230
+But to do it parallel
+is really hard
+
+1168
+00:58:02,230 --> 00:58:04,790
+because it's really
+hard to predict what
+
+1169
+00:58:04,790 --> 00:58:06,070
+these inputs are going to be.
+
+1170
+00:58:06,070 --> 00:58:08,000
+So you can't do
+anything on this gate
+
+1171
+00:58:08,000 --> 00:58:10,600
+until the inputs are ready.
+
+1172
+00:58:10,600 --> 00:58:14,540
+So presumably, this circuit
+will not have poly log depth.
+
+1173
+00:58:14,540 --> 00:58:16,980
+Otherwise, it isn't in NC.
+
+1174
+00:58:16,980 --> 00:58:19,570
+But if you have a really large
+debt circuit, simulating--
+
+1175
+00:58:19,570 --> 00:58:23,680
+running it in parallel is
+just as hard as this problem.
+
+1176
+00:58:23,680 --> 00:58:26,690
+So you can reduce a
+general machine simulation
+
+1177
+00:58:26,690 --> 00:58:27,660
+to a circuit value.
+
+1178
+00:58:27,660 --> 00:58:29,740
+And the standard way
+of converting machines
+
+1179
+00:58:29,740 --> 00:58:33,050
+into circuits, that's the
+electrical engineering problem.
+
+1180
+00:58:33,050 --> 00:58:33,550
+OK.
+
+1181
+00:58:33,550 --> 00:58:34,540
+What was the question?
+
+1182
+00:58:34,540 --> 00:58:35,770
+Is the output true?
+
+1183
+00:58:35,770 --> 00:58:42,990
+
+1184
+00:58:42,990 --> 00:58:44,060
+OK.
+
+1185
+00:58:44,060 --> 00:58:46,130
+Now, there are
+many special cases
+
+1186
+00:58:46,130 --> 00:58:47,620
+of this that are also hard.
+
+1187
+00:58:47,620 --> 00:58:51,730
+For example, NAM CVP.
+
+1188
+00:58:51,730 --> 00:58:52,230
+OK.
+
+1189
+00:58:52,230 --> 00:58:54,080
+We know how to build
+computers out of NAND.
+
+1190
+00:58:54,080 --> 00:58:56,530
+We know how to build
+computers out of NOR.
+
+1191
+00:58:56,530 --> 00:58:57,030
+Cool.
+
+1192
+00:58:57,030 --> 00:59:00,070
+So that's easy.
+
+1193
+00:59:00,070 --> 00:59:03,250
+More interesting
+is monotone CVP.
+
+1194
+00:59:03,250 --> 00:59:06,160
+
+1195
+00:59:06,160 --> 00:59:10,010
+So in monotone CVP, you
+just have AND and OR gates.
+
+1196
+00:59:10,010 --> 00:59:14,000
+You don't have negation or
+an AND or an OR or an XOR.
+
+1197
+00:59:14,000 --> 00:59:15,270
+Those sorts of things.
+
+1198
+00:59:15,270 --> 00:59:17,700
+This is also hard, essentially.
+
+1199
+00:59:17,700 --> 00:59:20,420
+By dual-rail logic, representing
+the true and the false
+
+1200
+00:59:20,420 --> 00:59:23,220
+as separate wires and
+manipulating them,
+
+1201
+00:59:23,220 --> 00:59:25,100
+you can get this to be hard.
+
+1202
+00:59:25,100 --> 00:59:27,170
+Also kind of similar
+to constraint logic.
+
+1203
+00:59:27,170 --> 00:59:28,816
+OK?
+
+1204
+00:59:28,816 --> 00:59:31,820
+But I won't prove it here.
+
+1205
+00:59:31,820 --> 00:59:35,810
+A little stronger is
+alternating monotone CVP.
+
+1206
+00:59:35,810 --> 00:59:38,370
+
+1207
+00:59:38,370 --> 00:59:47,180
+This alternates AND
+OR down any path.
+
+1208
+00:59:47,180 --> 00:59:51,470
+So if you take a path from
+an input bit to the output,
+
+1209
+00:59:51,470 --> 00:59:54,360
+it alternates AND
+OR, AND OR, AND OR.
+
+1210
+00:59:54,360 --> 00:59:57,440
+And furthermore, we can
+assume that it starts and ends
+
+1211
+00:59:57,440 --> 00:59:57,940
+with OR.
+
+1212
+00:59:57,940 --> 01:00:01,770
+
+1213
+01:00:01,770 --> 01:00:03,450
+It's nice to nail this down.
+
+1214
+01:00:03,450 --> 01:00:06,150
+It's not hard to prove.
+
+1215
+01:00:06,150 --> 01:00:09,170
+But I will prove it in a
+moment, once I tell you
+
+1216
+01:00:09,170 --> 01:00:14,191
+a general enough version
+that I want to analyze.
+
+1217
+01:00:14,191 --> 01:00:16,190
+This will just let us
+worry about fewer gadgets.
+
+1218
+01:00:16,190 --> 01:00:19,150
+So up here, we had to think
+about all Boolean gates.
+
+1219
+01:00:19,150 --> 01:00:20,980
+Now we just have to
+think about AND and OR.
+
+1220
+01:00:20,980 --> 01:00:22,854
+And we can always assume
+the output of an AND
+
+1221
+01:00:22,854 --> 01:00:25,180
+is the input of an
+OR, and vice versa,
+
+1222
+01:00:25,180 --> 01:00:28,140
+and that we only need to
+connect inputs to OR gates
+
+1223
+01:00:28,140 --> 01:00:30,270
+and not like this
+picture, and we only
+
+1224
+01:00:30,270 --> 01:00:33,315
+have to get the output
+from an OR gate.
+
+1225
+01:00:33,315 --> 01:00:35,690
+So it reduces the number of
+cases we need to worry about.
+
+1226
+01:00:35,690 --> 01:00:40,840
+
+1227
+01:00:40,840 --> 01:00:41,340
+Yeah?
+
+1228
+01:00:41,340 --> 01:00:44,209
+AUDIENCE: So is this
+with bounded fanin?
+
+1229
+01:00:44,209 --> 01:00:45,250
+PROFESSOR: Good question.
+
+1230
+01:00:45,250 --> 01:00:51,540
+
+1231
+01:00:51,540 --> 01:00:55,310
+Basically, bounded fanin
+doesn't matter with this model.
+
+1232
+01:00:55,310 --> 01:01:03,990
+So usually, when NC is defined,
+it's bounded fanin and fanout.
+
+1233
+01:01:03,990 --> 01:01:05,430
+And there's another
+class, called
+
+1234
+01:01:05,430 --> 01:01:09,460
+AC, which is when you have
+unbounded fanouts and fanin,
+
+1235
+01:01:09,460 --> 01:01:10,660
+let's say.
+
+1236
+01:01:10,660 --> 01:01:13,262
+But that only hurts
+us by a log factor.
+
+1237
+01:01:13,262 --> 01:01:15,220
+So it matters if you're
+worried about something
+
+1238
+01:01:15,220 --> 01:01:20,090
+called AC0 and NC0, when this is
+0 and you want constant height.
+
+1239
+01:01:20,090 --> 01:01:22,230
+AUDIENCE: It matters for
+alternation, as well.
+
+1240
+01:01:22,230 --> 01:01:23,563
+PROFESSOR: Please wait, I guess.
+
+1241
+01:01:23,563 --> 01:01:25,910
+
+1242
+01:01:25,910 --> 01:01:28,110
+It won't matter, is the answer.
+
+1243
+01:01:28,110 --> 01:01:32,922
+AUDIENCE: Is this the only
+setting of starting and ending
+
+1244
+01:01:32,922 --> 01:01:35,190
+that works?
+
+1245
+01:01:35,190 --> 01:01:35,970
+PROFESSOR: Sorry?
+
+1246
+01:01:35,970 --> 01:01:37,761
+AUDIENCE: Starting and
+ending with both AND
+
+1247
+01:01:37,761 --> 01:01:38,720
+or starting with AND?
+
+1248
+01:01:38,720 --> 01:01:39,250
+PROFESSOR: Oh, yeah.
+
+1249
+01:01:39,250 --> 01:01:41,075
+I think you could
+also make this an AND,
+
+1250
+01:01:41,075 --> 01:01:42,997
+although I haven't checked that.
+
+1251
+01:01:42,997 --> 01:01:44,830
+I don't think it's
+critical that this is OR.
+
+1252
+01:01:44,830 --> 01:01:47,672
+But you could probably do one
+of them in OR, one of them
+
+1253
+01:01:47,672 --> 01:01:49,180
+in AND-- all of
+those combinations.
+
+1254
+01:01:49,180 --> 01:01:51,322
+But this is the one
+I've seen proved.
+
+1255
+01:01:51,322 --> 01:01:52,780
+We'd need to check
+the other cases.
+
+1256
+01:01:52,780 --> 01:01:53,863
+But I think it's not hard.
+
+1257
+01:01:53,863 --> 01:01:58,070
+
+1258
+01:01:58,070 --> 01:02:00,790
+This is called AM2CVP.
+
+1259
+01:02:00,790 --> 01:02:03,920
+
+1260
+01:02:03,920 --> 01:02:06,870
+Great acronyms.
+
+1261
+01:02:06,870 --> 01:02:09,820
+Every gate has
+fanin2 and fanout2.
+
+1262
+01:02:09,820 --> 01:02:13,130
+So in particular, bounded
+but also nice and uniform.
+
+1263
+01:02:13,130 --> 01:02:15,320
+Every single-- not less
+than or equal to 2.
+
+1264
+01:02:15,320 --> 01:02:17,924
+This is exactly 2.
+
+1265
+01:02:17,924 --> 01:02:18,580
+OK?
+
+1266
+01:02:18,580 --> 01:02:20,150
+We'll prove that.
+
+1267
+01:02:20,150 --> 01:02:27,480
+And even stronger,
+synchronous AM2CVP.
+
+1268
+01:02:27,480 --> 01:02:31,370
+
+1269
+01:02:31,370 --> 01:02:34,560
+I prefer AVP, personally.
+
+1270
+01:02:34,560 --> 01:02:35,585
+So this is SAM2CVP.
+
+1271
+01:02:35,585 --> 01:02:40,470
+
+1272
+01:02:40,470 --> 01:02:43,370
+Synchronous means that all
+of the inputs of the gate
+
+1273
+01:02:43,370 --> 01:02:45,770
+are available at
+exactly the same time.
+
+1274
+01:02:45,770 --> 01:02:50,860
+If you imagine running all of
+the gates of depth i at time i,
+
+1275
+01:02:50,860 --> 01:02:52,770
+then you can do that.
+
+1276
+01:02:52,770 --> 01:02:55,095
+At time i, all gates of
+depth i will be ready.
+
+1277
+01:02:55,095 --> 01:02:56,470
+They'll have all
+of their inputs.
+
+1278
+01:02:56,470 --> 01:03:00,930
+In other words, a gate of
+depth i has one of its inputs
+
+1279
+01:03:00,930 --> 01:03:02,030
+at depth i, minus 1.
+
+1280
+01:03:02,030 --> 01:03:04,340
+But in the synchronous
+circuit, both of the inputs
+
+1281
+01:03:04,340 --> 01:03:06,210
+will have depth i, minus 1.
+
+1282
+01:03:06,210 --> 01:03:09,510
+And so at time i, you'll
+actually be ready to do it.
+
+1283
+01:03:09,510 --> 01:03:11,980
+This is useful, in
+particular, for things
+
+1284
+01:03:11,980 --> 01:03:16,890
+like constraint logic and
+other constructions, as well.
+
+1285
+01:03:16,890 --> 01:03:18,380
+One more.
+
+1286
+01:03:18,380 --> 01:03:20,679
+Planar CVP.
+
+1287
+01:03:20,679 --> 01:03:22,220
+I don't know how
+many of these things
+
+1288
+01:03:22,220 --> 01:03:23,770
+you can import into
+the planar case.
+
+1289
+01:03:23,770 --> 01:03:27,570
+Probably many of them.
+
+1290
+01:03:27,570 --> 01:03:31,460
+But just like planar circuit
+set, out of NAND and NOR,
+
+1291
+01:03:31,460 --> 01:03:33,180
+for example, you can
+build crossovers.
+
+1292
+01:03:33,180 --> 01:03:37,370
+And so planar circuits
+are also hard.
+
+1293
+01:03:37,370 --> 01:03:41,700
+But actually, not all
+of them because planar
+
+1294
+01:03:41,700 --> 01:03:49,920
+monotone CVP is in NC.
+
+1295
+01:03:49,920 --> 01:03:53,150
+So you can't take the
+monotone AND OR- ness
+
+1296
+01:03:53,150 --> 01:03:57,150
+with planarity, which is kind
+of annoying because that problem
+
+1297
+01:03:57,150 --> 01:03:59,380
+can be done in parallel.
+
+1298
+01:03:59,380 --> 01:04:01,530
+But planar with an AND--
+then you've got negation.
+
+1299
+01:04:01,530 --> 01:04:04,890
+And you can build a crossover.
+
+1300
+01:04:04,890 --> 01:04:05,390
+OK.
+
+1301
+01:04:05,390 --> 01:04:06,806
+Let me prove some
+of these things.
+
+1302
+01:04:06,806 --> 01:04:09,000
+This was to give you a
+flavor for what's hard.
+
+1303
+01:04:09,000 --> 01:04:13,320
+Still, all of these
+problems up are P-complete.
+
+1304
+01:04:13,320 --> 01:04:19,140
+
+1305
+01:04:19,140 --> 01:04:21,920
+And we're going to do it
+in a series of reductions.
+
+1306
+01:04:21,920 --> 01:04:30,745
+So first, let's deal with
+starting and ending with OR.
+
+1307
+01:04:30,745 --> 01:04:32,120
+So this is the
+part you'd switch.
+
+1308
+01:04:32,120 --> 01:04:33,800
+If you want to start
+or end with an AND,
+
+1309
+01:04:33,800 --> 01:04:35,710
+it should be no problem.
+
+1310
+01:04:35,710 --> 01:04:37,100
+So this is an input bit.
+
+1311
+01:04:37,100 --> 01:04:39,800
+Either 0 or 1, they're going
+to be drawn with squares.
+
+1312
+01:04:39,800 --> 01:04:41,180
+Oh, I should
+mention, by the way,
+
+1313
+01:04:41,180 --> 01:04:44,324
+there's a textbook
+devoted to P completeness.
+
+1314
+01:04:44,324 --> 01:04:45,240
+It's a short textbook.
+
+1315
+01:04:45,240 --> 01:04:46,350
+But it's a nice read.
+
+1316
+01:04:46,350 --> 01:04:47,230
+And it's online.
+
+1317
+01:04:47,230 --> 01:04:49,940
+So I linked to it
+from the website now.
+
+1318
+01:04:49,940 --> 01:04:52,660
+So if you want to learn a little
+more, check out that book.
+
+1319
+01:04:52,660 --> 01:04:54,920
+These are figures
+from that book.
+
+1320
+01:04:54,920 --> 01:05:01,060
+So if I have some input
+being sent to some gates,
+
+1321
+01:05:01,060 --> 01:05:03,070
+I'm just going to
+put an OR there.
+
+1322
+01:05:03,070 --> 01:05:05,360
+And let's say i OR
+that bit with itself.
+
+1323
+01:05:05,360 --> 01:05:07,600
+So now everything
+starts with an OR.
+
+1324
+01:05:07,600 --> 01:05:08,886
+Done.
+
+1325
+01:05:08,886 --> 01:05:10,510
+If I want to make
+things end with an OR
+
+1326
+01:05:10,510 --> 01:05:13,440
+and they end with an AND,
+I'll just put an OR gate.
+
+1327
+01:05:13,440 --> 01:05:15,590
+I don't know why here
+we use only one input,
+
+1328
+01:05:15,590 --> 01:05:17,010
+here we put two inputs.
+
+1329
+01:05:17,010 --> 01:05:19,880
+But I could have just
+put one input up there.
+
+1330
+01:05:19,880 --> 01:05:21,989
+I'm allowing, for now,
+one input OR gate.
+
+1331
+01:05:21,989 --> 01:05:23,280
+So I'm going to fix that later.
+
+1332
+01:05:23,280 --> 01:05:23,780
+Question?
+
+1333
+01:05:23,780 --> 01:05:26,270
+AUDIENCE: [INAUDIBLE]
+
+1334
+01:05:26,270 --> 01:05:28,140
+PROFESSOR: Coming soon.
+
+1335
+01:05:28,140 --> 01:05:31,222
+So this is just to
+start and end with ORs.
+
+1336
+01:05:31,222 --> 01:05:33,430
+Next thing I'd like to do
+is make things alternating.
+
+1337
+01:05:33,430 --> 01:05:37,280
+So if I have two gates--
+actually, before I do this,
+
+1338
+01:05:37,280 --> 01:05:38,280
+I need to do this later.
+
+1339
+01:05:38,280 --> 01:05:39,740
+It's important to get
+the sequence right.
+
+1340
+01:05:39,740 --> 01:05:41,920
+First, I want to make sure
+the fanout is less than
+
+1341
+01:05:41,920 --> 01:05:43,810
+or equal to 2, in this way.
+
+1342
+01:05:43,810 --> 01:05:45,410
+This is a standard trick.
+
+1343
+01:05:45,410 --> 01:05:48,660
+If I have large fanout, I
+just build a binary tree.
+
+1344
+01:05:48,660 --> 01:05:50,440
+And you can put
+ORs or ANDs here.
+
+1345
+01:05:50,440 --> 01:05:51,420
+There's only one input.
+
+1346
+01:05:51,420 --> 01:05:53,480
+So it doesn't do anything to it.
+
+1347
+01:05:53,480 --> 01:05:55,980
+But now I have
+fanout, at most, 2.
+
+1348
+01:05:55,980 --> 01:05:59,200
+Fanin is whatever.
+
+1349
+01:05:59,200 --> 01:06:01,300
+Did we deal with large fanin?
+
+1350
+01:06:01,300 --> 01:06:01,800
+Not yet.
+
+1351
+01:06:01,800 --> 01:06:05,410
+
+1352
+01:06:05,410 --> 01:06:06,660
+So I'm going to do that first.
+
+1353
+01:06:06,660 --> 01:06:08,874
+This will make lots of
+ORs next to each other.
+
+1354
+01:06:08,874 --> 01:06:11,540
+But then whenever I have two ORs
+or two ANDs next to each other,
+
+1355
+01:06:11,540 --> 01:06:13,510
+I just add the opposite
+gate, in between.
+
+1356
+01:06:13,510 --> 01:06:14,010
+OK.
+
+1357
+01:06:14,010 --> 01:06:17,070
+So now it's alternating
+fanout, at most, 2.
+
+1358
+01:06:17,070 --> 01:06:20,370
+So we've gotten this
+property in a weak sense,
+
+1359
+01:06:20,370 --> 01:06:21,610
+with less than or equal to 2.
+
+1360
+01:06:21,610 --> 01:06:24,640
+We're going to fix the 1s later.
+
+1361
+01:06:24,640 --> 01:06:26,110
+We haven't dealt with this yet.
+
+1362
+01:06:26,110 --> 01:06:29,070
+
+1363
+01:06:29,070 --> 01:06:31,290
+I assumed-- sorry-- that
+I'm starting with monotones.
+
+1364
+01:06:31,290 --> 01:06:32,580
+So I just have ANDs and ORs.
+
+1365
+01:06:32,580 --> 01:06:33,975
+No indication.
+
+1366
+01:06:33,975 --> 01:06:37,052
+I'm reducing from monotone
+CVP to these other problems.
+
+1367
+01:06:37,052 --> 01:06:38,760
+I've got alternation,
+starting and ending
+
+1368
+01:06:38,760 --> 01:06:41,760
+with or and fanout, at
+most, 2, at this point.
+
+1369
+01:06:41,760 --> 01:06:46,960
+Next reduction is to
+make fanin exactly 2.
+
+1370
+01:06:46,960 --> 01:06:48,560
+So yeah.
+
+1371
+01:06:48,560 --> 01:06:50,720
+I guess I didn't write it.
+
+1372
+01:06:50,720 --> 01:06:53,450
+But we can use the same
+trick on the other side.
+
+1373
+01:06:53,450 --> 01:06:55,710
+If you have fanin
+larger than 2, then you
+
+1374
+01:06:55,710 --> 01:06:58,560
+can just take ANDs
+and ANDs and ANDs.
+
+1375
+01:06:58,560 --> 01:07:01,040
+So you can also get
+fanin, at most, 2.
+
+1376
+01:07:01,040 --> 01:07:03,640
+Now if I have fanin 1, which
+I've used all over the place,
+
+1377
+01:07:03,640 --> 01:07:06,430
+now I'm going to get rid of
+it in two different ways.
+
+1378
+01:07:06,430 --> 01:07:09,320
+If I have an OR gate
+with one input that
+
+1379
+01:07:09,320 --> 01:07:11,790
+happens to be an
+AND or original bit,
+
+1380
+01:07:11,790 --> 01:07:14,160
+I'll just add in
+another input of 0.
+
+1381
+01:07:14,160 --> 01:07:15,910
+That won't affect things.
+
+1382
+01:07:15,910 --> 01:07:19,880
+And if I have an AND bit, I
+would like to put a 1 here.
+
+1383
+01:07:19,880 --> 01:07:22,880
+But I'm not allowed to feed a
+number-- an input-- directly
+
+1384
+01:07:22,880 --> 01:07:26,050
+to an AND gate because I want
+to preserve the property that I
+
+1385
+01:07:26,050 --> 01:07:27,180
+start and end with ORs.
+
+1386
+01:07:27,180 --> 01:07:28,940
+So this is one thing
+that would be--
+
+1387
+01:07:28,940 --> 01:07:31,481
+you'd have to tweak a little
+bit if you want to start and end
+
+1388
+01:07:31,481 --> 01:07:32,250
+with ANDs.
+
+1389
+01:07:32,250 --> 01:07:34,449
+But you can do, I
+think, a similar trick.
+
+1390
+01:07:34,449 --> 01:07:36,240
+I want to build the 1
+bit using an OR gate.
+
+1391
+01:07:36,240 --> 01:07:38,340
+So I take two one
+bits, OR them together.
+
+1392
+01:07:38,340 --> 01:07:39,900
+Now I have a 1
+bit fed into here.
+
+1393
+01:07:39,900 --> 01:07:41,742
+And then that will
+just pass through.
+
+1394
+01:07:41,742 --> 01:07:42,280
+OK?
+
+1395
+01:07:42,280 --> 01:07:44,050
+So now I have fanin, exactly 2.
+
+1396
+01:07:44,050 --> 01:07:45,055
+No 1s.
+
+1397
+01:07:45,055 --> 01:07:47,180
+You can imagine this is
+useful when you're actually
+
+1398
+01:07:47,180 --> 01:07:49,036
+building gadgets
+because then you don't
+
+1399
+01:07:49,036 --> 01:07:50,160
+have to do all of the work.
+
+1400
+01:07:50,160 --> 01:07:51,035
+AUDIENCE: [INAUDIBLE]
+
+1401
+01:07:51,035 --> 01:07:55,473
+
+1402
+01:07:55,473 --> 01:07:57,389
+PROFESSOR: I haven't
+dealt with fanout 2, yet.
+
+1403
+01:07:57,389 --> 01:07:59,479
+At this point, just fanin 2.
+
+1404
+01:07:59,479 --> 01:08:03,211
+So variables-- some of them
+still only have fanout 1.
+
+1405
+01:08:03,211 --> 01:08:04,460
+But they will have at most, 2.
+
+1406
+01:08:04,460 --> 01:08:08,090
+So now we're going to
+do fanout, exactly 2.
+
+1407
+01:08:08,090 --> 01:08:11,910
+So what I'm going to
+do is take my circuit,
+
+1408
+01:08:11,910 --> 01:08:14,609
+make two copies of it.
+
+1409
+01:08:14,609 --> 01:08:17,160
+There's the primed copy
+and the original copy.
+
+1410
+01:08:17,160 --> 01:08:18,130
+OK?
+
+1411
+01:08:18,130 --> 01:08:22,600
+So now I just need to hook
+things how I want them.
+
+1412
+01:08:22,600 --> 01:08:25,750
+The inputs, which
+are not drawn here--
+
+1413
+01:08:25,750 --> 01:08:29,925
+if I have an input out
+degree 1, then I'll
+
+1414
+01:08:29,925 --> 01:08:31,120
+merge them into one copy.
+
+1415
+01:08:31,120 --> 01:08:32,334
+Then I'll have out degree 2.
+
+1416
+01:08:32,334 --> 01:08:33,750
+If they already
+have out degree 2,
+
+1417
+01:08:33,750 --> 01:08:35,001
+just leave them as two copies.
+
+1418
+01:08:35,001 --> 01:08:35,500
+OK?
+
+1419
+01:08:35,500 --> 01:08:39,560
+So now all of the inputs have
+out degree 2, or fanout 2.
+
+1420
+01:08:39,560 --> 01:08:42,592
+If I have an AND gate
+with out degree 2, again,
+
+1421
+01:08:42,592 --> 01:08:43,300
+I don't touch it.
+
+1422
+01:08:43,300 --> 01:08:44,800
+I'll leave them as two copies.
+
+1423
+01:08:44,800 --> 01:08:49,979
+If I have an AND gate with
+one-- a fanout of one-- then
+
+1424
+01:08:49,979 --> 01:08:51,609
+here are the two copies of it.
+
+1425
+01:08:51,609 --> 01:08:55,621
+I basically want to add an extra
+output that gets thrown away.
+
+1426
+01:08:55,621 --> 01:08:57,120
+So because I have
+to end with an OR,
+
+1427
+01:08:57,120 --> 01:08:58,100
+I'm going to put it OR here.
+
+1428
+01:08:58,100 --> 01:08:59,183
+And then that's an output.
+
+1429
+01:08:59,183 --> 01:09:01,590
+It's not the output that we're
+asking the question about,
+
+1430
+01:09:01,590 --> 01:09:04,870
+where I want to know, does
+the output become true?
+
+1431
+01:09:04,870 --> 01:09:05,919
+That's a specific output.
+
+1432
+01:09:05,919 --> 01:09:07,460
+So for this reduction
+I need to allow
+
+1433
+01:09:07,460 --> 01:09:10,060
+there to be multiple
+outputs in my circuit,
+
+1434
+01:09:10,060 --> 01:09:13,149
+but only one of
+them of interest.
+
+1435
+01:09:13,149 --> 01:09:14,410
+OK?
+
+1436
+01:09:14,410 --> 01:09:16,430
+And the rest is
+connected as before.
+
+1437
+01:09:16,430 --> 01:09:19,850
+So now these guys have fanout 2.
+
+1438
+01:09:19,850 --> 01:09:21,850
+If I have an OR gate
+with one output,
+
+1439
+01:09:21,850 --> 01:09:24,970
+this is a little trickier
+because I want to end with ORs,
+
+1440
+01:09:24,970 --> 01:09:26,097
+I guess.
+
+1441
+01:09:26,097 --> 01:09:27,680
+We're going to combine
+these two bits.
+
+1442
+01:09:27,680 --> 01:09:28,679
+And I have to alternate.
+
+1443
+01:09:28,679 --> 01:09:31,890
+So next thing is I
+have to go to an AND.
+
+1444
+01:09:31,890 --> 01:09:33,720
+This also has to
+have two outputs.
+
+1445
+01:09:33,720 --> 01:09:38,260
+So I'm going to put one of
+them here and one of them here.
+
+1446
+01:09:38,260 --> 01:09:39,761
+These guys need two
+inputs because I
+
+1447
+01:09:39,761 --> 01:09:42,093
+don't want to [INAUDIBLE]
+with the two input conditions.
+
+1448
+01:09:42,093 --> 01:09:43,362
+So I add another bit.
+
+1449
+01:09:43,362 --> 01:09:44,070
+It could be 0, 1.
+
+1450
+01:09:44,070 --> 01:09:44,850
+It doesn't matter.
+
+1451
+01:09:44,850 --> 01:09:45,850
+Feed it to both of them.
+
+1452
+01:09:45,850 --> 01:09:47,390
+Now this has out degree 2.
+
+1453
+01:09:47,390 --> 01:09:49,160
+These have in degree 2.
+
+1454
+01:09:49,160 --> 01:09:50,160
+And this is an output.
+
+1455
+01:09:50,160 --> 01:09:54,534
+So output is-- you could think
+of there as being two of them.
+
+1456
+01:09:54,534 --> 01:09:55,458
+Yeah?
+
+1457
+01:09:55,458 --> 01:09:57,333
+AUDIENCE: Can you chain
+the outputs together,
+
+1458
+01:09:57,333 --> 01:09:58,692
+so that there's a 1 output?
+
+1459
+01:09:58,692 --> 01:10:01,150
+PROFESSOR: Oh, combine the
+different outputs together?
+
+1460
+01:10:01,150 --> 01:10:02,816
+AUDIENCE: If you have
+fanout, exactly 2,
+
+1461
+01:10:02,816 --> 01:10:05,261
+and fanin, exactly
+2, doesn't that
+
+1462
+01:10:05,261 --> 01:10:09,494
+mean that you're preserving
+the number of inputs,
+
+1463
+01:10:09,494 --> 01:10:14,590
+So that you can't reduce
+those extra outputs to 1?
+
+1464
+01:10:14,590 --> 01:10:15,480
+PROFESSOR: Yes.
+
+1465
+01:10:15,480 --> 01:10:15,980
+Good.
+
+1466
+01:10:15,980 --> 01:10:19,480
+So I think if we tried to
+combine all of the outputs
+
+1467
+01:10:19,480 --> 01:10:22,350
+together, we'd end up
+with a similar problem.
+
+1468
+01:10:22,350 --> 01:10:24,600
+And we'd basically have to
+do this construction again,
+
+1469
+01:10:24,600 --> 01:10:27,080
+and then produce more outputs.
+
+1470
+01:10:27,080 --> 01:10:28,601
+Good.
+
+1471
+01:10:28,601 --> 01:10:29,100
+Yeah.
+
+1472
+01:10:29,100 --> 01:10:32,922
+So we violate fanin 2,
+obviously, at the inputs.
+
+1473
+01:10:32,922 --> 01:10:33,630
+But you're right.
+
+1474
+01:10:33,630 --> 01:10:35,980
+After the input level,
+the number of lines
+
+1475
+01:10:35,980 --> 01:10:37,750
+should be preserved.
+
+1476
+01:10:37,750 --> 01:10:38,550
+OK.
+
+1477
+01:10:38,550 --> 01:10:39,140
+So never mind.
+
+1478
+01:10:39,140 --> 01:10:40,370
+We do need multiple outputs.
+
+1479
+01:10:40,370 --> 01:10:42,930
+And exactly one
+of them is marked
+
+1480
+01:10:42,930 --> 01:10:46,514
+as the one we care about,
+whether an output's true.
+
+1481
+01:10:46,514 --> 01:10:48,170
+Is that the end?
+
+1482
+01:10:48,170 --> 01:10:49,050
+Yes.
+
+1483
+01:10:49,050 --> 01:10:54,950
+At this point, we've proved
+AM2CVP is P-complete.
+
+1484
+01:10:54,950 --> 01:10:56,420
+OK.
+
+1485
+01:10:56,420 --> 01:10:57,160
+So one more.
+
+1486
+01:10:57,160 --> 01:10:59,690
+Reduction is for the
+synchronous case.
+
+1487
+01:10:59,690 --> 01:11:02,370
+
+1488
+01:11:02,370 --> 01:11:04,195
+This is cool.
+
+1489
+01:11:04,195 --> 01:11:07,130
+
+1490
+01:11:07,130 --> 01:11:09,755
+Let me, maybe, first
+say what we're doing.
+
+1491
+01:11:09,755 --> 01:11:13,380
+
+1492
+01:11:13,380 --> 01:11:16,386
+So for the
+synchronous reduction,
+
+1493
+01:11:16,386 --> 01:11:18,760
+we're going to make n over 2
+copies of the circuit, where
+
+1494
+01:11:18,760 --> 01:11:19,845
+n is the number of gates.
+
+1495
+01:11:19,845 --> 01:11:26,660
+
+1496
+01:11:26,660 --> 01:11:29,270
+At a high level, that's
+what we're doing.
+
+1497
+01:11:29,270 --> 01:11:31,070
+And basically,
+the i-th copy will
+
+1498
+01:11:31,070 --> 01:11:32,700
+feed into the i plus 1st copy.
+
+1499
+01:11:32,700 --> 01:11:36,360
+Well, not quite, because we
+want to alternate ANDs and ORs.
+
+1500
+01:11:36,360 --> 01:11:42,970
+So in the i-th copy-- the
+i-th copy of the circuit
+
+1501
+01:11:42,970 --> 01:11:51,140
+will be the depth
+levels 2i and 2i plus 1,
+
+1502
+01:11:51,140 --> 01:11:54,610
+in the final circuit
+that I'm producing, where
+
+1503
+01:11:54,610 --> 01:11:58,045
+these are ANDs and inputs.
+
+1504
+01:11:58,045 --> 01:12:02,190
+
+1505
+01:12:02,190 --> 01:12:05,281
+And this level is
+going to be ORs.
+
+1506
+01:12:05,281 --> 01:12:05,780
+OK?
+
+1507
+01:12:05,780 --> 01:12:08,980
+So basically, I want to take
+an AND level and an OR level
+
+1508
+01:12:08,980 --> 01:12:11,310
+from one copy, then an
+AND level and an OR level
+
+1509
+01:12:11,310 --> 01:12:14,300
+from the next copy, and so on.
+
+1510
+01:12:14,300 --> 01:12:16,919
+The inputs are a
+little more subtle.
+
+1511
+01:12:16,919 --> 01:12:18,460
+But in particular,
+I'm at least going
+
+1512
+01:12:18,460 --> 01:12:19,835
+to make the copies
+of the inputs.
+
+1513
+01:12:19,835 --> 01:12:22,780
+And I'm going to
+change them later.
+
+1514
+01:12:22,780 --> 01:12:27,750
+And so the outputs of
+the ORs from one copy
+
+1515
+01:12:27,750 --> 01:12:32,160
+will go to the inputs of
+the ANDs in the next copy,
+
+1516
+01:12:32,160 --> 01:12:34,700
+and vice versa.
+
+1517
+01:12:34,700 --> 01:12:38,240
+So the outputs from the ANDs
+stay within the same copy.
+
+1518
+01:12:38,240 --> 01:12:41,160
+And then the outputs from
+here go to the next copy.
+
+1519
+01:12:41,160 --> 01:12:44,700
+Basically, this will force
+synchronization, in a sense.
+
+1520
+01:12:44,700 --> 01:12:47,760
+Now, the one tricky
+part is the inputs.
+
+1521
+01:12:47,760 --> 01:12:52,990
+I want the i-th copy to be
+triggered at time 2i, exactly.
+
+1522
+01:12:52,990 --> 01:12:55,720
+And so for that, I can't
+just have the inputs.
+
+1523
+01:12:55,720 --> 01:12:58,020
+Maybe some of the gates
+in there take an input
+
+1524
+01:12:58,020 --> 01:13:00,620
+from-- sort of straight.
+
+1525
+01:13:00,620 --> 01:13:03,250
+I need to delay that
+input from coming
+
+1526
+01:13:03,250 --> 01:13:08,560
+and still preserve fanin and
+fanout 2 and alternation.
+
+1527
+01:13:08,560 --> 01:13:13,410
+So to do that, I'm going
+to use this gadget.
+
+1528
+01:13:13,410 --> 01:13:16,920
+So I just have the
+same bit written twice.
+
+1529
+01:13:16,920 --> 01:13:19,040
+And then I OR them
+with themselves
+
+1530
+01:13:19,040 --> 01:13:21,080
+and then AND then with
+themselves and OR them.
+
+1531
+01:13:21,080 --> 01:13:21,330
+OK?
+
+1532
+01:13:21,330 --> 01:13:22,340
+It seems innocent enough.
+
+1533
+01:13:22,340 --> 01:13:24,590
+That latter obviously will
+not change any of the bits.
+
+1534
+01:13:24,590 --> 01:13:28,920
+So just duplicating those
+bits at every time step.
+
+1535
+01:13:28,920 --> 01:13:31,070
+It's all about timing here.
+
+1536
+01:13:31,070 --> 01:13:32,300
+And now here's the fun thing.
+
+1537
+01:13:32,300 --> 01:13:36,886
+If this gate needs
+this bit, obviously, I
+
+1538
+01:13:36,886 --> 01:13:38,010
+can just take it out, here.
+
+1539
+01:13:38,010 --> 01:13:41,970
+That will still
+preserve fanout 2, here.
+
+1540
+01:13:41,970 --> 01:13:45,720
+And if I'm taking
+one bit from here,
+
+1541
+01:13:45,720 --> 01:13:48,180
+I'm going to have to
+throw away another bit.
+
+1542
+01:13:48,180 --> 01:13:52,200
+And magically-- this is very
+cool-- if I throw away a bit
+
+1543
+01:13:52,200 --> 01:13:54,850
+here, it doesn't matter
+what that bit value is.
+
+1544
+01:13:54,850 --> 01:13:56,930
+This will still be X2.
+
+1545
+01:13:56,930 --> 01:14:00,600
+
+1546
+01:14:00,600 --> 01:14:06,970
+You can think of the two cases--
+either x2 is 0, in which case
+
+1547
+01:14:06,970 --> 01:14:10,280
+this is 0, and then it doesn't
+matter what this bit is.
+
+1548
+01:14:10,280 --> 01:14:11,140
+It will output 0.
+
+1549
+01:14:11,140 --> 01:14:11,880
+OK?
+
+1550
+01:14:11,880 --> 01:14:13,960
+Or this bit could be a 1.
+
+1551
+01:14:13,960 --> 01:14:15,912
+Then I go here.
+
+1552
+01:14:15,912 --> 01:14:18,370
+And I mean, it actually doesn't
+matter that it's preserved.
+
+1553
+01:14:18,370 --> 01:14:19,200
+But it is.
+
+1554
+01:14:19,200 --> 01:14:20,630
+I think it's kind of cool.
+
+1555
+01:14:20,630 --> 01:14:24,690
+If this was a 1, then this will
+output whatever that bit is.
+
+1556
+01:14:24,690 --> 01:14:27,410
+But because, again,
+this will be a 1
+
+1557
+01:14:27,410 --> 01:14:30,580
+because it gets it
+from here, then the OR
+
+1558
+01:14:30,580 --> 01:14:32,280
+will turn it back into a 1.
+
+1559
+01:14:32,280 --> 01:14:33,760
+So either way, the
+bit is restored.
+
+1560
+01:14:33,760 --> 01:14:35,080
+So you could actually
+reuse this gadget
+
+1561
+01:14:35,080 --> 01:14:36,163
+a few times if you wanted.
+
+1562
+01:14:36,163 --> 01:14:40,510
+But we can also be lazy and just
+make many copies of this gadget
+
+1563
+01:14:40,510 --> 01:14:43,140
+because we have polynomial size.
+
+1564
+01:14:43,140 --> 01:14:46,080
+So basically, we can get a 1
+bit and also destroy an output,
+
+1565
+01:14:46,080 --> 01:14:51,350
+basically, with
+this kind of gadget,
+
+1566
+01:14:51,350 --> 01:14:53,770
+and get the inputs to
+be triggered exactly
+
+1567
+01:14:53,770 --> 01:14:54,520
+at the right time.
+
+1568
+01:14:54,520 --> 01:14:59,289
+So the i-th copy-- all of the
+gates will trigger at time 2i.
+
+1569
+01:14:59,289 --> 01:15:01,330
+And then all of the AND
+gates will trigger at 2i.
+
+1570
+01:15:01,330 --> 01:15:02,705
+And then all of
+the OR gates will
+
+1571
+01:15:02,705 --> 01:15:04,110
+trigger at time 2i, plus 1.
+
+1572
+01:15:04,110 --> 01:15:08,140
+And they'll feed
+into the next copy.
+
+1573
+01:15:08,140 --> 01:15:09,460
+All of those will trigger.
+
+1574
+01:15:09,460 --> 01:15:10,080
+And so on.
+
+1575
+01:15:10,080 --> 01:15:12,060
+So it's a little bit redundant.
+
+1576
+01:15:12,060 --> 01:15:14,000
+But it works.
+
+1577
+01:15:14,000 --> 01:15:18,390
+
+1578
+01:15:18,390 --> 01:15:20,300
+And then the output
+is going to be
+
+1579
+01:15:20,300 --> 01:15:24,280
+the output of the last
+copy, n over second copy,
+
+1580
+01:15:24,280 --> 01:15:26,620
+I guess you'd call it.
+
+1581
+01:15:26,620 --> 01:15:27,750
+OK.
+
+1582
+01:15:27,750 --> 01:15:32,130
+So you can, of
+course, convert this
+
+1583
+01:15:32,130 --> 01:15:34,790
+into bounded deterministic
+constraint logic, where
+
+1584
+01:15:34,790 --> 01:15:36,891
+each edge only flips once.
+
+1585
+01:15:36,891 --> 01:15:39,584
+Once you have the synchronous
+version of CVP, it's very easy.
+
+1586
+01:15:39,584 --> 01:15:41,250
+I didn't draw a
+synchronous picture here
+
+1587
+01:15:41,250 --> 01:15:43,083
+because it's tedious
+to draw these pictures.
+
+1588
+01:15:43,083 --> 01:15:47,370
+But if you just set these--
+whichever the 1 bits are--
+
+1589
+01:15:47,370 --> 01:15:49,080
+as your initially
+active edges-- those
+
+1590
+01:15:49,080 --> 01:15:51,590
+are the ones that just
+flipped, just reversed,
+
+1591
+01:15:51,590 --> 01:15:53,540
+then things will just
+propagate and everything
+
+1592
+01:15:53,540 --> 01:15:56,420
+will be timed exactly right,
+whenever you arrive at a gate.
+
+1593
+01:15:56,420 --> 01:15:58,060
+Both of the inputs
+have just activated.
+
+1594
+01:15:58,060 --> 01:15:59,380
+And then the output
+will activate.
+
+1595
+01:15:59,380 --> 01:16:00,220
+So just like before.
+
+1596
+01:16:00,220 --> 01:16:02,480
+But now each edge only
+has to reverse once.
+
+1597
+01:16:02,480 --> 01:16:04,920
+And you'll get the
+results at the end.
+
+1598
+01:16:04,920 --> 01:16:06,750
+So deciding whether
+the last edge flips
+
+1599
+01:16:06,750 --> 01:16:11,040
+is the same as whether the
+output was a 1 in the circuit.
+
+1600
+01:16:11,040 --> 01:16:13,610
+Open problem, I guess, would
+be to use bounded deterministic
+
+1601
+01:16:13,610 --> 01:16:15,360
+constrain logic to
+prove interesting games
+
+1602
+01:16:15,360 --> 01:16:17,410
+P-complete or interesting
+problems P-complete.
+
+1603
+01:16:17,410 --> 01:16:19,600
+That hasn't been done.
+
+1604
+01:16:19,600 --> 01:16:28,010
+But I have, for fun, an example
+of the P completeness-- P
+
+1605
+01:16:28,010 --> 01:16:30,180
+hardness reduction.
+
+1606
+01:16:30,180 --> 01:16:33,140
+So suppose you want to
+find an independence set.
+
+1607
+01:16:33,140 --> 01:16:34,390
+Independence set is hard.
+
+1608
+01:16:34,390 --> 01:16:36,530
+Suppose I want to find a
+maximal independence set,
+
+1609
+01:16:36,530 --> 01:16:39,270
+an independence set where I
+can't add anymore vertices.
+
+1610
+01:16:39,270 --> 01:16:40,670
+So here's a way to do that.
+
+1611
+01:16:40,670 --> 01:16:42,510
+I start with nothing.
+
+1612
+01:16:42,510 --> 01:16:44,590
+I do a for loop.
+
+1613
+01:16:44,590 --> 01:16:46,090
+Let's say the
+vertices are numbered.
+
+1614
+01:16:46,090 --> 01:16:48,370
+It's going to be important.
+
+1615
+01:16:48,370 --> 01:16:54,570
+And if I can add
+that vertex, add it.
+
+1616
+01:16:54,570 --> 01:16:57,510
+If V is not adjacent
+to S, add it.
+
+1617
+01:16:57,510 --> 01:16:58,010
+OK.
+
+1618
+01:16:58,010 --> 01:16:59,780
+I mean, this whole
+world is weird
+
+1619
+01:16:59,780 --> 01:17:01,780
+because it's all about
+polynomial time problems.
+
+1620
+01:17:01,780 --> 01:17:03,580
+Here's a polynomial
+time algorithm.
+
+1621
+01:17:03,580 --> 01:17:08,100
+It produces what I would call
+the lexically first maximal
+
+1622
+01:17:08,100 --> 01:17:11,670
+independence set because
+it adds 1, if it can.
+
+1623
+01:17:11,670 --> 01:17:15,050
+And then, subject to that, it
+adds 2 if it can, and so on.
+
+1624
+01:17:15,050 --> 01:17:17,340
+I will always add one, I guess.
+
+1625
+01:17:17,340 --> 01:17:19,570
+So with this
+labeling of vertices,
+
+1626
+01:17:19,570 --> 01:17:22,310
+it finds the lexically
+smallest one.
+
+1627
+01:17:22,310 --> 01:17:24,450
+Suppose you want to find
+the lexically smallest
+
+1628
+01:17:24,450 --> 01:17:25,860
+maximal independence set.
+
+1629
+01:17:25,860 --> 01:17:29,550
+finding a maximal independence
+set can be done in parallel.
+
+1630
+01:17:29,550 --> 01:17:32,390
+But finding the lexically
+smallest one cannot.
+
+1631
+01:17:32,390 --> 01:17:33,580
+This is P-complete.
+
+1632
+01:17:33,580 --> 01:17:38,070
+
+1633
+01:17:38,070 --> 01:17:39,890
+And the reduction is super cute.
+
+1634
+01:17:39,890 --> 01:17:42,890
+
+1635
+01:17:42,890 --> 01:17:50,300
+Reduction from NOR CVP.
+
+1636
+01:17:50,300 --> 01:17:52,750
+Suppose I give
+you a NOR circuit,
+
+1637
+01:17:52,750 --> 01:17:56,210
+and I want to know whether
+the output becomes true.
+
+1638
+01:17:56,210 --> 01:17:59,680
+What I'm going to do is
+build a special vertex,
+
+1639
+01:17:59,680 --> 01:18:07,680
+called 0, which is connected
+to all of the 0 inputs.
+
+1640
+01:18:07,680 --> 01:18:10,150
+So the circuit has 0
+inputs and 1 inputs.
+
+1641
+01:18:10,150 --> 01:18:12,561
+I'm going to make the
+inputs into nodes.
+
+1642
+01:18:12,561 --> 01:18:13,060
+OK?
+
+1643
+01:18:13,060 --> 01:18:15,060
+And so there are some 1 nodes.
+
+1644
+01:18:15,060 --> 01:18:16,890
+Those are just
+going to be nodes.
+
+1645
+01:18:16,890 --> 01:18:19,780
+They connect to
+whatever the gates are.
+
+1646
+01:18:19,780 --> 01:18:22,680
+Then these things are combined
+with various gates, and so on.
+
+1647
+01:18:22,680 --> 01:18:24,950
+I'm just going to replace
+a gate with a node.
+
+1648
+01:18:24,950 --> 01:18:27,440
+I'm going to replace
+an input with a node.
+
+1649
+01:18:27,440 --> 01:18:29,400
+And I'm going to add
+a special node, 0,
+
+1650
+01:18:29,400 --> 01:18:31,580
+which is numbered
+first, that connects
+
+1651
+01:18:31,580 --> 01:18:34,370
+to all of the 0 inputs.
+
+1652
+01:18:34,370 --> 01:18:38,070
+And then I'm also going
+to order the vertices
+
+1653
+01:18:38,070 --> 01:18:39,730
+in a topological sort.
+
+1654
+01:18:39,730 --> 01:18:41,700
+So this will have
+the earliest number.
+
+1655
+01:18:41,700 --> 01:18:42,940
+Then these guys.
+
+1656
+01:18:42,940 --> 01:18:43,880
+And so on.
+
+1657
+01:18:43,880 --> 01:18:45,590
+So any topological sort.
+
+1658
+01:18:45,590 --> 01:18:48,590
+Lemma topological sorting
+can be done in parallel.
+
+1659
+01:18:48,590 --> 01:18:50,750
+There's an NC algorithm
+for topological sorting.
+
+1660
+01:18:50,750 --> 01:18:55,750
+We need that here because this
+reduction has to be in NC.
+
+1661
+01:18:55,750 --> 01:19:00,070
+But once you do
+that, I claim that V
+
+1662
+01:19:00,070 --> 01:19:05,500
+will be in S if, and only
+if, that gate outputs a 1.
+
+1663
+01:19:05,500 --> 01:19:08,210
+
+1664
+01:19:08,210 --> 01:19:10,366
+Proof by induction.
+
+1665
+01:19:10,366 --> 01:19:11,740
+So initially, this
+is going to be
+
+1666
+01:19:11,740 --> 01:19:15,050
+put in the independent set,
+which means these guys won't,
+
+1667
+01:19:15,050 --> 01:19:18,020
+but these guys will because
+they're lexically first--
+
+1668
+01:19:18,020 --> 01:19:20,334
+or they're first in
+the topological order--
+
+1669
+01:19:20,334 --> 01:19:21,125
+and then induction.
+
+1670
+01:19:21,125 --> 01:19:23,492
+
+1671
+01:19:23,492 --> 01:19:24,950
+There's only one
+type of gate here.
+
+1672
+01:19:24,950 --> 01:19:25,830
+It's a NOR.
+
+1673
+01:19:25,830 --> 01:19:28,120
+So basically, this
+guy will be circled
+
+1674
+01:19:28,120 --> 01:19:32,500
+if, and only if, neither
+of the inputs are circles.
+
+1675
+01:19:32,500 --> 01:19:33,440
+So that's a NOR.
+
+1676
+01:19:33,440 --> 01:19:34,910
+And so then the
+decision question
+
+1677
+01:19:34,910 --> 01:19:37,350
+is there's some last thing
+corresponding to the output.
+
+1678
+01:19:37,350 --> 01:19:40,440
+It's going to be circled if, and
+only if, the circuit outputs 1.
+
+1679
+01:19:40,440 --> 01:19:41,460
+And that's it.
+
+1680
+01:19:41,460 --> 01:19:43,630
+It's kind of a
+beautiful reduction.
+
+1681
+01:19:43,630 --> 01:19:46,260
+And I just, for fun, I have a
+list of some more P-complete
+
+1682
+01:19:46,260 --> 01:19:48,200
+problems without proofs.
+
+1683
+01:19:48,200 --> 01:19:50,120
+Game of Life, obviously.
+
+1684
+01:19:50,120 --> 01:19:53,430
+When you're given a time bound
+that is written in unary,
+
+1685
+01:19:53,430 --> 01:19:56,580
+and I want to know, is this
+cell alive at time t, where
+
+1686
+01:19:56,580 --> 01:19:59,440
+t is written in unary, by
+the proof we did already,
+
+1687
+01:19:59,440 --> 01:20:01,710
+that's P-complete.
+
+1688
+01:20:01,710 --> 01:20:04,010
+And just, it's with
+the unary version.
+
+1689
+01:20:04,010 --> 01:20:06,140
+Also, one-dimensional
+cellular automata.
+
+1690
+01:20:06,140 --> 01:20:07,740
+Same kind of thing.
+
+1691
+01:20:07,740 --> 01:20:08,860
+Generalize geography.
+
+1692
+01:20:08,860 --> 01:20:11,010
+Remember that PSPACE
+complete problem.
+
+1693
+01:20:11,010 --> 01:20:13,346
+But if you have an
+acyclic directed graph,
+
+1694
+01:20:13,346 --> 01:20:15,220
+and you want to solve
+geography on an acyclic
+
+1695
+01:20:15,220 --> 01:20:17,261
+directed graph-- so it's
+a two player game-- that
+
+1696
+01:20:17,261 --> 01:20:19,960
+can be done in polynomial time.
+
+1697
+01:20:19,960 --> 01:20:22,580
+But it's P-complete.
+
+1698
+01:20:22,580 --> 01:20:24,530
+If I have a point
+set in the plane,
+
+1699
+01:20:24,530 --> 01:20:27,135
+and I compute the convex
+hull, remove those points,
+
+1700
+01:20:27,135 --> 01:20:29,010
+compute the convex hull,
+remove those points,
+
+1701
+01:20:29,010 --> 01:20:30,520
+it's called an onion peeling.
+
+1702
+01:20:30,520 --> 01:20:34,510
+And given a point, I want to
+know, is it on the k-th layer
+
+1703
+01:20:34,510 --> 01:20:36,379
+for some value k,
+that's P-complete.
+
+1704
+01:20:36,379 --> 01:20:38,170
+Basically, you have to
+sequentially compute
+
+1705
+01:20:38,170 --> 01:20:41,080
+the convex hulls.
+
+1706
+01:20:41,080 --> 01:20:43,890
+Another good canonical
+one is multilist ranking.
+
+1707
+01:20:43,890 --> 01:20:47,730
+Suppose I give you k, say,
+sorted lists of numbers,
+
+1708
+01:20:47,730 --> 01:20:51,100
+and I want to know,
+given an item,
+
+1709
+01:20:51,100 --> 01:20:54,110
+what is its rank in
+the union of the lists?
+
+1710
+01:20:54,110 --> 01:20:56,820
+So items can appear
+in multiple lists.
+
+1711
+01:20:56,820 --> 01:20:59,710
+And I want to know, is it the
+kth item, in sorted order,
+
+1712
+01:20:59,710 --> 01:21:00,650
+in the union?
+
+1713
+01:21:00,650 --> 01:21:02,670
+So basically, I want
+to sort the union.
+
+1714
+01:21:02,670 --> 01:21:05,570
+That's P-complete.
+
+1715
+01:21:05,570 --> 01:21:09,930
+If I want to compute A mod
+B1, mod B2, mod B3, mod B4,
+
+1716
+01:21:09,930 --> 01:21:12,160
+n times-- so the
+repeated mod-- I
+
+1717
+01:21:12,160 --> 01:21:15,330
+want to know whether that
+equals 0, that's P-complete.
+
+1718
+01:21:15,330 --> 01:21:17,770
+If I wanted to--
+linear programming,
+
+1719
+01:21:17,770 --> 01:21:19,690
+that's polynomial time.
+
+1720
+01:21:19,690 --> 01:21:22,450
+This is P-complete, even when
+the coefficients are 0 and 1.
+
+1721
+01:21:22,450 --> 01:21:24,720
+So this is called
+strongly P-complete.
+
+1722
+01:21:24,720 --> 01:21:30,060
+You don't need large numbers,
+whereas something like max flow
+
+1723
+01:21:30,060 --> 01:21:36,157
+is weakly P-complete and can be,
+in the analogy to full P test--
+
+1724
+01:21:36,157 --> 01:21:38,240
+fully polynomial time
+approximation scheme-- there
+
+1725
+01:21:38,240 --> 01:21:41,020
+is a fully RNC
+approximation scheme.
+
+1726
+01:21:41,020 --> 01:21:43,120
+R means there's randomization.
+
+1727
+01:21:43,120 --> 01:21:45,536
+I think it's open, whether
+you can get rid of that.
+
+1728
+01:21:45,536 --> 01:21:47,910
+There's some fun open problems,
+like deciding whether two
+
+1729
+01:21:47,910 --> 01:21:49,360
+numbers are relatively prime.
+
+1730
+01:21:49,360 --> 01:21:51,050
+It's conjectured
+to be P-complete.
+
+1731
+01:21:51,050 --> 01:21:52,220
+But we don't know.
+
+1732
+01:21:52,220 --> 01:21:56,940
+Computing A or the B mod C is
+conjectured to be P-complete.
+
+1733
+01:21:56,940 --> 01:22:01,270
+Maximum matching is conjectured
+to be-- with large edge
+
+1734
+01:22:01,270 --> 01:22:03,360
+weights, it's conjectured
+to be P-complete.
+
+1735
+01:22:03,360 --> 01:22:07,070
+But there is a
+pseudo RNC algorithm.
+
+1736
+01:22:07,070 --> 01:22:10,480
+So if the weights are small,
+and you allow randomization,
+
+1737
+01:22:10,480 --> 01:22:13,210
+then it's parallelizable.
+
+1738
+01:22:13,210 --> 01:22:15,260
+Another open problem
+is graph isomorphism
+
+1739
+01:22:15,260 --> 01:22:17,829
+with bounded degree,
+which is polynomial time.
+
+1740
+01:22:17,829 --> 01:22:18,620
+I didn't know that.
+
+1741
+01:22:18,620 --> 01:22:20,119
+But bounded degree
+graph isomorphism
+
+1742
+01:22:20,119 --> 01:22:22,104
+is easy in a serial setting.
+
+1743
+01:22:22,104 --> 01:22:24,270
+But a conjecture is it's
+hard in a parallel setting.
+
+1744
+01:22:24,270 --> 01:22:27,450
+So lots of things out there.
+
+1745
+01:22:27,450 --> 01:22:29,790
+I don't see too many
+papers about P completeness
+
+1746
+01:22:29,790 --> 01:22:30,480
+these days.
+
+1747
+01:22:30,480 --> 01:22:32,040
+But it's a fun thing.
+
+1748
+01:22:32,040 --> 01:22:35,290
+Once you decide your problem is
+in P, next thing, next level,
+
+1749
+01:22:35,290 --> 01:22:37,980
+you can find hardness
+anywhere, it turns out.
+
+1750
+01:22:37,980 --> 01:22:40,734
+Next thing is to prove P
+completeness for your problem,
+
+1751
+01:22:40,734 --> 01:22:42,400
+make sure there's no
+parallel algorithm,
+
+1752
+01:22:42,400 --> 01:22:44,220
+or find an NC algorithm.
+
+1753
+01:22:44,220 --> 01:22:46,280
+If you do the upper bound
+side, once you have NC,
+
+1754
+01:22:46,280 --> 01:22:48,800
+you want to get the
+smallest depth possible.
+
+1755
+01:22:48,800 --> 01:22:50,900
+That's another story.
+
+1756
+01:22:50,900 --> 01:22:51,640
+Cool.
+
+1757
+01:22:51,640 --> 01:22:53,700
+That's it for today.
+

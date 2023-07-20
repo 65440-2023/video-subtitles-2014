@@ -1,0 +1,6824 @@
+1
+0-1:59:36,500 --> 0-1:59:36,580
+
+2
+0-1:59:36,580 --> 0-1:59:38,930
+The following content is
+provided under a Creative
+
+3
+0-1:59:38,930 --> 0-1:59:40,320
+Commons license.
+
+4
+0-1:59:40,320 --> 0-1:59:42,560
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:42,560 --> 0-1:59:46,650
+continue to offer high quality
+educational resources for free.
+
+6
+0-1:59:46,650 --> 0-1:59:49,190
+To make a donation or to
+view additional materials
+
+7
+0-1:59:49,190 --> 0-1:59:53,100
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:53,100 --> 0-1:59:53,830
+at ocw.mit.edu.
+
+9
+0-1:59:53,830 --> 00:00:03,010
+
+10
+00:00:03,010 --> 00:00:06,036
+PROFESSOR: Today
+we start a-- we're
+
+11
+00:00:06,036 --> 00:00:08,410
+going to take a little break
+from parametrized complexity
+
+12
+00:00:08,410 --> 00:00:11,330
+and talk about something called
+exponential time hypothesis,
+
+13
+00:00:11,330 --> 00:00:14,340
+which I've mentioned a few
+times but we haven't really
+
+14
+00:00:14,340 --> 00:00:17,346
+talked about its many
+cool consequences.
+
+15
+00:00:17,346 --> 00:00:27,780
+
+16
+00:00:27,780 --> 00:00:29,480
+I'll abbreviate it ETH.
+
+17
+00:00:29,480 --> 00:00:32,740
+
+18
+00:00:32,740 --> 00:00:36,770
+And the idea is
+think about 3SAT.
+
+19
+00:00:36,770 --> 00:00:39,500
+
+20
+00:00:39,500 --> 00:00:49,045
+and the claim is it has no 2
+the little of n time algorithm.
+
+21
+00:00:49,045 --> 00:00:54,530
+
+22
+00:00:54,530 --> 00:00:57,530
+So of course you could
+make analogous assumptions
+
+23
+00:00:57,530 --> 00:01:02,580
+about KSAT set for various K.
+But in general, the hypothesis
+
+24
+00:01:02,580 --> 00:01:06,255
+is that for any fixed K, there
+is no 2 to the little l of n
+
+25
+00:01:06,255 --> 00:01:07,000
+time algorithm.
+
+26
+00:01:07,000 --> 00:01:10,030
+So 3SAT is the smallest
+one where that should hold.
+
+27
+00:01:10,030 --> 00:01:12,550
+2SAT, of course, is easy.
+
+28
+00:01:12,550 --> 00:01:16,580
+This is not the
+maximization version.
+
+29
+00:01:16,580 --> 00:01:18,610
+And our evidence
+for this is merely
+
+30
+00:01:18,610 --> 00:01:22,070
+that we haven't been able
+to find such an algorithm.
+
+31
+00:01:22,070 --> 00:01:25,590
+There are better than
+2 to the n algorithms.
+
+32
+00:01:25,590 --> 00:01:27,090
+The obvious algorithm
+is 2 to the n,
+
+33
+00:01:27,090 --> 00:01:30,840
+try all possible
+assignments times n.
+
+34
+00:01:30,840 --> 00:01:34,590
+But we won't worry about
+the non-exponential part.
+
+35
+00:01:34,590 --> 00:01:40,260
+The best algorithm to
+date is 1.31 to the n.
+
+36
+00:01:40,260 --> 00:01:41,770
+That's just from
+three years ago.
+
+37
+00:01:41,770 --> 00:01:43,490
+So it's an active
+area of research.
+
+38
+00:01:43,490 --> 00:01:45,750
+Many people have tried to
+find better SAT algorithms.
+
+39
+00:01:45,750 --> 00:01:47,960
+But conjecture is
+you cannot get, like,
+
+40
+00:01:47,960 --> 00:01:51,390
+2 the square root of n, the sum,
+and be complete problems have 2
+
+41
+00:01:51,390 --> 00:01:53,270
+to the square root of
+n time algorithms--
+
+42
+00:01:53,270 --> 00:01:54,770
+we'll see some today.
+
+43
+00:01:54,770 --> 00:01:56,470
+I'll mention some.
+
+44
+00:01:56,470 --> 00:01:58,700
+But seems like 2 to
+some constant times
+
+45
+00:01:58,700 --> 00:02:02,690
+n or some constant to
+the n power equivalently
+
+46
+00:02:02,690 --> 00:02:06,190
+is the right answer for 3SAT.
+
+47
+00:02:06,190 --> 00:02:10,750
+Now one issue to talk
+about very briefly--
+
+48
+00:02:10,750 --> 00:02:13,340
+it won't actually
+matter-- is what is n?
+
+49
+00:02:13,340 --> 00:02:15,170
+Normally n is the
+entire problem size,
+
+50
+00:02:15,170 --> 00:02:18,580
+which would be the
+number of clauses,
+
+51
+00:02:18,580 --> 00:02:21,970
+essentially, because each
+clause has three variables.
+
+52
+00:02:21,970 --> 00:02:23,990
+But the usual
+assumption is to say
+
+53
+00:02:23,990 --> 00:02:32,650
+this is the number of variables
+and m is the number of clauses.
+
+54
+00:02:32,650 --> 00:02:34,520
+But these turn out
+to be the same thing.
+
+55
+00:02:34,520 --> 00:02:41,430
+
+56
+00:02:41,430 --> 00:02:43,890
+So one assumption is equivalent
+to the other assumption,
+
+57
+00:02:43,890 --> 00:02:46,540
+so henceforth we don't
+need to worry about this.
+
+58
+00:02:46,540 --> 00:02:51,720
+
+59
+00:02:51,720 --> 00:02:53,820
+In general, m is
+at most n cubed,
+
+60
+00:02:53,820 --> 00:02:57,130
+because each clause can have
+three different variables,
+
+61
+00:02:57,130 --> 00:03:00,100
+so there's only n
+cubed possible clauses.
+
+62
+00:03:00,100 --> 00:03:02,470
+But when we're worried
+about this little o thing,
+
+63
+00:03:02,470 --> 00:03:04,350
+we actually care
+about polynomials,
+
+64
+00:03:04,350 --> 00:03:06,370
+because we're in the exponent.
+
+65
+00:03:06,370 --> 00:03:09,430
+So it turns out you can
+sort of think of m and n
+
+66
+00:03:09,430 --> 00:03:13,180
+as being linearly related--
+that's OK-- by something called
+
+67
+00:03:13,180 --> 00:03:14,520
+sparsification lemma.
+
+68
+00:03:14,520 --> 00:03:17,370
+It says that if you have a
+formula with a superlinear
+
+69
+00:03:17,370 --> 00:03:19,510
+number of clauses,
+you can convert it
+
+70
+00:03:19,510 --> 00:03:24,170
+into some vaguely reasonable
+number of formulas
+
+71
+00:03:24,170 --> 00:03:27,850
+with a linear number of clauses.
+
+72
+00:03:27,850 --> 00:03:30,399
+It's, like, 2 to the epsilon
+n different formulas,
+
+73
+00:03:30,399 --> 00:03:31,940
+each with a linear
+number of clauses.
+
+74
+00:03:31,940 --> 00:03:35,240
+And so the end effect
+we need to know
+
+75
+00:03:35,240 --> 00:03:37,750
+is that these two
+are equivalent.
+
+76
+00:03:37,750 --> 00:03:40,000
+We can think of situations
+where clauses and variables
+
+77
+00:03:40,000 --> 00:03:41,900
+are linearly related.
+
+78
+00:03:41,900 --> 00:03:43,972
+So that's the hypothesis.
+
+79
+00:03:43,972 --> 00:03:45,680
+Of course, we don't
+know how to prove it.
+
+80
+00:03:45,680 --> 00:03:47,846
+If we proved it, it would
+imply p does not equal np.
+
+81
+00:03:47,846 --> 00:03:49,940
+This is sort of a
+strong form of p
+
+82
+00:03:49,940 --> 00:03:51,860
+does not equal np from
+the SAT perspective.
+
+83
+00:03:51,860 --> 00:03:55,019
+Because we have so many
+reductions from SAT,
+
+84
+00:03:55,019 --> 00:03:57,730
+you can turn this lower bound.
+
+85
+00:03:57,730 --> 00:03:59,600
+If you assume this
+lower bound about SAT,
+
+86
+00:03:59,600 --> 00:04:01,460
+you can prove
+corresponding lower bounds
+
+87
+00:04:01,460 --> 00:04:04,410
+about other problems we've seen.
+
+88
+00:04:04,410 --> 00:04:07,230
+While I'm here, let
+me just tell you
+
+89
+00:04:07,230 --> 00:04:12,100
+another version of ETH
+called strong ETH, which
+
+90
+00:04:12,100 --> 00:04:25,740
+is that CNF SAT has no 2 minus
+epsilon to the n algorithm.
+
+91
+00:04:25,740 --> 00:04:29,210
+
+92
+00:04:29,210 --> 00:04:31,040
+So the idea is
+there's some ideal
+
+93
+00:04:31,040 --> 00:04:33,380
+constant to the n for each KSAT.
+
+94
+00:04:33,380 --> 00:04:37,100
+But as K goes to infinity,
+that constant goes to 2.
+
+95
+00:04:37,100 --> 00:04:38,700
+So if you have
+really large clauses,
+
+96
+00:04:38,700 --> 00:04:42,150
+you can't be 2 to
+the n, roughly.
+
+97
+00:04:42,150 --> 00:04:43,780
+This is for all
+epsilon greater than 0.
+
+98
+00:04:43,780 --> 00:04:46,340
+
+99
+00:04:46,340 --> 00:04:49,170
+So I won't talk about anything
+that needs this assumption,
+
+100
+00:04:49,170 --> 00:04:52,420
+but there is some work on-- you
+can get very specific bounds
+
+101
+00:04:52,420 --> 00:04:55,320
+on what the constant should
+be if you assume strong ETH.
+
+102
+00:04:55,320 --> 00:05:01,500
+
+103
+00:05:01,500 --> 00:05:05,660
+Let's take a review
+of past reductions.
+
+104
+00:05:05,660 --> 00:05:14,950
+And I'm going to start with
+3-coloring a graph for here.
+
+105
+00:05:14,950 --> 00:05:19,380
+So this was our proof
+that 3-coloring was hard.
+
+106
+00:05:19,380 --> 00:05:21,640
+There was a clause
+gadget, variable gadget,
+
+107
+00:05:21,640 --> 00:05:23,810
+this thing of constant size.
+
+108
+00:05:23,810 --> 00:05:29,190
+And the point is, if I
+start with some 3SAT--
+
+109
+00:05:29,190 --> 00:05:31,550
+this is a reduction from
+3SAT-- if I start with a 3SAT
+
+110
+00:05:31,550 --> 00:05:34,960
+instance that has n
+variables and m causes,
+
+111
+00:05:34,960 --> 00:05:37,420
+the number of vertices
+and edges over here
+
+112
+00:05:37,420 --> 00:05:43,440
+will be some constant
+times n plus m.
+
+113
+00:05:43,440 --> 00:05:51,095
+So 3-coloring, we get order
+n plus m vertices and edges.
+
+114
+00:05:51,095 --> 00:05:57,500
+
+115
+00:05:57,500 --> 00:06:00,580
+So what does that give me
+in terms of a lower bound?
+
+116
+00:06:00,580 --> 00:06:04,080
+Well, if I assume ETH that
+there's no 2 to the little of n
+
+117
+00:06:04,080 --> 00:06:09,990
+and no 2 to the little of
+m time algorithm for 3SAT,
+
+118
+00:06:09,990 --> 00:06:12,440
+then I get a corresponding
+thing that there's
+
+119
+00:06:12,440 --> 00:06:27,970
+no 2 to the little of n
+time algorithm for graphs
+
+120
+00:06:27,970 --> 00:06:35,070
+with number of vertices and
+number of edges linear in n.
+
+121
+00:06:35,070 --> 00:06:37,620
+So I state it this way
+because for graphs again,
+
+122
+00:06:37,620 --> 00:06:39,810
+there's the issue of
+sparse versus dense graphs.
+
+123
+00:06:39,810 --> 00:06:41,617
+I could just say
+for sparse graphs
+
+124
+00:06:41,617 --> 00:06:43,575
+here, which each have a
+linear number of edges.
+
+125
+00:06:43,575 --> 00:06:46,520
+
+126
+00:06:46,520 --> 00:06:55,320
+So this is, I should
+say, ETH implies this.
+
+127
+00:06:55,320 --> 00:07:00,480
+So while I thoroughly
+believe p does not equal np,
+
+128
+00:07:00,480 --> 00:07:05,120
+p does not equal np, ETH is
+a little bit more unknown.
+
+129
+00:07:05,120 --> 00:07:06,710
+So I'm going to
+explicitly mention
+
+130
+00:07:06,710 --> 00:07:11,170
+ETH teach every time I use it.
+
+131
+00:07:11,170 --> 00:07:16,290
+And more generally if we look
+at various past reductions,
+
+132
+00:07:16,290 --> 00:07:23,080
+all we need to measure is
+something called size blowup.
+
+133
+00:07:23,080 --> 00:07:25,780
+Remember an np
+reduction Karp style,
+
+134
+00:07:25,780 --> 00:07:28,350
+you start with some instance x,
+you make an instance x prime.
+
+135
+00:07:28,350 --> 00:07:33,590
+And the size of x prime--
+this was our reduction
+
+136
+00:07:33,590 --> 00:07:38,590
+f-- the size of x prime should
+be polynomial in the size of x.
+
+137
+00:07:38,590 --> 00:07:40,030
+What's that polynomial?
+
+138
+00:07:40,030 --> 00:07:41,590
+That's your blowup.
+
+139
+00:07:41,590 --> 00:07:47,540
+So if we have n, which is
+the size of x over here
+
+140
+00:07:47,540 --> 00:07:51,350
+and n prime, which is
+the size of x prime,
+
+141
+00:07:51,350 --> 00:07:59,854
+this was polynomial in n
+and that is the size blowup.
+
+142
+00:07:59,854 --> 00:08:05,790
+
+143
+00:08:05,790 --> 00:08:13,039
+And so in particular, if
+we have linear blowup,
+
+144
+00:08:13,039 --> 00:08:15,200
+like in this example
+of 3-coloring,
+
+145
+00:08:15,200 --> 00:08:21,010
+then we preserve
+the ETH statement.
+
+146
+00:08:21,010 --> 00:08:23,820
+
+147
+00:08:23,820 --> 00:08:31,250
+No 2 to the little o
+of n time algorithm,
+
+148
+00:08:31,250 --> 00:08:34,570
+meaning if there was no 2 to
+the little o of n algorithm
+
+149
+00:08:34,570 --> 00:08:36,713
+for problem A, then
+there'll be no 2
+
+150
+00:08:36,713 --> 00:08:39,330
+to the little o of n
+algorithm for problem B,
+
+151
+00:08:39,330 --> 00:08:44,550
+because you could just convert
+to only get a linear size
+
+152
+00:08:44,550 --> 00:08:47,230
+blowup, run that
+algorithm if there was a 2
+
+153
+00:08:47,230 --> 00:08:49,280
+to the little o of n algorithm.
+
+154
+00:08:49,280 --> 00:08:52,230
+And then that solves A in 2
+to the little o of n time.
+
+155
+00:08:52,230 --> 00:08:54,030
+So the usual argument,
+but now we're
+
+156
+00:08:54,030 --> 00:08:58,190
+giving explicit bounds
+on the running time.
+
+157
+00:08:58,190 --> 00:09:00,980
+More generally, if you
+don't have linear blowup,
+
+158
+00:09:00,980 --> 00:09:06,220
+let's call this function b of n.
+
+159
+00:09:06,220 --> 00:09:09,530
+Let's say size of x prime is
+always at most some function
+
+160
+00:09:09,530 --> 00:09:12,490
+b of n, b for blowup.
+
+161
+00:09:12,490 --> 00:09:22,240
+Then if there's no 2 to the
+little o of n algorithm for A,
+
+162
+00:09:22,240 --> 00:09:27,690
+then there will be no
+2 to the little o of b
+
+163
+00:09:27,690 --> 00:09:35,720
+inverse of n algorithm for B.
+
+164
+00:09:35,720 --> 00:09:38,630
+So for example, if you have
+quadratic blowup, b of n
+
+165
+00:09:38,630 --> 00:09:41,360
+is n squared, then you
+will say that there's no 2
+
+166
+00:09:41,360 --> 00:09:43,810
+to the square root of
+n, no 2 to the little o
+
+167
+00:09:43,810 --> 00:09:45,644
+of square root of n algorithm.
+
+168
+00:09:45,644 --> 00:09:48,280
+
+169
+00:09:48,280 --> 00:09:51,060
+You can imagine how that goes.
+
+170
+00:09:51,060 --> 00:09:54,790
+So here are some nice examples
+of reductions we've seen.
+
+171
+00:09:54,790 --> 00:09:57,910
+This one was from lecture seven.
+
+172
+00:09:57,910 --> 00:10:05,816
+Then from lecture 10, we had
+dominating set-- oh, sorry.
+
+173
+00:10:05,816 --> 00:10:08,380
+I have one more
+before dominating set.
+
+174
+00:10:08,380 --> 00:10:09,870
+This was in the
+context of proving
+
+175
+00:10:09,870 --> 00:10:11,670
+planar vertex cover was hard.
+
+176
+00:10:11,670 --> 00:10:14,280
+First, planar 3SAT was hard
+and then a reduction from 3SAT.
+
+177
+00:10:14,280 --> 00:10:16,260
+But ignore the planar
+issue, because things
+
+178
+00:10:16,260 --> 00:10:19,820
+are going to be a little
+different for planar graphs.
+
+179
+00:10:19,820 --> 00:10:23,330
+But for general graphs, this
+was a reduction from 3SAT.
+
+180
+00:10:23,330 --> 00:10:29,630
+And there was a constant
+number of vertices and edges
+
+181
+00:10:29,630 --> 00:10:31,100
+for each clause.
+
+182
+00:10:31,100 --> 00:10:34,270
+And then also here, we had
+to make a copy of variable
+
+183
+00:10:34,270 --> 00:10:36,500
+for each occurrence,
+but the total number
+
+184
+00:10:36,500 --> 00:10:38,570
+of recurrences of all
+variables is linear,
+
+185
+00:10:38,570 --> 00:10:41,810
+because there's only three
+occurrences per clause.
+
+186
+00:10:41,810 --> 00:10:45,630
+So the total number of vertices
+in these variable gadgets
+
+187
+00:10:45,630 --> 00:10:48,120
+is also linear, so the
+whole thing is linear.
+
+188
+00:10:48,120 --> 00:10:49,500
+Size blowup is linear.
+
+189
+00:10:49,500 --> 00:11:02,620
+And so vertex cover is another
+example of this type of result.
+
+190
+00:11:02,620 --> 00:11:05,640
+Assuming ETH, there is
+no 2 to the little o
+
+191
+00:11:05,640 --> 00:11:09,541
+of an algorithm for graphs whose
+number vertices and edges is
+
+192
+00:11:09,541 --> 00:11:10,040
+order m.
+
+193
+00:11:10,040 --> 00:11:12,288
+AUDIENCE: Is there a
+name for that class?
+
+194
+00:11:12,288 --> 00:11:15,030
+PROFESSOR: That
+should have a class,
+
+195
+00:11:15,030 --> 00:11:20,310
+but-- I can make
+one up, if you want.
+
+196
+00:11:20,310 --> 00:11:24,800
+We could call it an
+ETH-style graph problem,
+
+197
+00:11:24,800 --> 00:11:29,850
+say sparse graphs no 2 to the
+little o of n assuming ETH.
+
+198
+00:11:29,850 --> 00:11:32,750
+So it's sort of saying it's
+linearly related to SAT,
+
+199
+00:11:32,750 --> 00:11:36,370
+but as far as I know it
+doesn't have a proper name.
+
+200
+00:11:36,370 --> 00:11:38,100
+It should, because
+I had to write it
+
+201
+00:11:38,100 --> 00:11:41,200
+many times in my notes.
+
+202
+00:11:41,200 --> 00:11:42,827
+Another one was dominating set.
+
+203
+00:11:42,827 --> 00:11:44,910
+I don't have a slide for
+this, because there never
+
+204
+00:11:44,910 --> 00:11:48,920
+was one, because the
+reduction was so simple.
+
+205
+00:11:48,920 --> 00:11:51,400
+It was if you have an edge
+in the vertex cover instance,
+
+206
+00:11:51,400 --> 00:11:57,660
+you convert it into a subdivided
+edge and the original edge
+
+207
+00:11:57,660 --> 00:12:01,030
+for dominating set.
+
+208
+00:12:01,030 --> 00:12:03,930
+And then you have
+the same problem.
+
+209
+00:12:03,930 --> 00:12:04,806
+It's the domination.
+
+210
+00:12:04,806 --> 00:12:06,430
+So it's the same
+thing as vertex cover.
+
+211
+00:12:06,430 --> 00:12:08,721
+You never want to put this
+thing in the dominating set.
+
+212
+00:12:08,721 --> 00:12:10,800
+You might as well move
+to one of the neighbors.
+
+213
+00:12:10,800 --> 00:12:15,020
+So that's again, a
+linear size blowup.
+
+214
+00:12:15,020 --> 00:12:18,010
+And so dominating set
+is also in this class,
+
+215
+00:12:18,010 --> 00:12:21,160
+who shall remain nameless.
+
+216
+00:12:21,160 --> 00:12:23,430
+And another one
+is Hamiltonicity.
+
+217
+00:12:23,430 --> 00:12:24,990
+We saw a couple of
+different proofs.
+
+218
+00:12:24,990 --> 00:12:27,840
+This one is from lecture seven.
+
+219
+00:12:27,840 --> 00:12:29,800
+This was ostensibly
+for directed,
+
+220
+00:12:29,800 --> 00:12:34,850
+thought it also claims to
+work for undirected graphs.
+
+221
+00:12:34,850 --> 00:12:37,346
+Linear?
+
+222
+00:12:37,346 --> 00:12:39,220
+Maybe I'll jump to the
+next one, because it's
+
+223
+00:12:39,220 --> 00:12:41,260
+a bit of a stronger result.
+
+224
+00:12:41,260 --> 00:12:44,960
+This was maximum degree
+3, Hamiltonicity directed.
+
+225
+00:12:44,960 --> 00:12:47,740
+This was lecture eight.
+
+226
+00:12:47,740 --> 00:12:51,070
+It's also linear.
+
+227
+00:12:51,070 --> 00:12:52,780
+I mean, the main
+diagram is this.
+
+228
+00:12:52,780 --> 00:12:56,570
+It's linear if you're not
+aiming for planar graphs.
+
+229
+00:12:56,570 --> 00:12:58,780
+And then there's no
+crossover gadget here.
+
+230
+00:12:58,780 --> 00:13:01,840
+And so the total complexity
+of all these things is linear.
+
+231
+00:13:01,840 --> 00:13:03,450
+So that's cool.
+
+232
+00:13:03,450 --> 00:13:10,035
+So Hamiltonicity
+is another example
+
+233
+00:13:10,035 --> 00:13:13,240
+of a graph problem with no 2
+to the little o of n algorithm,
+
+234
+00:13:13,240 --> 00:13:13,940
+assuming ETH.
+
+235
+00:13:13,940 --> 00:13:16,860
+
+236
+00:13:16,860 --> 00:13:22,270
+And from this proof-- this was
+for directed max degree 3--
+
+237
+00:13:22,270 --> 00:13:25,000
+and it was also bipartite.
+
+238
+00:13:25,000 --> 00:13:28,880
+And then we reduced that
+to undirected-- sorry.
+
+239
+00:13:28,880 --> 00:13:32,370
+We reduced from planar
+directed max degree 3
+
+240
+00:13:32,370 --> 00:13:36,640
+to planar bipartite
+undirected max degree 3.
+
+241
+00:13:36,640 --> 00:13:38,390
+And that's of
+course also linear.
+
+242
+00:13:38,390 --> 00:13:41,800
+So all these things
+we get for free.
+
+243
+00:13:41,800 --> 00:13:43,336
+We did them in
+different contexts.
+
+244
+00:13:43,336 --> 00:13:44,460
+That was for planar graphs.
+
+245
+00:13:44,460 --> 00:13:48,000
+This one was for APX
+hardness for independent set.
+
+246
+00:13:48,000 --> 00:13:51,010
+But we use the same proof.
+
+247
+00:13:51,010 --> 00:13:52,860
+And we have this biclique
+for the variable.
+
+248
+00:13:52,860 --> 00:13:55,430
+Now here you start to worry
+this could be quadratic blowup.
+
+249
+00:13:55,430 --> 00:13:57,950
+
+250
+00:13:57,950 --> 00:14:02,210
+But this was actually a
+reduction from 3SAT-3.
+
+251
+00:14:02,210 --> 00:14:04,976
+So that we didn't have a
+very large clique there.
+
+252
+00:14:04,976 --> 00:14:07,050
+It was actually only
+three nodes in it,
+
+253
+00:14:07,050 --> 00:14:10,170
+so it's more like two edges.
+
+254
+00:14:10,170 --> 00:14:12,530
+But in general,
+3SAT, any constant
+
+255
+00:14:12,530 --> 00:14:14,410
+would suffice for that proof.
+
+256
+00:14:14,410 --> 00:14:17,940
+You also have to check that this
+reduction from 3SAT to 3SAT-3
+
+257
+00:14:17,940 --> 00:14:18,609
+is OK.
+
+258
+00:14:18,609 --> 00:14:20,900
+But it's, again, linear blowup
+because the total number
+
+259
+00:14:20,900 --> 00:14:23,510
+of occurrences of all
+variables is linear.
+
+260
+00:14:23,510 --> 00:14:35,270
+So that was a whole bunch of
+free results-- independent set,
+
+261
+00:14:35,270 --> 00:14:36,580
+3SAT-3.
+
+262
+00:14:36,580 --> 00:14:40,560
+That's not a graph problem, so
+I won't write it in this list.
+
+263
+00:14:40,560 --> 00:14:43,730
+Now, normally independent set
+is the same thing as clique.
+
+264
+00:14:43,730 --> 00:14:45,920
+In this universe,
+that's not quite right
+
+265
+00:14:45,920 --> 00:14:47,670
+because we're talking
+about sparse graphs.
+
+266
+00:14:47,670 --> 00:14:50,910
+For clique, it's still
+the case that there's
+
+267
+00:14:50,910 --> 00:14:54,860
+no 2 to the little o of
+number of vertices algorithm.
+
+268
+00:14:54,860 --> 00:14:57,770
+But the number of edges used to
+be linear for independent set
+
+269
+00:14:57,770 --> 00:15:00,510
+and becomes
+quadratic for clique.
+
+270
+00:15:00,510 --> 00:15:02,560
+So you have to be a little
+careful with clique.
+
+271
+00:15:02,560 --> 00:15:09,330
+
+272
+00:15:09,330 --> 00:15:11,630
+So all is good as
+long as we're talking
+
+273
+00:15:11,630 --> 00:15:14,300
+about non-planar graphs.
+
+274
+00:15:14,300 --> 00:15:17,990
+What about planar graphs?
+
+275
+00:15:17,990 --> 00:15:20,470
+Well, this is not true
+for planar graphs.
+
+276
+00:15:20,470 --> 00:15:24,610
+In general, you tend to get
+2 to the square root of n
+
+277
+00:15:24,610 --> 00:15:28,950
+algorithms, and that's
+tight, assuming ETH.
+
+278
+00:15:28,950 --> 00:15:33,085
+So for example, planar 3SAT
+we had a crossover gadget.
+
+279
+00:15:33,085 --> 00:15:35,210
+And in the worst case,
+there are a quadratic number
+
+280
+00:15:35,210 --> 00:15:37,400
+of crossings.
+
+281
+00:15:37,400 --> 00:15:39,920
+And so the blowup
+in our problem size,
+
+282
+00:15:39,920 --> 00:15:42,360
+because we spend
+some constant number
+
+283
+00:15:42,360 --> 00:15:46,830
+of vertices per crossover,
+the blowup is quadratic.
+
+284
+00:15:46,830 --> 00:16:02,900
+And so for, say,
+planar 3SAT, ETH
+
+285
+00:16:02,900 --> 00:16:11,090
+implies no 2 to the little o
+of n or 2 to the little o of m
+
+286
+00:16:11,090 --> 00:16:14,549
+algorithm-- sorry,
+with square root.
+
+287
+00:16:14,549 --> 00:16:20,780
+
+288
+00:16:20,780 --> 00:16:22,324
+So with 3SAT, it's
+a little annoying
+
+289
+00:16:22,324 --> 00:16:24,490
+because we have to think
+about variables and clauses
+
+290
+00:16:24,490 --> 00:16:25,320
+separately.
+
+291
+00:16:25,320 --> 00:16:28,480
+So the size blowup is not
+quite as uniquely defined.
+
+292
+00:16:28,480 --> 00:16:32,550
+But just analyzing number of
+variables, number of clauses
+
+293
+00:16:32,550 --> 00:16:34,560
+separately, the blowup
+is quadratic in both.
+
+294
+00:16:34,560 --> 00:16:38,610
+So that's the
+lower bound we get.
+
+295
+00:16:38,610 --> 00:16:47,829
+And then I have planar
+3-coloring, vertex cover,
+
+296
+00:16:47,829 --> 00:16:52,355
+dominating set, Hamiltonicity,
+independent set.
+
+297
+00:16:52,355 --> 00:16:54,880
+
+298
+00:16:54,880 --> 00:17:00,306
+All of them have the
+property that ETH implies.
+
+299
+00:17:00,306 --> 00:17:05,510
+No 2 to the little o of
+square root of n algorithm
+
+300
+00:17:05,510 --> 00:17:06,260
+for planar graphs.
+
+301
+00:17:06,260 --> 00:17:10,750
+
+302
+00:17:10,750 --> 00:17:12,790
+Now planar graphs
+are always sparse,
+
+303
+00:17:12,790 --> 00:17:17,020
+so I don't need to worry about
+how many edges versus vertices.
+
+304
+00:17:17,020 --> 00:17:21,350
+n is within a constant of both.
+
+305
+00:17:21,350 --> 00:17:22,620
+How you prove that?
+
+306
+00:17:22,620 --> 00:17:26,100
+Exactly the same proofs
+that we just looked at.
+
+307
+00:17:26,100 --> 00:17:28,494
+They were all actually proofs
+for the planar problem,
+
+308
+00:17:28,494 --> 00:17:30,160
+but they all had some
+kind of crossover.
+
+309
+00:17:30,160 --> 00:17:32,310
+Either they started from
+planar 3SAT, in which case
+
+310
+00:17:32,310 --> 00:17:33,950
+they were already quadratic.
+
+311
+00:17:33,950 --> 00:17:38,450
+Like this one was
+from planar 3SAT
+
+312
+00:17:38,450 --> 00:17:40,740
+and it was a linear
+blowup from that.
+
+313
+00:17:40,740 --> 00:17:43,660
+So it's only quadratic overall.
+
+314
+00:17:43,660 --> 00:17:48,890
+This one was again, from planar
+3SAT and linear after that.
+
+315
+00:17:48,890 --> 00:17:51,680
+This one was from 3SAT.
+
+316
+00:17:51,680 --> 00:17:53,590
+And then there was a
+custom crossover gadget,
+
+317
+00:17:53,590 --> 00:17:55,220
+which I don't have
+the slide for here.
+
+318
+00:17:55,220 --> 00:17:56,595
+But for each of
+these crossovers,
+
+319
+00:17:56,595 --> 00:18:00,440
+we paid something, so we
+get quadratic from 3SAT.
+
+320
+00:18:00,440 --> 00:18:03,170
+And that's linear, of course.
+
+321
+00:18:03,170 --> 00:18:08,120
+And this is not a planar
+independent set reduction,
+
+322
+00:18:08,120 --> 00:18:09,512
+so I don't have one here.
+
+323
+00:18:09,512 --> 00:18:10,720
+You have to fill in your own.
+
+324
+00:18:10,720 --> 00:18:13,750
+
+325
+00:18:13,750 --> 00:18:15,530
+And one other one was coloring.
+
+326
+00:18:15,530 --> 00:18:17,270
+We did the planar
+3-coloring gadget.
+
+327
+00:18:17,270 --> 00:18:20,510
+Again, you pay constant
+for each crossing.
+
+328
+00:18:20,510 --> 00:18:23,180
+So quadratic reduction
+from 3SAT-- all of them
+
+329
+00:18:23,180 --> 00:18:25,060
+end up being quadratic overall.
+
+330
+00:18:25,060 --> 00:18:27,630
+Independent set's the only
+one I haven't shown you.
+
+331
+00:18:27,630 --> 00:18:29,670
+And-- cool.
+
+332
+00:18:29,670 --> 00:18:33,120
+So this is a sense in which
+even though the planar problems
+
+333
+00:18:33,120 --> 00:18:36,181
+are np hard, they a
+little bit easier.
+
+334
+00:18:36,181 --> 00:18:36,680
+Question?
+
+335
+00:18:36,680 --> 00:18:39,602
+AUDIENCE: So you mentioned
+that was [INAUDIBLE].
+
+336
+00:18:39,602 --> 00:18:40,450
+PROFESSOR: Yeah.
+
+337
+00:18:40,450 --> 00:18:42,519
+So I think-- I
+should double check.
+
+338
+00:18:42,519 --> 00:18:44,060
+I'm pretty sure all
+of these problems
+
+339
+00:18:44,060 --> 00:18:50,490
+have 2 to the square root
+of n time algorithms.
+
+340
+00:18:50,490 --> 00:18:53,060
+I'm confident enough that
+I will write it down.
+
+341
+00:18:53,060 --> 00:18:56,880
+I think the general approach
+is Lipton Tarjan separator.
+
+342
+00:18:56,880 --> 00:19:01,230
+But that's about the level
+of detail I remember.
+
+343
+00:19:01,230 --> 00:19:03,900
+Oh, yeah-- also,
+all planar graphs
+
+344
+00:19:03,900 --> 00:19:06,640
+have tree width order
+square root of n.
+
+345
+00:19:06,640 --> 00:19:10,510
+And generally, that will
+give you such an algorithm.
+
+346
+00:19:10,510 --> 00:19:17,210
+
+347
+00:19:17,210 --> 00:19:18,342
+So that was-- question?
+
+348
+00:19:18,342 --> 00:19:20,050
+AUDIENCE: Are there
+any of these problems
+
+349
+00:19:20,050 --> 00:19:24,550
+that you can, in a sense,
+preserve the difficulty
+
+350
+00:19:24,550 --> 00:19:25,672
+in a planar graph?
+
+351
+00:19:25,672 --> 00:19:30,134
+
+352
+00:19:30,134 --> 00:19:31,800
+PROFESSOR: Yeah,
+that's a good question.
+
+353
+00:19:31,800 --> 00:19:34,530
+
+354
+00:19:34,530 --> 00:19:35,740
+We might get to some.
+
+355
+00:19:35,740 --> 00:19:38,410
+
+356
+00:19:38,410 --> 00:19:41,160
+I'm about to shift gears
+into parametrized complexity.
+
+357
+00:19:41,160 --> 00:19:47,310
+And in that setting-- I
+would say generally no.
+
+358
+00:19:47,310 --> 00:19:49,440
+But there are certainly
+some exceptions
+
+359
+00:19:49,440 --> 00:19:51,260
+where you can encode
+a non-planar problem
+
+360
+00:19:51,260 --> 00:19:53,940
+into a planar structure.
+
+361
+00:19:53,940 --> 00:19:56,105
+But most natural problems
+tend to be like this.
+
+362
+00:19:56,105 --> 00:19:58,434
+
+363
+00:19:58,434 --> 00:19:59,850
+But there definitely
+are examples.
+
+364
+00:19:59,850 --> 00:20:03,200
+We might even see one.
+
+365
+00:20:03,200 --> 00:20:06,610
+This is sort of-- this could
+have been in lecture two,
+
+366
+00:20:06,610 --> 00:20:07,860
+and maybe it should have been.
+
+367
+00:20:07,860 --> 00:20:11,650
+But ETH is nice
+because it gives you
+
+368
+00:20:11,650 --> 00:20:13,530
+a bit more of a
+quantitative sense
+
+369
+00:20:13,530 --> 00:20:15,489
+of how much running time
+you should expect out
+
+370
+00:20:15,489 --> 00:20:16,280
+of your algorithms.
+
+371
+00:20:16,280 --> 00:20:18,740
+It gives you
+motivation for going
+
+372
+00:20:18,740 --> 00:20:20,920
+for linear blowup when
+possible, or at least
+
+373
+00:20:20,920 --> 00:20:24,133
+minimizing your blowup and lets
+you distinguish between planar
+
+374
+00:20:24,133 --> 00:20:25,950
+and non-planar problems.
+
+375
+00:20:25,950 --> 00:20:29,130
+But we're in the middle of
+parametrized complexity.
+
+376
+00:20:29,130 --> 00:20:31,050
+And I mentioned all
+this in particular
+
+377
+00:20:31,050 --> 00:20:32,670
+because it has an
+even bigger impact
+
+378
+00:20:32,670 --> 00:20:33,795
+on parametrized complexity.
+
+379
+00:20:33,795 --> 00:20:36,410
+
+380
+00:20:36,410 --> 00:20:38,205
+So let's shift
+over to that world.
+
+381
+00:20:38,205 --> 00:20:54,310
+
+382
+00:20:54,310 --> 00:20:58,826
+Now first of all, we get two
+sort of trivial consequences
+
+383
+00:20:58,826 --> 00:20:59,950
+just from these statements.
+
+384
+00:20:59,950 --> 00:21:07,970
+
+385
+00:21:07,970 --> 00:21:09,430
+They're trivial,
+but in some cases
+
+386
+00:21:09,430 --> 00:21:10,650
+they're actually interesting.
+
+387
+00:21:10,650 --> 00:21:15,234
+So they're easy to prove, but
+actually give tight answers
+
+388
+00:21:15,234 --> 00:21:16,025
+for a few problems.
+
+389
+00:21:16,025 --> 00:21:38,230
+
+390
+00:21:38,230 --> 00:21:41,520
+So for the natural
+parametrizations,
+
+391
+00:21:41,520 --> 00:21:44,250
+a vertex cover is a vertex
+cover size at most k.
+
+392
+00:21:44,250 --> 00:21:46,370
+Longest path, which
+is the optimization
+
+393
+00:21:46,370 --> 00:21:48,951
+version of Hamiltonicity,
+is their path--
+
+394
+00:21:48,951 --> 00:21:50,700
+in the parametrized
+version, is their path
+
+395
+00:21:50,700 --> 00:21:52,220
+of length at least k?
+
+396
+00:21:52,220 --> 00:21:57,040
+Dominating set of size k,
+independent set of size k
+
+397
+00:21:57,040 --> 00:22:00,510
+upper bound and lower bound.
+
+398
+00:22:00,510 --> 00:22:03,230
+In particular, there can't be
+a 2 to the little of k times
+
+399
+00:22:03,230 --> 00:22:06,226
+polynomial in n algorithm,
+because there's no 2
+
+400
+00:22:06,226 --> 00:22:07,720
+to the little o of n algorithm.
+
+401
+00:22:07,720 --> 00:22:09,200
+This is assuming ETH.
+
+402
+00:22:09,200 --> 00:22:14,950
+
+403
+00:22:14,950 --> 00:22:18,010
+Because in particular,
+kb could be n.
+
+404
+00:22:18,010 --> 00:22:19,890
+Now this is not exactly
+what we care about.
+
+405
+00:22:19,890 --> 00:22:23,080
+What we care about is whether
+there's an f of k times
+
+406
+00:22:23,080 --> 00:22:24,850
+polynomial in n algorithm.
+
+407
+00:22:24,850 --> 00:22:28,286
+But this at least gives
+you a lower bound on the f.
+
+408
+00:22:28,286 --> 00:22:32,240
+So in particular, for dominating
+set and independent set,
+
+409
+00:22:32,240 --> 00:22:33,880
+this is not a very
+interesting result,
+
+410
+00:22:33,880 --> 00:22:36,460
+because in fact we will
+show, assuming ETH,
+
+411
+00:22:36,460 --> 00:22:39,280
+these do not have FPT
+algorithms at all.
+
+412
+00:22:39,280 --> 00:22:40,807
+There's nothing of that form.
+
+413
+00:22:40,807 --> 00:22:42,390
+But for vertex cover,
+it's interesting
+
+414
+00:22:42,390 --> 00:22:44,310
+because that is FPT.
+
+415
+00:22:44,310 --> 00:22:47,340
+And there is a constant to
+the k times polynomial n in n
+
+416
+00:22:47,340 --> 00:22:47,840
+algorithm.
+
+417
+00:22:47,840 --> 00:22:51,360
+We saw a 2 to the n
+times n algorithm.
+
+418
+00:22:51,360 --> 00:22:53,230
+And this shows
+that that's tight.
+
+419
+00:22:53,230 --> 00:22:56,640
+So there's no better-- it
+gives you a bound on f.
+
+420
+00:22:56,640 --> 00:22:59,230
+For vertex cover, c to
+the k is the right answer
+
+421
+00:22:59,230 --> 00:23:00,680
+for some constant c.
+
+422
+00:23:00,680 --> 00:23:02,300
+And if you assume
+strong ETH, you
+
+423
+00:23:02,300 --> 00:23:04,550
+can actually figure out what
+the-- well, you could try
+
+424
+00:23:04,550 --> 00:23:05,799
+to prove with the constant is.
+
+425
+00:23:05,799 --> 00:23:08,140
+We don't know the right
+answer for vertex cover.
+
+426
+00:23:08,140 --> 00:23:09,980
+Some of these problems, we do.
+
+427
+00:23:09,980 --> 00:23:12,320
+Longest path, same deal.
+
+428
+00:23:12,320 --> 00:23:17,910
+It's FPT, so it's easy
+to find short paths.
+
+429
+00:23:17,910 --> 00:23:21,930
+And the algorithm is
+like 2 to the order k
+
+430
+00:23:21,930 --> 00:23:25,230
+times polynomial in n.
+
+431
+00:23:25,230 --> 00:23:30,240
+And similarly for planar
+problems, if we have ETH,
+
+432
+00:23:30,240 --> 00:23:35,160
+there's no 2 to the little
+o of square root of k times
+
+433
+00:23:35,160 --> 00:23:39,490
+polynomial n for those same
+problems on planar graphs.
+
+434
+00:23:39,490 --> 00:23:46,610
+
+435
+00:23:46,610 --> 00:23:49,005
+For clique, actually
+this should also work.
+
+436
+00:23:49,005 --> 00:23:56,730
+
+437
+00:23:56,730 --> 00:23:58,690
+Clique is OK because
+k is the number
+
+438
+00:23:58,690 --> 00:23:59,990
+of vertices in the clique.
+
+439
+00:23:59,990 --> 00:24:02,156
+And so even though the
+number of edges is quadratic,
+
+440
+00:24:02,156 --> 00:24:03,990
+this would still hold.
+
+441
+00:24:03,990 --> 00:24:07,090
+For a planar clique, of
+course it's polynomial.
+
+442
+00:24:07,090 --> 00:24:09,200
+So I can't put clique down here.
+
+443
+00:24:09,200 --> 00:24:15,570
+
+444
+00:24:15,570 --> 00:24:19,380
+The maximum clique
+size is 4, so there's
+
+445
+00:24:19,380 --> 00:24:20,440
+an n to the 4 algorithm.
+
+446
+00:24:20,440 --> 00:24:29,550
+
+447
+00:24:29,550 --> 00:24:33,560
+Again, this is interesting
+because for dominating
+
+448
+00:24:33,560 --> 00:24:38,620
+set, independent set, vertex
+cover and longest path,
+
+449
+00:24:38,620 --> 00:24:41,880
+there are 2 to the square root
+of k times polynomial in n
+
+450
+00:24:41,880 --> 00:24:42,540
+algorithms.
+
+451
+00:24:42,540 --> 00:24:44,240
+So this is actually
+a tightness result.
+
+452
+00:24:44,240 --> 00:24:46,900
+
+453
+00:24:46,900 --> 00:24:54,640
+There exists 2 to the order
+square root of k n to the order
+
+454
+00:24:54,640 --> 00:24:58,340
+1 algorithms for planar
+graphs for those problems.
+
+455
+00:24:58,340 --> 00:25:02,410
+This is called subexponential
+fixed parameter tractability.
+
+456
+00:25:02,410 --> 00:25:05,810
+And there were a bunch of those
+results in the early 2000s.
+
+457
+00:25:05,810 --> 00:25:08,150
+And then a theory called
+bidimensionality kind
+
+458
+00:25:08,150 --> 00:25:10,800
+of characterizes when it's
+possible, or gives you
+
+459
+00:25:10,800 --> 00:25:15,102
+a big set of examples
+where it is possible.
+
+460
+00:25:15,102 --> 00:25:17,060
+But that's algorithm, so
+we're not covering it.
+
+461
+00:25:17,060 --> 00:25:20,630
+
+462
+00:25:20,630 --> 00:25:23,510
+So all well and good.
+
+463
+00:25:23,510 --> 00:25:25,910
+So for planar or dominating
+set, that's interesting.
+
+464
+00:25:25,910 --> 00:25:27,560
+But for general
+dominating set, we
+
+465
+00:25:27,560 --> 00:25:30,150
+know dominating
+set is w2 complete,
+
+466
+00:25:30,150 --> 00:25:33,800
+we think that means
+there's FPT algorithm.
+
+467
+00:25:33,800 --> 00:25:36,530
+Independent set in
+clique, our w1 complete,
+
+468
+00:25:36,530 --> 00:25:40,060
+we also think that
+means no FPT algorithm.
+
+469
+00:25:40,060 --> 00:25:43,360
+Assuming ETH, we can
+actually prove that.
+
+470
+00:25:43,360 --> 00:25:55,060
+So let's say there's
+no FPT algorithm
+
+471
+00:25:55,060 --> 00:26:05,520
+for clique/independent
+set assuming ETH.
+
+472
+00:26:05,520 --> 00:26:12,480
+
+473
+00:26:12,480 --> 00:26:15,090
+So that's a theorem
+we will prove.
+
+474
+00:26:15,090 --> 00:26:18,600
+If you believe in ETH,
+then w1-- these problems
+
+475
+00:26:18,600 --> 00:26:21,100
+are complete for w1--
+w1 does not equal FPT.
+
+476
+00:26:21,100 --> 00:26:22,955
+These are the FPT problems.
+
+477
+00:26:22,955 --> 00:26:25,640
+And in fact, we can prove
+a much stronger bound.
+
+478
+00:26:25,640 --> 00:26:32,310
+
+479
+00:26:32,310 --> 00:26:36,020
+Very non-FPT-- these
+algorithms generally
+
+480
+00:26:36,020 --> 00:26:39,840
+have an n to the order k
+algorithm, or if they're in xp,
+
+481
+00:26:39,840 --> 00:26:44,520
+then they have some n to the
+k to some constant algorithm.
+
+482
+00:26:44,520 --> 00:26:47,010
+But we can't even
+reduce that exponent
+
+483
+00:26:47,010 --> 00:26:53,447
+below k for any-- for clique
+and independent set, let's say.
+
+484
+00:26:53,447 --> 00:26:55,280
+And if you reduce clique
+and independent set
+
+485
+00:26:55,280 --> 00:26:58,814
+to some other problem,
+you can, just like we've
+
+486
+00:26:58,814 --> 00:27:00,230
+been doing over
+here, you can keep
+
+487
+00:27:00,230 --> 00:27:02,231
+track of the parameter blowup.
+
+488
+00:27:02,231 --> 00:27:03,980
+And if it's a quadratic
+blowup, then you'd
+
+489
+00:27:03,980 --> 00:27:06,485
+get that there's no n to the
+square root of k algorithm.
+
+490
+00:27:06,485 --> 00:27:08,610
+We'll actually do that in
+a moment for planar graph
+
+491
+00:27:08,610 --> 00:27:09,580
+problems.
+
+492
+00:27:09,580 --> 00:27:11,760
+But for general graphs,
+clique and independent set,
+
+493
+00:27:11,760 --> 00:27:15,480
+no f of k for any
+computable function f times
+
+494
+00:27:15,480 --> 00:27:17,620
+n to the little of k algorithm.
+
+495
+00:27:17,620 --> 00:27:22,540
+So this is much stronger
+than FPT does not equal w1.
+
+496
+00:27:22,540 --> 00:27:26,940
+
+497
+00:27:26,940 --> 00:27:35,170
+And this is a result from 2006,
+so fairly recent by Chen et al.
+
+498
+00:27:35,170 --> 00:27:37,900
+So let's prove it.
+
+499
+00:27:37,900 --> 00:27:40,470
+It is essentially a
+reduction from 3-coloring.
+
+500
+00:27:40,470 --> 00:27:43,520
+
+501
+00:27:43,520 --> 00:27:45,340
+But it's unlike
+most reductions we
+
+502
+00:27:45,340 --> 00:27:50,360
+think about,
+because-- well, it's
+
+503
+00:27:50,360 --> 00:27:52,940
+unlike parametrized reductions.
+
+504
+00:27:52,940 --> 00:27:53,440
+Question?
+
+505
+00:27:53,440 --> 00:27:56,670
+AUDIENCE: Sorry, so is this
+[INAUDIBLE] from claiming
+
+506
+00:27:56,670 --> 00:27:58,907
+that the xp hard these problems?
+
+507
+00:27:58,907 --> 00:28:01,305
+PROFESSOR: Yeah. xp hard
+is really way up there.
+
+508
+00:28:01,305 --> 00:28:02,930
+None of the problems
+we've talked about
+
+509
+00:28:02,930 --> 00:28:07,998
+are xp hard, unless something
+happens with p versus np.
+
+510
+00:28:07,998 --> 00:28:10,206
+AUDIENCE: But xp [INAUDIBLE]
+problems that you have--
+
+511
+00:28:10,206 --> 00:28:14,770
+PROFESSOR: These are
+in xp, but they're also
+
+512
+00:28:14,770 --> 00:28:17,500
+in-- these problems
+are actually in w1,
+
+513
+00:28:17,500 --> 00:28:18,750
+which is much smaller than xp.
+
+514
+00:28:18,750 --> 00:28:21,560
+
+515
+00:28:21,560 --> 00:28:26,700
+Yeah, I mentioned xp because of
+the n to the k to some constant
+
+516
+00:28:26,700 --> 00:28:28,970
+is related in the same vicinity.
+
+517
+00:28:28,970 --> 00:28:32,660
+But it's not directly about xp.
+
+518
+00:28:32,660 --> 00:28:34,830
+So normally when we do
+parametrized reductions,
+
+519
+00:28:34,830 --> 00:28:36,430
+we start from a
+parametrized problem
+
+520
+00:28:36,430 --> 00:28:38,640
+and we reduce to a
+parametrized problem.
+
+521
+00:28:38,640 --> 00:28:41,070
+Here, we are reducing from
+an unparametrized problem.
+
+522
+00:28:41,070 --> 00:28:43,590
+3-coloring has no parameter.
+
+523
+00:28:43,590 --> 00:28:45,810
+And we are going to
+reduce to clique,
+
+524
+00:28:45,810 --> 00:28:48,490
+which has a parameter, namely
+the size of the clique.
+
+525
+00:28:48,490 --> 00:28:50,800
+So it's a little
+weird, but you've
+
+526
+00:28:50,800 --> 00:28:53,270
+got to get started somehow.
+
+527
+00:28:53,270 --> 00:28:58,340
+So we're going to
+introduce a quantity k
+
+528
+00:28:58,340 --> 00:29:03,390
+and set it how we want to.
+
+529
+00:29:03,390 --> 00:29:06,410
+So here's the idea.
+
+530
+00:29:06,410 --> 00:29:08,530
+We are given an
+instance of 3-coloring.
+
+531
+00:29:08,530 --> 00:29:09,920
+We're given a graph.
+
+532
+00:29:09,920 --> 00:29:22,840
+We're going to split the
+vertices into k groups, each
+
+533
+00:29:22,840 --> 00:29:24,275
+of n over k vertices.
+
+534
+00:29:24,275 --> 00:29:41,040
+
+535
+00:29:41,040 --> 00:29:43,216
+And remember, we know
+that 3-coloring has no 2
+
+536
+00:29:43,216 --> 00:29:45,075
+to the little of
+n time algorithm.
+
+537
+00:29:45,075 --> 00:29:47,075
+That's what I just
+erased, assuming ETH.
+
+538
+00:29:47,075 --> 00:29:50,040
+
+539
+00:29:50,040 --> 00:29:53,030
+So I'm going to choose
+k in a little bit.
+
+540
+00:29:53,030 --> 00:29:55,640
+But let me first tell
+you the reduction.
+
+541
+00:29:55,640 --> 00:29:58,675
+So we're going to
+create a new graph.
+
+542
+00:29:58,675 --> 00:30:01,240
+
+543
+00:30:01,240 --> 00:30:12,370
+Let's call it g prime, with
+k groups of not n over k,
+
+544
+00:30:12,370 --> 00:30:14,410
+but 3 to the n over k vertices.
+
+545
+00:30:14,410 --> 00:30:20,000
+
+546
+00:30:20,000 --> 00:30:21,160
+Why 3?
+
+547
+00:30:21,160 --> 00:30:24,700
+Because we are going to think
+about all possible 3-colorings
+
+548
+00:30:24,700 --> 00:30:26,694
+of those n over k vertices.
+
+549
+00:30:26,694 --> 00:30:27,610
+So it's corresponding.
+
+550
+00:30:27,610 --> 00:30:30,220
+For every group up here,
+we're going to just write down
+
+551
+00:30:30,220 --> 00:30:32,060
+every possible 3-coloring.
+
+552
+00:30:32,060 --> 00:30:36,440
+So obviously, n over k
+has to be quite small,
+
+553
+00:30:36,440 --> 00:30:39,040
+every possible 3-coloring of
+those and n over k vertices.
+
+554
+00:30:39,040 --> 00:30:41,710
+
+555
+00:30:41,710 --> 00:30:59,240
+So the intent is that
+in our clique problem,
+
+556
+00:30:59,240 --> 00:31:01,710
+that we want to choose
+exactly one vertex from each
+
+557
+00:31:01,710 --> 00:31:03,940
+of these groups.
+
+558
+00:31:03,940 --> 00:31:08,299
+So k is supposed to be
+the size of our clique.
+
+559
+00:31:08,299 --> 00:31:09,590
+That's why I wrote it this way.
+
+560
+00:31:09,590 --> 00:31:15,640
+
+561
+00:31:15,640 --> 00:31:19,130
+So at the moment, I have
+vertices but I have no edges.
+
+562
+00:31:19,130 --> 00:31:21,390
+Each of the groups is going
+to be an independent set,
+
+563
+00:31:21,390 --> 00:31:24,180
+so that means you can
+only choose at most one
+
+564
+00:31:24,180 --> 00:31:26,900
+vertex from each group,
+to make a clique.
+
+565
+00:31:26,900 --> 00:31:29,644
+And we are going to
+connect to colorings
+
+566
+00:31:29,644 --> 00:31:30,560
+if they're compatible.
+
+567
+00:31:30,560 --> 00:31:36,312
+
+568
+00:31:36,312 --> 00:31:43,460
+by an edge nG prime
+if compatible.
+
+569
+00:31:43,460 --> 00:31:46,790
+
+570
+00:31:46,790 --> 00:31:51,940
+So the idea is, here is
+one group, size n over k.
+
+571
+00:31:51,940 --> 00:31:55,700
+Here is another group
+of size n over k.
+
+572
+00:31:55,700 --> 00:32:00,880
+And if you color these
+vertices some colors--
+
+573
+00:32:00,880 --> 00:32:05,040
+I'm only using one color--
+and you color some colors over
+
+574
+00:32:05,040 --> 00:32:09,050
+here, now it's coloring
+within the group,
+
+575
+00:32:09,050 --> 00:32:12,350
+but there are some
+cross edges between here
+
+576
+00:32:12,350 --> 00:32:14,500
+which may be incorrect.
+
+577
+00:32:14,500 --> 00:32:16,260
+They may be monochromatic.
+
+578
+00:32:16,260 --> 00:32:18,072
+And so we check
+whether the coloring
+
+579
+00:32:18,072 --> 00:32:19,530
+of this and the
+coloring of this is
+
+580
+00:32:19,530 --> 00:32:22,340
+consistent with all the cross
+edges between those two groups.
+
+581
+00:32:22,340 --> 00:32:25,980
+If it is compatible, if it's a
+valid coloring of both groups,
+
+582
+00:32:25,980 --> 00:32:28,540
+we connect them by an edge.
+
+583
+00:32:28,540 --> 00:32:30,760
+This coloring corresponds
+to single vertex in G prime
+
+584
+00:32:30,760 --> 00:32:33,260
+and this coloring corresponds
+to a single vertex in G prime.
+
+585
+00:32:33,260 --> 00:32:34,960
+And we add an edge if it's OK.
+
+586
+00:32:34,960 --> 00:32:36,970
+We don't add the
+edge it's not OK.
+
+587
+00:32:36,970 --> 00:32:38,460
+And if we're looking
+for a clique,
+
+588
+00:32:38,460 --> 00:32:41,560
+that means we need to choose a
+coloring for each of the groups
+
+589
+00:32:41,560 --> 00:32:44,250
+where everything is
+pairwise compatible.
+
+590
+00:32:44,250 --> 00:32:45,817
+And that represents
+all the edges.
+
+591
+00:32:45,817 --> 00:32:47,900
+Every edge is either within
+a group, in which case
+
+592
+00:32:47,900 --> 00:32:51,040
+it was taken care
+of at this stage.
+
+593
+00:32:51,040 --> 00:32:54,480
+I guess I should say is at
+most, 3 to the n over k.
+
+594
+00:32:54,480 --> 00:32:57,065
+I only want valid 3-colorings.
+
+595
+00:32:57,065 --> 00:33:01,280
+
+596
+00:33:01,280 --> 00:33:03,667
+Or the edge crosses
+between two groups
+
+597
+00:33:03,667 --> 00:33:05,750
+and then it will be
+considered when we think about
+
+598
+00:33:05,750 --> 00:33:06,890
+whether there's an edge.
+
+599
+00:33:06,890 --> 00:33:08,780
+In a clique, there
+are pairwise edges
+
+600
+00:33:08,780 --> 00:33:11,770
+and so everything is
+pairwise compatible.
+
+601
+00:33:11,770 --> 00:33:15,140
+So never mind the claim.
+
+602
+00:33:15,140 --> 00:33:18,290
+You should be convinced this
+is a valid reduction, in terms
+
+603
+00:33:18,290 --> 00:33:21,910
+of a correctness standpoint,
+from 3-coloring to k
+
+604
+00:33:21,910 --> 00:33:24,830
+clique for any k.
+
+605
+00:33:24,830 --> 00:33:26,080
+The construction depends on k.
+
+606
+00:33:26,080 --> 00:33:37,710
+
+607
+00:33:37,710 --> 00:33:38,850
+So what do we set k to?
+
+608
+00:33:38,850 --> 00:33:48,810
+
+609
+00:33:48,810 --> 00:33:51,372
+Here is a setting
+for k that will work.
+
+610
+00:33:51,372 --> 00:33:53,330
+I don't have a ton of
+intuition for this, other
+
+611
+00:33:53,330 --> 00:33:56,380
+than the algebra works.
+
+612
+00:33:56,380 --> 00:33:58,570
+Essentially, we need
+to set it just--
+
+613
+00:33:58,570 --> 00:34:02,370
+we want to set k to, like, a
+tiny, super-constant thing.
+
+614
+00:34:02,370 --> 00:34:07,830
+So just a little bit,
+little omega of one.
+
+615
+00:34:07,830 --> 00:34:15,230
+And I need to give that
+little of k a name.
+
+616
+00:34:15,230 --> 00:34:28,139
+So I'm going to say, let's
+say k clique could be solved
+
+617
+00:34:28,139 --> 00:34:44,850
+in f of k times n to the k
+over s of k time, where s of k
+
+618
+00:34:44,850 --> 00:34:55,645
+is some monotone, increasing,
+and unbounded function.
+
+619
+00:34:55,645 --> 00:34:59,400
+
+620
+00:34:59,400 --> 00:35:01,310
+I need that s goes to infinity.
+
+621
+00:35:01,310 --> 00:35:02,885
+That's the meaning
+of little of k
+
+622
+00:35:02,885 --> 00:35:05,136
+is that you can
+divide by something.
+
+623
+00:35:05,136 --> 00:35:07,010
+And you can assume
+without loss of generality
+
+624
+00:35:07,010 --> 00:35:08,840
+that the something is
+monotone increasing,
+
+625
+00:35:08,840 --> 00:35:10,590
+but in particular it
+should go to infinity
+
+626
+00:35:10,590 --> 00:35:11,400
+as k goes to infinity.
+
+627
+00:35:11,400 --> 00:35:12,750
+It might go there very slowly.
+
+628
+00:35:12,750 --> 00:35:17,530
+It could be, like, 1 over
+2 to the k or something.
+
+629
+00:35:17,530 --> 00:35:23,030
+But something little--
+s is little omega of 1.
+
+630
+00:35:23,030 --> 00:35:25,900
+
+631
+00:35:25,900 --> 00:35:28,410
+But now I have this quantity s.
+
+632
+00:35:28,410 --> 00:35:49,030
+And I'm going to set k as large
+as possible so that f of k
+
+633
+00:35:49,030 --> 00:35:59,130
+is at most n and k to the
+k over s of k is at most n.
+
+634
+00:35:59,130 --> 00:36:01,400
+My goal here is to
+make k a function of n.
+
+635
+00:36:01,400 --> 00:36:07,520
+
+636
+00:36:07,520 --> 00:36:12,350
+And so one choice of k is
+basically f inverse of n.
+
+637
+00:36:12,350 --> 00:36:16,930
+So f, remember, was the
+dependence on k, so here.
+
+638
+00:36:16,930 --> 00:36:18,320
+This will turn out to work.
+
+639
+00:36:18,320 --> 00:36:22,704
+So you can think of k
+just being f inverse of n.
+
+640
+00:36:22,704 --> 00:36:24,370
+But there's actually
+another constraint.
+
+641
+00:36:24,370 --> 00:36:26,790
+It's another inverse thing.
+
+642
+00:36:26,790 --> 00:36:31,940
+I want k to be at most, the
+inverse of this relation.
+
+643
+00:36:31,940 --> 00:36:35,510
+So I'm basically taking the
+min of these two functions of n
+
+644
+00:36:35,510 --> 00:36:39,364
+that will be a function
+of n, which is growing.
+
+645
+00:36:39,364 --> 00:36:40,280
+I mean, you can check.
+
+646
+00:36:40,280 --> 00:36:42,530
+If you set k to be a constant,
+of course this is true.
+
+647
+00:36:42,530 --> 00:36:45,160
+If you set k to be a constant,
+of course this is true.
+
+648
+00:36:45,160 --> 00:36:47,930
+So you can set it a
+little bit superconstant
+
+649
+00:36:47,930 --> 00:36:49,800
+by inverting this relation.
+
+650
+00:36:49,800 --> 00:36:53,570
+That gives you some value of
+k that would satisfy this,
+
+651
+00:36:53,570 --> 00:36:57,390
+some function k equals k of
+n that would satisfy this.
+
+652
+00:36:57,390 --> 00:36:59,690
+And I want to take
+the min of those two.
+
+653
+00:36:59,690 --> 00:37:03,180
+Still a growing function of n.
+
+654
+00:37:03,180 --> 00:37:05,580
+We'll need that in a moment.
+
+655
+00:37:05,580 --> 00:37:08,960
+And I get these
+two inequalities.
+
+656
+00:37:08,960 --> 00:37:16,430
+Now it is just a computation of
+how much running time I have.
+
+657
+00:37:16,430 --> 00:37:19,320
+So I want to plug
+this algorithm-- this
+
+658
+00:37:19,320 --> 00:37:21,370
+was an algorithm for k clique.
+
+659
+00:37:21,370 --> 00:37:23,360
+I have this instance
+of k clique, which
+
+660
+00:37:23,360 --> 00:37:25,120
+looks a little weird
+because it's got
+
+661
+00:37:25,120 --> 00:37:26,879
+potentially a lot of vertices.
+
+662
+00:37:26,879 --> 00:37:28,170
+I'm just going to plug that in.
+
+663
+00:37:28,170 --> 00:37:32,950
+This is my n prime, the new--
+well, the number of vertices
+
+664
+00:37:32,950 --> 00:37:37,580
+is this times k, because
+they're k groups.
+
+665
+00:37:37,580 --> 00:37:43,210
+So a number of vertices
+in G prime is k times 3
+
+666
+00:37:43,210 --> 00:37:46,620
+to n over k at most.
+
+667
+00:37:46,620 --> 00:37:50,090
+So we just plug that
+into this running time.
+
+668
+00:37:50,090 --> 00:37:58,090
+And we get f of k times that
+number of vertices, k times 3
+
+669
+00:37:58,090 --> 00:38:00,600
+n over k at most.
+
+670
+00:38:00,600 --> 00:38:08,150
+So less than or equal to
+the power k over s of k.
+
+671
+00:38:08,150 --> 00:38:10,690
+And now we do some manipulation.
+
+672
+00:38:10,690 --> 00:38:12,264
+We know that f of
+k is at most n.
+
+673
+00:38:12,264 --> 00:38:13,680
+That will be enough
+for this term.
+
+674
+00:38:13,680 --> 00:38:18,160
+This is at most n times-- I'm
+going to split this apart.
+
+675
+00:38:18,160 --> 00:38:22,510
+So we have k to the
+k over s of k power.
+
+676
+00:38:22,510 --> 00:38:27,350
+And then separately, we
+have 3 to the n over k
+
+677
+00:38:27,350 --> 00:38:31,690
+to the k over s of k.
+
+678
+00:38:31,690 --> 00:38:33,990
+Again, k to the k
+over s of k, that's
+
+679
+00:38:33,990 --> 00:38:36,580
+something I get to assume
+is less than or equal to n.
+
+680
+00:38:36,580 --> 00:38:39,180
+So this is less than
+or equal to n squared.
+
+681
+00:38:39,180 --> 00:38:45,610
+And then the k's cancel.
+
+682
+00:38:45,610 --> 00:38:52,940
+And we're left with 3
+to the n over s of k.
+
+683
+00:38:52,940 --> 00:38:54,850
+I'm going to remind you
+k is a function of n
+
+684
+00:38:54,850 --> 00:38:59,440
+that is unbounded and
+monotone increasing.
+
+685
+00:38:59,440 --> 00:39:05,663
+So this is 3 to the little
+o of n, also known as 2
+
+686
+00:39:05,663 --> 00:39:06,590
+to the little o of n.
+
+687
+00:39:06,590 --> 00:39:13,870
+
+688
+00:39:13,870 --> 00:39:16,720
+So I just needed to choose k
+to be slightly superconstant.
+
+689
+00:39:16,720 --> 00:39:19,880
+And I wanted to get rid of these
+terms, so I made them at most n
+
+690
+00:39:19,880 --> 00:39:22,060
+and took those
+inverses, took them in.
+
+691
+00:39:22,060 --> 00:39:24,450
+And boom, we get
+a contradiction.
+
+692
+00:39:24,450 --> 00:39:27,280
+This contradicts ETH.
+
+693
+00:39:27,280 --> 00:39:31,950
+This implies ETH is false.
+
+694
+00:39:31,950 --> 00:39:34,970
+So if you assume ETH, running
+backwards you get that k clique
+
+695
+00:39:34,970 --> 00:39:37,070
+cannot be solved in
+such a running time.
+
+696
+00:39:37,070 --> 00:39:39,450
+And so we get this very
+strong lower bound.
+
+697
+00:39:39,450 --> 00:39:41,400
+There's no f of k
+times n to the little o
+
+698
+00:39:41,400 --> 00:39:43,020
+of k algorithm for k clique.
+
+699
+00:39:43,020 --> 00:39:46,672
+So in particular, k clique is
+not fixed parameter tractable.
+
+700
+00:39:46,672 --> 00:39:50,250
+I think that's pretty neat.
+
+701
+00:39:50,250 --> 00:39:54,460
+And henceforth, you care
+about parameter blowup.
+
+702
+00:39:54,460 --> 00:39:57,620
+I mentioned it
+briefly last class.
+
+703
+00:39:57,620 --> 00:40:02,850
+But in general, you map some
+problem x with parameter k
+
+704
+00:40:02,850 --> 00:40:06,510
+into a new instance x prime
+with parameter k prime.
+
+705
+00:40:06,510 --> 00:40:09,530
+And k prime just has to be
+bounded by any function,
+
+706
+00:40:09,530 --> 00:40:13,570
+any computable function of k.
+
+707
+00:40:13,570 --> 00:40:16,750
+But if it's a linear function,
+you preserve this strong bound.
+
+708
+00:40:16,750 --> 00:40:19,980
+If it's quadratic function, then
+you get there's no f of k times
+
+709
+00:40:19,980 --> 00:40:22,920
+n to the little o
+of square root of k.
+
+710
+00:40:22,920 --> 00:40:26,070
+If it's an exponential function,
+which is fair game here,
+
+711
+00:40:26,070 --> 00:40:27,880
+you get a weaker bound.
+
+712
+00:40:27,880 --> 00:40:30,670
+You still get that
+there's no FPT algorithm.
+
+713
+00:40:30,670 --> 00:40:33,710
+But you don't get a nice--
+not a very impressive bound
+
+714
+00:40:33,710 --> 00:40:37,710
+in terms of n on the right.
+
+715
+00:40:37,710 --> 00:40:41,670
+AUDIENCE: Is there a name
+for this type of reduction?
+
+716
+00:40:41,670 --> 00:40:43,180
+PROFESSOR: I don't have one.
+
+717
+00:40:43,180 --> 00:40:46,099
+
+718
+00:40:46,099 --> 00:40:47,640
+There's only one
+that I know of, so I
+
+719
+00:40:47,640 --> 00:40:51,510
+don't think I will try
+to come up with a name.
+
+720
+00:40:51,510 --> 00:40:55,040
+Once you have this,
+you can-- last
+
+721
+00:40:55,040 --> 00:40:58,990
+class we reduced k clique
+to all sorts of things.
+
+722
+00:40:58,990 --> 00:41:02,080
+And so we get a
+lot of-- for now,
+
+723
+00:41:02,080 --> 00:41:05,280
+you just reduce from
+clique or variations.
+
+724
+00:41:05,280 --> 00:41:07,630
+And so you get
+lots of good stuff.
+
+725
+00:41:07,630 --> 00:41:11,190
+
+726
+00:41:11,190 --> 00:41:12,270
+What do you get?
+
+727
+00:41:12,270 --> 00:41:19,990
+
+728
+00:41:19,990 --> 00:41:23,120
+Last time we covered a
+reduction from clique
+
+729
+00:41:23,120 --> 00:41:29,500
+to multicolored clique
+and independent set.
+
+730
+00:41:29,500 --> 00:41:35,100
+And if you look at that
+proof, k prime equals k.
+
+731
+00:41:35,100 --> 00:41:38,350
+We had a quadratic blowup
+in the problem size,
+
+732
+00:41:38,350 --> 00:41:43,150
+but the parameter
+didn't change at all.
+
+733
+00:41:43,150 --> 00:41:44,110
+So this is good news.
+
+734
+00:41:44,110 --> 00:41:48,570
+That means this problem,
+or these two problems,
+
+735
+00:41:48,570 --> 00:41:57,390
+has no-- assuming ETH,
+there's no f of k times
+
+736
+00:41:57,390 --> 00:42:02,810
+n to the little
+o of k algorithm.
+
+737
+00:42:02,810 --> 00:42:06,130
+And also, we covered a
+reduction to dominating set.
+
+738
+00:42:06,130 --> 00:42:11,042
+Even though dominating
+set was w2 hard,
+
+739
+00:42:11,042 --> 00:42:12,750
+we still reduced from
+multicolored clique
+
+740
+00:42:12,750 --> 00:42:13,880
+to dominating set.
+
+741
+00:42:13,880 --> 00:42:17,140
+And then from dominates set,
+we could reduce to set cover.
+
+742
+00:42:17,140 --> 00:42:19,710
+All of these reductions
+preserve k exactly.
+
+743
+00:42:19,710 --> 00:42:22,122
+All we need is that they
+preserve it linearly.
+
+744
+00:42:22,122 --> 00:42:23,580
+But then we get
+this kind of result
+
+745
+00:42:23,580 --> 00:42:24,663
+for all of those problems.
+
+746
+00:42:24,663 --> 00:42:27,360
+
+747
+00:42:27,360 --> 00:42:31,600
+We covered a reduction
+for partial vertex cover.
+
+748
+00:42:31,600 --> 00:42:34,550
+
+749
+00:42:34,550 --> 00:42:38,180
+But I think the reduction
+we covered was not linear.
+
+750
+00:42:38,180 --> 00:42:39,290
+But there is one.
+
+751
+00:42:39,290 --> 00:42:40,850
+So I'll just state
+this as a result,
+
+752
+00:42:40,850 --> 00:42:43,490
+but this is another one
+where we covered a reduction,
+
+753
+00:42:43,490 --> 00:42:45,370
+but it wasn't the
+most efficient one.
+
+754
+00:42:45,370 --> 00:42:47,380
+I think we lost a
+quadratic amount.
+
+755
+00:42:47,380 --> 00:42:55,467
+
+756
+00:42:55,467 --> 00:42:56,050
+Any questions?
+
+757
+00:42:56,050 --> 00:42:56,550
+Yeah?
+
+758
+00:42:56,550 --> 00:43:00,092
+AUDIENCE: Do we happen
+to know if FPT and w1 are
+
+759
+00:43:00,092 --> 00:43:02,202
+separated assuming
+only [INAUDIBLE]
+
+760
+00:43:02,202 --> 00:43:03,076
+and not assuming ETH?
+
+761
+00:43:03,076 --> 00:43:04,367
+PROFESSOR: We do not know that.
+
+762
+00:43:04,367 --> 00:43:06,960
+
+763
+00:43:06,960 --> 00:43:10,250
+The best classical
+assumption is ETH
+
+764
+00:43:10,250 --> 00:43:12,070
+implies w1 does not equal FPT.
+
+765
+00:43:12,070 --> 00:43:15,850
+
+766
+00:43:15,850 --> 00:43:18,110
+I also don't know offhand
+whether FPT does not equal
+
+767
+00:43:18,110 --> 00:43:20,370
+w1 implies p does not equal NP.
+
+768
+00:43:20,370 --> 00:43:22,670
+I think there's this
+result along those lines,
+
+769
+00:43:22,670 --> 00:43:24,430
+but I'm not sure if
+that's literally true.
+
+770
+00:43:24,430 --> 00:43:31,215
+So intuitively it's stronger,
+but-- other questions?
+
+771
+00:43:31,215 --> 00:43:35,970
+
+772
+00:43:35,970 --> 00:43:38,815
+AUDIENCE: So this is
+strictly better lower bound
+
+773
+00:43:38,815 --> 00:43:40,252
+than those over there?
+
+774
+00:43:40,252 --> 00:43:43,120
+
+775
+00:43:43,120 --> 00:43:43,850
+PROFESSOR: Right.
+
+776
+00:43:43,850 --> 00:43:44,880
+Good question.
+
+777
+00:43:44,880 --> 00:43:47,940
+So before we switched
+to parametrized land,
+
+778
+00:43:47,940 --> 00:43:50,580
+we said-- like over here,
+we had there was no 2
+
+779
+00:43:50,580 --> 00:43:52,810
+to the little of n algorithm.
+
+780
+00:43:52,810 --> 00:43:55,900
+Here we're getting that
+there's no f of k times
+
+781
+00:43:55,900 --> 00:43:58,640
+n to the little of k algorithm.
+
+782
+00:43:58,640 --> 00:44:02,780
+I think that is stronger
+than the old bound.
+
+783
+00:44:02,780 --> 00:44:05,810
+Though I guess you have to think
+about it problem by problem.
+
+784
+00:44:05,810 --> 00:44:08,539
+It depends on how k could
+relate to n in general.
+
+785
+00:44:08,539 --> 00:44:10,080
+I think for these
+problems though, it
+
+786
+00:44:10,080 --> 00:44:11,585
+is a stronger result.
+
+787
+00:44:11,585 --> 00:44:18,960
+
+788
+00:44:18,960 --> 00:44:22,020
+Because k is at most n.
+
+789
+00:44:22,020 --> 00:44:23,980
+And k can be close to n.
+
+790
+00:44:23,980 --> 00:44:33,050
+
+791
+00:44:33,050 --> 00:44:37,120
+So the next topic-- just
+taking a little breather.
+
+792
+00:44:37,120 --> 00:44:41,490
+This is all good for
+non-planar graphs.
+
+793
+00:44:41,490 --> 00:44:45,870
+For planar graphs, we actually
+haven't seen any w1 hardness
+
+794
+00:44:45,870 --> 00:44:46,970
+results yet.
+
+795
+00:44:46,970 --> 00:44:50,790
+And that's because a lot
+of planar problems are FPT.
+
+796
+00:44:50,790 --> 00:44:53,030
+There are, in fact, 2 to
+the square root of k times
+
+797
+00:44:53,030 --> 00:44:55,970
+polynomial in n algorithms for
+a ton of planar graph problems.
+
+798
+00:44:55,970 --> 00:44:59,200
+But there are some that are
+hard, some that are w1 hard.
+
+799
+00:44:59,200 --> 00:45:03,470
+And as you might expect, this
+k becomes the square root of k
+
+800
+00:45:03,470 --> 00:45:06,890
+because we get a quadratic
+blowup, for some problems--
+
+801
+00:45:06,890 --> 00:45:08,510
+not quite all of them.
+
+802
+00:45:08,510 --> 00:45:11,250
+So this comes back
+to Jason's question.
+
+803
+00:45:11,250 --> 00:45:12,970
+And maybe I'll go up here.
+
+804
+00:45:12,970 --> 00:45:17,710
+
+805
+00:45:17,710 --> 00:45:22,040
+Let me briefly
+mention in general
+
+806
+00:45:22,040 --> 00:45:28,010
+if k prime of x prime is at
+most some g of k of x, this
+
+807
+00:45:28,010 --> 00:45:31,260
+was part of our--
+in the definition
+
+808
+00:45:31,260 --> 00:45:38,660
+of parametrized reduction,
+then if there's no f of k n
+
+809
+00:45:38,660 --> 00:45:46,190
+to the little of k
+algorithm for problem A,
+
+810
+00:45:46,190 --> 00:45:52,600
+then there is no f
+prime of k prime times n
+
+811
+00:45:52,600 --> 00:46:02,830
+to the little o of g inverse
+of k prime algorithm for B.
+
+812
+00:46:02,830 --> 00:46:04,550
+So I think the
+analogous statement
+
+813
+00:46:04,550 --> 00:46:08,370
+was up here for size blowup
+and regular np reductions.
+
+814
+00:46:08,370 --> 00:46:11,660
+But for parametrized reductions,
+I mean, the dependence on k
+
+815
+00:46:11,660 --> 00:46:13,442
+is just an arbitrary
+computable function.
+
+816
+00:46:13,442 --> 00:46:14,400
+So that doesn't change.
+
+817
+00:46:14,400 --> 00:46:16,330
+But the exponent
+changes correspondingly.
+
+818
+00:46:16,330 --> 00:46:19,930
+So if you square k, we get the
+square root in the exponent.
+
+819
+00:46:19,930 --> 00:46:30,440
+
+820
+00:46:30,440 --> 00:46:33,290
+So let's do some
+planar problems.
+
+821
+00:46:33,290 --> 00:46:36,640
+
+822
+00:46:36,640 --> 00:46:39,240
+I'm pretty sure all
+of the w1 hardness
+
+823
+00:46:39,240 --> 00:46:43,320
+results for planar problems
+are within the last five years.
+
+824
+00:46:43,320 --> 00:46:46,710
+So it's a pretty
+recent direction.
+
+825
+00:46:46,710 --> 00:46:55,740
+And the key insight is a
+problem called grid tiling,
+
+826
+00:46:55,740 --> 00:46:58,720
+which I have a slide for.
+
+827
+00:46:58,720 --> 00:47:06,590
+So this is a problem invented
+by Daniel Marx in 2007.
+
+828
+00:47:06,590 --> 00:47:11,620
+And so the input looks like this
+and the output looks like that.
+
+829
+00:47:11,620 --> 00:47:17,290
+So in general, you're given
+a k by k matrix of sets.
+
+830
+00:47:17,290 --> 00:47:22,150
+Each set has some number
+of 2D coordinates.
+
+831
+00:47:22,150 --> 00:47:25,570
+These coordinates
+range between 1 and n.
+
+832
+00:47:25,570 --> 00:47:28,980
+So it's k by k, small
+matrix, but each cell
+
+833
+00:47:28,980 --> 00:47:33,860
+has a ton of stuff in it,
+up to n squared pairs.
+
+834
+00:47:33,860 --> 00:47:36,470
+
+835
+00:47:36,470 --> 00:47:40,390
+And your goal is
+to-- in this example,
+
+836
+00:47:40,390 --> 00:47:41,890
+all the numbers are
+between 1 and 5.
+
+837
+00:47:41,890 --> 00:47:43,180
+So n equals 5.
+
+838
+00:47:43,180 --> 00:47:46,320
+And it's 3 by 3, so k equals 3.
+
+839
+00:47:46,320 --> 00:47:51,930
+Your goal is to choose
+exactly one element
+
+840
+00:47:51,930 --> 00:47:56,780
+from these sets, such that
+if you look in any column
+
+841
+00:47:56,780 --> 00:47:59,440
+the first coordinates
+are all the same.
+
+842
+00:47:59,440 --> 00:48:01,780
+Here, the first
+coordinate are all 1.
+
+843
+00:48:01,780 --> 00:48:03,840
+Here, first
+coordinates are all 2.
+
+844
+00:48:03,840 --> 00:48:06,420
+And in any row, the second
+coordinate is the same.
+
+845
+00:48:06,420 --> 00:48:07,693
+Here they're all 4.
+
+846
+00:48:07,693 --> 00:48:09,480
+Here they're all 2.
+
+847
+00:48:09,480 --> 00:48:11,230
+Here they're all 3.
+
+848
+00:48:11,230 --> 00:48:13,290
+So that's a valid solution.
+
+849
+00:48:13,290 --> 00:48:16,840
+As you might expect,
+this is np complete.
+
+850
+00:48:16,840 --> 00:48:19,495
+But furthermore, it's w1 heart.
+
+851
+00:48:19,495 --> 00:48:31,260
+
+852
+00:48:31,260 --> 00:48:35,610
+I should say sij--
+just gives you
+
+853
+00:48:35,610 --> 00:48:43,860
+some notation-- is a subset
+of 1 up to n squared for all i
+
+854
+00:48:43,860 --> 00:48:47,380
+and j in 1 up to k.
+
+855
+00:48:47,380 --> 00:48:50,950
+That's what the
+input looks like.
+
+856
+00:48:50,950 --> 00:48:54,160
+The squared means you
+have ordered pairs.
+
+857
+00:48:54,160 --> 00:48:58,230
+And then your goal is to
+choose an xij out of each sij
+
+858
+00:48:58,230 --> 00:49:02,000
+so that in any row, the first
+coordinates match any column.
+
+859
+00:49:02,000 --> 00:49:02,500
+Sorry.
+
+860
+00:49:02,500 --> 00:49:04,946
+In any row, the second
+coordinates match
+
+861
+00:49:04,946 --> 00:49:07,280
+and in any column, the
+first coordinates match.
+
+862
+00:49:07,280 --> 00:49:10,360
+
+863
+00:49:10,360 --> 00:49:12,000
+So claim is this is w1 hard.
+
+864
+00:49:12,000 --> 00:49:15,280
+And also now, we know w1
+hardness is not the most
+
+865
+00:49:15,280 --> 00:49:16,160
+we could hope for.
+
+866
+00:49:16,160 --> 00:49:18,330
+We also want to know what
+the parameter blowup is
+
+867
+00:49:18,330 --> 00:49:21,180
+and how we can relate
+it back to ETH.
+
+868
+00:49:21,180 --> 00:49:25,340
+So here we will
+get the same bound.
+
+869
+00:49:25,340 --> 00:49:30,370
+There's no f of k times n to
+the little o of k algorithm,
+
+870
+00:49:30,370 --> 00:49:31,040
+assuming ETH.
+
+871
+00:49:31,040 --> 00:49:33,440
+So here we will not
+lose a quadratic thing.
+
+872
+00:49:33,440 --> 00:49:35,860
+But notice that this
+thing is k by k.
+
+873
+00:49:35,860 --> 00:49:41,300
+So, while we've defined
+the parameter to be k,
+
+874
+00:49:41,300 --> 00:49:44,000
+there's kind of a quadratic
+amount of stuff going on.
+
+875
+00:49:44,000 --> 00:49:46,180
+You're selecting k
+squared different things
+
+876
+00:49:46,180 --> 00:49:47,444
+in the solution.
+
+877
+00:49:47,444 --> 00:49:48,110
+That's still OK.
+
+878
+00:49:48,110 --> 00:49:53,860
+I mean, k is still the number of
+rows or columns of the matrix.
+
+879
+00:49:53,860 --> 00:49:55,552
+But typically, the
+reason this problem
+
+880
+00:49:55,552 --> 00:49:58,010
+is interesting-- this is, like,
+a starting point for planar
+
+881
+00:49:58,010 --> 00:50:00,190
+graph problems,
+because you can replace
+
+882
+00:50:00,190 --> 00:50:03,630
+each of these
+cells of the matrix
+
+883
+00:50:03,630 --> 00:50:06,130
+with the gadget that
+somehow represents
+
+884
+00:50:06,130 --> 00:50:11,850
+all the things in that set,
+but that now these constraints
+
+885
+00:50:11,850 --> 00:50:13,290
+that all the things
+in the column
+
+886
+00:50:13,290 --> 00:50:14,970
+agree in the first
+coordinate, you can
+
+887
+00:50:14,970 --> 00:50:16,350
+think of as a local constraint.
+
+888
+00:50:16,350 --> 00:50:18,770
+Because really, you just need
+that the guy you select here
+
+889
+00:50:18,770 --> 00:50:22,030
+has the same first coordinate
+as the guy you select here.
+
+890
+00:50:22,030 --> 00:50:23,914
+You only need to
+constrain adjacent cells.
+
+891
+00:50:23,914 --> 00:50:25,580
+Because if his adjacent
+cells are equal,
+
+892
+00:50:25,580 --> 00:50:27,360
+then the whole
+column will be equal.
+
+893
+00:50:27,360 --> 00:50:29,850
+And if adjacent rows have
+equal second coordinates,
+
+894
+00:50:29,850 --> 00:50:33,140
+then the whole column will
+have equal second coordinates.
+
+895
+00:50:33,140 --> 00:50:35,010
+So as long as you
+can build gadgets
+
+896
+00:50:35,010 --> 00:50:37,000
+that just check with
+their neighbors,
+
+897
+00:50:37,000 --> 00:50:40,400
+that will give you a kind of
+planar graph structure, or a 2D
+
+898
+00:50:40,400 --> 00:50:44,060
+geometry structure if you're
+doing a geometric problem
+
+899
+00:50:44,060 --> 00:50:48,150
+and it lets you work with
+things kind of locally.
+
+900
+00:50:48,150 --> 00:50:51,380
+But when you do that, of course,
+typically k becomes k squared.
+
+901
+00:50:51,380 --> 00:50:53,720
+And that's where you get the
+square root of k up here.
+
+902
+00:50:53,720 --> 00:50:54,990
+But it won't disappear yet.
+
+903
+00:50:54,990 --> 00:50:57,720
+
+904
+00:50:57,720 --> 00:50:59,830
+So how do we prove this?
+
+905
+00:50:59,830 --> 00:51:04,890
+We're going to reduce from
+clique because that is
+
+906
+00:51:04,890 --> 00:51:07,905
+our favorite w1 hard problem.
+
+907
+00:51:07,905 --> 00:51:10,420
+
+908
+00:51:10,420 --> 00:51:11,934
+And it has this kind of bound.
+
+909
+00:51:11,934 --> 00:51:13,725
+And so it's going to
+be a linear reduction.
+
+910
+00:51:13,725 --> 00:51:20,280
+In fact, k prime will equal
+k and n prime will equal n.
+
+911
+00:51:20,280 --> 00:51:25,700
+n here is the maximum coordinate
+values in the original problem.
+
+912
+00:51:25,700 --> 00:51:30,700
+n prime is the number of
+vertices in the clique.
+
+913
+00:51:30,700 --> 00:51:34,320
+And I'm going to write
+down the reduction
+
+914
+00:51:34,320 --> 00:51:37,980
+and then show you a picture.
+
+915
+00:51:37,980 --> 00:51:39,970
+It's hard to actually
+draw the full reduction.
+
+916
+00:51:39,970 --> 00:51:46,290
+It's easier to write it
+down generically and then
+
+917
+00:51:46,290 --> 00:51:48,780
+show you kind of a little
+slice of a real example.
+
+918
+00:51:48,780 --> 00:52:09,420
+
+919
+00:52:09,420 --> 00:52:12,050
+It's a little bit
+confusing, because there are
+
+920
+00:52:12,050 --> 00:52:14,590
+four parameters lying around.
+
+921
+00:52:14,590 --> 00:52:18,810
+There's which cell are you
+in, which I'm denoting by ij.
+
+922
+00:52:18,810 --> 00:52:23,230
+i is which row you're in. j
+is which column you're in.
+
+923
+00:52:23,230 --> 00:52:26,630
+So this is the set of
+things at row i column j.
+
+924
+00:52:26,630 --> 00:52:30,450
+But then separately,
+there the coordinates
+
+925
+00:52:30,450 --> 00:52:32,290
+that are inside the cell.
+
+926
+00:52:32,290 --> 00:52:36,140
+And here I'm denoting
+that by vertices, because
+
+927
+00:52:36,140 --> 00:52:42,180
+for us, what this says is
+that the vertices map 1 to 1
+
+928
+00:52:42,180 --> 00:52:47,632
+with coordinate values.
+
+929
+00:52:47,632 --> 00:52:49,840
+But these coordinate values
+are different from the ij
+
+930
+00:52:49,840 --> 00:52:50,590
+coordinate values.
+
+931
+00:52:50,590 --> 00:52:52,420
+The ij's are always
+between 1 and k.
+
+932
+00:52:52,420 --> 00:52:55,097
+These coordinate values
+are between 1 and m.
+
+933
+00:52:55,097 --> 00:52:57,430
+Probably should have a term
+for those, that distinction.
+
+934
+00:52:57,430 --> 00:53:00,790
+But such as it is, ij
+is between 1 and k. v
+
+935
+00:53:00,790 --> 00:53:02,640
+and w are between 1 and n.
+
+936
+00:53:02,640 --> 00:53:04,649
+So there's two types of cells.
+
+937
+00:53:04,649 --> 00:53:06,440
+There's cells on the
+diagonal of the matrix
+
+938
+00:53:06,440 --> 00:53:07,840
+and cells off the diagonal.
+
+939
+00:53:07,840 --> 00:53:09,510
+This is for i not equal to j.
+
+940
+00:53:09,510 --> 00:53:14,900
+On the diagonal, you just
+have pairs of the form vv.
+
+941
+00:53:14,900 --> 00:53:17,060
+So that's supposed to
+represent the vertex.
+
+942
+00:53:17,060 --> 00:53:19,640
+And so basically what you
+choose on the diagonal
+
+943
+00:53:19,640 --> 00:53:23,450
+is going to correspond to
+the clique that you want.
+
+944
+00:53:23,450 --> 00:53:28,391
+Because the diagonal has size
+k, and so each diagonal item
+
+945
+00:53:28,391 --> 00:53:29,890
+is going to have
+to choose a vertex.
+
+946
+00:53:29,890 --> 00:53:33,330
+It's going to turn out that
+vertex will be in a clique.
+
+947
+00:53:33,330 --> 00:53:34,860
+Why will it be in a clique?
+
+948
+00:53:34,860 --> 00:53:36,630
+Because the off
+diagonal entries are
+
+949
+00:53:36,630 --> 00:53:38,280
+going to force that
+there are edges
+
+950
+00:53:38,280 --> 00:53:41,007
+between corresponding vertices.
+
+951
+00:53:41,007 --> 00:53:42,590
+So the off diagonal
+entries will have,
+
+952
+00:53:42,590 --> 00:53:47,100
+for every edge-- and we're
+assuming no loops here--
+
+953
+00:53:47,100 --> 00:53:56,154
+for every edge, we put vw
+an item in the set of pairs.
+
+954
+00:53:56,154 --> 00:53:58,320
+And if this is an undirected
+graph, we'll put vwnwv.
+
+955
+00:53:58,320 --> 00:54:02,410
+
+956
+00:54:02,410 --> 00:54:07,960
+And so in fact, all of the off
+diagonal entries look the same,
+
+957
+00:54:07,960 --> 00:54:09,090
+I guess.
+
+958
+00:54:09,090 --> 00:54:11,320
+And all of the diagonal
+entries look the same
+
+959
+00:54:11,320 --> 00:54:13,620
+in terms of the s sets.
+
+960
+00:54:13,620 --> 00:54:15,970
+So let's look at an example.
+
+961
+00:54:15,970 --> 00:54:22,950
+Suppose you choose this 2-2
+diagonal entry to be vertex i.
+
+962
+00:54:22,950 --> 00:54:25,500
+Didn't assume very much.
+
+963
+00:54:25,500 --> 00:54:28,060
+But from the constraints
+of the grid tiling problem,
+
+964
+00:54:28,060 --> 00:54:33,800
+we know that the whole row here
+has the same second coordinate.
+
+965
+00:54:33,800 --> 00:54:36,890
+And the whole column here has
+the same first coordinate.
+
+966
+00:54:36,890 --> 00:54:38,540
+So if you choose
+the vertex i here,
+
+967
+00:54:38,540 --> 00:54:43,350
+that forces i to appear
+throughout there.
+
+968
+00:54:43,350 --> 00:54:48,780
+And if you look at some other
+vertex, vj on the diagonal,
+
+969
+00:54:48,780 --> 00:54:50,020
+then same thing happens.
+
+970
+00:54:50,020 --> 00:54:53,450
+You have j second
+coordinate here
+
+971
+00:54:53,450 --> 00:54:58,280
+and j first coordinate there.
+
+972
+00:54:58,280 --> 00:55:00,600
+I see there's a slight
+typo on these slides.
+
+973
+00:55:00,600 --> 00:55:02,172
+This should be a j.
+
+974
+00:55:02,172 --> 00:55:03,900
+That should be an i.
+
+975
+00:55:03,900 --> 00:55:05,176
+The colors are right, though.
+
+976
+00:55:05,176 --> 00:55:06,300
+So just look at the colors.
+
+977
+00:55:06,300 --> 00:55:11,990
+
+978
+00:55:11,990 --> 00:55:14,540
+Now, for this to be
+in the set, there
+
+979
+00:55:14,540 --> 00:55:17,700
+must be an edge
+between vi and vj.
+
+980
+00:55:17,700 --> 00:55:21,150
+And this is true for all i and
+j; therefore you have a clique.
+
+981
+00:55:21,150 --> 00:55:24,399
+Now one thing that's important
+is that vi is distinct from vj.
+
+982
+00:55:24,399 --> 00:55:26,940
+Otherwise, you could just put
+vi in all the diagonal entries,
+
+983
+00:55:26,940 --> 00:55:29,250
+and everything is vi vi.
+
+984
+00:55:29,250 --> 00:55:33,230
+But because we said
+v does not equal w
+
+985
+00:55:33,230 --> 00:55:37,830
+for these sets, the fact that
+there is a valid choice here,
+
+986
+00:55:37,830 --> 00:55:42,100
+the fact that vi vj is a
+valid thing in this item
+
+987
+00:55:42,100 --> 00:55:47,370
+means that vi does not equal vj.
+
+988
+00:55:47,370 --> 00:55:50,580
+So these are all
+distinct vertices.
+
+989
+00:55:50,580 --> 00:55:52,124
+There's exactly k of them.
+
+990
+00:55:52,124 --> 00:55:54,040
+And so this problem has
+a solution if and only
+
+991
+00:55:54,040 --> 00:55:58,320
+if there was a k clique
+in the original graph.
+
+992
+00:55:58,320 --> 00:55:59,820
+Clear?
+
+993
+00:55:59,820 --> 00:56:02,590
+I guess these entries are
+technically correct if you
+
+994
+00:56:02,590 --> 00:56:04,022
+view these as unordered pairs.
+
+995
+00:56:04,022 --> 00:56:06,605
+Because we're in an undirected
+graph, everything is flippable.
+
+996
+00:56:06,605 --> 00:56:11,490
+
+997
+00:56:11,490 --> 00:56:16,010
+So that proves that grid
+tiling is as hard as clique.
+
+998
+00:56:16,010 --> 00:56:18,330
+And it was a linear reduction.
+
+999
+00:56:18,330 --> 00:56:20,130
+We started with value k.
+
+1000
+00:56:20,130 --> 00:56:24,184
+We ended up with a thing
+whose parameter was k.
+
+1001
+00:56:24,184 --> 00:56:27,670
+AUDIENCE: Say
+something again like,
+
+1002
+00:56:27,670 --> 00:56:30,680
+it just seems like
+you've just redefined
+
+1003
+00:56:30,680 --> 00:56:35,735
+your n and k to be square root
+of what you might normally.
+
+1004
+00:56:35,735 --> 00:56:37,800
+PROFESSOR: Yeah,
+so if you prefer,
+
+1005
+00:56:37,800 --> 00:56:41,040
+you could define k to be the
+number of cells in the matrix.
+
+1006
+00:56:41,040 --> 00:56:43,430
+And then what you would get
+here is there's no f of k n
+
+1007
+00:56:43,430 --> 00:56:49,770
+to the little o of square root
+of k algorithm, assuming ETH.
+
+1008
+00:56:49,770 --> 00:56:52,790
+It's just a matter of
+what you define k to be.
+
+1009
+00:56:52,790 --> 00:56:56,100
+You're going to either lose
+a square here or later.
+
+1010
+00:56:56,100 --> 00:57:00,875
+And I think-- so I'll
+show you why in a moment,
+
+1011
+00:57:00,875 --> 00:57:02,250
+why you might
+define it this way.
+
+1012
+00:57:02,250 --> 00:57:06,060
+Because here's going to be a
+planar graph problem, kind of,
+
+1013
+00:57:06,060 --> 00:57:10,470
+that does not blow up k at all.
+
+1014
+00:57:10,470 --> 00:57:12,080
+Turns out, sometimes
+you don't have
+
+1015
+00:57:12,080 --> 00:57:16,260
+to blow up-- this k turns
+out to be the correct k.
+
+1016
+00:57:16,260 --> 00:57:20,450
+So let's do that example.
+
+1017
+00:57:20,450 --> 00:57:23,289
+It's called k outer
+planar list coloring.
+
+1018
+00:57:23,289 --> 00:57:24,830
+There's two things
+I need to define--
+
+1019
+00:57:24,830 --> 00:57:26,310
+list coloring and outer planar.
+
+1020
+00:57:26,310 --> 00:57:54,449
+
+1021
+00:57:54,449 --> 00:57:55,740
+Let's start with list coloring.
+
+1022
+00:57:55,740 --> 00:58:09,310
+
+1023
+00:58:09,310 --> 00:58:13,470
+So in list coloring, given a
+graph and for every vertex,
+
+1024
+00:58:13,470 --> 00:58:15,910
+you're given a list
+of valid colors.
+
+1025
+00:58:15,910 --> 00:58:23,820
+
+1026
+00:58:23,820 --> 00:58:26,370
+And your goal is
+to color the graph.
+
+1027
+00:58:26,370 --> 00:58:28,880
+Again, no edge should
+be monochromatic.
+
+1028
+00:58:28,880 --> 00:58:30,880
+And the color you
+choose for vertex v
+
+1029
+00:58:30,880 --> 00:58:33,000
+must be on the list Lv.
+
+1030
+00:58:33,000 --> 00:58:35,720
+
+1031
+00:58:35,720 --> 00:58:38,360
+So this is a generalization
+of k coloring.
+
+1032
+00:58:38,360 --> 00:58:40,480
+k coloring is the
+case where Lv equals 1
+
+1033
+00:58:40,480 --> 00:58:42,930
+through k for all vertices.
+
+1034
+00:58:42,930 --> 00:58:45,070
+This is, of course,
+a harder problem.
+
+1035
+00:58:45,070 --> 00:58:51,370
+And turns out, it's quite hard.
+
+1036
+00:58:51,370 --> 00:58:55,670
+For example, it's NP
+hard for planar graphs.
+
+1037
+00:58:55,670 --> 00:58:58,370
+That's not surprising,
+because 3-coloring is NP
+
+1038
+00:58:58,370 --> 00:58:59,350
+hard for planar graphs.
+
+1039
+00:58:59,350 --> 00:59:03,130
+
+1040
+00:59:03,130 --> 00:59:05,640
+And size of Lv is less
+than or equal to 3
+
+1041
+00:59:05,640 --> 00:59:09,100
+for all v. The hardness
+of planar 3-coloring
+
+1042
+00:59:09,100 --> 00:59:11,880
+gives you that.
+
+1043
+00:59:11,880 --> 00:59:14,810
+So there's also no
+natural parameter here,
+
+1044
+00:59:14,810 --> 00:59:17,480
+because you can't parametrize
+by number of colors you have,
+
+1045
+00:59:17,480 --> 00:59:20,220
+because even when it's
+three, this problem is hard.
+
+1046
+00:59:20,220 --> 00:59:25,070
+So we're going to parametrize
+by something else, namely
+
+1047
+00:59:25,070 --> 00:59:28,280
+a quantity called
+outer planarity.
+
+1048
+00:59:28,280 --> 00:59:30,930
+
+1049
+00:59:30,930 --> 00:59:37,310
+If you know what tree width
+is, you can think tree width.
+
+1050
+00:59:37,310 --> 00:59:40,330
+But tree width is a
+bit messy to define,
+
+1051
+00:59:40,330 --> 00:59:42,250
+so I'll stick to
+outer planarity, which
+
+1052
+00:59:42,250 --> 00:59:44,780
+for planar graphs is
+within a constant factor.
+
+1053
+00:59:44,780 --> 00:59:54,710
+So outer planarity-- if
+you have a planar graph,
+
+1054
+00:59:54,710 --> 00:59:58,180
+this would be an example of
+a graph of outer planarity 2.
+
+1055
+00:59:58,180 --> 01:00:00,816
+Let me draw you an example of
+a graph of outer planarity 1.
+
+1056
+01:00:00,816 --> 01:00:04,130
+
+1057
+01:00:04,130 --> 01:00:08,450
+Suppose all of the vertices
+are on the outside face
+
+1058
+01:00:08,450 --> 01:00:14,000
+of your planar graph, or all
+the vertices are on one face.
+
+1059
+01:00:14,000 --> 01:00:17,570
+Then that's an outer planar
+graph, or 1 outer planar graph.
+
+1060
+01:00:17,570 --> 01:00:20,910
+If you have a graph
+where there are
+
+1061
+01:00:20,910 --> 01:00:23,690
+vertices on the outside
+face, and if you remove
+
+1062
+01:00:23,690 --> 01:00:25,800
+all of those vertices
+from the outside face,
+
+1063
+01:00:25,800 --> 01:00:28,520
+the remaining vertices are
+all on the outside face,
+
+1064
+01:00:28,520 --> 01:00:29,760
+this is 2 outer planar.
+
+1065
+01:00:29,760 --> 01:00:35,640
+
+1066
+01:00:35,640 --> 01:00:39,280
+In general, if you have
+to remove the vertices
+
+1067
+01:00:39,280 --> 01:00:41,640
+on the outside face
+k times before you're
+
+1068
+01:00:41,640 --> 01:00:45,160
+left with no vertices, then
+your graph is k outer planar.
+
+1069
+01:00:45,160 --> 01:00:48,600
+And that k is your
+outer planarity.
+
+1070
+01:00:48,600 --> 01:00:52,287
+So this is an example of a
+problem that's-- there's no
+
+1071
+01:00:52,287 --> 01:00:54,620
+natural parametrization because
+it's not an optimization
+
+1072
+01:00:54,620 --> 01:00:55,120
+problem.
+
+1073
+01:00:55,120 --> 01:00:57,166
+So we're going to throw
+in a parametrization that
+
+1074
+01:00:57,166 --> 01:00:58,290
+often works out quite well.
+
+1075
+01:00:58,290 --> 01:01:00,206
+Usually if you take
+planar graphs parametrized
+
+1076
+01:01:00,206 --> 01:01:03,270
+by outer planarity, they are
+fixed parameter retractable.
+
+1077
+01:01:03,270 --> 01:01:07,220
+For example, k
+coloring, parametrized
+
+1078
+01:01:07,220 --> 01:01:10,570
+by outer planarity, is FPT.
+
+1079
+01:01:10,570 --> 01:01:12,291
+But list coloring is not.
+
+1080
+01:01:12,291 --> 01:01:12,790
+Question?
+
+1081
+01:01:12,790 --> 01:01:15,110
+AUDIENCE: Doesn't
+the outer planarity
+
+1082
+01:01:15,110 --> 01:01:16,502
+depend on the embedding?
+
+1083
+01:01:16,502 --> 01:01:21,480
+PROFESSOR: It depends only
+slightly on the embedding.
+
+1084
+01:01:21,480 --> 01:01:25,080
+I think only by an
+additive of 1 or something.
+
+1085
+01:01:25,080 --> 01:01:27,770
+So it won't matter from a
+parametrization perspective.
+
+1086
+01:01:27,770 --> 01:01:29,917
+Definitely within
+a constant factor.
+
+1087
+01:01:29,917 --> 01:01:30,500
+Good question.
+
+1088
+01:01:30,500 --> 01:01:33,410
+
+1089
+01:01:33,410 --> 01:01:35,960
+So what we're going to
+show is that this problem
+
+1090
+01:01:35,960 --> 01:01:38,820
+parametrized by
+outer planarity--
+
+1091
+01:01:38,820 --> 01:01:42,210
+so one note is it is in XP.
+
+1092
+01:01:42,210 --> 01:01:46,660
+There is an n to
+the outer planarity
+
+1093
+01:01:46,660 --> 01:01:51,440
+and to the k algorithm using the
+bounded tree width algorithms,
+
+1094
+01:01:51,440 --> 01:01:52,770
+which I won't go into.
+
+1095
+01:01:52,770 --> 01:01:59,590
+But we will show that is
+w1 hard, and assuming ETH,
+
+1096
+01:01:59,590 --> 01:02:05,190
+there's no f of k n to
+the little of k algorithm.
+
+1097
+01:02:05,190 --> 01:02:07,300
+So here's an example of
+a planar graph problem
+
+1098
+01:02:07,300 --> 01:02:10,032
+where we do not get square root
+of k, which I think would also
+
+1099
+01:02:10,032 --> 01:02:11,240
+answer your earlier question.
+
+1100
+01:02:11,240 --> 01:02:13,950
+
+1101
+01:02:13,950 --> 01:02:15,075
+And this is the reduction.
+
+1102
+01:02:15,075 --> 01:02:18,190
+It's a reduction
+from grid tiling.
+
+1103
+01:02:18,190 --> 01:02:20,540
+So the idea is if you
+have a k by k grid,
+
+1104
+01:02:20,540 --> 01:02:24,730
+we're going to make something
+like a k by k grid graph.
+
+1105
+01:02:24,730 --> 01:02:30,080
+Now we have to represent
+the choice here.
+
+1106
+01:02:30,080 --> 01:02:34,120
+We're given a set of pairs
+for each of these grid
+
+1107
+01:02:34,120 --> 01:02:37,780
+cells, which we're now
+representing as a vertex.
+
+1108
+01:02:37,780 --> 01:02:40,290
+But conveniently, we have
+a choice aspect here.
+
+1109
+01:02:40,290 --> 01:02:45,460
+So this is not-- this a thin
+[? veal ?] for grid tiling.
+
+1110
+01:02:45,460 --> 01:02:48,290
+We have this list, Lv, for
+each vertex of valid choices
+
+1111
+01:02:48,290 --> 01:02:50,010
+you could make for that vertex.
+
+1112
+01:02:50,010 --> 01:02:55,930
+So we're going to
+let L uij-- so this
+
+1113
+01:02:55,930 --> 01:03:01,785
+is reduction from grid tiling.
+
+1114
+01:03:01,785 --> 01:03:07,100
+
+1115
+01:03:07,100 --> 01:03:13,410
+L sub uij equals sij.
+
+1116
+01:03:13,410 --> 01:03:15,620
+So that's the
+choice that happens.
+
+1117
+01:03:15,620 --> 01:03:18,760
+For every vertex, we
+have to choose one color.
+
+1118
+01:03:18,760 --> 01:03:23,200
+That mimics the fact that
+every grid cell in the matrix,
+
+1119
+01:03:23,200 --> 01:03:25,910
+we have to choose
+one item from sij.
+
+1120
+01:03:25,910 --> 01:03:28,140
+So most of our work
+is already done.
+
+1121
+01:03:28,140 --> 01:03:30,220
+Now we have to constrain.
+
+1122
+01:03:30,220 --> 01:03:33,360
+If you look at two
+adjacent vertices,
+
+1123
+01:03:33,360 --> 01:03:35,320
+if they're adjacent
+in a row, then they
+
+1124
+01:03:35,320 --> 01:03:38,980
+must have the same
+first coordinate--
+
+1125
+01:03:38,980 --> 01:03:41,939
+I can never remember.
+
+1126
+01:03:41,939 --> 01:03:44,063
+They should have the same
+second coordinate, sorry,
+
+1127
+01:03:44,063 --> 01:03:45,770
+if they're in the same row.
+
+1128
+01:03:45,770 --> 01:03:47,210
+And if they're in
+the same column,
+
+1129
+01:03:47,210 --> 01:03:49,790
+they should have the
+same first coordinate.
+
+1130
+01:03:49,790 --> 01:03:52,800
+So these vertices,
+which are called
+
+1131
+01:03:52,800 --> 01:03:55,000
+v for the vertical
+connections and h
+
+1132
+01:03:55,000 --> 01:04:00,100
+for the horizontal connections,
+are going to achieve that.
+
+1133
+01:04:00,100 --> 01:04:02,890
+And it's a little bit
+tedious to write down.
+
+1134
+01:04:02,890 --> 01:04:06,680
+
+1135
+01:04:06,680 --> 01:04:22,190
+Basically, let's say
+between uij and ui plus 1j,
+
+1136
+01:04:22,190 --> 01:04:26,250
+so those two vertically
+adjacent vertices,
+
+1137
+01:04:26,250 --> 01:04:37,810
+we're going to add a vertex
+vijcd for two colors c and d,
+
+1138
+01:04:37,810 --> 01:05:00,410
+with list of size 2 c,d for all
+colors not agreeing on first
+
+1139
+01:05:00,410 --> 01:05:00,910
+coordinate.
+
+1140
+01:05:00,910 --> 01:05:08,210
+
+1141
+01:05:08,210 --> 01:05:10,010
+Again, this is hard
+to draw in the figure,
+
+1142
+01:05:10,010 --> 01:05:12,450
+but easier to write down.
+
+1143
+01:05:12,450 --> 01:05:19,110
+So there's a lot of these
+vertices in between two
+
+1144
+01:05:19,110 --> 01:05:21,740
+adjacent ui vertices.
+
+1145
+01:05:21,740 --> 01:05:23,740
+There's going to be a bunch.
+
+1146
+01:05:23,740 --> 01:05:25,730
+They're parametrized
+by two colors,cd.
+
+1147
+01:05:25,730 --> 01:05:28,270
+Remember, colors
+are pairs of things,
+
+1148
+01:05:28,270 --> 01:05:32,050
+but colors correspond to the
+items that are in the sijs.
+
+1149
+01:05:32,050 --> 01:05:35,450
+But don't worry about
+that so much here,
+
+1150
+01:05:35,450 --> 01:05:38,350
+except there are colors that
+are compatible, that they
+
+1151
+01:05:38,350 --> 01:05:39,709
+have the same first coordinate.
+
+1152
+01:05:39,709 --> 01:05:41,500
+And there are colors
+that are incompatible.
+
+1153
+01:05:41,500 --> 01:05:44,300
+For any two incompatible
+colors, which is most of them,
+
+1154
+01:05:44,300 --> 01:05:46,850
+the ones that don't agree
+on the first coordinate,
+
+1155
+01:05:46,850 --> 01:05:49,740
+we are going to add one of these
+vertices whose list is exactly
+
+1156
+01:05:49,740 --> 01:05:52,190
+cd, the two incompatible colors.
+
+1157
+01:05:52,190 --> 01:05:57,060
+What that means is, suppose
+this vertex chooses c.
+
+1158
+01:05:57,060 --> 01:06:01,386
+Well, then there's a
+vertex here with list cd.
+
+1159
+01:06:01,386 --> 01:06:03,510
+It cannot choose c, because
+then that edge would be
+
+1160
+01:06:03,510 --> 01:06:04,220
+monochromatic.
+
+1161
+01:06:04,220 --> 01:06:08,740
+So it must choose d, which means
+this vertex cannot choose d.
+
+1162
+01:06:08,740 --> 01:06:12,040
+So overall, what this means
+is that these two vertices
+
+1163
+01:06:12,040 --> 01:06:15,150
+must choose a compatible
+color, because we rule out
+
+1164
+01:06:15,150 --> 01:06:16,540
+all the incompatible pairs.
+
+1165
+01:06:16,540 --> 01:06:18,657
+So list coloring
+you can do a lot,
+
+1166
+01:06:18,657 --> 01:06:20,240
+but in particular
+we can simulate grid
+
+1167
+01:06:20,240 --> 01:06:22,762
+coloring-- sorry, grid tiling.
+
+1168
+01:06:22,762 --> 01:06:25,220
+We're not exploiting a ton of
+the structure of grid tiling,
+
+1169
+01:06:25,220 --> 01:06:28,346
+but we get a nice result
+here and it's tight.
+
+1170
+01:06:28,346 --> 01:06:30,470
+I didn't write down what
+you do for the horizontal,
+
+1171
+01:06:30,470 --> 01:06:33,200
+but it's symmetric.
+
+1172
+01:06:33,200 --> 01:06:35,842
+So that's nice.
+
+1173
+01:06:35,842 --> 01:06:37,675
+This is one of the few
+planar problems where
+
+1174
+01:06:37,675 --> 01:06:38,841
+you don't get a square root.
+
+1175
+01:06:38,841 --> 01:06:42,020
+
+1176
+01:06:42,020 --> 01:06:43,950
+The next two, you will
+get a square root.
+
+1177
+01:06:43,950 --> 01:06:47,290
+But before I get to
+the actual problem,
+
+1178
+01:06:47,290 --> 01:06:49,230
+here's a variation
+of grid tiling, which
+
+1179
+01:06:49,230 --> 01:06:51,250
+is a little tricky
+to prove hard,
+
+1180
+01:06:51,250 --> 01:06:54,330
+but is just as hard
+as grid tiling.
+
+1181
+01:06:54,330 --> 01:06:58,490
+Here we need that in every
+row-- here's the input,
+
+1182
+01:06:58,490 --> 01:06:59,500
+here's the output.
+
+1183
+01:06:59,500 --> 01:07:01,260
+Easier to look at the output.
+
+1184
+01:07:01,260 --> 01:07:04,600
+In any row-- sorry,
+that's a column.
+
+1185
+01:07:04,600 --> 01:07:06,630
+In any column, the
+first coordinate
+
+1186
+01:07:06,630 --> 01:07:08,220
+is monotonically increasing.
+
+1187
+01:07:08,220 --> 01:07:09,850
+Doesn't have to
+strictly increase,
+
+1188
+01:07:09,850 --> 01:07:11,300
+but you have a less than
+or equal to constraint.
+
+1189
+01:07:11,300 --> 01:07:12,720
+This is less than
+or equal to this.
+
+1190
+01:07:12,720 --> 01:07:14,178
+This is less than
+or equal to this.
+
+1191
+01:07:14,178 --> 01:07:15,062
+4,4,4.
+
+1192
+01:07:15,062 --> 01:07:16,270
+Here they happen to be equal.
+
+1193
+01:07:16,270 --> 01:07:17,070
+2,3,3.
+
+1194
+01:07:17,070 --> 01:07:20,440
+Here they increase a little
+bit, similarly in every row.
+
+1195
+01:07:20,440 --> 01:07:23,190
+2,3,5-- they're
+monotonically increasing.
+
+1196
+01:07:23,190 --> 01:07:26,280
+1,2,2, 2,2,3.
+
+1197
+01:07:26,280 --> 01:07:29,600
+So this is a valid solution
+to grid tiling with less than
+
+1198
+01:07:29,600 --> 01:07:30,442
+or equal to.
+
+1199
+01:07:30,442 --> 01:07:31,400
+That's how it's called.
+
+1200
+01:07:31,400 --> 01:07:33,920
+
+1201
+01:07:33,920 --> 01:07:37,350
+I will not prove
+that this is w1 hard.
+
+1202
+01:07:37,350 --> 01:07:41,820
+I do have a figure for it.
+
+1203
+01:07:41,820 --> 01:07:44,400
+It turns out to be
+a linear expansion.
+
+1204
+01:07:44,400 --> 01:07:47,170
+If you have a k by k grid,
+we're going to end up with a 4k
+
+1205
+01:07:47,170 --> 01:07:48,190
+by 4k grid.
+
+1206
+01:07:48,190 --> 01:07:49,510
+That part is important.
+
+1207
+01:07:49,510 --> 01:07:53,180
+So we get the same kind of
+hardness result, no f of k
+
+1208
+01:07:53,180 --> 01:07:57,520
+and a little o of k, because we
+only expand k by a factor of 4.
+
+1209
+01:07:57,520 --> 01:08:01,080
+And this is a description
+of what the sets are.
+
+1210
+01:08:01,080 --> 01:08:03,020
+It's kind of messy,
+but it effectively
+
+1211
+01:08:03,020 --> 01:08:05,626
+forces that the
+choice on the left
+
+1212
+01:08:05,626 --> 01:08:07,500
+is actually equal to
+the choice on the right,
+
+1213
+01:08:07,500 --> 01:08:10,740
+even though it only has the
+ability to specify less than
+
+1214
+01:08:10,740 --> 01:08:12,060
+or equal to.
+
+1215
+01:08:12,060 --> 01:08:15,729
+But you-- equal is something
+like modulo capital n, where
+
+1216
+01:08:15,729 --> 01:08:18,910
+n is some really large number,
+like 10 times little n--
+
+1217
+01:08:18,910 --> 01:08:20,930
+something like that.
+
+1218
+01:08:20,930 --> 01:08:24,399
+The details are kind of messy,
+so I will instead-- I mean,
+
+1219
+01:08:24,399 --> 01:08:25,779
+we could just take
+this as given.
+
+1220
+01:08:25,779 --> 01:08:28,470
+This is, like, a core
+problem to start with.
+
+1221
+01:08:28,470 --> 01:08:31,729
+And you can use it to represent
+lots of nice planar graph
+
+1222
+01:08:31,729 --> 01:08:33,590
+problems and 2D problems.
+
+1223
+01:08:33,590 --> 01:08:36,750
+So I have one example of each.
+
+1224
+01:08:36,750 --> 01:08:40,069
+These are all from this
+upcoming book on fixed parameter
+
+1225
+01:08:40,069 --> 01:08:41,160
+tractability.
+
+1226
+01:08:41,160 --> 01:08:44,660
+So you saw it here first.
+
+1227
+01:08:44,660 --> 01:08:47,979
+This book will come
+out early next year.
+
+1228
+01:08:47,979 --> 01:08:49,620
+So here's a problem.
+
+1229
+01:08:49,620 --> 01:08:51,620
+It's called scattered set.
+
+1230
+01:08:51,620 --> 01:08:57,680
+This is a generalization, in
+some sense, of independent set.
+
+1231
+01:08:57,680 --> 01:08:59,170
+So let me define it over here.
+
+1232
+01:08:59,170 --> 01:09:16,220
+
+1233
+01:09:16,220 --> 01:09:19,907
+I would also naturally
+call it d independent set.
+
+1234
+01:09:19,907 --> 01:09:21,865
+It might even be called
+that in the literature.
+
+1235
+01:09:21,865 --> 01:09:26,281
+
+1236
+01:09:26,281 --> 01:09:27,989
+So in this problem,
+you're given a graph.
+
+1237
+01:09:27,989 --> 01:09:31,780
+
+1238
+01:09:31,780 --> 01:09:36,630
+And you're given two numbers,
+two natural numbers, k and d.
+
+1239
+01:09:36,630 --> 01:09:40,120
+
+1240
+01:09:40,120 --> 01:09:55,290
+And you want to find k vertices
+with pairwise distances
+
+1241
+01:09:55,290 --> 01:09:57,770
+greater than or equal to k.
+
+1242
+01:09:57,770 --> 01:10:00,920
+Sorry, greater
+than or equal to d.
+
+1243
+01:10:00,920 --> 01:10:05,010
+So if d equals 2, this
+is independent set.
+
+1244
+01:10:05,010 --> 01:10:07,016
+Independent set
+says the distance
+
+1245
+01:10:07,016 --> 01:10:09,390
+between any pair of chosen
+vertices should be at least 2.
+
+1246
+01:10:09,390 --> 01:10:11,870
+There's no adjacent
+ones of distance 1.
+
+1247
+01:10:11,870 --> 01:10:13,670
+d equals 1 is not interesting.
+
+1248
+01:10:13,670 --> 01:10:17,940
+d equals 2 is when this
+problem becomes hard.
+
+1249
+01:10:17,940 --> 01:10:23,090
+Now interestingly, there are
+FPT algorithms with respect
+
+1250
+01:10:23,090 --> 01:10:26,720
+to k and d.
+
+1251
+01:10:26,720 --> 01:10:30,340
+So if k and d are small,
+this problem is easy.
+
+1252
+01:10:30,340 --> 01:10:33,586
+And for planar graphs, there's
+a subexponential FPT algorithm
+
+1253
+01:10:33,586 --> 01:10:34,085
+as well.
+
+1254
+01:10:34,085 --> 01:10:36,910
+
+1255
+01:10:36,910 --> 01:10:40,490
+But when d is unbounded,
+if it's not a parameter,
+
+1256
+01:10:40,490 --> 01:10:47,610
+only k is, then this problem
+is hard even for planar graphs.
+
+1257
+01:10:47,610 --> 01:10:56,770
+So planar is w1
+hard with respect
+
+1258
+01:10:56,770 --> 01:11:00,970
+to k, only when d can be
+part of the input arbitrarily
+
+1259
+01:11:00,970 --> 01:11:03,090
+large function of n.
+
+1260
+01:11:03,090 --> 01:11:17,490
+And also ETH implies there's
+no planar algorithm with time
+
+1261
+01:11:17,490 --> 01:11:27,230
+2-- sorry, f of k n to the
+little o of square root of k.
+
+1262
+01:11:27,230 --> 01:11:31,480
+
+1263
+01:11:31,480 --> 01:11:33,360
+And in fact, for
+scattered set, there
+
+1264
+01:11:33,360 --> 01:11:37,034
+is an n to the big O of
+square root of k algorithm.
+
+1265
+01:11:37,034 --> 01:11:38,450
+I don't think it's
+been published,
+
+1266
+01:11:38,450 --> 01:11:41,490
+but it's mentioned in the book.
+
+1267
+01:11:41,490 --> 01:11:44,170
+And there is-- this is tight.
+
+1268
+01:11:44,170 --> 01:11:47,166
+This says there is no n to the
+little o of square root of k
+
+1269
+01:11:47,166 --> 01:11:49,790
+algorithm, even when you get an
+arbitrary computable function f
+
+1270
+01:11:49,790 --> 01:11:51,650
+of k in front.
+
+1271
+01:11:51,650 --> 01:11:53,160
+So this is nice.
+
+1272
+01:11:53,160 --> 01:11:56,100
+We're planar, so we
+lose the square aspect,
+
+1273
+01:11:56,100 --> 01:12:01,920
+but it's actually a pretty
+easy reduction from grid tiling
+
+1274
+01:12:01,920 --> 01:12:03,880
+with less than or equal to.
+
+1275
+01:12:03,880 --> 01:12:09,970
+So you can see the grid here,
+k equals 3 in this example.
+
+1276
+01:12:09,970 --> 01:12:14,790
+And here, n equals 5, just like
+our earlier example in fact.
+
+1277
+01:12:14,790 --> 01:12:18,110
+All the information is here, as
+represented by these little red
+
+1278
+01:12:18,110 --> 01:12:19,050
+sticks.
+
+1279
+01:12:19,050 --> 01:12:21,380
+So we have a 3 by 3 matrix.
+
+1280
+01:12:21,380 --> 01:12:24,444
+In each matrix cell,
+we have a set of items.
+
+1281
+01:12:24,444 --> 01:12:25,860
+In this case, there
+are two items.
+
+1282
+01:12:25,860 --> 01:12:27,350
+In this case there
+are three items.
+
+1283
+01:12:27,350 --> 01:12:30,990
+The items are encoded by
+where the red sticks are
+
+1284
+01:12:30,990 --> 01:12:33,200
+in this subgrid.
+
+1285
+01:12:33,200 --> 01:12:37,900
+This is an n by n subgrid
+within a k by k matrix.
+
+1286
+01:12:37,900 --> 01:12:42,640
+So for every present
+pair in this set sij,
+
+1287
+01:12:42,640 --> 01:12:43,790
+we just add a stick.
+
+1288
+01:12:43,790 --> 01:12:47,390
+Now, the stick is
+a really long path.
+
+1289
+01:12:47,390 --> 01:12:51,444
+It's 100 times n.
+
+1290
+01:12:51,444 --> 01:12:53,110
+So we have this n by
+n grid, and then we
+
+1291
+01:12:53,110 --> 01:12:54,410
+have these hundred n paths.
+
+1292
+01:12:54,410 --> 01:12:56,230
+Now this is still planar.
+
+1293
+01:12:56,230 --> 01:12:59,700
+You can put that path in there.
+
+1294
+01:12:59,700 --> 01:13:03,890
+And also, this red path is
+100, and these are length 1.
+
+1295
+01:13:03,890 --> 01:13:06,190
+Black edges are length 1.
+
+1296
+01:13:06,190 --> 01:13:09,820
+So what's shown here is actually
+satisfying assignment where
+
+1297
+01:13:09,820 --> 01:13:12,896
+I choose one of these vertices.
+
+1298
+01:13:12,896 --> 01:13:14,520
+In scattered set,
+our goal is to choose
+
+1299
+01:13:14,520 --> 01:13:16,530
+vertices that are very
+far away from each other.
+
+1300
+01:13:16,530 --> 01:13:18,630
+How far?
+
+1301
+01:13:18,630 --> 01:13:26,300
+How far is 301 times n plus 1.
+
+1302
+01:13:26,300 --> 01:13:33,560
+Roughly, three red
+sticks plus one traversal
+
+1303
+01:13:33,560 --> 01:13:37,610
+of a subgrid plus 1.
+
+1304
+01:13:37,610 --> 01:13:38,890
+Roughly three red sticks.
+
+1305
+01:13:38,890 --> 01:13:45,880
+So if I choose this vertex and
+I want to choose one in here,
+
+1306
+01:13:45,880 --> 01:13:47,890
+it's got to be at least
+three red sticks away.
+
+1307
+01:13:47,890 --> 01:13:51,020
+So I'm going to get one red
+stick here, one red stick here,
+
+1308
+01:13:51,020 --> 01:13:53,790
+and one red stick there.
+
+1309
+01:13:53,790 --> 01:13:55,730
+So that's good.
+
+1310
+01:13:55,730 --> 01:13:57,600
+But that just says
+I choose exactly
+
+1311
+01:13:57,600 --> 01:13:58,990
+one out of each of these things.
+
+1312
+01:13:58,990 --> 01:14:00,921
+Once I choose one
+of these endpoints,
+
+1313
+01:14:00,921 --> 01:14:02,420
+I certainly can't
+choose another one
+
+1314
+01:14:02,420 --> 01:14:04,550
+because it's only
+two red sticks away.
+
+1315
+01:14:04,550 --> 01:14:06,910
+I can only choose
+one per subgrid.
+
+1316
+01:14:06,910 --> 01:14:10,620
+But then also, I want the
+lesser and equal to constraint.
+
+1317
+01:14:10,620 --> 01:14:14,320
+And that's the plus n over here.
+
+1318
+01:14:14,320 --> 01:14:17,744
+So I have three
+red sticks plus n.
+
+1319
+01:14:17,744 --> 01:14:20,540
+That's the 1.
+
+1320
+01:14:20,540 --> 01:14:25,000
+Because I have plus n, n is the
+width, let's say, these guys.
+
+1321
+01:14:25,000 --> 01:14:27,550
+So once I choose
+this guy, I have
+
+1322
+01:14:27,550 --> 01:14:30,300
+to be three red sticks--
+1, 2, 3 red sticks away.
+
+1323
+01:14:30,300 --> 01:14:33,020
+But I also need to be
+an additional n away.
+
+1324
+01:14:33,020 --> 01:14:41,810
+And here, I am that because
+I have 1, 2, 3, 4, 5, 6 away.
+
+1325
+01:14:41,810 --> 01:14:46,040
+I'm actually one
+more than n away.
+
+1326
+01:14:46,040 --> 01:14:48,120
+And there's a plus 1 over
+there, so that's good.
+
+1327
+01:14:48,120 --> 01:14:49,650
+I'm 6 away.
+
+1328
+01:14:49,650 --> 01:14:51,574
+I need to be 6 away.
+
+1329
+01:14:51,574 --> 01:14:52,990
+And that corresponds
+to this being
+
+1330
+01:14:52,990 --> 01:14:55,850
+in the fourth column and this
+being in the fourth column.
+
+1331
+01:14:55,850 --> 01:15:02,460
+In other words, it corresponds
+to the second coordinate
+
+1332
+01:15:02,460 --> 01:15:05,790
+of this guy being less than or
+equal to the second coordinate
+
+1333
+01:15:05,790 --> 01:15:07,450
+of this guy.
+
+1334
+01:15:07,450 --> 01:15:09,680
+So it's exactly the grid
+tiling with less than
+
+1335
+01:15:09,680 --> 01:15:12,960
+or equal to constraint
+horizontally and symmetrically,
+
+1336
+01:15:12,960 --> 01:15:13,560
+vertically.
+
+1337
+01:15:13,560 --> 01:15:16,040
+Because the distance between
+a point here to point
+
+1338
+01:15:16,040 --> 01:15:19,440
+here is going to be go straight
+down, jump, use the red stick,
+
+1339
+01:15:19,440 --> 01:15:22,640
+and then go teleport
+left right and then
+
+1340
+01:15:22,640 --> 01:15:26,070
+go straight down from there.
+
+1341
+01:15:26,070 --> 01:15:28,420
+So that distance
+corresponds to exactly when
+
+1342
+01:15:28,420 --> 01:15:31,140
+all the less than or equal
+to constraints are satisfied.
+
+1343
+01:15:31,140 --> 01:15:33,190
+If and only if, so this
+a reduction from grid
+
+1344
+01:15:33,190 --> 01:15:35,500
+tiling with less than or
+equal to to scattered set.
+
+1345
+01:15:35,500 --> 01:15:36,480
+[INAUDIBLE] is w1 hard.
+
+1346
+01:15:36,480 --> 01:15:39,960
+Now here, notice k
+prime is k squared,
+
+1347
+01:15:39,960 --> 01:15:45,930
+because we are choosing
+one vertex per matrix cell.
+
+1348
+01:15:45,930 --> 01:15:47,230
+And they're k squared cells.
+
+1349
+01:15:47,230 --> 01:15:51,010
+So here we are losing
+the quadratic blowup.
+
+1350
+01:15:51,010 --> 01:15:53,675
+
+1351
+01:15:53,675 --> 01:15:54,175
+Questions?
+
+1352
+01:15:54,175 --> 01:15:56,910
+
+1353
+01:15:56,910 --> 01:16:00,347
+One more similar example.
+
+1354
+01:16:00,347 --> 01:16:01,930
+There aren't a ton
+of hardness results
+
+1355
+01:16:01,930 --> 01:16:03,642
+here, so not a lot
+to choose from.
+
+1356
+01:16:03,642 --> 01:16:05,850
+There are some multi-way
+[? Kant and ?] other things.
+
+1357
+01:16:05,850 --> 01:16:07,740
+But among simple
+examples, here's
+
+1358
+01:16:07,740 --> 01:16:11,020
+another simple example--
+very similar looking.
+
+1359
+01:16:11,020 --> 01:16:14,940
+This is a graph in 2D
+plane, so to speak.
+
+1360
+01:16:14,940 --> 01:16:18,460
+You can also think of it as
+a unit disk graph problem.
+
+1361
+01:16:18,460 --> 01:16:27,650
+So a unit disk graph is I take
+some points in the plane, 2D
+
+1362
+01:16:27,650 --> 01:16:31,679
+coordinates, let's say
+given by rational values.
+
+1363
+01:16:31,679 --> 01:16:33,470
+x and y-coordinates
+are given by rationals.
+
+1364
+01:16:33,470 --> 01:16:35,810
+And if I look at
+any two vertices,
+
+1365
+01:16:35,810 --> 01:16:40,160
+if they live-- if the
+distance between them
+
+1366
+01:16:40,160 --> 01:16:42,660
+is less than or equal to
+1, then I add an edge.
+
+1367
+01:16:42,660 --> 01:16:47,344
+So here, I might
+have a graph-- this
+
+1368
+01:16:47,344 --> 01:16:49,660
+is going to be a lot of
+edges with that notion of 1.
+
+1369
+01:16:49,660 --> 01:16:54,320
+
+1370
+01:16:54,320 --> 01:16:56,344
+You can have big cliques
+in a unit disk graph,
+
+1371
+01:16:56,344 --> 01:16:57,510
+but it's kind of planar-ish.
+
+1372
+01:16:57,510 --> 01:16:59,894
+
+1373
+01:16:59,894 --> 01:17:01,560
+Especially if you
+have distant vertices,
+
+1374
+01:17:01,560 --> 01:17:02,910
+they're not going
+to be connected.
+
+1375
+01:17:02,910 --> 01:17:05,493
+So you have these local cliques,
+but they're kind of connected
+
+1376
+01:17:05,493 --> 01:17:07,930
+in a planar-like way.
+
+1377
+01:17:07,930 --> 01:17:08,700
+Definition clear?
+
+1378
+01:17:08,700 --> 01:17:11,180
+Edge if and only if
+distance at most 1.
+
+1379
+01:17:11,180 --> 01:17:16,070
+So what about independent
+set in unit disk graphs?
+
+1380
+01:17:16,070 --> 01:17:18,050
+We know independent
+set in general's hard.
+
+1381
+01:17:18,050 --> 01:17:20,400
+Independent set in unit disk
+graphs is almost as hard.
+
+1382
+01:17:20,400 --> 01:17:24,790
+Again, there's a quadratic
+loss in the parameter.
+
+1383
+01:17:24,790 --> 01:17:27,600
+But problem is, w1 hard
+and has the same kind
+
+1384
+01:17:27,600 --> 01:17:29,960
+of hardness as scattered set.
+
+1385
+01:17:29,960 --> 01:17:32,010
+By similar kind of
+structure, here I'm
+
+1386
+01:17:32,010 --> 01:17:33,720
+actually giving
+you the grid tiling
+
+1387
+01:17:33,720 --> 01:17:35,874
+with less than or equal to.
+
+1388
+01:17:35,874 --> 01:17:37,790
+Probably also corresponds
+to the last example,
+
+1389
+01:17:37,790 --> 01:17:41,160
+but here it is in the
+independent set unit disk
+
+1390
+01:17:41,160 --> 01:17:41,660
+problem.
+
+1391
+01:17:41,660 --> 01:17:44,140
+Independent set in a unit
+disk is the same thing
+
+1392
+01:17:44,140 --> 01:17:47,530
+as choosing some
+vertices, like this one,
+
+1393
+01:17:47,530 --> 01:17:50,810
+as the center of
+a radius one half
+
+1394
+01:17:50,810 --> 01:17:53,250
+disk and then those
+radius one half disks
+
+1395
+01:17:53,250 --> 01:17:55,000
+should not intersect each other.
+
+1396
+01:17:55,000 --> 01:17:57,840
+Because these two things
+will have distance at least 1
+
+1397
+01:17:57,840 --> 01:18:00,100
+if and only if radius one
+half disk and a radius
+
+1398
+01:18:00,100 --> 01:18:02,790
+one half disk here
+do not intersect.
+
+1399
+01:18:02,790 --> 01:18:04,610
+So it's really about
+choosing centers
+
+1400
+01:18:04,610 --> 01:18:06,990
+for these disks that don't hit.
+
+1401
+01:18:06,990 --> 01:18:08,490
+And so again, what
+we're going to do
+
+1402
+01:18:08,490 --> 01:18:15,260
+is imagine an n by n subgrid
+within each cell of the matrix.
+
+1403
+01:18:15,260 --> 01:18:19,120
+But not all of those points
+are actually in the set,
+
+1404
+01:18:19,120 --> 01:18:21,410
+only the ones that
+are in-- in this case,
+
+1405
+01:18:21,410 --> 01:18:25,890
+s1,1 these pairs of guys
+as written here, so 1,
+
+1406
+01:18:25,890 --> 01:18:27,100
+1 is in there.
+
+1407
+01:18:27,100 --> 01:18:28,750
+I guess that's that guy.
+
+1408
+01:18:28,750 --> 01:18:30,640
+2,5 is this guy.
+
+1409
+01:18:30,640 --> 01:18:31,690
+3,3 is that guy.
+
+1410
+01:18:31,690 --> 01:18:34,590
+Those points we'll actually
+put in the problem.
+
+1411
+01:18:34,590 --> 01:18:38,850
+These tiny dots are
+just place markers.
+
+1412
+01:18:38,850 --> 01:18:40,510
+There's no actual point there.
+
+1413
+01:18:40,510 --> 01:18:44,170
+Then we construct the unit
+disk graph on the structure.
+
+1414
+01:18:44,170 --> 01:18:46,610
+And again, if we
+set the unit right,
+
+1415
+01:18:46,610 --> 01:18:51,800
+and these are super tiny,
+in the same way that we
+
+1416
+01:18:51,800 --> 01:18:53,300
+had the red edges,
+which were, like,
+
+1417
+01:18:53,300 --> 01:18:57,580
+100 times longer than the
+small things over here,
+
+1418
+01:18:57,580 --> 01:19:02,550
+we're going to have, let's say
+this thing is 100 times smaller
+
+1419
+01:19:02,550 --> 01:19:08,470
+than that distance, enough
+so that these circles act
+
+1420
+01:19:08,470 --> 01:19:09,345
+kind of like squares.
+
+1421
+01:19:09,345 --> 01:19:12,540
+
+1422
+01:19:12,540 --> 01:19:15,850
+If you look very close to
+here, this looks straight.
+
+1423
+01:19:15,850 --> 01:19:19,680
+So these are very
+compressed, so it's probably
+
+1424
+01:19:19,680 --> 01:19:23,600
+going to be more like
+a factor of n smaller.
+
+1425
+01:19:23,600 --> 01:19:25,410
+These effectively
+act like squares.
+
+1426
+01:19:25,410 --> 01:19:27,750
+It's just a matter of
+whether the horizontal extent
+
+1427
+01:19:27,750 --> 01:19:31,140
+of this disk hits the
+horizontal extent of this disk.
+
+1428
+01:19:31,140 --> 01:19:33,460
+And that is a less than
+or equal to constraint.
+
+1429
+01:19:33,460 --> 01:19:37,520
+Once you choose something
+in column 2 here,
+
+1430
+01:19:37,520 --> 01:19:40,140
+the next one has to
+be column at least 2.
+
+1431
+01:19:40,140 --> 01:19:42,730
+Here, there there's a gap
+because we chose column 3.
+
+1432
+01:19:42,730 --> 01:19:44,820
+Here, there's a gap
+because we chose column 5.
+
+1433
+01:19:44,820 --> 01:19:47,470
+But for example here, we
+chose column 2, column 2
+
+1434
+01:19:47,470 --> 01:19:50,180
+and these guys are
+almost touching.
+
+1435
+01:19:50,180 --> 01:19:51,190
+But barely not touching.
+
+1436
+01:19:51,190 --> 01:19:53,231
+And as long as you have
+the less than or equal to
+
+1437
+01:19:53,231 --> 01:19:57,554
+constraint on the columns,
+then you'll be OK.
+
+1438
+01:19:57,554 --> 01:19:59,720
+The disk won't intersect
+and it's an if and only if.
+
+1439
+01:19:59,720 --> 01:20:01,430
+So again, we
+represent grid tiling
+
+1440
+01:20:01,430 --> 01:20:03,750
+with less than or equal
+to and independent
+
+1441
+01:20:03,750 --> 01:20:07,330
+set or disk packing
+problem in the plane.
+
+1442
+01:20:07,330 --> 01:20:09,000
+It's kind of cool.
+
+1443
+01:20:09,000 --> 01:20:09,500
+Questions?
+
+1444
+01:20:09,500 --> 01:20:12,930
+
+1445
+01:20:12,930 --> 01:20:13,430
+All right.
+
+1446
+01:20:13,430 --> 01:20:17,220
+Well-- oh, more fun facts.
+
+1447
+01:20:17,220 --> 01:20:31,090
+So we have for independent
+set in unit disk graphs,
+
+1448
+01:20:31,090 --> 01:20:35,670
+we have that there
+is no f of k n
+
+1449
+01:20:35,670 --> 01:20:40,230
+to the little o of square
+root of k algorithm.
+
+1450
+01:20:40,230 --> 01:20:42,810
+There actually is
+an n to the big O
+
+1451
+01:20:42,810 --> 01:20:45,215
+of square root of k algorithm.
+
+1452
+01:20:45,215 --> 01:20:48,850
+
+1453
+01:20:48,850 --> 01:20:51,894
+We also get-- and I
+won't go through this.
+
+1454
+01:20:51,894 --> 01:20:53,310
+I think it's pretty
+trivial, based
+
+1455
+01:20:53,310 --> 01:20:55,840
+on what I said last class.
+
+1456
+01:20:55,840 --> 01:20:57,810
+But we get that
+there's no efficient p
+
+1457
+01:20:57,810 --> 01:21:02,970
+test for this problem
+unless-- sorry.
+
+1458
+01:21:02,970 --> 01:21:05,920
+This we definitely
+get from last lecture.
+
+1459
+01:21:05,920 --> 01:21:10,390
+I said if you're w1 hard
+or FPT-- if you're w1 hard
+
+1460
+01:21:10,390 --> 01:21:13,580
+and FPT does not equal
+w1, then you are not FPT.
+
+1461
+01:21:13,580 --> 01:21:15,690
+If you're not FPT, there's
+no efficient p test,
+
+1462
+01:21:15,690 --> 01:21:19,910
+no f of 1 over epsilon
+times n to some constant.
+
+1463
+01:21:19,910 --> 01:21:23,480
+In fact, if you assume ETH,
+you get an even stronger form
+
+1464
+01:21:23,480 --> 01:21:24,600
+of that.
+
+1465
+01:21:24,600 --> 01:21:31,090
+And in this example, we
+get there is no 2 to the 1
+
+1466
+01:21:31,090 --> 01:21:37,640
+over epsilon to the 1
+minus delta power times
+
+1467
+01:21:37,640 --> 01:21:41,165
+n to the order 1 1 plus
+epsilon approximation.
+
+1468
+01:21:41,165 --> 01:21:44,650
+
+1469
+01:21:44,650 --> 01:21:49,290
+This is the original result
+from the Daniel Marx paper
+
+1470
+01:21:49,290 --> 01:21:52,580
+that introduced-- this was
+his motivation for introducing
+
+1471
+01:21:52,580 --> 01:21:53,720
+grid tiling.
+
+1472
+01:21:53,720 --> 01:21:56,810
+So again, you get-- out
+of all these lower bounds,
+
+1473
+01:21:56,810 --> 01:21:59,090
+you also get results about
+inapproximability, which
+
+1474
+01:21:59,090 --> 01:22:00,942
+is another reason to care.
+
+1475
+01:22:00,942 --> 01:22:03,150
+Even if you don't care about
+parametrized complexity,
+
+1476
+01:22:03,150 --> 01:22:06,070
+these are the only ways known
+to prove lower bounds on how
+
+1477
+01:22:06,070 --> 01:22:08,246
+slow your p test has to be.
+
+1478
+01:22:08,246 --> 01:22:10,120
+Because there are p
+tests for these problems,
+
+1479
+01:22:10,120 --> 01:22:14,080
+but only so efficient.
+
+1480
+01:22:14,080 --> 01:22:17,000
+That's it for fixed
+parameter tractability.
+
+1481
+01:22:17,000 --> 01:22:19,680
+Next class, we'll do something
+completely different.
+

@@ -1,0 +1,7926 @@
+1
+0-1:59:36,500 --> 0-1:59:36,580
+
+2
+0-1:59:36,580 --> 0-1:59:38,930
+The following content is
+provided under a Creative
+
+3
+0-1:59:38,930 --> 0-1:59:40,310
+Commons license.
+
+4
+0-1:59:40,310 --> 0-1:59:42,550
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:42,550 --> 0-1:59:46,650
+continue to offer high quality
+educational resources for free.
+
+6
+0-1:59:46,650 --> 0-1:59:49,190
+To make a donation or to
+view additional materials
+
+7
+0-1:59:49,190 --> 0-1:59:53,100
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:53,100 --> 0-1:59:53,760
+at ocw.mit.edu.
+
+9
+0-1:59:53,760 --> 00:00:02,420
+
+10
+00:00:02,420 --> 00:00:03,420
+ERIK DEMAINE: All right.
+
+11
+00:00:03,420 --> 00:00:07,340
+Today we start a new
+section of NP-hardness.
+
+12
+00:00:07,340 --> 00:00:10,730
+I think it'll be one
+lecture about Hamiltonicity.
+
+13
+00:00:10,730 --> 00:00:16,100
+So Hamiltonian cycle and path.
+
+14
+00:00:16,100 --> 00:00:17,760
+We've talked about this briefly.
+
+15
+00:00:17,760 --> 00:00:25,470
+But cycle is just a cycle
+visiting every vertex exactly
+
+16
+00:00:25,470 --> 00:00:25,970
+once.
+
+17
+00:00:25,970 --> 00:00:35,400
+
+18
+00:00:35,400 --> 00:00:39,340
+And usually when you talk about
+a graph being Hamiltonian,
+
+19
+00:00:39,340 --> 00:00:41,680
+you mean that there's a
+Hamiltonian cycle, also called
+
+20
+00:00:41,680 --> 00:00:45,340
+a Hamiltonian tour, or
+Hamiltonian circuit all
+
+21
+00:00:45,340 --> 00:00:46,940
+mean the same thing.
+
+22
+00:00:46,940 --> 00:00:49,590
+And then there's
+Hamiltonian path.
+
+23
+00:00:49,590 --> 00:00:52,500
+Another problem we
+have looked at before.
+
+24
+00:00:52,500 --> 00:00:55,150
+And same thing, but path that
+visits every vertex exactly
+
+25
+00:00:55,150 --> 00:00:55,650
+once.
+
+26
+00:00:55,650 --> 00:00:57,274
+These are pretty much
+the same problem,
+
+27
+00:00:57,274 --> 00:01:01,080
+but different versions are
+useful in different settings.
+
+28
+00:01:01,080 --> 00:01:03,410
+In case you're curious
+where this comes from,
+
+29
+00:01:03,410 --> 00:01:07,790
+it comes from this game
+introduced by Hamilton in 1857.
+
+30
+00:01:07,790 --> 00:01:12,910
+He was the royal astronomer
+of Ireland back then,
+
+31
+00:01:12,910 --> 00:01:16,860
+but he had fun
+with games as well.
+
+32
+00:01:16,860 --> 00:01:21,020
+So here you have something like
+the graph of a dodecahedron.
+
+33
+00:01:21,020 --> 00:01:23,390
+The dual is an icosahedron,
+hence the name,
+
+34
+00:01:23,390 --> 00:01:26,077
+and you want to find a
+Hamiltonian circuit through it.
+
+35
+00:01:26,077 --> 00:01:28,660
+Or there's actually a two-player
+game where one person chooses
+
+36
+00:01:28,660 --> 00:01:30,160
+a subset of the
+graph, the other one
+
+37
+00:01:30,160 --> 00:01:34,000
+tries to find Hamiltonian
+circuit in that subset.
+
+38
+00:01:34,000 --> 00:01:37,580
+So that's where
+Hamiltonicity comes from.
+
+39
+00:01:37,580 --> 00:01:41,780
+But for us today it is a
+nice NP-complete problem.
+
+40
+00:01:41,780 --> 00:01:48,260
+We've actually seen one proof
+that planar max degree four,
+
+41
+00:01:48,260 --> 00:01:53,230
+I think, Hamiltonicity is hard.
+
+42
+00:01:53,230 --> 00:01:57,390
+That was in the
+planar SAT discussion,
+
+43
+00:01:57,390 --> 00:02:00,230
+and this is the original
+paper that does planar 3SAT.
+
+44
+00:02:00,230 --> 00:02:02,970
+And there was this proof--
+I guess it's not actually
+
+45
+00:02:02,970 --> 00:02:05,590
+max degree four, probably a
+max degree six or something.
+
+46
+00:02:05,590 --> 00:02:09,640
+
+47
+00:02:09,640 --> 00:02:11,920
+We argued the directed
+case-- this apparently
+
+48
+00:02:11,920 --> 00:02:13,745
+works for the undirected
+case-- we'll get
+
+49
+00:02:13,745 --> 00:02:17,390
+an even stronger result here.
+
+50
+00:02:17,390 --> 00:02:26,640
+In general, the problem
+is NP-complete in a lot
+
+51
+00:02:26,640 --> 00:02:32,590
+of different special cases,
+such as the one we saw.
+
+52
+00:02:32,590 --> 00:02:35,810
+For example, if you're
+looking for a path
+
+53
+00:02:35,810 --> 00:02:42,234
+and you're given the
+two end points-- so
+
+54
+00:02:42,234 --> 00:02:44,150
+normally you'd say is
+there a Hamiltonian path
+
+55
+00:02:44,150 --> 00:02:45,400
+or is there Hamiltonian cycle?
+
+56
+00:02:45,400 --> 00:02:47,300
+Those are both hard
+in general graphs.
+
+57
+00:02:47,300 --> 00:02:51,240
+But if I give you a graph and
+I give you two nodes, s and t,
+
+58
+00:02:51,240 --> 00:02:55,040
+and I want to know is
+there-- so here's the graph,
+
+59
+00:02:55,040 --> 00:02:57,290
+here's s and t-- I want to
+know is there a path that
+
+60
+00:02:57,290 --> 00:02:59,920
+starts at s, ends at t.
+
+61
+00:02:59,920 --> 00:03:01,640
+This is NP-hard.
+
+62
+00:03:01,640 --> 00:03:06,874
+By reduction from Hamiltonian
+cycle, tell me what to do.
+
+63
+00:03:06,874 --> 00:03:10,682
+AUDIENCE: You add a new node
+which has connection to s
+
+64
+00:03:10,682 --> 00:03:12,407
+and t and nothing else.
+
+65
+00:03:12,407 --> 00:03:13,990
+ERIK DEMAINE: Add a
+new node connected
+
+66
+00:03:13,990 --> 00:03:15,160
+to s and t and nothing else.
+
+67
+00:03:15,160 --> 00:03:15,660
+Yeah.
+
+68
+00:03:15,660 --> 00:03:20,794
+So we'll add this new node
+x, connected to s and t.
+
+69
+00:03:20,794 --> 00:03:22,460
+What's interesting
+about adding a degree
+
+70
+00:03:22,460 --> 00:03:25,090
+two node is you know it
+has to be in the cycle,
+
+71
+00:03:25,090 --> 00:03:28,516
+so you know that these two
+edges have to be in the cycle.
+
+72
+00:03:28,516 --> 00:03:30,015
+AUDIENCE: Also, if
+it's directed you
+
+73
+00:03:30,015 --> 00:03:31,500
+can direct those two so that--
+
+74
+00:03:31,500 --> 00:03:34,249
+ERIK DEMAINE: It's not directed.
+
+75
+00:03:34,249 --> 00:03:35,790
+All these are going
+to be undirected.
+
+76
+00:03:35,790 --> 00:03:42,150
+
+77
+00:03:42,150 --> 00:03:45,660
+This would preserve
+directedness if you wanted it.
+
+78
+00:03:45,660 --> 00:03:48,020
+So there you go.
+
+79
+00:03:48,020 --> 00:03:50,810
+So if Hamiltonian cycle's
+hard, then Hamiltonian path
+
+80
+00:03:50,810 --> 00:03:52,250
+given two end points is hard.
+
+81
+00:03:52,250 --> 00:03:55,029
+Easy warm-up.
+
+82
+00:03:55,029 --> 00:04:04,140
+It's also NP-complete
+for planar three regular,
+
+83
+00:04:04,140 --> 00:04:13,095
+three connected graphs,
+where every face
+
+84
+00:04:13,095 --> 00:04:14,290
+has degree at least five.
+
+85
+00:04:14,290 --> 00:04:16,870
+But probably already met them.
+
+86
+00:04:16,870 --> 00:04:20,290
+It's NP-hard for
+bipartite graphs.
+
+87
+00:04:20,290 --> 00:04:27,777
+These are all various
+results proved in the '70s.
+
+88
+00:04:27,777 --> 00:04:29,610
+It's going to be hard
+for squares of graphs.
+
+89
+00:04:29,610 --> 00:04:34,080
+
+90
+00:04:34,080 --> 00:04:35,520
+Squares of graphs
+is interesting.
+
+91
+00:04:35,520 --> 00:04:38,560
+This is whenever you
+have a length two path,
+
+92
+00:04:38,560 --> 00:04:40,230
+you add an edge.
+
+93
+00:04:40,230 --> 00:04:45,110
+It's a square, and
+that's still hard.
+
+94
+00:04:45,110 --> 00:04:49,040
+Another fun problem is
+computing a Hamiltonian cycle
+
+95
+00:04:49,040 --> 00:04:52,240
+given a Hamiltonian
+path is also hard.
+
+96
+00:04:52,240 --> 00:04:57,220
+
+97
+00:04:57,220 --> 00:05:00,200
+On the other hand, some
+variations are easy.
+
+98
+00:05:00,200 --> 00:05:03,270
+So you have to be a
+little bit careful.
+
+99
+00:05:03,270 --> 00:05:06,490
+There are a lot of papers
+about various graphs
+
+100
+00:05:06,490 --> 00:05:08,360
+that are always
+Hamiltonian and usually
+
+101
+00:05:08,360 --> 00:05:10,693
+when they're always Hamiltonian
+there's a good algorithm
+
+102
+00:05:10,693 --> 00:05:11,870
+to find them.
+
+103
+00:05:11,870 --> 00:05:14,040
+Here are just a
+couple of examples.
+
+104
+00:05:14,040 --> 00:05:17,630
+One is cubes of graphs.
+
+105
+00:05:17,630 --> 00:05:20,910
+So if you take all
+length three paths
+
+106
+00:05:20,910 --> 00:05:23,320
+and connect them by an edge,
+or maybe length less than
+
+107
+00:05:23,320 --> 00:05:25,847
+or equal to three-- I'm not
+sure exactly-- that's easy.
+
+108
+00:05:25,847 --> 00:05:28,180
+All such graphs are Hamiltonian,
+where with squares it's
+
+109
+00:05:28,180 --> 00:05:29,410
+still hard.
+
+110
+00:05:29,410 --> 00:05:30,790
+So that's kind of a limit.
+
+111
+00:05:30,790 --> 00:05:34,220
+And the other one
+here is planar-- three
+
+112
+00:05:34,220 --> 00:05:36,430
+connector graphs is NP-complete.
+
+113
+00:05:36,430 --> 00:05:38,960
+Planar four connector
+graphs is polynomial.
+
+114
+00:05:38,960 --> 00:05:44,630
+
+115
+00:05:44,630 --> 00:05:49,070
+This is a tough theorem,
+one of many tough theorems.
+
+116
+00:05:49,070 --> 00:05:52,130
+All such graphs are Hamiltonian.
+
+117
+00:05:52,130 --> 00:05:54,780
+So those are a few
+cases to worry about.
+
+118
+00:05:54,780 --> 00:05:56,690
+We will see some more today.
+
+119
+00:05:56,690 --> 00:05:59,450
+And these are relatively simple.
+
+120
+00:05:59,450 --> 00:06:01,210
+We're going to
+prove even stricter
+
+121
+00:06:01,210 --> 00:06:03,280
+versions of this
+problem NP-complete,
+
+122
+00:06:03,280 --> 00:06:06,990
+but it starts to give you
+the flavor of what's there.
+
+123
+00:06:06,990 --> 00:06:10,620
+
+124
+00:06:10,620 --> 00:06:18,280
+In fact the first
+one we will prove
+
+125
+00:06:18,280 --> 00:06:25,650
+is-- this may seem a little
+weird because I wanted
+
+126
+00:06:25,650 --> 00:06:27,500
+to do undirected,
+but we're going
+
+127
+00:06:27,500 --> 00:06:29,120
+to make it undirected
+in a moment.
+
+128
+00:06:29,120 --> 00:06:31,740
+We're going to do a
+series of reductions.
+
+129
+00:06:31,740 --> 00:06:38,030
+First one we'll do is planar
+max degree three graphs.
+
+130
+00:06:38,030 --> 00:06:42,680
+
+131
+00:06:42,680 --> 00:06:47,710
+So this will be a
+reduction from 3SAT.
+
+132
+00:06:47,710 --> 00:06:52,499
+So the general idea,
+and please wait why you
+
+133
+00:06:52,499 --> 00:06:53,790
+should care about this problem.
+
+134
+00:06:53,790 --> 00:06:55,956
+We're going to reduce it
+to another more interesting
+
+135
+00:06:55,956 --> 00:06:57,520
+version of Hamiltonicity.
+
+136
+00:06:57,520 --> 00:07:01,100
+But here's one way to represent
+3SAT as Hamiltonicity--
+
+137
+00:07:01,100 --> 00:07:03,800
+another way, similar to
+the one we did before.
+
+138
+00:07:03,800 --> 00:07:05,950
+We got clauses here
+over on the left.
+
+139
+00:07:05,950 --> 00:07:08,260
+Here some of the
+clauses have size two,
+
+140
+00:07:08,260 --> 00:07:11,120
+but it works for the three case.
+
+141
+00:07:11,120 --> 00:07:14,530
+Here we have the variables.
+
+142
+00:07:14,530 --> 00:07:19,870
+And the key concept
+here is this notation.
+
+143
+00:07:19,870 --> 00:07:24,530
+This is shorthand for a
+more complicated gadget,
+
+144
+00:07:24,530 --> 00:07:28,540
+which is to say that these
+two things should not
+
+145
+00:07:28,540 --> 00:07:29,600
+be both chosen.
+
+146
+00:07:29,600 --> 00:07:32,410
+This is an exclusive OR.
+
+147
+00:07:32,410 --> 00:07:34,210
+Exactly one of them
+should be chosen.
+
+148
+00:07:34,210 --> 00:07:37,710
+So that forces x1 to be
+the opposite of x1 bar,
+
+149
+00:07:37,710 --> 00:07:39,362
+and it also lets you
+duplicate things.
+
+150
+00:07:39,362 --> 00:07:41,320
+So here we get multiple
+copies of the variable.
+
+151
+00:07:41,320 --> 00:07:42,861
+You keep doing that
+several times you
+
+152
+00:07:42,861 --> 00:07:45,570
+get many copies of variable
+and its complement.
+
+153
+00:07:45,570 --> 00:07:49,290
+And then we're also going to
+use some connections like this.
+
+154
+00:07:49,290 --> 00:07:51,380
+We're going to need
+a crossover gadget,
+
+155
+00:07:51,380 --> 00:07:55,280
+but this will say
+that you-- well,
+
+156
+00:07:55,280 --> 00:07:57,410
+so this is going to
+be some clause which
+
+157
+00:07:57,410 --> 00:07:58,920
+it's not literally as drawn.
+
+158
+00:07:58,920 --> 00:08:01,870
+Again, this is notation
+for a gadget the
+
+159
+00:08:01,870 --> 00:08:06,080
+is going to force at least one
+of these to be traversable.
+
+160
+00:08:06,080 --> 00:08:08,280
+And so that overall
+should represent 3SAT.
+
+161
+00:08:08,280 --> 00:08:09,690
+We need a clause gadget.
+
+162
+00:08:09,690 --> 00:08:12,419
+We need this exclusive
+OR so that we can split,
+
+163
+00:08:12,419 --> 00:08:13,190
+duplicate things.
+
+164
+00:08:13,190 --> 00:08:15,753
+Overall, the cycle's
+going to do this.
+
+165
+00:08:15,753 --> 00:08:17,919
+It's going to visit all the
+variables in order, then
+
+166
+00:08:17,919 --> 00:08:19,659
+all the clauses in order.
+
+167
+00:08:19,659 --> 00:08:22,700
+So we can't get anything
+interesting out of planarity,
+
+168
+00:08:22,700 --> 00:08:24,657
+because that graph
+with these connections
+
+169
+00:08:24,657 --> 00:08:25,740
+is not going to be planar.
+
+170
+00:08:25,740 --> 00:08:26,874
+So we'll need a crossover.
+
+171
+00:08:26,874 --> 00:08:28,540
+And those are the
+three gadgets we need.
+
+172
+00:08:28,540 --> 00:08:28,965
+Yeah.
+
+173
+00:08:28,965 --> 00:08:30,657
+AUDIENCE: Why were
+you using exclusively
+
+174
+00:08:30,657 --> 00:08:34,190
+working with [INAUDIBLE]
+variables [INAUDIBLE]?
+
+175
+00:08:34,190 --> 00:08:36,670
+ERIK DEMAINE: So the idea
+is here there's a choice.
+
+176
+00:08:36,670 --> 00:08:40,370
+Do I choose this edge or this
+edge in the Hamiltonian cycle.
+
+177
+00:08:40,370 --> 00:08:42,200
+And I want the choice
+for this copy of x1
+
+178
+00:08:42,200 --> 00:08:44,950
+to be the same as
+for that copy of x1.
+
+179
+00:08:44,950 --> 00:08:49,440
+So the exclusive OR forces each
+instance of x1 to be the same.
+
+180
+00:08:49,440 --> 00:08:51,060
+In general, if
+there's k instances,
+
+181
+00:08:51,060 --> 00:08:52,616
+you'd have k of these.
+
+182
+00:08:52,616 --> 00:08:54,508
+AUDIENCE: Can you connect that?
+
+183
+00:08:54,508 --> 00:08:56,424
+Use the same guy to
+connect it to the instance
+
+184
+00:08:56,424 --> 00:08:57,376
+inside the clause?
+
+185
+00:08:57,376 --> 00:09:01,200
+
+186
+00:09:01,200 --> 00:09:05,629
+ERIK DEMAINE: I guess the reason
+why we need two copies here is
+
+187
+00:09:05,629 --> 00:09:08,170
+that you can't-- well, see you
+can't have 2 XOR gadgets going
+
+188
+00:09:08,170 --> 00:09:10,180
+to the same place.
+
+189
+00:09:10,180 --> 00:09:12,407
+So it will be clear once
+we've seen the XOR gadget.
+
+190
+00:09:12,407 --> 00:09:14,990
+We want two distinct copies so
+that these two things can point
+
+191
+00:09:14,990 --> 00:09:17,540
+to different copies of x1.
+
+192
+00:09:17,540 --> 00:09:19,655
+That's why we're making
+a copy like that.
+
+193
+00:09:19,655 --> 00:09:21,002
+Does that make sense?
+
+194
+00:09:21,002 --> 00:09:22,210
+AUDIENCE: [INAUDIBLE].
+
+195
+00:09:22,210 --> 00:09:23,180
+ERIK DEMAINE: OK.
+
+196
+00:09:23,180 --> 00:09:25,000
+Excellent.
+
+197
+00:09:25,000 --> 00:09:25,905
+Actually, same slide.
+
+198
+00:09:25,905 --> 00:09:27,850
+I should just show them.
+
+199
+00:09:27,850 --> 00:09:31,720
+So here is-- maybe let's
+start with the XOR gadget
+
+200
+00:09:31,720 --> 00:09:35,510
+because the clause-- ah,
+clause doesn't actually use it.
+
+201
+00:09:35,510 --> 00:09:40,440
+So the XOR gadget is if we have
+two edges of opposite direction
+
+202
+00:09:40,440 --> 00:09:43,187
+relative to the way
+we're being connected.
+
+203
+00:09:43,187 --> 00:09:44,770
+I think it also works
+in the other way
+
+204
+00:09:44,770 --> 00:09:47,470
+because these are-- no,
+these are also opposite
+
+205
+00:09:47,470 --> 00:09:51,370
+if you redraw it this way.
+
+206
+00:09:51,370 --> 00:09:54,070
+We're just going to
+have this picture, which
+
+207
+00:09:54,070 --> 00:09:56,040
+can be traversed.
+
+208
+00:09:56,040 --> 00:09:57,650
+Either this guy
+can come in-- here
+
+209
+00:09:57,650 --> 00:10:01,430
+we're really using direction,
+directionality of the graph.
+
+210
+00:10:01,430 --> 00:10:04,240
+You can traverse
+the top edge or you
+
+211
+00:10:04,240 --> 00:10:08,570
+can traverse the bottom edge
+in the opposite direction.
+
+212
+00:10:08,570 --> 00:10:12,070
+But you can't just turn around
+because then these vertices
+
+213
+00:10:12,070 --> 00:10:14,080
+would be uncovered.
+
+214
+00:10:14,080 --> 00:10:16,930
+And as soon as
+you've gone this far,
+
+215
+00:10:16,930 --> 00:10:18,300
+you can't come back this way.
+
+216
+00:10:18,300 --> 00:10:20,280
+So once you enter here
+you're forced to leave there.
+
+217
+00:10:20,280 --> 00:10:21,243
+Once you enter
+here you're forced
+
+218
+00:10:21,243 --> 00:10:23,326
+to leave there, if you
+want to cover everything.
+
+219
+00:10:23,326 --> 00:10:24,950
+So that's an exclusive
+OR, and at least
+
+220
+00:10:24,950 --> 00:10:27,240
+one of those better happen.
+
+221
+00:10:27,240 --> 00:10:29,840
+So that's what
+happens over there.
+
+222
+00:10:29,840 --> 00:10:32,100
+And also what we'll
+end up doing here,
+
+223
+00:10:32,100 --> 00:10:34,710
+except we also need
+the crossing case.
+
+224
+00:10:34,710 --> 00:10:37,120
+On the other hand,
+for the clause,
+
+225
+00:10:37,120 --> 00:10:43,570
+the idea is basically there's a
+cycle over here, which is fine.
+
+226
+00:10:43,570 --> 00:10:46,800
+But somehow that
+cycle for that clause
+
+227
+00:10:46,800 --> 00:10:50,030
+has to be connected into the big
+cycle that we've drawn already.
+
+228
+00:10:50,030 --> 00:10:51,520
+And at least one
+of the variables
+
+229
+00:10:51,520 --> 00:10:53,310
+needs to connect to that.
+
+230
+00:10:53,310 --> 00:11:01,550
+So the idea is we
+can come up here--
+
+231
+00:11:01,550 --> 00:11:05,730
+so also these vertices
+need to be covered.
+
+232
+00:11:05,730 --> 00:11:10,370
+So we can come up here,
+go over here, loop around,
+
+233
+00:11:10,370 --> 00:11:11,290
+and be happy.
+
+234
+00:11:11,290 --> 00:11:15,370
+And then we've grab
+the entire cycle.
+
+235
+00:11:15,370 --> 00:11:18,550
+Also, when we've
+grabbed this cycle,
+
+236
+00:11:18,550 --> 00:11:26,510
+we can also grab these vertices.
+
+237
+00:11:26,510 --> 00:11:28,450
+All of them.
+
+238
+00:11:28,450 --> 00:11:33,340
+That's only going to be
+possible if this is possible.
+
+239
+00:11:33,340 --> 00:11:39,430
+So in the outer side, we can't
+go here and then up here.
+
+240
+00:11:39,430 --> 00:11:41,950
+We can go here over here.
+
+241
+00:11:41,950 --> 00:11:43,400
+That's also fine.
+
+242
+00:11:43,400 --> 00:11:45,160
+OK.
+
+243
+00:11:45,160 --> 00:11:45,841
+Good.
+
+244
+00:11:45,841 --> 00:11:46,340
+I see.
+
+245
+00:11:46,340 --> 00:11:49,750
+So that the issue is-- so
+these are actually flexible.
+
+246
+00:11:49,750 --> 00:11:52,930
+These guys can be covered
+basically from the right side
+
+247
+00:11:52,930 --> 00:11:54,780
+or from the left
+side, either way.
+
+248
+00:11:54,780 --> 00:11:59,020
+So it doesn't matter whether
+you take this path or this path.
+
+249
+00:11:59,020 --> 00:12:03,310
+But at least one of these
+sort of pairs of edges,
+
+250
+00:12:03,310 --> 00:12:05,300
+as they're drawn
+over here, you need
+
+251
+00:12:05,300 --> 00:12:07,880
+to be able to choose
+the left choice
+
+252
+00:12:07,880 --> 00:12:10,930
+and, therefore,
+get the big cycle.
+
+253
+00:12:10,930 --> 00:12:14,150
+And the issue with that is
+because you have this XOR,
+
+254
+00:12:14,150 --> 00:12:16,820
+it's an exclusive OR, exactly
+one of those two things
+
+255
+00:12:16,820 --> 00:12:17,690
+must be true.
+
+256
+00:12:17,690 --> 00:12:19,310
+So in some cases,
+you'll be forced
+
+257
+00:12:19,310 --> 00:12:21,740
+to choose the right thing.
+
+258
+00:12:21,740 --> 00:12:24,250
+If this variable
+chose the right path,
+
+259
+00:12:24,250 --> 00:12:27,840
+then this one will also have to
+choose the right path because
+
+260
+00:12:27,840 --> 00:12:30,780
+of this exclusive OR,
+and preventing you
+
+261
+00:12:30,780 --> 00:12:32,280
+from grabbing the cycle.
+
+262
+00:12:32,280 --> 00:12:35,200
+You're fine in this clause
+if at least one of them
+
+263
+00:12:35,200 --> 00:12:37,360
+you choose the left path.
+
+264
+00:12:37,360 --> 00:12:39,320
+In fact, if you
+look very closely
+
+265
+00:12:39,320 --> 00:12:41,070
+there's some bold
+edges indicating
+
+266
+00:12:41,070 --> 00:12:42,260
+which one's got chosen here.
+
+267
+00:12:42,260 --> 00:12:45,150
+So here, two of them were
+on the right, one of them
+
+268
+00:12:45,150 --> 00:12:46,820
+was on the left for this clause.
+
+269
+00:12:46,820 --> 00:12:49,130
+In general, if at least
+one of them is on the left
+
+270
+00:12:49,130 --> 00:12:52,730
+you're OK for the clause.
+
+271
+00:12:52,730 --> 00:12:53,310
+Clear.
+
+272
+00:12:53,310 --> 00:12:54,510
+The high level now.
+
+273
+00:12:54,510 --> 00:12:57,670
+This would work fine if we
+didn't care about planarity,
+
+274
+00:12:57,670 --> 00:12:59,900
+but I want planar
+directed max degree three.
+
+275
+00:12:59,900 --> 00:13:03,760
+At this point we should be
+directed max degree three.
+
+276
+00:13:03,760 --> 00:13:08,550
+So that's an improvement from
+last time in terms of degrees.
+
+277
+00:13:08,550 --> 00:13:13,650
+And then there's this fun
+figure for the crossover.
+
+278
+00:13:13,650 --> 00:13:16,670
+So in general, that's
+just a repetition
+
+279
+00:13:16,670 --> 00:13:18,310
+of what our XOR gadget was.
+
+280
+00:13:18,310 --> 00:13:23,260
+Now we have crossing
+XOR constraints.
+
+281
+00:13:23,260 --> 00:13:25,690
+So here's a typical example.
+
+282
+00:13:25,690 --> 00:13:27,760
+Let's say we have
+this XOR trying
+
+283
+00:13:27,760 --> 00:13:31,940
+to go from there to there and
+it crosses these other XORs.
+
+284
+00:13:31,940 --> 00:13:35,010
+So what we're going to
+do is build something
+
+285
+00:13:35,010 --> 00:13:39,210
+like that gadget for the
+vertical connection with this,
+
+286
+00:13:39,210 --> 00:13:41,790
+and this, and this, and this.
+
+287
+00:13:41,790 --> 00:13:43,770
+And we duplicate these edges.
+
+288
+00:13:43,770 --> 00:13:46,705
+That doesn't help you-- I mean
+it's the same as that picture,
+
+289
+00:13:46,705 --> 00:13:48,320
+I just happened
+to duplicate them.
+
+290
+00:13:48,320 --> 00:13:49,819
+The reason we do
+that is we're going
+
+291
+00:13:49,819 --> 00:13:56,170
+to put XORs across like this,
+and this forces an alternation.
+
+292
+00:13:56,170 --> 00:13:59,150
+So if this is in,
+then this must be out,
+
+293
+00:13:59,150 --> 00:14:01,930
+so this must be in,
+so this must be out,
+
+294
+00:14:01,930 --> 00:14:05,530
+so this must be in, and
+so on all the way through.
+
+295
+00:14:05,530 --> 00:14:08,470
+And so that forces an
+XOR between this edge
+
+296
+00:14:08,470 --> 00:14:11,490
+and that edge.
+
+297
+00:14:11,490 --> 00:14:13,230
+Cool?
+
+298
+00:14:13,230 --> 00:14:17,940
+So that is the crossing
+x over XOR gadget, which
+
+299
+00:14:17,940 --> 00:14:20,500
+you plug into all
+of these pictures,
+
+300
+00:14:20,500 --> 00:14:24,810
+and you end up with planar
+directed max degree three.
+
+301
+00:14:24,810 --> 00:14:26,240
+All right?
+
+302
+00:14:26,240 --> 00:14:29,550
+So far so good.
+
+303
+00:14:29,550 --> 00:14:32,262
+Next-- I have a goal.
+
+304
+00:14:32,262 --> 00:14:33,970
+I'm still not going
+to tell you the goal.
+
+305
+00:14:33,970 --> 00:14:37,280
+
+306
+00:14:37,280 --> 00:14:44,480
+Next one is going to be planar
+bipartite max degree three.
+
+307
+00:14:44,480 --> 00:14:55,215
+
+308
+00:14:55,215 --> 00:14:55,715
+Undirected.
+
+309
+00:14:55,715 --> 00:14:58,430
+
+310
+00:14:58,430 --> 00:15:01,820
+This is going to be one of
+our simplest reductions ever.
+
+311
+00:15:01,820 --> 00:15:03,710
+There it is.
+
+312
+00:15:03,710 --> 00:15:06,220
+So the cool thing
+about max degree three
+
+313
+00:15:06,220 --> 00:15:09,840
+directed-- I mean there are
+few cases you can exclude.
+
+314
+00:15:09,840 --> 00:15:11,571
+You can't have three
+incoming edges.
+
+315
+00:15:11,571 --> 00:15:13,070
+You can't have three
+outgoing edges.
+
+316
+00:15:13,070 --> 00:15:14,903
+It would be pretty hard
+to have a cycle that
+
+317
+00:15:14,903 --> 00:15:16,940
+includes such vertices.
+
+318
+00:15:16,940 --> 00:15:19,030
+So you could have
+degree two vertices,
+
+319
+00:15:19,030 --> 00:15:22,580
+but I don't think
+we even had any.
+
+320
+00:15:22,580 --> 00:15:29,000
+Did I say that we had
+degree two in this picture?
+
+321
+00:15:29,000 --> 00:15:30,600
+Probably not.
+
+322
+00:15:30,600 --> 00:15:34,170
+I mean if we did we could
+double the edge or something.
+
+323
+00:15:34,170 --> 00:15:38,610
+So that was probably actually
+planar directed three regular.
+
+324
+00:15:38,610 --> 00:15:41,610
+OK, but now undirected.
+
+325
+00:15:41,610 --> 00:15:43,450
+But you can basically
+have two edges in,
+
+326
+00:15:43,450 --> 00:15:48,290
+one out, or one
+edge in and two out.
+
+327
+00:15:48,290 --> 00:15:51,034
+And we're going to convert that.
+
+328
+00:15:51,034 --> 00:15:52,450
+So the interesting
+thing here, you
+
+329
+00:15:52,450 --> 00:15:54,610
+have to visit this
+vertex, which means
+
+330
+00:15:54,610 --> 00:15:58,666
+you have to visit this edge
+in any Hamiltonian cycle.
+
+331
+00:15:58,666 --> 00:16:00,040
+Because once you
+come here you've
+
+332
+00:16:00,040 --> 00:16:00,910
+got to leave on that edge.
+
+333
+00:16:00,910 --> 00:16:02,660
+Similarly, you have
+to visit this edge.
+
+334
+00:16:02,660 --> 00:16:04,368
+You can tell that just
+from this picture.
+
+335
+00:16:04,368 --> 00:16:06,380
+So we call these forced edges.
+
+336
+00:16:06,380 --> 00:16:09,310
+And we can represent that
+by adding a vertex there.
+
+337
+00:16:09,310 --> 00:16:11,220
+It says, hey, you've
+got to visit that edge.
+
+338
+00:16:11,220 --> 00:16:15,450
+So you're going to visit it
+by that little path there.
+
+339
+00:16:15,450 --> 00:16:17,310
+And now things are bipartite.
+
+340
+00:16:17,310 --> 00:16:21,300
+
+341
+00:16:21,300 --> 00:16:23,090
+And the bipartiteness
+is essentially
+
+342
+00:16:23,090 --> 00:16:26,260
+forcing the
+directionality as well.
+
+343
+00:16:26,260 --> 00:16:30,300
+So let's say when you come
+into a vertex and you're blue,
+
+344
+00:16:30,300 --> 00:16:32,330
+so that means
+these guys have had
+
+345
+00:16:32,330 --> 00:16:36,340
+to have been red,
+whenever you leave,
+
+346
+00:16:36,340 --> 00:16:38,950
+you first visit a red
+vertex and then go.
+
+347
+00:16:38,950 --> 00:16:42,079
+So here you're coming in
+again as blue, and then
+
+348
+00:16:42,079 --> 00:16:43,900
+before you leave you turn red.
+
+349
+00:16:43,900 --> 00:16:48,720
+And so because you've satisfied
+directionality over here,
+
+350
+00:16:48,720 --> 00:16:50,980
+the outgoing edge here
+becomes an incoming edge
+
+351
+00:16:50,980 --> 00:16:53,500
+to the next vertex,
+that means you'll
+
+352
+00:16:53,500 --> 00:16:56,010
+be going into a blue
+vertex either because it's
+
+353
+00:16:56,010 --> 00:16:58,750
+like this or like that.
+
+354
+00:16:58,750 --> 00:17:03,336
+And you are effectively
+forcing directionality.
+
+355
+00:17:03,336 --> 00:17:06,810
+
+356
+00:17:06,810 --> 00:17:08,310
+I mean everything
+could be reversed.
+
+357
+00:17:08,310 --> 00:17:12,620
+
+358
+00:17:12,620 --> 00:17:15,175
+Because you're always
+coming into a blue vertex
+
+359
+00:17:15,175 --> 00:17:16,050
+and leaving on a red.
+
+360
+00:17:16,050 --> 00:17:20,600
+That forces you to be going
+from the tail of an arrow
+
+361
+00:17:20,600 --> 00:17:23,030
+to the head of an arrow.
+
+362
+00:17:23,030 --> 00:17:25,930
+So same thing by symmetry.
+
+363
+00:17:25,930 --> 00:17:31,410
+So these problems are actually
+really close to each other.
+
+364
+00:17:31,410 --> 00:17:33,020
+These were done in
+different papers,
+
+365
+00:17:33,020 --> 00:17:35,710
+but this was an older one.
+
+366
+00:17:35,710 --> 00:17:40,660
+And then this problem was
+introduced for another reason,
+
+367
+00:17:40,660 --> 00:17:43,610
+which is grid graphs.
+
+368
+00:17:43,610 --> 00:17:45,102
+This is where I
+really want to go.
+
+369
+00:17:45,102 --> 00:17:51,250
+
+370
+00:17:51,250 --> 00:17:56,000
+So the idea with the
+grid graph is you,
+
+371
+00:17:56,000 --> 00:18:03,905
+let's say, have a set of
+points on the square lattice.
+
+372
+00:18:03,905 --> 00:18:11,660
+
+373
+00:18:11,660 --> 00:18:15,080
+And then you're going to have
+an edge whenever you have
+
+374
+00:18:15,080 --> 00:18:16,590
+two points at unit distance.
+
+375
+00:18:16,590 --> 00:18:22,080
+
+376
+00:18:22,080 --> 00:18:25,630
+So let me draw an example.
+
+377
+00:18:25,630 --> 00:18:29,060
+Cheat, and have some
+examples drawn for me.
+
+378
+00:18:29,060 --> 00:18:32,510
+This was in a much more recent
+paper, but some nice pictures.
+
+379
+00:18:32,510 --> 00:18:36,400
+So we're just choosing a set
+of points in the square grid.
+
+380
+00:18:36,400 --> 00:18:38,680
+And then whenever we
+have two points that
+
+381
+00:18:38,680 --> 00:18:40,142
+are a unit distance
+apart, you're
+
+382
+00:18:40,142 --> 00:18:41,350
+forced to have an edge there.
+
+383
+00:18:41,350 --> 00:18:42,600
+You can't say there's no edge.
+
+384
+00:18:42,600 --> 00:18:45,490
+That would be a sub-graph
+of a grid graph.
+
+385
+00:18:45,490 --> 00:18:47,630
+But for example, when
+this point is absent,
+
+386
+00:18:47,630 --> 00:18:51,010
+you don't get any
+connections through here.
+
+387
+00:18:51,010 --> 00:18:53,600
+So these are all
+examples of grid graphs.
+
+388
+00:18:53,600 --> 00:18:56,400
+
+389
+00:18:56,400 --> 00:18:59,710
+Now there's one special
+case, or in general, we
+
+390
+00:18:59,710 --> 00:19:02,990
+distinguish-- there's sort
+of three types of faces
+
+391
+00:19:02,990 --> 00:19:04,420
+in such a planar graph.
+
+392
+00:19:04,420 --> 00:19:07,140
+There's what you might
+call pixels-- little one
+
+393
+00:19:07,140 --> 00:19:08,570
+by one squares.
+
+394
+00:19:08,570 --> 00:19:12,070
+There's the outside
+face, and then there's
+
+395
+00:19:12,070 --> 00:19:13,800
+everything else
+which we call holes.
+
+396
+00:19:13,800 --> 00:19:19,695
+So any non-length for
+face we call hole.
+
+397
+00:19:19,695 --> 00:19:24,190
+If there are no holes we
+call it a solid grid graph.
+
+398
+00:19:24,190 --> 00:19:27,610
+This is interesting
+because solid grid
+
+399
+00:19:27,610 --> 00:19:29,870
+graphs you can
+solve Hamiltonicity
+
+400
+00:19:29,870 --> 00:19:32,160
+in polynomial time.
+
+401
+00:19:32,160 --> 00:19:35,570
+It's not always possible, but
+there is a polynomial time
+
+402
+00:19:35,570 --> 00:19:39,070
+algorithm for solving
+the solid grid graph
+
+403
+00:19:39,070 --> 00:19:42,755
+case by Umens and Lenhart, '97.
+
+404
+00:19:42,755 --> 00:19:45,300
+A very complicated algorithm.
+
+405
+00:19:45,300 --> 00:19:46,960
+Luckily, this is a
+hardness proof class
+
+406
+00:19:46,960 --> 00:19:50,210
+so I don't have to cover it.
+
+407
+00:19:50,210 --> 00:19:52,965
+I'm going to focus on the
+hardness when you allow holes.
+
+408
+00:19:52,965 --> 00:19:56,770
+
+409
+00:19:56,770 --> 00:19:59,930
+So this is where things get fun.
+
+410
+00:19:59,930 --> 00:20:04,700
+We are going to reduce-- we did
+a reduction from here to here.
+
+411
+00:20:04,700 --> 00:20:08,000
+We're going to do a
+reduction from here to here.
+
+412
+00:20:08,000 --> 00:20:10,550
+So we're going to suppose that
+we want to solve Hamiltonicity
+
+413
+00:20:10,550 --> 00:20:13,870
+in planar bipartite max
+degree three graphs,
+
+414
+00:20:13,870 --> 00:20:16,460
+and we're going to convert such
+a planar bipartite max degree
+
+415
+00:20:16,460 --> 00:20:17,190
+three.
+
+416
+00:20:17,190 --> 00:20:22,870
+Graph into a grid graph
+that acts the same.
+
+417
+00:20:22,870 --> 00:20:26,020
+
+418
+00:20:26,020 --> 00:20:33,400
+So the first step is to
+draw the graph on a grid.
+
+419
+00:20:33,400 --> 00:20:36,700
+That's pretty obvious.
+
+420
+00:20:36,700 --> 00:20:38,810
+So here's an example
+of what we want to do,
+
+421
+00:20:38,810 --> 00:20:40,900
+and then this is a
+picture of how to do it.
+
+422
+00:20:40,900 --> 00:20:43,477
+Suppose you have a
+bipartite planar graph.
+
+423
+00:20:43,477 --> 00:20:45,310
+Not obvious this is
+planar, but it's obvious
+
+424
+00:20:45,310 --> 00:20:46,143
+that it's bipartite.
+
+425
+00:20:46,143 --> 00:20:47,190
+It happens to be planar.
+
+426
+00:20:47,190 --> 00:20:49,260
+It's max degree three.
+
+427
+00:20:49,260 --> 00:20:52,910
+And the vertices are
+labeled, the XIs and the YIs,
+
+428
+00:20:52,910 --> 00:20:55,240
+and you can see the
+corresponding labeling here.
+
+429
+00:20:55,240 --> 00:20:58,780
+So not all of the grid dots
+are going to be labeled.
+
+430
+00:20:58,780 --> 00:21:00,240
+Some of them are just auxiliary.
+
+431
+00:21:00,240 --> 00:21:02,180
+In order to connect
+to vertices we're
+
+432
+00:21:02,180 --> 00:21:06,650
+going to have to draw paths,
+orthogonal paths on the grid.
+
+433
+00:21:06,650 --> 00:21:10,210
+But the key thing I
+want is the square grid
+
+434
+00:21:10,210 --> 00:21:13,500
+has a two-coloring inherently,
+and I want that two-coloring
+
+435
+00:21:13,500 --> 00:21:15,240
+to match this two-coloring.
+
+436
+00:21:15,240 --> 00:21:18,120
+That's what I would call a
+parity-preserving embedding
+
+437
+00:21:18,120 --> 00:21:21,270
+of the Graph
+
+438
+00:21:21,270 --> 00:21:24,710
+And you can see in this example,
+the three XIs are white,
+
+439
+00:21:24,710 --> 00:21:27,800
+and the three YIs are black.
+
+440
+00:21:27,800 --> 00:21:30,712
+And if you check all the
+edges they should correspond.
+
+441
+00:21:30,712 --> 00:21:32,170
+Just ignore the
+dash lines-- that's
+
+442
+00:21:32,170 --> 00:21:35,960
+to show you the grid underlying.
+
+443
+00:21:35,960 --> 00:21:37,640
+So this is a valid embedding.
+
+444
+00:21:37,640 --> 00:21:39,000
+How do we do it?
+
+445
+00:21:39,000 --> 00:21:41,897
+Well, we just take any
+embedding in the grid.
+
+446
+00:21:41,897 --> 00:21:44,230
+It's well known that if you
+have a max degree four graph
+
+447
+00:21:44,230 --> 00:21:46,770
+you can draw it in the
+grid without crossings,
+
+448
+00:21:46,770 --> 00:21:49,080
+and each edge is some
+orthogonal polyline.
+
+449
+00:21:49,080 --> 00:21:52,030
+
+450
+00:21:52,030 --> 00:21:54,490
+I won't prove that here.
+
+451
+00:21:54,490 --> 00:21:58,630
+And then suppose the parity's
+wrong for some vertex.
+
+452
+00:21:58,630 --> 00:22:02,060
+Suppose you draw vertex B
+and it happens to be black,
+
+453
+00:22:02,060 --> 00:22:03,820
+but you want it to be white?
+
+454
+00:22:03,820 --> 00:22:05,810
+Then I'm just going to
+shift it over by one
+
+455
+00:22:05,810 --> 00:22:09,210
+and do these kinds of
+wiggles, and that's it.
+
+456
+00:22:09,210 --> 00:22:12,110
+So you scale everything
+by a factor of three
+
+457
+00:22:12,110 --> 00:22:14,510
+and you'll have room
+to do those wiggles.
+
+458
+00:22:14,510 --> 00:22:17,000
+So take an arbitrary
+orthogonal grid drawing
+
+459
+00:22:17,000 --> 00:22:21,115
+and then add the
+wiggles whenever
+
+460
+00:22:21,115 --> 00:22:23,240
+things are in the wrong
+parity and now every vertex
+
+461
+00:22:23,240 --> 00:22:25,470
+will be in the correct parity.
+
+462
+00:22:25,470 --> 00:22:29,230
+That will be crucial
+for the reduction.
+
+463
+00:22:29,230 --> 00:22:34,330
+So at this point we've got an
+orthogonal parity-preserving
+
+464
+00:22:34,330 --> 00:22:39,260
+drawing of our given bipartite
+planar max degree three graph.
+
+465
+00:22:39,260 --> 00:22:43,260
+And the issue is there are sort
+of two types of vertices here.
+
+466
+00:22:43,260 --> 00:22:45,669
+There's the ones there
+we really need to visit,
+
+467
+00:22:45,669 --> 00:22:47,210
+and then there's
+these other vertices
+
+468
+00:22:47,210 --> 00:22:49,390
+which are representing edges.
+
+469
+00:22:49,390 --> 00:22:52,060
+We don't need to visit every
+edge-- that's the tour problem.
+
+470
+00:22:52,060 --> 00:22:55,330
+Hamiltonian tour, we just need
+to visit every vertex which
+
+471
+00:22:55,330 --> 00:22:58,530
+are the labeled dots over here.
+
+472
+00:22:58,530 --> 00:23:02,230
+So this is where things get fun.
+
+473
+00:23:02,230 --> 00:23:06,690
+Here is a key gadget before we
+see the overall architecture.
+
+474
+00:23:06,690 --> 00:23:09,097
+These are called tentacles
+in the original paper.
+
+475
+00:23:09,097 --> 00:23:11,180
+I'm calling them edge
+gadgets because they're just
+
+476
+00:23:11,180 --> 00:23:13,710
+simulating a single edge
+of the original graph,
+
+477
+00:23:13,710 --> 00:23:15,110
+but tentacles is cooler.
+
+478
+00:23:15,110 --> 00:23:17,030
+Whichever you prefer.
+
+479
+00:23:17,030 --> 00:23:19,900
+So these are the
+dots that haven't all
+
+480
+00:23:19,900 --> 00:23:22,070
+been drawn explicitly here.
+
+481
+00:23:22,070 --> 00:23:24,830
+And so it's just like a two
+by and sort of corridor.
+
+482
+00:23:24,830 --> 00:23:29,660
+The base version would be this,
+but if you want to have turns,
+
+483
+00:23:29,660 --> 00:23:31,410
+which we're going to
+need 90 degree turns,
+
+484
+00:23:31,410 --> 00:23:33,550
+it looks more like this.
+
+485
+00:23:33,550 --> 00:23:35,670
+And there's basically
+two ways to cover this.
+
+486
+00:23:35,670 --> 00:23:36,580
+Sort of three ways.
+
+487
+00:23:36,580 --> 00:23:38,440
+But the way parity
+will work out,
+
+488
+00:23:38,440 --> 00:23:40,780
+there will only be two
+ways that we care about.
+
+489
+00:23:40,780 --> 00:23:43,195
+There's not a variable gadget.
+
+490
+00:23:43,195 --> 00:23:45,830
+It looks like maybe
+a variable gadget,
+
+491
+00:23:45,830 --> 00:23:47,880
+but that's not how
+we're using it.
+
+492
+00:23:47,880 --> 00:23:51,840
+So one way you can visit this
+gadget is to zigzag like this.
+
+493
+00:23:51,840 --> 00:23:55,000
+We've seen this in pretty
+much all of our planar
+
+494
+00:23:55,000 --> 00:23:56,770
+Hamiltonicity proofs.
+
+495
+00:23:56,770 --> 00:23:58,960
+The core idea's the same.
+
+496
+00:23:58,960 --> 00:24:03,500
+You could start at A and end
+at C, or you could start at B
+
+497
+00:24:03,500 --> 00:24:06,315
+and end at D, and that's
+true in this version as well.
+
+498
+00:24:06,315 --> 00:24:07,690
+Once you start
+alternating you're
+
+499
+00:24:07,690 --> 00:24:09,090
+forced to alternate
+all the way through.
+
+500
+00:24:09,090 --> 00:24:11,130
+So you could imagine
+using that for a wire,
+
+501
+00:24:11,130 --> 00:24:13,230
+but we're not going to
+use the two alternations.
+
+502
+00:24:13,230 --> 00:24:16,080
+By parity we'll be forced to
+do it one way or the other.
+
+503
+00:24:16,080 --> 00:24:18,500
+We'll be told whether
+we're starting or ending
+
+504
+00:24:18,500 --> 00:24:22,330
+in one of them, I think.
+
+505
+00:24:22,330 --> 00:24:23,879
+Well, it won't matter.
+
+506
+00:24:23,879 --> 00:24:25,670
+But there's this other
+way you could visit,
+
+507
+00:24:25,670 --> 00:24:27,662
+which is to just go all
+the way down then come
+
+508
+00:24:27,662 --> 00:24:28,370
+all the way back.
+
+509
+00:24:28,370 --> 00:24:31,760
+
+510
+00:24:31,760 --> 00:24:34,420
+This is going to
+correspond to an edge that
+
+511
+00:24:34,420 --> 00:24:37,100
+is in the Hamiltonian cycle.
+
+512
+00:24:37,100 --> 00:24:39,520
+Because I want to start
+at some vertex up here,
+
+513
+00:24:39,520 --> 00:24:43,030
+and I want to end at some vertex
+down here if I follow the edge.
+
+514
+00:24:43,030 --> 00:24:47,260
+This is going to correspond
+to an edge that we don't use.
+
+515
+00:24:47,260 --> 00:24:49,860
+Because at this
+vertex, I still need
+
+516
+00:24:49,860 --> 00:24:52,366
+to cover these vertices
+somehow, but I don't
+
+517
+00:24:52,366 --> 00:24:53,490
+want that to really matter.
+
+518
+00:24:53,490 --> 00:24:55,710
+I want this edge to
+be coverable for free.
+
+519
+00:24:55,710 --> 00:24:58,310
+So the idea is as I visit
+this vertex we're just going
+
+520
+00:24:58,310 --> 00:25:00,030
+to zip down here, zip back up.
+
+521
+00:25:00,030 --> 00:25:04,030
+And all these vertices
+get visited for free.
+
+522
+00:25:04,030 --> 00:25:06,770
+It's not really
+part of the tour.
+
+523
+00:25:06,770 --> 00:25:09,920
+Let me show you in
+some more detail.
+
+524
+00:25:09,920 --> 00:25:11,550
+Here's what a vertex looks like.
+
+525
+00:25:11,550 --> 00:25:16,440
+Vertex is just going to
+be a 3 by 3 grid of dots.
+
+526
+00:25:16,440 --> 00:25:18,620
+Now, remember there are
+two kinds of vertices.
+
+527
+00:25:18,620 --> 00:25:21,130
+There's the ones
+that were-- so again,
+
+528
+00:25:21,130 --> 00:25:23,970
+we're expanding everything
+for this to work out.
+
+529
+00:25:23,970 --> 00:25:25,870
+The vertices that
+were originally white
+
+530
+00:25:25,870 --> 00:25:27,826
+and the vertices that
+were originally black.
+
+531
+00:25:27,826 --> 00:25:29,200
+It doesn't matter
+which is which,
+
+532
+00:25:29,200 --> 00:25:31,430
+but there's two
+classes of vertices.
+
+533
+00:25:31,430 --> 00:25:36,220
+And we're going to attach
+the edge gadgets, which were
+
+534
+00:25:36,220 --> 00:25:38,890
+these 2 by n kind of things.
+
+535
+00:25:38,890 --> 00:25:41,720
+So this is all edge gadget here.
+
+536
+00:25:41,720 --> 00:25:44,240
+We're going to attach
+it to a vertex that's
+
+537
+00:25:44,240 --> 00:25:49,870
+white in this sort of flush
+length two connection.
+
+538
+00:25:49,870 --> 00:25:52,640
+So this is the variable up
+here, this 3 by 3 thing,
+
+539
+00:25:52,640 --> 00:25:57,650
+and here we're having two edges
+connecting to the edge gadget.
+
+540
+00:25:57,650 --> 00:25:59,270
+For the black
+vertices we're only
+
+541
+00:25:59,270 --> 00:26:01,550
+going to have a single
+edge connecting them.
+
+542
+00:26:01,550 --> 00:26:05,850
+This is called a pin
+connection, between the wire
+
+543
+00:26:05,850 --> 00:26:10,150
+gadget or the tentacle,
+and the 3 by 3 down here.
+
+544
+00:26:10,150 --> 00:26:10,800
+OK.
+
+545
+00:26:10,800 --> 00:26:11,300
+Why?
+
+546
+00:26:11,300 --> 00:26:13,910
+
+547
+00:26:13,910 --> 00:26:16,740
+Because.
+
+548
+00:26:16,740 --> 00:26:19,920
+So here let's
+consider two vertices
+
+549
+00:26:19,920 --> 00:26:22,250
+that are attached by an edge.
+
+550
+00:26:22,250 --> 00:26:23,550
+So they have opposite parity.
+
+551
+00:26:23,550 --> 00:26:25,670
+One's-- I've forgotten
+which is which.
+
+552
+00:26:25,670 --> 00:26:27,787
+This is white and
+this black I think.
+
+553
+00:26:27,787 --> 00:26:29,120
+Here we have the pin connection.
+
+554
+00:26:29,120 --> 00:26:31,700
+Here we have the
+length two connection.
+
+555
+00:26:31,700 --> 00:26:34,780
+And the idea is there's exactly
+two ways to traverse this edge,
+
+556
+00:26:34,780 --> 00:26:35,591
+as we saw.
+
+557
+00:26:35,591 --> 00:26:37,090
+But now you can see
+the connections.
+
+558
+00:26:37,090 --> 00:26:38,560
+Let me put it that way.
+
+559
+00:26:38,560 --> 00:26:40,227
+So the idea is, well,
+maybe you choose
+
+560
+00:26:40,227 --> 00:26:42,060
+to use that edge in the
+cycle, and so I want
+
+561
+00:26:42,060 --> 00:26:43,840
+to be able to just traverse it.
+
+562
+00:26:43,840 --> 00:26:45,000
+Everything is good.
+
+563
+00:26:45,000 --> 00:26:46,630
+And so here I know
+that I'm entering
+
+564
+00:26:46,630 --> 00:26:48,040
+at this point, which
+means I know that I'll
+
+565
+00:26:48,040 --> 00:26:49,160
+have to be exiting here.
+
+566
+00:26:49,160 --> 00:26:51,110
+So the parities are forced.
+
+567
+00:26:51,110 --> 00:26:54,110
+So the zigzag parity is forced.
+
+568
+00:26:54,110 --> 00:26:56,700
+The other possibility, because
+there's only one connection
+
+569
+00:26:56,700 --> 00:27:00,480
+here, you couldn't traverse
+this way and then come back.
+
+570
+00:27:00,480 --> 00:27:03,750
+But from this side you could
+traverse and then come back.
+
+571
+00:27:03,750 --> 00:27:06,120
+And it doesn't touch
+the vertex at all.
+
+572
+00:27:06,120 --> 00:27:08,870
+So the idea is you could
+ignore this edge entirely
+
+573
+00:27:08,870 --> 00:27:12,265
+and it gets covered for free,
+provided once you erase this,
+
+574
+00:27:12,265 --> 00:27:17,470
+this edge is in the
+Hamiltonian tour.
+
+575
+00:27:17,470 --> 00:27:21,210
+And at this point I should
+mention what all this labeling
+
+576
+00:27:21,210 --> 00:27:23,000
+means on the vertex gadget.
+
+577
+00:27:23,000 --> 00:27:24,980
+The idea is for
+this vertex, if you
+
+578
+00:27:24,980 --> 00:27:28,850
+start at any of the PIs,
+any of the four corners--
+
+579
+00:27:28,850 --> 00:27:32,200
+any of the private
+investigators-- then
+
+580
+00:27:32,200 --> 00:27:37,950
+you can end at any other
+PI, PJ in such a way
+
+581
+00:27:37,950 --> 00:27:40,210
+that you visit all
+three of the EIs.
+
+582
+00:27:40,210 --> 00:27:43,090
+
+583
+00:27:43,090 --> 00:27:44,530
+AUDIENCE: There
+are four of them.
+
+584
+00:27:44,530 --> 00:27:46,071
+ERIK DEMAINE: There
+are four of them.
+
+585
+00:27:46,071 --> 00:27:49,390
+EI, EO, EIEI-O. No, OK.
+
+586
+00:27:49,390 --> 00:27:52,440
+So let me get to the point.
+
+587
+00:27:52,440 --> 00:27:54,310
+You could start
+at PI, end at PJ,
+
+588
+00:27:54,310 --> 00:28:00,120
+and visit all the vertices and
+all of the EIs, all of the EKs.
+
+589
+00:28:00,120 --> 00:28:02,920
+So for example, if I want
+to go from here to here,
+
+590
+00:28:02,920 --> 00:28:06,860
+I can go like this,
+visited all the edges.
+
+591
+00:28:06,860 --> 00:28:09,030
+If I want to go
+from here to here,
+
+592
+00:28:09,030 --> 00:28:13,030
+I can go like this,
+visited all the vertices,
+
+593
+00:28:13,030 --> 00:28:15,030
+visited all the EIs.
+
+594
+00:28:15,030 --> 00:28:18,060
+So that's good because
+each of these EIs
+
+595
+00:28:18,060 --> 00:28:21,170
+is potentially attached
+to an edge gadget
+
+596
+00:28:21,170 --> 00:28:23,450
+and we might want to visit
+all of the things out there
+
+597
+00:28:23,450 --> 00:28:25,270
+and come back.
+
+598
+00:28:25,270 --> 00:28:27,070
+OK?
+
+599
+00:28:27,070 --> 00:28:35,240
+So you see the reason why we
+only want a pin connection here
+
+600
+00:28:35,240 --> 00:28:38,980
+is if we had a full
+connection with two edges,
+
+601
+00:28:38,980 --> 00:28:40,900
+you might imagine that
+you come out here,
+
+602
+00:28:40,900 --> 00:28:43,620
+do something, eventually
+do other stuff,
+
+603
+00:28:43,620 --> 00:28:45,539
+and then come back on this path.
+
+604
+00:28:45,539 --> 00:28:47,330
+But because we have a
+pin connection always
+
+605
+00:28:47,330 --> 00:28:50,320
+on one of the two
+sides, you can't have
+
+606
+00:28:50,320 --> 00:28:52,210
+two separate traversal paths.
+
+607
+00:28:52,210 --> 00:28:54,870
+As soon as you get here you
+have to turn back around.
+
+608
+00:28:54,870 --> 00:28:56,370
+If you went this
+way, then this guy
+
+609
+00:28:56,370 --> 00:28:59,730
+would never be
+visible in a cycle.
+
+610
+00:28:59,730 --> 00:29:01,170
+So that's the key thing.
+
+611
+00:29:01,170 --> 00:29:03,370
+This was one of the
+EIs, and so the idea
+
+612
+00:29:03,370 --> 00:29:05,376
+is you can completely
+forget about this path.
+
+613
+00:29:05,376 --> 00:29:07,000
+You can just think
+about going from one
+
+614
+00:29:07,000 --> 00:29:08,461
+of these white
+vertices to another.
+
+615
+00:29:08,461 --> 00:29:09,960
+In general, it's
+going to correspond
+
+616
+00:29:09,960 --> 00:29:14,550
+to which edge gadgets that
+vertex gadget is connected to.
+
+617
+00:29:14,550 --> 00:29:19,002
+
+618
+00:29:19,002 --> 00:29:20,710
+So you can go from
+one vertex to another.
+
+619
+00:29:20,710 --> 00:29:21,810
+You will visit this edge.
+
+620
+00:29:21,810 --> 00:29:24,570
+And so you can add in this
+part if you don't use the edge.
+
+621
+00:29:24,570 --> 00:29:26,132
+If you do use the
+edge, then you'll
+
+622
+00:29:26,132 --> 00:29:27,965
+be starting from one
+of these white vertices
+
+623
+00:29:27,965 --> 00:29:29,910
+and you want to go to this one.
+
+624
+00:29:29,910 --> 00:29:31,739
+And then you'll
+follow this path.
+
+625
+00:29:31,739 --> 00:29:33,280
+And then you get to
+this vertex, then
+
+626
+00:29:33,280 --> 00:29:34,779
+you'll go from one
+of black vertices
+
+627
+00:29:34,779 --> 00:29:37,520
+to one of the other
+four corners, and so on.
+
+628
+00:29:37,520 --> 00:29:38,020
+Question?
+
+629
+00:29:38,020 --> 00:29:40,780
+AUDIENCE: Should that
+line of three white dots,
+
+630
+00:29:40,780 --> 00:29:42,530
+shouldn't they all be black?
+
+631
+00:29:42,530 --> 00:29:44,670
+ERIK DEMAINE: Yes,
+this should be black.
+
+632
+00:29:44,670 --> 00:29:45,540
+It's not my fault.
+
+633
+00:29:45,540 --> 00:29:47,970
+It could be the
+scanner or it could
+
+634
+00:29:47,970 --> 00:29:50,510
+be-- this is a hand-drawn
+figure as you might guess.
+
+635
+00:29:50,510 --> 00:29:52,390
+So yeah, that should be black.
+
+636
+00:29:52,390 --> 00:29:53,880
+Everything should alternate.
+
+637
+00:29:53,880 --> 00:29:56,520
+So you can tell the
+parity's a vertex based
+
+638
+00:29:56,520 --> 00:30:00,120
+on the color of the corners.
+
+639
+00:30:00,120 --> 00:30:04,866
+Any other questions
+about that proof?
+
+640
+00:30:04,866 --> 00:30:05,366
+OK.
+
+641
+00:30:05,366 --> 00:30:08,290
+
+642
+00:30:08,290 --> 00:30:10,410
+So this is pretty cool.
+
+643
+00:30:10,410 --> 00:30:13,790
+And I would say
+Hamiltonicity in grid graphs
+
+644
+00:30:13,790 --> 00:30:17,120
+is used a lot as a base
+problem for reductions
+
+645
+00:30:17,120 --> 00:30:22,030
+in computational geometry,
+especially tour-like problems.
+
+646
+00:30:22,030 --> 00:30:23,850
+And you'll notice a theme.
+
+647
+00:30:23,850 --> 00:30:26,600
+Every reduction so far, except
+the very first one I guess,
+
+648
+00:30:26,600 --> 00:30:28,380
+was from one type of
+Hamiltonian circuit
+
+649
+00:30:28,380 --> 00:30:30,005
+to another type of
+Hamiltonian circuit.
+
+650
+00:30:30,005 --> 00:30:33,787
+And this tends to be common that
+you can work within Hamiltonian
+
+651
+00:30:33,787 --> 00:30:35,870
+circuit and modify your
+graph in all sorts of ways
+
+652
+00:30:35,870 --> 00:30:38,940
+to get to a very simplified
+version of Hamiltonian circuit.
+
+653
+00:30:38,940 --> 00:30:40,770
+And that's cool.
+
+654
+00:30:40,770 --> 00:30:43,820
+And so you get a lot of mileage
+just within the Hamiltonian
+
+655
+00:30:43,820 --> 00:30:45,065
+circuit family.
+
+656
+00:30:45,065 --> 00:30:48,660
+
+657
+00:30:48,660 --> 00:30:49,210
+Cool.
+
+658
+00:30:49,210 --> 00:30:52,920
+Let me give you a couple of
+applications right off the bat.
+
+659
+00:30:52,920 --> 00:30:53,780
+What?
+
+660
+00:30:53,780 --> 00:30:55,530
+AUDIENCE: This is going
+back a little bit,
+
+661
+00:30:55,530 --> 00:30:59,100
+but are there any sort of
+natural families of graphs
+
+662
+00:30:59,100 --> 00:31:00,840
+for which finding
+a Hamiltonian path
+
+663
+00:31:00,840 --> 00:31:02,990
+is strictly easier
+than finding a circle?
+
+664
+00:31:02,990 --> 00:31:05,920
+
+665
+00:31:05,920 --> 00:31:09,950
+ERIK DEMAINE: I think the only--
+this problem would be easy.
+
+666
+00:31:09,950 --> 00:31:12,080
+Find a Hamiltonian path
+given a Hamiltonian path.
+
+667
+00:31:12,080 --> 00:31:16,800
+But I'm not aware of any other
+problems where a Hamiltonian
+
+668
+00:31:16,800 --> 00:31:19,860
+path is easier than cycle.
+
+669
+00:31:19,860 --> 00:31:21,440
+I mean in general,
+you can reduce one
+
+670
+00:31:21,440 --> 00:31:23,750
+to the other somehow.
+
+671
+00:31:23,750 --> 00:31:26,490
+That's maybe a little tricky
+without the two given end
+
+672
+00:31:26,490 --> 00:31:28,590
+points.
+
+673
+00:31:28,590 --> 00:31:30,330
+And if you have
+lots of structure,
+
+674
+00:31:30,330 --> 00:31:33,620
+like planarity and through
+regularity it's not so clear,
+
+675
+00:31:33,620 --> 00:31:36,450
+but definitely Hamiltonian path
+is still hard in this problem.
+
+676
+00:31:36,450 --> 00:31:39,380
+I think one easy
+way to do that is
+
+677
+00:31:39,380 --> 00:31:41,720
+to just do the same
+chain of reductions,
+
+678
+00:31:41,720 --> 00:31:44,530
+but start with Hamiltonian
+path instead of cycle
+
+679
+00:31:44,530 --> 00:31:46,740
+and follow through, and
+pretty much every step
+
+680
+00:31:46,740 --> 00:31:49,520
+should still be path-based.
+
+681
+00:31:49,520 --> 00:31:51,380
+So it's actually useful.
+
+682
+00:31:51,380 --> 00:31:55,510
+We'll want Hamiltonian path and
+grid graphs also at some point.
+
+683
+00:31:55,510 --> 00:31:57,929
+But what I showed was
+Hamiltonian cycle.
+
+684
+00:31:57,929 --> 00:32:00,220
+So for pretty much everywhere
+they seem to be the same,
+
+685
+00:32:00,220 --> 00:32:02,094
+but it would be cool to
+find an example where
+
+686
+00:32:02,094 --> 00:32:05,290
+they have different complexity.
+
+687
+00:32:05,290 --> 00:32:06,670
+OK.
+
+688
+00:32:06,670 --> 00:32:09,416
+So here's another problem.
+
+689
+00:32:09,416 --> 00:32:10,630
+Euclidean TSP.
+
+690
+00:32:10,630 --> 00:32:15,830
+
+691
+00:32:15,830 --> 00:32:17,470
+Traveling salesman problem.
+
+692
+00:32:17,470 --> 00:32:21,800
+You're given a set of
+points in the plane.
+
+693
+00:32:21,800 --> 00:32:25,310
+Better not make it too big
+because this might be hard.
+
+694
+00:32:25,310 --> 00:32:28,685
+And I want to find a tour.
+
+695
+00:32:28,685 --> 00:32:31,770
+It visits every
+point exactly once,
+
+696
+00:32:31,770 --> 00:32:35,200
+and has minimum total
+length, Euclidean length.
+
+697
+00:32:35,200 --> 00:32:38,566
+So the usual notion of length.
+
+698
+00:32:38,566 --> 00:32:40,760
+I claim this is NP-hard.
+
+699
+00:32:40,760 --> 00:32:41,996
+Now, this is a little scary.
+
+700
+00:32:41,996 --> 00:32:44,620
+Most of the problems we've been
+working with are very discrete.
+
+701
+00:32:44,620 --> 00:32:46,411
+I mean the output here
+is sort of discrete.
+
+702
+00:32:46,411 --> 00:32:49,590
+You choose a permutation
+on the points.
+
+703
+00:32:49,590 --> 00:32:52,380
+But it feels like there's
+almost no control here.
+
+704
+00:32:52,380 --> 00:32:55,220
+I mean how would I construct
+localized gadgets when
+
+705
+00:32:55,220 --> 00:32:58,600
+I can just jump from any point
+to any other point at any time
+
+706
+00:32:58,600 --> 00:33:01,690
+as long as that point
+hasn't already been used.
+
+707
+00:33:01,690 --> 00:33:04,260
+But it's really easy to
+prove this is NP-hard
+
+708
+00:33:04,260 --> 00:33:06,420
+given what we just did.
+
+709
+00:33:06,420 --> 00:33:10,314
+Oh, I should say, here's
+a full worked out example,
+
+710
+00:33:10,314 --> 00:33:11,980
+so this is what I
+should be pointing at.
+
+711
+00:33:11,980 --> 00:33:17,930
+This was the parity-preserving
+graph that we drew before.
+
+712
+00:33:17,930 --> 00:33:20,690
+And this is what you
+get in the reduction,
+
+713
+00:33:20,690 --> 00:33:22,730
+along with actual
+solution, which is
+
+714
+00:33:22,730 --> 00:33:26,380
+the one drawn in orange here.
+
+715
+00:33:26,380 --> 00:33:29,460
+So you can see read that
+off, because wherever
+
+716
+00:33:29,460 --> 00:33:34,030
+you see zigzags, that's where
+you're using the path here.
+
+717
+00:33:34,030 --> 00:33:38,630
+So these correspond, and
+then this corresponds.
+
+718
+00:33:38,630 --> 00:33:40,500
+And then up and over.
+
+719
+00:33:40,500 --> 00:33:44,900
+And then the unused edges,
+the not orange ones,
+
+720
+00:33:44,900 --> 00:33:47,370
+that's where we get
+these kinds of loops,
+
+721
+00:33:47,370 --> 00:33:51,310
+starting from the
+vertices of one parity,
+
+722
+00:33:51,310 --> 00:33:54,960
+I guess the white ones, and
+then going to the black ones
+
+723
+00:33:54,960 --> 00:33:58,270
+and turning around
+at the pin joint.
+
+724
+00:33:58,270 --> 00:33:59,300
+Cool.
+
+725
+00:33:59,300 --> 00:34:03,154
+So given this is hard,
+why is this hard?
+
+726
+00:34:03,154 --> 00:34:06,670
+
+727
+00:34:06,670 --> 00:34:08,690
+So the decision
+problem, let's say,
+
+728
+00:34:08,690 --> 00:34:10,510
+is I give you a set of points.
+
+729
+00:34:10,510 --> 00:34:13,130
+I give you the desired
+length of the tour.
+
+730
+00:34:13,130 --> 00:34:16,400
+I want to know is there a tour,
+visits every point exactly
+
+731
+00:34:16,400 --> 00:34:20,566
+once, and has length at
+most that given length.
+
+732
+00:34:20,566 --> 00:34:24,967
+AUDIENCE: So if you
+look at a grid graph,
+
+733
+00:34:24,967 --> 00:34:26,784
+you'll have some
+number of nodes,
+
+734
+00:34:26,784 --> 00:34:29,624
+which means the tour would
+have to necessarily have-- it
+
+735
+00:34:29,624 --> 00:34:31,400
+can just choose those points.
+
+736
+00:34:31,400 --> 00:34:33,590
+The tour would necessarily
+have at least-- exactly
+
+737
+00:34:33,590 --> 00:34:37,062
+that many edges,
+and each edge would
+
+738
+00:34:37,062 --> 00:34:38,870
+have to have length
+at least one,
+
+739
+00:34:38,870 --> 00:34:42,510
+because the close [INAUDIBLE]
+points is one apart.
+
+740
+00:34:42,510 --> 00:34:43,260
+ERIK DEMAINE: Yup.
+
+741
+00:34:43,260 --> 00:34:45,259
+AUDIENCE: And so if you
+just counter [INAUDIBLE]
+
+742
+00:34:45,259 --> 00:34:47,827
+those points and say
+that that's the desired
+
+743
+00:34:47,827 --> 00:34:49,410
+length of your tour,
+then you can only
+
+744
+00:34:49,410 --> 00:34:51,910
+do that if you can get through
+this by following only edges
+
+745
+00:34:51,910 --> 00:34:53,224
+that are length one.
+
+746
+00:34:53,224 --> 00:34:54,140
+ERIK DEMAINE: Exactly.
+
+747
+00:34:54,140 --> 00:34:57,060
+So we're going to reduce
+from this problem.
+
+748
+00:34:57,060 --> 00:35:00,120
+Given such a grid
+graph, the reduction
+
+749
+00:35:00,120 --> 00:35:02,580
+just looks at the vertices,
+throws away the edges.
+
+750
+00:35:02,580 --> 00:35:07,780
+That is our input-- those
+points are the input to TSP.
+
+751
+00:35:07,780 --> 00:35:10,700
+And then the claim
+is that every tour--
+
+752
+00:35:10,700 --> 00:35:13,120
+let's say there are end
+points in this picture.
+
+753
+00:35:13,120 --> 00:35:15,362
+Every tour has to have length
+at least n, as you say,
+
+754
+00:35:15,362 --> 00:35:17,570
+because they're end points,
+the total number of edges
+
+755
+00:35:17,570 --> 00:35:20,510
+is n in a cycle, a
+Hamiltonian cycle,
+
+756
+00:35:20,510 --> 00:35:24,020
+and every edge must have
+length at least one,
+
+757
+00:35:24,020 --> 00:35:26,100
+because that's the nearest pair.
+
+758
+00:35:26,100 --> 00:35:28,811
+And so that's a lower bound.
+
+759
+00:35:28,811 --> 00:35:30,310
+And then on the
+other hand, if there
+
+760
+00:35:30,310 --> 00:35:34,937
+is a tour that
+has length only n,
+
+761
+00:35:34,937 --> 00:35:36,770
+then it must actually
+be a Hamiltonian cycle
+
+762
+00:35:36,770 --> 00:35:38,780
+in this graph,
+because then you're
+
+763
+00:35:38,780 --> 00:35:41,337
+only using edges that
+exist in the grid graph.
+
+764
+00:35:41,337 --> 00:35:42,670
+So it's really the same problem.
+
+765
+00:35:42,670 --> 00:35:45,170
+Euclidean TSP really is
+a special case of this.
+
+766
+00:35:45,170 --> 00:35:48,280
+
+767
+00:35:48,280 --> 00:35:50,810
+Cool.
+
+768
+00:35:50,810 --> 00:35:52,690
+This problem was proved
+hard much earlier.
+
+769
+00:35:52,690 --> 00:35:55,390
+
+770
+00:35:55,390 --> 00:35:59,210
+Hamiltonicity and grid graph.
+
+771
+00:35:59,210 --> 00:36:02,600
+
+772
+00:36:02,600 --> 00:36:06,200
+But here is now a nice simple
+proof using what we know.
+
+773
+00:36:06,200 --> 00:36:09,080
+
+774
+00:36:09,080 --> 00:36:12,700
+I'll tell you more
+reasons in a little bit,
+
+775
+00:36:12,700 --> 00:36:17,370
+but I have one more at this
+point, which is platform games.
+
+776
+00:36:17,370 --> 00:36:21,330
+
+777
+00:36:21,330 --> 00:36:23,060
+I don't have a graphic
+because there's
+
+778
+00:36:23,060 --> 00:36:26,290
+so many games that
+could apply here,
+
+779
+00:36:26,290 --> 00:36:28,290
+Super Mario Brothers among them.
+
+780
+00:36:28,290 --> 00:36:32,940
+Suppose you have a little
+dude, you can walk around.
+
+781
+00:36:32,940 --> 00:36:36,130
+And you've got some
+kind of coins--
+
+782
+00:36:36,130 --> 00:36:37,790
+I don't know how to draw coins.
+
+783
+00:36:37,790 --> 00:36:39,130
+They almost look like eyeballs.
+
+784
+00:36:39,130 --> 00:36:41,340
+But anyway, you've
+got a bunch of coins
+
+785
+00:36:41,340 --> 00:36:44,212
+which you want to collect.
+
+786
+00:36:44,212 --> 00:36:46,170
+And you have some way
+that you can walk around.
+
+787
+00:36:46,170 --> 00:36:48,290
+If you're a top-down
+game, then that's
+
+788
+00:36:48,290 --> 00:36:50,950
+pretty much the
+entire reduction.
+
+789
+00:36:50,950 --> 00:36:54,390
+And then also you have a timer.
+
+790
+00:36:54,390 --> 00:37:02,990
+So timer plus collectibles--
+ables or ibles?
+
+791
+00:37:02,990 --> 00:37:05,130
+Ables.
+
+792
+00:37:05,130 --> 00:37:10,660
+And any such game is
+NP-hard, at least,
+
+793
+00:37:10,660 --> 00:37:13,020
+because if you want to get
+all of these coins, that's
+
+794
+00:37:13,020 --> 00:37:14,850
+like vertices you need to visit.
+
+795
+00:37:14,850 --> 00:37:18,430
+As I say, a top-down game
+you're walking in a grid graph.
+
+796
+00:37:18,430 --> 00:37:22,080
+The time limit will
+prevent us from going out
+
+797
+00:37:22,080 --> 00:37:24,641
+into the white space because
+there's no coins there.
+
+798
+00:37:24,641 --> 00:37:27,140
+And so if the timeline limit
+is exactly the number of coins,
+
+799
+00:37:27,140 --> 00:37:29,670
+and every step you make
+you have to get a coin,
+
+800
+00:37:29,670 --> 00:37:33,450
+then that will force you to only
+follow-- the edges in the grid
+
+801
+00:37:33,450 --> 00:37:35,665
+graph can't go out here.
+
+802
+00:37:35,665 --> 00:37:38,490
+No obstacles needed.
+
+803
+00:37:38,490 --> 00:37:40,910
+And you understand that in
+the real game, of course,
+
+804
+00:37:40,910 --> 00:37:42,510
+there might be stuff
+happening here.
+
+805
+00:37:42,510 --> 00:37:45,485
+Maybe there's a ladder
+so you can go up here.
+
+806
+00:37:45,485 --> 00:37:47,610
+You just have to set up
+all these traversal lengths
+
+807
+00:37:47,610 --> 00:37:51,152
+to take the same amount of
+time in under optimal play.
+
+808
+00:37:51,152 --> 00:37:53,610
+And then you can simulate a
+ton of video games in this way.
+
+809
+00:37:53,610 --> 00:37:56,830
+
+810
+00:37:56,830 --> 00:37:58,620
+This is a result.
+
+811
+00:37:58,620 --> 00:38:02,790
+This is in Fun 2010 by Forishek.
+
+812
+00:38:02,790 --> 00:38:05,030
+So some reasons why you care.
+
+813
+00:38:05,030 --> 00:38:08,150
+A lot of games map
+naturally onto grids.
+
+814
+00:38:08,150 --> 00:38:13,120
+A lot of real problems
+can map onto grids.
+
+815
+00:38:13,120 --> 00:38:14,770
+In general, grids
+will be very helpful.
+
+816
+00:38:14,770 --> 00:38:18,610
+
+817
+00:38:18,610 --> 00:38:24,250
+So next problem I
+want to solve is--
+
+818
+00:38:24,250 --> 00:38:28,750
+by solve, I mean
+show hard, as usual.
+
+819
+00:38:28,750 --> 00:38:35,215
+Let's say, max degree
+three grid graphs.
+
+820
+00:38:35,215 --> 00:38:40,170
+
+821
+00:38:40,170 --> 00:38:42,000
+I don't have a great
+motivation-- well,
+
+822
+00:38:42,000 --> 00:38:44,150
+I have a motivation for this.
+
+823
+00:38:44,150 --> 00:38:45,750
+Probably others that
+I'm not aware of.
+
+824
+00:38:45,750 --> 00:38:48,800
+I didn't actually know about
+this result until recently.
+
+825
+00:38:48,800 --> 00:38:49,920
+It's pretty cool.
+
+826
+00:38:49,920 --> 00:38:52,329
+If you look at this reduction,
+there are some vertices
+
+827
+00:38:52,329 --> 00:38:54,120
+that-- I mean here
+we're drawing the cycle,
+
+828
+00:38:54,120 --> 00:38:55,740
+but some vertices
+have degree four.
+
+829
+00:38:55,740 --> 00:38:59,770
+Of course, every grid
+graph is max degree four.
+
+830
+00:38:59,770 --> 00:39:04,940
+And max degree two is pretty
+easy to solve Hamiltonicity.
+
+831
+00:39:04,940 --> 00:39:07,100
+So what's left is
+max degree three.
+
+832
+00:39:07,100 --> 00:39:09,730
+So a natural question in
+between is can you do max degree
+
+833
+00:39:09,730 --> 00:39:10,985
+three grid graphs.
+
+834
+00:39:10,985 --> 00:39:13,370
+The claim is that is also hard.
+
+835
+00:39:13,370 --> 00:39:15,390
+And it's going to be
+basically the same proof,
+
+836
+00:39:15,390 --> 00:39:20,007
+but we're going to change all
+the gadgets, most of them.
+
+837
+00:39:20,007 --> 00:39:21,090
+There's one shared author.
+
+838
+00:39:21,090 --> 00:39:24,400
+This was Eti Papadimitriou
+and Szwarcfiter.
+
+839
+00:39:24,400 --> 00:39:27,120
+
+840
+00:39:27,120 --> 00:39:30,390
+And then this is
+Papadimitriou and Vazirani
+
+841
+00:39:30,390 --> 00:39:32,360
+a couple years later.
+
+842
+00:39:32,360 --> 00:39:36,315
+So this is actually
+very similar to the edge
+
+843
+00:39:36,315 --> 00:39:37,190
+gadget we saw before.
+
+844
+00:39:37,190 --> 00:39:40,230
+Here's the old edge gadget.
+
+845
+00:39:40,230 --> 00:39:42,930
+Before when we had a turn
+we had a degree four vertex.
+
+846
+00:39:42,930 --> 00:39:45,440
+I want to get rid of that,
+and I'm going to get rid of it
+
+847
+00:39:45,440 --> 00:39:48,380
+by just sort of shifting these
+things apart and blowing up
+
+848
+00:39:48,380 --> 00:39:50,740
+this circle, this cycle.
+
+849
+00:39:50,740 --> 00:39:52,930
+So I end up with a
+bigger cycle here,
+
+850
+00:39:52,930 --> 00:39:54,740
+end up with an edge
+connection there.
+
+851
+00:39:54,740 --> 00:39:58,520
+But effectively, it's the
+same kind of topology.
+
+852
+00:39:58,520 --> 00:40:03,432
+If you're coming in
+and alternating--
+
+853
+00:40:03,432 --> 00:40:05,140
+I guess you have to
+get the parity right.
+
+854
+00:40:05,140 --> 00:40:07,690
+If you're coming in from this
+side and you're alternating,
+
+855
+00:40:07,690 --> 00:40:10,430
+then you can come around
+and visit like that,
+
+856
+00:40:10,430 --> 00:40:12,590
+and everything is OK.
+
+857
+00:40:12,590 --> 00:40:14,950
+Back and forth.
+
+858
+00:40:14,950 --> 00:40:15,760
+Cool.
+
+859
+00:40:15,760 --> 00:40:17,650
+That was drawn right over here.
+
+860
+00:40:17,650 --> 00:40:18,580
+That's a zigzag path.
+
+861
+00:40:18,580 --> 00:40:21,070
+The return path
+is just as before.
+
+862
+00:40:21,070 --> 00:40:24,050
+And so we can use this
+edge gadget exactly
+
+863
+00:40:24,050 --> 00:40:28,310
+as we did before, but now it's
+max degree three everywhere.
+
+864
+00:40:28,310 --> 00:40:29,020
+So that's easy.
+
+865
+00:40:29,020 --> 00:40:31,920
+In general, using
+this trick that here
+
+866
+00:40:31,920 --> 00:40:34,480
+we had a corner
+with a vertex on it.
+
+867
+00:40:34,480 --> 00:40:36,074
+You can turn that
+into a longer path
+
+868
+00:40:36,074 --> 00:40:37,240
+with various vertices on it.
+
+869
+00:40:37,240 --> 00:40:40,250
+That will act the same from
+a Hamiltonicity perspective.
+
+870
+00:40:40,250 --> 00:40:41,750
+So that's the key
+thing we're doing.
+
+871
+00:40:41,750 --> 00:40:44,975
+And then it's a matter
+of putting things
+
+872
+00:40:44,975 --> 00:40:47,810
+to fit on the grid.
+
+873
+00:40:47,810 --> 00:40:50,189
+So that's the first change.
+
+874
+00:40:50,189 --> 00:40:52,480
+Now, the second change is
+going to be a little bit more
+
+875
+00:40:52,480 --> 00:40:55,130
+drastic, a little weirder.
+
+876
+00:40:55,130 --> 00:40:57,920
+The vertex gadget used
+to be this 3 by 3 thing.
+
+877
+00:40:57,920 --> 00:40:59,770
+Very hard to get
+rid of that, vertex
+
+878
+00:40:59,770 --> 00:41:02,090
+would have to be
+four in the center.
+
+879
+00:41:02,090 --> 00:41:04,170
+Well, if you did
+that, you would be
+
+880
+00:41:04,170 --> 00:41:07,220
+left with a little
+square, an empty square.
+
+881
+00:41:07,220 --> 00:41:10,480
+And we're going to
+need two of those.
+
+882
+00:41:10,480 --> 00:41:14,260
+So this is the
+dumbbell picture used
+
+883
+00:41:14,260 --> 00:41:16,850
+in many theoretical results.
+
+884
+00:41:16,850 --> 00:41:20,170
+So we have two of these squares.
+
+885
+00:41:20,170 --> 00:41:22,740
+We're going to separate
+them by a fairly long path
+
+886
+00:41:22,740 --> 00:41:24,830
+of the right parity.
+
+887
+00:41:24,830 --> 00:41:28,350
+And the idea is you can have
+up to two connections over here
+
+888
+00:41:28,350 --> 00:41:30,690
+to edges, and up to two
+connections over here
+
+889
+00:41:30,690 --> 00:41:32,460
+for edges.
+
+890
+00:41:32,460 --> 00:41:34,440
+And typical
+connections are going
+
+891
+00:41:34,440 --> 00:41:37,250
+to look just like we
+had before, but it's not
+
+892
+00:41:37,250 --> 00:41:39,050
+going quite all be like this.
+
+893
+00:41:39,050 --> 00:41:42,330
+So it used to be we could
+have a full edge connection
+
+894
+00:41:42,330 --> 00:41:48,540
+or we could have a pin
+connection as before.
+
+895
+00:41:48,540 --> 00:41:51,510
+When this edge turns it's going
+to use the weirder turn gadget.
+
+896
+00:41:51,510 --> 00:41:54,280
+So the edges look
+basically the same,
+
+897
+00:41:54,280 --> 00:41:57,590
+it's just the turns that we
+changed in the last slide.
+
+898
+00:41:57,590 --> 00:42:00,290
+OK.
+
+899
+00:42:00,290 --> 00:42:05,150
+This almost works, but I
+have to specify some details.
+
+900
+00:42:05,150 --> 00:42:07,570
+So for example, easy case.
+
+901
+00:42:07,570 --> 00:42:09,520
+Degree two vertex.
+
+902
+00:42:09,520 --> 00:42:12,020
+Suppose the original graph
+has a degree two vertex--
+
+903
+00:42:12,020 --> 00:42:14,240
+we had that in our reduction.
+
+904
+00:42:14,240 --> 00:42:16,530
+Because in fact, every
+other vertex pretty much
+
+905
+00:42:16,530 --> 00:42:21,122
+was degree two, if you
+track all of these things.
+
+906
+00:42:21,122 --> 00:42:22,580
+When we went from
+the directed case
+
+907
+00:42:22,580 --> 00:42:24,720
+to the bipartite case we
+added in lots of vertices,
+
+908
+00:42:24,720 --> 00:42:26,130
+lots of degree two vertices.
+
+909
+00:42:26,130 --> 00:42:28,670
+So if we want to simulate
+a degree two vertex,
+
+910
+00:42:28,670 --> 00:42:32,430
+we will just have one of
+the edges attaching up here,
+
+911
+00:42:32,430 --> 00:42:34,860
+and one of the edges
+attaching down here.
+
+912
+00:42:34,860 --> 00:42:39,050
+And again-- in this picture
+it's one on the left side,
+
+913
+00:42:39,050 --> 00:42:40,310
+one on the right side.
+
+914
+00:42:40,310 --> 00:42:42,110
+And again, we have
+this feature that if we
+
+915
+00:42:42,110 --> 00:42:47,350
+start at any of the PIs we
+can get to one of the PJs
+
+916
+00:42:47,350 --> 00:42:51,420
+by visiting all the EI edges.
+
+917
+00:42:51,420 --> 00:42:56,205
+So for example, if we start
+here we go like this over here.
+
+918
+00:42:56,205 --> 00:42:57,080
+And we have a choice.
+
+919
+00:42:57,080 --> 00:42:59,570
+We can either go like this,
+end at P3 or go like this
+
+920
+00:42:59,570 --> 00:43:00,270
+and end at P4.
+
+921
+00:43:00,270 --> 00:43:02,670
+We visited all the EIs.
+
+922
+00:43:02,670 --> 00:43:06,000
+But we can't start
+at P1 and end at P2.
+
+923
+00:43:06,000 --> 00:43:07,550
+We want to visit everything.
+
+924
+00:43:07,550 --> 00:43:08,600
+Start at P1.
+
+925
+00:43:08,600 --> 00:43:11,210
+If you go out there,
+you can never come back.
+
+926
+00:43:11,210 --> 00:43:14,010
+To come around here,
+you've already visited P2.
+
+927
+00:43:14,010 --> 00:43:16,650
+So we cannot start and
+end on the left side.
+
+928
+00:43:16,650 --> 00:43:18,590
+We cannot start and
+end on the right side.
+
+929
+00:43:18,590 --> 00:43:20,364
+So for a degree two
+vertex, that's fine.
+
+930
+00:43:20,364 --> 00:43:21,780
+We just put one
+of the connections
+
+931
+00:43:21,780 --> 00:43:25,120
+on one side, one on the
+other, and we'll come in,
+
+932
+00:43:25,120 --> 00:43:26,610
+visit everything, come out.
+
+933
+00:43:26,610 --> 00:43:28,720
+And because we
+visit all the EIs,
+
+934
+00:43:28,720 --> 00:43:34,370
+we can do this kind of
+traversal every time.
+
+935
+00:43:34,370 --> 00:43:36,874
+Now, for a degree
+three vertex, this
+
+936
+00:43:36,874 --> 00:43:38,040
+is a little bit troublesome.
+
+937
+00:43:38,040 --> 00:43:40,650
+
+938
+00:43:40,650 --> 00:43:45,385
+Remember our picture.
+
+939
+00:43:45,385 --> 00:43:55,894
+
+940
+00:43:55,894 --> 00:43:57,560
+What do degree three
+vertices look like?
+
+941
+00:43:57,560 --> 00:43:59,810
+If you follow through
+the chain of reductions,
+
+942
+00:43:59,810 --> 00:44:07,260
+we had this case, and we
+had this case, and this one
+
+943
+00:44:07,260 --> 00:44:11,990
+we converted into that.
+
+944
+00:44:11,990 --> 00:44:21,501
+And this one we converted
+into that I think.
+
+945
+00:44:21,501 --> 00:44:22,000
+Yup.
+
+946
+00:44:22,000 --> 00:44:24,000
+Because this was a forced edge.
+
+947
+00:44:24,000 --> 00:44:28,550
+This was a forced edge and so we
+added a dot to represent that.
+
+948
+00:44:28,550 --> 00:44:31,220
+So the good news is every
+time we have a degree three
+
+949
+00:44:31,220 --> 00:44:37,020
+vertex in the starting graph,
+one of the edges is forced.
+
+950
+00:44:37,020 --> 00:44:38,487
+One of the three
+edges is forced.
+
+951
+00:44:38,487 --> 00:44:40,653
+So it's really a choice
+between do you take this one
+
+952
+00:44:40,653 --> 00:44:41,652
+or do you take this one.
+
+953
+00:44:41,652 --> 00:44:44,660
+I mean that's, of course,
+what we had over here.
+
+954
+00:44:44,660 --> 00:44:47,400
+So what we're going to do is
+take these two edges, which
+
+955
+00:44:47,400 --> 00:44:49,250
+are exclusively OR'd together.
+
+956
+00:44:49,250 --> 00:44:51,900
+I choose exactly one of these.
+
+957
+00:44:51,900 --> 00:44:55,710
+We're going to put that on
+one side, so that one of them
+
+958
+00:44:55,710 --> 00:44:58,850
+will go up here, one of
+them will go down here.
+
+959
+00:44:58,850 --> 00:45:02,410
+And then the forced edge we'll
+put over on the other side.
+
+960
+00:45:02,410 --> 00:45:04,070
+Forced edge is always
+chosen, so that
+
+961
+00:45:04,070 --> 00:45:07,950
+means we'll come in either P1
+or P2, or leave on P1 or P2,
+
+962
+00:45:07,950 --> 00:45:10,210
+depending on which of
+those two cases we're in.
+
+963
+00:45:10,210 --> 00:45:15,370
+And then we will leave
+or enter from P3 or P4,
+
+964
+00:45:15,370 --> 00:45:20,261
+according to which of
+the two edges you choose.
+
+965
+00:45:20,261 --> 00:45:20,760
+Happy?
+
+966
+00:45:20,760 --> 00:45:21,410
+No?
+
+967
+00:45:21,410 --> 00:45:22,310
+AUDIENCE: I'm understanding
+that we're actually
+
+968
+00:45:22,310 --> 00:45:25,130
+reducing from a sub-problem
+of [INAUDIBLE] bipartite,
+
+969
+00:45:25,130 --> 00:45:27,800
+max degree three graphs in
+that every vertex is connected
+
+970
+00:45:27,800 --> 00:45:31,490
+to at least one
+degree two vertex?
+
+971
+00:45:31,490 --> 00:45:33,720
+ERIK DEMAINE: Yeah.
+
+972
+00:45:33,720 --> 00:45:34,220
+Right.
+
+973
+00:45:34,220 --> 00:45:39,950
+So we could say at this
+point-- in fact, it's planar
+
+974
+00:45:39,950 --> 00:45:43,610
+bipartite max degree three
+graphs where every degree three
+
+975
+00:45:43,610 --> 00:45:47,770
+vertex is adjacent to
+exactly one, or no,
+
+976
+00:45:47,770 --> 00:45:51,790
+at least one degree two vertex.
+
+977
+00:45:51,790 --> 00:45:54,560
+And then we can
+carry that condition
+
+978
+00:45:54,560 --> 00:45:56,310
+through all the
+reductions, and that would
+
+979
+00:45:56,310 --> 00:45:58,240
+make this an actual reduction.
+
+980
+00:45:58,240 --> 00:46:00,990
+Or you can think of this as
+a reduction going from here,
+
+981
+00:46:00,990 --> 00:46:02,720
+just copying all the details.
+
+982
+00:46:02,720 --> 00:46:03,220
+Yeah.
+
+983
+00:46:03,220 --> 00:46:05,744
+
+984
+00:46:05,744 --> 00:46:06,410
+Other questions?
+
+985
+00:46:06,410 --> 00:46:10,000
+
+986
+00:46:10,000 --> 00:46:12,010
+OK.
+
+987
+00:46:12,010 --> 00:46:15,089
+I'm a little confused because
+there's one more gadget.
+
+988
+00:46:15,089 --> 00:46:16,630
+But I didn't seem
+to use that gadget.
+
+989
+00:46:16,630 --> 00:46:22,190
+So I'm not sure whether
+this is necessary.
+
+990
+00:46:22,190 --> 00:46:24,682
+But here's another
+thing you can do,
+
+991
+00:46:24,682 --> 00:46:26,390
+which they're using
+for the forced edges.
+
+992
+00:46:26,390 --> 00:46:30,890
+You can have one wire--
+sorry, this is the picture.
+
+993
+00:46:30,890 --> 00:46:33,290
+You can have one edge
+gadget that attaches
+
+994
+00:46:33,290 --> 00:46:35,920
+to both ends of the dumbbell.
+
+995
+00:46:35,920 --> 00:46:38,580
+So then you have a
+choice whether you end up
+
+996
+00:46:38,580 --> 00:46:43,040
+connecting that edge to
+the bottom of the dumbbell
+
+997
+00:46:43,040 --> 00:46:46,480
+or to the top of the dumbbell.
+
+998
+00:46:46,480 --> 00:46:47,670
+Sorry.
+
+999
+00:46:47,670 --> 00:46:50,540
+This is connecting to the
+top, and this is connecting
+
+1000
+00:46:50,540 --> 00:46:52,560
+to the bottom, the dumbbell.
+
+1001
+00:46:52,560 --> 00:46:55,480
+So that's another way to do
+the same kind of degree three
+
+1002
+00:46:55,480 --> 00:46:55,980
+vertex.
+
+1003
+00:46:55,980 --> 00:47:00,050
+You could have this guy coming
+in-- this is the forced edge,
+
+1004
+00:47:00,050 --> 00:47:02,950
+and the forced edge has
+to come to this vertex.
+
+1005
+00:47:02,950 --> 00:47:05,590
+You get a choice of whether you
+start up here and then leave
+
+1006
+00:47:05,590 --> 00:47:09,920
+along this non-forced
+edge, or you first
+
+1007
+00:47:09,920 --> 00:47:12,010
+traverse down this way
+and then leave along
+
+1008
+00:47:12,010 --> 00:47:14,240
+this non-forced edge.
+
+1009
+00:47:14,240 --> 00:47:17,410
+So that's another way to do
+it, but it seems just as good
+
+1010
+00:47:17,410 --> 00:47:21,220
+as the way I described, which
+was to put forced edge only
+
+1011
+00:47:21,220 --> 00:47:24,630
+a one side, and then the other
+two guys on the other side.
+
+1012
+00:47:24,630 --> 00:47:26,470
+Unless there's a parity issue.
+
+1013
+00:47:26,470 --> 00:47:31,380
+It could be that this
+connection and this connection
+
+1014
+00:47:31,380 --> 00:47:36,080
+have the opposite parities,
+which is not good.
+
+1015
+00:47:36,080 --> 00:47:42,530
+Because we want the two
+connections-- in this case,
+
+1016
+00:47:42,530 --> 00:47:45,480
+both of these are
+going to be white.
+
+1017
+00:47:45,480 --> 00:47:47,770
+And in this case both of
+these are going to be black.
+
+1018
+00:47:47,770 --> 00:47:50,280
+So the two non-forced
+edges connect
+
+1019
+00:47:50,280 --> 00:47:52,760
+to vertices of the same color.
+
+1020
+00:47:52,760 --> 00:47:55,600
+And I think if you try to
+attach one of them over here
+
+1021
+00:47:55,600 --> 00:47:58,350
+and one of them over
+here on a variable,
+
+1022
+00:47:58,350 --> 00:48:01,070
+they will have the wrong colors,
+they'll have opposite colors.
+
+1023
+00:48:01,070 --> 00:48:02,930
+I think that's why
+you need this gadget.
+
+1024
+00:48:02,930 --> 00:48:07,080
+Because now this left connection
+and this other left connection
+
+1025
+00:48:07,080 --> 00:48:11,070
+will have the same parity
+because this count is odd
+
+1026
+00:48:11,070 --> 00:48:12,790
+I think.
+
+1027
+00:48:12,790 --> 00:48:15,120
+I think that's why you need it.
+
+1028
+00:48:15,120 --> 00:48:16,290
+And that preserves parity.
+
+1029
+00:48:16,290 --> 00:48:17,210
+So it's a bit subtle.
+
+1030
+00:48:17,210 --> 00:48:21,140
+You have to be careful all the
+connections preserve parity.
+
+1031
+00:48:21,140 --> 00:48:22,870
+Cool.
+
+1032
+00:48:22,870 --> 00:48:28,352
+So that was max degree
+three grid graphs.
+
+1033
+00:48:28,352 --> 00:48:29,185
+Any other questions?
+
+1034
+00:48:29,185 --> 00:48:32,630
+
+1035
+00:48:32,630 --> 00:48:37,240
+Here is one motivation from this
+Papadimitriou/Vazirani paper
+
+1036
+00:48:37,240 --> 00:48:51,580
+for this problem related to
+Euclidean traveling salesman
+
+1037
+00:48:51,580 --> 00:48:52,080
+problem.
+
+1038
+00:48:52,080 --> 00:49:06,420
+
+1039
+00:49:06,420 --> 00:49:09,130
+It's this notion of
+degree-bounded minimum spanning
+
+1040
+00:49:09,130 --> 00:49:09,840
+tree.
+
+1041
+00:49:09,840 --> 00:49:12,680
+Minimum spanning tree normally
+is a polynomial problem.
+
+1042
+00:49:12,680 --> 00:49:16,390
+We're given some graph, you
+want to find a spanning tree.
+
+1043
+00:49:16,390 --> 00:49:18,530
+Tree that this is
+all the vertices,
+
+1044
+00:49:18,530 --> 00:49:22,350
+but it can be a tree
+instead of just a path.
+
+1045
+00:49:22,350 --> 00:49:25,560
+And it's minimum in that it
+has minimum total length of all
+
+1046
+00:49:25,560 --> 00:49:26,060
+the edges.
+
+1047
+00:49:26,060 --> 00:49:28,200
+So that's a polynomial problem.
+
+1048
+00:49:28,200 --> 00:49:30,770
+If I say, well, I want
+a minimum spanning tree
+
+1049
+00:49:30,770 --> 00:49:34,560
+where all of the
+vertices in the tree
+
+1050
+00:49:34,560 --> 00:49:38,496
+have max degree two,
+that is Hamiltonian path,
+
+1051
+00:49:38,496 --> 00:49:40,370
+or I guess really
+traveling salesman problem.
+
+1052
+00:49:40,370 --> 00:49:46,930
+So we already proved Euclidean
+max degree two minimum spanning
+
+1053
+00:49:46,930 --> 00:49:47,800
+tree is hard.
+
+1054
+00:49:47,800 --> 00:49:48,990
+What about max degree three?
+
+1055
+00:49:48,990 --> 00:49:51,560
+Does that somehow-- does the
+branching make it easier,
+
+1056
+00:49:51,560 --> 00:49:53,670
+and the answer is no.
+
+1057
+00:49:53,670 --> 00:49:56,730
+You start from this problem.
+
+1058
+00:49:56,730 --> 00:49:58,920
+And the cool thing
+about a max degree
+
+1059
+00:49:58,920 --> 00:50:04,530
+three grid graph is if you look
+at any point, at most three
+
+1060
+00:50:04,530 --> 00:50:09,370
+of its neighboring spots
+are actual vertices.
+
+1061
+00:50:09,370 --> 00:50:12,500
+One of them has to be absent
+in a max degree three.
+
+1062
+00:50:12,500 --> 00:50:19,380
+So what I'm going to do is add a
+point really close to that one.
+
+1063
+00:50:19,380 --> 00:50:23,790
+And now you can show in
+any minimum spanning tree,
+
+1064
+00:50:23,790 --> 00:50:28,462
+these guys must be connected,
+and this one basically
+
+1065
+00:50:28,462 --> 00:50:30,670
+has to be a leaf because
+everything else is quite far
+
+1066
+00:50:30,670 --> 00:50:31,630
+away.
+
+1067
+00:50:31,630 --> 00:50:36,830
+I mean at most you have
+these guys occupied.
+
+1068
+00:50:36,830 --> 00:50:39,350
+You know that this
+is completely absent.
+
+1069
+00:50:39,350 --> 00:50:40,800
+So I add this point.
+
+1070
+00:50:40,800 --> 00:50:42,410
+I'm going to have
+to connect this.
+
+1071
+00:50:42,410 --> 00:50:45,700
+it won't be able to connect
+any other way if I'm using
+
+1072
+00:50:45,700 --> 00:50:47,020
+the shortest possible length.
+
+1073
+00:50:47,020 --> 00:50:50,010
+And so at that point, if
+this has degree three,
+
+1074
+00:50:50,010 --> 00:50:52,800
+there's only two
+incident edges left,
+
+1075
+00:50:52,800 --> 00:50:56,890
+and so it's Hamiltonian path
+again in the grid graph.
+
+1076
+00:50:56,890 --> 00:51:00,050
+So this is why
+they were motivated
+
+1077
+00:51:00,050 --> 00:51:03,450
+to define max degree grid
+graphs and prove that hard.
+
+1078
+00:51:03,450 --> 00:51:06,880
+
+1079
+00:51:06,880 --> 00:51:07,750
+Cool.
+
+1080
+00:51:07,750 --> 00:51:10,300
+Some more geometry.
+
+1081
+00:51:10,300 --> 00:51:11,800
+All right.
+
+1082
+00:51:11,800 --> 00:51:13,410
+So for a long time--
+you know, this
+
+1083
+00:51:13,410 --> 00:51:16,150
+is all done in the '80s,
+all the grid graph stuff.
+
+1084
+00:51:16,150 --> 00:51:18,840
+We only had square grids.
+
+1085
+00:51:18,840 --> 00:51:23,130
+We couldn't afford
+triangles back in the day.
+
+1086
+00:51:23,130 --> 00:51:26,720
+But recently, people started
+to think about triangular grids
+
+1087
+00:51:26,720 --> 00:51:27,540
+and hex grids.
+
+1088
+00:51:27,540 --> 00:51:30,120
+Those are the only
+tiling regular n-gons.
+
+1089
+00:51:30,120 --> 00:51:32,960
+So you can define the
+same kind of thing.
+
+1090
+00:51:32,960 --> 00:51:35,290
+A triangular grid graph,
+a hexagonal grid graph.
+
+1091
+00:51:35,290 --> 00:51:38,670
+Again, you take a set of
+points in the triangular
+
+1092
+00:51:38,670 --> 00:51:40,435
+lattice or the hex lattice.
+
+1093
+00:51:40,435 --> 00:51:42,430
+Is the hex actually a lattice?
+
+1094
+00:51:42,430 --> 00:51:45,250
+Well, anyway, you know
+what I mean, the hex grid.
+
+1095
+00:51:45,250 --> 00:51:50,130
+And you connect
+any two points when
+
+1096
+00:51:50,130 --> 00:51:52,930
+they're a unit distance
+apart, where that's
+
+1097
+00:51:52,930 --> 00:51:55,490
+defined to be one and one.
+
+1098
+00:51:55,490 --> 00:51:58,660
+So again, we have the notion of
+solid, triangular, or hex grid
+
+1099
+00:51:58,660 --> 00:52:00,020
+graph, and there are no holes.
+
+1100
+00:52:00,020 --> 00:52:03,120
+Again, we can characterize the
+pixels-- they're not really
+
+1101
+00:52:03,120 --> 00:52:05,930
+pixels-- hexels and trigles?
+
+1102
+00:52:05,930 --> 00:52:07,090
+I don't know.
+
+1103
+00:52:07,090 --> 00:52:09,080
+In the paper they're
+all just called pixels.
+
+1104
+00:52:09,080 --> 00:52:10,680
+There's those types of faces.
+
+1105
+00:52:10,680 --> 00:52:12,010
+There's the outside face.
+
+1106
+00:52:12,010 --> 00:52:17,900
+And then there's the hole
+faces-- H-O-L-E, not W-H-O-L-E.
+
+1107
+00:52:17,900 --> 00:52:20,190
+OK.
+
+1108
+00:52:20,190 --> 00:52:21,690
+Cool.
+
+1109
+00:52:21,690 --> 00:52:24,340
+They define some other
+terms, which I will get to.
+
+1110
+00:52:24,340 --> 00:52:31,830
+
+1111
+00:52:31,830 --> 00:52:34,925
+Let me tell you what's known
+about all of these problems.
+
+1112
+00:52:34,925 --> 00:52:46,560
+
+1113
+00:52:46,560 --> 00:53:10,300
+So first thing, so these are--
+So first thing that's known
+
+1114
+00:53:10,300 --> 00:53:14,590
+is that if you have
+a solid grid graph,
+
+1115
+00:53:14,590 --> 00:53:17,830
+then the triangular
+case is also polynomial.
+
+1116
+00:53:17,830 --> 00:53:21,610
+So I mentioned solid
+square grid graphs are
+
+1117
+00:53:21,610 --> 00:53:23,350
+easy to solve Hamiltonicity in.
+
+1118
+00:53:23,350 --> 00:53:25,150
+Turns out solid
+triangular grid graphs
+
+1119
+00:53:25,150 --> 00:53:28,910
+are also easy to solve grid
+graphs-- solve Hamiltonicity
+
+1120
+00:53:28,910 --> 00:53:29,410
+in.
+
+1121
+00:53:29,410 --> 00:53:32,011
+Almost all of them are
+Hamiltonian in a certain sense,
+
+1122
+00:53:32,011 --> 00:53:33,760
+as long as you check
+for some basic things
+
+1123
+00:53:33,760 --> 00:53:36,450
+you shouldn't have.
+
+1124
+00:53:36,450 --> 00:53:38,910
+But hex is open.
+
+1125
+00:53:38,910 --> 00:53:41,500
+So there's actually a ton
+of nice open problems still.
+
+1126
+00:53:41,500 --> 00:53:44,290
+
+1127
+00:53:44,290 --> 00:53:49,590
+Next case is called
+a super thin.
+
+1128
+00:53:49,590 --> 00:54:04,540
+
+1129
+00:54:04,540 --> 00:54:07,300
+So what is super thin?
+
+1130
+00:54:07,300 --> 00:54:13,000
+Super thin means
+there are no pixels.
+
+1131
+00:54:13,000 --> 00:54:16,630
+Every face is either a
+hole or the outside face.
+
+1132
+00:54:16,630 --> 00:54:20,380
+I don't have an example here,
+but this kind of connection
+
+1133
+00:54:20,380 --> 00:54:22,650
+is what you would have
+in super thin graphs.
+
+1134
+00:54:22,650 --> 00:54:27,120
+So you've got the whole face
+here, a whole face there.
+
+1135
+00:54:27,120 --> 00:54:29,860
+You shouldn't have any of
+these pixels to be super thin.
+
+1136
+00:54:29,860 --> 00:54:32,880
+That case turns out to
+be polynomial for squares
+
+1137
+00:54:32,880 --> 00:54:35,750
+and hexes, open for triangles.
+
+1138
+00:54:35,750 --> 00:54:39,160
+All right, next
+case is called thin.
+
+1139
+00:54:39,160 --> 00:54:48,591
+
+1140
+00:54:48,591 --> 00:54:51,170
+That one right there implies.
+
+1141
+00:54:51,170 --> 00:54:55,830
+In the thin case, both the
+triangle and the square,
+
+1142
+00:54:55,830 --> 00:54:58,310
+problems are NP-hard,
+hexes are open.
+
+1143
+00:54:58,310 --> 00:54:59,710
+What does thin mean?
+
+1144
+00:54:59,710 --> 00:55:04,250
+Thin means every vertex
+is on the boundary.
+
+1145
+00:55:04,250 --> 00:55:08,450
+So super thin is something like
+every edge is on the boundary.
+
+1146
+00:55:08,450 --> 00:55:10,700
+Thin is that every vertex
+is on the boundary.
+
+1147
+00:55:10,700 --> 00:55:13,410
+So for example, this
+part here is thin.
+
+1148
+00:55:13,410 --> 00:55:15,820
+The banner's actually
+drawn in bold here.
+
+1149
+00:55:15,820 --> 00:55:18,570
+If every vertex has bold
+edges incident to it,
+
+1150
+00:55:18,570 --> 00:55:19,820
+then we call that thin.
+
+1151
+00:55:19,820 --> 00:55:24,010
+So it's a little bit
+thicker than super thin.
+
+1152
+00:55:24,010 --> 00:55:28,770
+So it's also easier to think
+of the dual if you care to.
+
+1153
+00:55:28,770 --> 00:55:32,830
+If you draw a vertex for every
+pixel, in the super thin case
+
+1154
+00:55:32,830 --> 00:55:34,782
+there are no
+vertices in the dual.
+
+1155
+00:55:34,782 --> 00:55:39,970
+In the thin case, the
+dual is super thin.
+
+1156
+00:55:39,970 --> 00:55:42,700
+I don't know if that's
+easier to think about.
+
+1157
+00:55:42,700 --> 00:55:44,870
+But these cases
+are actually hard,
+
+1158
+00:55:44,870 --> 00:55:47,210
+at least in two out
+of the three pictures.
+
+1159
+00:55:47,210 --> 00:55:48,685
+One of them we have
+already proved.
+
+1160
+00:55:48,685 --> 00:55:52,650
+
+1161
+00:55:52,650 --> 00:55:56,700
+If you have a max
+degree three grid graph,
+
+1162
+00:55:56,700 --> 00:55:59,960
+if max degree is
+three then it must
+
+1163
+00:55:59,960 --> 00:56:02,700
+be on the boundary because
+of that absent pixel.
+
+1164
+00:56:02,700 --> 00:56:05,540
+So we already showed the thin
+case for squares is hard.
+
+1165
+00:56:05,540 --> 00:56:10,950
+Max degree thin implies
+thin, four squares.
+
+1166
+00:56:10,950 --> 00:56:18,210
+And so you might ask
+what about triangles?
+
+1167
+00:56:18,210 --> 00:56:23,524
+OK, so finally we get
+to an actual proof.
+
+1168
+00:56:23,524 --> 00:56:25,190
+It's going to be the
+same kind of thing.
+
+1169
+00:56:25,190 --> 00:56:28,860
+I'll skip this detail, but this
+is the planar and betting part.
+
+1170
+00:56:28,860 --> 00:56:34,210
+So again, we're going to reduce
+from bipartite max degree three
+
+1171
+00:56:34,210 --> 00:56:38,690
+planar Hamiltonicity
+as we did before.
+
+1172
+00:56:38,690 --> 00:56:41,270
+And then we're going
+to draw it in the plane
+
+1173
+00:56:41,270 --> 00:56:43,270
+in some kind of
+parity-preserving sense
+
+1174
+00:56:43,270 --> 00:56:48,360
+with edges routed on
+the triangular grid.
+
+1175
+00:56:48,360 --> 00:56:51,400
+That's not hard.
+
+1176
+00:56:51,400 --> 00:56:54,920
+Then we have very
+similar looking gadgets.
+
+1177
+00:56:54,920 --> 00:56:57,900
+Although in this case,
+a vertex can just
+
+1178
+00:56:57,900 --> 00:57:00,960
+be a little triangle of dots.
+
+1179
+00:57:00,960 --> 00:57:02,990
+The edge gadget's going
+to look pretty similar.
+
+1180
+00:57:02,990 --> 00:57:07,744
+It's like a ladder, but now the
+ladder has funny rungs on it.
+
+1181
+00:57:07,744 --> 00:57:09,285
+Turns are just what
+you would expect.
+
+1182
+00:57:09,285 --> 00:57:12,000
+
+1183
+00:57:12,000 --> 00:57:16,822
+Notice we get degree five here.
+
+1184
+00:57:16,822 --> 00:57:18,280
+But otherwise,
+things are the same.
+
+1185
+00:57:18,280 --> 00:57:21,654
+You can traverse either in
+the loopback configuration.
+
+1186
+00:57:21,654 --> 00:57:23,070
+When you have this
+pin joint there
+
+1187
+00:57:23,070 --> 00:57:25,190
+you'll be forced to
+turn around there.
+
+1188
+00:57:25,190 --> 00:57:27,990
+Or you zigzag all
+the way through,
+
+1189
+00:57:27,990 --> 00:57:30,724
+and then that's used
+for present edges.
+
+1190
+00:57:30,724 --> 00:57:32,890
+So this is edges you don't
+use in Hamiltonian cycle.
+
+1191
+00:57:32,890 --> 00:57:34,440
+These are edges you do use.
+
+1192
+00:57:34,440 --> 00:57:36,120
+And there are two
+types of vertices.
+
+1193
+00:57:36,120 --> 00:57:42,190
+There's the ones of one parity
+where you always meet-- here,
+
+1194
+00:57:42,190 --> 00:57:44,360
+you're kind of meeting
+with three edges,
+
+1195
+00:57:44,360 --> 00:57:47,770
+but you're kind of meeting
+on a whole edge, like that.
+
+1196
+00:57:47,770 --> 00:57:49,600
+And from here you
+have the choice
+
+1197
+00:57:49,600 --> 00:57:52,380
+whether you do this or do this.
+
+1198
+00:57:52,380 --> 00:57:57,326
+Two of them will be zigzags,
+one of them will be double-back.
+
+1199
+00:57:57,326 --> 00:57:58,950
+And then there's the
+other parity class
+
+1200
+00:57:58,950 --> 00:58:00,300
+where you only have pin joints.
+
+1201
+00:58:00,300 --> 00:58:02,341
+These are, again, just
+connected by single edges,
+
+1202
+00:58:02,341 --> 00:58:04,740
+so they act just
+like we had before.
+
+1203
+00:58:04,740 --> 00:58:09,250
+So pretty much the same
+reduction, but with different--
+
+1204
+00:58:09,250 --> 00:58:11,951
+in some ways, this is an
+easier reduction I think.
+
+1205
+00:58:11,951 --> 00:58:15,100
+
+1206
+00:58:15,100 --> 00:58:15,600
+Cool.
+
+1207
+00:58:15,600 --> 00:58:18,100
+Now, that was max degree five.
+
+1208
+00:58:18,100 --> 00:58:20,290
+What about max degree four?
+
+1209
+00:58:20,290 --> 00:58:24,560
+So here we had degree
+five vertex there.
+
+1210
+00:58:24,560 --> 00:58:28,580
+If we kind of do our same
+trick of spreading them around,
+
+1211
+00:58:28,580 --> 00:58:32,060
+you end up with
+degree four at most.
+
+1212
+00:58:32,060 --> 00:58:34,050
+And it acts the same.
+
+1213
+00:58:34,050 --> 00:58:41,370
+And the vertices we're going
+to explode into a hexagon.
+
+1214
+00:58:41,370 --> 00:58:44,530
+And it works.
+
+1215
+00:58:44,530 --> 00:58:58,980
+So I should say max degree
+four triangle is NP-hard.
+
+1216
+00:58:58,980 --> 00:59:02,200
+
+1217
+00:59:02,200 --> 00:59:05,290
+This reduction
+should also be thin.
+
+1218
+00:59:05,290 --> 00:59:07,250
+Previous one may
+have also been thin,
+
+1219
+00:59:07,250 --> 00:59:10,910
+but again, all of the
+vertices are on the boundary.
+
+1220
+00:59:10,910 --> 00:59:14,090
+So this is the thin
+triangle is hard.
+
+1221
+00:59:14,090 --> 00:59:16,144
+Max degree four
+triangle is hard.
+
+1222
+00:59:16,144 --> 00:59:16,810
+We did this one.
+
+1223
+00:59:16,810 --> 00:59:20,570
+So we've done all
+the hardest proofs.
+
+1224
+00:59:20,570 --> 00:59:24,220
+That will cease to be
+the case in a moment.
+
+1225
+00:59:24,220 --> 00:59:27,970
+OK, here's one more thing.
+
+1226
+00:59:27,970 --> 00:59:31,980
+Max-- so what about hex grids.
+
+1227
+00:59:31,980 --> 00:59:35,080
+I haven't mentioned any
+hardness for hex grids yet.
+
+1228
+00:59:35,080 --> 00:59:38,180
+And one thing we know
+is max degree three,
+
+1229
+00:59:38,180 --> 00:59:46,110
+writing new squares, but
+also hexagons are NP-hard.
+
+1230
+00:59:46,110 --> 00:59:48,050
+Now, this is not so impressive.
+
+1231
+00:59:48,050 --> 00:59:51,590
+Every vertex in the hex grid
+has a degree at most three.
+
+1232
+00:59:51,590 --> 00:59:54,807
+But you can't hope
+for two, so that's
+
+1233
+00:59:54,807 --> 00:59:57,140
+the best you can hope for in
+max degree characterization
+
+1234
+00:59:57,140 --> 00:59:58,210
+with respect to hex grid.
+
+1235
+00:59:58,210 --> 01:00:00,720
+
+1236
+01:00:00,720 --> 01:00:02,695
+This proof is tricky.
+
+1237
+01:00:02,695 --> 01:00:07,410
+
+1238
+01:00:07,410 --> 01:00:11,890
+Maybe before I go there let me
+just mention one other result.
+
+1239
+01:00:11,890 --> 01:00:14,130
+So this is delayed.
+
+1240
+01:00:14,130 --> 01:00:19,310
+One other notion you can
+think about for grid graphs
+
+1241
+01:00:19,310 --> 01:00:22,670
+is called polygonal
+grid graphs, and that's
+
+1242
+01:00:22,670 --> 01:00:24,550
+what's supposed to
+be illustrated here.
+
+1243
+01:00:24,550 --> 01:00:27,340
+Polygonal's kind of the
+opposite of super thin.
+
+1244
+01:00:27,340 --> 01:00:30,070
+So super thin we
+had an edge that
+
+1245
+01:00:30,070 --> 01:00:34,840
+had non-pixels on both sides.
+
+1246
+01:00:34,840 --> 01:00:38,270
+In polygonal, every edge
+has a pixel on at least one
+
+1247
+01:00:38,270 --> 01:00:40,190
+of the two sides.
+
+1248
+01:00:40,190 --> 01:00:43,190
+So you never have an
+edge between two holes
+
+1249
+01:00:43,190 --> 01:00:45,400
+or a hole in the outside face.
+
+1250
+01:00:45,400 --> 01:00:46,905
+That's a polygonal situation.
+
+1251
+01:00:46,905 --> 01:00:49,850
+
+1252
+01:00:49,850 --> 01:00:51,580
+So that's something
+you might assume.
+
+1253
+01:00:51,580 --> 01:00:53,530
+It's sort of like
+saying you had a polygon
+
+1254
+01:00:53,530 --> 01:00:55,780
+and then you sort of took
+the interior of the polygon,
+
+1255
+01:00:55,780 --> 01:00:57,210
+whereas here, this
+was not really
+
+1256
+01:00:57,210 --> 01:01:00,019
+a polygon because it's like
+there was a doubled edge there
+
+1257
+01:01:00,019 --> 01:01:00,560
+or something.
+
+1258
+01:01:00,560 --> 01:01:03,384
+That's not really
+a nice picture.
+
+1259
+01:01:03,384 --> 01:01:04,800
+So polygonal's
+something you might
+
+1260
+01:01:04,800 --> 01:01:07,620
+hope for in the
+practical applications,
+
+1261
+01:01:07,620 --> 01:01:10,010
+which we will get to soon.
+
+1262
+01:01:10,010 --> 01:01:14,920
+Funny thing is for polygonal
+triangular grid graphs,
+
+1263
+01:01:14,920 --> 01:01:16,620
+the problem is polynomial.
+
+1264
+01:01:16,620 --> 01:01:24,910
+And for polygonal hex grid
+graphs, the problem is NP-hard.
+
+1265
+01:01:24,910 --> 01:01:29,960
+And for polygonal square
+grid graphs, we don't know.
+
+1266
+01:01:29,960 --> 01:01:30,990
+Another open problem.
+
+1267
+01:01:30,990 --> 01:01:33,890
+
+1268
+01:01:33,890 --> 01:01:35,720
+I won't prove this.
+
+1269
+01:01:35,720 --> 01:01:38,770
+I think, again, this is
+almost always feasible.
+
+1270
+01:01:38,770 --> 01:01:41,720
+It's almost always
+a Hamiltonian path.
+
+1271
+01:01:41,720 --> 01:01:46,040
+For this, I'm guessing it
+follows from the same proof.
+
+1272
+01:01:46,040 --> 01:01:54,090
+Let's go into this
+proof, hex grid hardness.
+
+1273
+01:01:54,090 --> 01:01:55,640
+Again, there's a drawing step.
+
+1274
+01:01:55,640 --> 01:01:58,280
+You're given some
+bipartite max degree
+
+1275
+01:01:58,280 --> 01:02:04,780
+three graph, and bipartite
+planar max three degree graph.
+
+1276
+01:02:04,780 --> 01:02:08,040
+And then we're going to
+draw on the hex grid.
+
+1277
+01:02:08,040 --> 01:02:10,040
+In this case, we're going
+to represent variables
+
+1278
+01:02:10,040 --> 01:02:14,830
+by sort of horizontal strips,
+just because that's what
+
+1279
+01:02:14,830 --> 01:02:16,610
+is a little bit easier to do.
+
+1280
+01:02:16,610 --> 01:02:20,200
+So it turns out-- I think turns
+are really annoying on the hex
+
+1281
+01:02:20,200 --> 01:02:20,760
+grid.
+
+1282
+01:02:20,760 --> 01:02:21,980
+Hard to do a turn.
+
+1283
+01:02:21,980 --> 01:02:25,590
+So we're going to focus
+our turn attention
+
+1284
+01:02:25,590 --> 01:02:26,930
+within these little rectangles.
+
+1285
+01:02:26,930 --> 01:02:29,180
+And it turns out you can
+draw everything in such a way
+
+1286
+01:02:29,180 --> 01:02:32,760
+that all of the edges are
+straight lines, straight line
+
+1287
+01:02:32,760 --> 01:02:36,010
+segments, if you grow the
+vertices to be these longer
+
+1288
+01:02:36,010 --> 01:02:37,720
+horizontal things.
+
+1289
+01:02:37,720 --> 01:02:41,780
+So believe that.
+
+1290
+01:02:41,780 --> 01:02:47,521
+Then main idea is a very
+similar kind of thing.
+
+1291
+01:02:47,521 --> 01:02:49,520
+In this case, they're
+going to draw the pictures
+
+1292
+01:02:49,520 --> 01:02:51,769
+and they're going to draw
+all of the forced edges that
+
+1293
+01:02:51,769 --> 01:02:54,040
+must be in there,
+and here they haven't
+
+1294
+01:02:54,040 --> 01:02:55,350
+drawn the part in the middle.
+
+1295
+01:02:55,350 --> 01:02:56,470
+There's two ways to fill it in.
+
+1296
+01:02:56,470 --> 01:02:58,350
+Essentially, you could
+zigzag back and forth,
+
+1297
+01:02:58,350 --> 01:02:59,450
+just like before.
+
+1298
+01:02:59,450 --> 01:03:02,260
+Or you could go there and
+come back, just like before.
+
+1299
+01:03:02,260 --> 01:03:04,725
+So edge gadget looks
+pretty reasonable.
+
+1300
+01:03:04,725 --> 01:03:08,030
+
+1301
+01:03:08,030 --> 01:03:10,170
+These are some more gadgets.
+
+1302
+01:03:10,170 --> 01:03:13,710
+These are like sub-routines
+they're going to use.
+
+1303
+01:03:13,710 --> 01:03:16,600
+Their named and they have color
+patterns to give you a sense.
+
+1304
+01:03:16,600 --> 01:03:19,650
+This is going to be
+the center of a vertex,
+
+1305
+01:03:19,650 --> 01:03:22,350
+and there's a few different
+things you could do with that.
+
+1306
+01:03:22,350 --> 01:03:24,671
+This is some kind
+of turn gadget.
+
+1307
+01:03:24,671 --> 01:03:25,670
+That's what I called it.
+
+1308
+01:03:25,670 --> 01:03:27,530
+They called it something
+a little different.
+
+1309
+01:03:27,530 --> 01:03:29,120
+I think a rosette.
+
+1310
+01:03:29,120 --> 01:03:33,750
+But you can sort of
+zigzag, or you can kind of
+
+1311
+01:03:33,750 --> 01:03:35,840
+go there and double-back,
+but you end up
+
+1312
+01:03:35,840 --> 01:03:37,680
+with different
+orientations at the end.
+
+1313
+01:03:37,680 --> 01:03:40,580
+This is what they call a U turn.
+
+1314
+01:03:40,580 --> 01:03:41,830
+Again, these edges are forced.
+
+1315
+01:03:41,830 --> 01:03:44,090
+You can either use
+it as a zigzag,
+
+1316
+01:03:44,090 --> 01:03:46,720
+or they could both kind
+of cancel each other out.
+
+1317
+01:03:46,720 --> 01:03:48,950
+Sort of don't meet each other.
+
+1318
+01:03:48,950 --> 01:03:52,170
+So you could do different
+kind of connectivity.
+
+1319
+01:03:52,170 --> 01:03:57,890
+With that in mind, here
+is all the vertex gadgets.
+
+1320
+01:03:57,890 --> 01:04:02,921
+So I don't know all
+the details here.
+
+1321
+01:04:02,921 --> 01:04:05,440
+But I think there's
+a lot of cases
+
+1322
+01:04:05,440 --> 01:04:08,280
+because of the different ways
+things could be connected.
+
+1323
+01:04:08,280 --> 01:04:11,580
+You could have like one
+on top of the-- notice
+
+1324
+01:04:11,580 --> 01:04:14,240
+the dash things are the
+rectangles that I had before.
+
+1325
+01:04:14,240 --> 01:04:16,290
+Normally they'd be
+really spread out.
+
+1326
+01:04:16,290 --> 01:04:18,520
+So maybe you have two in
+the bottom, one on the top,
+
+1327
+01:04:18,520 --> 01:04:20,690
+here I have two on the
+top, one on the bottom.
+
+1328
+01:04:20,690 --> 01:04:24,470
+And they could be oriented like
+this, or oriented like that.
+
+1329
+01:04:24,470 --> 01:04:27,180
+So there's a lot of
+different cases as a result.
+
+1330
+01:04:27,180 --> 01:04:29,810
+The core part in the
+middle is the same.
+
+1331
+01:04:29,810 --> 01:04:31,460
+It's pretty much
+like the examples
+
+1332
+01:04:31,460 --> 01:04:35,870
+we had before of
+essentially like a little 3
+
+1333
+01:04:35,870 --> 01:04:38,510
+by 3 square for the square
+case, or a little triangle
+
+1334
+01:04:38,510 --> 01:04:39,557
+in the triangle case.
+
+1335
+01:04:39,557 --> 01:04:40,765
+A little bit bigger in a hex.
+
+1336
+01:04:40,765 --> 01:04:44,860
+It's basically a cycle is
+an extra dot in the middle.
+
+1337
+01:04:44,860 --> 01:04:47,880
+But then this was
+a U turn gadgets,
+
+1338
+01:04:47,880 --> 01:04:50,580
+so if something
+was coming up here,
+
+1339
+01:04:50,580 --> 01:04:52,580
+you could just sort
+of turn back around
+
+1340
+01:04:52,580 --> 01:04:55,820
+if you don't want
+to use the edge.
+
+1341
+01:04:55,820 --> 01:04:57,710
+I think these are
+prob-- well, yeah,
+
+1342
+01:04:57,710 --> 01:05:00,670
+so there's probably
+also two parity classes.
+
+1343
+01:05:00,670 --> 01:05:02,830
+There's the turn gadgets.
+
+1344
+01:05:02,830 --> 01:05:07,180
+And it works, but
+it's complicated.
+
+1345
+01:05:07,180 --> 01:05:11,640
+
+1346
+01:05:11,640 --> 01:05:14,745
+I think that's all I'll say
+about various grid graphs.
+
+1347
+01:05:14,745 --> 01:05:15,370
+AUDIENCE: Yeah.
+
+1348
+01:05:15,370 --> 01:05:17,849
+You said that in
+hexagonal grids were open?
+
+1349
+01:05:17,849 --> 01:05:18,849
+Did you mean the vertex?
+
+1350
+01:05:18,849 --> 01:05:19,843
+Every vertex on the boundary--
+
+1351
+01:05:19,843 --> 01:05:22,009
+ERIK DEMAINE: It means every
+vertex on the boundary.
+
+1352
+01:05:22,009 --> 01:05:23,820
+AUDIENCE: --[INAUDIBLE].
+
+1353
+01:05:23,820 --> 01:05:24,640
+ERIK DEMAINE: No.
+
+1354
+01:05:24,640 --> 01:05:26,020
+It's not necessarily the same.
+
+1355
+01:05:26,020 --> 01:05:29,010
+So if you have hex grid--
+I mean this could still
+
+1356
+01:05:29,010 --> 01:05:30,730
+be a boundary
+cycle and you still
+
+1357
+01:05:30,730 --> 01:05:33,020
+have a degree three vertex.
+
+1358
+01:05:33,020 --> 01:05:35,650
+Something like
+this part is thin.
+
+1359
+01:05:35,650 --> 01:05:38,320
+And I'm guessing you
+could complete that.
+
+1360
+01:05:38,320 --> 01:05:39,920
+So they're probably
+very special,
+
+1361
+01:05:39,920 --> 01:05:42,580
+so I could imagine the thin
+hex grids are polynomial,
+
+1362
+01:05:42,580 --> 01:05:43,950
+but it's not known.
+
+1363
+01:05:43,950 --> 01:05:45,490
+OK.
+
+1364
+01:05:45,490 --> 01:05:46,840
+One more picture.
+
+1365
+01:05:46,840 --> 01:05:49,770
+This is an actual explicitly
+constructed example
+
+1366
+01:05:49,770 --> 01:05:54,262
+from that graph to
+this crazy gadgets.
+
+1367
+01:05:54,262 --> 01:05:55,720
+But now you can
+see a little better
+
+1368
+01:05:55,720 --> 01:05:56,969
+what the rectangles look like.
+
+1369
+01:05:56,969 --> 01:05:58,790
+If you want to
+stretch something out,
+
+1370
+01:05:58,790 --> 01:06:01,370
+there's always horizontal
+wires that you can stretch out.
+
+1371
+01:06:01,370 --> 01:06:02,635
+And I keep calling them wires.
+
+1372
+01:06:02,635 --> 01:06:04,830
+So those horizontal
+pieces of edge gadgets
+
+1373
+01:06:04,830 --> 01:06:08,550
+that you can stretch out
+so that you end up firing
+
+1374
+01:06:08,550 --> 01:06:12,270
+and hitting the next vertex,
+which is this rectangle.
+
+1375
+01:06:12,270 --> 01:06:13,860
+And when you spread
+out the rectangles
+
+1376
+01:06:13,860 --> 01:06:18,120
+you have to stretch out
+these diagonal shots.
+
+1377
+01:06:18,120 --> 01:06:18,920
+Cool.
+
+1378
+01:06:18,920 --> 01:06:20,226
+Those hex grid graphs.
+
+1379
+01:06:20,226 --> 01:06:22,100
+Why do we care about
+hex grid graphs so much?
+
+1380
+01:06:22,100 --> 01:06:27,180
+Because Settlers of Catan,
+and various other board games
+
+1381
+01:06:27,180 --> 01:06:30,120
+that have a hex grid.
+
+1382
+01:06:30,120 --> 01:06:33,480
+Now, has anyone here not
+played Settlers of Catan?
+
+1383
+01:06:33,480 --> 01:06:36,010
+OK, a few.
+
+1384
+01:06:36,010 --> 01:06:38,260
+There's a whole game to it.
+
+1385
+01:06:38,260 --> 01:06:39,108
+But--
+
+1386
+01:06:39,108 --> 01:06:40,980
+[LAUGHTER]
+
+1387
+01:06:40,980 --> 01:06:45,020
+What I'm going to
+focus on is this card.
+
+1388
+01:06:45,020 --> 01:06:47,610
+It's called longest road.
+
+1389
+01:06:47,610 --> 01:06:50,490
+So in general, you're
+constructing cities.
+
+1390
+01:06:50,490 --> 01:06:52,010
+Don't worry about cities.
+
+1391
+01:06:52,010 --> 01:06:54,000
+But you're constructing
+these road segments.
+
+1392
+01:06:54,000 --> 01:06:56,090
+They're edges on the hex grid.
+
+1393
+01:06:56,090 --> 01:06:59,870
+And the longest road says that
+you get two points, two victory
+
+1394
+01:06:59,870 --> 01:07:03,410
+points, if you have the longest
+road, meaning the longest
+
+1395
+01:07:03,410 --> 01:07:05,770
+path that can be
+formed using edges
+
+1396
+01:07:05,770 --> 01:07:08,480
+of your color versus edges
+of anyone else's color,
+
+1397
+01:07:08,480 --> 01:07:10,290
+then you get two points.
+
+1398
+01:07:10,290 --> 01:07:12,642
+So here is the idea.
+
+1399
+01:07:12,642 --> 01:07:14,850
+Settlers of Catan has
+randomness and stuff like that,
+
+1400
+01:07:14,850 --> 01:07:17,370
+but again, if we look
+at a mate-in-1 problem,
+
+1401
+01:07:17,370 --> 01:07:18,747
+that goes out the window.
+
+1402
+01:07:18,747 --> 01:07:20,080
+Just can I win in this one move.
+
+1403
+01:07:20,080 --> 01:07:22,180
+There's no randomness to that.
+
+1404
+01:07:22,180 --> 01:07:24,310
+Let's suppose you have
+tons of resources.
+
+1405
+01:07:24,310 --> 01:07:26,350
+This is what you
+need to build a road.
+
+1406
+01:07:26,350 --> 01:07:28,940
+And inconveniently,
+your opponents
+
+1407
+01:07:28,940 --> 01:07:32,599
+have built cities and things
+in all of these white spots,
+
+1408
+01:07:32,599 --> 01:07:34,390
+so you're not allowed
+to build roads there.
+
+1409
+01:07:34,390 --> 01:07:36,370
+That's just part of the rules.
+
+1410
+01:07:36,370 --> 01:07:38,640
+So that's the opponent's
+form obstacles.
+
+1411
+01:07:38,640 --> 01:07:41,440
+And then because you
+have infinite cash,
+
+1412
+01:07:41,440 --> 01:07:44,630
+you can basically build
+the entire grid graph here.
+
+1413
+01:07:44,630 --> 01:07:47,800
+And then to figure out whether
+there's a really long road,
+
+1414
+01:07:47,800 --> 01:07:51,630
+namely a road length n, where
+n is the number of pixels that
+
+1415
+01:07:51,630 --> 01:07:54,279
+were not occupied by opponents.
+
+1416
+01:07:54,279 --> 01:07:57,550
+Number of dots that are
+not occupied by opponents
+
+1417
+01:07:57,550 --> 01:07:59,970
+is NP-complete.
+
+1418
+01:07:59,970 --> 01:08:00,470
+Cool?
+
+1419
+01:08:00,470 --> 01:08:03,240
+And your opponent has a
+slightly shorter road,
+
+1420
+01:08:03,240 --> 01:08:07,625
+so you really have to
+distinguish whether you
+
+1421
+01:08:07,625 --> 01:08:08,500
+had the longest road.
+
+1422
+01:08:08,500 --> 01:08:11,770
+In fact, I like to say
+mate-in-0 is NP-complete,
+
+1423
+01:08:11,770 --> 01:08:16,050
+deciding whether you've already
+won the game is NP-complete.
+
+1424
+01:08:16,050 --> 01:08:17,290
+Now you don't even need cash.
+
+1425
+01:08:17,290 --> 01:08:19,689
+It's just I give
+you a configuration.
+
+1426
+01:08:19,689 --> 01:08:22,479
+Do you have the longest
+road is NP-hard.
+
+1427
+01:08:22,479 --> 01:08:26,220
+So it's the only mate-in-0
+hardness result I know of.
+
+1428
+01:08:26,220 --> 01:08:28,560
+Maybe we can find more.
+
+1429
+01:08:28,560 --> 01:08:32,490
+OK, so that's why
+hex grids are cool.
+
+1430
+01:08:32,490 --> 01:08:34,600
+Let's do some more games.
+
+1431
+01:08:34,600 --> 01:08:37,399
+Here is another Nikoli
+puzzle, Slither Link.
+
+1432
+01:08:37,399 --> 01:08:39,910
+Their more famous one.
+
+1433
+01:08:39,910 --> 01:08:41,760
+So you're given a
+grid of squares.
+
+1434
+01:08:41,760 --> 01:08:44,600
+Each square is either blank,
+meaning no constraint,
+
+1435
+01:08:44,600 --> 01:08:47,010
+or there's a number saying
+there should be exactly two
+
+1436
+01:08:47,010 --> 01:08:48,646
+edges among those four.
+
+1437
+01:08:48,646 --> 01:08:51,020
+And there should be exactly
+three edges among those four.
+
+1438
+01:08:51,020 --> 01:08:54,050
+Your goal is to find a
+cycle-- not Hamiltonian
+
+1439
+01:08:54,050 --> 01:08:57,890
+but just a cycle, doesn't visit
+all the dots-- that satisfies
+
+1440
+01:08:57,890 --> 01:08:59,920
+that neighboring constraint.
+
+1441
+01:08:59,920 --> 01:09:01,399
+So here there were exactly two.
+
+1442
+01:09:01,399 --> 01:09:06,770
+Here there are exactly
+three edges in your cycle.
+
+1443
+01:09:06,770 --> 01:09:07,399
+OK?
+
+1444
+01:09:07,399 --> 01:09:09,450
+This is the very first
+puzzle on the website.
+
+1445
+01:09:09,450 --> 01:09:12,160
+Again, there are books
+on Slither Link puzzles.
+
+1446
+01:09:12,160 --> 01:09:16,790
+And here is a little
+overkill of a hardness proof,
+
+1447
+01:09:16,790 --> 01:09:18,510
+but in one slide.
+
+1448
+01:09:18,510 --> 01:09:24,630
+So this is a reduction from
+Hamiltonicity in planar graphs.
+
+1449
+01:09:24,630 --> 01:09:27,390
+So you take any planar graph
+and draw it in the grid.
+
+1450
+01:09:27,390 --> 01:09:30,880
+This is one of the very
+first steps we did today.
+
+1451
+01:09:30,880 --> 01:09:33,444
+And then if you do that, there
+are two types of vertices.
+
+1452
+01:09:33,444 --> 01:09:34,860
+There's the ones
+you have to visit
+
+1453
+01:09:34,860 --> 01:09:36,734
+and there's the ones
+you don't have to visit.
+
+1454
+01:09:36,734 --> 01:09:39,030
+Now, we know grid
+graphs are hard.
+
+1455
+01:09:39,030 --> 01:09:41,580
+So we could actually
+assume all of the vertices
+
+1456
+01:09:41,580 --> 01:09:43,190
+have to be visited.
+
+1457
+01:09:43,190 --> 01:09:46,910
+But for whatever reason,
+this proof did not do that.
+
+1458
+01:09:46,910 --> 01:09:49,140
+This is back in 2000,
+so at that point maybe
+
+1459
+01:09:49,140 --> 01:09:51,490
+it was not so well known.
+
+1460
+01:09:51,490 --> 01:09:53,480
+But these days, grid
+graphs, Hamiltonicity
+
+1461
+01:09:53,480 --> 01:09:56,680
+is used a lot, but
+probably not so much then.
+
+1462
+01:09:56,680 --> 01:09:58,610
+So anyway, there's
+this gadget which
+
+1463
+01:09:58,610 --> 01:10:02,340
+is you can do whatever
+you want, basically.
+
+1464
+01:10:02,340 --> 01:10:05,060
+These are the vertices that
+don't need to be visited.
+
+1465
+01:10:05,060 --> 01:10:07,300
+The key gadget is this one.
+
+1466
+01:10:07,300 --> 01:10:09,180
+So let's focus our
+attention here.
+
+1467
+01:10:09,180 --> 01:10:13,100
+We have these ones which means
+the cycle must come here.
+
+1468
+01:10:13,100 --> 01:10:16,570
+And so collectively these are
+going to form Hamiltonian cycle
+
+1469
+01:10:16,570 --> 01:10:17,700
+constraints.
+
+1470
+01:10:17,700 --> 01:10:20,390
+You're building a cycle and
+you have to visit these ones.
+
+1471
+01:10:20,390 --> 01:10:23,140
+Now it turns out no matter
+which end you come in
+
+1472
+01:10:23,140 --> 01:10:25,820
+and which end you leave, you
+can visit all of the ones.
+
+1473
+01:10:25,820 --> 01:10:27,950
+You could be adjacent
+to all of the ones.
+
+1474
+01:10:27,950 --> 01:10:31,240
+So different turns
+are going straight.
+
+1475
+01:10:31,240 --> 01:10:33,160
+And so if there is
+a Hamiltonian cycle,
+
+1476
+01:10:33,160 --> 01:10:35,670
+you'll be able to
+visit all the ones.
+
+1477
+01:10:35,670 --> 01:10:38,350
+And conversely, if you
+can visit all the ones,
+
+1478
+01:10:38,350 --> 01:10:39,960
+that must be a
+Hamiltonian cycle.
+
+1479
+01:10:39,960 --> 01:10:41,794
+The one extra thing
+we need to say,
+
+1480
+01:10:41,794 --> 01:10:43,460
+if you just glue these
+gadgets together,
+
+1481
+01:10:43,460 --> 01:10:48,220
+then there's no-- you can go
+from anywhere to anywhere.
+
+1482
+01:10:48,220 --> 01:10:50,600
+So you just add in
+some zeroes here
+
+1483
+01:10:50,600 --> 01:10:53,440
+if you don't want there to be a
+connection from left to right.
+
+1484
+01:10:53,440 --> 01:10:55,720
+So you can use that to
+delineate the boundary.
+
+1485
+01:10:55,720 --> 01:10:57,950
+So this could actually do
+a sub-graph of a grid graph
+
+1486
+01:10:57,950 --> 01:11:01,755
+even more special, or you leave
+a clear if there's an edge.
+
+1487
+01:11:01,755 --> 01:11:04,970
+And so you get a
+picture like this.
+
+1488
+01:11:04,970 --> 01:11:07,650
+In this case, they're
+using these bunch of zeroes
+
+1489
+01:11:07,650 --> 01:11:09,970
+to say, well, you
+don't have to visit
+
+1490
+01:11:09,970 --> 01:11:13,255
+these pixels because they're
+just simulating a big edge.
+
+1491
+01:11:13,255 --> 01:11:14,630
+But we really have
+infrastructure
+
+1492
+01:11:14,630 --> 01:11:15,380
+to simulate edges.
+
+1493
+01:11:15,380 --> 01:11:17,620
+We don't really need that.
+
+1494
+01:11:17,620 --> 01:11:19,350
+So that's a really easy proof.
+
+1495
+01:11:19,350 --> 01:11:21,569
+
+1496
+01:11:21,569 --> 01:11:23,110
+I would say in
+general, what you have
+
+1497
+01:11:23,110 --> 01:11:25,850
+to be careful about here
+is that edges are free,
+
+1498
+01:11:25,850 --> 01:11:27,550
+because in Hamiltonian
+cycle you're not
+
+1499
+01:11:27,550 --> 01:11:28,800
+supposed to pay for the edges.
+
+1500
+01:11:28,800 --> 01:11:31,240
+You just have to
+visit every vertex.
+
+1501
+01:11:31,240 --> 01:11:33,880
+But that's really easy
+in this kind of set up.
+
+1502
+01:11:33,880 --> 01:11:40,350
+Another Nikoli puzzle,
+Hashiwokakero, bridge building.
+
+1503
+01:11:40,350 --> 01:11:42,750
+You have a bunch of
+dots in the plane.
+
+1504
+01:11:42,750 --> 01:11:47,790
+Each dot has a number on it,
+specifying a degree request.
+
+1505
+01:11:47,790 --> 01:11:51,626
+And your goal is to make
+a connected structure.
+
+1506
+01:11:51,626 --> 01:11:53,650
+It looks like it's
+usually a tree,
+
+1507
+01:11:53,650 --> 01:11:55,550
+but that's not part
+of the constraints.
+
+1508
+01:11:55,550 --> 01:11:57,926
+Where every vertex
+has that degree,
+
+1509
+01:11:57,926 --> 01:11:59,050
+you can use multiple edges.
+
+1510
+01:11:59,050 --> 01:12:02,200
+You could build multiple bridges
+between the same two cities.
+
+1511
+01:12:02,200 --> 01:12:05,349
+And so there's four incident to
+that, eight incident to that,
+
+1512
+01:12:05,349 --> 01:12:06,515
+and everything's orthogonal.
+
+1513
+01:12:06,515 --> 01:12:08,460
+It can only build
+horizontal, vertical.
+
+1514
+01:12:08,460 --> 01:12:10,690
+You can't build a
+bridge like this.
+
+1515
+01:12:10,690 --> 01:12:12,170
+You're not allowed
+to make turns.
+
+1516
+01:12:12,170 --> 01:12:13,545
+AUDIENCE: Same as
+standard coding
+
+1517
+01:12:13,545 --> 01:12:16,432
+where you've only got two
+parallel edges per [INAUDIBLE].
+
+1518
+01:12:16,432 --> 01:12:17,140
+ERIK DEMAINE: Ah.
+
+1519
+01:12:17,140 --> 01:12:17,639
+OK.
+
+1520
+01:12:17,639 --> 01:12:23,300
+So also standard is that max
+double-edge, no triple-edge.
+
+1521
+01:12:23,300 --> 01:12:24,370
+Thank you.
+
+1522
+01:12:24,370 --> 01:12:27,520
+Obviously, i haven't
+actually played.
+
+1523
+01:12:27,520 --> 01:12:29,090
+It won't matter
+in this reduction.
+
+1524
+01:12:29,090 --> 01:12:33,040
+So here we are reducing from
+Hamiltonicity in grid graphs.
+
+1525
+01:12:33,040 --> 01:12:35,830
+So these are edges that
+we might want to allow.
+
+1526
+01:12:35,830 --> 01:12:38,750
+In general, we're going to use
+these little ones to delineate
+
+1527
+01:12:38,750 --> 01:12:40,190
+the boundary.
+
+1528
+01:12:40,190 --> 01:12:43,970
+It's just the same kind
+of trick we use here
+
+1529
+01:12:43,970 --> 01:12:46,820
+with Euclidean degree three MST.
+
+1530
+01:12:46,820 --> 01:12:49,886
+We added a little dot
+just off to the side.
+
+1531
+01:12:49,886 --> 01:12:51,760
+It's not a metric problem
+here, so we're just
+
+1532
+01:12:51,760 --> 01:12:53,252
+adding it one unit over.
+
+1533
+01:12:53,252 --> 01:12:54,460
+That delineates the boundary.
+
+1534
+01:12:54,460 --> 01:12:57,899
+It basically is forced to
+connect into the only neighbor.
+
+1535
+01:12:57,899 --> 01:12:59,690
+If you tried to do this
+kind of connection,
+
+1536
+01:12:59,690 --> 01:13:01,023
+you'd end up being disconnected.
+
+1537
+01:13:01,023 --> 01:13:02,990
+You'd just get a
+single edge there.
+
+1538
+01:13:02,990 --> 01:13:05,560
+Because ones will
+only face ones.
+
+1539
+01:13:05,560 --> 01:13:06,060
+Sorry.
+
+1540
+01:13:06,060 --> 01:13:07,810
+The other constraint
+is you're not allowed
+
+1541
+01:13:07,810 --> 01:13:10,070
+to have crossing bridges.
+
+1542
+01:13:10,070 --> 01:13:12,352
+That won't matter here.
+
+1543
+01:13:12,352 --> 01:13:14,060
+So we delineate the
+boundary at the ones,
+
+1544
+01:13:14,060 --> 01:13:15,560
+and then every other
+vertex is going
+
+1545
+01:13:15,560 --> 01:13:18,870
+to have value two plus the
+number of boundary edges
+
+1546
+01:13:18,870 --> 01:13:19,500
+incident to it.
+
+1547
+01:13:19,500 --> 01:13:22,160
+So here it happens to be four,
+here it happens to be three.
+
+1548
+01:13:22,160 --> 01:13:23,490
+So I could have gone like this.
+
+1549
+01:13:23,490 --> 01:13:24,573
+That would have been fine.
+
+1550
+01:13:24,573 --> 01:13:28,290
+But in the cycle, I happened
+to go around that way.
+
+1551
+01:13:28,290 --> 01:13:29,790
+That's representing the cycle.
+
+1552
+01:13:29,790 --> 01:13:31,950
+So again, very easy.
+
+1553
+01:13:31,950 --> 01:13:35,390
+This shows you how useful it
+is once you have grid graphs.
+
+1554
+01:13:35,390 --> 01:13:38,260
+You can do any problem on any
+grid, pretty much, that has
+
+1555
+01:13:38,260 --> 01:13:40,520
+any kind of tour-like thing.
+
+1556
+01:13:40,520 --> 01:13:43,440
+That will be hard
+using these reductions.
+
+1557
+01:13:43,440 --> 01:13:45,020
+So that's why we care.
+
+1558
+01:13:45,020 --> 01:13:47,970
+
+1559
+01:13:47,970 --> 01:13:48,810
+All right.
+
+1560
+01:13:48,810 --> 01:13:50,910
+Here's some
+practical motivation.
+
+1561
+01:13:50,910 --> 01:13:52,120
+Well, I have a game here.
+
+1562
+01:13:52,120 --> 01:13:54,240
+But suppose you're
+mowing your lawn.
+
+1563
+01:13:54,240 --> 01:13:58,060
+And so usually a lawnmower
+has a circular cutting tool,
+
+1564
+01:13:58,060 --> 01:14:01,050
+but in this game it happens
+to be a square cutting tool.
+
+1565
+01:14:01,050 --> 01:14:02,530
+It's basically the same.
+
+1566
+01:14:02,530 --> 01:14:08,771
+And you have some polygon with
+holes that you want to mow.
+
+1567
+01:14:08,771 --> 01:14:10,645
+There's actually two
+versions of the problem.
+
+1568
+01:14:10,645 --> 01:14:21,844
+
+1569
+01:14:21,844 --> 01:14:26,520
+And they were introduced by
+Arkin, Fekete and Mitchell,
+
+1570
+01:14:26,520 --> 01:14:27,771
+2000.
+
+1571
+01:14:27,771 --> 01:14:29,290
+One's called Lawn Mowing.
+
+1572
+01:14:29,290 --> 01:14:34,190
+
+1573
+01:14:34,190 --> 01:14:36,850
+So Lawn Mowing you're
+given a polygon.
+
+1574
+01:14:36,850 --> 01:14:40,510
+You have to visit, let's say,
+if we're using a square cutter,
+
+1575
+01:14:40,510 --> 01:14:42,400
+you have to visit every
+pixel of the polygon.
+
+1576
+01:14:42,400 --> 01:14:43,941
+You have to visit
+the entire-- you're
+
+1577
+01:14:43,941 --> 01:14:45,280
+moving a unit square around.
+
+1578
+01:14:45,280 --> 01:14:47,800
+You've got to visit everything
+to cut the entire lawn.
+
+1579
+01:14:47,800 --> 01:14:49,760
+But you're also allowed
+to leave the polygon,
+
+1580
+01:14:49,760 --> 01:14:52,100
+because for a lawn mower you
+can go outside the grass.
+
+1581
+01:14:52,100 --> 01:14:53,510
+You can go onto the pavement.
+
+1582
+01:14:53,510 --> 01:14:55,440
+Most lawnmowers that
+doesn't break it.
+
+1583
+01:14:55,440 --> 01:14:57,660
+So that's called Lawn Mowing.
+
+1584
+01:14:57,660 --> 01:14:59,590
+You can go outside if you want.
+
+1585
+01:14:59,590 --> 01:15:02,860
+
+1586
+01:15:02,860 --> 01:15:04,775
+And the other problem
+is called Milling.
+
+1587
+01:15:04,775 --> 01:15:08,300
+
+1588
+01:15:08,300 --> 01:15:10,470
+And with Milling,
+you can't go outside.
+
+1589
+01:15:10,470 --> 01:15:13,696
+
+1590
+01:15:13,696 --> 01:15:16,070
+That video game is probably
+some hybrid between these two
+
+1591
+01:15:16,070 --> 01:15:17,807
+problems, but both
+problems have been
+
+1592
+01:15:17,807 --> 01:15:19,890
+considered a lot, especially
+from an approximation
+
+1593
+01:15:19,890 --> 01:15:21,190
+standpoint.
+
+1594
+01:15:21,190 --> 01:15:25,170
+But there are lots of situations
+where this kind of problem
+
+1595
+01:15:25,170 --> 01:15:25,870
+comes up.
+
+1596
+01:15:25,870 --> 01:15:27,390
+Suppose you're laser cutting.
+
+1597
+01:15:27,390 --> 01:15:29,040
+This is one of the
+first laser cutter
+
+1598
+01:15:29,040 --> 01:15:32,910
+projects we did with
+George Hart, back in 2003,
+
+1599
+01:15:32,910 --> 01:15:35,502
+where cutting out these
+two-headed salamanders
+
+1600
+01:15:35,502 --> 01:15:36,960
+like that and then
+assembling them.
+
+1601
+01:15:36,960 --> 01:15:42,270
+If you've ever been to G6 in
+Stata, it's hanging there.
+
+1602
+01:15:42,270 --> 01:15:44,560
+So you can think of this
+laser cutting problems,
+
+1603
+01:15:44,560 --> 01:15:47,840
+you have a lot of dots and
+you have to cut them all.
+
+1604
+01:15:47,840 --> 01:15:50,110
+That is literally what
+happens to laser cutter
+
+1605
+01:15:50,110 --> 01:15:52,650
+is pulsing with little dots.
+
+1606
+01:15:52,650 --> 01:15:54,280
+And in this case it
+looks pretty clear
+
+1607
+01:15:54,280 --> 01:15:55,488
+how to connect them together.
+
+1608
+01:15:55,488 --> 01:15:58,880
+But if you're cutting many
+salamanders out of one sheet,
+
+1609
+01:15:58,880 --> 01:16:01,410
+and you think of the
+salamander's pretty small,
+
+1610
+01:16:01,410 --> 01:16:04,140
+that's like a TSP problem
+or really a milling problem.
+
+1611
+01:16:04,140 --> 01:16:06,500
+You have to visit all
+these things using
+
+1612
+01:16:06,500 --> 01:16:09,119
+the shortest-- it's really
+a lawn mowing problem.
+
+1613
+01:16:09,119 --> 01:16:10,660
+So you can turn off
+the laser and you
+
+1614
+01:16:10,660 --> 01:16:16,140
+can move around somewhere else
+that you don't want to visit.
+
+1615
+01:16:16,140 --> 01:16:20,370
+3D printing is like lawn
+mowing problem in each layer.
+
+1616
+01:16:20,370 --> 01:16:23,020
+So 3D printing is done
+by printing each layer
+
+1617
+01:16:23,020 --> 01:16:25,130
+and then stacking
+them up one at a time.
+
+1618
+01:16:25,130 --> 01:16:28,490
+So in each layer you have
+to deposit material in FDM,
+
+1619
+01:16:28,490 --> 01:16:30,200
+say we're additive printing.
+
+1620
+01:16:30,200 --> 01:16:32,029
+You have to deposit material.
+
+1621
+01:16:32,029 --> 01:16:34,070
+If you're doing laser
+curing, same kind of thing.
+
+1622
+01:16:34,070 --> 01:16:37,760
+How do you move the laser with
+the shortest amount of work.
+
+1623
+01:16:37,760 --> 01:16:39,310
+It's called milling.
+
+1624
+01:16:39,310 --> 01:16:40,770
+I don't have an image for this.
+
+1625
+01:16:40,770 --> 01:16:42,995
+Because if you're doing NC
+milling you have a drill
+
+1626
+01:16:42,995 --> 01:16:46,310
+and you're moving the drill
+around to cut out some shape
+
+1627
+01:16:46,310 --> 01:16:47,935
+or to cut a region.
+
+1628
+01:16:47,935 --> 01:16:50,964
+
+1629
+01:16:50,964 --> 01:16:53,130
+There you're not allowed
+to go outside the shape you
+
+1630
+01:16:53,130 --> 01:16:56,846
+want to cut, because you go
+outside, you cut too much.
+
+1631
+01:16:56,846 --> 01:16:58,720
+And you don't want to
+have to pay to retract.
+
+1632
+01:16:58,720 --> 01:17:01,261
+There are other versions of the
+problem where you can retract
+
+1633
+01:17:01,261 --> 01:17:04,820
+the cutting bit and so on.
+
+1634
+01:17:04,820 --> 01:17:08,510
+So of course we proved
+milling is hard.
+
+1635
+01:17:08,510 --> 01:17:10,780
+That is exactly the
+Hamilton [INAUDIBLE]
+
+1636
+01:17:10,780 --> 01:17:13,426
+graphs if you're not
+allowed to leave the region.
+
+1637
+01:17:13,426 --> 01:17:15,550
+Of course, that also shows
+that lawn mowing is hard
+
+1638
+01:17:15,550 --> 01:17:17,690
+because you never want
+to go outside the region.
+
+1639
+01:17:17,690 --> 01:17:19,930
+One fun result is lawn
+mowing is hard even when you
+
+1640
+01:17:19,930 --> 01:17:21,860
+have no holes in your region.
+
+1641
+01:17:21,860 --> 01:17:24,697
+So if you cut these little
+slits, from a lawn mowing
+
+1642
+01:17:24,697 --> 01:17:26,530
+perspective it basically
+makes no difference
+
+1643
+01:17:26,530 --> 01:17:28,295
+because you could
+still go over it,
+
+1644
+01:17:28,295 --> 01:17:29,920
+and it doesn't really
+save you anything
+
+1645
+01:17:29,920 --> 01:17:31,550
+to not have to cut that.
+
+1646
+01:17:31,550 --> 01:17:34,425
+So lawn mowing is hard
+even without holes.
+
+1647
+01:17:34,425 --> 01:17:37,850
+
+1648
+01:17:37,850 --> 01:17:38,560
+Cool.
+
+1649
+01:17:38,560 --> 01:17:40,040
+I have one more problem.
+
+1650
+01:17:40,040 --> 01:17:41,830
+Do you want to see it?
+
+1651
+01:17:41,830 --> 01:17:44,020
+OK.
+
+1652
+01:17:44,020 --> 01:17:46,730
+So here's-- sorry--
+a brief warm-up.
+
+1653
+01:17:46,730 --> 01:17:49,200
+Suppose you have a grid graph.
+
+1654
+01:17:49,200 --> 01:17:51,150
+You rotate it 45 degrees.
+
+1655
+01:17:51,150 --> 01:17:55,700
+You can represent each of these
+vertices as a vertical segment
+
+1656
+01:17:55,700 --> 01:17:58,760
+if they're black parity
+or horizontal segment.
+
+1657
+01:17:58,760 --> 01:18:01,730
+If they're white parity
+such that segments
+
+1658
+01:18:01,730 --> 01:18:05,080
+intersect, if and only if
+there's an edge joining.
+
+1659
+01:18:05,080 --> 01:18:06,680
+So these are unit
+orthogonal segments.
+
+1660
+01:18:06,680 --> 01:18:08,179
+This is called an
+intersection graph
+
+1661
+01:18:08,179 --> 01:18:10,310
+where the vertices
+are the objects,
+
+1662
+01:18:10,310 --> 01:18:13,930
+and the edges are
+whether things intersect.
+
+1663
+01:18:13,930 --> 01:18:18,290
+I need that, so Hamiltonicity
+in these graphs is hard.
+
+1664
+01:18:18,290 --> 01:18:21,770
+Here's a problem called
+minimum turn milling.
+
+1665
+01:18:21,770 --> 01:18:26,090
+So a big issue for 3D
+printing, for milling,
+
+1666
+01:18:26,090 --> 01:18:29,210
+usually when you're cutting
+or you're depositing material,
+
+1667
+01:18:29,210 --> 01:18:31,561
+you can move really
+fast in a straight line.
+
+1668
+01:18:31,561 --> 01:18:33,060
+But when you need
+to make a turn you
+
+1669
+01:18:33,060 --> 01:18:36,550
+have to basically come to a
+stop and then speed up again.
+
+1670
+01:18:36,550 --> 01:18:41,600
+So suppose you have infinite
+acceleration, so to speak,
+
+1671
+01:18:41,600 --> 01:18:43,130
+or close to infinite
+acceleration.
+
+1672
+01:18:43,130 --> 01:18:45,300
+So once you're going straight
+you can go arbitrarily
+
+1673
+01:18:45,300 --> 01:18:47,110
+far for the same cost,
+and what you really
+
+1674
+01:18:47,110 --> 01:18:49,560
+pay for is the slowing
+down and speeding back up
+
+1675
+01:18:49,560 --> 01:18:50,602
+at every corner.
+
+1676
+01:18:50,602 --> 01:18:52,810
+So then you want to minimize
+the number of turns, not
+
+1677
+01:18:52,810 --> 01:18:54,260
+the lengths.
+
+1678
+01:18:54,260 --> 01:18:56,110
+This is one of my
+first hardness proofs
+
+1679
+01:18:56,110 --> 01:18:58,550
+that was not about puzzles.
+
+1680
+01:18:58,550 --> 01:19:00,440
+I think the original
+paper was 2000,
+
+1681
+01:19:00,440 --> 01:19:02,590
+the journal version's 2005.
+
+1682
+01:19:02,590 --> 01:19:05,670
+So suppose you have one of these
+rectangle intersection graphs.
+
+1683
+01:19:05,670 --> 01:19:10,630
+What we're going to do is
+replace each of these things
+
+1684
+01:19:10,630 --> 01:19:14,600
+with a cycle, and then
+thicken that cycle.
+
+1685
+01:19:14,600 --> 01:19:20,590
+This is a thin grid
+graph, not super thin.
+
+1686
+01:19:20,590 --> 01:19:23,140
+Maybe super thin.
+
+1687
+01:19:23,140 --> 01:19:25,320
+Here it's super
+thin, and here you
+
+1688
+01:19:25,320 --> 01:19:28,290
+have a little square
+that you're cutting with.
+
+1689
+01:19:28,290 --> 01:19:32,280
+So each of these things you
+have to make four turns.
+
+1690
+01:19:32,280 --> 01:19:35,270
+Then also, to go from one
+of these to one of these,
+
+1691
+01:19:35,270 --> 01:19:39,090
+to go from one vertex to
+the next, you need a turn.
+
+1692
+01:19:39,090 --> 01:19:42,020
+So in general, you're going
+to need 5n turns in order
+
+1693
+01:19:42,020 --> 01:19:44,841
+to visit n of these
+original segments.
+
+1694
+01:19:44,841 --> 01:19:46,590
+And you can do that
+if and only if there's
+
+1695
+01:19:46,590 --> 01:19:49,010
+a Hamiltonian cycle
+in the original graph,
+
+1696
+01:19:49,010 --> 01:19:50,690
+which was this picture.
+
+1697
+01:19:50,690 --> 01:19:54,260
+Basically, if you
+come in one position--
+
+1698
+01:19:54,260 --> 01:19:58,820
+so here's one of these
+rectangles you want to visit.
+
+1699
+01:19:58,820 --> 01:20:00,920
+You come in one
+place and you know
+
+1700
+01:20:00,920 --> 01:20:03,100
+that you want to leave
+on some other place.
+
+1701
+01:20:03,100 --> 01:20:06,020
+So you double this edge--
+you're going to cut it twice.
+
+1702
+01:20:06,020 --> 01:20:07,670
+That's allowed in this model.
+
+1703
+01:20:07,670 --> 01:20:09,080
+And then you loop around.
+
+1704
+01:20:09,080 --> 01:20:12,160
+And the number of turns here
+is exactly one to come in,
+
+1705
+01:20:12,160 --> 01:20:14,060
+four to go around, and
+then one to come out.
+
+1706
+01:20:14,060 --> 01:20:17,580
+In general, it's one
+per edge in the cycle,
+
+1707
+01:20:17,580 --> 01:20:19,850
+and four per vertex
+in the cycle.
+
+1708
+01:20:19,850 --> 01:20:24,179
+So again, Hamiltonicity
+gives us what we want.
+
+1709
+01:20:24,179 --> 01:20:25,970
+Even where we minimize
+the number of turns,
+
+1710
+01:20:25,970 --> 01:20:32,240
+we can simulate that by counting
+vertices as turns, basically.
+
+1711
+01:20:32,240 --> 01:20:34,540
+And that's it for Hamiltonicity.
+

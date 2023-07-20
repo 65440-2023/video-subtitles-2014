@@ -1,0 +1,7908 @@
+1
+0-1:59:36,500 --> 0-1:59:36,580
+
+2
+0-1:59:36,580 --> 0-1:59:38,930
+The following content is
+provided under a Creative
+
+3
+0-1:59:38,930 --> 0-1:59:40,310
+Commons license.
+
+4
+0-1:59:40,310 --> 0-1:59:42,560
+Your support will help
+MIT OpenCourseWare
+
+5
+0-1:59:42,560 --> 0-1:59:46,650
+continue to offer high quality
+educational resources for free.
+
+6
+0-1:59:46,650 --> 0-1:59:49,190
+To make a donation or to
+view additional materials
+
+7
+0-1:59:49,190 --> 0-1:59:53,100
+from hundreds of MIT courses,
+visit MIT OpenCourseWare
+
+8
+0-1:59:53,100 --> 0-1:59:53,805
+at ocw.mit.edu.
+
+9
+0-1:59:53,805 --> 00:00:02,235
+
+10
+00:00:02,235 --> 00:00:03,110
+PROFESSOR: All right.
+
+11
+00:00:03,110 --> 00:00:05,640
+Welcome back to 6.890.
+
+12
+00:00:05,640 --> 00:00:09,470
+Today we're going to look at
+a bunch of different graph
+
+13
+00:00:09,470 --> 00:00:11,940
+problems, that is, their
+unifying feature is
+
+14
+00:00:11,940 --> 00:00:13,330
+they're problems on graphs.
+
+15
+00:00:13,330 --> 00:00:16,580
+We're going to look
+at vertex cover,
+
+16
+00:00:16,580 --> 00:00:20,180
+we're going to look at
+vertex coloring of graphs,
+
+17
+00:00:20,180 --> 00:00:24,100
+and we're going to look at some
+ordering problems on graphs,
+
+18
+00:00:24,100 --> 00:00:29,210
+and I think, one more,
+orientations of graphs.
+
+19
+00:00:29,210 --> 00:00:31,410
+So these are all going to
+be some kind of constraint
+
+20
+00:00:31,410 --> 00:00:33,210
+that we place on the
+graph or something we
+
+21
+00:00:33,210 --> 00:00:35,410
+want to do with the graph.
+
+22
+00:00:35,410 --> 00:00:38,120
+This is sort of a
+miscellaneous lecture.
+
+23
+00:00:38,120 --> 00:00:40,860
+We've spent a lot of
+time talking about 3SAT,
+
+24
+00:00:40,860 --> 00:00:45,360
+most recently Hamiltonicity, and
+before all that, 3-partition,
+
+25
+00:00:45,360 --> 00:00:50,650
+which are the most popular,
+most useful, I would say,
+
+26
+00:00:50,650 --> 00:00:52,495
+ways of doing NP
+hardness reductions.
+
+27
+00:00:52,495 --> 00:00:53,870
+But there are few
+others that are
+
+28
+00:00:53,870 --> 00:00:59,110
+good to know that are sometimes
+relevant, and so this is that.
+
+29
+00:00:59,110 --> 00:01:01,730
+Each one is a little
+bit smaller in content,
+
+30
+00:01:01,730 --> 00:01:04,500
+so we're just going to
+lump them all together.
+
+31
+00:01:04,500 --> 00:01:07,070
+So we'll start
+with vertex cover.
+
+32
+00:01:07,070 --> 00:01:09,090
+We saw this slide
+from lecture four,
+
+33
+00:01:09,090 --> 00:01:12,120
+I think, from planar 3SAT.
+
+34
+00:01:12,120 --> 00:01:15,450
+Lichtenstein proved
+planar vertex covers hard.
+
+35
+00:01:15,450 --> 00:01:17,915
+Vertex cover, remember,
+is this problem.
+
+36
+00:01:17,915 --> 00:01:24,820
+
+37
+00:01:24,820 --> 00:01:28,000
+You want to choose
+a set of vertices,
+
+38
+00:01:28,000 --> 00:01:32,235
+let's say k vertices,
+to hit all the edges.
+
+39
+00:01:32,235 --> 00:01:37,504
+
+40
+00:01:37,504 --> 00:01:39,920
+A different way of thinking
+about this problem-- and a lot
+
+41
+00:01:39,920 --> 00:01:42,880
+of these problems, you can think
+of in a more logical context,
+
+42
+00:01:42,880 --> 00:01:53,300
+formulas and so on-- this is
+essentially a form of 2SAT
+
+43
+00:01:53,300 --> 00:02:00,325
+with k true variables.
+
+44
+00:02:00,325 --> 00:02:03,020
+It's even a positive 2SAT.
+
+45
+00:02:03,020 --> 00:02:06,600
+
+46
+00:02:06,600 --> 00:02:08,970
+Because essentially,
+you could think
+
+47
+00:02:08,970 --> 00:02:11,780
+of there being a
+variable for each vertex,
+
+48
+00:02:11,780 --> 00:02:14,094
+whether you choose
+it, and then the edge
+
+49
+00:02:14,094 --> 00:02:16,010
+is just stating the
+constraint that you should
+
+50
+00:02:16,010 --> 00:02:19,050
+choose one or the
+other endpoints
+
+51
+00:02:19,050 --> 00:02:22,730
+and so that's a 2SAT constraint.
+
+52
+00:02:22,730 --> 00:02:24,926
+And 2SAT is easy,
+but when you say,
+
+53
+00:02:24,926 --> 00:02:27,300
+I want to solve 2SAT with only
+setting k of the variables
+
+54
+00:02:27,300 --> 00:02:30,420
+to be true, then it becomes this
+NP hard problem vertex cover.
+
+55
+00:02:30,420 --> 00:02:32,960
+And so we have-- This was a
+reduction from planar 3SAT
+
+56
+00:02:32,960 --> 00:02:36,160
+to planar vertex cover, so
+we know this problem is hard.
+
+57
+00:02:36,160 --> 00:02:39,690
+Let's use it for some
+things, and let's also
+
+58
+00:02:39,690 --> 00:02:46,790
+prove some even more
+related versions are hard.
+
+59
+00:02:46,790 --> 00:02:55,370
+So this one was already
+maximum degree 3,
+
+60
+00:02:55,370 --> 00:02:58,620
+if we have some unused copies,
+we'll get degree 2 vertices,
+
+61
+00:02:58,620 --> 00:03:00,620
+but certainly every vertex
+is at most degree 3.
+
+62
+00:03:00,620 --> 00:03:04,750
+And it was planar, so
+that's already cool.
+
+63
+00:03:04,750 --> 00:03:14,410
+Planar max degree 3 is hard.
+
+64
+00:03:14,410 --> 00:03:17,350
+Some polynomial versions
+to be careful of if you're
+
+65
+00:03:17,350 --> 00:03:22,180
+using vertex cover
+as a starting point.
+
+66
+00:03:22,180 --> 00:03:25,065
+One is what I call
+exact vertex cover.
+
+67
+00:03:25,065 --> 00:03:31,090
+
+68
+00:03:31,090 --> 00:03:44,315
+Each edge is incident to
+exactly one chosen vertex.
+
+69
+00:03:44,315 --> 00:03:49,220
+
+70
+00:03:49,220 --> 00:03:51,860
+So the vertex cover could
+be one or the other.
+
+71
+00:03:51,860 --> 00:03:59,460
+If you have exclusively, or
+between those two, it's easy.
+
+72
+00:03:59,460 --> 00:04:02,310
+And another version,
+sort of the duel
+
+73
+00:04:02,310 --> 00:04:05,180
+between vertices
+and edges, one might
+
+74
+00:04:05,180 --> 00:04:10,230
+call it edge cover,
+which would be choose
+
+75
+00:04:10,230 --> 00:04:11,680
+k edges to hit all vertices.
+
+76
+00:04:11,680 --> 00:04:19,385
+
+77
+00:04:19,385 --> 00:04:23,280
+AUDIENCE: Doesn't exact
+edge cover perfect matching?
+
+78
+00:04:23,280 --> 00:04:28,000
+PROFESSOR: Exact vertex cover
+is perfect matching, thank you.
+
+79
+00:04:28,000 --> 00:04:30,060
+This is also essentially
+maximum cardinality
+
+80
+00:04:30,060 --> 00:04:34,067
+matching because the more
+you can be a matching,
+
+81
+00:04:34,067 --> 00:04:35,650
+the more efficient
+you're going to be,
+
+82
+00:04:35,650 --> 00:04:37,780
+and then every isolated
+vertex after you
+
+83
+00:04:37,780 --> 00:04:39,320
+have a maximum
+cardinality matching,
+
+84
+00:04:39,320 --> 00:04:41,111
+you just have to cover
+those with one more.
+
+85
+00:04:41,111 --> 00:04:42,970
+So both of these
+reduce to matching.
+
+86
+00:04:42,970 --> 00:04:46,890
+So it's obvious in
+hindsight, but be careful,
+
+87
+00:04:46,890 --> 00:04:50,250
+if you're ever doing vertex
+cover, not to accidentally do
+
+88
+00:04:50,250 --> 00:04:52,550
+one of these.
+
+89
+00:04:52,550 --> 00:04:54,870
+OK, so this morning's.
+
+90
+00:04:54,870 --> 00:04:58,430
+
+91
+00:04:58,430 --> 00:05:00,890
+Here's a cool version
+of vertex cover.
+
+92
+00:05:00,890 --> 00:05:02,420
+It can be useful.
+
+93
+00:05:02,420 --> 00:05:05,520
+We'll use it in a moment to
+prove a particular problem
+
+94
+00:05:05,520 --> 00:05:08,300
+hard, connected vertex cover.
+
+95
+00:05:08,300 --> 00:05:09,880
+So usually, with a
+vertex cover, you
+
+96
+00:05:09,880 --> 00:05:11,450
+imagine you're just
+grabbing vertices
+
+97
+00:05:11,450 --> 00:05:12,980
+from all over the graph.
+
+98
+00:05:12,980 --> 00:05:15,630
+With connected vertex
+cover, you require
+
+99
+00:05:15,630 --> 00:05:20,385
+that the chosen vertices
+induce a connected subgraph.
+
+100
+00:05:20,385 --> 00:05:37,620
+
+101
+00:05:37,620 --> 00:05:41,650
+So this is not, obviously,
+easier or harder as a problem.
+
+102
+00:05:41,650 --> 00:05:44,600
+It's more restrictive
+on the cover,
+
+103
+00:05:44,600 --> 00:05:49,660
+but we can prove that
+it's NP hard by reduction
+
+104
+00:05:49,660 --> 00:05:51,917
+from this problem.
+
+105
+00:05:51,917 --> 00:05:53,750
+And so in particular,
+we'll get that it's NP
+
+106
+00:05:53,750 --> 00:05:59,250
+hard for planar max
+degree 4 graphs.
+
+107
+00:05:59,250 --> 00:06:14,790
+
+108
+00:06:14,790 --> 00:06:18,399
+So here's the reduction.
+
+109
+00:06:18,399 --> 00:06:19,940
+I think this reduction
+is quite cool,
+
+110
+00:06:19,940 --> 00:06:23,012
+because it uses planarity.
+
+111
+00:06:23,012 --> 00:06:24,720
+It may not be necessary
+to use planarity,
+
+112
+00:06:24,720 --> 00:06:28,672
+but this reduction definitely
+uses planarity in a rich way.
+
+113
+00:06:28,672 --> 00:06:31,130
+So even if you were trying to
+prove this without planarity,
+
+114
+00:06:31,130 --> 00:06:32,902
+it would be more awkward.
+
+115
+00:06:32,902 --> 00:06:34,360
+So, suppose you
+have a planar graph
+
+116
+00:06:34,360 --> 00:06:38,800
+and you want to find a minimum
+vertex cover in this graph.
+
+117
+00:06:38,800 --> 00:06:41,470
+We're going to modify
+the graph in this way.
+
+118
+00:06:41,470 --> 00:06:44,860
+This is yet another
+Garey and Johnson paper.
+
+119
+00:06:44,860 --> 00:06:48,562
+So you can see the original
+faces of the graph,
+
+120
+00:06:48,562 --> 00:06:50,020
+and then for each
+face, we're going
+
+121
+00:06:50,020 --> 00:06:55,660
+to add in sort of
+a copy of the face.
+
+122
+00:06:55,660 --> 00:07:00,250
+So also the outside face
+gets this kind of curvy copy.
+
+123
+00:07:00,250 --> 00:07:02,360
+And so in particular,
+at every vertex
+
+124
+00:07:02,360 --> 00:07:06,000
+there's now going to be
+five copies of the vertex.
+
+125
+00:07:06,000 --> 00:07:08,839
+One on the one incident face,
+one on the other incident
+
+126
+00:07:08,839 --> 00:07:10,380
+face, and then for
+every one of these
+
+127
+00:07:10,380 --> 00:07:12,700
+we're going to have an
+extra leaf hanging off.
+
+128
+00:07:12,700 --> 00:07:13,750
+Why leaves?
+
+129
+00:07:13,750 --> 00:07:17,590
+Leaves are really cool, or
+really annoying, or whatever.
+
+130
+00:07:17,590 --> 00:07:22,250
+They're very forceful in
+the case of vertex cover.
+
+131
+00:07:22,250 --> 00:07:26,032
+If you look at a leaf--
+So here's a leaf.
+
+132
+00:07:26,032 --> 00:07:28,490
+It's connected to some vertex
+that's presumably not a leaf,
+
+133
+00:07:28,490 --> 00:07:31,970
+otherwise there'd be
+an isolated component.
+
+134
+00:07:31,970 --> 00:07:35,730
+It's never useful to put
+this in the vertex cover.
+
+135
+00:07:35,730 --> 00:07:37,860
+If you decide to put
+this in the vertex cover,
+
+136
+00:07:37,860 --> 00:07:39,610
+you might as well
+choose this guy instead,
+
+137
+00:07:39,610 --> 00:07:41,554
+because this covers more.
+
+138
+00:07:41,554 --> 00:07:43,970
+It covers all the edges that
+this one did, namely that one
+
+139
+00:07:43,970 --> 00:07:46,442
+edge, and some other edges.
+
+140
+00:07:46,442 --> 00:07:48,150
+Maybe it was already
+in the vertex cover.
+
+141
+00:07:48,150 --> 00:07:49,108
+Then it wasn't minimum.
+
+142
+00:07:49,108 --> 00:07:50,690
+Then you got smaller.
+
+143
+00:07:50,690 --> 00:07:53,840
+But you can assume there is
+an optimal solution where
+
+144
+00:07:53,840 --> 00:07:58,040
+you never put leaves
+in the vertex cover.
+
+145
+00:07:58,040 --> 00:08:01,360
+What that means is, wherever
+we add a leaf like this,
+
+146
+00:08:01,360 --> 00:08:03,360
+it basically forces
+you-- It lets
+
+147
+00:08:03,360 --> 00:08:06,197
+you know that you might as well
+have this in the vertex cover.
+
+148
+00:08:06,197 --> 00:08:08,530
+There is an optimal solution
+where this is in the vertex
+
+149
+00:08:08,530 --> 00:08:11,260
+cover, because the only other
+option is that this one is,
+
+150
+00:08:11,260 --> 00:08:13,000
+and then you can move it over.
+
+151
+00:08:13,000 --> 00:08:18,020
+So these vertices on
+the copies of the faces,
+
+152
+00:08:18,020 --> 00:08:21,850
+those are all forced to
+be in the cover, which
+
+153
+00:08:21,850 --> 00:08:26,230
+means this entire copy of the
+face, the inset copy the face,
+
+154
+00:08:26,230 --> 00:08:29,760
+is completely covered
+already, plus these edges
+
+155
+00:08:29,760 --> 00:08:33,610
+are covered connecting
+the inner copy of the face
+
+156
+00:08:33,610 --> 00:08:34,610
+to the original face.
+
+157
+00:08:34,610 --> 00:08:38,830
+
+158
+00:08:38,830 --> 00:08:40,950
+So there's still stuff to cover.
+
+159
+00:08:40,950 --> 00:08:42,990
+So in particular, it's
+still interesting to put
+
+160
+00:08:42,990 --> 00:08:44,930
+one of the original
+vertices in the cover.
+
+161
+00:08:44,930 --> 00:08:48,660
+That would cover these
+three, now every edge
+
+162
+00:08:48,660 --> 00:08:50,020
+got cut into three parts.
+
+163
+00:08:50,020 --> 00:08:53,162
+So this would cover
+1/3 of the edge.
+
+164
+00:08:53,162 --> 00:08:54,870
+The idea is, if you
+put this in the cover
+
+165
+00:08:54,870 --> 00:08:57,180
+and you cover those
+three guys, we still
+
+166
+00:08:57,180 --> 00:08:59,550
+have to cover these
+two, and we'll
+
+167
+00:08:59,550 --> 00:09:03,740
+do that by putting this
+vertex in the cover.
+
+168
+00:09:03,740 --> 00:09:05,670
+Because one of these two
+has to be in in order
+
+169
+00:09:05,670 --> 00:09:08,850
+to cover this middle
+edge, and the idea
+
+170
+00:09:08,850 --> 00:09:11,030
+is that you'll be able to
+just put one of them in.
+
+171
+00:09:11,030 --> 00:09:13,570
+You'll be able to put
+exactly one of these two
+
+172
+00:09:13,570 --> 00:09:16,530
+on every subdivided edge, if
+and only if there is a vertex
+
+173
+00:09:16,530 --> 00:09:19,160
+cover of the right size.
+
+174
+00:09:19,160 --> 00:09:25,220
+So if I do the arithmetic
+here, the claim
+
+175
+00:09:25,220 --> 00:09:35,780
+is we added exactly 5 times
+the original number of edges
+
+176
+00:09:35,780 --> 00:09:39,930
+to the optimal vertex cover.
+
+177
+00:09:39,930 --> 00:09:49,670
+5 because for every original
+edge we added 2 here,
+
+178
+00:09:49,670 --> 00:09:53,130
+2 here, and then 1 of these too.
+
+179
+00:09:53,130 --> 00:09:57,780
+So there were 6 vertices
+around this edge that we added,
+
+180
+00:09:57,780 --> 00:10:02,789
+and if we can cover, say,
+this edge using that vertex
+
+181
+00:10:02,789 --> 00:10:04,580
+or cover this edge
+using that vertex, which
+
+182
+00:10:04,580 --> 00:10:07,205
+is the same as saying that this
+original edge is covered by one
+
+183
+00:10:07,205 --> 00:10:09,720
+side or the other, then we
+only need one of these two guys
+
+184
+00:10:09,720 --> 00:10:12,330
+and then we'll get away
+with just 5 per edge.
+
+185
+00:10:12,330 --> 00:10:15,350
+So the original thing has
+a vertex cover of size k
+
+186
+00:10:15,350 --> 00:10:18,630
+if and only if this new thing
+has a vertex cover size of k
+
+187
+00:10:18,630 --> 00:10:21,960
+plus 5 times the
+number of edges.
+
+188
+00:10:21,960 --> 00:10:23,270
+Question?
+
+189
+00:10:23,270 --> 00:10:28,125
+AUDIENCE: What stops you
+from taking one of the--
+
+190
+00:10:28,125 --> 00:10:30,000
+PROFESSOR: Taking both
+of these, for example?
+
+191
+00:10:30,000 --> 00:10:30,540
+AUDIENCE: Yeah.
+
+192
+00:10:30,540 --> 00:10:30,830
+PROFESSOR: Yeah.
+
+193
+00:10:30,830 --> 00:10:32,413
+So that's a good
+thing to worry about.
+
+194
+00:10:32,413 --> 00:10:34,310
+Maybe you take both
+and then you don't
+
+195
+00:10:34,310 --> 00:10:36,080
+have to choose either
+one, so it doesn't
+
+196
+00:10:36,080 --> 00:10:38,767
+look like a vertex cover, but
+this is a similar argument
+
+197
+00:10:38,767 --> 00:10:39,350
+to the leaves.
+
+198
+00:10:39,350 --> 00:10:40,790
+If you choose both
+of these guys,
+
+199
+00:10:40,790 --> 00:10:43,140
+because you know that
+the other four are there,
+
+200
+00:10:43,140 --> 00:10:45,480
+you can always move one
+of them to the vertex.
+
+201
+00:10:45,480 --> 00:10:47,832
+So you'll get a
+recover vertex cover.
+
+202
+00:10:47,832 --> 00:10:50,360
+AUDIENCE: [INAUDIBLE]
+fives times the edges
+
+203
+00:10:50,360 --> 00:10:54,050
+plus the number for
+vertices because you also
+
+204
+00:10:54,050 --> 00:10:56,735
+have to cover the
+leaves off the vertices?
+
+205
+00:10:56,735 --> 00:10:57,735
+PROFESSOR: These leaves?
+
+206
+00:10:57,735 --> 00:10:58,050
+AUDIENCE: No, the one
+with the vertices.
+
+207
+00:10:58,050 --> 00:10:59,930
+PROFESSOR: Oh, these ones.
+
+208
+00:10:59,930 --> 00:11:01,062
+Whoops.
+
+209
+00:11:01,062 --> 00:11:02,520
+Oh, so it looks
+like they're always
+
+210
+00:11:02,520 --> 00:11:04,680
+increasing the degree to 4.
+
+211
+00:11:04,680 --> 00:11:07,180
+Connected vertex, however, is
+actually an important problem.
+
+212
+00:11:07,180 --> 00:11:09,340
+People think about it a lot.
+
+213
+00:11:09,340 --> 00:11:12,310
+For some kind of
+networking applications,
+
+214
+00:11:12,310 --> 00:11:14,850
+you want to build some backbone
+that can reach everybody,
+
+215
+00:11:14,850 --> 00:11:17,760
+you need a connected network.
+
+216
+00:11:17,760 --> 00:11:20,880
+But Garey and Johnson's
+original motivation
+
+217
+00:11:20,880 --> 00:11:25,207
+for introducing that problem is
+rectilinear Steiner tree, also
+
+218
+00:11:25,207 --> 00:11:26,540
+an important networking problem.
+
+219
+00:11:26,540 --> 00:11:30,310
+Steiner tree is about
+usually you imagine
+
+220
+00:11:30,310 --> 00:11:33,762
+you're given some space where
+you can build a network,
+
+221
+00:11:33,762 --> 00:11:36,220
+and you're given some things
+that you want to interconnect.
+
+222
+00:11:36,220 --> 00:11:40,706
+So maybe you're building a
+new city around some existing
+
+223
+00:11:40,706 --> 00:11:42,580
+houses, you're given
+some points in the plane
+
+224
+00:11:42,580 --> 00:11:43,870
+that represent houses.
+
+225
+00:11:43,870 --> 00:11:46,245
+Now you want to build roads
+to connect them all together.
+
+226
+00:11:46,245 --> 00:11:48,720
+You want to minimize the amount
+of roads you have to build,
+
+227
+00:11:48,720 --> 00:11:50,260
+so you're going to build a tree.
+
+228
+00:11:50,260 --> 00:11:53,380
+And Steiner tree means that
+you can add intersections
+
+229
+00:11:53,380 --> 00:11:57,420
+wherever you want, as opposed
+to a minimum spanning tree,
+
+230
+00:11:57,420 --> 00:12:01,650
+where you can only turn
+at the given vertices.
+
+231
+00:12:01,650 --> 00:12:09,749
+If you have some points
+like this in the plane,
+
+232
+00:12:09,749 --> 00:12:11,290
+the best way to
+connect them together
+
+233
+00:12:11,290 --> 00:12:15,370
+in the Euclidean metric is
+to have-- I didn't draw it
+
+234
+00:12:15,370 --> 00:12:19,570
+super well-- to have
+120 degree angles at all
+
+235
+00:12:19,570 --> 00:12:21,990
+the intersections,
+something you can prove.
+
+236
+00:12:21,990 --> 00:12:24,820
+Here, we're thinking about
+rectilinear Steiner tree, which
+
+237
+00:12:24,820 --> 00:12:28,110
+is the Manhattan version,
+where you're only
+
+238
+00:12:28,110 --> 00:12:34,160
+allowed to draw orthogonal
+connections, like that.
+
+239
+00:12:34,160 --> 00:12:35,670
+So you can still
+add extra vertices
+
+240
+00:12:35,670 --> 00:12:37,336
+if you want to minimize
+the total length
+
+241
+00:12:37,336 --> 00:12:40,670
+of these connections given
+endpoints in the plane.
+
+242
+00:12:40,670 --> 00:12:44,990
+This problem is NP hard,
+and you can prove it
+
+243
+00:12:44,990 --> 00:12:46,130
+in a very simple way.
+
+244
+00:12:46,130 --> 00:12:51,630
+This is the reduction
+from the previous problem.
+
+245
+00:12:51,630 --> 00:12:54,530
+So the first step
+is-- And the reason
+
+246
+00:12:54,530 --> 00:12:57,250
+they care about max degree
+4 in the previous problem
+
+247
+00:12:57,250 --> 00:13:01,140
+is to draw the graph in the
+plane in orthogonal drawings.
+
+248
+00:13:01,140 --> 00:13:03,390
+So every vertex becomes
+a point, every edge
+
+249
+00:13:03,390 --> 00:13:06,020
+become some orthogonal path
+connecting two vertices.
+
+250
+00:13:06,020 --> 00:13:08,300
+We've done that in
+previous proofs.
+
+251
+00:13:08,300 --> 00:13:10,900
+So now everything's drawn in
+the plane, something like this.
+
+252
+00:13:10,900 --> 00:13:13,720
+And that each
+vertex, we're going
+
+253
+00:13:13,720 --> 00:13:18,570
+to erase a little
+circle of radius 2,
+
+254
+00:13:18,570 --> 00:13:20,950
+and then that leaves
+a bunch of segments,
+
+255
+00:13:20,950 --> 00:13:23,751
+and the segments
+connected together,
+
+256
+00:13:23,751 --> 00:13:26,000
+and now we're just going to
+place along those segments
+
+257
+00:13:26,000 --> 00:13:28,540
+a whole bunch of points.
+
+258
+00:13:28,540 --> 00:13:31,710
+And so the idea is that
+the Steiner tree should
+
+259
+00:13:31,710 --> 00:13:35,850
+connect all those together, and
+then it's left with a choice.
+
+260
+00:13:35,850 --> 00:13:38,030
+And those are all going
+to be distance 1 apart.
+
+261
+00:13:38,030 --> 00:13:40,630
+Then it's left with a choice
+of where to connect things
+
+262
+00:13:40,630 --> 00:13:42,980
+together, which vertices.
+
+263
+00:13:42,980 --> 00:13:49,170
+So a little bit more
+formally, each of these edges
+
+264
+00:13:49,170 --> 00:13:55,250
+is going to be scaled up by a
+huge factor, 4 times n squared,
+
+265
+00:13:55,250 --> 00:13:59,090
+where n, I think, is the
+dimension of the n by n grid.
+
+266
+00:13:59,090 --> 00:14:03,960
+So these are the original
+grids, the dash lines.
+
+267
+00:14:03,960 --> 00:14:06,940
+Originally, when you draw
+it on a graph, on a grid,
+
+268
+00:14:06,940 --> 00:14:08,860
+you imagine probably
+these are unit length.
+
+269
+00:14:08,860 --> 00:14:13,550
+Scale it up to the length
+4n squared and then the rule
+
+270
+00:14:13,550 --> 00:14:16,720
+is, wherever you have an
+integer point along that line,
+
+271
+00:14:16,720 --> 00:14:17,950
+add a dot.
+
+272
+00:14:17,950 --> 00:14:21,030
+And so they will be spaced
+with distances of 1.
+
+273
+00:14:21,030 --> 00:14:23,740
+Over here, we have
+distances of 2
+
+274
+00:14:23,740 --> 00:14:28,180
+between the vertex, which is
+not actually a point in the set,
+
+275
+00:14:28,180 --> 00:14:29,450
+and here.
+
+276
+00:14:29,450 --> 00:14:33,200
+And so distance of 4 between
+any pairs of those points.
+
+277
+00:14:33,200 --> 00:14:35,850
+Because these
+distances are so huge,
+
+278
+00:14:35,850 --> 00:14:39,490
+you never want to connect from
+here to anywhere else that's
+
+279
+00:14:39,490 --> 00:14:42,000
+not at this local intersection.
+
+280
+00:14:42,000 --> 00:14:42,970
+OK?
+
+281
+00:14:42,970 --> 00:14:44,510
+And there's an
+argument about that,
+
+282
+00:14:44,510 --> 00:14:47,360
+looking at these regions
+of where you could possibly
+
+283
+00:14:47,360 --> 00:14:51,190
+want to go, and there's only
+those endpoints in there
+
+284
+00:14:51,190 --> 00:14:52,850
+and these are really
+cheap to connect.
+
+285
+00:14:52,850 --> 00:14:55,016
+So it really only pays to
+connect things in between.
+
+286
+00:14:55,016 --> 00:14:58,070
+
+287
+00:14:58,070 --> 00:14:59,590
+So basically, you
+show that you're
+
+288
+00:14:59,590 --> 00:15:03,060
+forced to do all the
+unit length connections,
+
+289
+00:15:03,060 --> 00:15:06,300
+and now you just have to
+make the thing connected.
+
+290
+00:15:06,300 --> 00:15:06,960
+Question?
+
+291
+00:15:06,960 --> 00:15:08,807
+AUDIENCE: Why 2?
+
+292
+00:15:08,807 --> 00:15:10,390
+PROFESSOR: Because
+2 is bigger than 1.
+
+293
+00:15:10,390 --> 00:15:13,770
+
+294
+00:15:13,770 --> 00:15:14,270
+Yeah?
+
+295
+00:15:14,270 --> 00:15:16,603
+AUDIENCE: I guess with the
+vertex covers that you'd want
+
+296
+00:15:16,603 --> 00:15:19,005
+to fill in that whole cross?
+
+297
+00:15:19,005 --> 00:15:22,090
+But maybe there's a fear
+that you would just connect--
+
+298
+00:15:22,090 --> 00:15:22,960
+PROFESSOR: No.
+
+299
+00:15:22,960 --> 00:15:24,730
+You won't fill in the whole
+cross in the vertex cover.
+
+300
+00:15:24,730 --> 00:15:26,230
+Let me tell what
+you're going to do.
+
+301
+00:15:26,230 --> 00:15:28,520
+
+302
+00:15:28,520 --> 00:15:31,780
+This proof is-- I mean, the
+reduction is super simple,
+
+303
+00:15:31,780 --> 00:15:34,890
+but the argument is confusing.
+
+304
+00:15:34,890 --> 00:15:37,840
+So here's the idea.
+
+305
+00:15:37,840 --> 00:16:34,830
+
+306
+00:16:34,830 --> 00:16:36,980
+So there's essentially
+two things going on,
+
+307
+00:16:36,980 --> 00:16:38,900
+but let's first
+think about the case
+
+308
+00:16:38,900 --> 00:16:42,890
+where I give you a connected
+vertex cover of some size.
+
+309
+00:16:42,890 --> 00:16:47,810
+What I'm going to do is
+first-- or you can think
+
+310
+00:16:47,810 --> 00:16:50,240
+of it in either order--
+I'm, in particular,
+
+311
+00:16:50,240 --> 00:16:53,274
+going to connect all
+the vertices together.
+
+312
+00:16:53,274 --> 00:16:55,690
+Now, there's no particular
+reason to connect the vertices,
+
+313
+00:16:55,690 --> 00:16:58,329
+but I'm just going to do it
+anyway, or think about doing it
+
+314
+00:16:58,329 --> 00:17:01,720
+anyway, by a spanning tree.
+
+315
+00:17:01,720 --> 00:17:03,927
+So there's lots of
+redundant connectivity here.
+
+316
+00:17:03,927 --> 00:17:05,510
+I don't need to
+connect this, to this,
+
+317
+00:17:05,510 --> 00:17:06,940
+to this all the way around.
+
+318
+00:17:06,940 --> 00:17:08,860
+I can drop one of
+those connections
+
+319
+00:17:08,860 --> 00:17:11,300
+because I just need
+to be connected,
+
+320
+00:17:11,300 --> 00:17:12,850
+I just need a spanning tree.
+
+321
+00:17:12,850 --> 00:17:20,030
+And in general, there are v
+vertices to connect together,
+
+322
+00:17:20,030 --> 00:17:26,640
+and each one of them costs
+2, in a certain sense.
+
+323
+00:17:26,640 --> 00:17:30,300
+To connect a vertex to
+an incident edge costs 2.
+
+324
+00:17:30,300 --> 00:17:33,500
+And so there are v minus 1
+edges in the spanning tree,
+
+325
+00:17:33,500 --> 00:17:34,974
+so I'm going to pay that.
+
+326
+00:17:34,974 --> 00:17:36,890
+On the other hand, I
+also knew that every edge
+
+327
+00:17:36,890 --> 00:17:39,070
+is connected to some vertex.
+
+328
+00:17:39,070 --> 00:17:41,230
+That's the vertex
+cover constraint,
+
+329
+00:17:41,230 --> 00:17:43,390
+and so every edge is
+going to pay 2 in order
+
+330
+00:17:43,390 --> 00:17:44,800
+to connect to a vertex.
+
+331
+00:17:44,800 --> 00:17:47,272
+So the weird thing here is the
+involvement of the vertices,
+
+332
+00:17:47,272 --> 00:17:48,730
+even though there's
+no point there.
+
+333
+00:17:48,730 --> 00:17:52,150
+
+334
+00:17:52,150 --> 00:17:53,927
+That's funny.
+
+335
+00:17:53,927 --> 00:17:56,510
+Maybe we could add a point there
+and make it a little clearer,
+
+336
+00:17:56,510 --> 00:18:01,280
+but instead of thinking
+about connections from edges
+
+337
+00:18:01,280 --> 00:18:03,537
+to edges, which
+would cost 4, that's
+
+338
+00:18:03,537 --> 00:18:05,870
+sort of the wrong way to think
+about it, because there's
+
+339
+00:18:05,870 --> 00:18:06,840
+two things going on.
+
+340
+00:18:06,840 --> 00:18:09,485
+One is just to get the edges
+to connect to something,
+
+341
+00:18:09,485 --> 00:18:11,360
+and then there's getting
+all that something's
+
+342
+00:18:11,360 --> 00:18:12,870
+connected together.
+
+343
+00:18:12,870 --> 00:18:14,860
+So this is sort of a
+spanning tree thing,
+
+344
+00:18:14,860 --> 00:18:19,124
+and this is more of the actual
+vertex cover constraint.
+
+345
+00:18:19,124 --> 00:18:20,790
+Together, they give
+the connector vertex
+
+346
+00:18:20,790 --> 00:18:21,498
+cover constraint.
+
+347
+00:18:21,498 --> 00:18:23,750
+It would be impossible
+for a Steiner tree
+
+348
+00:18:23,750 --> 00:18:26,070
+to do one without the other.
+
+349
+00:18:26,070 --> 00:18:28,730
+But essentially-- I mean,
+I'm going to wave my hands
+
+350
+00:18:28,730 --> 00:18:30,840
+a little bit here,
+but you work it out.
+
+351
+00:18:30,840 --> 00:18:34,020
+In all cases, the number
+of connections you need
+
+352
+00:18:34,020 --> 00:18:36,580
+is exactly this if
+there's a vertex cover,
+
+353
+00:18:36,580 --> 00:18:39,761
+and this will have to go up
+if there isn't a vertex cover.
+
+354
+00:18:39,761 --> 00:18:43,200
+
+355
+00:18:43,200 --> 00:18:45,370
+That was vertex cover.
+
+356
+00:18:45,370 --> 00:18:47,710
+Let's do coloring.
+
+357
+00:18:47,710 --> 00:18:52,050
+This will be, I think, more fun.
+
+358
+00:18:52,050 --> 00:18:57,900
+So first, let's prove
+that coloring is hard.
+
+359
+00:18:57,900 --> 00:19:00,797
+So in general, in
+the coloring problem,
+
+360
+00:19:00,797 --> 00:19:02,880
+also called chromatic
+number, you're given a graph
+
+361
+00:19:02,880 --> 00:19:04,380
+and you're given a number k.
+
+362
+00:19:04,380 --> 00:19:06,680
+You want to color the
+vertices of the graph using
+
+363
+00:19:06,680 --> 00:19:10,050
+k different colors,
+so that's a mapping
+
+364
+00:19:10,050 --> 00:19:13,840
+from the vertices
+to the colors such
+
+365
+00:19:13,840 --> 00:19:16,780
+that no edge is monochromatic.
+
+366
+00:19:16,780 --> 00:19:22,650
+
+367
+00:19:22,650 --> 00:19:27,490
+So you want a mapping, let's
+call it c, from the vertices
+
+368
+00:19:27,490 --> 00:19:43,945
+to 1 up to k such that for
+every edge, let me call it vw,
+
+369
+00:19:43,945 --> 00:19:47,910
+the color of v does not
+equal to color of w.
+
+370
+00:19:47,910 --> 00:19:50,650
+So that's the no
+monochromatic edge constraint.
+
+371
+00:19:50,650 --> 00:19:52,430
+It's usual coloring
+for vertex coloring.
+
+372
+00:19:52,430 --> 00:19:55,220
+You could also talk about
+edge coloring and so on,
+
+373
+00:19:55,220 --> 00:19:57,510
+and this problem is easy.
+
+374
+00:19:57,510 --> 00:20:01,910
+If k is 1, then you
+better not have any edges.
+
+375
+00:20:01,910 --> 00:20:03,560
+It's easy if k is 2.
+
+376
+00:20:03,560 --> 00:20:05,110
+That's bipartiteness testing.
+
+377
+00:20:05,110 --> 00:20:07,390
+You can just greedily
+color and you can never
+
+378
+00:20:07,390 --> 00:20:10,040
+make a mistake unless the
+graph isn't bipartite.
+
+379
+00:20:10,040 --> 00:20:12,530
+But it becomes hard
+when k equals 3,
+
+380
+00:20:12,530 --> 00:20:14,460
+so that's a fun transition.
+
+381
+00:20:14,460 --> 00:20:18,180
+And so here is why vertex
+3-coloring is hard as proved
+
+382
+00:20:18,180 --> 00:20:21,300
+by Garey, Johnson, Stockmeyer.
+
+383
+00:20:21,300 --> 00:20:23,360
+Reduction from 3SAT.
+
+384
+00:20:23,360 --> 00:20:26,490
+So we have, on the one
+hand, variable gadget.
+
+385
+00:20:26,490 --> 00:20:32,770
+We're going to represent
+XI and XI bar like this.
+
+386
+00:20:32,770 --> 00:20:35,660
+I mean, coloring should
+feel a lot like SAT.
+
+387
+00:20:35,660 --> 00:20:42,960
+In fact, you might think
+of this as xor 2SAT,
+
+388
+00:20:42,960 --> 00:20:46,010
+if you think of xor as
+the not equals operator.
+
+389
+00:20:46,010 --> 00:20:51,610
+But it's over ternary logic.
+
+390
+00:20:51,610 --> 00:20:54,450
+So this gets back to
+a question from class.
+
+391
+00:20:54,450 --> 00:20:55,700
+What about ternary logic?
+
+392
+00:20:55,700 --> 00:20:58,860
+You can think of 3-colorings
+like ternary logic,
+
+393
+00:20:58,860 --> 00:21:01,330
+just like on the problem set.
+
+394
+00:21:01,330 --> 00:21:05,040
+So what we're going
+to do is we're
+
+395
+00:21:05,040 --> 00:21:06,640
+going to have one
+copy of this gadget.
+
+396
+00:21:06,640 --> 00:21:07,800
+I call it a colors gadget.
+
+397
+00:21:07,800 --> 00:21:10,280
+It's just a triangle,
+and so all three colors
+
+398
+00:21:10,280 --> 00:21:12,540
+must appear on that triangle.
+
+399
+00:21:12,540 --> 00:21:15,040
+We don't know in what order,
+but we don't really care.
+
+400
+00:21:15,040 --> 00:21:17,530
+We can just define the one.
+
+401
+00:21:17,530 --> 00:21:19,780
+The color that this guy's
+assigned, we'll call it red.
+
+402
+00:21:19,780 --> 00:21:21,910
+It could be 1, 2, or 3,
+but it doesn't matter.
+
+403
+00:21:21,910 --> 00:21:24,800
+Call the color that this
+guy's assigned green,
+
+404
+00:21:24,800 --> 00:21:26,710
+and this one blue,
+and hopefully you're
+
+405
+00:21:26,710 --> 00:21:29,980
+not sufficiently colorblind to
+be unable to distinguish those.
+
+406
+00:21:29,980 --> 00:21:32,210
+But I did check with
+a color blind tester,
+
+407
+00:21:32,210 --> 00:21:34,960
+they do seem at least
+different, but it might
+
+408
+00:21:34,960 --> 00:21:36,231
+be hard to know the names.
+
+409
+00:21:36,231 --> 00:21:36,730
+All right.
+
+410
+00:21:36,730 --> 00:21:40,820
+So this green vertex is
+connected to both XI and XI bar
+
+411
+00:21:40,820 --> 00:21:42,870
+for each of the
+variables, which means
+
+412
+00:21:42,870 --> 00:21:45,020
+they can either be red or blue.
+
+413
+00:21:45,020 --> 00:21:48,760
+And I want to red to mean
+false, blue to mean true.
+
+414
+00:21:48,760 --> 00:21:51,332
+So that's cool, that's
+nice, regular binary logic.
+
+415
+00:21:51,332 --> 00:21:53,290
+And then we're going to
+combine those variables
+
+416
+00:21:53,290 --> 00:21:54,810
+with this clause gadget.
+
+417
+00:21:54,810 --> 00:21:57,920
+Clause gadget also has
+one node out at the end
+
+418
+00:21:57,920 --> 00:22:00,060
+here connected to
+both green and red,
+
+419
+00:22:00,060 --> 00:22:02,380
+which forces it to be blue.
+
+420
+00:22:02,380 --> 00:22:03,850
+But otherwise,
+it's kind of free.
+
+421
+00:22:03,850 --> 00:22:06,060
+So we have instances
+of literals.
+
+422
+00:22:06,060 --> 00:22:07,870
+These don't have to
+be the positive forms,
+
+423
+00:22:07,870 --> 00:22:11,267
+this could be XI bar,
+XJ bar, whatever.
+
+424
+00:22:11,267 --> 00:22:13,100
+And now we're going to
+think about coloring.
+
+425
+00:22:13,100 --> 00:22:16,450
+So let me show you a couple
+of possible colorings.
+
+426
+00:22:16,450 --> 00:22:17,659
+Here's a valid coloring.
+
+427
+00:22:17,659 --> 00:22:19,950
+It's valid because at least--
+This is going to be 3SAT,
+
+428
+00:22:19,950 --> 00:22:23,140
+so at least one of these should
+be true, true means blue.
+
+429
+00:22:23,140 --> 00:22:26,430
+This guy is blue,
+and in general,
+
+430
+00:22:26,430 --> 00:22:29,130
+what we're doing is
+kind of taking an
+
+431
+00:22:29,130 --> 00:22:35,210
+or of this pair and then an
+or of that pair with this one
+
+432
+00:22:35,210 --> 00:22:38,880
+variable, one
+literal, I should say.
+
+433
+00:22:38,880 --> 00:22:44,090
+And because this is not
+red, I can put red here.
+
+434
+00:22:44,090 --> 00:22:45,920
+Again, all three
+colors must appear.
+
+435
+00:22:45,920 --> 00:22:47,820
+So in general,
+what I want to do--
+
+436
+00:22:47,820 --> 00:22:50,350
+you'll see why in a moment--
+is push the reds as far
+
+437
+00:22:50,350 --> 00:22:51,590
+back as possible.
+
+438
+00:22:51,590 --> 00:22:55,140
+So if I can put a red or
+red here or here, I'm happy,
+
+439
+00:22:55,140 --> 00:22:58,350
+and I put some other
+color over there.
+
+440
+00:22:58,350 --> 00:23:01,890
+I guess I'll put-- It
+doesn't matter which
+
+441
+00:23:01,890 --> 00:23:04,330
+one is blue or green here.
+
+442
+00:23:04,330 --> 00:23:06,240
+As long as I can
+put red back here,
+
+443
+00:23:06,240 --> 00:23:09,110
+I can also put red back here.
+
+444
+00:23:09,110 --> 00:23:10,790
+And it could be if
+this one is blue,
+
+445
+00:23:10,790 --> 00:23:12,260
+I could also put
+the red guy here,
+
+446
+00:23:12,260 --> 00:23:13,570
+and I have the flexibility.
+
+447
+00:23:13,570 --> 00:23:16,060
+But as long as I can put
+red either here or here,
+
+448
+00:23:16,060 --> 00:23:18,350
+this one will not be red.
+
+449
+00:23:18,350 --> 00:23:20,420
+And furthermore, I
+can make it not green,
+
+450
+00:23:20,420 --> 00:23:23,540
+and that's what these
+constraints tell me.
+
+451
+00:23:23,540 --> 00:23:25,830
+This vertex should
+not be red or green.
+
+452
+00:23:25,830 --> 00:23:27,540
+That's satisfied here.
+
+453
+00:23:27,540 --> 00:23:30,450
+And you can show, you
+can check all cases,
+
+454
+00:23:30,450 --> 00:23:33,440
+or just sort of go
+through that argument.
+
+455
+00:23:33,440 --> 00:23:36,160
+The only bad case is
+when they're all red,
+
+456
+00:23:36,160 --> 00:23:38,780
+because then, looking
+at this triangle,
+
+457
+00:23:38,780 --> 00:23:40,770
+the red one has to
+be pushed forward.
+
+458
+00:23:40,770 --> 00:23:43,020
+And then, because this one
+is red and this one is red,
+
+459
+00:23:43,020 --> 00:23:45,421
+again, this red has
+to be pushed forward,
+
+460
+00:23:45,421 --> 00:23:46,920
+but then we have a
+red-red adjacency
+
+461
+00:23:46,920 --> 00:23:49,020
+and that's not allowed.
+
+462
+00:23:49,020 --> 00:23:53,240
+So that is 3SAT to
+vertex 3-coloring.
+
+463
+00:23:53,240 --> 00:23:53,740
+Cool.
+
+464
+00:23:53,740 --> 00:23:59,692
+Now, this does not
+preserve planarity,
+
+465
+00:23:59,692 --> 00:24:01,275
+because the colors
+gadget is connected
+
+466
+00:24:01,275 --> 00:24:03,490
+to pretty much everything,
+and it does not
+
+467
+00:24:03,490 --> 00:24:05,360
+preserve bounded degree.
+
+468
+00:24:05,360 --> 00:24:05,915
+Question.
+
+469
+00:24:05,915 --> 00:24:06,540
+AUDIENCE: Yeah.
+
+470
+00:24:06,540 --> 00:24:09,723
+The variable gadget doesn't seem
+to be connected to the clause
+
+471
+00:24:09,723 --> 00:24:10,502
+gadget here.
+
+472
+00:24:10,502 --> 00:24:11,210
+PROFESSOR: Sorry.
+
+473
+00:24:11,210 --> 00:24:12,880
+I mean, when I
+sit right XI here,
+
+474
+00:24:12,880 --> 00:24:15,310
+I mean it's the same
+vertex as one of these.
+
+475
+00:24:15,310 --> 00:24:15,940
+Yeah.
+
+476
+00:24:15,940 --> 00:24:18,155
+So if there's n
+variables, n clauses,
+
+477
+00:24:18,155 --> 00:24:20,890
+it's going to be 2n
+of these vertices
+
+478
+00:24:20,890 --> 00:24:25,000
+and then they're shared
+among the n clauses.
+
+479
+00:24:25,000 --> 00:24:27,020
+It's hard to draw,
+because actually they're
+
+480
+00:24:27,020 --> 00:24:31,580
+identified as opposed
+to connected by an edge.
+
+481
+00:24:31,580 --> 00:24:33,411
+Other questions?
+
+482
+00:24:33,411 --> 00:24:33,910
+All right.
+
+483
+00:24:33,910 --> 00:24:37,410
+So I think first
+we make it planar.
+
+484
+00:24:37,410 --> 00:24:42,140
+We have a new crossover gadget
+for specific to 3-coloring.
+
+485
+00:24:42,140 --> 00:24:44,140
+Planar 3SAT doesn't seem
+to help immediately,
+
+486
+00:24:44,140 --> 00:24:45,580
+so we're just going
+to, because we
+
+487
+00:24:45,580 --> 00:24:47,540
+have all of these
+connections from colors
+
+488
+00:24:47,540 --> 00:24:53,220
+gadget to everybody,
+plug this in whenever
+
+489
+00:24:53,220 --> 00:24:54,330
+we have an intersection.
+
+490
+00:24:54,330 --> 00:24:57,750
+And the idea, locally,
+is that whatever color
+
+491
+00:24:57,750 --> 00:24:59,410
+is assigned to this
+vertex, x, must
+
+492
+00:24:59,410 --> 00:25:01,580
+be the same as the color
+assigned to this vertex,
+
+493
+00:25:01,580 --> 00:25:05,200
+x prime, and similarly,
+y, and y prime.
+
+494
+00:25:05,200 --> 00:25:07,100
+And they're free
+of each other, you
+
+495
+00:25:07,100 --> 00:25:09,180
+can do any assignment to
+x, any assignment to y,
+
+496
+00:25:09,180 --> 00:25:11,482
+and this will be satisfiable.
+
+497
+00:25:11,482 --> 00:25:14,404
+I'll give you some colorings
+to give you-- I mean,
+
+498
+00:25:14,404 --> 00:25:16,610
+this is essentially two
+cases, which is either
+
+499
+00:25:16,610 --> 00:25:20,020
+x and x prime have the
+same color as y and y prime
+
+500
+00:25:20,020 --> 00:25:21,870
+or they have different colors.
+
+501
+00:25:21,870 --> 00:25:23,340
+So here's the same
+color case, you
+
+502
+00:25:23,340 --> 00:25:25,690
+get this nice
+rotational symmetry.
+
+503
+00:25:25,690 --> 00:25:29,570
+In general, you've
+got this wheel pattern
+
+504
+00:25:29,570 --> 00:25:34,600
+of four triangles, and
+you have some color here,
+
+505
+00:25:34,600 --> 00:25:37,490
+and then that forced these guys
+to alternate in the other two
+
+506
+00:25:37,490 --> 00:25:40,600
+colors available
+around that center,
+
+507
+00:25:40,600 --> 00:25:42,280
+and then it essentially
+communicates
+
+508
+00:25:42,280 --> 00:25:44,730
+the information you need.
+
+509
+00:25:44,730 --> 00:25:46,820
+It's hard to do sort of
+a straight line argument
+
+510
+00:25:46,820 --> 00:25:49,700
+about why this is the case,
+other than to just try
+
+511
+00:25:49,700 --> 00:25:51,480
+all the possibilities.
+
+512
+00:25:51,480 --> 00:25:53,200
+But there's, again,
+lots of triangles.
+
+513
+00:25:53,200 --> 00:25:55,741
+So once you know this is red,
+you know one of these is green,
+
+514
+00:25:55,741 --> 00:25:57,480
+and one of them is blue.
+
+515
+00:25:57,480 --> 00:25:59,352
+Could go one way or the
+other at this point.
+
+516
+00:25:59,352 --> 00:26:01,560
+I think you could actually
+do it one way or the other
+
+517
+00:26:01,560 --> 00:26:03,226
+and just flip all the
+greens with blues,
+
+518
+00:26:03,226 --> 00:26:06,610
+and vice versa, because green
+and blue is, in this case,
+
+519
+00:26:06,610 --> 00:26:09,100
+local to the gadget.
+
+520
+00:26:09,100 --> 00:26:12,420
+And, anyway, you end up with,
+once these two are set red,
+
+521
+00:26:12,420 --> 00:26:17,370
+these two are forced to
+be set red by casework.
+
+522
+00:26:17,370 --> 00:26:22,360
+Here is the other case, when
+xx prime is different from yy
+
+523
+00:26:22,360 --> 00:26:25,270
+prime, or you could say
+x and y are different,
+
+524
+00:26:25,270 --> 00:26:27,552
+and then, again, it forces
+x to propagate through,
+
+525
+00:26:27,552 --> 00:26:28,510
+y to propagate through.
+
+526
+00:26:28,510 --> 00:26:32,640
+We still get alternation
+here, but now the unused color
+
+527
+00:26:32,640 --> 00:26:35,830
+is in the center, whereas
+before, this picture,
+
+528
+00:26:35,830 --> 00:26:38,880
+we had the center color was
+the color used by all three,
+
+529
+00:26:38,880 --> 00:26:39,740
+or all four of them.
+
+530
+00:26:39,740 --> 00:26:41,760
+On the outside
+here, it's the color
+
+531
+00:26:41,760 --> 00:26:44,110
+that's not any of those two.
+
+532
+00:26:44,110 --> 00:26:49,741
+And, again, it's forced
+by playing around.
+
+533
+00:26:49,741 --> 00:26:50,240
+OK.
+
+534
+00:26:50,240 --> 00:26:52,710
+So that means we
+have a figure here
+
+535
+00:26:52,710 --> 00:26:54,930
+about how you actually
+use this crossover
+
+536
+00:26:54,930 --> 00:26:57,960
+gadget because there's this
+issue of identification,
+
+537
+00:26:57,960 --> 00:26:59,510
+which is little bit subtle.
+
+538
+00:26:59,510 --> 00:27:02,670
+So if you have an edge that's
+crossed by a bunch of edges,
+
+539
+00:27:02,670 --> 00:27:04,160
+you intuitively
+want to stick this
+
+540
+00:27:04,160 --> 00:27:06,010
+into each of the crossings.
+
+541
+00:27:06,010 --> 00:27:08,790
+But because this is copying
+the value here to here,
+
+542
+00:27:08,790 --> 00:27:10,510
+it's really just like
+taking this vertex
+
+543
+00:27:10,510 --> 00:27:13,370
+and pushing it to the
+other side of the edge.
+
+544
+00:27:13,370 --> 00:27:15,330
+So when you throw
+in this crossover,
+
+545
+00:27:15,330 --> 00:27:19,250
+you want to identify the
+left vertex of the crossover
+
+546
+00:27:19,250 --> 00:27:22,620
+with the original
+vertex on the left side,
+
+547
+00:27:22,620 --> 00:27:24,956
+but not identify it
+on the right side.
+
+548
+00:27:24,956 --> 00:27:26,330
+Therefore, overall,
+there's still
+
+549
+00:27:26,330 --> 00:27:30,130
+one edge connecting x and y
+because this is essentially
+
+550
+00:27:30,130 --> 00:27:33,240
+a copy of x, but you still
+need that edge to connect to y.
+
+551
+00:27:33,240 --> 00:27:35,020
+So you don't want to
+identify both sides,
+
+552
+00:27:35,020 --> 00:27:36,850
+you don't want to
+identify on neither side,
+
+553
+00:27:36,850 --> 00:27:38,810
+because that would be two edges.
+
+554
+00:27:38,810 --> 00:27:39,720
+Identify on one side.
+
+555
+00:27:39,720 --> 00:27:42,250
+And it's like a vertex
+cover, but you just
+
+556
+00:27:42,250 --> 00:27:46,740
+pick one side for
+each edge arbitrarily.
+
+557
+00:27:46,740 --> 00:27:51,750
+And that is planar vertex
+3-coloring not bound
+
+558
+00:27:51,750 --> 00:27:53,601
+to degree yet.
+
+559
+00:27:53,601 --> 00:27:54,100
+OK?
+
+560
+00:27:54,100 --> 00:27:55,680
+Next reduction.
+
+561
+00:27:55,680 --> 00:27:59,190
+This is in the same paper.
+
+562
+00:27:59,190 --> 00:28:00,740
+Here's how to
+simulate high degree.
+
+563
+00:28:00,740 --> 00:28:01,989
+I mean, it's pretty intuitive.
+
+564
+00:28:01,989 --> 00:28:04,410
+Once you have the
+ability to copy color,
+
+565
+00:28:04,410 --> 00:28:08,560
+you can use it to
+get high degree.
+
+566
+00:28:08,560 --> 00:28:11,780
+OK, I'll talk about the actual
+degree bound in the moment,
+
+567
+00:28:11,780 --> 00:28:14,020
+but let's say we're
+aiming for max degree 4.
+
+568
+00:28:14,020 --> 00:28:16,610
+
+569
+00:28:16,610 --> 00:28:19,267
+This one, you can actually
+argue in a very simple way.
+
+570
+00:28:19,267 --> 00:28:20,350
+So here's a little gadget.
+
+571
+00:28:20,350 --> 00:28:22,830
+I claim it makes three
+copies of this color,
+
+572
+00:28:22,830 --> 00:28:25,520
+or two copies of the color at x.
+
+573
+00:28:25,520 --> 00:28:26,979
+So you've got these
+three vertices.
+
+574
+00:28:26,979 --> 00:28:28,645
+One of them's blue,
+one of them's green.
+
+575
+00:28:28,645 --> 00:28:31,130
+Doesn't matter which is which,
+but then this vertex must
+
+576
+00:28:31,130 --> 00:28:34,750
+be red because of that
+triangle, and then this vertex
+
+577
+00:28:34,750 --> 00:28:36,730
+must be green because
+of that triangle,
+
+578
+00:28:36,730 --> 00:28:39,290
+then this vertex must be blue
+because of that triangle,
+
+579
+00:28:39,290 --> 00:28:42,250
+this one must be red,
+and this one must be red.
+
+580
+00:28:42,250 --> 00:28:44,740
+So that's a really
+easy one to argue.
+
+581
+00:28:44,740 --> 00:28:47,130
+And so, this is not
+very interesting,
+
+582
+00:28:47,130 --> 00:28:48,830
+because we made two copies.
+
+583
+00:28:48,830 --> 00:28:50,520
+This will simulate
+a degree 3 vertex,
+
+584
+00:28:50,520 --> 00:28:52,590
+which we don't worry about.
+
+585
+00:28:52,590 --> 00:28:54,340
+But where it gets
+interesting, if you just
+
+586
+00:28:54,340 --> 00:28:55,923
+string a bunch of
+these together here,
+
+587
+00:28:55,923 --> 00:28:58,430
+we end up with five
+copies of a single color,
+
+588
+00:28:58,430 --> 00:29:01,080
+and so you can connect with
+a single edge out here,
+
+589
+00:29:01,080 --> 00:29:03,370
+let's say.
+
+590
+00:29:03,370 --> 00:29:05,770
+I guess you could even
+afford two edges there.
+
+591
+00:29:05,770 --> 00:29:07,830
+In particular, we can
+use this to simulate
+
+592
+00:29:07,830 --> 00:29:14,560
+one vertex of degree 5 and we
+will end up with max degree 4.
+
+593
+00:29:14,560 --> 00:29:17,710
+Degree 4 Because some of
+these vertices have degree 4.
+
+594
+00:29:17,710 --> 00:29:19,920
+Actually, most of them do.
+
+595
+00:29:19,920 --> 00:29:22,883
+AUDIENCE: Could you have just
+used the crossover gadget
+
+596
+00:29:22,883 --> 00:29:25,350
+as a high degree gadget?
+
+597
+00:29:25,350 --> 00:29:26,601
+PROFESSOR: Oh, in a circle.
+
+598
+00:29:26,601 --> 00:29:28,100
+Yeah, that would
+also work, I think.
+
+599
+00:29:28,100 --> 00:29:29,102
+Do you have a problem?
+
+600
+00:29:29,102 --> 00:29:31,560
+AUDIENCE: There are degree 7
+vertices when you pit together
+
+601
+00:29:31,560 --> 00:29:32,592
+two of these?
+
+602
+00:29:32,592 --> 00:29:33,175
+You've moved--
+
+603
+00:29:33,175 --> 00:29:34,700
+[INTERPOSING VOICES]
+
+604
+00:29:34,700 --> 00:29:36,280
+PROFESSOR: Degree 6.
+
+605
+00:29:36,280 --> 00:29:38,070
+Yeah.
+
+606
+00:29:38,070 --> 00:29:38,600
+Well, OK.
+
+607
+00:29:38,600 --> 00:29:40,550
+So that will give
+you max degree 6,
+
+608
+00:29:40,550 --> 00:29:42,200
+and this gives you max degree 4.
+
+609
+00:29:42,200 --> 00:29:42,710
+Yeah.
+
+610
+00:29:42,710 --> 00:29:44,530
+If we do is after
+the crossover gadget,
+
+611
+00:29:44,530 --> 00:29:46,730
+then the crossover
+gadget will become happy.
+
+612
+00:29:46,730 --> 00:29:49,810
+
+613
+00:29:49,810 --> 00:29:50,920
+So what's the conclusion?
+
+614
+00:29:50,920 --> 00:30:01,275
+Planar max degree 4,
+3-coloring is hard.
+
+615
+00:30:01,275 --> 00:30:04,540
+
+616
+00:30:04,540 --> 00:30:14,660
+But be careful, max
+degree 3, 3-coloring
+
+617
+00:30:14,660 --> 00:30:24,050
+is easy polynomial time
+unless your graph is k4.
+
+618
+00:30:24,050 --> 00:30:25,400
+So one counter example.
+
+619
+00:30:25,400 --> 00:30:26,870
+This is always possible.
+
+620
+00:30:26,870 --> 00:30:33,100
+This is called Burke's
+theorem from 1941.
+
+621
+00:30:33,100 --> 00:30:35,820
+So in general, if you
+have max degree delta,
+
+622
+00:30:35,820 --> 00:30:39,280
+there's a delta coloring unless
+a couple of bad things happen.
+
+623
+00:30:39,280 --> 00:30:44,200
+Odd cycle or a complete graph.
+
+624
+00:30:44,200 --> 00:30:44,850
+So that's cool.
+
+625
+00:30:44,850 --> 00:30:46,391
+AUDIENCE: What do
+you mean if it's k4
+
+626
+00:30:46,391 --> 00:30:48,490
+and then it doesn't work?
+
+627
+00:30:48,490 --> 00:30:51,167
+PROFESSOR: k4
+requires four colors.
+
+628
+00:30:51,167 --> 00:30:53,500
+AUDIENCE: But then when finding
+whether or not there's--
+
+629
+00:30:53,500 --> 00:30:55,778
+PROFESSOR: But k4
+has max degree 3.
+
+630
+00:30:55,778 --> 00:30:57,609
+AUDIENCE: [INAUDIBLE]
+polynomial figure out
+
+631
+00:30:57,609 --> 00:30:58,650
+if there's a 3 colorable?
+
+632
+00:30:58,650 --> 00:31:00,870
+PROFESSOR: It's
+polynomial in all cases,
+
+633
+00:31:00,870 --> 00:31:04,320
+but I'm saying every
+max degree 3 graph is
+
+634
+00:31:04,320 --> 00:31:06,290
+3 colorable except for k4.
+
+635
+00:31:06,290 --> 00:31:08,570
+So the decision
+problem is, am I k4.
+
+636
+00:31:08,570 --> 00:31:13,104
+Or I guess, am I not k4 would
+be the 3-coloring problem.
+
+637
+00:31:13,104 --> 00:31:14,960
+AUDIENCE: The word
+planar isn't up there.
+
+638
+00:31:14,960 --> 00:31:19,060
+PROFESSOR: Right, even without
+planar, it's polynomial.
+
+639
+00:31:19,060 --> 00:31:20,920
+Don't need planarity
+for that algorithm
+
+640
+00:31:20,920 --> 00:31:23,870
+for testing for k4ness.
+
+641
+00:31:23,870 --> 00:31:26,450
+And I didn't check,
+but I'm pretty sure.
+
+642
+00:31:26,450 --> 00:31:28,210
+Usually once the
+decision problem is easy,
+
+643
+00:31:28,210 --> 00:31:30,239
+also the actual coloring
+algorithm is easy,
+
+644
+00:31:30,239 --> 00:31:31,030
+but I didn't check.
+
+645
+00:31:31,030 --> 00:31:34,270
+I assume there's a polynomial
+coloring algorithm, not just
+
+646
+00:31:34,270 --> 00:31:36,880
+a decision algorithm, but
+we should double check
+
+647
+00:31:36,880 --> 00:31:40,298
+before you cite that result.
+
+648
+00:31:40,298 --> 00:31:43,875
+AUDIENCE: You can
+[INAUDIBLE], make
+
+649
+00:31:43,875 --> 00:31:46,745
+yourself a [INAUDIBLE] gadget
+and then try probing things.
+
+650
+00:31:46,745 --> 00:31:47,620
+PROFESSOR: Oh, right.
+
+651
+00:31:47,620 --> 00:31:49,161
+You could reduce
+the decision problem
+
+652
+00:31:49,161 --> 00:31:51,110
+to the actual coloring problem.
+
+653
+00:31:51,110 --> 00:31:53,180
+You can test whether two
+guys have the same color
+
+654
+00:31:53,180 --> 00:31:55,690
+by a bunch of probes.
+
+655
+00:31:55,690 --> 00:31:57,790
+OK, so what?
+
+656
+00:31:57,790 --> 00:31:59,910
+Why graph coloring?
+
+657
+00:31:59,910 --> 00:32:02,282
+There aren't a ton of
+proofs that use coloring,
+
+658
+00:32:02,282 --> 00:32:04,240
+because usually 3SAT is
+simpler because it only
+
+659
+00:32:04,240 --> 00:32:06,770
+has binary values, but
+there are situations
+
+660
+00:32:06,770 --> 00:32:08,330
+where coloring is helpful.
+
+661
+00:32:08,330 --> 00:32:13,580
+I have one here that we used in
+the context of pushing blocks.
+
+662
+00:32:13,580 --> 00:32:21,530
+We covered Push-* is hard,
+we covered Push-1 is hard,
+
+663
+00:32:21,530 --> 00:32:24,760
+we covered these two
+proofs in that lecture,
+
+664
+00:32:24,760 --> 00:32:28,670
+and then implied PushPush, but
+we didn't talk about Push-X.
+
+665
+00:32:28,670 --> 00:32:31,420
+Push-X was the version where
+you're not allowed to revisit
+
+666
+00:32:31,420 --> 00:32:32,697
+the same square twice.
+
+667
+00:32:32,697 --> 00:32:34,155
+Like every time
+you leave a square,
+
+668
+00:32:34,155 --> 00:32:36,670
+it falls down into
+the abyss behind you,
+
+669
+00:32:36,670 --> 00:32:39,550
+so you can never step
+on that square again.
+
+670
+00:32:39,550 --> 00:32:45,020
+So our hardness proof
+for that uses coloring,
+
+671
+00:32:45,020 --> 00:32:48,530
+and I think it's instructive
+not because I care especially
+
+672
+00:32:48,530 --> 00:32:51,320
+about Push-1X but it seems
+like a general approach
+
+673
+00:32:51,320 --> 00:32:52,840
+to representing color.
+
+674
+00:32:52,840 --> 00:32:54,490
+So good to see the gadgets.
+
+675
+00:32:54,490 --> 00:32:59,680
+First, a simple idea is that,
+if I have some planar graph
+
+676
+00:32:59,680 --> 00:33:01,730
+I want to take an Euler
+tour-- a tour that
+
+677
+00:33:01,730 --> 00:33:04,830
+visits every edge
+exactly twice--
+
+678
+00:33:04,830 --> 00:33:09,740
+and I want to do
+that in a planar way.
+
+679
+00:33:09,740 --> 00:33:11,770
+So the idea is, I
+don't want my tour
+
+680
+00:33:11,770 --> 00:33:13,750
+to come down this
+way through a vertex
+
+681
+00:33:13,750 --> 00:33:16,950
+and then later come through
+this way in a vertex.
+
+682
+00:33:16,950 --> 00:33:18,950
+That's a meaningful
+thing because I
+
+683
+00:33:18,950 --> 00:33:20,410
+know that planar
+coloring is hard,
+
+684
+00:33:20,410 --> 00:33:21,993
+so I'm going to
+reduce from planar max
+
+685
+00:33:21,993 --> 00:33:23,316
+degree 4, 3-coloring.
+
+686
+00:33:23,316 --> 00:33:25,440
+So I've got a planar graph,
+I draw it in the plane,
+
+687
+00:33:25,440 --> 00:33:26,965
+and then relative
+to that drawing,
+
+688
+00:33:26,965 --> 00:33:29,090
+I want to make sure there's
+no crossings in my tour
+
+689
+00:33:29,090 --> 00:33:31,510
+that visits every
+edge exactly twice.
+
+690
+00:33:31,510 --> 00:33:33,800
+These always exist,
+simple inductive proof,
+
+691
+00:33:33,800 --> 00:33:37,010
+start with one vertex,
+visit the star around it,
+
+692
+00:33:37,010 --> 00:33:39,740
+and then just start gluing
+these things together.
+
+693
+00:33:39,740 --> 00:33:43,960
+In the inductive way, you
+will get a planar Eulerian
+
+694
+00:33:43,960 --> 00:33:47,590
+tour, standard trick.
+
+695
+00:33:47,590 --> 00:33:49,159
+Now we're going
+to use that tour.
+
+696
+00:33:49,159 --> 00:33:51,810
+So here we see an actual
+graph in the dashed lines
+
+697
+00:33:51,810 --> 00:33:56,050
+and then we see the Euler
+tour in the red lines,
+
+698
+00:33:56,050 --> 00:34:01,020
+and the red path is
+essentially the tour
+
+699
+00:34:01,020 --> 00:34:05,460
+taken by the robot that's
+pushing the blocks around.
+
+700
+00:34:05,460 --> 00:34:07,730
+So it's walking around in
+some direction somewhere--
+
+701
+00:34:07,730 --> 00:34:09,260
+I think not drawn here.
+
+702
+00:34:09,260 --> 00:34:10,646
+Maybe that.
+
+703
+00:34:10,646 --> 00:34:12,770
+I'm going to break this
+apart and I'm going to say,
+
+704
+00:34:12,770 --> 00:34:14,769
+the robot starts here,
+there's an obstacle here,
+
+705
+00:34:14,769 --> 00:34:16,120
+and the goal is to get here.
+
+706
+00:34:16,120 --> 00:34:18,330
+So your sole purpose
+in this puzzle
+
+707
+00:34:18,330 --> 00:34:20,980
+is to start here and get
+all the way around the loop,
+
+708
+00:34:20,980 --> 00:34:23,550
+and you're just going to be
+able to go along the red path.
+
+709
+00:34:23,550 --> 00:34:24,810
+But there's some interactions.
+
+710
+00:34:24,810 --> 00:34:26,518
+There's the blue
+arrows, and then there's
+
+711
+00:34:26,518 --> 00:34:30,136
+the green, wiggly lines
+and that's all you'll need.
+
+712
+00:34:30,136 --> 00:34:32,260
+One of them is an equal
+constraint, and one of them
+
+713
+00:34:32,260 --> 00:34:33,290
+is not equal constraint.
+
+714
+00:34:33,290 --> 00:34:35,730
+And the idea is that when
+you visit a vertex-- so let's
+
+715
+00:34:35,730 --> 00:34:38,560
+say you start here at u-- I'm
+going to pick a color-- 1, 2,
+
+716
+00:34:38,560 --> 00:34:42,020
+or 3, and there will actually
+be three red paths here.
+
+717
+00:34:42,020 --> 00:34:44,830
+Then those three red paths
+will interact with these three
+
+718
+00:34:44,830 --> 00:34:48,040
+red paths to force equality.
+
+719
+00:34:48,040 --> 00:34:50,720
+The wiggly lines mean equality.
+
+720
+00:34:50,720 --> 00:34:52,331
+So I want that
+whatever color I've
+
+721
+00:34:52,331 --> 00:34:54,580
+chosen here is the same as
+the color I've chosen here,
+
+722
+00:34:54,580 --> 00:34:56,660
+because I want u
+to have one color,
+
+723
+00:34:56,660 --> 00:34:58,560
+I'm only allowed to
+assign one color to u.
+
+724
+00:34:58,560 --> 00:35:01,670
+So we're going to look at how
+to do that equality constraint.
+
+725
+00:35:01,670 --> 00:35:04,570
+And then we have these
+types of constraints,
+
+726
+00:35:04,570 --> 00:35:08,870
+which say that the
+colors are different,
+
+727
+00:35:08,870 --> 00:35:11,190
+non-equal, because I
+want the color assigned
+
+728
+00:35:11,190 --> 00:35:13,660
+to u to be different than
+the color assigned to v.
+
+729
+00:35:13,660 --> 00:35:15,780
+And this path is
+coming from v so
+
+730
+00:35:15,780 --> 00:35:19,200
+at this point the color that
+you're on, which of the red
+
+731
+00:35:19,200 --> 00:35:21,970
+rails you're on,
+says which color
+
+732
+00:35:21,970 --> 00:35:24,600
+is assigned to v. You
+want that color to be
+
+733
+00:35:24,600 --> 00:35:26,430
+different from the
+color assigned to u.
+
+734
+00:35:26,430 --> 00:35:28,410
+Then you transition and say, OK.
+
+735
+00:35:28,410 --> 00:35:29,910
+Now I'm going to
+start over and pick
+
+736
+00:35:29,910 --> 00:35:31,710
+another color between 1 and 3.
+
+737
+00:35:31,710 --> 00:35:34,740
+And then here, it's constrained
+to be equal to this one.
+
+738
+00:35:34,740 --> 00:35:37,480
+So I think the arrows are
+delineating the transitions
+
+739
+00:35:37,480 --> 00:35:38,480
+from the color.
+
+740
+00:35:38,480 --> 00:35:41,799
+Here it should all be color
+v. Well, that's maybe not so
+
+741
+00:35:41,799 --> 00:35:43,590
+[INAUDIBLE], but
+somewhere along this edge,
+
+742
+00:35:43,590 --> 00:35:45,345
+you're going to
+switch to thinking
+
+743
+00:35:45,345 --> 00:35:47,470
+about the color v to thinking
+about the color of u.
+
+744
+00:35:47,470 --> 00:35:50,290
+You only need one
+color at any moment,
+
+745
+00:35:50,290 --> 00:35:53,014
+so there will only have to be
+three parallel tracks for each
+
+746
+00:35:53,014 --> 00:35:53,740
+of these things.
+
+747
+00:35:53,740 --> 00:35:54,990
+That's the high level picture.
+
+748
+00:35:54,990 --> 00:35:58,020
+Let me tell you actually do it.
+
+749
+00:35:58,020 --> 00:36:01,862
+So here's this left part
+expanded into a slightly more
+
+750
+00:36:01,862 --> 00:36:02,570
+detailed picture.
+
+751
+00:36:02,570 --> 00:36:05,680
+Still a bunch of
+details to be filled in,
+
+752
+00:36:05,680 --> 00:36:08,310
+but we see still the non-equal
+and the equal gadgets,
+
+753
+00:36:08,310 --> 00:36:12,350
+just like before, but
+here I've explicitly
+
+754
+00:36:12,350 --> 00:36:15,030
+shown the three tracks.
+
+755
+00:36:15,030 --> 00:36:27,720
+So we were looking at this
+edge before, so let's say here.
+
+756
+00:36:27,720 --> 00:36:29,510
+Here's where you
+choose the color for u.
+
+757
+00:36:29,510 --> 00:36:31,670
+So we're going to use what
+we call a fork gadget.
+
+758
+00:36:31,670 --> 00:36:33,550
+We've maybe seen something
+like this before.
+
+759
+00:36:33,550 --> 00:36:37,110
+When you come in, you can
+choose one of these three paths.
+
+760
+00:36:37,110 --> 00:36:38,610
+Once you choose,
+you can't unchoose.
+
+761
+00:36:38,610 --> 00:36:41,667
+It's a one-way gadget.
+
+762
+00:36:41,667 --> 00:36:43,250
+So let's say you
+choose path one, that
+
+763
+00:36:43,250 --> 00:36:46,045
+means that this
+vertex u is colored 1.
+
+764
+00:36:46,045 --> 00:36:48,420
+Then you're going to have some
+equal gadget-- these three
+
+765
+00:36:48,420 --> 00:36:50,860
+paths are connected
+over here-- but you'll
+
+766
+00:36:50,860 --> 00:36:53,831
+be forced that this path is
+the same as the one chosen over
+
+767
+00:36:53,831 --> 00:36:54,330
+here.
+
+768
+00:36:54,330 --> 00:36:55,770
+We'll get to that one later.
+
+769
+00:36:55,770 --> 00:36:57,520
+Then you go over
+here, you're forced
+
+770
+00:36:57,520 --> 00:36:59,020
+that among these
+three paths, you're
+
+771
+00:36:59,020 --> 00:37:01,970
+different from the
+three paths over here,
+
+772
+00:37:01,970 --> 00:37:03,890
+because that's going
+to be the color v.
+
+773
+00:37:03,890 --> 00:37:06,525
+And then, you now want to
+switch from the u color
+
+774
+00:37:06,525 --> 00:37:07,890
+to the v color.
+
+775
+00:37:07,890 --> 00:37:10,020
+So I'm just going to have
+some one-way gadgets here
+
+776
+00:37:10,020 --> 00:37:14,240
+that coalesce these
+three wires into one,
+
+777
+00:37:14,240 --> 00:37:19,480
+and then whatever's next-- Let's
+say this is next, v was a leaf.
+
+778
+00:37:19,480 --> 00:37:22,357
+Then you have a fork, again,
+to choose the color for v.
+
+779
+00:37:22,357 --> 00:37:24,440
+So it's kind of weird, you
+get to choose the color
+
+780
+00:37:24,440 --> 00:37:25,550
+for vertex several times.
+
+781
+00:37:25,550 --> 00:37:28,220
+Here we're choosing it for u,
+here were choosing it again
+
+782
+00:37:28,220 --> 00:37:29,800
+for u, but they're
+combined together
+
+783
+00:37:29,800 --> 00:37:31,633
+with this equal gadget,
+so those two choices
+
+784
+00:37:31,633 --> 00:37:33,540
+are forced to be the same.
+
+785
+00:37:33,540 --> 00:37:35,724
+That's the idea.
+
+786
+00:37:35,724 --> 00:37:37,140
+And then the
+non-equal gadgets are
+
+787
+00:37:37,140 --> 00:37:39,726
+doing the actual
+coloring constraint
+
+788
+00:37:39,726 --> 00:37:42,630
+of no monochromatic edges.
+
+789
+00:37:42,630 --> 00:37:45,800
+So it looks complicated,
+but all you really need
+
+790
+00:37:45,800 --> 00:37:46,580
+are these things.
+
+791
+00:37:46,580 --> 00:37:47,650
+Well, and the fork
+and the one-way.
+
+792
+00:37:47,650 --> 00:37:49,066
+Let's do the fork
+and the one-way,
+
+793
+00:37:49,066 --> 00:37:50,195
+because those are easy.
+
+794
+00:37:50,195 --> 00:37:51,570
+We've basically
+seen them before.
+
+795
+00:37:51,570 --> 00:37:54,390
+Pretty sure we did
+this one-way gadget.
+
+796
+00:37:54,390 --> 00:37:57,590
+You can go from a to
+b, but not from b to a.
+
+797
+00:37:57,590 --> 00:38:00,611
+
+798
+00:38:00,611 --> 00:38:01,110
+Cool.
+
+799
+00:38:01,110 --> 00:38:02,910
+So that means when
+I come through here,
+
+800
+00:38:02,910 --> 00:38:07,350
+I can't back up along some
+other path, that would be bad.
+
+801
+00:38:07,350 --> 00:38:11,150
+And the fork gadget,
+this is a two-way fork.
+
+802
+00:38:11,150 --> 00:38:14,650
+You come in from a and you can
+either push this in and then
+
+803
+00:38:14,650 --> 00:38:16,350
+choose to go to
+c, but then you'll
+
+804
+00:38:16,350 --> 00:38:20,750
+never be able to go to b, or
+you can push this down and then
+
+805
+00:38:20,750 --> 00:38:22,870
+go to b and you'll never
+be able to go to c.
+
+806
+00:38:22,870 --> 00:38:26,361
+So when you make this choice,
+you can't undo the choice.
+
+807
+00:38:26,361 --> 00:38:27,860
+You just chain two
+of these together
+
+808
+00:38:27,860 --> 00:38:29,460
+to make a three-way choice.
+
+809
+00:38:29,460 --> 00:38:31,570
+And the one-way is to
+prevent you from going back
+
+810
+00:38:31,570 --> 00:38:33,800
+along one of these paths.
+
+811
+00:38:33,800 --> 00:38:36,230
+So that's the easy part.
+
+812
+00:38:36,230 --> 00:38:39,030
+Then what about the equal
+and the non-equal gadgets?
+
+813
+00:38:39,030 --> 00:38:40,970
+These are complicated,
+but in the end,
+
+814
+00:38:40,970 --> 00:38:43,180
+they reduce to some
+very simple gadgets.
+
+815
+00:38:43,180 --> 00:38:46,510
+So let's start with
+the non-equal gadget.
+
+816
+00:38:46,510 --> 00:38:52,530
+So we have three possible
+color choices for one edge,
+
+817
+00:38:52,530 --> 00:38:57,100
+for one vertex, and we have
+three possible choices down
+
+818
+00:38:57,100 --> 00:38:58,510
+here for the other vertex.
+
+819
+00:38:58,510 --> 00:39:01,290
+Together, those vertices
+should form the edge e,
+
+820
+00:39:01,290 --> 00:39:03,580
+and this is written
+as e going one way
+
+821
+00:39:03,580 --> 00:39:06,040
+or e going the other way
+and coming from one vertex
+
+822
+00:39:06,040 --> 00:39:08,410
+and coming from the
+other vertex end.
+
+823
+00:39:08,410 --> 00:39:12,380
+And what we want is
+to forbid blue-blue,
+
+824
+00:39:12,380 --> 00:39:16,870
+or to forbid red-red, or
+to forbid orange-orange.
+
+825
+00:39:16,870 --> 00:39:19,780
+And because this paper was also
+printed in black and white,
+
+826
+00:39:19,780 --> 00:39:23,430
+the dash patterns also
+duplicate the color information.
+
+827
+00:39:23,430 --> 00:39:25,210
+So even if you
+lost all color, you
+
+828
+00:39:25,210 --> 00:39:28,000
+can distinguish
+these types of lines.
+
+829
+00:39:28,000 --> 00:39:34,550
+So we need this gadget, which
+we called a manned gadget,
+
+830
+00:39:34,550 --> 00:39:37,460
+but you should not
+have both of these.
+
+831
+00:39:37,460 --> 00:39:39,130
+And there's a couple
+different cases,
+
+832
+00:39:39,130 --> 00:39:41,180
+depending on the orientation.
+
+833
+00:39:41,180 --> 00:39:43,970
+But, for example, if
+you go from a to b,
+
+834
+00:39:43,970 --> 00:39:45,434
+you have to push this down.
+
+835
+00:39:45,434 --> 00:39:47,850
+Which, because this is Push-1,
+you only have strength one,
+
+836
+00:39:47,850 --> 00:39:49,160
+you're not able to push up.
+
+837
+00:39:49,160 --> 00:39:52,730
+You're not able to traverse
+cd anymore if you do a to b.
+
+838
+00:39:52,730 --> 00:39:54,230
+This is the symmetric
+version where,
+
+839
+00:39:54,230 --> 00:39:59,890
+if you first do b to a, then
+that prevents cd traversal.
+
+840
+00:39:59,890 --> 00:40:02,660
+And its symmetric,
+so vice versa, OK?
+
+841
+00:40:02,660 --> 00:40:05,800
+So that's the gadget
+that plugs in here.
+
+842
+00:40:05,800 --> 00:40:11,860
+And so now we know that, if
+we follow the path along 3,
+
+843
+00:40:11,860 --> 00:40:15,510
+the blue path for
+this vertex, we
+
+844
+00:40:15,510 --> 00:40:17,210
+won't be able to
+traverse the blue path.
+
+845
+00:40:17,210 --> 00:40:20,190
+And so whatever choice
+you made here at the fork
+
+846
+00:40:20,190 --> 00:40:23,620
+has to be different
+from this choice.
+
+847
+00:40:23,620 --> 00:40:26,590
+It's kind of a fun,
+non-local effect.
+
+848
+00:40:26,590 --> 00:40:29,170
+And it doesn't matter,
+whoever makes the choice first
+
+849
+00:40:29,170 --> 00:40:31,109
+will block the choice
+for the other guy.
+
+850
+00:40:31,109 --> 00:40:33,400
+If you had multiple robots
+simultaneously doing things,
+
+851
+00:40:33,400 --> 00:40:36,390
+then it would get
+tricky when there's
+
+852
+00:40:36,390 --> 00:40:38,860
+two robots right here at the
+same time, but probably even
+
+853
+00:40:38,860 --> 00:40:41,440
+then, it would work as long
+as everything eventually
+
+854
+00:40:41,440 --> 00:40:43,260
+gets traversed.
+
+855
+00:40:43,260 --> 00:40:45,480
+OK.
+
+856
+00:40:45,480 --> 00:40:48,150
+So then we also need some
+limited kinds of crossovers
+
+857
+00:40:48,150 --> 00:40:51,642
+to make this happen, because we
+need to take this orange path.
+
+858
+00:40:51,642 --> 00:40:52,850
+I don't know why it's orange.
+
+859
+00:40:52,850 --> 00:40:55,460
+It should be green,
+but there you go.
+
+860
+00:40:55,460 --> 00:40:58,810
+Bring it down here and
+then bring it back up.
+
+861
+00:40:58,810 --> 00:41:01,010
+So that's going to require
+the orange path to cross
+
+862
+00:41:01,010 --> 00:41:02,740
+the red path and the blue path.
+
+863
+00:41:02,740 --> 00:41:03,652
+Good news.
+
+864
+00:41:03,652 --> 00:41:05,110
+We know that only
+one of these will
+
+865
+00:41:05,110 --> 00:41:09,420
+be traversed, because the
+fork gadget has that property.
+
+866
+00:41:09,420 --> 00:41:10,970
+If you end up
+following the one path,
+
+867
+00:41:10,970 --> 00:41:12,886
+you know that 2 will not
+have to be traversed,
+
+868
+00:41:12,886 --> 00:41:15,540
+so this is what we called
+an xor crossover back when
+
+869
+00:41:15,540 --> 00:41:17,040
+we were doing pushing blocks.
+
+870
+00:41:17,040 --> 00:41:19,060
+It's a crossover that
+works as long as you only
+
+871
+00:41:19,060 --> 00:41:23,530
+are visiting it once,
+one way or the other way.
+
+872
+00:41:23,530 --> 00:41:26,104
+So, for example, if you come--
+And it's also uni-directional.
+
+873
+00:41:26,104 --> 00:41:28,020
+So if you come from a,
+you can push that down,
+
+874
+00:41:28,020 --> 00:41:31,130
+but then you won't be
+able to go to c or d,
+
+875
+00:41:31,130 --> 00:41:32,730
+and then you can
+leave through b.
+
+876
+00:41:32,730 --> 00:41:37,630
+And from c, you can
+push this over, go to d,
+
+877
+00:41:37,630 --> 00:41:40,780
+and those are the only cases we
+need with various reflections
+
+878
+00:41:40,780 --> 00:41:42,510
+and rotations.
+
+879
+00:41:42,510 --> 00:41:44,640
+We either go from
+up top to down here,
+
+880
+00:41:44,640 --> 00:41:49,741
+or we go from right to left
+here through that xor crossover.
+
+881
+00:41:49,741 --> 00:41:51,240
+So you just plug
+those crossovers in
+
+882
+00:41:51,240 --> 00:41:53,800
+and you can get
+each of these paths
+
+883
+00:41:53,800 --> 00:41:55,464
+to where you need
+them to be, and you
+
+884
+00:41:55,464 --> 00:41:56,880
+know that they'll
+work because you
+
+885
+00:41:56,880 --> 00:42:01,110
+won't have to do both of those
+traversals, and there you go.
+
+886
+00:42:01,110 --> 00:42:04,980
+So in general, as long as you
+have a NAND gadget and an xor
+
+887
+00:42:04,980 --> 00:42:08,090
+gadget, then you can do this
+to make a not equal gadget.
+
+888
+00:42:08,090 --> 00:42:10,100
+So there's a lot of pieces
+here, but in the end,
+
+889
+00:42:10,100 --> 00:42:11,500
+it reduces to very few things.
+
+890
+00:42:11,500 --> 00:42:16,326
+We had a one-way, a
+fork, an xor, and a NAND.
+
+891
+00:42:16,326 --> 00:42:20,000
+If you have those things,
+you can simulate 3-coloring
+
+892
+00:42:20,000 --> 00:42:20,850
+in this planar way.
+
+893
+00:42:20,850 --> 00:42:22,350
+Now, I didn't cover
+one more gadget,
+
+894
+00:42:22,350 --> 00:42:24,300
+which is the equal gadget.
+
+895
+00:42:24,300 --> 00:42:25,890
+It's just a more
+complicated version
+
+896
+00:42:25,890 --> 00:42:29,270
+of the non-equal gadget.
+
+897
+00:42:29,270 --> 00:42:34,302
+So you need to prevent
+this one from being
+
+898
+00:42:34,302 --> 00:42:35,760
+blue when the bottom
+one is orange,
+
+899
+00:42:35,760 --> 00:42:37,801
+you need to prevent this
+one from being blue when
+
+900
+00:42:37,801 --> 00:42:39,964
+the bottom one is
+red, and you need
+
+901
+00:42:39,964 --> 00:42:42,380
+to prevent this one from being
+red when that one's orange,
+
+902
+00:42:42,380 --> 00:42:43,495
+you need to prevent
+this one from being
+
+903
+00:42:43,495 --> 00:42:44,900
+red when that one's blue.
+
+904
+00:42:44,900 --> 00:42:48,130
+And all the pairwise things you
+don't want to have happen, just
+
+905
+00:42:48,130 --> 00:42:49,427
+make them not happen.
+
+906
+00:42:49,427 --> 00:42:51,760
+So you can imagine, of course,
+much more general gadgets
+
+907
+00:42:51,760 --> 00:42:52,660
+than this.
+
+908
+00:42:52,660 --> 00:42:55,080
+We're probably doing much
+more than 3-coloring,
+
+909
+00:42:55,080 --> 00:42:58,920
+but again, all we need
+are the xors and the NAND.
+
+910
+00:42:58,920 --> 00:43:03,950
+So that proves Push-1X
+is NP complete for free,
+
+911
+00:43:03,950 --> 00:43:06,290
+and this approach has been
+used by a couple of papers.
+
+912
+00:43:06,290 --> 00:43:09,870
+So here is another one, Push-1G.
+
+913
+00:43:09,870 --> 00:43:12,450
+This is pushing
+blocks with gravity.
+
+914
+00:43:12,450 --> 00:43:15,770
+So imagine-- this happens
+in a lot of games--
+
+915
+00:43:15,770 --> 00:43:17,660
+when you're pushing
+a block, the block
+
+916
+00:43:17,660 --> 00:43:20,460
+will fall if it ever
+has a hole below it.
+
+917
+00:43:20,460 --> 00:43:22,810
+Let's say that you
+don't fall though,
+
+918
+00:43:22,810 --> 00:43:25,870
+or you could do lots of
+jumps, or flying, or whatever.
+
+919
+00:43:25,870 --> 00:43:27,420
+You can do something to avoid.
+
+920
+00:43:27,420 --> 00:43:30,939
+I don't think we'll need any
+big jumps for this to work.
+
+921
+00:43:30,939 --> 00:43:32,480
+So there are lots
+of video games that
+
+922
+00:43:32,480 --> 00:43:34,360
+follow these kinds of roles.
+
+923
+00:43:34,360 --> 00:43:39,150
+Here's a one-way in that model,
+you just push this block over,
+
+924
+00:43:39,150 --> 00:43:40,650
+it will fall.
+
+925
+00:43:40,650 --> 00:43:43,180
+So you can't push
+it the other way,
+
+926
+00:43:43,180 --> 00:43:46,220
+but once you push it
+forward, it's open
+
+927
+00:43:46,220 --> 00:43:49,180
+and we're going to denote
+that with an arrow.
+
+928
+00:43:49,180 --> 00:43:52,060
+This is Eric Friedman.
+
+929
+00:43:52,060 --> 00:43:54,470
+And here is an xor crossover.
+
+930
+00:43:54,470 --> 00:43:55,440
+This is kind of fun.
+
+931
+00:43:55,440 --> 00:43:57,770
+If I come in this way,
+I push this guy over,
+
+932
+00:43:57,770 --> 00:43:59,930
+it falls down
+blocking that path,
+
+933
+00:43:59,930 --> 00:44:02,930
+but I can still go through here,
+and if I push this one over,
+
+934
+00:44:02,930 --> 00:44:05,750
+the block falls, and
+I can go this way,
+
+935
+00:44:05,750 --> 00:44:08,522
+but I'm blocked from going
+this way or that way.
+
+936
+00:44:08,522 --> 00:44:10,480
+So that, again, works as
+long as I'm only doing
+
+937
+00:44:10,480 --> 00:44:13,350
+one of the two traversals.
+
+938
+00:44:13,350 --> 00:44:15,350
+We have a fork gadget,
+which is familiar.
+
+939
+00:44:15,350 --> 00:44:17,630
+If you're coming out from
+here, you can push this over
+
+940
+00:44:17,630 --> 00:44:19,796
+and then you'd be prevented
+from going the other way
+
+941
+00:44:19,796 --> 00:44:23,210
+because you, again, only have
+strength 1, and symmetrically
+
+942
+00:44:23,210 --> 00:44:24,130
+the other side.
+
+943
+00:44:24,130 --> 00:44:26,830
+Then the NAND ga-- Yeah?
+
+944
+00:44:26,830 --> 00:44:31,516
+AUDIENCE: For the xor crossover,
+you said you couldn't-- When
+
+945
+00:44:31,516 --> 00:44:32,890
+you're going from
+the bottom one,
+
+946
+00:44:32,890 --> 00:44:38,490
+you push that over and it falls,
+and then you can't go back up
+
+947
+00:44:38,490 --> 00:44:40,314
+because you couldn't
+push that block?
+
+948
+00:44:40,314 --> 00:44:40,980
+PROFESSOR: Yeah.
+
+949
+00:44:40,980 --> 00:44:42,700
+So I maybe need a wiggle here.
+
+950
+00:44:42,700 --> 00:44:45,544
+AUDIENCE: The arrow is already
+representing one-way gadgets?
+
+951
+00:44:45,544 --> 00:44:46,210
+PROFESSOR: Good.
+
+952
+00:44:46,210 --> 00:44:48,620
+That's already here because
+the arrow is a one-way.
+
+953
+00:44:48,620 --> 00:44:49,970
+I forgot the notation.
+
+954
+00:44:49,970 --> 00:44:50,470
+Yeah.
+
+955
+00:44:50,470 --> 00:44:51,886
+It's not the input
+and the output.
+
+956
+00:44:51,886 --> 00:44:53,760
+This is an actual one-way.
+
+957
+00:44:53,760 --> 00:44:55,960
+Good.
+
+958
+00:44:55,960 --> 00:44:58,340
+OK.
+
+959
+00:44:58,340 --> 00:45:01,010
+And here's a fun thing I
+learned from reading this paper,
+
+960
+00:45:01,010 --> 00:45:02,440
+you don't even
+need a NAND gadget,
+
+961
+00:45:02,440 --> 00:45:06,180
+because you can simulate a NAND
+gadget with xor crossovers.
+
+962
+00:45:06,180 --> 00:45:09,300
+This is kind of like Jason's
+idea of using the crossover
+
+963
+00:45:09,300 --> 00:45:12,600
+gadget to make copies.
+
+964
+00:45:12,600 --> 00:45:16,980
+If you traverse through this
+way, and through this way,
+
+965
+00:45:16,980 --> 00:45:20,470
+we know that's possible,
+and if you have a set up
+
+966
+00:45:20,470 --> 00:45:22,340
+where, by going
+through a crossover
+
+967
+00:45:22,340 --> 00:45:25,490
+you block the other traversal--
+so that would be a true xor
+
+968
+00:45:25,490 --> 00:45:34,190
+crossover-- Once I've
+pushed this one over,
+
+969
+00:45:34,190 --> 00:45:36,791
+if I tried to go through
+this way down to here,
+
+970
+00:45:36,791 --> 00:45:38,540
+I would hit the block
+here that had fallen
+
+971
+00:45:38,540 --> 00:45:41,270
+from there and vice versa.
+
+972
+00:45:41,270 --> 00:45:43,870
+So if it actually prevents
+the second traversal,
+
+973
+00:45:43,870 --> 00:45:46,960
+and in Push-1X, it also
+prevented the second traversal
+
+974
+00:45:46,960 --> 00:45:48,434
+because we had
+non-crossing paths.
+
+975
+00:45:48,434 --> 00:45:50,350
+We weren't allowed to
+revisit the same square,
+
+976
+00:45:50,350 --> 00:45:51,680
+so there it was really trivial.
+
+977
+00:45:51,680 --> 00:45:53,680
+Here with gravity, it's
+a little more subtle,
+
+978
+00:45:53,680 --> 00:45:55,610
+because the second time
+you come through maybe you
+
+979
+00:45:55,610 --> 00:45:56,568
+could go back that way.
+
+980
+00:45:56,568 --> 00:45:59,885
+But the key thing is that the
+second time you go through,
+
+981
+00:45:59,885 --> 00:46:03,630
+you won't be able to go through
+in the regular crossover way,
+
+982
+00:46:03,630 --> 00:46:05,544
+and then you just string
+two of them together
+
+983
+00:46:05,544 --> 00:46:07,960
+and you can either traverse
+this way or traverse this way,
+
+984
+00:46:07,960 --> 00:46:10,040
+and each one will
+block the other.
+
+985
+00:46:10,040 --> 00:46:14,010
+So in the end, you just
+need a one-way, fork, an xor
+
+986
+00:46:14,010 --> 00:46:17,370
+crossover, and some kind of
+notion of sequential traversal
+
+987
+00:46:17,370 --> 00:46:19,440
+and you can simulate 3-coloring.
+
+988
+00:46:19,440 --> 00:46:20,087
+So this is fun.
+
+989
+00:46:20,087 --> 00:46:21,920
+I haven't seen this
+technique used too much,
+
+990
+00:46:21,920 --> 00:46:24,940
+but in a few papers and
+maybe we can use it for more.
+
+991
+00:46:24,940 --> 00:46:29,940
+
+992
+00:46:29,940 --> 00:46:31,340
+Cool.
+
+993
+00:46:31,340 --> 00:46:34,980
+I didn't mention, but the Push-1
+proofs that we saw before,
+
+994
+00:46:34,980 --> 00:46:39,510
+lecture four or whatever,
+revisit the same square
+
+995
+00:46:39,510 --> 00:46:40,100
+many times.
+
+996
+00:46:40,100 --> 00:46:42,690
+So we can't use those
+proofs for Push-1X.
+
+997
+00:46:42,690 --> 00:46:45,500
+All the gadgets break.
+
+998
+00:46:45,500 --> 00:46:47,690
+The next problem I
+want to talk about
+
+999
+00:46:47,690 --> 00:46:50,440
+is a little different,
+another graph problem.
+
+1000
+00:46:50,440 --> 00:46:58,195
+
+1001
+00:46:58,195 --> 00:46:59,445
+It's called graph orientation.
+
+1002
+00:46:59,445 --> 00:47:02,010
+
+1003
+00:47:02,010 --> 00:47:07,660
+Kind of like edge coloring, but
+the colors differ on each side.
+
+1004
+00:47:07,660 --> 00:47:13,600
+So a graph orientation.
+
+1005
+00:47:13,600 --> 00:47:17,967
+
+1006
+00:47:17,967 --> 00:47:19,300
+This is a pretty recent problem.
+
+1007
+00:47:19,300 --> 00:47:23,490
+It was introduced in 2012,
+but I think it's very cool
+
+1008
+00:47:23,490 --> 00:47:27,790
+and deserves much more study.
+
+1009
+00:47:27,790 --> 00:47:38,870
+So you're given an
+undirected graph
+
+1010
+00:47:38,870 --> 00:47:44,210
+and you want to find an
+orientation-- orientation
+
+1011
+00:47:44,210 --> 00:47:46,260
+means for every
+edge, you give it
+
+1012
+00:47:46,260 --> 00:48:03,050
+a direction-- satisfying
+certain vertex constraints,
+
+1013
+00:48:03,050 --> 00:48:06,855
+and there are three types of
+vertices, three types of vertex
+
+1014
+00:48:06,855 --> 00:48:07,355
+constraints.
+
+1015
+00:48:07,355 --> 00:48:11,700
+
+1016
+00:48:11,700 --> 00:48:22,825
+They are 1-in-3,
+2-in-3, and 0 or 3.
+
+1017
+00:48:22,825 --> 00:48:24,150
+They all end in 3.
+
+1018
+00:48:24,150 --> 00:48:27,450
+I didn't mention, this
+is a 3 regular graph.
+
+1019
+00:48:27,450 --> 00:48:32,400
+Every vertex has
+degree 3, and so
+
+1020
+00:48:32,400 --> 00:48:34,490
+if you look at an orientation,
+every vertex either
+
+1021
+00:48:34,490 --> 00:48:44,750
+has 3 in, 0 out, 2 in, 1 out,
+1 in, 2 out, or 0 in, 3 out.
+
+1022
+00:48:44,750 --> 00:48:49,010
+And this problem is NP hard.
+
+1023
+00:48:49,010 --> 00:48:52,270
+Here is a simple
+reduction from 3SAT.
+
+1024
+00:48:52,270 --> 00:48:55,040
+That's right, 1 in 3SAT.
+
+1025
+00:48:55,040 --> 00:48:57,280
+So we're going to have
+a variable gadget, which
+
+1026
+00:48:57,280 --> 00:49:01,990
+is just this loop of
+a cycle in the graph.
+
+1027
+00:49:01,990 --> 00:49:05,850
+And for each of
+these vertices that's
+
+1028
+00:49:05,850 --> 00:49:09,000
+a solid black
+circle is a 0 or 3.
+
+1029
+00:49:09,000 --> 00:49:10,730
+So that means in any
+solution-- here's
+
+1030
+00:49:10,730 --> 00:49:13,620
+a solution-- you're going
+to alternate between all in
+
+1031
+00:49:13,620 --> 00:49:16,110
+and all out, and
+then all in, all out.
+
+1032
+00:49:16,110 --> 00:49:19,000
+So this is going to
+represent x and x-bar.
+
+1033
+00:49:19,000 --> 00:49:21,880
+What the parity of that
+cycle is is up to you,
+
+1034
+00:49:21,880 --> 00:49:24,900
+you could either make all the
+x's all in or all the x-bars
+
+1035
+00:49:24,900 --> 00:49:28,180
+all in, and that corresponds
+to x being true or false.
+
+1036
+00:49:28,180 --> 00:49:31,300
+I think in means
+false in this case.
+
+1037
+00:49:31,300 --> 00:49:38,070
+And then for the clauses, we're
+going to use a 1 in 3 gadget.
+
+1038
+00:49:38,070 --> 00:49:41,070
+It's because that's
+a 1 in 3SAT clause.
+
+1039
+00:49:41,070 --> 00:49:42,990
+We want exactly one
+of these three things
+
+1040
+00:49:42,990 --> 00:49:44,890
+to be in coming to the clause.
+
+1041
+00:49:44,890 --> 00:49:49,050
+That gives us exactly one
+of them being set to true.
+
+1042
+00:49:49,050 --> 00:49:55,130
+Now, here we're
+allowing negations.
+
+1043
+00:49:55,130 --> 00:49:57,220
+We know that's not
+necessary for 1 in 3SAT,
+
+1044
+00:49:57,220 --> 00:50:02,050
+but we can in this proof, so
+they're drawn here anyway.
+
+1045
+00:50:02,050 --> 00:50:07,800
+But to make it a little bit
+weird, one issue in this style,
+
+1046
+00:50:07,800 --> 00:50:11,150
+or in this reduction,
+really I just want
+
+1047
+00:50:11,150 --> 00:50:12,460
+a whole bunch of copies of x.
+
+1048
+00:50:12,460 --> 00:50:15,110
+But I get all these
+copies of x-bar,
+
+1049
+00:50:15,110 --> 00:50:17,144
+and I need to put
+them somewhere.
+
+1050
+00:50:17,144 --> 00:50:18,560
+Every vertex has
+to have degree 3,
+
+1051
+00:50:18,560 --> 00:50:21,160
+so this has to go to something.
+
+1052
+00:50:21,160 --> 00:50:24,690
+And so their solution for
+doing that is for every clause,
+
+1053
+00:50:24,690 --> 00:50:28,860
+we also build the anti-clause
+and make it false.
+
+1054
+00:50:28,860 --> 00:50:32,510
+So we want exactly two
+of the negated versions
+
+1055
+00:50:32,510 --> 00:50:34,800
+of these variables
+to be set to true.
+
+1056
+00:50:34,800 --> 00:50:37,420
+That's the same thing as exactly
+one of the positive forms
+
+1057
+00:50:37,420 --> 00:50:41,040
+of them being true.
+
+1058
+00:50:41,040 --> 00:50:42,820
+Yes.
+
+1059
+00:50:42,820 --> 00:50:44,880
+So we just negate
+everything in the clause,
+
+1060
+00:50:44,880 --> 00:50:49,070
+and then wherever we use x, we
+also use x-bar and vice versa.
+
+1061
+00:50:49,070 --> 00:50:52,550
+So that guarantees that we
+use up all of these instances.
+
+1062
+00:50:52,550 --> 00:50:54,960
+If there are k
+occurrences of x, then
+
+1063
+00:50:54,960 --> 00:50:56,570
+we'll make k
+occurrences of x-bar
+
+1064
+00:50:56,570 --> 00:51:00,450
+and make them all used by the
+corresponding anti-clauses.
+
+1065
+00:51:00,450 --> 00:51:03,767
+So this is why we need those
+three types of gadgets.
+
+1066
+00:51:03,767 --> 00:51:05,350
+If we're doing a
+problem in the plane,
+
+1067
+00:51:05,350 --> 00:51:08,310
+we'll also need a
+crossover for this to work.
+
+1068
+00:51:08,310 --> 00:51:12,200
+But at this point, it's
+just a graph problem.
+
+1069
+00:51:12,200 --> 00:51:13,080
+OK?
+
+1070
+00:51:13,080 --> 00:51:15,140
+So that's cool.
+
+1071
+00:51:15,140 --> 00:51:19,430
+And this problem was
+introduced in order
+
+1072
+00:51:19,430 --> 00:51:22,830
+to solve a packing problem.
+
+1073
+00:51:22,830 --> 00:51:26,420
+A little bit of
+history, some time ago,
+
+1074
+00:51:26,420 --> 00:51:28,590
+I think the '70s, there
+was a paper about,
+
+1075
+00:51:28,590 --> 00:51:32,350
+if I give you polygon
+some orthogonal polygon
+
+1076
+00:51:32,350 --> 00:51:36,290
+shape with holes in it,
+and I want to pack as many,
+
+1077
+00:51:36,290 --> 00:51:41,080
+say, 3 by 3 squares in the
+polygon, that's NP hard.
+
+1078
+00:51:41,080 --> 00:51:44,370
+If I want to pack as many 2
+by 2 squares, that's NP hard.
+
+1079
+00:51:44,370 --> 00:51:49,480
+That was a later paper, and so
+how much smaller of a square
+
+1080
+00:51:49,480 --> 00:51:50,260
+can you make?
+
+1081
+00:51:50,260 --> 00:51:53,770
+Well, a 1 by 1 square, that's
+pretty easy, in a grid polygon.
+
+1082
+00:51:53,770 --> 00:51:55,570
+How many 1 by 1
+squares can I pack?
+
+1083
+00:51:55,570 --> 00:51:57,600
+The area.
+
+1084
+00:51:57,600 --> 00:52:01,180
+In a grid polygon, how
+many 2 by 1 rectangles
+
+1085
+00:52:01,180 --> 00:52:03,140
+can I pack this way or this way?
+
+1086
+00:52:03,140 --> 00:52:06,570
+That's maximum
+cardinality matching.
+
+1087
+00:52:06,570 --> 00:52:08,980
+So the next thing
+left is trominoes.
+
+1088
+00:52:08,980 --> 00:52:11,750
+Three squares, and they
+could be in an L-shape
+
+1089
+00:52:11,750 --> 00:52:13,960
+or they could be in an I-shape.
+
+1090
+00:52:13,960 --> 00:52:16,250
+Here, we're thinking about
+both problems separately.
+
+1091
+00:52:16,250 --> 00:52:18,970
+So suppose you have a whole
+bunch of L-shaped packages
+
+1092
+00:52:18,970 --> 00:52:22,320
+that you want to fit into this
+weirdly shaped warehouse, that
+
+1093
+00:52:22,320 --> 00:52:23,770
+is NP hard.
+
+1094
+00:52:23,770 --> 00:52:26,120
+It's even hard in the
+exact packing case.
+
+1095
+00:52:26,120 --> 00:52:27,885
+There will be no
+holes-- Sorry, there
+
+1096
+00:52:27,885 --> 00:52:30,300
+will be no gaps in this packing.
+
+1097
+00:52:30,300 --> 00:52:33,310
+Every unit square
+will be filled,
+
+1098
+00:52:33,310 --> 00:52:35,670
+and I think that's
+quite particular.
+
+1099
+00:52:35,670 --> 00:52:38,590
+Those other proofs of packing,
+the 2 by 2 and the 3 by 3
+
+1100
+00:52:38,590 --> 00:52:40,720
+squared into a polygon,
+I should have shown them,
+
+1101
+00:52:40,720 --> 00:52:44,810
+but they're from
+3SAT, planar 3SAT.
+
+1102
+00:52:44,810 --> 00:52:46,437
+They leave gaps
+all over the place.
+
+1103
+00:52:46,437 --> 00:52:48,020
+Here, you don't leave
+gaps and I think
+
+1104
+00:52:48,020 --> 00:52:52,570
+it's somehow fundamental to
+this graph orientation business.
+
+1105
+00:52:52,570 --> 00:52:58,380
+So here is the idea of for an
+edge in that graph orientation
+
+1106
+00:52:58,380 --> 00:53:00,270
+problem.
+
+1107
+00:53:00,270 --> 00:53:03,530
+It's basically a rectangle
+with a bump every other square.
+
+1108
+00:53:03,530 --> 00:53:04,460
+So this is a big hole.
+
+1109
+00:53:04,460 --> 00:53:06,790
+You're not allowed to
+put anything down there.
+
+1110
+00:53:06,790 --> 00:53:10,350
+And the idea is
+you can either have
+
+1111
+00:53:10,350 --> 00:53:11,910
+the L's all pointing
+to the right
+
+1112
+00:53:11,910 --> 00:53:13,600
+or all pointing to the left.
+
+1113
+00:53:13,600 --> 00:53:18,660
+And so you think of these
+as kind of the communication
+
+1114
+00:53:18,660 --> 00:53:19,886
+position.
+
+1115
+00:53:19,886 --> 00:53:22,510
+One of these will correspond to
+the edge pointing to the right,
+
+1116
+00:53:22,510 --> 00:53:25,820
+one will correspond to the
+edges pointing to the left.
+
+1117
+00:53:25,820 --> 00:53:27,840
+And you can build a turn gadget.
+
+1118
+00:53:27,840 --> 00:53:29,310
+It works pretty cleanly.
+
+1119
+00:53:29,310 --> 00:53:32,115
+It doesn't matter whether
+this is covered by that guy
+
+1120
+00:53:32,115 --> 00:53:33,320
+or covered by that guy.
+
+1121
+00:53:33,320 --> 00:53:34,960
+It behaves the same
+as a regular wire.
+
+1122
+00:53:34,960 --> 00:53:38,430
+So again, it's either
+this or this is occupied,
+
+1123
+00:53:38,430 --> 00:53:40,240
+exactly one of them.
+
+1124
+00:53:40,240 --> 00:53:43,190
+That tells you the
+orientation of the edge.
+
+1125
+00:53:43,190 --> 00:53:45,160
+So that's an edge.
+
+1126
+00:53:45,160 --> 00:53:47,510
+You can also build a crossover.
+
+1127
+00:53:47,510 --> 00:53:50,000
+This is a little more casework.
+
+1128
+00:53:50,000 --> 00:53:53,310
+But again, this is
+occupied if and only
+
+1129
+00:53:53,310 --> 00:53:56,320
+if this is not occupied, and
+this is occupied if and only
+
+1130
+00:53:56,320 --> 00:53:59,440
+if this is not occupied, and
+all combinations are possible.
+
+1131
+00:53:59,440 --> 00:54:02,687
+We just need to check that there
+is a valid packing no matter
+
+1132
+00:54:02,687 --> 00:54:04,020
+which of those choices you want.
+
+1133
+00:54:04,020 --> 00:54:08,160
+Either left and top being empty,
+or left and bottom being empty,
+
+1134
+00:54:08,160 --> 00:54:11,100
+or top and right being empty,
+or bottom and right being empty.
+
+1135
+00:54:11,100 --> 00:54:14,310
+Those are the four cases.
+
+1136
+00:54:14,310 --> 00:54:15,250
+Cool.
+
+1137
+00:54:15,250 --> 00:54:16,350
+Crossover.
+
+1138
+00:54:16,350 --> 00:54:24,000
+Now we need the 0 and
+3, 1 and 3, and 2 and 3.
+
+1139
+00:54:24,000 --> 00:54:28,830
+So instead of a single 0 or
+3, they built two in a row.
+
+1140
+00:54:28,830 --> 00:54:30,239
+I don't know if
+this is required,
+
+1141
+00:54:30,239 --> 00:54:32,280
+but it's fine for the
+proof, because in the proof
+
+1142
+00:54:32,280 --> 00:54:34,750
+it was always XI, XI-Bar,
+so there are always
+
+1143
+00:54:34,750 --> 00:54:41,850
+2, 0, or 3's in a
+row, and there it is.
+
+1144
+00:54:41,850 --> 00:54:45,050
+So in this setting,
+essentially either the left two
+
+1145
+00:54:45,050 --> 00:54:48,760
+will have bumps and the right
+two will not have bombs,
+
+1146
+00:54:48,760 --> 00:54:50,770
+or vice versa, the right
+two will have bumps.
+
+1147
+00:54:50,770 --> 00:54:53,516
+This corresponds to
+these guys all being out
+
+1148
+00:54:53,516 --> 00:54:55,140
+in all three directions,
+and these guys
+
+1149
+00:54:55,140 --> 00:54:58,030
+all being in all three
+directions, or vice versa,
+
+1150
+00:54:58,030 --> 00:55:00,320
+and these are all out
+and these are all in.
+
+1151
+00:55:00,320 --> 00:55:03,030
+So that's the x or x-bar.
+
+1152
+00:55:03,030 --> 00:55:06,100
+And this gadget does it.
+
+1153
+00:55:06,100 --> 00:55:08,440
+Again, check the cases.
+
+1154
+00:55:08,440 --> 00:55:11,095
+We have exactly 1-in-3.
+
+1155
+00:55:11,095 --> 00:55:15,920
+If exactly 1 of these is in,
+then this will be packable,
+
+1156
+00:55:15,920 --> 00:55:16,880
+and otherwise it won't.
+
+1157
+00:55:16,880 --> 00:55:19,940
+That's the part that's hard
+to show but you check it.
+
+1158
+00:55:19,940 --> 00:55:22,860
+And if you want a
+2-in-3 gadget, you just
+
+1159
+00:55:22,860 --> 00:55:28,710
+add a couple more blocks
+right there and it works.
+
+1160
+00:55:28,710 --> 00:55:29,360
+So that's it.
+
+1161
+00:55:29,360 --> 00:55:32,240
+Once you have all those gadgets,
+you can do graph orientation
+
+1162
+00:55:32,240 --> 00:55:34,260
+and then you're NP hard.
+
+1163
+00:55:34,260 --> 00:55:36,240
+That was for L-trominoes.
+
+1164
+00:55:36,240 --> 00:55:37,920
+Do the same thing
+for I-trominoes.
+
+1165
+00:55:37,920 --> 00:55:41,581
+This is hard to see where the
+bold lines are, but if you look
+
+1166
+00:55:41,581 --> 00:55:44,080
+and if you download the slide,
+it's probably a little easier
+
+1167
+00:55:44,080 --> 00:55:45,980
+to see, but, again,
+you can build.
+
+1168
+00:55:45,980 --> 00:55:50,620
+Here, an edge gadget is
+fairly straightforward.
+
+1169
+00:55:50,620 --> 00:55:54,390
+Just wiggle a path and
+you'll either have it--
+
+1170
+00:55:54,390 --> 00:55:56,430
+These wiggles are in
+order to guarantee--
+
+1171
+00:55:56,430 --> 00:55:59,170
+There's actually three possible
+parities you could have.
+
+1172
+00:55:59,170 --> 00:56:02,560
+Sticking out by 1, or sticking
+out by 2 with an I-gadget.
+
+1173
+00:56:02,560 --> 00:56:07,760
+This will force it to be
+just 1 or 0, because we
+
+1174
+00:56:07,760 --> 00:56:10,760
+don't want it to be 2.
+
+1175
+00:56:10,760 --> 00:56:14,320
+And then the crossover
+is ugly, but it works.
+
+1176
+00:56:14,320 --> 00:56:17,720
+And the 0, 3, and the
+1-in-3 are not too hard.
+
+1177
+00:56:17,720 --> 00:56:19,460
+And do I have the 2 in?
+
+1178
+00:56:19,460 --> 00:56:23,200
+I think this is a 2-in-3,
+I didn't label it.
+
+1179
+00:56:23,200 --> 00:56:26,409
+So, presumably, for any
+polynomial shape you want,
+
+1180
+00:56:26,409 --> 00:56:27,950
+you can build such
+gadgets so that we
+
+1181
+00:56:27,950 --> 00:56:31,490
+don't have such a theorem,
+but I think this is neat.
+
+1182
+00:56:31,490 --> 00:56:35,340
+It's a little different from
+a lot of the other proofs,
+
+1183
+00:56:35,340 --> 00:56:37,090
+similar to one of the
+problem set problems
+
+1184
+00:56:37,090 --> 00:56:39,560
+where we had some constraints
+on the neighboring things.
+
+1185
+00:56:39,560 --> 00:56:42,800
+But instead of about constraints
+on the neighboring colors
+
+1186
+00:56:42,800 --> 00:56:44,840
+of the vertices or
+whatever, or the truth
+
+1187
+00:56:44,840 --> 00:56:48,150
+assignments in the vertices,
+here, it's an edge direction.
+
+1188
+00:56:48,150 --> 00:56:51,490
+So the edge directions are
+interesting because, first
+
+1189
+00:56:51,490 --> 00:56:53,240
+of all, there's only
+two choices, but also
+
+1190
+00:56:53,240 --> 00:56:55,350
+that what you see on one
+side is the opposite of what
+
+1191
+00:56:55,350 --> 00:56:56,433
+you see on the other side.
+
+1192
+00:56:56,433 --> 00:57:01,060
+
+1193
+00:57:01,060 --> 00:57:03,740
+Questions?
+
+1194
+00:57:03,740 --> 00:57:10,060
+So that is graph orientation,
+and I have one more
+
+1195
+00:57:10,060 --> 00:57:12,180
+set of problems I
+want to talk about.
+
+1196
+00:57:12,180 --> 00:57:18,530
+
+1197
+00:57:18,530 --> 00:57:24,640
+They have many names, but
+the general family is usually
+
+1198
+00:57:24,640 --> 00:57:32,420
+called something like
+linear layout of a graph,
+
+1199
+00:57:32,420 --> 00:57:36,910
+and it's a bijection--
+let's call it
+
+1200
+00:57:36,910 --> 00:57:45,760
+f-- from the vertices to 1
+up to the number of vertices.
+
+1201
+00:57:45,760 --> 00:57:50,930
+So in other words, I'm thinking
+of a one dimensional diagram
+
+1202
+00:57:50,930 --> 00:57:54,470
+and the coordinates I have
+are 1, 2, up to the number
+
+1203
+00:57:54,470 --> 00:57:57,780
+of vertices and I just
+want to put exactly one
+
+1204
+00:57:57,780 --> 00:57:59,250
+vertex at each of these spots.
+
+1205
+00:57:59,250 --> 00:58:02,530
+So I basically want a
+permutation of the vertices,
+
+1206
+00:58:02,530 --> 00:58:04,244
+and then I slap them
+down in that order,
+
+1207
+00:58:04,244 --> 00:58:06,160
+and then I measure
+something about the quality
+
+1208
+00:58:06,160 --> 00:58:08,510
+of that layout
+based on the edges.
+
+1209
+00:58:08,510 --> 00:58:10,390
+We haven't involved edges yet.
+
+1210
+00:58:10,390 --> 00:58:13,960
+And there are many different
+measures you might consider.
+
+1211
+00:58:13,960 --> 00:58:17,010
+
+1212
+00:58:17,010 --> 00:58:21,160
+Here are many of them,
+but without definitions.
+
+1213
+00:58:21,160 --> 00:58:25,070
+So let me tell you
+some definitions.
+
+1214
+00:58:25,070 --> 00:58:27,870
+So the first one, of the
+earliest to be considered,
+
+1215
+00:58:27,870 --> 00:58:30,960
+is called bandwidth.
+
+1216
+00:58:30,960 --> 00:58:38,316
+Bandwidth is, if you look at an
+edge, one endpoint of the edge
+
+1217
+00:58:38,316 --> 00:58:40,690
+gets mapped to one coordinate
+and the other endpoint gets
+
+1218
+00:58:40,690 --> 00:58:42,136
+mapped to another coordinate.
+
+1219
+00:58:42,136 --> 00:58:44,510
+You can measure the length of
+that edge in the embedding.
+
+1220
+00:58:44,510 --> 00:58:46,843
+I shouldn't call it embedding
+because it's non-crossing,
+
+1221
+00:58:46,843 --> 00:58:47,600
+but in the layout.
+
+1222
+00:58:47,600 --> 00:58:51,940
+So for some edge vw, you can
+measure the length of the edge.
+
+1223
+00:58:51,940 --> 00:58:56,040
+If I want to minimize the
+maximum length of any edge,
+
+1224
+00:58:56,040 --> 00:58:57,990
+that is bandwidth.
+
+1225
+00:58:57,990 --> 00:58:59,120
+Why is it called bandwidth?
+
+1226
+00:58:59,120 --> 00:58:59,740
+Anyone know?
+
+1227
+00:58:59,740 --> 00:59:03,790
+
+1228
+00:59:03,790 --> 00:59:09,830
+No one does matrices anymore,
+or numerical linear algebra,
+
+1229
+00:59:09,830 --> 00:59:10,810
+so I'll tell you why.
+
+1230
+00:59:10,810 --> 00:59:17,880
+
+1231
+00:59:17,880 --> 00:59:23,390
+If you have a matrix, let's
+say, of 0's and 1's-- that's a
+
+1232
+00:59:23,390 --> 00:59:30,770
+graph, of course-- and all
+of the non-zero elements are
+
+1233
+00:59:30,770 --> 00:59:37,780
+in that band, then we
+call this bandwidth w.
+
+1234
+00:59:37,780 --> 00:59:40,177
+If it's 0 out here
+and 0 out here.
+
+1235
+00:59:40,177 --> 00:59:41,260
+Why are these interesting?
+
+1236
+00:59:41,260 --> 00:59:43,400
+Because then if you run
+Gaussian elimination,
+
+1237
+00:59:43,400 --> 00:59:45,580
+you always stay within the band.
+
+1238
+00:59:45,580 --> 00:59:47,670
+So this is some of the
+early approaches to solving
+
+1239
+00:59:47,670 --> 00:59:48,720
+sparse linear systems.
+
+1240
+00:59:48,720 --> 00:59:51,800
+If you can get all of
+the 0's into the corners,
+
+1241
+00:59:51,800 --> 00:59:54,322
+then you can focus here,
+especially if your tri-diagonal
+
+1242
+00:59:54,322 --> 00:59:55,030
+is a common case.
+
+1243
+00:59:55,030 --> 00:59:59,610
+Anyway, that's called bandwidth,
+and what this problem is saying
+
+1244
+00:59:59,610 --> 01:00:04,420
+is I'm allowed to permute the
+rows and columns of my matrix
+
+1245
+01:00:04,420 --> 01:00:08,550
+in order to minimize how
+many diagonals I need to use.
+
+1246
+01:00:08,550 --> 01:00:11,680
+So that is permutation
+to minimize bandwidth.
+
+1247
+01:00:11,680 --> 01:00:14,990
+It would be great,
+except it's NP hard.
+
+1248
+01:00:14,990 --> 01:00:19,700
+It's NP hard even on
+trees of maximum degree 3.
+
+1249
+01:00:19,700 --> 01:00:22,830
+It's NP hard even
+on caterpillars.
+
+1250
+01:00:22,830 --> 01:00:23,710
+Almost caterpillars.
+
+1251
+01:00:23,710 --> 01:00:27,480
+A caterpillar is a graph,
+something like this.
+
+1252
+01:00:27,480 --> 01:00:30,600
+
+1253
+01:00:30,600 --> 01:00:33,960
+I think this is caterpillar
+with hair length
+
+1254
+01:00:33,960 --> 01:00:37,940
+at most 3, so these may
+be paths of a length 3,
+
+1255
+01:00:37,940 --> 01:00:40,285
+maybe they even
+branch a little bit,
+
+1256
+01:00:40,285 --> 01:00:45,590
+but every vertex is within
+distance 3 of a single path.
+
+1257
+01:00:45,590 --> 01:00:49,035
+So even for such graphs,
+when mapped into matrices,
+
+1258
+01:00:49,035 --> 01:00:50,160
+this problem is NP hard.
+
+1259
+01:00:50,160 --> 01:00:53,924
+Lots of cases are NP hard,
+even for good graphs.
+
+1260
+01:00:53,924 --> 01:00:55,590
+You might think of
+that as more general,
+
+1261
+01:00:55,590 --> 01:00:58,300
+but it's not
+immediately implied.
+
+1262
+01:00:58,300 --> 01:00:58,800
+OK.
+
+1263
+01:00:58,800 --> 01:00:59,470
+Cool.
+
+1264
+01:00:59,470 --> 01:01:00,900
+That was bandwidth.
+
+1265
+01:01:00,900 --> 01:01:03,800
+Next one, which I've seen used
+in a few different hardness
+
+1266
+01:01:03,800 --> 01:01:07,050
+proofs, is minimum
+linear arrangement.
+
+1267
+01:01:07,050 --> 01:01:09,400
+Almost the same problem,
+but instead of taking
+
+1268
+01:01:09,400 --> 01:01:11,860
+the maximum edge length and
+trying to minimize that,
+
+1269
+01:01:11,860 --> 01:01:14,554
+take the sum of the edge lengths
+and try to minimize that.
+
+1270
+01:01:14,554 --> 01:01:15,970
+That's minimum
+linear arrangement.
+
+1271
+01:01:15,970 --> 01:01:19,800
+We will see a reduction
+from that in a moment.
+
+1272
+01:01:19,800 --> 01:01:22,240
+It's NP hard, even for
+my bipartite graphs.
+
+1273
+01:01:22,240 --> 01:01:24,371
+Cut width.
+
+1274
+01:01:24,371 --> 01:01:31,350
+This is, you draw all the
+edges as horizontal segments
+
+1275
+01:01:31,350 --> 01:01:34,100
+and then I come in
+with a vertical line
+
+1276
+01:01:34,100 --> 01:01:36,910
+and see how many
+edges can I cross.
+
+1277
+01:01:36,910 --> 01:01:42,266
+I want to find a permutation,
+so I minimize the maximums,
+
+1278
+01:01:42,266 --> 01:01:43,640
+you might call it
+stabbing width.
+
+1279
+01:01:43,640 --> 01:01:45,700
+The maximum number
+of edges that cross
+
+1280
+01:01:45,700 --> 01:01:47,650
+from the left side
+to the right side
+
+1281
+01:01:47,650 --> 01:01:50,930
+where I take the maximum
+over all notions of side.
+
+1282
+01:01:50,930 --> 01:01:53,350
+I take the maximum over all
+choices of this x-coordinate,
+
+1283
+01:01:53,350 --> 01:01:56,180
+and I want to
+minimize that maximum.
+
+1284
+01:01:56,180 --> 01:01:58,344
+That is cut width.
+
+1285
+01:01:58,344 --> 01:02:00,510
+Why do I want to minimize
+the maximum as opposed to,
+
+1286
+01:02:00,510 --> 01:02:05,490
+say, minimizing the sum
+of those cut values?
+
+1287
+01:02:05,490 --> 01:02:09,600
+Because that's the same as
+minimum linear arrangement.
+
+1288
+01:02:09,600 --> 01:02:13,819
+If I minimize the sum
+of all of these cuts,
+
+1289
+01:02:13,819 --> 01:02:15,610
+that's the same thing
+as minimizing the sum
+
+1290
+01:02:15,610 --> 01:02:18,130
+of the lengths of the edges.
+
+1291
+01:02:18,130 --> 01:02:19,871
+So that's the same problem.
+
+1292
+01:02:19,871 --> 01:02:20,370
+So, OK.
+
+1293
+01:02:20,370 --> 01:02:22,070
+We got rid of one.
+
+1294
+01:02:22,070 --> 01:02:22,886
+That was cut width.
+
+1295
+01:02:22,886 --> 01:02:24,510
+It's hard for planar
+graphs, max degree
+
+1296
+01:02:24,510 --> 01:02:28,770
+3, good graphs, lots of things.
+
+1297
+01:02:28,770 --> 01:02:30,080
+I'm going to skip mod cut.
+
+1298
+01:02:30,080 --> 01:02:34,450
+That's just a slight different
+variation on that definition.
+
+1299
+01:02:34,450 --> 01:02:36,175
+Next one is vertex separation.
+
+1300
+01:02:36,175 --> 01:02:40,920
+
+1301
+01:02:40,920 --> 01:02:41,420
+OK.
+
+1302
+01:02:41,420 --> 01:02:42,965
+This is a different
+way of counting.
+
+1303
+01:02:42,965 --> 01:02:45,840
+
+1304
+01:02:45,840 --> 01:02:48,640
+So here, I was counting
+how many edges cross,
+
+1305
+01:02:48,640 --> 01:02:52,520
+but maybe many of those edges
+come from the same vertex.
+
+1306
+01:02:52,520 --> 01:02:54,530
+I don't want to double
+count those, let's say.
+
+1307
+01:02:54,530 --> 01:02:57,220
+I just want to count how many
+vertices on the left side
+
+1308
+01:02:57,220 --> 01:02:59,350
+have at least one edge that
+goes to the right side,
+
+1309
+01:02:59,350 --> 01:03:02,550
+and only count it once instead
+of three times in this picture.
+
+1310
+01:03:02,550 --> 01:03:03,610
+OK?
+
+1311
+01:03:03,610 --> 01:03:06,330
+Otherwise the same
+problem as cut width.
+
+1312
+01:03:06,330 --> 01:03:08,970
+That is also hard.
+
+1313
+01:03:08,970 --> 01:03:11,700
+That problem is different if
+you look at the sum versions.
+
+1314
+01:03:11,700 --> 01:03:15,490
+You can account for
+every partition point
+
+1315
+01:03:15,490 --> 01:03:19,690
+how many vertices in the left
+have an edge to the right side,
+
+1316
+01:03:19,690 --> 01:03:22,420
+sum that over all
+of these x values,
+
+1317
+01:03:22,420 --> 01:03:25,520
+and then that is sum cut.
+
+1318
+01:03:25,520 --> 01:03:28,330
+All of these have been
+considered in various contexts.
+
+1319
+01:03:28,330 --> 01:03:30,030
+Last one is edge by section.
+
+1320
+01:03:30,030 --> 01:03:34,241
+This is where you only look at
+cutting in the middle at v/2.
+
+1321
+01:03:34,241 --> 01:03:36,740
+So you want to balance partition
+all the things on the left,
+
+1322
+01:03:36,740 --> 01:03:41,350
+you want to have very few
+edges to things on the right.
+
+1323
+01:03:41,350 --> 01:03:42,920
+Or the vertex version
+where you want
+
+1324
+01:03:42,920 --> 01:03:44,545
+to minimize number
+vertices on the left
+
+1325
+01:03:44,545 --> 01:03:47,610
+and edges to the right
+half, but exactly half. v/2.
+
+1326
+01:03:47,610 --> 01:03:49,210
+v/2.
+
+1327
+01:03:49,210 --> 01:03:50,080
+A ton of problems.
+
+1328
+01:03:50,080 --> 01:03:52,450
+I mentioned them
+so that if you ever
+
+1329
+01:03:52,450 --> 01:03:55,706
+run into a problem about
+ordering vertices on a line,
+
+1330
+01:03:55,706 --> 01:03:57,330
+you should look at
+all of those and see
+
+1331
+01:03:57,330 --> 01:03:58,542
+which one is the most useful.
+
+1332
+01:03:58,542 --> 01:04:00,250
+Sort of like we have
+3SAT and 1 and 3SAT,
+
+1333
+01:04:00,250 --> 01:04:02,960
+and not-all-equal-SAT Choose
+the one that's easiest for you.
+
+1334
+01:04:02,960 --> 01:04:04,710
+If you have some kind
+of ordering problem,
+
+1335
+01:04:04,710 --> 01:04:06,293
+choose the one that's
+easiest for you.
+
+1336
+01:04:06,293 --> 01:04:08,430
+Good to know that
+these are out there.
+
+1337
+01:04:08,430 --> 01:04:10,680
+They come from
+various applications.
+
+1338
+01:04:10,680 --> 01:04:12,970
+Cut width is studied
+a lot in graph theory,
+
+1339
+01:04:12,970 --> 01:04:15,410
+graph minor stuff.
+
+1340
+01:04:15,410 --> 01:04:18,630
+It's closely related
+to path width.
+
+1341
+01:04:18,630 --> 01:04:20,540
+Some of these
+problem-- The bisection
+
+1342
+01:04:20,540 --> 01:04:23,510
+comes from numerical
+linear algebra.
+
+1343
+01:04:23,510 --> 01:04:26,480
+Minimum linear arrangement
+comes, I think, originally
+
+1344
+01:04:26,480 --> 01:04:30,217
+from VLSI layout, chip design.
+
+1345
+01:04:30,217 --> 01:04:31,550
+It's like a very simple version.
+
+1346
+01:04:31,550 --> 01:04:33,549
+If you just have a bunch
+of ports on the bottom
+
+1347
+01:04:33,549 --> 01:04:35,090
+and you know that
+certain things need
+
+1348
+01:04:35,090 --> 01:04:37,050
+to be connected by
+wires, that's your graph,
+
+1349
+01:04:37,050 --> 01:04:39,410
+you want to minimize the
+total amount of wire stuff
+
+1350
+01:04:39,410 --> 01:04:43,399
+you have to-- minimize
+the total wire lengths.
+
+1351
+01:04:43,399 --> 01:04:44,940
+So that's minimum
+linear arrangement.
+
+1352
+01:04:44,940 --> 01:04:50,340
+Very simple version of some
+kind of VLSI layout problem.
+
+1353
+01:04:50,340 --> 01:04:53,880
+And there's this survey if you
+want to see all these problems.
+
+1354
+01:04:53,880 --> 01:04:55,790
+There's one problem
+not on the survey
+
+1355
+01:04:55,790 --> 01:04:58,580
+because it's not about a
+graph, it's about a hypergraph,
+
+1356
+01:04:58,580 --> 01:05:00,450
+but it's a useful one.
+
+1357
+01:05:00,450 --> 01:05:03,520
+Among ordering problems,
+it's the one I know the best.
+
+1358
+01:05:03,520 --> 01:05:05,310
+I've tried to use
+it a couple times,
+
+1359
+01:05:05,310 --> 01:05:07,940
+but rarely have I succeeded in
+getting an actual NP hardness
+
+1360
+01:05:07,940 --> 01:05:10,600
+proof from it, but
+I will show you one,
+
+1361
+01:05:10,600 --> 01:05:13,870
+and it is called betweenness.
+
+1362
+01:05:13,870 --> 01:05:19,080
+So in this case, I'm
+given a bunch of triples,
+
+1363
+01:05:19,080 --> 01:05:27,500
+a set of pairs of things-- it's
+not a graph-- of the form y
+
+1364
+01:05:27,500 --> 01:05:32,990
+is between x and z.
+
+1365
+01:05:32,990 --> 01:05:37,790
+And what that means
+is either it's
+
+1366
+01:05:37,790 --> 01:05:41,430
+between x and z in
+that sense, or it's
+
+1367
+01:05:41,430 --> 01:05:45,850
+between x and z in
+the other sense,
+
+1368
+01:05:45,850 --> 01:05:48,860
+where either x is to the left
+of z or z is to the left of x,
+
+1369
+01:05:48,860 --> 01:05:50,780
+but y is always between.
+
+1370
+01:05:50,780 --> 01:05:54,240
+And here, of course, I really
+mean f of x and f of y.
+
+1371
+01:05:54,240 --> 01:05:56,640
+I mean them in the
+linear embedding.
+
+1372
+01:05:56,640 --> 01:05:57,140
+OK.
+
+1373
+01:05:57,140 --> 01:05:59,390
+So you're given a bunch
+of triples like this,
+
+1374
+01:05:59,390 --> 01:06:05,290
+and then you want to find a
+linear layout of your letters.
+
+1375
+01:06:05,290 --> 01:06:08,720
+So again, that's a
+bijection from 1 to n,
+
+1376
+01:06:08,720 --> 01:06:12,780
+and such that these all hold.
+
+1377
+01:06:12,780 --> 01:06:15,400
+So there's no objective
+function to minimize here.
+
+1378
+01:06:15,400 --> 01:06:18,990
+It's just you want each of
+these things to be true.
+
+1379
+01:06:18,990 --> 01:06:21,860
+So this is nice, because it's
+a pretty clean constraint
+
+1380
+01:06:21,860 --> 01:06:23,404
+and yet, it's hard.
+
+1381
+01:06:23,404 --> 01:06:24,820
+If I, for example,
+was just giving
+
+1382
+01:06:24,820 --> 01:06:27,361
+you-- If I gave you a bunch of
+inequality constraints, like x
+
+1383
+01:06:27,361 --> 01:06:28,320
+is less than y.
+
+1384
+01:06:28,320 --> 01:06:28,910
+That's easy.
+
+1385
+01:06:28,910 --> 01:06:30,660
+That's sorting a partial order.
+
+1386
+01:06:30,660 --> 01:06:32,610
+But here, you have a
+little bit of ambiguity.
+
+1387
+01:06:32,610 --> 01:06:34,070
+You don't know how
+x and z relate.
+
+1388
+01:06:34,070 --> 01:06:35,736
+You just know that y
+is in between them.
+
+1389
+01:06:35,736 --> 01:06:39,000
+That's enough to get hardness.
+
+1390
+01:06:39,000 --> 01:06:42,310
+So I'm not going to prove
+any of those problems hard,
+
+1391
+01:06:42,310 --> 01:06:47,730
+but I will show you two
+examples of hardness proofs.
+
+1392
+01:06:47,730 --> 01:06:53,340
+First one is going to be from
+the minimum linear arrangement.
+
+1393
+01:06:53,340 --> 01:06:55,170
+In case you haven't
+already memorized
+
+1394
+01:06:55,170 --> 01:06:59,250
+all the problems I just
+described, let me remind you.
+
+1395
+01:06:59,250 --> 01:07:03,400
+Minimum linear
+arrangement was minimize
+
+1396
+01:07:03,400 --> 01:07:07,660
+the sum of the edge lengths.
+
+1397
+01:07:07,660 --> 01:07:09,850
+That was the second
+problem I described,
+
+1398
+01:07:09,850 --> 01:07:11,790
+that was like the VLSI layout.
+
+1399
+01:07:11,790 --> 01:07:14,690
+Minimize the sum of
+all the red lines.
+
+1400
+01:07:14,690 --> 01:07:16,370
+Find the permutation
+that does that.
+
+1401
+01:07:16,370 --> 01:07:18,680
+So we're going to
+reduce it first
+
+1402
+01:07:18,680 --> 01:07:22,011
+to a problem called
+bipartite crossing number.
+
+1403
+01:07:22,011 --> 01:07:23,260
+It's a bit of a weird problem.
+
+1404
+01:07:23,260 --> 01:07:26,350
+It's mostly a stop gap on the
+way to another problem, which
+
+1405
+01:07:26,350 --> 01:07:27,840
+is crossing number.
+
+1406
+01:07:27,840 --> 01:07:30,080
+Suppose you're given
+bipartite a graph, which
+
+1407
+01:07:30,080 --> 01:07:32,600
+is hard to see in this picture.
+
+1408
+01:07:32,600 --> 01:07:37,415
+Given a bipartite graph, and
+you want to draw in the plane.
+
+1409
+01:07:37,415 --> 01:07:43,920
+
+1410
+01:07:43,920 --> 01:07:48,810
+So I have some
+bipartite graph, I
+
+1411
+01:07:48,810 --> 01:07:52,550
+want to draw it in the
+plane in a special way.
+
+1412
+01:07:52,550 --> 01:07:57,716
+I want all of the vertices
+in one side of bipartition
+
+1413
+01:07:57,716 --> 01:07:58,840
+to be on a horizontal line.
+
+1414
+01:07:58,840 --> 01:08:02,260
+I want all the vertices in the
+other side of the bipartition
+
+1415
+01:08:02,260 --> 01:08:05,325
+to be on a parallel
+horizontal line.
+
+1416
+01:08:05,325 --> 01:08:06,700
+And all the edges
+are in between.
+
+1417
+01:08:06,700 --> 01:08:07,720
+They're straight lines.
+
+1418
+01:08:07,720 --> 01:08:10,899
+And I want to minimize
+the number of crossings.
+
+1419
+01:08:10,899 --> 01:08:13,387
+So it's this very specific
+kind of graph layout problem,
+
+1420
+01:08:13,387 --> 01:08:15,470
+but minimizing number of
+crossing is clearly good.
+
+1421
+01:08:15,470 --> 01:08:17,859
+We want to draw as
+planar as possible.
+
+1422
+01:08:17,859 --> 01:08:22,250
+So here is a reduction from
+minimum linear arrangement
+
+1423
+01:08:22,250 --> 01:08:24,000
+to bipartite crossing number.
+
+1424
+01:08:24,000 --> 01:08:33,450
+
+1425
+01:08:33,450 --> 01:08:36,890
+So in this problem, we're
+given a general graph, not
+
+1426
+01:08:36,890 --> 01:08:38,290
+necessarily bipartite.
+
+1427
+01:08:38,290 --> 01:08:40,950
+We want to convert it
+into a bipartite graph.
+
+1428
+01:08:40,950 --> 01:08:42,040
+How do we do that?
+
+1429
+01:08:42,040 --> 01:08:45,109
+Make two copies of every vertex.
+
+1430
+01:08:45,109 --> 01:08:48,250
+OK, so for every vertex in
+the minimum linear arrangement
+
+1431
+01:08:48,250 --> 01:08:51,840
+problem, we're going to
+make two copies called
+
+1432
+01:08:51,840 --> 01:08:55,470
+bottom one and top one, top
+two and bottom two, bottom
+
+1433
+01:08:55,470 --> 01:08:56,880
+two and top two, and so on.
+
+1434
+01:08:56,880 --> 01:09:00,750
+So there's n top vertices
+and bottom vertices,
+
+1435
+01:09:00,750 --> 01:09:03,140
+and I'm going to do two things.
+
+1436
+01:09:03,140 --> 01:09:06,359
+One is connect a
+whole bunch of edges.
+
+1437
+01:09:06,359 --> 01:09:10,390
+And a whole bunch
+means e squared,
+
+1438
+01:09:10,390 --> 01:09:16,130
+and between bottom I and
+top I. I just do that.
+
+1439
+01:09:16,130 --> 01:09:18,830
+That will basically
+force this kind of layout
+
+1440
+01:09:18,830 --> 01:09:21,540
+where, basically,
+the order on the top
+
+1441
+01:09:21,540 --> 01:09:23,979
+has to be identical to
+the order on the bottom.
+
+1442
+01:09:23,979 --> 01:09:27,069
+Because if ever any of these
+two bundles of edges crossed,
+
+1443
+01:09:27,069 --> 01:09:29,740
+you would get e to
+the fourth crossings.
+
+1444
+01:09:29,740 --> 01:09:31,490
+And so if you ever
+want to get less than e
+
+1445
+01:09:31,490 --> 01:09:32,989
+to the fourth
+crossings-- and that's
+
+1446
+01:09:32,989 --> 01:09:34,610
+what we will hopefully
+do-- then these
+
+1447
+01:09:34,610 --> 01:09:37,830
+must appear same order
+on top and bottom.
+
+1448
+01:09:37,830 --> 01:09:39,840
+But we don't know
+what the order is.
+
+1449
+01:09:39,840 --> 01:09:41,500
+You can still permute
+the bottom, just
+
+1450
+01:09:41,500 --> 01:09:45,370
+correspondingly permute
+the top, and all
+
+1451
+01:09:45,370 --> 01:09:47,200
+be well as far as
+these edge bundles go.
+
+1452
+01:09:47,200 --> 01:09:49,850
+So that's good, because it
+has exactly the flexibility,
+
+1453
+01:09:49,850 --> 01:09:51,839
+we have exactly one
+permutation on n things.
+
+1454
+01:09:51,839 --> 01:09:53,380
+That's what we want
+to represent with
+
+1455
+01:09:53,380 --> 01:09:55,374
+minimum linear arrangement.
+
+1456
+01:09:55,374 --> 01:09:56,790
+Then the only other
+thing we do is
+
+1457
+01:09:56,790 --> 01:09:58,530
+add in the edges of the graph.
+
+1458
+01:09:58,530 --> 01:10:01,430
+But in the minimum linear
+arrangement problem,
+
+1459
+01:10:01,430 --> 01:10:04,640
+the edges are like
+from vertex I to vertex
+
+1460
+01:10:04,640 --> 01:10:09,120
+J. We're going to make that
+connection from bottom I to top
+
+1461
+01:10:09,120 --> 01:10:13,440
+J. There's this choice, but it
+doesn't matter which is which.
+
+1462
+01:10:13,440 --> 01:10:19,730
+So the idea is, then, that edge
+will cross a bunch of bundles.
+
+1463
+01:10:19,730 --> 01:10:22,080
+The number of bundles
+it crosses is the length
+
+1464
+01:10:22,080 --> 01:10:27,200
+of the edge minus 1, I think.
+
+1465
+01:10:27,200 --> 01:10:29,960
+I'll ignore these
+additive constants.
+
+1466
+01:10:29,960 --> 01:10:32,230
+You have to be careful to
+make sure everything adds up
+
+1467
+01:10:32,230 --> 01:10:33,990
+the right way.
+
+1468
+01:10:33,990 --> 01:10:36,497
+If you have a link
+0 edge-- We never
+
+1469
+01:10:36,497 --> 01:10:38,080
+have the link 0 edge,
+because vertices
+
+1470
+01:10:38,080 --> 01:10:39,080
+map to different places.
+
+1471
+01:10:39,080 --> 01:10:41,440
+If you have a length 1 edge,
+you won't cross anything,
+
+1472
+01:10:41,440 --> 01:10:42,500
+so 0 crossings.
+
+1473
+01:10:42,500 --> 01:10:46,570
+If you have a length 2 edge, you
+will cross exactly one bundle,
+
+1474
+01:10:46,570 --> 01:10:48,260
+and you pay e squared for that.
+
+1475
+01:10:48,260 --> 01:10:49,885
+In general, it will
+be something like e
+
+1476
+01:10:49,885 --> 01:10:52,615
+squared times the sum of
+the lengths of the edges.
+
+1477
+01:10:52,615 --> 01:10:53,115
+Not exactly.
+
+1478
+01:10:53,115 --> 01:10:54,780
+You have to subtract
+off some things,
+
+1479
+01:10:54,780 --> 01:10:58,180
+but you just compute
+what that is.
+
+1480
+01:10:58,180 --> 01:11:03,511
+It will always be basically
+some fixed constant times
+
+1481
+01:11:03,511 --> 01:11:05,010
+the minimum linear
+arrangement cost,
+
+1482
+01:11:05,010 --> 01:11:09,490
+which was the sum of the lengths
+of the edges plus some fixed
+
+1483
+01:11:09,490 --> 01:11:10,540
+constant.
+
+1484
+01:11:10,540 --> 01:11:13,220
+And so you can solve the
+bipartite crossing number
+
+1485
+01:11:13,220 --> 01:11:16,130
+with a given specified number
+of crossings if and only
+
+1486
+01:11:16,130 --> 01:11:19,170
+if you can solve minimum linear
+arrangement with a specified
+
+1487
+01:11:19,170 --> 01:11:20,590
+sum of edge lengths.
+
+1488
+01:11:20,590 --> 01:11:21,285
+Question.
+
+1489
+01:11:21,285 --> 01:11:23,285
+AUDIENCE: What about the
+crossing between edges?
+
+1490
+01:11:23,285 --> 01:11:27,060
+
+1491
+01:11:27,060 --> 01:11:28,000
+PROFESSOR: Yes.
+
+1492
+01:11:28,000 --> 01:11:32,180
+There's also crossings
+between edges,
+
+1493
+01:11:32,180 --> 01:11:34,679
+and you have to count them.
+
+1494
+01:11:34,679 --> 01:11:36,970
+AUDIENCE: [INAUDIBLE] because
+you can't get more than e
+
+1495
+01:11:36,970 --> 01:11:38,796
+squared with this
+in the normal case?
+
+1496
+01:11:38,796 --> 01:11:39,420
+PROFESSOR: Yes.
+
+1497
+01:11:39,420 --> 01:11:41,940
+So that will be in the noise.
+
+1498
+01:11:41,940 --> 01:11:43,510
+The bulk of the
+number of crossings
+
+1499
+01:11:43,510 --> 01:11:48,760
+will be from crossing the
+bundles with the single edges.
+
+1500
+01:11:48,760 --> 01:11:52,970
+You don't want to have
+bundle-bundle crossings.
+
+1501
+01:11:52,970 --> 01:11:54,500
+Those, you can never afford.
+
+1502
+01:11:54,500 --> 01:11:57,252
+So you're basically counting
+bundles versus single edges.
+
+1503
+01:11:57,252 --> 01:11:58,960
+The total number of
+single edge crossings
+
+1504
+01:11:58,960 --> 01:12:01,620
+will be strictly
+less than e squared,
+
+1505
+01:12:01,620 --> 01:12:03,830
+and so it will be strictly
+less than a single guy
+
+1506
+01:12:03,830 --> 01:12:05,610
+crossing a bundle.
+
+1507
+01:12:05,610 --> 01:12:06,956
+So you have to inflate.
+
+1508
+01:12:06,956 --> 01:12:08,580
+It's not an exact
+counting, because you
+
+1509
+01:12:08,580 --> 01:12:10,663
+don't know how many of
+those single edge crossings
+
+1510
+01:12:10,663 --> 01:12:11,720
+you're going to get.
+
+1511
+01:12:11,720 --> 01:12:17,310
+So you have to add
+almost e squared.
+
+1512
+01:12:17,310 --> 01:12:19,450
+I have the exact count here.
+
+1513
+01:12:19,450 --> 01:12:21,450
+I don't know how
+interesting it is.
+
+1514
+01:12:21,450 --> 01:12:26,920
+But what they wrote, it's
+e squared times k minus e,
+
+1515
+01:12:26,920 --> 01:12:31,350
+plus 1 minus 1 is the
+exact number in the paper.
+
+1516
+01:12:31,350 --> 01:12:35,300
+k here is the sum of the lengths
+of the edges in that problem.
+
+1517
+01:12:35,300 --> 01:12:41,186
+This is, I think, the minus 1
+per edge, that gets multiplied
+
+1518
+01:12:41,186 --> 01:12:43,060
+by e squared, and then
+we're basically adding
+
+1519
+01:12:43,060 --> 01:12:45,230
+e squared minus 1 at the end.
+
+1520
+01:12:45,230 --> 01:12:48,540
+So almost e squared to allow
+for any number of crossings
+
+1521
+01:12:48,540 --> 01:12:50,440
+between the single guys.
+
+1522
+01:12:50,440 --> 01:12:54,090
+It does make a lot of sense.
+
+1523
+01:12:54,090 --> 01:12:54,590
+OK.
+
+1524
+01:12:54,590 --> 01:12:56,540
+So that was bipartite
+crossing number,
+
+1525
+01:12:56,540 --> 01:12:58,730
+but the more natural
+problem, I would say,
+
+1526
+01:12:58,730 --> 01:13:00,420
+is I give you a
+graph, I want to draw
+
+1527
+01:13:00,420 --> 01:13:01,960
+on the plane with
+fewest crossings.
+
+1528
+01:13:01,960 --> 01:13:06,600
+That is, crossing number,
+and it's a reduction
+
+1529
+01:13:06,600 --> 01:13:08,100
+from the previous problem.
+
+1530
+01:13:08,100 --> 01:13:12,570
+So basically, you can
+force these vertices
+
+1531
+01:13:12,570 --> 01:13:15,310
+to be on a horizontal
+line, and these vertices
+
+1532
+01:13:15,310 --> 01:13:17,550
+to be on another
+horizontal line,
+
+1533
+01:13:17,550 --> 01:13:19,810
+and to only have
+edges between here
+
+1534
+01:13:19,810 --> 01:13:24,900
+and here by adding huge bundles
+out here to basically prevent
+
+1535
+01:13:24,900 --> 01:13:27,490
+anything from going out there,
+
+1536
+01:13:27,490 --> 01:13:29,110
+Now we're given a
+bipartite graph.
+
+1537
+01:13:29,110 --> 01:13:31,080
+We want to draw it
+in this kind of way,
+
+1538
+01:13:31,080 --> 01:13:33,400
+minimizing number of
+crossings in between.
+
+1539
+01:13:33,400 --> 01:13:37,040
+And so this will turn
+that into a general graph.
+
+1540
+01:13:37,040 --> 01:13:42,660
+It's actually still bipartite,
+but now the planar embedding
+
+1541
+01:13:42,660 --> 01:13:44,080
+is forced, more or less.
+
+1542
+01:13:44,080 --> 01:13:45,330
+I mean, it's not an embedding.
+
+1543
+01:13:45,330 --> 01:13:46,740
+I keep using that word.
+
+1544
+01:13:46,740 --> 01:13:48,810
+The planar drawing is
+more or less forced.
+
+1545
+01:13:48,810 --> 01:13:51,784
+You can show these guys have
+to be in this kind of topology,
+
+1546
+01:13:51,784 --> 01:13:53,450
+and then there's some
+crossings in here,
+
+1547
+01:13:53,450 --> 01:13:55,366
+but none of these edges
+could ever cross this,
+
+1548
+01:13:55,366 --> 01:13:58,790
+because this is way more
+than the number of crossings
+
+1549
+01:13:58,790 --> 01:14:00,565
+in the input graph.
+
+1550
+01:14:00,565 --> 01:14:01,064
+Yeah?
+
+1551
+01:14:01,064 --> 01:14:04,970
+AUDIENCE: What about
+not multi-graphs?
+
+1552
+01:14:04,970 --> 01:14:06,620
+PROFESSOR: Not multi-graphs?
+
+1553
+01:14:06,620 --> 01:14:07,220
+Good question.
+
+1554
+01:14:07,220 --> 01:14:12,760
+I assume you can split
+these things up, or maybe
+
+1555
+01:14:12,760 --> 01:14:15,860
+subdivide the edges,
+or some trick,
+
+1556
+01:14:15,860 --> 01:14:18,590
+but I have to be very careful.
+
+1557
+01:14:18,590 --> 01:14:20,010
+I don't know for sure.
+
+1558
+01:14:20,010 --> 01:14:22,531
+Definitely not
+mentioned in this paper.
+
+1559
+01:14:22,531 --> 01:14:23,030
+OK.
+
+1560
+01:14:23,030 --> 01:14:30,280
+So that was crossing number,
+bipartite, and unconstraints.
+
+1561
+01:14:30,280 --> 01:14:37,330
+And I have one more sketch of a
+proof, which is mostly for fun,
+
+1562
+01:14:37,330 --> 01:14:38,980
+and I get to use
+my favorite phrase,
+
+1563
+01:14:38,980 --> 01:14:43,610
+how to kill log n birds with
+one stone, or order one stones.
+
+1564
+01:14:43,610 --> 01:14:46,100
+So suppose you have
+a Rubik's cube,
+
+1565
+01:14:46,100 --> 01:14:48,700
+but 3, by 3, by 3, that's easy.
+
+1566
+01:14:48,700 --> 01:14:52,250
+So you have an n, by n, by
+n Rubik's cube, like this 7,
+
+1567
+01:14:52,250 --> 01:14:57,250
+by 7, by 7, v cube, and
+moves are-- I assume you all
+
+1568
+01:14:57,250 --> 01:14:58,890
+know how a Rubik's cube works.
+
+1569
+01:14:58,890 --> 01:15:02,230
+You can rotate in each
+of these directions--
+
+1570
+01:15:02,230 --> 01:15:05,460
+and I hope not to
+mess it up too much--
+
+1571
+01:15:05,460 --> 01:15:07,970
+and your goal is to get to the
+state where it's all solved.
+
+1572
+01:15:07,970 --> 01:15:11,110
+Now, usually, someone's
+mean, and they mix it all up,
+
+1573
+01:15:11,110 --> 01:15:13,369
+and they just give it
+you like, OK solve it.
+
+1574
+01:15:13,369 --> 01:15:14,910
+I don't just want
+to solve it, I want
+
+1575
+01:15:14,910 --> 01:15:16,460
+to solve it with
+the fewest moves,
+
+1576
+01:15:16,460 --> 01:15:19,640
+because it's polynomial
+time to solve it at all.
+
+1577
+01:15:19,640 --> 01:15:21,999
+I want to solve it
+in the fewest moves.
+
+1578
+01:15:21,999 --> 01:15:23,540
+So if I'm given this
+position, I want
+
+1579
+01:15:23,540 --> 01:15:25,373
+to know it's only one
+move away from solved.
+
+1580
+01:15:25,373 --> 01:15:27,850
+
+1581
+01:15:27,850 --> 01:15:30,620
+We do not know the
+complexity of that problem.
+
+1582
+01:15:30,620 --> 01:15:37,600
+Let me first tell you a nice
+way to think about this problem
+
+1583
+01:15:37,600 --> 01:15:40,030
+is actually in the 2D case.
+
+1584
+01:15:40,030 --> 01:15:42,500
+So these are not
+built super large,
+
+1585
+01:15:42,500 --> 01:15:52,740
+but, again, I can rotate
+either a row or a column.
+
+1586
+01:15:52,740 --> 01:15:55,930
+So at a high level, you can
+think of a picture like this.
+
+1587
+01:15:55,930 --> 01:15:58,770
+You have a red side
+and a blue side,
+
+1588
+01:15:58,770 --> 01:16:02,050
+and there's a certain--
+If you think about where
+
+1589
+01:16:02,050 --> 01:16:05,490
+this square goes, it
+can go to this position,
+
+1590
+01:16:05,490 --> 01:16:07,190
+to this position,
+and this position.
+
+1591
+01:16:07,190 --> 01:16:09,130
+In general, a
+little cube can only
+
+1592
+01:16:09,130 --> 01:16:11,260
+go to four different
+spots in 2D.
+
+1593
+01:16:11,260 --> 01:16:13,210
+On the 3D cube,
+there's 24 spots it
+
+1594
+01:16:13,210 --> 01:16:15,645
+can go to, because there are
+24 automorphisms on the cube.
+
+1595
+01:16:15,645 --> 01:16:17,770
+It's just a lot harder to
+see, but it's essentially
+
+1596
+01:16:17,770 --> 01:16:19,280
+the same thing going on.
+
+1597
+01:16:19,280 --> 01:16:20,910
+So here's a sort of
+thing you could do.
+
+1598
+01:16:20,910 --> 01:16:25,400
+If I flip this column,
+these guys go over to here,
+
+1599
+01:16:25,400 --> 01:16:27,240
+and they flip upside down.
+
+1600
+01:16:27,240 --> 01:16:30,340
+So whatever was red here
+becomes blue down here,
+
+1601
+01:16:30,340 --> 01:16:32,170
+and it gets reflected
+across this line.
+
+1602
+01:16:32,170 --> 01:16:34,780
+So when I do this move,
+I get this pattern
+
+1603
+01:16:34,780 --> 01:16:36,440
+for that row, that column.
+
+1604
+01:16:36,440 --> 01:16:39,620
+If I also do it at this
+column, I get that pattern.
+
+1605
+01:16:39,620 --> 01:16:40,120
+OK.
+
+1606
+01:16:40,120 --> 01:16:42,150
+So now maybe I do
+these two columns.
+
+1607
+01:16:42,150 --> 01:16:44,530
+They completely flip,
+become all blue.
+
+1608
+01:16:44,530 --> 01:16:47,750
+Now maybe I do these two
+columns and I get this picture
+
+1609
+01:16:47,750 --> 01:16:54,540
+because these red spots become
+blue up here, and so on.
+
+1610
+01:16:54,540 --> 01:16:59,010
+And then if I flip these two
+rows, hey, I solved the puzzle.
+
+1611
+01:16:59,010 --> 01:17:02,940
+And in general, if you look at
+a [? cubee ?] and the four other
+
+1612
+01:17:02,940 --> 01:17:05,849
+[? cubees ?] that it can go
+to, they have some pattern.
+
+1613
+01:17:05,849 --> 01:17:07,890
+There's a constant number
+patterns they can have.
+
+1614
+01:17:07,890 --> 01:17:11,860
+For 2D it's-- I forget-- like
+10 or 20 different patterns.
+
+1615
+01:17:11,860 --> 01:17:15,410
+In 3D, it's, like, a lot more.
+
+1616
+01:17:15,410 --> 01:17:16,520
+Billions or something.
+
+1617
+01:17:16,520 --> 01:17:17,360
+Anyway.
+
+1618
+01:17:17,360 --> 01:17:22,470
+But it's constant, even
+for an n, by n, by n cube.
+
+1619
+01:17:22,470 --> 01:17:25,960
+So you can characterize
+for each such pattern
+
+1620
+01:17:25,960 --> 01:17:27,202
+what it needs to be solved.
+
+1621
+01:17:27,202 --> 01:17:28,660
+So these [? cubees ?],
+for example,
+
+1622
+01:17:28,660 --> 01:17:31,564
+need a column, row, column, row.
+
+1623
+01:17:31,564 --> 01:17:32,480
+That's what we showed.
+
+1624
+01:17:32,480 --> 01:17:34,700
+We flipped its column,
+then we flipped its row,
+
+1625
+01:17:34,700 --> 01:17:36,250
+then we flipped its column,
+then we flipped its row.
+
+1626
+01:17:36,250 --> 01:17:36,930
+That solved it.
+
+1627
+01:17:36,930 --> 01:17:38,340
+That's exactly what they need.
+
+1628
+01:17:38,340 --> 01:17:40,330
+And in minimal solution,
+you will do that.
+
+1629
+01:17:40,330 --> 01:17:42,500
+But what you see
+here is, suppose
+
+1630
+01:17:42,500 --> 01:17:44,020
+I had a big grid of them.
+
+1631
+01:17:44,020 --> 01:17:46,970
+I could do all the columns, then
+all the rows containing them,
+
+1632
+01:17:46,970 --> 01:17:48,800
+then all of the columns
+and all the rows.
+
+1633
+01:17:48,800 --> 01:17:51,270
+If they were in the
+same initial pattern,
+
+1634
+01:17:51,270 --> 01:17:54,910
+I get a big savings in how
+quickly I can solve it.
+
+1635
+01:17:54,910 --> 01:17:58,060
+If I have an x by y grid
+of identically oriented
+
+1636
+01:17:58,060 --> 01:17:59,970
+[? cubees ?], I can
+solve it in about x
+
+1637
+01:17:59,970 --> 01:18:02,800
+plus y moves instead
+of x times y moves.
+
+1638
+01:18:02,800 --> 01:18:05,840
+And this is something we used to
+prove that you can solve an n,
+
+1639
+01:18:05,840 --> 01:18:08,830
+by n, by n Rubik's cube and n
+squared divided by log n moves,
+
+1640
+01:18:08,830 --> 01:18:09,859
+in the worst case.
+
+1641
+01:18:09,859 --> 01:18:11,650
+So you can kill log n
+birds with one stone.
+
+1642
+01:18:11,650 --> 01:18:16,010
+There's always such a grid
+of area roughly log n.
+
+1643
+01:18:16,010 --> 01:18:21,350
+But here, I want to use
+that idea for hardness.
+
+1644
+01:18:21,350 --> 01:18:24,140
+In some sense, that was to
+give you some intuition.
+
+1645
+01:18:24,140 --> 01:18:26,420
+Sadly, we don't know whether
+this problem is NP hard,
+
+1646
+01:18:26,420 --> 01:18:28,740
+minimizing the number
+of moves, but what
+
+1647
+01:18:28,740 --> 01:18:30,490
+we do know is that if
+some of the stickers
+
+1648
+01:18:30,490 --> 01:18:32,770
+fell off your cube,
+then it's NP hard.
+
+1649
+01:18:32,770 --> 01:18:35,720
+So the white things
+here don't care.
+
+1650
+01:18:35,720 --> 01:18:38,390
+You don't care what
+state they end up in.
+
+1651
+01:18:38,390 --> 01:18:39,990
+They're sort of
+wild cards, so it
+
+1652
+01:18:39,990 --> 01:18:41,790
+could be the sticker
+came off or maybe
+
+1653
+01:18:41,790 --> 01:18:43,490
+it just changes its
+color to whatever's
+
+1654
+01:18:43,490 --> 01:18:45,409
+correct at the moment.
+
+1655
+01:18:45,409 --> 01:18:46,950
+But some of the
+stickers are still on
+
+1656
+01:18:46,950 --> 01:18:49,150
+and they have to be
+solved, and this is
+
+1657
+01:18:49,150 --> 01:18:52,246
+a reduction from betweenness.
+
+1658
+01:18:52,246 --> 01:18:56,230
+This gadget will be solvable
+in a certain number of moves
+
+1659
+01:18:56,230 --> 01:19:02,930
+if and only if the first time
+you make the x2 column move
+
+1660
+01:19:02,930 --> 01:19:06,060
+is between the first time
+you make the x1 column
+
+1661
+01:19:06,060 --> 01:19:08,664
+move and the x3 column move.
+
+1662
+01:19:08,664 --> 01:19:10,080
+I think these are
+in the situation
+
+1663
+01:19:10,080 --> 01:19:12,467
+that they want to do
+column, row, column, row,
+
+1664
+01:19:12,467 --> 01:19:13,300
+something like that.
+
+1665
+01:19:13,300 --> 01:19:15,000
+So each one's going
+to get used twice.
+
+1666
+01:19:15,000 --> 01:19:17,600
+It's a matter of how you
+intersperse those orders.
+
+1667
+01:19:17,600 --> 01:19:20,420
+So it's an ordering problem, and
+this ends up being betweenness.
+
+1668
+01:19:20,420 --> 01:19:21,753
+I will not go through the proof.
+
+1669
+01:19:21,753 --> 01:19:24,530
+It's quite tedious.
+
+1670
+01:19:24,530 --> 01:19:26,510
+So this column is going
+to get used many times
+
+1671
+01:19:26,510 --> 01:19:27,980
+in the reduction.
+
+1672
+01:19:27,980 --> 01:19:30,370
+Basically, you just work
+in the upper left corner
+
+1673
+01:19:30,370 --> 01:19:36,120
+of the picture because the
+other quarters move similarly.
+
+1674
+01:19:36,120 --> 01:19:37,880
+You introduce some
+extra rows and columns
+
+1675
+01:19:37,880 --> 01:19:40,230
+that are specific to
+this betweenness gadget,
+
+1676
+01:19:40,230 --> 01:19:42,720
+and if you want to have
+more betweenness gadgets,
+
+1677
+01:19:42,720 --> 01:19:47,097
+you add more such columns
+and rows in this pattern.
+
+1678
+01:19:47,097 --> 01:19:49,430
+As long as they're sort of
+off diagonal from each other,
+
+1679
+01:19:49,430 --> 01:19:52,370
+they won't interact, hence you
+end up with a big betweenness
+
+1680
+01:19:52,370 --> 01:19:54,910
+reduction.
+
+1681
+01:19:54,910 --> 01:19:57,490
+So that's it for today.
+
