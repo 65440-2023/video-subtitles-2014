@@ -54,7 +54,7 @@ reductions from 3-partition.
 13
 00:00:13,920 --> 00:00:16,714
 Yesterday we saw a couple of
-different reductions from three
+different reductions from 3-
 
 14
 00:00:16,714 --> 00:00:18,380
@@ -1312,13 +1312,13 @@ the big idea-- we're
 
 281
 00:11:54,750 --> 00:11:56,670
-reducing from three
-partition here--
+reducing from
+3-partition here--
 
 282
 00:11:56,670 --> 00:12:02,660
 we're going to represent a
-number, ai, as a zigzag--
+number, a_i, as a zigzag--
 
 283
 00:12:02,660 --> 00:12:05,630
@@ -1421,7 +1421,7 @@ issue with 3-partition
 304
 00:12:57,010 --> 00:13:00,080
 proofs is you want to
-represent the number ai
+represent the number a_i
 
 305
 00:13:00,080 --> 00:13:04,150
@@ -1431,7 +1431,7 @@ not divisible.
 306
 00:13:04,150 --> 00:13:05,705
 If you could take
-ai and split it
+a_i and split it
 
 307
 00:13:05,705 --> 00:13:08,080
@@ -1446,22 +1446,22 @@ into units or something.
 309
 00:13:10,610 --> 00:13:14,180
 So we have to make sure
-ai remains a single chunk.
+a_i remains a single chunk.
 
 310
 00:13:14,180 --> 00:13:16,420
 We are, of course, encoding
-ai in your unary here,
+a_i in your unary here,
 
 311
 00:13:16,420 --> 00:13:19,030
 because we have one
-long bar per each ai.
+long bar per each a_i.
 
 312
 00:13:19,030 --> 00:13:22,450
-But for three
-partition, unary is OK.
+But for 3-partition,
+unary is OK.
 
 313
 00:13:22,450 --> 00:13:26,020
@@ -1705,7 +1705,7 @@ And then the A3.
 365
 00:15:21,870 --> 00:15:25,580
 And then alternating
-between zigzags and the ai.
+between zigzags and the a_i.
 
 366
 00:15:25,580 --> 00:15:27,700
@@ -2335,8 +2335,8 @@ gadgets in this proof,
 
 499
 00:21:15,550 --> 00:21:18,730
-the ai gadgets--
-there's n of n copies
+the a_i gadgets--
+there's n by n copies
 
 500
 00:21:18,730 --> 00:21:20,370
@@ -2375,7 +2375,7 @@ about how you traverse each
 
 507
 00:21:38,740 --> 00:21:41,270
-of the ai's and where
+of the a_i's and where
 you put the blank space,
 
 508
@@ -2405,7 +2405,7 @@ with your zigzag at the end.
 513
 00:21:51,840 --> 00:21:54,700
 So what this does is it
-let's the ai's move around
+lets the a_i's move around
 
 514
 00:21:54,700 --> 00:21:56,330
@@ -2414,7 +2414,7 @@ completely freely.
 515
 00:21:56,330 --> 00:21:58,730
 There shouldn't be any
-constraints on how the ai's
+constraints on how the a_i's
 
 516
 00:21:58,730 --> 00:22:01,027
@@ -2470,7 +2470,7 @@ doing in some sense.
 527
 00:22:32,600 --> 00:22:38,130
 But we do make these-- we scale
-all the ai's by a factor of 8.
+all the a_i's by a factor of 8.
 
 528
 00:22:38,130 --> 00:22:40,860
@@ -2988,7 +2988,7 @@ with some zigzag and then
 
 637
 00:27:31,940 --> 00:27:35,626
-an ai gadget and so on.
+an a_i gadget and so on.
 
 638
 00:27:35,626 --> 00:27:37,480
@@ -3408,7 +3408,7 @@ big enough so that I have
 
 727
 00:31:16,600 --> 00:31:18,940
-at least n over three holes.
+at least n over 3 holes.
 
 728
 00:31:18,940 --> 00:31:21,380
@@ -3427,13 +3427,13 @@ construction for, I guess,
 
 731
 00:31:29,570 --> 00:31:32,090
-this would be a three
-partition gadget.
+this would be a
+3-partition gadget.
 
 732
 00:31:32,090 --> 00:31:37,480
 We want to get that-- oh, slight
-typo there-- ai plus aj plus ak
+typo there-- a_i plus a_j plus a_k
 
 733
 00:31:37,480 --> 00:31:40,290
@@ -3446,7 +3446,7 @@ the three disks
 
 735
 00:31:42,840 --> 00:31:45,610
-representing ai, aj, and ak.
+representing a_i, a_j, and a_k.
 
 736
 00:31:45,610 --> 00:31:49,070
@@ -3490,12 +3490,12 @@ these one's a little bit
 744
 00:32:06,740 --> 00:32:11,380
 bigger according
-to the ai values.
+to the a_i values.
 
 745
 00:32:11,380 --> 00:32:15,104
 So this one will be
-proportional to ak larger
+proportional to a_k larger
 
 746
 00:32:15,104 --> 00:32:16,520
@@ -3581,7 +3581,7 @@ valid position if and only
 
 763
 00:32:57,800 --> 00:33:00,912
-if ai plus aj plus ak is
+if a_i plus a_j plus a_k is
 less than or equal to t.
 
 764
@@ -3629,16 +3629,16 @@ all the values, down,
 773
 00:33:34,010 --> 00:33:38,340
 divide everything
-by t, ai's in the t.
+by t, a_i's in the t.
 
 774
 00:33:38,340 --> 00:33:51,029
 And then, I think we're going
-to shrink the ai disk by minus 1
+to shrink the a_i disk by minus 1
 
 775
 00:33:51,029 --> 00:33:57,210
-over n squared plus ai over n.
+over n squared plus a_i over n.
 
 776
 00:33:57,210 --> 00:33:59,150
@@ -3653,7 +3653,7 @@ smaller by 1 over n squared.
 778
 00:34:01,839 --> 00:34:05,170
 And then I'm going to
-grow it by ai over n.
+grow it by a_i over n.
 
 779
 00:34:05,170 --> 00:34:09,069
@@ -3803,7 +3803,7 @@ Remember 1 is t.
 809
 00:35:20,090 --> 00:35:23,120
 We made the other
-guys larger by ai.
+guys larger by a_i.
 
 810
 00:35:23,120 --> 00:35:25,890
@@ -3812,7 +3812,7 @@ work out exactly
 
 811
 00:35:25,890 --> 00:35:28,730
-when the sum of the three ai's
+when the sum of the three a_i's
 is less than or equal to 1.
 
 812
@@ -4173,7 +4173,7 @@ where you have freedom.
 887
 00:38:36,900 --> 00:38:39,520
 The freedom you have is where
-the ai's go, which pocket they
+the a_i's go, which pocket they
 
 888
 00:38:39,520 --> 00:38:40,760
@@ -4580,12 +4580,12 @@ This one is 3-partition.
 
 977
 00:42:09,830 --> 00:42:11,147
-This one is three set.
+This one is 3SAT.
 
 978
 00:42:11,147 --> 00:42:12,980
 So we might talk about
-that in the three set
+that in the 3SAT
 
 979
 00:42:12,980 --> 00:42:14,800
@@ -4740,7 +4740,7 @@ So reduction from
 
 1012
 00:43:27,510 --> 00:43:30,860
-We have n numbers, ai
+We have n numbers, a_i
 through an integers.
 
 1013
@@ -4751,7 +4751,7 @@ scale everything up.
 1014
 00:43:32,350 --> 00:43:37,000
 We're going to scale the
-ai's and t by a factor of b.
+a_i's and t by a factor of b.
 
 1015
 00:43:37,000 --> 00:43:38,880
@@ -4801,16 +4801,16 @@ blocks, clickable groups,
 
 1025
 00:44:01,560 --> 00:44:02,980
-which correspond to the ai's.
+which correspond to the a_i's.
 
 1026
 00:44:02,980 --> 00:44:05,540
-So for every day ai, we're
+So for every day a_i, we're
 going to have exactly one block,
 
 1027
 00:44:05,540 --> 00:44:09,806
-which is b times ai by 1.
+which is b times a_i by 1.
 
 1028
 00:44:09,806 --> 00:44:11,180
@@ -5120,7 +5120,7 @@ whose total size is b times t.
 1093
 00:46:52,640 --> 00:46:55,400
 In other words, the sum of
-the ai's that I'm clicking on
+the a_i's that I'm clicking on
 
 1094
 00:46:55,400 --> 00:46:57,840
@@ -5166,7 +5166,7 @@ proximity, you have to choose
 
 1103
 00:47:16,760 --> 00:47:19,620
-ai's that sum to exactly t.
+a_i's that sum to exactly t.
 
 1104
 00:47:19,620 --> 00:47:22,440
@@ -5369,7 +5369,7 @@ Sorry, it's 3 times n over 3.
 1148
 00:49:06,430 --> 00:49:08,170
 Whole length is n
-whereas all these ai's
+whereas all these a_i's
 
 1149
 00:49:08,170 --> 00:49:11,040
@@ -5435,7 +5435,7 @@ everything so huge.
 1162
 00:49:42,116 --> 00:49:44,740
 To do the other direction, say,
-if you have a solution of three
+if you have a solution of 3-
 
 1163
 00:49:44,740 --> 00:49:47,520
@@ -5989,12 +5989,12 @@ configuration.
 1283
 00:54:57,020 --> 00:54:58,920
 Of course, there
-are no ai's yet.
+are no a_i's yet.
 
 1284
 00:54:58,920 --> 00:55:03,190
 So the piece sequence has
-to encode the ai's in unary.
+to encode the a_i's in unary.
 
 1285
 00:55:03,190 --> 00:55:05,060
@@ -6037,7 +6037,7 @@ little thing in the corner.
 1293
 00:55:22,960 --> 00:55:25,350
 And so to say, hey,
-a new ai is starting,
+a new a_i is starting,
 
 1294
 00:55:25,350 --> 00:55:27,630
@@ -6093,17 +6093,17 @@ going to represent
 
 1305
 00:55:48,460 --> 00:55:52,850
-ai by this pattern--
+a_i by this pattern--
 square, left
 
 1306
 00:55:52,850 --> 00:55:55,780
-L, square, to the power ai.
+L, square, to the power a_i.
 
 1307
 00:55:55,780 --> 00:55:57,790
 Like we're going to
-repeat that ai times.
+repeat that a_i times.
 
 1308
 00:55:57,790 --> 00:56:00,960
@@ -6117,7 +6117,7 @@ OK?
 1310
 00:56:01,460 --> 00:56:03,615
 That is encoding
-ai in unary-- or I
+a_i in unary-- or I
 
 1311
 00:56:03,615 --> 00:56:05,740
@@ -6136,7 +6136,7 @@ but there you go.
 1314
 00:56:11,750 --> 00:56:14,410
 And then at the end
-of the ai, we're
+of the a_i, we're
 
 1315
 00:56:14,410 --> 00:56:16,650
@@ -6172,7 +6172,7 @@ to plan, what you've done
 1322
 00:56:31,010 --> 00:56:34,390
 is filled up basically
-ai units of this thing.
+a_i units of this thing.
 
 1323
 00:56:34,390 --> 00:56:36,610
@@ -6181,7 +6181,7 @@ And maybe plus 1.
 1324
 00:56:36,610 --> 00:56:39,090
 But we know there's only three
-ai's going into each bucket,
+a_i's going into each bucket,
 
 1325
 00:56:39,090 --> 00:56:43,190
@@ -6199,7 +6199,7 @@ So now you have a choice.
 1328
 00:56:48,390 --> 00:56:50,640
 You have this long sequence
-of pieces representing ai.
+of pieces representing a_i.
 
 1329
 00:56:50,640 --> 00:56:53,181
@@ -6229,7 +6229,7 @@ the divisibility issue.
 1334
 00:57:05,860 --> 00:57:09,092
 The big issue is, can we
-divide ai into two parts?
+divide a_i into two parts?
 
 1335
 00:57:09,092 --> 00:57:11,550
@@ -6285,7 +6285,7 @@ right-ward facing L's, there's
 
 1346
 00:57:43,160 --> 00:57:45,761
-only n of them, one per ai.
+only n of them, one per a_i.
 
 1347
 00:57:45,761 --> 00:57:47,670
@@ -6323,7 +6323,7 @@ insert into it.
 
 1354
 00:58:02,530 --> 00:58:05,710
-Because the first ai comes,
+Because the first a_i comes,
 you prime one of the buckets.
 
 1355
@@ -6456,7 +6456,7 @@ where you switch midstream
 1382
 00:59:06,140 --> 00:59:09,032
 from one of-- you start
-putting an ai into a bucket,
+putting an a_i into a bucket,
 
 1383
 00:59:09,032 --> 00:59:10,990
@@ -6560,7 +6560,7 @@ to play this sequence.
 1404
 01:00:03,600 --> 01:00:06,860
 Except for the flexibility of
-when a new ai stream comes,
+when a new a_i stream comes,
 
 1405
 01:00:06,860 --> 01:00:08,700
@@ -7517,7 +7517,7 @@ a little bit weird
 
 1611
 01:10:35,450 --> 01:10:38,479
-like, OK, how do the ai's choose
+like, OK, how do the a_i's choose
 which side they're on here?
 
 1612
@@ -7548,7 +7548,7 @@ corresponding chunk over there.
 1617
 01:10:50,440 --> 01:10:52,930
 This is basically
-to force the ai's
+to force the a_i's
 
 1618
 01:10:52,930 --> 01:10:56,710
@@ -7664,7 +7664,7 @@ connect them together.
 
 1641
 01:11:54,760 --> 01:11:56,970
-And so, the ai's have the
+And so, the a_i's have the
 freedom of which bucket
 
 1642
@@ -7679,7 +7679,7 @@ edges can only be crossed once,
 1644
 01:12:01,630 --> 01:12:05,910
 each unit of each
-ai-- only one unit
+a_i-- only one unit
 
 1645
 01:12:05,910 --> 01:12:07,940
@@ -7710,7 +7710,7 @@ how-- what those numbers are.
 1651
 01:12:20,760 --> 01:12:25,140
 PROFESSOR: So OK, so these are
-the ai's-- A1 is 2, A2 is 3,
+the a_i's-- A1 is 2, A2 is 3,
 
 1652
 01:12:25,140 --> 01:12:29,140
@@ -7794,7 +7794,7 @@ it's-- a lot of the proofs
 1670
 01:13:18,395 --> 01:13:20,730
 you've seen, it's all
-about making the ai's being
+about making the a_i's being
 
 1671
 01:13:20,730 --> 01:13:21,890
@@ -7825,7 +7825,7 @@ It's all about the colors.
 1677
 01:13:32,610 --> 01:13:34,100
 And so, the idea
-is that the ai's
+is that the a_i's
 
 1678
 01:13:34,100 --> 01:13:36,260
@@ -7849,7 +7849,7 @@ come in at some point
 1682
 01:13:44,460 --> 01:13:48,045
 and fill in however big
-your ai is and then leave.
+your a_i is and then leave.
 
 1683
 01:13:48,045 --> 01:13:50,170
@@ -8056,11 +8056,11 @@ we use x instead of a.
 
 1728
 01:15:27,370 --> 01:15:29,130
-So those are ai's.
+So those are a_i's.
 
 1729
 01:15:29,130 --> 01:15:30,240
-So you're given some ai's.
+So you're given some a_i's.
 
 1730
 01:15:30,240 --> 01:15:32,510
@@ -8069,7 +8069,7 @@ well, if I would
 
 1731
 01:15:32,510 --> 01:15:35,900
-like to partition the ai's
+like to partition the a_i's
 into two groups of equal sums,
 
 1732
@@ -8079,7 +8079,7 @@ the same as saying,
 
 1733
 01:15:38,210 --> 01:15:41,630
-well, some of the ai's, or the
+well, some of the a_i's, or the
 xi's, are going to go left.
 
 1734
@@ -8123,7 +8123,7 @@ by something running summation
 
 1742
 01:16:00,900 --> 01:16:04,650
-thing, I can choose for each ai
+thing, I can choose for each a_i
 whether it goes left or right.
 
 1743
@@ -8336,7 +8336,7 @@ That's smart of us.
 
 1788
 01:17:47,810 --> 01:17:50,800
-So these are the ai's
+So these are the a_i's
 down the distances
 
 1789
