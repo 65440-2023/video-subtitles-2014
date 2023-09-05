@@ -188,7 +188,7 @@ partition them into two groups.
 
 43
 00:01:55,880 --> 00:02:04,000
-Let's say A1 and A2
+Let's say A_1 and A_2
 equals A of equal sum.
 
 44
@@ -197,12 +197,12 @@ equals A of equal sum.
 45
 00:02:10,210 --> 00:02:12,350
 We want the sum of
-the integers in A1
+the integers in A_1
 
 46
 00:02:12,350 --> 00:02:15,370
 to equal the sum of
-the integers in A2.
+the integers in A_2.
 
 47
 00:02:15,370 --> 00:02:20,320
@@ -216,7 +216,7 @@ our choice for each number.
 
 49
 00:02:23,470 --> 00:02:25,810
-Should it go in A1 or A2?
+Should it go in A_1 or A_2?
 
 50
 00:02:25,810 --> 00:02:28,220
@@ -376,7 +376,7 @@ t, but you're essentially
 
 85
 00:04:05,670 --> 00:04:12,510
-choosing a subset A1, whose
+choosing a subset A_1, whose
 sum equals the sum of A over 2.
 
 86
@@ -435,7 +435,7 @@ my favorite NP-complete problem.
 98
 00:04:44,170 --> 00:04:54,520
 So start is the same,
-given integers A1 up to An.
+given integers a_1 up to a_n.
 
 99
 00:04:54,520 --> 00:04:58,270
@@ -483,8 +483,8 @@ Not quite.
 
 110
 00:05:20,760 --> 00:05:29,180
-Let's say sets A1,
-n over 3 equals
+Let's say sets A_1, ...,
+A_(n/3) equals
 
 111
 00:05:29,180 --> 00:05:33,240
@@ -541,7 +541,7 @@ easy case of equal sum.
 123
 00:06:03,760 --> 00:06:09,310
 So we want the sum of
-each Ai to be equal to t,
+each A_i to be equal to t,
 
 124
 00:06:09,310 --> 00:06:11,910
@@ -615,7 +615,7 @@ reduction for this problem,
 
 139
 00:06:50,560 --> 00:07:04,480
-you can assume that each Ai
+you can assume that each a_i
 is strictly between t over 4
 
 140
@@ -676,7 +676,7 @@ useful to just say, well,
 
 152
 00:07:36,206 --> 00:07:38,330
-the Ai's are sum sets that
+the A_i's are sets that
 sum to the right things.
 
 153
@@ -696,7 +696,7 @@ problem statement,
 
 156
 00:07:44,490 --> 00:07:46,920
-to ask for the Ai's
+to ask for the A_i's
 to have size 3 or not.
 
 157
@@ -710,7 +710,7 @@ have this, you can
 
 159
 00:07:52,520 --> 00:07:54,220
-make all the Ai's
+make all the a_i's
 very, very close
 
 160
@@ -729,7 +729,7 @@ I'll call it infinity--
 
 163
 00:08:08,320 --> 00:08:09,130
-to each Ai.
+to each a_i.
 
 164
 00:08:09,130 --> 00:08:12,240
@@ -789,7 +789,7 @@ still have the same sums.
 176
 00:08:42,510 --> 00:08:44,660
 And when you do that,
-then all the Ai's
+then all the a_i's
 
 177
 00:08:44,660 --> 00:08:46,740
@@ -858,7 +858,7 @@ name, especially when you don't
 
 191
 00:09:33,970 --> 00:09:35,470
-know what 3 dimensional
+know what 3-dimensional
 matching is,
 
 192
@@ -912,7 +912,7 @@ sets that we're choosing,
 
 203
 00:10:13,310 --> 00:10:16,290
-the Ai's, should consist of
+the A_i's, should consist of
 one element from A, one element
 
 204
@@ -933,7 +933,7 @@ Let's say a partition.
 208
 00:10:29,720 --> 00:10:44,540
 This is a disjoint union into
-triples, Si, and cross product
+triples, S_i, and cross product
 
 209
 00:10:44,540 --> 00:10:46,120
@@ -942,7 +942,7 @@ ABC.
 210
 00:10:46,120 --> 00:10:49,840
 So you're choosing one from
-each of these guys in each Si,
+each of these guys in each S_i,
 
 211
 00:10:49,840 --> 00:10:51,180
@@ -1528,7 +1528,7 @@ That's pretty clear.
 340
 00:16:46,730 --> 00:16:50,530
 You just take the same choices
-of the Ai's, Bi's, and Ci's.
+of the a_i's, b_i's, and c_i's.
 
 341
 00:16:50,530 --> 00:16:54,440
@@ -1548,7 +1548,7 @@ have a solution to this
 344
 00:16:58,180 --> 00:17:01,579
 you can convert that back into
-a solution to the numerical 3
+a solution to the numerical 3-
 
 345
 00:17:01,579 --> 00:17:03,449
@@ -1614,7 +1614,7 @@ another problem, which is
 
 358
 00:17:31,020 --> 00:17:32,270
-called 3 dimensional matching.
+called 3-dimensional matching.
 
 359
 00:17:32,270 --> 00:17:37,050
@@ -1626,7 +1626,7 @@ Yes?
 361
 00:17:37,720 --> 00:17:40,600
 AUDIENCE: Is the
-assumption that the Ai
+assumption that the A_i
 
 362
 00:17:40,600 --> 00:17:43,260
@@ -1747,8 +1747,8 @@ That's perfect matching.
 
 388
 00:18:30,672 --> 00:18:32,380
-You might call it 2
-dimensional matching,
+You might call it
+2-dimensional matching,
 
 389
 00:18:32,380 --> 00:18:34,430
@@ -1756,7 +1756,7 @@ because an edge has 2 ends.
 
 390
 00:18:34,430 --> 00:18:37,970
-3 dimensional matching takes
+3-dimensional matching takes
 place in a hyper graph.
 
 391
@@ -1853,7 +1853,7 @@ by exactly one hyper edge.
 
 412
 00:20:22,350 --> 00:20:26,370
-OK, so this is the 3 dimensional
+OK, so this is the 3-dimensional
 version of bipartite matching,
 
 413
@@ -1936,12 +1936,12 @@ How do these relate?
 430
 00:21:39,130 --> 00:21:42,790
 Well, certainly if you take
-a numerical 3 dimensional
+a numerical 3-dimensional
 
 431
 00:21:42,790 --> 00:21:45,730
-matching problem, that is a 3
-dimensional matching problem.
+matching problem, that is a
+3-dimensional matching problem.
 
 432
 00:21:45,730 --> 00:21:48,420
@@ -1961,21 +1961,21 @@ draw the edge, you
 435
 00:21:52,140 --> 00:21:58,140
 draw one of these hyper edges
-exactly when Ai plus Bi plus Ci
+exactly when a_i plus b_i plus c_i
 
 436
 00:21:58,140 --> 00:22:00,520
-equals the targets sum.
+equals the target sum.
 
 437
 00:22:00,520 --> 00:22:03,230
-So numerical 3
-dimensional matching
+So numerical
+3-dimensional matching
 
 438
 00:22:03,230 --> 00:22:05,395
-is a special case of 3
-dimensional matching.
+is a special case of
+3-dimensional matching.
 
 439
 00:22:05,395 --> 00:22:06,770
@@ -1984,7 +1984,7 @@ useful to start
 
 440
 00:22:06,770 --> 00:22:07,936
-from 3 dimensional matching.
+from 3-dimensional matching.
 
 441
 00:22:07,936 --> 00:22:09,880
@@ -2013,7 +2013,7 @@ is, in some sense,
 446
 00:22:23,310 --> 00:22:25,835
 even more general than
-3 dimensional matching.
+3-dimensional matching.
 
 447
 00:22:25,835 --> 00:22:28,850
@@ -4533,7 +4533,7 @@ Cool.
 
 1005
 00:48:48,350 --> 00:48:49,150
-Rectangle packet.
+Rectangle packing.
 
 1006
 00:48:49,150 --> 00:48:49,651
