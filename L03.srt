@@ -808,7 +808,7 @@ connectivity purposes,
 172
 00:07:05,120 --> 00:07:08,030
 maybe first we want to visit
-B1, then we want to visit B2,
+B_1, then we want to visit B_2,
 
 173
 00:07:08,030 --> 00:07:08,540
@@ -8080,7 +8080,7 @@ the same as saying,
 1733
 01:15:38,210 --> 01:15:41,630
 well, some of the a_i's, or the
-xi's, are going to go left.
+x_i's, are going to go left.
 
 1734
 01:15:41,630 --> 01:15:43,180
