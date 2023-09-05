@@ -2741,7 +2741,7 @@ to these two notions.
 605
 00:30:53,450 --> 00:30:57,530
 So in particular, if you
-believe p does not equal NP,
+believe P does not equal NP,
 
 606
 00:30:57,530 --> 00:31:00,140
@@ -2912,7 +2912,7 @@ with the difficulty axis.
 
 642
 00:32:27,540 --> 00:32:30,060
-But now instead of p,
+But now instead of P,
 I'm going to distinguish
 
 643
@@ -2971,7 +2971,7 @@ This thing is weakly NP-hard.
 
 656
 00:33:17,540 --> 00:33:23,040
-This is if p does
+This is if P does
 not equal NP then
 
 657
@@ -4946,7 +4946,7 @@ to make the most money
 
 1099
 00:53:28,720 --> 00:53:29,955
-is first solve p equals NP.
+is first solve P equals NP.
 
 1100
 00:53:29,955 --> 00:53:32,500
@@ -4956,7 +4956,7 @@ Eternity II, I guess.
 1101
 00:53:32,500 --> 00:53:35,800
 But you could easily solve this
-puzzle without p equals NP.
+puzzle without P equals NP.
 
 1102
 00:53:35,800 --> 00:53:38,990
@@ -4971,7 +4971,7 @@ one of the leaders.
 1104
 00:53:42,710 --> 00:53:47,170
 This guy, Louis
-Verhaad, got-- so this
+Verhaard, got-- so this
 
 1105
 00:53:47,170 --> 00:53:49,930
