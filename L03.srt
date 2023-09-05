@@ -8025,7 +8025,7 @@ It is weakly NP-hard.
 1709
 01:15:06,900 --> 01:15:09,460
 You can solve it in
-pseudo-polynomial time.
+pseudopolynomial time.
 
 1710
 01:15:09,460 --> 01:15:12,440
@@ -8584,7 +8584,7 @@ We don't know.
 1828
 01:20:13,375 --> 01:20:15,000
 Is there a
-pseudo-polynomial algorithm?
+pseudopolynomial algorithm?
 
 1829
 01:20:15,000 --> 01:20:17,570
