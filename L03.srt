@@ -7341,7 +7341,7 @@ is the complete graph
 
 1573
 01:07:21,390 --> 01:07:23,500
-on six vertices, K6.
+on six vertices, K_6.
 
 1574
 01:07:23,500 --> 01:07:27,410
@@ -7391,7 +7391,7 @@ no matter how you draw it.
 
 1584
 01:07:43,800 --> 01:07:45,220
-K6 is very symmetric,
+K_6 is very symmetric,
 so it's not
 
 1585
