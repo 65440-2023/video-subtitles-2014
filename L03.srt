@@ -5680,7 +5680,7 @@ to win this as you can tell,
 
 1217
 00:52:09,940 --> 00:52:13,490
-for proofing NP-completeness and
+for proving NP-completeness and
 maximization of aligns Tetris's
 
 1218
@@ -5705,7 +5705,7 @@ the 12 month in the year 17
 
 1222
 00:52:22,390 --> 00:52:27,784
-Ano Tetri, which is since
+Anno Tetri, which is since
 the invention of Tetris.
 
 1223
@@ -6204,12 +6204,12 @@ of pieces representing a_i.
 1329
 00:56:50,640 --> 00:56:53,181
 In general, the piece sequences
-is the piece sequence for a1,
+is the piece sequence for a_1,
 
 1330
 00:56:53,181 --> 00:56:55,640
 the piece sequence for
-a2, piece sequence for a3.
+a_2, piece sequence for a_3.
 
 1331
 00:56:55,640 --> 00:56:58,220
