@@ -1312,16 +1312,16 @@ No?
 292
 00:14:45,931 --> 00:14:47,879
 AUDIENCE: You might be
-able to do a couple A's
+able to do multiple a's
 
 293
 00:14:47,879 --> 00:14:49,340
-in a single set.
+in a single set,
 
 294
 00:14:49,340 --> 00:14:53,730
-The set should be small, because
-they're not-- [INAUDIBLE].
+if they're sufficiently small,
+because they're not-- [INAUDIBLE].
 
 295
 00:14:53,730 --> 00:14:54,430
@@ -1329,7 +1329,7 @@ PROFESSOR: OK.
 
 296
 00:14:54,430 --> 00:14:55,330
-a is our problem.
+a's are a problem.
 
 297
 00:14:55,330 --> 00:14:58,450
@@ -1366,8 +1366,8 @@ would be 1 of those.
 
 304
 00:15:19,575 --> 00:15:23,540
-AUDIENCE: 13 infinities
-on [INAUDIBLE].
+AUDIENCE: Then you'd need 13 infinities
+that you can't get anywhere.
 
 305
 00:15:23,540 --> 00:15:28,160
@@ -3091,8 +3091,8 @@ problem is strongly
 
 683
 00:34:30,805 --> 00:34:33,159
-polynomial it ends [INAUDIBLE]
-a weakly polynomial.
+polynomial, then it's also
+weakly polynomial.
 
 684
 00:34:33,159 --> 00:34:35,970
@@ -4930,7 +4930,8 @@ So time to get rich.
 
 1095
 00:53:19,824 --> 00:53:20,740
-AUDIENCE: [INAUDIBLE].
+AUDIENCE: [INAUDIBLE]
+million from solving P = NP.
 
 1096
 00:53:20,740 --> 00:53:24,080
@@ -5234,7 +5235,7 @@ because we want integers.
 
 1162
 00:56:05,673 --> 00:56:06,173
-Yeah.
+Yeah?
 
 1163
 00:56:06,173 --> 00:56:11,063
@@ -5244,11 +5245,11 @@ that there is sort of one color,
 1164
 00:56:11,063 --> 00:56:13,019
 and that's for
-[INAUDIBLE] most things.
+joining most things.
 
 1165
 00:56:13,019 --> 00:56:15,382
-And that's [INAUDIBLE]
+And that's gonna go
 kind of on the outside
 
 1166
@@ -5297,7 +5298,7 @@ different squares.
 1175
 00:56:41,560 --> 00:56:43,720
 And we're just going to
-sub-divide like that.
+subdivide like that.
 
 1176
 00:56:43,720 --> 00:56:46,840
@@ -5318,7 +5319,7 @@ That will work.
 1180
 00:56:52,520 --> 00:56:54,960
 AUDIENCE: And the interior
-edges [INAUDIBLE].
+edges will be...
 
 1181
 00:56:54,960 --> 00:56:56,800
@@ -5328,7 +5329,7 @@ edges-- all right.
 1182
 00:56:56,800 --> 00:56:58,960
 So we're going to
-take a i, and we're
+take a_i, and we're
 
 1183
 00:56:58,960 --> 00:57:07,850
@@ -5341,7 +5342,7 @@ the width here, let's say,
 
 1185
 00:57:12,770 --> 00:57:16,605
-will be n over 3 plus a i.
+will be n over 3 plus a_i.
 
 1186
 00:57:16,605 --> 00:57:18,480
@@ -5365,7 +5366,7 @@ visible-- I'm going to call i.
 1190
 00:57:29,270 --> 00:57:33,160
 This is going to be a
-different color for each a i.
+different color for each a_i.
 
 1191
 00:57:33,160 --> 00:57:38,622
@@ -5463,8 +5464,8 @@ we did it this way.
 
 1211
 00:58:26,860 --> 00:58:31,030
-This is [INAUDIBLE] work with
-Marty Dumaine, the cameramen.
+This is joint work with
+Marty Demaine, the cameramen.
 
 1212
 00:58:31,030 --> 00:58:36,140
@@ -5474,7 +5475,7 @@ be as simple as possible,
 1213
 00:58:36,140 --> 00:58:39,456
 we made the width of each
-of the rectangles just a i.
+of the rectangles just a_i.
 
 1214
 00:58:39,456 --> 00:58:41,670
@@ -5535,7 +5536,7 @@ You just execute it once.
 1226
 00:59:02,540 --> 00:59:04,190
 This we execute for
-each of the a i's.
+each of the a_i's.
 
 1227
 00:59:04,190 --> 00:59:07,250
@@ -6002,13 +6003,13 @@ be hard, those numbers--
 
 1326
 01:02:46,325 --> 01:02:49,390
-the a i's-- have to be
+the a_i's-- have to be
 exponential in value.
 
 1327
 01:02:49,390 --> 01:02:52,110
 If I have an
-exponential value a i,
+exponential value a_i,
 
 1328
 01:02:52,110 --> 01:02:53,850
@@ -6100,7 +6101,7 @@ polynomial size but it
 1346
 01:03:27,030 --> 01:03:29,500
 has exponentially
-large a i's, I'd
+large a_i's, I'd
 
 1347
 01:03:29,500 --> 01:03:35,170
@@ -6129,11 +6130,11 @@ if what I'm doing here
 1352
 01:03:43,940 --> 01:03:45,767
 is representing
-the a i's in unary.
+the a_i's in unary.
 
 1353
 01:03:45,767 --> 01:03:47,350
-I take the a i and
+I take the a_i and
 said, OK, I'm going
 
 1354
@@ -7440,7 +7441,7 @@ gaps, let's say.
 1635
 01:16:14,740 --> 01:16:19,430
 So I'm just going to take
-each of my a i numbers,
+each of my a_i numbers,
 
 1636
 01:16:19,430 --> 01:16:21,770
@@ -7505,7 +7506,7 @@ to come together-- plus t,
 
 1649
 01:16:47,400 --> 01:16:49,320
-my target sum of the a i's.
+my target sum of the a_i's.
 
 1650
 01:16:49,320 --> 01:16:52,160
@@ -7625,7 +7626,7 @@ it's at most t, certainly.
 
 1674
 01:17:54,860 --> 01:17:57,760
-Even if a i were 0,
+Even if a_i were 0,
 which is not allowed,
 
 1675
@@ -8135,7 +8136,7 @@ puzzle in solve state.
 
 1783
 01:22:53,954 --> 01:22:56,345
-It's the Simpson's addition.
+It's the Simpsons' edition.
 
 1784
 01:22:56,345 --> 01:22:58,740
