@@ -6700,7 +6700,7 @@ Adam?
 1434
 01:01:17,320 --> 01:01:21,630
 AUDIENCE: If you place something
-to high, but at the same time
+too high, but at the same time
 
 1435
 01:01:21,630 --> 01:01:23,790
@@ -6807,7 +6807,7 @@ tops of each of them,
 
 1457
 01:02:14,170 --> 01:02:20,186
-so that with and L or something
+so that with an L or something
 we can clear one space of the--
 
 1458
