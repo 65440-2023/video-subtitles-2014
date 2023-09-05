@@ -49,7 +49,7 @@ of reductions-- NP-hardness
 
 12
 00:00:11,020 --> 00:00:13,920
-reductions from three partition.
+reductions from 3-partition.
 
 13
 00:00:13,920 --> 00:00:16,714
@@ -99,7 +99,7 @@ a bunch of-- possibly
 22
 00:00:37,410 --> 00:00:40,730
 as many as eight-- reductions
-from three partition.
+from 3-partition.
 
 23
 00:00:40,730 --> 00:00:44,720
@@ -495,7 +495,7 @@ atoms, which we will get to.
 107
 00:04:06,150 --> 00:04:09,170
 And then, the interesting
-part from a three partition
+part from a 3-partition
 
 108
 00:04:09,170 --> 00:04:12,050
@@ -1416,7 +1416,7 @@ have to go into the pockets.
 303
 00:12:53,290 --> 00:12:57,010
 So this is, in general, a big
-issue with three partition
+issue with 3-partition
 
 304
 00:12:57,010 --> 00:13:00,080
@@ -2080,7 +2080,7 @@ mention it here,
 445
 00:18:54,170 --> 00:19:01,800
 is we have a parity issue
-because the cubicle grid is
+because the cubical grid is
 
 446
 00:19:01,800 --> 00:19:04,450
@@ -2423,7 +2423,7 @@ are assigned to these pockets.
 517
 00:22:01,027 --> 00:22:03,610
 Because we want every solution
-to the three partition instance
+to the 3-partition instance
 
 518
 00:22:03,610 --> 00:22:05,020
@@ -3859,7 +3859,7 @@ you to lots of different ways
 821
 00:35:50,790 --> 00:35:54,700
 to represent numbers
-and three partition.
+and 3-partition.
 
 822
 00:35:54,700 --> 00:35:58,650
@@ -4576,7 +4576,7 @@ And these are the proofs.
 
 976
 00:42:07,980 --> 00:42:09,830
-This one is three partition.
+This one is 3-partition.
 
 977
 00:42:09,830 --> 00:42:11,147
@@ -4594,7 +4594,7 @@ section of the class.
 980
 00:42:14,800 --> 00:42:17,260
 But I'm going to focus here
-on the three partition--
+on the 3-partition--
 
 981
 00:42:17,260 --> 00:42:19,350
@@ -4736,7 +4736,7 @@ properly to scale.
 1011
 00:43:24,180 --> 00:43:27,510
 So reduction from
-three partition.
+3-partition.
 
 1012
 00:43:27,510 --> 00:43:30,860
@@ -5142,7 +5142,7 @@ the simple version
 
 1098
 00:47:03,140 --> 00:47:05,370
-of three partition, where
+of 3-partition, where
 you're asking for sets
 
 1099
@@ -5418,7 +5418,7 @@ still give a valid solution
 
 1158
 00:49:35,232 --> 00:49:36,190
-to the three partition.
+to the 3-partition.
 
 1159
 00:49:36,190 --> 00:49:36,880
@@ -5787,7 +5787,7 @@ joint, journal version.
 1239
 00:53:10,640 --> 00:53:16,430
 So reduction is from
-three partition, surprise.
+3-partition, surprise.
 
 1240
 00:53:16,430 --> 00:53:17,820
@@ -6239,7 +6239,7 @@ part of it in another bucket.
 1336
 00:57:11,550 --> 00:57:14,320
 That would not give us a
-solution to three partition.
+solution to 3-partition.
 
 1337
 00:57:14,320 --> 00:57:16,400
@@ -7319,7 +7319,7 @@ here, there's no numbers.
 1568
 01:07:05,030 --> 01:07:09,540
 This is from 2007 and a
-reduction from three partition.
+reduction from 3-partition.
 
 1569
 01:07:09,540 --> 01:07:14,200
@@ -7687,7 +7687,7 @@ can occupy each of these cells.
 
 1646
 01:12:07,940 --> 01:12:10,300
-So you get three partition.
+So you get 3-partition.
 
 1647
 01:12:10,300 --> 01:12:11,520
@@ -7883,7 +7883,7 @@ you're allowed to visit.
 1689
 01:14:03,600 --> 01:14:05,058
 And that gives you
-three partition.
+3-partition.
 
 1690
 01:14:05,058 --> 01:14:06,447
@@ -7906,7 +7906,7 @@ idea of another way
 
 1694
 01:14:11,132 --> 01:14:12,340
-to represent three partition.
+to represent 3-partition.
 
 1695
 01:14:12,340 --> 01:14:15,400
@@ -8038,7 +8038,7 @@ from reduction from partition,
 
 1724
 01:15:19,580 --> 01:15:22,721
-which is two partition, which
+which is 2-partition, which
 is divide your numbers into two
 
 1725
@@ -8250,7 +8250,7 @@ OK?
 1769
 01:17:00,150 --> 01:17:03,280
 So that represents
-two partition.
+2-partition.
 
 1770
 01:17:03,280 --> 01:17:04,710
@@ -8323,7 +8323,7 @@ all of these creases,
 1785
 01:17:39,870 --> 01:17:43,950
 this is possible if and only
-if two partition is solvable.
+if 2-partition is solvable.
 
 1786
 01:17:43,950 --> 01:17:46,350
@@ -8408,7 +8408,7 @@ it's going to go here.
 1803
 01:18:25,420 --> 01:18:29,810
 And it won't hit anything if and
-only if I solve two partition.
+only if I solve 2-partition.
 
 1804
 01:18:29,810 --> 01:18:30,310
@@ -8479,7 +8479,7 @@ of the horizontal folds.
 1818
 01:19:01,080 --> 01:19:04,250
 And that will work if and only
-if two partition is solvable.
+if 2-partition is solvable.
 
 1819
 01:19:04,250 --> 01:19:06,410

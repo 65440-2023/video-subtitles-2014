@@ -1757,12 +1757,12 @@ because an edge has 2 ends.
 390
 00:18:34,430 --> 00:18:37,970
 3-dimensional matching takes
-place in a hyper graph.
+place in a hypergraph.
 
 391
 00:18:37,970 --> 00:18:44,240
 And in this case, it's going
-to be a tripartite hyper graph.
+to be a tripartite hypergraph.
 
 392
 00:18:44,240 --> 00:18:52,470
@@ -1770,7 +1770,7 @@ to be a tripartite hyper graph.
 393
 00:18:52,470 --> 00:18:54,220
 You may not have seen
-hyper graphs before.
+hypergraphs before.
 
 394
 00:18:54,220 --> 00:18:55,678
@@ -1801,7 +1801,7 @@ all have like size n.
 
 400
 00:19:15,690 --> 00:19:30,270
-And the hyper edge is E.
+And the hyperedge is E.
 
 401
 00:19:30,270 --> 00:19:33,690
@@ -1846,7 +1846,7 @@ cover all of the vertices.
 410
 00:20:14,010 --> 00:20:17,730
 Every vertex will be hit
-by exactly one hyper edge.
+by exactly one hyperedge.
 
 411
 00:20:17,730 --> 00:20:22,350
@@ -1902,11 +1902,11 @@ version, where you're given
 422
 00:20:57,410 --> 00:21:04,380
 non-tripartite, just a
-3 uniform hyper graph.
+3-uniform hypergraph.
 
 423
 00:21:04,380 --> 00:21:07,050
-3 uniform just means every
+3-uniform just means every
 edge has cardinality 3.
 
 424
@@ -1919,7 +1919,7 @@ let's say it has n vertices--
 
 426
 00:21:23,930 --> 00:21:26,700
-n over 3 disjoin hyper edges.
+n over 3 disjoint hyperedges.
 
 427
 00:21:26,700 --> 00:21:34,460
@@ -1960,7 +1960,7 @@ draw the edge, you
 
 435
 00:21:52,140 --> 00:21:58,140
-draw one of these hyper edges
+draw one of these hyperedges
 exactly when a_i plus b_i plus c_i
 
 436
@@ -2021,11 +2021,11 @@ even more general than
 448
 00:22:28,850 --> 00:22:33,170
 Yeah, it is more general,
-because tripartite hyper graph
+because tripartite hypergraph
 
 449
 00:22:33,170 --> 00:22:35,730
-like this is 3 uniform.
+like this is 3-uniform.
 
 450
 00:22:35,730 --> 00:22:37,910
@@ -5182,7 +5182,7 @@ I solve it in polynomial time?
 1150
 00:55:24,290 --> 00:55:27,060
 And the answer is no
-unless p equals NP.
+unless P equals NP.
 
 1151
 00:55:27,060 --> 00:55:32,630
@@ -7265,7 +7265,7 @@ I don't know.
 
 1597
 01:14:34,740 --> 01:14:36,040
-What about log, log area?
+What about log log area?
 
 1598
 01:14:36,040 --> 01:14:41,466
