@@ -1672,7 +1672,7 @@ connect these parts together.
 358
 00:15:07,050 --> 00:15:10,349
 So what we're going to
-do is have the A1 gadget.
+do is have the a_1 gadget.
 
 359
 00:15:10,349 --> 00:15:12,390
@@ -1687,7 +1687,7 @@ you need to go.
 361
 00:15:14,474 --> 00:15:15,890
 And then we'll
-have the A2 gadget.
+have the a_2 gadget.
 
 362
 00:15:15,890 --> 00:15:17,840
@@ -1700,7 +1700,7 @@ gadget for a long length of it.
 
 364
 00:15:20,860 --> 00:15:21,870
-And then the A3.
+And then the a_3.
 
 365
 00:15:21,870 --> 00:15:25,580
@@ -1724,7 +1724,7 @@ space in order to route around.
 
 369
 00:15:34,500 --> 00:15:36,340
-So maybe A1's going to go here.
+So maybe a_1's going to go here.
 
 370
 00:15:36,340 --> 00:15:40,720
@@ -1750,7 +1750,7 @@ want to go over here next.
 
 375
 00:15:47,300 --> 00:15:49,360
-And then we'll do A2 there.
+And then we'll do a_2 there.
 
 376
 00:15:49,360 --> 00:15:50,930
@@ -7710,12 +7710,12 @@ how-- what those numbers are.
 1651
 01:12:20,760 --> 01:12:25,140
 PROFESSOR: So OK, so these are
-the a_i's-- A1 is 2, A2 is 3,
+the a_i's-- a_1 is 2, a_2 is 3,
 
 1652
 01:12:25,140 --> 01:12:29,140
-A3 is 3, A4 is 3, A5
-is 4, and A6 is 5.
+a_3 is 3, a_4 is 3,
+a_5 is 4, and a_6 is 5.
 
 1653
 01:12:29,140 --> 01:12:34,050
