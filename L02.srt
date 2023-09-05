@@ -54,7 +54,7 @@ Let's do it.
 13
 00:00:09,270 --> 00:00:12,755
 So today, we start the
-universe of 3 partition.
+universe of 3-partition.
 
 14
 00:00:12,755 --> 00:00:15,280
@@ -105,7 +105,7 @@ So we're going to talk.
 
 24
 00:00:52,230 --> 00:00:54,290
-My favorite is 3 partition.
+My favorite is 3-partition.
 
 25
 00:00:54,290 --> 00:00:57,770
@@ -115,7 +115,7 @@ we'll do in the number context
 26
 00:00:57,770 --> 00:01:00,687
 will be reduction
-from 3 partition.
+from 3-partition.
 
 27
 00:01:00,687 --> 00:01:02,520
@@ -128,7 +128,7 @@ NP-hardness, I should say.
 29
 00:01:08,340 --> 00:01:09,914
 But before we get
-to e partition,
+to 3-partition,
 
 30
 00:01:09,914 --> 00:01:11,830
@@ -137,7 +137,7 @@ another problem, which
 
 31
 00:01:11,830 --> 00:01:13,025
-is called 2 partition.
+is called 2-partition.
 
 32
 00:01:13,025 --> 00:01:22,226
@@ -158,7 +158,7 @@ the fun reductions.
 
 36
 00:01:27,900 --> 00:01:31,045
-So in 2 partition,
+So in 2-partition,
 your given n integers.
 
 37
@@ -253,7 +253,7 @@ proofs from SAT
 
 57
 00:02:46,620 --> 00:02:47,947
-to things like 2 partition.
+to things like 2-partition.
 
 58
 00:02:47,947 --> 00:02:49,280
@@ -426,7 +426,7 @@ You don't have to.
 96
 00:04:34,370 --> 00:04:40,510
 All right, so let's
-go to 3 partition,
+go to 3-partition,
 
 97
 00:04:40,510 --> 00:04:44,170
@@ -568,7 +568,7 @@ very interesting.
 129
 00:06:23,080 --> 00:06:25,450
 It would be basically
-identical to 2 partition.
+identical to 2-partition.
 
 130
 00:06:25,450 --> 00:06:28,030
@@ -587,7 +587,7 @@ you about some fun
 
 133
 00:06:34,380 --> 00:06:37,232
-facts about 3 partition.
+facts about 3-partition.
 
 134
 00:06:37,232 --> 00:06:38,940
@@ -836,7 +836,7 @@ couple related problems
 
 186
 00:09:08,590 --> 00:09:09,215
-to 3 partition.
+to 3-partition.
 
 187
 00:09:09,215 --> 00:09:12,480
@@ -878,7 +878,7 @@ related problem.
 195
 00:09:42,300 --> 00:09:45,785
 It's really a specialization
-of 3 partition.
+of 3-partition.
 
 196
 00:09:45,785 --> 00:09:54,336
@@ -1032,7 +1032,7 @@ these number problems.
 230
 00:11:58,630 --> 00:12:01,804
 So I want to reduce from
-this numerical 3 dimensional
+this numerical 3-dimensional
 
 231
 00:12:01,804 --> 00:12:03,595
@@ -1041,11 +1041,11 @@ you might also call
 
 232
 00:12:03,595 --> 00:12:06,240
-the ABC version of 3 partition.
+the ABC version of 3-partition.
 
 233
 00:12:06,240 --> 00:12:08,430
-I will reduce it to 3 partition.
+I will reduce it to 3-partition.
 
 234
 00:12:08,430 --> 00:12:13,294
@@ -1425,7 +1425,7 @@ are size 3.
 317
 00:16:01,460 --> 00:16:04,200
 But if you're doing something
-like this for 2 partition,
+like this for 2-partition,
 
 318
 00:16:04,200 --> 00:16:06,840
@@ -1543,7 +1543,7 @@ to show that if you
 343
 00:16:56,305 --> 00:16:58,180
 have a solution to this
-3 partition instance,
+3-partition instance,
 
 344
 00:16:58,180 --> 00:17:01,579
@@ -1600,7 +1600,7 @@ it would be good.
 355
 00:17:22,450 --> 00:17:26,790
 But most the time, I would
-say we use 3 partition.
+say we use 3-partition.
 
 356
 00:17:26,790 --> 00:17:28,930
@@ -1997,7 +1997,7 @@ you like the numerical version.
 
 443
 00:22:14,130 --> 00:22:18,420
-Personally I prefer 3 partition,
+Personally I prefer 3-partition,
 but these two are pretty close.
 
 444
@@ -2044,17 +2044,17 @@ you to know about them.
 
 453
 00:22:42,140 --> 00:22:47,080
-Again, 3 partition is
+Again, 3-partition is
 where the action is.
 
 454
 00:22:47,080 --> 00:22:50,930
 All right, let me go
-back to this issue of 2
+back to this issue of 2-
 
 455
 00:22:50,930 --> 00:22:53,820
-partition versus 3 partition.
+partition versus 3-partition.
 
 456
 00:22:53,820 --> 00:22:59,200
@@ -2306,7 +2306,7 @@ constraint on the problem.
 509
 00:26:27,950 --> 00:26:32,710
 So to cut to the chase,
-2 partition up here
+2-partition up here
 
 510
 00:26:32,710 --> 00:26:34,890
@@ -2328,7 +2328,7 @@ then it's not strongly NP-hard.
 514
 00:26:44,580 --> 00:26:47,450
 That's the best we can
-hope for, whereas 3
+hope for, whereas 3-
 
 515
 00:26:47,450 --> 00:26:49,980
@@ -2807,7 +2807,7 @@ time step.
 
 619
 00:31:33,190 --> 00:31:35,970
-So if you've taken 6851
+So if you've taken 6.851:
 Advanced Data Structures,
 
 620
@@ -2882,8 +2882,8 @@ like all models are equivalent.
 
 635
 00:32:10,090 --> 00:32:13,452
-If you believe the Strong Church
-[INAUDIBLE] Thesis-- anyway.
+If you believe the Strong
+Church-Turing Thesis-- anyway.
 
 636
 00:32:13,452 --> 00:32:15,160
