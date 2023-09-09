@@ -2340,7 +2340,7 @@ All right.
 505
 00:23:19,340 --> 00:23:21,530
 So our next topic
-is Mine Sweeper.
+is Minesweeper.
 
 506
 00:23:21,530 --> 00:23:22,811
@@ -2353,7 +2353,7 @@ Brothers, and Bruce Lee
 
 508
 00:23:24,560 --> 00:23:27,950
-did Rush Hour, so Mine Sweeper's
+did Rush Hour, so Minesweeper's
 the last one on the poster.
 
 509
@@ -2363,7 +2363,7 @@ Let's prove it hard.
 510
 00:23:31,450 --> 00:23:34,597
 We're actually going to cover
-two proofs about Mine Sweeper,
+two proofs about Minesweeper,
 
 511
 00:23:34,597 --> 00:23:36,680
@@ -2396,7 +2396,7 @@ given the x levels.
 517
 00:23:49,900 --> 00:23:52,870
 So just a regular
-instance of Mine Sweeper.
+instance of Minesweeper.
 
 518
 00:23:52,870 --> 00:23:56,110
@@ -2416,7 +2416,7 @@ drivable from this--
 521
 00:24:00,981 --> 00:24:02,730
 I should mention the
-rules of Mine Sweeper
+rules of Minesweeper
 
 522
 00:24:02,730 --> 00:24:04,260
@@ -2424,7 +2424,7 @@ just in case you haven't played.
 
 523
 00:24:04,260 --> 00:24:06,750
-Anyone not played Mine Sweeper?
+Anyone not played Minesweeper?
 
 524
 00:24:06,750 --> 00:24:08,520
@@ -2537,7 +2537,7 @@ the bombs could be.
 
 547
 00:25:08,160 --> 00:25:09,990
-And so the Mine Sweeper
+And so the Minesweeper
 consistency problem
 
 548
@@ -2567,7 +2567,7 @@ the problem we care about?
 553
 00:25:27,140 --> 00:25:30,840
 And one reason if you're
-playing Mine Sweeper,
+playing Minesweeper,
 
 554
 00:25:30,840 --> 00:25:33,070
@@ -2590,7 +2590,7 @@ problem, potentially,
 
 558
 00:25:41,690 --> 00:25:46,450
-if I could solve Mine Sweeper
+if I could solve Minesweeper
 consistency by saying,
 
 559
@@ -2645,7 +2645,7 @@ and cook until done.
 569
 00:26:07,970 --> 00:26:10,420
 Now, maybe you could solve
-Mine Sweeper in a different way
+Minesweeper in a different way
 
 570
 00:26:10,420 --> 00:26:11,650
@@ -2788,7 +2788,7 @@ is the wrong problem
 
 600
 00:27:10,390 --> 00:27:12,630
-to solve for Mine Sweeper.
+to solve for Minesweeper.
 
 601
 00:27:12,630 --> 00:27:14,790
@@ -2831,7 +2831,7 @@ be one other perspective.
 609
 00:27:30,557 --> 00:27:32,640
 Or you could imagine some
-adversarial Mine Sweeper
+adversarial Minesweeper
 
 610
 00:27:32,640 --> 00:27:35,155
@@ -3610,7 +3610,7 @@ this paper was not
 780
 00:35:36,090 --> 00:35:40,950
 talking about NP-completeness,
-but the K paper says,
+but the Kay paper says,
 
 781
 00:35:40,950 --> 00:35:43,630
@@ -3638,7 +3638,7 @@ There is one.
 786
 00:35:53,047 --> 00:35:54,880
 It's actually not that
-hard in Mine Sweeper,
+hard in Minesweeper,
 
 787
 00:35:54,880 --> 00:35:58,240
@@ -3691,7 +3691,7 @@ And so that sets it to one.
 798
 00:36:20,340 --> 00:36:24,570
 So there's a true terminator
-for Mine Sweeper consistency.
+for Minesweeper consistency.
 
 799
 00:36:24,570 --> 00:36:26,910
@@ -3700,7 +3700,7 @@ in various ways,
 
 800
 00:36:26,910 --> 00:36:29,690
-Mine Sweeper consistency
+Minesweeper consistency
 is probably not
 
 801
@@ -3809,7 +3809,7 @@ if you choose x bar.
 822
 00:37:34,460 --> 00:37:36,830
 And one of the minor
-things in Mine Sweeper
+things in Minesweeper
 
 823
 00:37:36,830 --> 00:37:41,330
@@ -3914,7 +3914,7 @@ And also what are they proving?
 844
 00:38:32,910 --> 00:38:39,300
 So this is what they call the
-Mine Sweeper inference problem.
+Minesweeper inference problem.
 
 845
 00:38:39,300 --> 00:38:43,730
@@ -3922,7 +3922,7 @@ Mine Sweeper inference problem.
 846
 00:38:43,730 --> 00:38:47,590
 But it's also what you might
-just call Mine Sweeper.
+just call Minesweeper.
 
 847
 00:38:47,590 --> 00:38:49,437
@@ -4219,7 +4219,7 @@ Cool.
 
 912
 00:42:20,550 --> 00:42:24,080
-So claim is Mine Sweeper
+So claim is Minesweeper
 inference is coNP-complete.
 
 913
@@ -4229,17 +4229,17 @@ proper statement
 
 914
 00:42:26,120 --> 00:42:29,410
-is Mine Sweeper
+is Minesweeper
 is coNP-complete.
 
 915
 00:42:29,410 --> 00:42:33,030
-Mine Sweeper consistency
+Minesweeper consistency
 is NP-complete,
 
 916
 00:42:33,030 --> 00:42:35,920
-but Mine Sweeper the game,
+but Minesweeper the game,
 I want to solve the game,
 
 917
@@ -4500,7 +4500,7 @@ Phew.
 
 972
 00:44:57,930 --> 00:44:59,880
-Back to Mine Sweeper.
+Back to Minesweeper.
 
 973
 00:44:59,880 --> 00:45:02,630
@@ -5532,7 +5532,7 @@ planar version are hard.
 
 1194
 00:54:49,870 --> 00:54:51,974
-OK, back to Mine Sweeper.
+OK, back to Minesweeper.
 
 1195
 00:54:51,974 --> 00:54:54,140
@@ -5707,7 +5707,7 @@ unSAT instance.
 1230
 00:56:22,740 --> 00:56:24,735
 I want to turn it into
-a Mine Sweeper instance.
+a Minesweeper instance.
 
 1231
 00:56:24,735 --> 00:56:31,910
@@ -5799,7 +5799,7 @@ Cool.
 
 1250
 00:57:23,370 --> 00:57:28,880
-So that was Mine Sweeper
+So that was Minesweeper
 and functional completeness.
 
 1251
