@@ -1,8254 +1,8215 @@
-1
-0-1:59:36,500 --> 0-1:59:36,580
-
-2
-0-1:59:36,580 --> 0-1:59:38,930
-The following content is
-provided under a Creative
-
-3
-0-1:59:38,930 --> 0-1:59:40,320
-Commons license.
-
-4
-0-1:59:40,320 --> 0-1:59:42,560
-Your support will help
-MIT OpenCourseWare
-
-5
-0-1:59:42,560 --> 0-1:59:46,650
-continue to offer high quality
-educational resources for free.
-
-6
-0-1:59:46,650 --> 0-1:59:49,200
-To make a donation, or to
-view additional materials
-
-7
-0-1:59:49,200 --> 0-1:59:53,100
-from hundreds of MIT courses,
-visit MIT OpenCourseWare
-
-8
-0-1:59:53,100 --> 0-1:59:53,810
-at ocw.mit.edu.
-
-9
-0-1:59:53,810 --> 00:00:02,241
-
 10
-00:00:02,241 --> 00:00:03,116
+00:00:03,141 --> 00:00:04,016
 PROFESSOR: All right.
 
 11
-00:00:03,116 --> 00:00:05,030
+00:00:04,016 --> 00:00:05,930
 Welcome back to 6.890.
 
 12
-00:00:05,030 --> 00:00:08,880
+00:00:05,930 --> 00:00:09,780
 Today we start a series of
 lectures on satisfiability.
 
 13
-00:00:08,880 --> 00:00:10,690
+00:00:09,780 --> 00:00:11,590
 We saw a little bit
 about satisfiability
 
 14
-00:00:10,690 --> 00:00:12,720
+00:00:11,590 --> 00:00:13,620
 in the first lecture.
 
 15
-00:00:12,720 --> 00:00:16,030
+00:00:13,620 --> 00:00:16,930
 Now we're going to do it right,
 and do it more intensely,
 
 16
-00:00:16,030 --> 00:00:17,210
+00:00:16,930 --> 00:00:18,110
 and see a lot of examples.
 
 17
-00:00:17,210 --> 00:00:19,400
+00:00:18,110 --> 00:00:20,300
 Today we'll just
 see a few examples
 
 18
-00:00:19,400 --> 00:00:23,180
+00:00:20,300 --> 00:00:24,080
 of using SAT to prove
 NP-completeness or NP-hardness.
 
 19
-00:00:23,180 --> 00:00:27,690
+00:00:24,080 --> 00:00:28,590
 But over the next lecture or two
 we will see many more examples.
 
 20
-00:00:27,690 --> 00:00:31,660
+00:00:28,590 --> 00:00:32,560
 And SAT is really the
 most common problem
 
 21
-00:00:31,660 --> 00:00:33,930
+00:00:32,560 --> 00:00:34,830
 that everyone uses
 to prove NP-hardness.
 
 22
-00:00:33,930 --> 00:00:37,590
+00:00:34,830 --> 00:00:38,490
 So this is the moment you've
 all been waiting for, I suppose.
 
 23
-00:00:37,590 --> 00:00:40,230
+00:00:38,490 --> 00:00:41,130
 This is one of the
 motivations for organizing
 
 24
-00:00:40,230 --> 00:00:42,800
+00:00:41,130 --> 00:00:43,700
 this whole class, so we
 can tell you all about SAT,
 
 25
-00:00:42,800 --> 00:00:45,240
+00:00:43,700 --> 00:00:46,140
 it's many variations, so
 you get to learn them all,
 
 26
-00:00:45,240 --> 00:00:46,930
+00:00:46,140 --> 00:00:47,830
 and then see lots
 of different ways
 
 27
-00:00:46,930 --> 00:00:49,610
+00:00:47,830 --> 00:00:50,510
 you can SAT to
 represent your problems.
 
 28
-00:00:49,610 --> 00:00:51,780
+00:00:50,510 --> 00:00:52,680
 So without further
 ado, let's get started.
 
 29
-00:00:51,780 --> 00:00:57,980
+00:00:52,680 --> 00:00:58,880
 
 30
-00:00:57,980 --> 00:01:04,180
+00:00:58,880 --> 00:01:05,080
 Today I'm going to give you
 a whole bunch of problems
 
 31
-00:01:04,180 --> 00:01:08,534
+00:01:05,080 --> 00:01:09,434
 and definitions, and then we
 will do reductions afterwards.
 
 32
-00:01:08,534 --> 00:01:10,450
+00:01:09,434 --> 00:01:11,350
 So there's going to be
 a lot of problems here.
 
 33
-00:01:10,450 --> 00:01:12,700
+00:01:11,350 --> 00:01:13,600
 You probably will have
 trouble remembering them all,
 
 34
-00:01:12,700 --> 00:01:13,640
+00:01:13,600 --> 00:01:14,540
 there are so many.
 
 35
-00:01:13,640 --> 00:01:15,242
+00:01:14,540 --> 00:01:16,142
 But in particular,
 the notes serve
 
 36
-00:01:15,242 --> 00:01:16,700
+00:01:16,142 --> 00:01:17,600
 as a useful reference,
 like, here's
 
 37
-00:01:16,700 --> 00:01:18,700
+00:01:17,600 --> 00:01:19,600
 all the versions you
 might care about-- here's
 
 38
-00:01:18,700 --> 00:01:21,440
+00:01:19,600 --> 00:01:22,340
 which ones are hard,
 which ones are easy.
 
 39
-00:01:21,440 --> 00:01:25,650
+00:01:22,340 --> 00:01:26,550
 So with that in mind,
 get ready for the ride.
 
 40
-00:01:25,650 --> 00:01:29,670
+00:01:26,550 --> 00:01:30,570
 So the original SAT
 problem is you're
 
 41
-00:01:29,670 --> 00:01:42,780
+00:01:30,570 --> 00:01:43,680
 given a Boolean formula, which
 is like over the operators
 
 42
-00:01:42,780 --> 00:01:45,205
+00:01:43,680 --> 00:01:46,105
 AND, OR, and NOT.
 
 43
-00:01:45,205 --> 00:01:46,830
+00:01:46,105 --> 00:01:47,730
 And in case you look
 at the literature,
 
 44
-00:01:46,830 --> 00:01:53,360
+00:01:47,730 --> 00:01:54,260
 usually AND is the wedge, OR
 is the vee, and NOT is the neg?
 
 45
-00:01:53,360 --> 00:01:56,150
+00:01:54,260 --> 00:01:57,050
 I don't know the
 name of that symbol.
 
 46
-00:01:56,150 --> 00:02:08,030
+00:01:57,050 --> 00:02:08,930
 And it's over n
 variables x_1, x_2, ... x_n.
 
 47
-00:02:08,030 --> 00:02:09,780
+00:02:08,930 --> 00:02:10,680
 So usually, you're not
 given true or false
 
 48
-00:02:09,780 --> 00:02:13,570
+00:02:10,680 --> 00:02:14,470
 so that you can construct
 them by saying, x_1 and not x_ 1.
 
 49
-00:02:13,570 --> 00:02:14,320
+00:02:14,470 --> 00:02:15,220
 That's never true.
 
 50
-00:02:14,320 --> 00:02:15,630
+00:02:15,220 --> 00:02:16,530
 So that's false, for example.
 
 51
-00:02:15,630 --> 00:02:17,970
+00:02:16,530 --> 00:02:18,870
 And then you could
 negate that and get true.
 
 52
-00:02:17,970 --> 00:02:20,390
+00:02:18,870 --> 00:02:21,290
 And the question is, can
 you set the variables
 
 53
-00:02:20,390 --> 00:02:21,570
+00:02:21,290 --> 00:02:22,470
 to make the formula true?
 
 54
-00:02:21,570 --> 00:02:35,020
+00:02:22,470 --> 00:02:35,920
 
 55
-00:02:35,020 --> 00:02:37,730
+00:02:35,920 --> 00:02:38,630
 So that's the general problem.
 
 56
-00:02:37,730 --> 00:02:39,430
+00:02:38,630 --> 00:02:40,330
 This is the very
 first problem proved
 
 57
-00:02:39,430 --> 00:02:43,804
+00:02:40,330 --> 00:02:44,704
 to be NP-complete by
 Cook and then by Levin.
 
 58
-00:02:43,804 --> 00:02:45,720
+00:02:44,704 --> 00:02:46,620
 So it's usually called
 the Cook-Levin theorem,
 
 59
-00:02:45,720 --> 00:02:48,650
+00:02:46,620 --> 00:02:49,550
 that satisfiability
 is NP-complete.
 
 60
-00:02:48,650 --> 00:02:51,170
+00:02:49,550 --> 00:02:52,070
 And I was looking at
 the paper the other day.
 
 61
-00:02:51,170 --> 00:02:54,970
+00:02:52,070 --> 00:02:55,870
 It doesn't actually mention
 the notion of NP in that paper.
 
 62
-00:02:54,970 --> 00:02:55,970
+00:02:55,870 --> 00:02:56,870
 I think that came later.
 
 63
-00:02:55,970 --> 00:03:00,260
+00:02:56,870 --> 00:03:01,160
 But the notion is there.
 
 64
-00:03:00,260 --> 00:03:11,570
+00:03:01,160 --> 00:03:12,470
 So I'll give you another
 version of the same problem,
 
 65
-00:03:11,570 --> 00:03:14,200
+00:03:12,470 --> 00:03:15,100
 essentially, called circuit SAT.
 
 66
-00:03:14,200 --> 00:03:17,150
+00:03:15,100 --> 00:03:18,050
 This is a useful perspective
 which we will see probably
 
 67
-00:03:17,150 --> 00:03:18,250
+00:03:18,050 --> 00:03:19,150
 not till next class.
 
 68
-00:03:18,250 --> 00:03:21,095
+00:03:19,150 --> 00:03:21,995
 But another way
 to think about it.
 
 69
-00:03:21,095 --> 00:03:22,470
+00:03:21,995 --> 00:03:23,370
 Also makes  the
 NP-completeness
 
 70
-00:03:22,470 --> 00:03:23,636
+00:03:23,370 --> 00:03:24,536
 a little bit more intuitive.
 
 71
-00:03:23,636 --> 00:03:31,491
+00:03:24,536 --> 00:03:32,391
 
 72
-00:03:31,491 --> 00:03:31,990
+00:03:32,391 --> 00:03:32,890
 OK.
 
 73
-00:03:31,990 --> 00:03:34,890
+00:03:32,890 --> 00:03:35,790
 This is kind of the algebraic
 way of thinking about things.
 
 74
-00:03:34,890 --> 00:03:37,410
+00:03:35,790 --> 00:03:38,310
 You have variables and
 you write operators,
 
 75
-00:03:37,410 --> 00:03:40,130
+00:03:38,310 --> 00:03:41,030
 and you use parentheses
 and that sort of thing.
 
 76
-00:03:40,130 --> 00:03:42,030
+00:03:41,030 --> 00:03:42,930
 But if you're more
 graphically inclined,
 
 77
-00:03:42,030 --> 00:03:46,990
+00:03:42,930 --> 00:03:47,890
 you could imagine you
 have your x_is as wires,
 
 78
-00:03:46,990 --> 00:03:52,379
+00:03:47,890 --> 00:03:53,279
 they're connected to gates--
 this is an AND gate, this is
 
 79
-00:03:52,379 --> 00:03:56,640
+00:03:53,279 --> 00:03:57,540
 an OR gate, this is a negation.
 
 80
-00:03:56,640 --> 00:04:02,500
+00:03:57,540 --> 00:04:03,400
 So you can imagine
 something like this.
 
 81
-00:04:02,500 --> 00:04:08,390
+00:04:03,400 --> 00:04:09,290
 So you can, generally, copy
 your data and do various things.
 
 82
-00:04:08,390 --> 00:04:10,397
+00:04:09,290 --> 00:04:11,297
 And then this is the output.
 
 83
-00:04:10,397 --> 00:04:12,355
+00:04:11,297 --> 00:04:13,255
 And so this is what you
 might call the formula.
 
 84
-00:04:12,355 --> 00:04:15,370
+00:04:13,255 --> 00:04:16,270
 
 85
-00:04:15,370 --> 00:04:20,300
+00:04:16,270 --> 00:04:21,200
 It is the AND of the
 negation of the OR of x_3
 
 86
-00:04:20,300 --> 00:04:23,130
+00:04:21,200 --> 00:04:24,030
 and the AND of x_1 and x_2.
 
 87
-00:04:23,130 --> 00:04:27,000
+00:04:24,030 --> 00:04:27,900
 And then, pop off, it's also
 ANDed with this thing again.
 
 88
-00:04:27,000 --> 00:04:28,990
+00:04:27,900 --> 00:04:29,890
 So the one advantage
 of circuit SAT
 
 89
-00:04:28,990 --> 00:04:33,140
+00:04:29,890 --> 00:04:34,040
 is you can reuse complex
 computations, just
 
 90
-00:04:33,140 --> 00:04:34,760
+00:04:34,040 --> 00:04:35,660
 by copying the signal.
 
 91
-00:04:34,760 --> 00:04:37,960
+00:04:35,660 --> 00:04:38,860
 Normally, in a formula,
 you'd have to copy and paste
 
 92
-00:04:37,960 --> 00:04:39,090
+00:04:38,860 --> 00:04:39,990
 that chunk of the formula.
 
 93
-00:04:39,090 --> 00:04:41,410
+00:04:39,990 --> 00:04:42,310
 So you could imagine this
 lets you write formulas
 
 94
-00:04:41,410 --> 00:04:43,150
+00:04:42,310 --> 00:04:44,050
 slightly more efficiently.
 
 95
-00:04:43,150 --> 00:04:45,850
+00:04:44,050 --> 00:04:46,750
 I think it doesn't.
 
 96
-00:04:45,850 --> 00:04:48,870
+00:04:46,750 --> 00:04:49,770
 If you reuse things, you
 can always write them
 
 97
-00:04:48,870 --> 00:04:50,520
+00:04:49,770 --> 00:04:51,420
 as a variable over here.
 
 98
-00:04:50,520 --> 00:04:51,392
+00:04:51,420 --> 00:04:52,292
 Question.
 
 99
-00:04:51,392 --> 00:04:53,146
+00:04:52,292 --> 00:04:54,046
 AUDIENCE: What about feedback?
 
 100
-00:04:53,146 --> 00:04:54,520
+00:04:54,046 --> 00:04:55,420
 PROFESSOR: Feedback
 is forbidden.
 
 101
-00:04:54,520 --> 00:04:56,490
+00:04:55,420 --> 00:04:57,390
 So this should be a
 directed acyclic graph.
 
 102
-00:04:56,490 --> 00:04:57,010
+00:04:57,390 --> 00:04:57,910
 Yeah.
 
 103
-00:04:57,010 --> 00:04:59,460
+00:04:57,910 --> 00:05:00,360
 Good question.
 
 104
-00:04:59,460 --> 00:05:05,100
+00:05:00,360 --> 00:05:06,000
 So it's an acyclic circuit.
 
 105
-00:05:05,100 --> 00:05:07,960
+00:05:06,000 --> 00:05:08,860
 That would be another problem,
 which is harder than sNP.
 
 106
-00:05:07,960 --> 00:05:11,670
+00:05:08,860 --> 00:05:12,570
 So circuit SAT is
 NP-complete when it's acyclic
 
 107
-00:05:11,670 --> 00:05:13,995
+00:05:12,570 --> 00:05:14,895
 and you can convert
 between one and the other.
 
 108
-00:05:13,995 --> 00:05:15,495
+00:05:14,895 --> 00:05:16,395
 And it's a little
 bit more intuitive
 
 109
-00:05:15,495 --> 00:05:19,690
+00:05:16,395 --> 00:05:20,590
 that you can write arbitrary
 computations as a circuit.
 
 110
-00:05:19,690 --> 00:05:23,960
+00:05:20,590 --> 00:05:24,860
 And then this is a question
 of whether you can--
 
 111
-00:05:23,960 --> 00:05:26,200
+00:05:24,860 --> 00:05:27,100
 the existence of some
 setting of the x_i's
 
 112
-00:05:26,200 --> 00:05:29,210
+00:05:27,100 --> 00:05:30,110
 is the same thing
 as saying, is there
 
 113
-00:05:29,210 --> 00:05:33,940
+00:05:30,110 --> 00:05:34,840
 some set of guesses that
 will lead me to a yes answer?
 
 114
-00:05:33,940 --> 00:05:36,170
+00:05:34,840 --> 00:05:37,070
 So that is intuitively
 like NP and that's
 
 115
-00:05:36,170 --> 00:05:39,180
+00:05:37,070 --> 00:05:40,080
 roughly how you prove these
 problems are NP-complete.
 
 116
-00:05:39,180 --> 00:05:42,710
+00:05:40,080 --> 00:05:43,610
 You write the computation--
 the checking computation--
 
 117
-00:05:42,710 --> 00:05:46,830
+00:05:43,610 --> 00:05:47,730
 to see whether your certificate
 is a valid certificate
 
 118
-00:05:46,830 --> 00:05:49,150
+00:05:47,730 --> 00:05:50,050
 as a circuit or as a formula.
 
 119
-00:05:49,150 --> 00:05:54,270
+00:05:50,050 --> 00:05:55,170
 And then the existential
 quantifiers on the x_i's let you
 
 120
-00:05:54,270 --> 00:05:57,990
+00:05:55,170 --> 00:05:58,890
 do all the guessing to see
 whether they're-- and this is
 
 121
-00:05:57,990 --> 00:05:58,680
+00:05:58,890 --> 00:05:59,580
 biased, right?
 
 122
-00:05:58,680 --> 00:06:00,140
+00:05:59,580 --> 00:06:01,040
 It's trying to find a true.
 
 123
-00:06:00,140 --> 00:06:01,520
+00:06:01,040 --> 00:06:02,420
 And that's exactly what NP does.
 
 124
-00:06:01,520 --> 00:06:06,260
+00:06:02,420 --> 00:06:07,160
 It's trying to find a true path
 that ends up answering yes.
 
 125
-00:06:06,260 --> 00:06:08,610
+00:06:07,160 --> 00:06:09,510
 So yes and true
 are symmetric here.
 
 126
-00:06:08,610 --> 00:06:12,930
+00:06:09,510 --> 00:06:13,830
 So that's the extent of
 complexity theory
 
 127
-00:06:12,930 --> 00:06:14,710
+00:06:13,830 --> 00:06:15,610
 we'll do today.
 
 128
-00:06:14,710 --> 00:06:17,190
+00:06:15,610 --> 00:06:18,090
 I'm going to give you
 more versions of SAT.
 
 129
-00:06:17,190 --> 00:06:20,280
+00:06:18,090 --> 00:06:21,180
 Next one is CNF SAT.
 
 130
-00:06:20,280 --> 00:06:23,370
+00:06:21,180 --> 00:06:24,270
 CNF stands for
 conjunctive normal form.
 
 131
-00:06:23,370 --> 00:06:29,320
+00:06:24,270 --> 00:06:30,220
 
 132
-00:06:29,320 --> 00:06:31,270
+00:06:30,220 --> 00:06:32,170
 I hope you all know
 propositional logic.
 
 133
-00:06:31,270 --> 00:06:33,490
+00:06:32,170 --> 00:06:34,390
 Because we're going to
 be doing a bunch today.
 
 134
-00:06:33,490 --> 00:06:36,710
+00:06:34,390 --> 00:06:37,610
 So ANDs are also
 called conjunctions,
 
 135
-00:06:36,710 --> 00:06:38,500
+00:06:37,610 --> 00:06:39,400
 ORs are called disjunctions.
 
 136
-00:06:38,500 --> 00:06:40,740
+00:06:39,400 --> 00:06:41,640
 This is old terminology.
 
 137
-00:06:40,740 --> 00:06:48,900
+00:06:41,640 --> 00:06:49,800
 So conjunctive normal form
 means that your formula
 
 138
-00:06:48,900 --> 00:06:50,460
+00:06:49,800 --> 00:06:51,360
 is an AND of clauses.
 
 139
-00:06:50,460 --> 00:06:55,930
+00:06:51,360 --> 00:06:56,830
 
 140
-00:06:55,930 --> 00:06:56,970
+00:06:56,830 --> 00:06:57,870
 What's a clause?
 
 141
-00:06:56,970 --> 00:07:02,460
+00:06:57,870 --> 00:07:03,360
 Well a clause is going
 to be an OR of literals.
 
 142
-00:07:02,460 --> 00:07:05,512
+00:07:03,360 --> 00:07:06,412
 
 143
-00:07:05,512 --> 00:07:06,220
+00:07:06,412 --> 00:07:07,120
 What's a literal?
 
 144
-00:07:06,220 --> 00:07:10,420
+00:07:07,120 --> 00:07:11,320
 
 145
-00:07:10,420 --> 00:07:15,950
+00:07:11,320 --> 00:07:16,850
 A literal is going
 to be x_i or not x_i.
 
 146
-00:07:15,950 --> 00:07:18,500
+00:07:16,850 --> 00:07:19,400
 
 147
-00:07:18,500 --> 00:07:19,550
+00:07:19,400 --> 00:07:20,450
 So these are variables.
 
 148
-00:07:19,550 --> 00:07:21,300
+00:07:20,450 --> 00:07:22,200
 So variables are
 possible literals
 
 149
-00:07:21,300 --> 00:07:24,310
+00:07:22,200 --> 00:07:25,210
 and the negations of variables
 and literals, and that's it.
 
 150
-00:07:24,310 --> 00:07:26,530
+00:07:25,210 --> 00:07:27,430
 And that is CNF SAT.
 
 151
-00:07:26,530 --> 00:07:29,850
+00:07:27,430 --> 00:07:30,750
 So it's a special case of SAT
 where your formula happens
 
 152
-00:07:29,850 --> 00:07:33,240
+00:07:30,750 --> 00:07:34,140
 to have this picture.
 
 153
-00:07:33,240 --> 00:07:36,890
+00:07:34,140 --> 00:07:37,790
 And in general, you can
 convert arbitrary formulas
 
 154
-00:07:36,890 --> 00:07:38,630
+00:07:37,790 --> 00:07:39,530
 into conjunctive normal form.
 
 155
-00:07:38,630 --> 00:07:42,210
+00:07:39,530 --> 00:07:43,110
 It's a normal form, meaning
 it's essentially unique.
 
 156
-00:07:42,210 --> 00:07:45,040
+00:07:43,110 --> 00:07:45,940
 A minimal CNF formula is unique.
 
 157
-00:07:45,040 --> 00:07:46,740
+00:07:45,940 --> 00:07:47,640
 So there's a known
 transformation
 
 158
-00:07:46,740 --> 00:07:48,184
+00:07:47,640 --> 00:07:49,084
 to do that, polynomial time.
 
 159
-00:07:48,184 --> 00:07:49,600
+00:07:49,084 --> 00:07:50,500
 That's how you
 prove this is hard.
 
 160
-00:07:49,600 --> 00:07:52,470
+00:07:50,500 --> 00:07:53,370
 
 161
-00:07:52,470 --> 00:07:54,600
+00:07:53,370 --> 00:07:55,500
 Another view in this picture--
 
 162
-00:07:54,600 --> 00:07:59,690
+00:07:55,500 --> 00:08:00,590
 We'll use CNF SAT a lot, usually
 in even more specialized form.
 
 163
-00:07:59,690 --> 00:08:02,200
+00:08:00,590 --> 00:08:03,100
 But already, one
 useful view-- which
 
 164
-00:08:02,200 --> 00:08:08,190
+00:08:03,100 --> 00:08:09,090
 we saw a little bit in lecture
 one, we'll see it again today--
 
 165
-00:08:08,190 --> 00:08:12,820
+00:08:09,090 --> 00:08:13,720
 is you can view such an
 input as a bipartite graph.
 
 166
-00:08:12,820 --> 00:08:21,920
+00:08:13,720 --> 00:08:22,820
 You have, let's say,
 variables on the one side
 
 167
-00:08:21,920 --> 00:08:26,040
+00:08:22,820 --> 00:08:26,940
 and clauses on the other side.
 
 168
-00:08:26,040 --> 00:08:28,070
+00:08:26,940 --> 00:08:28,970
 And then you have two
 types of connections,
 
 169
-00:08:28,070 --> 00:08:32,800
+00:08:28,970 --> 00:08:33,700
 a clause-- in general, a clause
 is going to have degree three.
 
 170
-00:08:32,800 --> 00:08:37,150
+00:08:33,700 --> 00:08:38,050
 And let's say the
 dashed edges are negated
 
 171
-00:08:37,150 --> 00:08:39,920
+00:08:38,050 --> 00:08:40,820
 and the solid edges
 are not negated.
 
 172
-00:08:39,920 --> 00:08:43,885
+00:08:40,820 --> 00:08:44,785
 So this is a clause that
 involves x_1 or x_2 or not x_3.
 
 173
-00:08:43,885 --> 00:08:49,080
+00:08:44,785 --> 00:08:49,980
 
 174
-00:08:49,080 --> 00:08:50,700
+00:08:49,980 --> 00:08:51,600
 And in general, each
 of these clauses
 
 175
-00:08:50,700 --> 00:08:56,130
+00:08:51,600 --> 00:08:57,030
 is going to involve some
 number of variables over here.
 
 176
-00:08:56,130 --> 00:08:58,730
+00:08:57,030 --> 00:08:59,630
 I said three, but I haven't
 actually gotten to three yet.
 
 177
-00:08:58,730 --> 00:09:01,110
+00:08:59,630 --> 00:09:02,010
 That is 3SAT.
 
 178
-00:09:01,110 --> 00:09:03,640
+00:09:02,010 --> 00:09:04,540
 So the most common
 form of CNF SAT we use
 
 179
-00:09:03,640 --> 00:09:12,730
+00:09:04,540 --> 00:09:13,630
 is called 3SAT, where it's CNF
 SAT in the special case where
 
 180
-00:09:12,730 --> 00:09:17,690
+00:09:13,630 --> 00:09:18,590
 the clause is an
 or three literals.
 
 181
-00:09:17,690 --> 00:09:21,601
+00:09:18,590 --> 00:09:22,501
 And you can assume it's
 exactly three or at most three.
 
 182
-00:09:21,601 --> 00:09:23,850
+00:09:22,501 --> 00:09:24,750
 So that's like saying the
 degree of each of the clause
 
 183
-00:09:23,850 --> 00:09:25,560
+00:09:24,750 --> 00:09:26,460
 nodes here is exactly three.
 
 184
-00:09:25,560 --> 00:09:28,110
+00:09:26,460 --> 00:09:29,010
 
 185
-00:09:28,110 --> 00:09:29,870
+00:09:29,010 --> 00:09:30,770
 And that's the
 problem with it we
 
 186
-00:09:29,870 --> 00:09:32,810
+00:09:30,770 --> 00:09:33,710
 used for proving Super
 Mario Brothers was
 
 187
-00:09:32,810 --> 00:09:35,370
+00:09:33,710 --> 00:09:36,270
 hard in the first lecture.
 
 188
-00:09:35,370 --> 00:09:37,780
+00:09:36,270 --> 00:09:38,680
 So in my notes I have
 things nicely indented.
 
 189
-00:09:37,780 --> 00:09:41,690
+00:09:38,680 --> 00:09:42,590
 So we had CNF SAT, which
 is a special case of SAT,
 
 190
-00:09:41,690 --> 00:09:44,100
+00:09:42,590 --> 00:09:45,000
 and then 3SAT, which is a
 special case of CNF SAT.
 
 191
-00:09:44,100 --> 00:09:48,852
+00:09:45,000 --> 00:09:49,752
 A special case of 3SAT that's
 also hard is called 3SAT-5.
 
 192
-00:09:48,852 --> 00:09:50,560
+00:09:49,752 --> 00:09:51,460
 I don't know that this
 is super standard,
 
 193
-00:09:50,560 --> 00:09:53,810
+00:09:51,460 --> 00:09:54,710
 but I found at least one
 paper that gives it this name.
 
 194
-00:09:53,810 --> 00:10:03,110
+00:09:54,710 --> 00:10:04,010
 This says that each
 variable occurs in less than
 
 195
-00:10:03,110 --> 00:10:08,750
+00:10:04,010 --> 00:10:09,650
 or equal to five clauses, either
 in it's positive or negated
 
 196
-00:10:08,750 --> 00:10:09,780
+00:10:09,650 --> 00:10:10,680
 form.
 
 197
-00:10:09,780 --> 00:10:14,890
+00:10:10,680 --> 00:10:15,790
 So this is sometimes called
 max five occurrence 3-SAT.
 
 198
-00:10:14,890 --> 00:10:18,000
+00:10:15,790 --> 00:10:18,900
 And I think you can even make
 them exactly five occurrances
 
 199
-00:10:18,000 --> 00:10:19,210
+00:10:18,900 --> 00:10:20,110
 if you want.
 
 200
-00:10:19,210 --> 00:10:21,571
+00:10:20,110 --> 00:10:22,471
 But, at most, five occurrances
 is usually what you want.
 
 201
-00:10:21,571 --> 00:10:22,070
+00:10:22,471 --> 00:10:22,970
 Question.
 
 202
-00:10:22,070 --> 00:10:25,224
+00:10:22,970 --> 00:10:26,124
 AUDIENCE: Is that
 tight? Is 3SAT-4 in P?
 
 203
-00:10:25,224 --> 00:10:26,640
+00:10:26,124 --> 00:10:27,540
 PROFESSOR: That's
 a good question.
 
 204
-00:10:26,640 --> 00:10:28,340
+00:10:27,540 --> 00:10:29,240
 3SAT-4?
 
 205
-00:10:28,340 --> 00:10:29,650
+00:10:29,240 --> 00:10:30,550
 I don't know.
 
 206
-00:10:29,650 --> 00:10:33,374
+00:10:30,550 --> 00:10:34,274
 I would guess it's tight.
 
 207
-00:10:33,374 --> 00:10:35,540
+00:10:34,274 --> 00:10:36,440
 Because there are a lot of
 people that mention five,
 
 208
-00:10:35,540 --> 00:10:38,231
+00:10:36,440 --> 00:10:39,131
 but I haven't seen a mention
 that four is polynomial.
 
 209
-00:10:38,231 --> 00:10:38,730
+00:10:39,131 --> 00:10:39,630
 All right?
 
 210
-00:10:38,730 --> 00:10:41,120
+00:10:39,630 --> 00:10:42,020
 So we should figure that out.
 
 211
-00:10:41,120 --> 00:10:41,830
+00:10:42,020 --> 00:10:42,730
 Other questions?
 
 212
-00:10:41,830 --> 00:10:44,071
+00:10:42,730 --> 00:10:44,971
 Or it's probably the same one.
 
 213
-00:10:44,071 --> 00:10:44,570
+00:10:44,971 --> 00:10:45,470
 All right.
 
 214
-00:10:44,570 --> 00:10:46,950
+00:10:45,470 --> 00:10:47,850
 Here's another
 special case of 3SAT.
 
 215
-00:10:46,950 --> 00:10:51,040
+00:10:47,850 --> 00:10:51,940
 
 216
-00:10:51,040 --> 00:10:51,910
+00:10:51,940 --> 00:10:52,810
 Monotone 3SAT.
 
 217
-00:10:51,910 --> 00:10:54,670
+00:10:52,810 --> 00:10:55,570
 
 218
-00:10:54,670 --> 00:11:08,575
+00:10:55,570 --> 00:11:09,475
 This is where each clause is
 all positive or all negative.
 
 219
-00:11:08,575 --> 00:11:14,340
+00:11:09,475 --> 00:11:15,240
 
 220
-00:11:14,340 --> 00:11:16,610
+00:11:15,240 --> 00:11:17,510
 So of course, if every
 clause is all positive,
 
 221
-00:11:16,610 --> 00:11:20,960
+00:11:17,510 --> 00:11:21,860
 then you could set all
 the variables to true
 
 222
-00:11:20,960 --> 00:11:22,220
+00:11:21,860 --> 00:11:23,120
 and you'll satisfy.
 
 223
-00:11:22,220 --> 00:11:24,636
+00:11:23,120 --> 00:11:25,536
 If all the classes are negative,
 you set all the variables
 
 224
-00:11:24,636 --> 00:11:26,020
+00:11:25,536 --> 00:11:26,920
 to false and you satisfy.
 
 225
-00:11:26,020 --> 00:11:28,474
+00:11:26,920 --> 00:11:29,374
 But if half the clauses
 are all positive,
 
 226
-00:11:28,474 --> 00:11:30,640
+00:11:29,374 --> 00:11:31,540
 half the clauses are all
 negative, then that's hard.
 
 227
-00:11:30,640 --> 00:11:33,200
+00:11:31,540 --> 00:11:34,100
 That's called monotone 3SAT.
 
 228
-00:11:33,200 --> 00:11:35,440
+00:11:34,100 --> 00:11:36,340
 I've actually not
 seen this used,
 
 229
-00:11:35,440 --> 00:11:38,065
+00:11:36,340 --> 00:11:38,965
 but I imagine it is helpful
 in a few situations.
 
 230
-00:11:38,065 --> 00:11:40,670
+00:11:38,965 --> 00:11:41,570
 
 231
-00:11:40,670 --> 00:11:42,180
+00:11:41,570 --> 00:11:43,080
 This is definitely
 the most common.
 
 232
-00:11:42,180 --> 00:11:44,159
+00:11:43,080 --> 00:11:45,059
 Almost every proof
 starts with 3SAT.
 
 233
-00:11:44,159 --> 00:11:46,200
+00:11:45,059 --> 00:11:47,100
 But it's really good to
 know all the extra things
 
 234
-00:11:46,200 --> 00:11:48,700
+00:11:47,100 --> 00:11:49,600
 you can assume about your 3SAT
 problem and it still be hard.
 
 235
-00:11:48,700 --> 00:11:51,450
+00:11:49,600 --> 00:11:52,350
 
 236
-00:11:51,450 --> 00:11:53,820
+00:11:52,350 --> 00:11:54,720
 I have more hard versions,
 but before we get there
 
 237
-00:11:53,820 --> 00:11:56,489
+00:11:54,720 --> 00:11:57,389
 I'm going to tell you
 about some easy versions.
 
 238
-00:11:56,489 --> 00:11:57,030
+00:11:57,389 --> 00:11:57,930
 And question.
 
 239
-00:11:57,030 --> 00:12:00,580
+00:11:57,930 --> 00:12:01,480
 AUDIENCE: Is monotone 3SAT-5?
 
 240
-00:12:00,580 --> 00:12:01,970
+00:12:01,480 --> 00:12:02,870
 PROFESSOR: Another
 good question.
 
 241
-00:12:01,970 --> 00:12:04,980
+00:12:02,870 --> 00:12:05,880
 Monotone 3SAT-5, is
 that NP complete?
 
 242
-00:12:04,980 --> 00:12:06,640
+00:12:05,880 --> 00:12:07,540
 I don't know.
 
 243
-00:12:06,640 --> 00:12:08,510
+00:12:07,540 --> 00:12:09,410
 Partly these were done
 at different times.
 
 244
-00:12:08,510 --> 00:12:11,350
+00:12:09,410 --> 00:12:12,250
 
 245
-00:12:11,350 --> 00:12:13,780
+00:12:12,250 --> 00:12:14,680
 Monotone 3SAT is mentioned
 in Garey and Johnson
 
 246
-00:12:13,780 --> 00:12:17,750
+00:12:14,680 --> 00:12:18,650
 as done in 1978, presumably for
 a particular hardness proof.
 
 247
-00:12:17,750 --> 00:12:22,110
+00:12:18,650 --> 00:12:23,010
 3SAT-5 is probably
 a very old idea.
 
 248
-00:12:22,110 --> 00:12:24,380
+00:12:23,010 --> 00:12:25,280
 Probably this idea of
 reducing occurances
 
 249
-00:12:24,380 --> 00:12:25,510
+00:12:25,280 --> 00:12:26,410
 goes to some logic thing.
 
 250
-00:12:25,510 --> 00:12:28,570
+00:12:26,410 --> 00:12:29,470
 But the earliest reference
 I found was 1998,
 
 251
-00:12:28,570 --> 00:12:31,190
+00:12:29,470 --> 00:12:32,090
 and most people had forgotten
 about monotone 3SAT by then.
 
 252
-00:12:31,190 --> 00:12:33,656
+00:12:32,090 --> 00:12:34,556
 So it probably just
 hasn't been considered,
 
 253
-00:12:33,656 --> 00:12:34,530
+00:12:34,556 --> 00:12:35,430
 but it might be easy.
 
 254
-00:12:34,530 --> 00:12:35,030
+00:12:35,430 --> 00:12:35,930
 Yeah.
 
 255
-00:12:35,030 --> 00:12:38,149
+00:12:35,930 --> 00:12:39,049
 
 256
-00:12:38,149 --> 00:12:40,440
+00:12:39,049 --> 00:12:41,340
 AUDIENCE: The construction
 to limit to five variables
 
 257
-00:12:40,440 --> 00:12:44,827
+00:12:41,340 --> 00:12:45,727
 should I believe work with the
 monotone construction as well.
 
 258
-00:12:44,827 --> 00:12:45,410
+00:12:45,727 --> 00:12:46,310
 PROFESSOR: OK.
 
 259
-00:12:45,410 --> 00:12:46,270
+00:12:46,310 --> 00:12:47,170
 Conjecture.
 
 260
-00:12:46,270 --> 00:12:47,150
+00:12:47,170 --> 00:12:48,050
 Yes, it's hard.
 
 261
-00:12:47,150 --> 00:12:49,890
+00:12:48,050 --> 00:12:50,790
 
 262
-00:12:49,890 --> 00:12:50,390
+00:12:50,790 --> 00:12:51,290
 OK.
 
 263
-00:12:50,390 --> 00:12:55,770
+00:12:51,290 --> 00:12:56,670
 
 264
-00:12:55,770 --> 00:13:00,070
+00:12:56,670 --> 00:13:00,970
 But stay tuned for
 a certain answer.
 
 265
-00:13:00,070 --> 00:13:01,750
+00:13:00,970 --> 00:13:02,650
 So let me tell you
 some polynomial time
 
 266
-00:13:01,750 --> 00:13:04,850
+00:13:02,650 --> 00:13:05,750
 versions of SAT.
 
 267
-00:13:04,850 --> 00:13:08,450
+00:13:05,750 --> 00:13:09,350
 The three is tight:
 if you have a clause
 
 268
-00:13:08,450 --> 00:13:12,550
+00:13:09,350 --> 00:13:13,450
 being an or of two literals,
 but otherwise they're
 
 269
-00:13:12,550 --> 00:13:14,750
+00:13:13,450 --> 00:13:15,650
 just like 3SAT -- or
 just like CNF SAT,
 
 270
-00:13:14,750 --> 00:13:20,450
+00:13:15,650 --> 00:13:21,350
 I guess -- then this
 is polynomial time.
 
 271
-00:13:20,450 --> 00:13:25,300
+00:13:21,350 --> 00:13:26,200
 And let me give you
 a rough sketch why.
 
 272
-00:13:25,300 --> 00:13:29,170
+00:13:26,200 --> 00:13:30,070
 So if you have an
 or of two literals,
 
 273
-00:13:29,170 --> 00:13:32,040
+00:13:30,070 --> 00:13:32,940
 that's something like x or y.
 
 274
-00:13:32,040 --> 00:13:34,910
+00:13:32,940 --> 00:13:35,810
 And the little bit of
 propositional logic
 
 275
-00:13:34,910 --> 00:13:40,980
+00:13:35,810 --> 00:13:41,880
 you should know is the meaning
 of, let's say, a implies b.
 
 276
-00:13:40,980 --> 00:13:44,100
+00:13:41,880 --> 00:13:45,000
 Saying this should
 hold-- and a and b
 
 277
-00:13:44,100 --> 00:13:50,757
+00:13:45,000 --> 00:13:51,657
 are either true or false-- is
 the same as saying not a or b.
 
 278
-00:13:50,757 --> 00:13:53,340
+00:13:51,657 --> 00:13:54,240
 Because if a is false, then the
 implication tells you nothing.
 
 279
-00:13:53,340 --> 00:13:57,100
+00:13:54,240 --> 00:13:58,000
 If a is true, then it better
 be the case that b is true.
 
 280
-00:13:57,100 --> 00:13:58,614
+00:13:58,000 --> 00:13:59,514
 So either a is
 false, in which case
 
 281
-00:13:58,614 --> 00:14:00,530
+00:13:59,514 --> 00:14:01,430
 you don't worry about
 something, or a is true,
 
 282
-00:14:00,530 --> 00:14:02,410
+00:14:01,430 --> 00:14:03,310
 and then b better
 be true, as well.
 
 283
-00:14:02,410 --> 00:14:04,680
+00:14:03,310 --> 00:14:05,580
 So these are the same--
 maybe write triple
 
 284
-00:14:04,680 --> 00:14:08,010
+00:14:05,580 --> 00:14:08,910
 equals, for these are
 equivalent logical statements.
 
 285
-00:14:08,010 --> 00:14:10,220
+00:14:08,910 --> 00:14:11,120
 So we can apply
 that here and say
 
 286
-00:14:10,220 --> 00:14:15,240
+00:14:11,120 --> 00:14:16,140
 x or y is the same thing
 as not x implies y,
 
 287
-00:14:15,240 --> 00:14:16,586
+00:14:16,140 --> 00:14:17,486
 or not y implies x.
 
 288
-00:14:16,586 --> 00:14:17,210
+00:14:17,486 --> 00:14:18,110
 It's symmetric.
 
 289
-00:14:17,210 --> 00:14:19,900
+00:14:18,110 --> 00:14:20,800
 This is now just
 a simple implication.
 
 290
-00:14:19,900 --> 00:14:23,520
+00:14:20,800 --> 00:14:24,420
 If we ever set x to be
 false, then y must be true.
 
 291
-00:14:23,520 --> 00:14:25,670
+00:14:24,420 --> 00:14:26,570
 And every clause
 can be converted
 
 292
-00:14:25,670 --> 00:14:26,760
+00:14:26,570 --> 00:14:27,660
 into such an implication.
 
 293
-00:14:26,760 --> 00:14:29,970
+00:14:27,660 --> 00:14:30,870
 You can build a graph of
 all such implications.
 
 294
-00:14:29,970 --> 00:14:33,120
+00:14:30,870 --> 00:14:34,020
 And then, turns out, to
 solve 2SAT, you can just
 
 295
-00:14:33,120 --> 00:14:35,934
+00:14:34,020 --> 00:14:36,834
 pick your favorite variable,
 x_i, set it to true,
 
 296
-00:14:35,934 --> 00:14:37,600
+00:14:36,834 --> 00:14:38,500
 follow all implications,
 see whether you
 
 297
-00:14:37,600 --> 00:14:38,810
+00:14:38,500 --> 00:14:39,710
 get a contradiction.
 
 298
-00:14:38,810 --> 00:14:40,900
+00:14:39,710 --> 00:14:41,800
 If you don't, then
 the claim is there
 
 299
-00:14:40,900 --> 00:14:42,990
+00:14:41,800 --> 00:14:43,890
 is a satisfying assignment
 where x_i equals true.
 
 300
-00:14:42,990 --> 00:14:46,100
+00:14:43,890 --> 00:14:47,000
 So you can try that
 with x_i true, x_i false.
 
 301
-00:14:46,100 --> 00:14:47,840
+00:14:47,000 --> 00:14:48,740
 If there's any hope,
 then one of them
 
 302
-00:14:47,840 --> 00:14:50,010
+00:14:48,740 --> 00:14:50,910
 should say no contradiction.
 
 303
-00:14:50,010 --> 00:14:51,070
+00:14:50,910 --> 00:14:51,970
 Then just run with that.
 
 304
-00:14:51,070 --> 00:14:53,880
+00:14:51,970 --> 00:14:54,780
 And you can prove by induction
 that won't get stuck.
 
 305
-00:14:53,880 --> 00:14:58,110
+00:14:54,780 --> 00:14:59,010
 It won't make any
 impossible assignments,
 
 306
-00:14:58,110 --> 00:15:00,940
+00:14:59,010 --> 00:15:01,840
 unless there was no
 assignment to begin with.
 
 307
-00:15:00,940 --> 00:15:04,950
+00:15:01,840 --> 00:15:05,850
 So that's why 2SAT is easy
 and one of the situations
 
 308
-00:15:04,950 --> 00:15:07,010
+00:15:05,850 --> 00:15:07,910
 you should be careful about.
 
 309
-00:15:07,010 --> 00:15:14,430
+00:15:07,910 --> 00:15:15,330
 On the other hand,
 MAX 2SAT is hard.
 
 310
-00:15:14,430 --> 00:15:16,570
+00:15:15,330 --> 00:15:17,470
 So MAX 2SAT is
 you're given a 2SAT
 
 311
-00:15:16,570 --> 00:15:19,120
+00:15:17,470 --> 00:15:20,020
 formula-- you're
 given a 2CNF formula--
 
 312
-00:15:19,120 --> 00:15:22,980
+00:15:20,020 --> 00:15:23,880
 and normally, we ask for an
 assignment to the variables
 
 313
-00:15:22,980 --> 00:15:25,510
+00:15:23,880 --> 00:15:26,410
 that satisfies all the
 clauses, but if you just
 
 314
-00:15:25,510 --> 00:15:35,560
+00:15:26,410 --> 00:15:36,460
 want to satisfy k of them--
 so satisfy k of the clauses.
 
 315
-00:15:35,560 --> 00:15:37,150
+00:15:36,460 --> 00:15:38,050
 So usually you
 want to maximize k,
 
 316
-00:15:37,150 --> 00:15:39,710
+00:15:38,050 --> 00:15:40,610
 but let's say, for a decision
 problem, I'll give you k
 
 317
-00:15:39,710 --> 00:15:42,130
+00:15:40,610 --> 00:15:43,030
 and I want to know, can you
 satisfy k of the clauses?
 
 318
-00:15:42,130 --> 00:15:43,790
+00:15:43,030 --> 00:15:44,690
 That problem is NP hard.
 
 319
-00:15:43,790 --> 00:15:48,160
+00:15:44,690 --> 00:15:49,060
 
 320
-00:15:48,160 --> 00:15:49,450
+00:15:49,060 --> 00:15:50,350
 So that can be useful.
 
 321
-00:15:49,450 --> 00:15:51,130
+00:15:50,350 --> 00:15:52,030
 If you can only
 represent 2SAT clauses,
 
 322
-00:15:51,130 --> 00:15:53,320
+00:15:52,030 --> 00:15:54,220
 but you can somehow get
 a maximization thing in,
 
 323
-00:15:53,320 --> 00:15:55,760
+00:15:54,220 --> 00:15:56,660
 then you're golden again.
 
 324
-00:15:55,760 --> 00:15:57,940
+00:15:56,660 --> 00:15:58,840
 But 2SAT alone is not enough.
 
 325
-00:15:57,940 --> 00:16:03,810
+00:15:58,840 --> 00:16:04,710
 There are some other
 easy-to-solve versions.
 
 326
-00:16:03,810 --> 00:16:06,490
+00:16:04,710 --> 00:16:07,390
 This is essentially a
 generalization of 2SAT
 
 327
-00:16:06,490 --> 00:16:07,390
+00:16:07,390 --> 00:16:08,290
 is Horn SAT.
 
 328
-00:16:07,390 --> 00:16:10,955
+00:16:08,290 --> 00:16:11,855
 
 329
-00:16:10,955 --> 00:16:12,580
+00:16:11,855 --> 00:16:13,480
 It's maybe a little
 bit more surprising
 
 330
-00:16:12,580 --> 00:16:15,950
+00:16:13,480 --> 00:16:16,850
 the first time you see it.
 
 331
-00:16:15,950 --> 00:16:18,899
+00:16:16,850 --> 00:16:19,799
 Again, it's a special
 case of CNF SAT, which
 
 332
-00:16:18,899 --> 00:16:20,190
+00:16:19,799 --> 00:16:21,090
 you can tell by my indentation.
 
 333
-00:16:20,190 --> 00:16:27,020
+00:16:21,090 --> 00:16:27,920
 
 334
-00:16:27,020 --> 00:16:29,680
+00:16:27,920 --> 00:16:30,580
 Each clause has at most
 one negative literal.
 
 335
-00:16:29,680 --> 00:16:33,340
+00:16:30,580 --> 00:16:34,240
 
 336
-00:16:33,340 --> 00:16:35,770
+00:16:34,240 --> 00:16:36,670
 So that means a clause is
 going to look something
 
 337
-00:16:35,770 --> 00:16:39,350
+00:16:36,670 --> 00:16:40,250
 like-- has one negative?
 
 338
-00:16:39,350 --> 00:16:40,501
+00:16:40,250 --> 00:16:41,401
 Sorry.
 
 339
-00:16:40,501 --> 00:16:41,000
+00:16:41,401 --> 00:16:41,900
 Sorry.
 
 340
-00:16:41,000 --> 00:16:42,500
+00:16:41,900 --> 00:16:43,400
 Horn is the other way around.
 
 341
-00:16:42,500 --> 00:16:44,630
+00:16:43,400 --> 00:16:45,530
 We will get-- that
 problem is also solvable.
 
 342
-00:16:44,630 --> 00:16:47,540
+00:16:45,530 --> 00:16:48,440
 But the one that's called
 Horn SAT is-- there's
 
 343
-00:16:47,540 --> 00:16:49,300
+00:16:48,440 --> 00:16:50,200
 at most one positive literal.
 
 344
-00:16:49,300 --> 00:16:50,930
+00:16:50,200 --> 00:16:51,830
 So that means
 you're formula is going
 
 345
-00:16:50,930 --> 00:16:58,099
+00:16:51,830 --> 00:16:58,999
 to look something like not
 x or not y are not z or w.
 
 346
-00:16:58,099 --> 00:16:59,680
+00:16:58,999 --> 00:17:00,580
 So there's one positive.
 
 347
-00:16:59,680 --> 00:17:02,410
+00:17:00,580 --> 00:17:03,310
 The rest are all negated.
 
 348
-00:17:02,410 --> 00:17:06,040
+00:17:03,310 --> 00:17:06,940
 And we can do some more
 propositional logic.
 
 349
-00:17:06,040 --> 00:17:08,150
+00:17:06,940 --> 00:17:09,050
 So use De Morgan's theorem.
 
 350
-00:17:08,150 --> 00:17:12,115
+00:17:09,050 --> 00:17:13,015
 This is the same thing as
 the negation of the AND.
 
 351
-00:17:12,115 --> 00:17:15,900
+00:17:13,015 --> 00:17:16,800
 
 352
-00:17:15,900 --> 00:17:16,400
+00:17:16,800 --> 00:17:17,300
 OK?
 
 353
-00:17:16,400 --> 00:17:20,380
+00:17:17,300 --> 00:17:21,280
 And then we can apply
 this helpful rule.
 
 354
-00:17:20,380 --> 00:17:25,990
+00:17:21,280 --> 00:17:26,890
 And say this is the same thing
 as if x and y and z are true,
 
 355
-00:17:25,990 --> 00:17:29,500
+00:17:26,890 --> 00:17:30,400
 then w better be true.
 
 356
-00:17:29,500 --> 00:17:34,180
+00:17:30,400 --> 00:17:35,080
 And so you can use essentially
 the same algorithm that
 
 357
-00:17:34,180 --> 00:17:36,650
+00:17:35,080 --> 00:17:37,550
 you're-- I mean,
 slightly harder to check.
 
 358
-00:17:36,650 --> 00:17:38,860
+00:17:37,550 --> 00:17:39,760
 If all three of these
 things are true,
 
 359
-00:17:38,860 --> 00:17:40,960
+00:17:39,760 --> 00:17:41,860
 then this one better be true.
 
 360
-00:17:40,960 --> 00:17:42,690
+00:17:41,860 --> 00:17:43,590
 But it's always a guarantee.
 
 361
-00:17:42,690 --> 00:17:45,790
+00:17:43,590 --> 00:17:46,690
 You know this thing must happen.
 
 362
-00:17:45,790 --> 00:17:49,350
+00:17:46,690 --> 00:17:50,250
 Just like in 2-SAT, if x
 happened to be set to false,
 
 363
-00:17:49,350 --> 00:17:50,559
+00:17:50,250 --> 00:17:51,459
 then you know y must be true.
 
 364
-00:17:50,559 --> 00:17:52,558
+00:17:51,459 --> 00:17:53,458
 So you can just follow
 these implication chains.
 
 365
-00:17:52,558 --> 00:17:54,955
+00:17:53,458 --> 00:17:55,855
 If you get a contradiction,
 you know you're in trouble.
 
 366
-00:17:54,955 --> 00:17:56,330
+00:17:55,855 --> 00:17:57,230
 If you don't get
 a contradiction,
 
 367
-00:17:56,330 --> 00:17:57,940
+00:17:57,230 --> 00:17:58,840
 again, you can
 prove by induction
 
 368
-00:17:57,940 --> 00:18:00,130
+00:17:58,840 --> 00:18:01,030
 that all will be well.
 
 369
-00:18:00,130 --> 00:18:01,716
+00:18:01,030 --> 00:18:02,616
 And so you just
 make sure every time
 
 370
-00:18:01,716 --> 00:18:03,840
+00:18:02,616 --> 00:18:04,740
 you assign a variable you
 don't get a contradiction
 
 371
-00:18:03,840 --> 00:18:08,630
+00:18:04,740 --> 00:18:09,530
 and you can satisfy
 any Horn formula.
 
 372
-00:18:08,630 --> 00:18:09,280
+00:18:09,530 --> 00:18:10,180
 So that's cool.
 
 373
-00:18:09,280 --> 00:18:21,334
+00:18:10,180 --> 00:18:22,234
 
 374
-00:18:21,334 --> 00:18:22,750
+00:18:22,234 --> 00:18:23,650
 So I didn't write
 it on the board,
 
 375
-00:18:22,750 --> 00:18:26,560
+00:18:23,650 --> 00:18:27,460
 but this is
 polynomially solvable.
 
 376
-00:18:26,560 --> 00:18:32,300
+00:18:27,460 --> 00:18:33,200
 There's a symmetric version,
 which is called Dual Horn SAT.
 
 377
-00:18:32,300 --> 00:18:35,620
+00:18:33,200 --> 00:18:36,520
 
 378
-00:18:35,620 --> 00:18:40,270
+00:18:36,520 --> 00:18:41,170
 So this is the same thing, but
 at most one negative literal
 
 379
-00:18:40,270 --> 00:18:42,690
+00:18:41,170 --> 00:18:43,590
 in each clause.
 
 380
-00:18:42,690 --> 00:18:45,700
+00:18:43,590 --> 00:18:46,600
 And this is also solvable
 in polynomial time
 
 381
-00:18:45,700 --> 00:18:49,750
+00:18:46,600 --> 00:18:50,650
 because you can just negate all
 the variables in your formula.
 
 382
-00:18:49,750 --> 00:18:51,250
+00:18:50,650 --> 00:18:52,150
 And then when you
 get an answer, you
 
 383
-00:18:51,250 --> 00:18:53,010
+00:18:52,150 --> 00:18:53,910
 can negate all the
 variables again
 
 384
-00:18:53,010 --> 00:18:55,510
+00:18:53,910 --> 00:18:56,410
 to get the solution to
 the original problem.
 
 385
-00:18:55,510 --> 00:18:57,810
+00:18:56,410 --> 00:18:58,710
 So because you can
 solve Horn SAT,
 
 386
-00:18:57,810 --> 00:18:59,448
+00:18:58,710 --> 00:19:00,348
 you can solve Dual Horn SAT.
 
 387
-00:18:59,448 --> 00:19:05,430
+00:19:00,348 --> 00:19:06,330
 
 388
-00:19:05,430 --> 00:19:06,880
+00:19:06,330 --> 00:19:07,780
 Cool.
 
 389
-00:19:06,880 --> 00:19:14,090
+00:19:07,780 --> 00:19:14,990
 One more bad case I'll
 mention now is DNF SAT.
 
 390
-00:19:14,090 --> 00:19:18,340
+00:19:14,990 --> 00:19:19,240
 You might say, well, why do
 we make things ANDs of ORs?
 
 391
-00:19:18,340 --> 00:19:20,190
+00:19:19,240 --> 00:19:21,090
 What about ORs of ANDs?
 
 392
-00:19:20,190 --> 00:19:23,002
+00:19:21,090 --> 00:19:23,902
 So DNF is disjunctive
 normal form,
 
 393
-00:19:23,002 --> 00:19:24,835
+00:19:23,902 --> 00:19:25,735
 meaning the disjunctions
 are on the outside.
 
 394
-00:19:24,835 --> 00:19:31,740
+00:19:25,735 --> 00:19:32,640
 
 395
-00:19:31,740 --> 00:19:41,512
+00:19:32,640 --> 00:19:42,412
 So the formula is an
 AND of ORs-- sorry.
 
 396
-00:19:41,512 --> 00:19:42,720
+00:19:42,412 --> 00:19:43,620
 AUDIENCE: It's an OR of ANDs.
 
 397
-00:19:42,720 --> 00:19:43,595
+00:19:43,620 --> 00:19:44,495
 PROFESSOR: Other way.
 
 398
-00:19:43,595 --> 00:19:47,790
+00:19:44,495 --> 00:19:48,690
 
 399
-00:19:47,790 --> 00:19:53,160
+00:19:48,690 --> 00:19:54,060
 OR of ANDs of literals.
 
 400
-00:19:53,160 --> 00:19:55,040
+00:19:54,060 --> 00:19:55,940
 We use some shorthand,
 not-defined clauses
 
 401
-00:19:55,040 --> 00:19:56,956
+00:19:55,940 --> 00:19:57,856
 here because we don't
 really use this problem,
 
 402
-00:19:56,956 --> 00:20:01,070
+00:19:57,856 --> 00:20:01,970
 because it's polynomial time.
 
 403
-00:20:01,070 --> 00:20:03,464
+00:20:01,970 --> 00:20:04,364
 Why is it polynomial time?
 
 404
-00:20:03,464 --> 00:20:05,680
+00:20:04,364 --> 00:20:06,580
 AUDIENCE: You can just
 evaluate one of the ANDs.
 
 405
-00:20:05,680 --> 00:20:07,060
+00:20:06,580 --> 00:20:07,960
 PROFESSOR: Just evaluate
 one of the ANDs.
 
 406
-00:20:07,060 --> 00:20:07,310
+00:20:07,960 --> 00:20:08,210
 If you--
 
 407
-00:20:07,310 --> 00:20:08,210
+00:20:08,210 --> 00:20:09,110
 AUDIENCE: If it's true.
 
 408
-00:20:08,210 --> 00:20:08,918
+00:20:09,110 --> 00:20:09,818
 PROFESSOR: Right.
 
 409
-00:20:08,918 --> 00:20:11,520
+00:20:09,818 --> 00:20:12,420
 It's true if any one
 of these is possible.
 
 410
-00:20:11,520 --> 00:20:14,450
+00:20:12,420 --> 00:20:15,350
 So you can just check for
 obvious contradictions, like x_i
 
 411
-00:20:14,450 --> 00:20:16,010
+00:20:15,350 --> 00:20:16,910
 and not x_i.
 
 412
-00:20:16,010 --> 00:20:18,320
+00:20:16,910 --> 00:20:19,220
 If that happens, then
 that clause is impossible.
 
 413
-00:20:18,320 --> 00:20:19,270
+00:20:19,220 --> 00:20:20,170
 Throw it away.
 
 414
-00:20:19,270 --> 00:20:21,270
+00:20:20,170 --> 00:20:22,170
 If any clause has no
 internal contradictions,
 
 415
-00:20:21,270 --> 00:20:22,924
+00:20:22,170 --> 00:20:23,824
 then just satisfy the clause.
 
 416
-00:20:22,924 --> 00:20:24,660
+00:20:23,824 --> 00:20:25,560
 OK?
 
 417
-00:20:24,660 --> 00:20:28,620
+00:20:25,560 --> 00:20:29,520
 It's basically-- the answer is
 yes whenever there is a clause.
 
 418
-00:20:28,620 --> 00:20:31,480
+00:20:29,520 --> 00:20:32,380
 It could be of the empty
 formula, no clauses.
 
 419
-00:20:31,480 --> 00:20:35,450
+00:20:32,380 --> 00:20:36,350
 So writing-- you can also
 write any formula into DNF.
 
 420
-00:20:35,450 --> 00:20:39,170
+00:20:36,350 --> 00:20:40,070
 It's like an enumeration of
 all the true possibilities.
 
 421
-00:20:39,170 --> 00:20:41,980
+00:20:40,070 --> 00:20:42,880
 But it takes exponential
 time to do so.
 
 422
-00:20:41,980 --> 00:20:44,900
+00:20:42,880 --> 00:20:45,800
 So it's a funny asymmetry
 between AND and OR.
 
 423
-00:20:44,900 --> 00:20:47,721
+00:20:45,800 --> 00:20:48,621
 That's life.
 
 424
-00:20:47,721 --> 00:20:48,220
+00:20:48,621 --> 00:20:49,120
 Yeah.
 
 425
-00:20:48,220 --> 00:20:50,869
+00:20:49,120 --> 00:20:51,769
 AUDIENCE: I just want
 to say, for Horn SAT,
 
 426
-00:20:50,869 --> 00:20:52,910
+00:20:51,769 --> 00:20:53,810
 even if you don't have
 Horn SAT or Dual Horn SAT,
 
 427
-00:20:52,910 --> 00:20:55,493
+00:20:53,810 --> 00:20:56,393
 you might have a formula where
 some renaming-- not necessarily
 
 428
-00:20:55,493 --> 00:20:57,910
+00:20:56,393 --> 00:20:58,810
 all of the literals--
 but renaming just some
 
 429
-00:20:57,910 --> 00:20:59,710
+00:20:58,810 --> 00:21:00,610
 of the literals will
 put it in Horn SAT.
 
 430
-00:20:59,710 --> 00:21:00,690
+00:21:00,610 --> 00:21:01,590
 And that's also in--
 
 431
-00:21:00,690 --> 00:21:01,273
+00:21:01,590 --> 00:21:02,173
 PROFESSOR: Oh.
 
 432
-00:21:01,273 --> 00:21:02,770
+00:21:02,173 --> 00:21:03,670
 Just negating some of them.
 
 433
-00:21:02,770 --> 00:21:03,870
+00:21:03,670 --> 00:21:04,770
 AUDIENCE: Yeah.
 
 434
-00:21:03,870 --> 00:21:05,760
+00:21:04,770 --> 00:21:06,660
 Like, each time a
 variable occurs,
 
 435
-00:21:05,760 --> 00:21:08,190
+00:21:06,660 --> 00:21:09,090
 you have to negate all the
 instances of that variable.
 
 436
-00:21:08,190 --> 00:21:10,690
+00:21:09,090 --> 00:21:11,590
 But these are called
 renamable Horn formulas.
 
 437
-00:21:10,690 --> 00:21:14,037
+00:21:11,590 --> 00:21:14,937
 And it's also-- finding the
 renaming is linear time.
 
 438
-00:21:14,037 --> 00:21:14,620
+00:21:14,937 --> 00:21:15,520
 PROFESSOR: OK.
 
 439
-00:21:14,620 --> 00:21:17,695
+00:21:15,520 --> 00:21:18,595
 So some kind of renamable Horn.
 
 440
-00:21:17,695 --> 00:21:22,000
+00:21:18,595 --> 00:21:22,900
 
 441
-00:21:22,000 --> 00:21:24,166
+00:21:22,900 --> 00:21:25,066
 And by renaming, you just
 mean negating, right?
 
 442
-00:21:24,166 --> 00:21:24,790
+00:21:25,066 --> 00:21:25,690
 AUDIENCE: Yeah.
 
 443
-00:21:24,790 --> 00:21:27,960
+00:21:25,690 --> 00:21:28,860
 The term used in the
 literature is renamable Horn.
 
 444
-00:21:27,960 --> 00:21:34,140
+00:21:28,860 --> 00:21:35,040
 PROFESSOR: There exists
 a negation of, let's say,
 
 445
-00:21:34,140 --> 00:21:44,890
+00:21:35,040 --> 00:21:45,790
 some subset of the
 variable's x such that Horn.
 
 446
-00:21:44,890 --> 00:21:45,390
+00:21:45,790 --> 00:21:46,290
 OK?
 
 447
-00:21:45,390 --> 00:21:46,700
+00:21:46,290 --> 00:21:47,600
 That's the very concise version.
 
 448
-00:21:46,700 --> 00:21:49,366
+00:21:47,600 --> 00:21:50,266
 So you get to choose some of the
 variables to negate and make it
 
 449
-00:21:49,366 --> 00:21:52,295
+00:21:50,266 --> 00:21:53,195
 a Horn clause that's
 also polynomial time.
 
 450
-00:21:52,295 --> 00:21:53,480
+00:21:53,195 --> 00:21:54,380
 Cool.
 
 451
-00:21:53,480 --> 00:21:54,183
+00:21:54,380 --> 00:21:55,083
 Thank you.
 
 452
-00:21:54,183 --> 00:21:57,810
+00:21:55,083 --> 00:21:58,710
 
 453
-00:21:57,810 --> 00:22:00,160
+00:21:58,710 --> 00:22:01,060
 You might be wondering at this
 point, how am I supp-- I mean,
 
 454
-00:22:00,160 --> 00:22:02,127
+00:22:01,060 --> 00:22:03,027
 do I have to remember
 all of these?
 
 455
-00:22:02,127 --> 00:22:03,460
+00:22:03,027 --> 00:22:04,360
 And in some sense
 the answer is yes.
 
 456
-00:22:03,460 --> 00:22:06,744
+00:22:04,360 --> 00:22:07,644
 But there is actually
 a dichotomy theorem
 
 457
-00:22:06,744 --> 00:22:08,410
+00:22:07,644 --> 00:22:09,310
 that will tell you
 which versions of SAT
 
 458
-00:22:08,410 --> 00:22:11,360
+00:22:09,310 --> 00:22:12,260
 are polynomial time and
 which versions are NP-hard,
 
 459
-00:22:11,360 --> 00:22:14,430
+00:22:12,260 --> 00:22:15,330
 and we'll cover that
 in one more page.
 
 460
-00:22:14,430 --> 00:22:18,360
+00:22:15,330 --> 00:22:19,260
 But I'm-- well, all of these
 are involved in the statement
 
 461
-00:22:18,360 --> 00:22:20,280
+00:22:19,260 --> 00:22:21,180
 of that dichotomy.
 
 462
-00:22:20,280 --> 00:22:22,870
+00:22:21,180 --> 00:22:23,770
 Not quite all, but most of them.
 
 463
-00:22:22,870 --> 00:22:24,440
+00:22:23,770 --> 00:22:25,340
 So it's not exactly a shortcut.
 
 464
-00:22:24,440 --> 00:22:39,490
+00:22:25,340 --> 00:22:40,390
 
 465
-00:22:39,490 --> 00:22:41,830
+00:22:40,390 --> 00:22:42,730
 I would say a lot of
 the time, the problem
 
 466
-00:22:41,830 --> 00:22:44,260
+00:22:42,730 --> 00:22:45,160
 you're working with
 does not naturally
 
 467
-00:22:44,260 --> 00:22:45,660
+00:22:45,160 --> 00:22:46,560
 map onto ANDs and ORs.
 
 468
-00:22:45,660 --> 00:22:48,970
+00:22:46,560 --> 00:22:49,870
 It sort of involves bits of
 some sort-- there's a 0 and a 1
 
 469
-00:22:48,970 --> 00:22:53,380
+00:22:49,870 --> 00:22:54,280
 notion-- but they may not really
 correspond to logical notions
 
 470
-00:22:53,380 --> 00:22:55,080
+00:22:54,280 --> 00:22:55,980
 of true or false.
 
 471
-00:22:55,080 --> 00:22:57,450
+00:22:55,980 --> 00:22:58,350
 And the operations
 you can do on them
 
 472
-00:22:57,450 --> 00:23:01,230
+00:22:58,350 --> 00:23:02,130
 may not correspond to AND or
 OR, or anything nice like that.
 
 473
-00:23:01,230 --> 00:23:06,320
+00:23:02,130 --> 00:23:07,220
 So the next two versions
 of SAT are in that spirit.
 
 474
-00:23:06,320 --> 00:23:11,260
+00:23:07,220 --> 00:23:12,160
 
 475
-00:23:11,260 --> 00:23:14,317
+00:23:12,160 --> 00:23:15,217
 So this is usually, these
 days, called 1-in-3 SAT,
 
 476
-00:23:14,317 --> 00:23:16,150
+00:23:15,217 --> 00:23:17,050
 but originally it was
 called exactly-1 3SAT.
 
 477
-00:23:16,150 --> 00:23:25,360
+00:23:17,050 --> 00:23:26,260
 
 478
-00:23:25,360 --> 00:23:28,510
+00:23:26,260 --> 00:23:29,410
 So this is going to be a little
 bit weirder to write down,
 
 479
-00:23:28,510 --> 00:23:33,450
+00:23:29,410 --> 00:23:34,350
 but like CNF SAT, the formula is
 the end of a bunch of clauses.
 
 480
-00:23:33,450 --> 00:23:34,990
+00:23:34,350 --> 00:23:35,890
 So that part's the same.
 
 481
-00:23:34,990 --> 00:23:38,440
+00:23:35,890 --> 00:23:39,340
 But now we're going
 to make a clause
 
 482
-00:23:38,440 --> 00:23:42,290
+00:23:39,340 --> 00:23:43,190
 to be a relation on
 three variables, which
 
 483
-00:23:42,290 --> 00:23:56,450
+00:23:43,190 --> 00:23:57,350
 is that exactly one of, let's
 say, x_i, x_j, and x_k is true.
 
 484
-00:23:56,450 --> 00:24:01,280
+00:23:57,350 --> 00:24:02,180
 So this means it could be
 true-false-false, x_i is true,
 
 485
-00:24:01,280 --> 00:24:03,810
+00:24:02,180 --> 00:24:04,710
 but the other two are false,
 it could be x_j is true,
 
 486
-00:24:03,810 --> 00:24:07,820
+00:24:04,710 --> 00:24:08,720
 the other two are false, or
 it could be that x_sk is true
 
 487
-00:24:07,820 --> 00:24:09,500
+00:24:08,720 --> 00:24:10,400
 and the other two are false.
 
 488
-00:24:09,500 --> 00:24:12,240
+00:24:10,400 --> 00:24:13,140
 But those are the only
 happy assignments.
 
 489
-00:24:12,240 --> 00:24:12,740
+00:24:13,140 --> 00:24:13,640
 Question.
 
 490
-00:24:12,740 --> 00:24:15,297
+00:24:13,640 --> 00:24:16,197
 AUDIENCE: Is it exactly one
 of three variables or three
 
 491
-00:24:15,297 --> 00:24:16,930
+00:24:16,197 --> 00:24:17,830
 literals?
 
 492
-00:24:16,930 --> 00:24:19,560
+00:24:17,830 --> 00:24:20,460
 PROFESSOR: Good question.
 
 493
-00:24:19,560 --> 00:24:22,309
+00:24:20,460 --> 00:24:23,209
 The original statement
 is its variables,
 
 494
-00:24:22,309 --> 00:24:23,350
+00:24:23,209 --> 00:24:24,250
 so that's how I wrote it.
 
 495
-00:24:23,350 --> 00:24:26,000
+00:24:24,250 --> 00:24:26,900
 This is usually called monotone.
 
 496
-00:24:26,000 --> 00:24:29,940
+00:24:26,900 --> 00:24:30,840
 These days it's usually
 called monotone 1-in-3SAT.
 
 497
-00:24:29,940 --> 00:24:32,100
+00:24:30,840 --> 00:24:33,000
 I don't know how
 usually exactly.
 
 498
-00:24:32,100 --> 00:24:35,100
+00:24:33,000 --> 00:24:36,000
 Sometimes it's called
 all-positive 1-in-3SAT.
 
 499
-00:24:35,100 --> 00:24:38,030
+00:24:36,000 --> 00:24:38,930
 
 500
-00:24:38,030 --> 00:24:46,710
+00:24:38,930 --> 00:24:47,610
 So let's say literals
 equal variables.
 
 501
-00:24:46,710 --> 00:24:49,320
+00:24:47,610 --> 00:24:50,220
 You could, of course,
 if you want, consider
 
 502
-00:24:49,320 --> 00:24:51,670
+00:24:50,220 --> 00:24:52,570
 a more general version where
 you can have negations.
 
 503
-00:24:51,670 --> 00:24:55,774
+00:24:52,570 --> 00:24:56,674
 But you don't need
 to, so why bother.
 
 504
-00:24:55,774 --> 00:24:57,690
+00:24:56,674 --> 00:24:58,590
 That fact is usually
 forgotten in most proofs.
 
 505
-00:24:57,690 --> 00:24:59,890
+00:24:58,590 --> 00:25:00,790
 So you'll see in the
 literature a reduction
 
 506
-00:24:59,890 --> 00:25:01,720
+00:25:00,790 --> 00:25:02,620
 from 1-in-3SAT with
 negations, and they
 
 507
-00:25:01,720 --> 00:25:02,678
+00:25:02,620 --> 00:25:03,578
 have a negation gadget.
 
 508
-00:25:02,678 --> 00:25:05,710
+00:25:03,578 --> 00:25:06,610
 It's like, you don't need
 to have a negation gadget.
 
 509
-00:25:05,710 --> 00:25:09,720
+00:25:06,610 --> 00:25:10,620
 So why not skip it?
 
 510
-00:25:09,720 --> 00:25:10,510
+00:25:10,620 --> 00:25:11,410
 But there you go.
 
 511
-00:25:10,510 --> 00:25:13,110
+00:25:11,410 --> 00:25:14,010
 Now I'll just mention
 I'm not a fan of the word
 
 512
-00:25:13,110 --> 00:25:16,560
+00:25:14,010 --> 00:25:17,460
 monotone here because here
 we have monotone to mean
 
 513
-00:25:16,560 --> 00:25:17,800
+00:25:17,460 --> 00:25:18,700
 all positive or all negative.
 
 514
-00:25:17,800 --> 00:25:19,325
+00:25:18,700 --> 00:25:20,225
 Here we mean all positive.
 
 515
-00:25:19,325 --> 00:25:21,950
+00:25:20,225 --> 00:25:22,850
 
 516
-00:25:21,950 --> 00:25:24,250
+00:25:22,850 --> 00:25:25,150
 Not ideal reuse of terminology.
 
 517
-00:25:24,250 --> 00:25:26,750
+00:25:25,150 --> 00:25:27,650
 I think that's why sometimes
 this is all positive 1-in-3SAT.
 
 518
-00:25:26,750 --> 00:25:28,184
+00:25:27,650 --> 00:25:29,084
 Anyway, it's a bit of a mess.
 
 519
-00:25:28,184 --> 00:25:29,850
+00:25:29,084 --> 00:25:30,750
 But that is the state
 of the literature.
 
 520
-00:25:29,850 --> 00:25:33,810
+00:25:30,750 --> 00:25:34,710
 So you get it all.
 
 521
-00:25:33,810 --> 00:25:35,230
+00:25:34,710 --> 00:25:36,130
 All right.
 
 522
-00:25:35,230 --> 00:25:36,335
+00:25:36,130 --> 00:25:37,235
 Here's another problem.
 
 523
-00:25:36,335 --> 00:25:40,920
+00:25:37,235 --> 00:25:41,820
 
 524
-00:25:40,920 --> 00:25:43,500
+00:25:41,820 --> 00:25:44,400
 Monotone not-exactly-1 3SAT.
 
 525
-00:25:43,500 --> 00:25:48,090
+00:25:44,400 --> 00:25:48,990
 
 526
-00:25:48,090 --> 00:25:50,640
+00:25:48,990 --> 00:25:51,540
 I should not have
 any suspense here.
 
 527
-00:25:50,640 --> 00:25:52,910
+00:25:51,540 --> 00:25:53,810
 This is in P.
 
 528
-00:25:52,910 --> 00:25:54,440
+00:25:53,810 --> 00:25:55,340
 OK?
 
 529
-00:25:54,440 --> 00:25:55,710
+00:25:55,340 --> 00:25:56,610
 This is NP-complete.
 
 530
-00:25:55,710 --> 00:25:57,790
+00:25:56,610 --> 00:25:58,690
 This is also NP-complete.
 
 531
-00:25:57,790 --> 00:26:01,060
+00:25:58,690 --> 00:26:01,960
 But not-exactly-1
 3SAT is polynomial.
 
 532
-00:26:01,060 --> 00:26:04,860
+00:26:01,960 --> 00:26:05,760
 So I think you
 know what it means.
 
 533
-00:26:04,860 --> 00:26:09,540
+00:26:05,760 --> 00:26:10,440
 A clause specifies that-- again,
 we take an AND of clauses.
 
 534
-00:26:09,540 --> 00:26:16,990
+00:26:10,440 --> 00:26:17,890
 And we want zero, two, or three
 of three variables are true.
 
 535
-00:26:16,990 --> 00:26:20,700
+00:26:17,890 --> 00:26:21,600
 In other words, exactly
 one of them is false.
 
 536
-00:26:20,700 --> 00:26:21,810
+00:26:21,600 --> 00:26:22,710
 No.
 
 537
-00:26:21,810 --> 00:26:23,550
+00:26:22,710 --> 00:26:24,450
 I don't mean that.
 
 538
-00:26:23,550 --> 00:26:27,380
+00:26:24,450 --> 00:26:28,280
 Exactly one of them being
 false would be 1-in-3SAT again,
 
 539
-00:26:27,380 --> 00:26:30,120
+00:26:28,280 --> 00:26:31,020
 just by negating
 everything, which we're
 
 540
-00:26:30,120 --> 00:26:32,710
+00:26:31,020 --> 00:26:33,610
 allowed to do if we want to.
 
 541
-00:26:32,710 --> 00:26:34,500
+00:26:33,610 --> 00:26:35,400
 But this is different.
 
 542
-00:26:34,500 --> 00:26:37,500
+00:26:35,400 --> 00:26:38,400
 This is saying, it could
 be everything's false,
 
 543
-00:26:37,500 --> 00:26:39,574
+00:26:38,400 --> 00:26:40,474
 or it could be one
 thing is false,
 
 544
-00:26:39,574 --> 00:26:41,115
+00:26:40,474 --> 00:26:42,015
 or it could be zero
 things are false.
 
 545
-00:26:41,115 --> 00:26:44,060
+00:26:42,015 --> 00:26:44,960
 
 546
-00:26:44,060 --> 00:26:46,320
+00:26:44,960 --> 00:26:47,220
 But not two things are false.
 
 547
-00:26:46,320 --> 00:26:46,820
+00:26:47,220 --> 00:26:47,720
 OK?
 
 548
-00:26:46,820 --> 00:26:49,740
+00:26:47,720 --> 00:26:50,640
 This turns out to be polynomial.
 
 549
-00:26:49,740 --> 00:26:54,290
+00:26:50,640 --> 00:26:55,190
 And do I have-- oh.
 
 550
-00:26:54,290 --> 00:26:58,010
+00:26:55,190 --> 00:26:58,910
 There's one funny
 thing here, which
 
 551
-00:26:58,010 --> 00:27:00,710
+00:26:58,910 --> 00:27:01,610
 is if all your clauses
 look like this,
 
 552
-00:27:00,710 --> 00:27:03,070
+00:27:01,610 --> 00:27:03,970
 you can set all your
 variables to false.
 
 553
-00:27:03,070 --> 00:27:05,470
+00:27:03,970 --> 00:27:06,370
 So this is sort of
 a trivial problem.
 
 554
-00:27:05,470 --> 00:27:07,200
+00:27:06,370 --> 00:27:08,100
 But to make it more
 interesting, you
 
 555
-00:27:07,200 --> 00:27:12,080
+00:27:08,100 --> 00:27:12,980
 can say x_1 equals true,
 just to get you started.
 
 556
-00:27:12,080 --> 00:27:14,360
+00:27:12,980 --> 00:27:15,260
 So there's no
 trivial solution then
 
 557
-00:27:14,360 --> 00:27:17,100
+00:27:15,260 --> 00:27:18,000
 and it still turns
 out this is easy.
 
 558
-00:27:17,100 --> 00:27:19,310
+00:27:18,000 --> 00:27:20,210
 Because if you think
 about this long enough,
 
 559
-00:27:19,310 --> 00:27:22,720
+00:27:20,210 --> 00:27:23,620
 as I did yesterday,
 this will look something
 
 560
-00:27:22,720 --> 00:27:34,130
+00:27:23,620 --> 00:27:35,030
 like-- if you have
 three variables,
 
 561
-00:27:34,130 --> 00:27:38,280
+00:27:35,030 --> 00:27:39,180
 either they're all false--
 then fine-- or if one of them
 
 562
-00:27:38,280 --> 00:27:40,239
+00:27:39,180 --> 00:27:41,139
 is true, then you better
 have another one true.
 
 563
-00:27:40,239 --> 00:27:42,529
+00:27:41,139 --> 00:27:43,429
 That's a way of saying if
 there's at least one of them,
 
 564
-00:27:42,529 --> 00:27:43,910
+00:27:43,429 --> 00:27:44,810
 there better be at least two.
 
 565
-00:27:43,910 --> 00:27:44,780
+00:27:44,810 --> 00:27:45,680
 That's what we want.
 
 566
-00:27:44,780 --> 00:27:47,620
+00:27:45,680 --> 00:27:48,520
 This has to be true for
 all shifts of i, j, k.
 
 567
-00:27:47,620 --> 00:27:49,870
+00:27:48,520 --> 00:27:50,770
 So for each of i, j, k,
 if one of them is true,
 
 568
-00:27:49,870 --> 00:27:52,550
+00:27:50,770 --> 00:27:53,450
 you want to imply
 the OR of the other.
 
 569
-00:27:52,550 --> 00:27:59,410
+00:27:53,450 --> 00:28:00,310
 And this is the same
 as NOT x_i or x_j or x_k.
 
 570
-00:27:59,410 --> 00:28:01,910
+00:28:00,310 --> 00:28:02,810
 Don't need the
 parentheses because it's
 
 571
-00:28:01,910 --> 00:28:03,770
+00:28:02,810 --> 00:28:04,670
 associative communicative.
 
 572
-00:28:03,770 --> 00:28:09,030
+00:28:04,670 --> 00:28:09,930
 And that is a dual horn clause.
 
 573
-00:28:09,030 --> 00:28:11,340
+00:28:09,930 --> 00:28:12,240
 And that's why
 this is polynomial.
 
 574
-00:28:11,340 --> 00:28:11,840
+00:28:12,240 --> 00:28:12,740
 Question.
 
 575
-00:28:11,840 --> 00:28:14,006
+00:28:12,740 --> 00:28:14,906
 AUDIENCE: I think I'm
 confused about the definition.
 
 576
-00:28:14,006 --> 00:28:16,740
+00:28:14,906 --> 00:28:17,640
 Why can't they just
 all be true then?
 
 577
-00:28:16,740 --> 00:28:18,630
+00:28:17,640 --> 00:28:19,530
 PROFESSOR: Good question.
 
 578
-00:28:18,630 --> 00:28:21,440
+00:28:19,530 --> 00:28:22,340
 Let's say x_2 is false.
 
 579
-00:28:21,440 --> 00:28:22,900
+00:28:22,340 --> 00:28:23,800
 I should double check.
 
 580
-00:28:22,900 --> 00:28:26,210
+00:28:23,800 --> 00:28:27,110
 I don't remember that in the
 statement of the problem.
 
 581
-00:28:26,210 --> 00:28:27,750
+00:28:27,110 --> 00:28:28,650
 We do not allow negations here.
 
 582
-00:28:27,750 --> 00:28:29,970
+00:28:28,650 --> 00:28:30,870
 Once you allow negations,
 this trick won't work.
 
 583
-00:28:29,970 --> 00:28:32,597
+00:28:30,870 --> 00:28:33,497
 But if these appear
 all in positive form,
 
 584
-00:28:32,597 --> 00:28:34,430
+00:28:33,497 --> 00:28:35,330
 then we can convert
 into the single negative
 
 585
-00:28:34,430 --> 00:28:35,340
+00:28:35,330 --> 00:28:36,240
 and get dual horn.
 
 586
-00:28:35,340 --> 00:28:35,840
+00:28:36,240 --> 00:28:36,740
 Question.
 
 587
-00:28:35,840 --> 00:28:38,440
+00:28:36,740 --> 00:28:39,340
 AUDIENCE: Are you allowed to
 mix the zero, two, and threes?
 
 588
-00:28:38,440 --> 00:28:41,680
+00:28:39,340 --> 00:28:42,580
 Or does it have to be all
 the clauses have to be--
 
 589
-00:28:41,680 --> 00:28:43,800
+00:28:42,580 --> 00:28:44,700
 PROFESSOR: All causes
 look like-- all clauses
 
 590
-00:28:43,800 --> 00:28:46,620
+00:28:44,700 --> 00:28:47,520
 say, zero, two, or three
 of these three variables
 
 591
-00:28:46,620 --> 00:28:48,397
+00:28:47,520 --> 00:28:49,297
 must be true.
 
 592
-00:28:48,397 --> 00:28:50,730
+00:28:49,297 --> 00:28:51,630
 You can't have a clause that
 says zero of these are true
 
 593
-00:28:50,730 --> 00:28:51,490
+00:28:51,630 --> 00:28:52,390
 and two of these are true.
 
 594
-00:28:51,490 --> 00:28:51,710
+00:28:52,390 --> 00:28:52,610
 AUDIENCE: No.
 
 595
-00:28:51,710 --> 00:28:53,793
+00:28:52,610 --> 00:28:54,693
 But if you have two of
 these clauses that give you
 
 596
-00:28:53,793 --> 00:28:55,780
+00:28:54,693 --> 00:28:56,680
 all those choices,
 can you choose
 
 597
-00:28:55,780 --> 00:28:58,790
+00:28:56,680 --> 00:28:59,690
 one to be zero and then
 have another one be two,
 
 598
-00:28:58,790 --> 00:28:59,320
+00:28:59,690 --> 00:29:00,220
 or whatever.
 
 599
-00:28:59,320 --> 00:29:01,050
+00:29:00,220 --> 00:29:01,950
 PROFESSOR: For each clause,
 it's an independent choice
 
 600
-00:29:01,050 --> 00:29:03,820
+00:29:01,950 --> 00:29:04,720
 whether you have zero, two, or
 three of the variables true.
 
 601
-00:29:03,820 --> 00:29:04,770
+00:29:04,720 --> 00:29:05,670
 Yeah.
 
 602
-00:29:04,770 --> 00:29:08,720
+00:29:05,670 --> 00:29:09,620
 So this OR is local
 to the clause.
 
 603
-00:29:08,720 --> 00:29:10,860
+00:29:09,620 --> 00:29:11,760
 Other questions?
 
 604
-00:29:10,860 --> 00:29:13,330
+00:29:11,760 --> 00:29:14,230
 So it's still an AND of
 things that-- it's just
 
 605
-00:29:13,330 --> 00:29:14,550
+00:29:14,230 --> 00:29:15,450
 we have a weirder relation.
 
 606
-00:29:14,550 --> 00:29:16,925
+00:29:15,450 --> 00:29:17,825
 Instead of just taking the OR
 of a bunch of things, which
 
 607
-00:29:16,925 --> 00:29:18,910
+00:29:17,825 --> 00:29:19,810
 would be saying at least
 one of them is true,
 
 608
-00:29:18,910 --> 00:29:24,220
+00:29:19,810 --> 00:29:25,120
 now we allow zero or two or
 three of them to be true.
 
 609
-00:29:24,220 --> 00:29:26,550
+00:29:25,120 --> 00:29:27,450
 OK.
 
 610
-00:29:26,550 --> 00:29:30,790
+00:29:27,450 --> 00:29:31,690
 One more version, then
 we'll get to-- well, one
 
 611
-00:29:30,790 --> 00:29:35,340
+00:29:31,690 --> 00:29:36,240
 and a half more
 versions-- then we'll
 
 612
-00:29:35,340 --> 00:29:36,676
+00:29:36,240 --> 00:29:37,576
 get to the dichotomy theorem.
 
 613
-00:29:36,676 --> 00:29:43,480
+00:29:37,576 --> 00:29:44,380
 
 614
-00:29:43,480 --> 00:29:45,660
+00:29:44,380 --> 00:29:46,560
 So next one is
 Not-All-Equal 3SAT.
 
 615
-00:29:45,660 --> 00:29:55,882
+00:29:46,560 --> 00:29:56,782
 
 616
-00:29:55,882 --> 00:29:57,340
+00:29:56,782 --> 00:29:58,240
 I feel like that's
 about all I need
 
 617
-00:29:57,340 --> 00:30:01,070
+00:29:58,240 --> 00:30:01,970
 to write down, other than the
 fact that it is NP-complete.
 
 618
-00:30:01,070 --> 00:30:04,780
+00:30:01,970 --> 00:30:05,680
 But just in case,
 what this means is
 
 619
-00:30:04,780 --> 00:30:10,270
+00:30:05,680 --> 00:30:11,170
 a clause is something
 like Not-All-Equal
 
 620
-00:30:10,270 --> 00:30:12,200
+00:30:11,170 --> 00:30:13,100
 of three variables again.
 
 621
-00:30:12,200 --> 00:30:14,760
+00:30:13,100 --> 00:30:15,660
 
 622
-00:30:14,760 --> 00:30:19,910
+00:30:15,660 --> 00:30:20,810
 And this is what I'm defining
 is going to be the Monotone
 
 623
-00:30:19,910 --> 00:30:25,980
+00:30:20,810 --> 00:30:26,880
 Not-All-Equal 3SAT--
 which is also hard--
 
 624
-00:30:25,980 --> 00:30:35,110
+00:30:26,880 --> 00:30:36,010
 where these are variables,
 not just literals.
 
 625
-00:30:35,110 --> 00:30:40,210
+00:30:36,010 --> 00:30:41,110
 So no negations in Monotone
 Not-All-Equal 3SAT.
 
 626
-00:30:40,210 --> 00:30:41,920
+00:30:41,110 --> 00:30:42,820
 Again, the original
 proof already
 
 627
-00:30:41,920 --> 00:30:45,870
+00:30:42,820 --> 00:30:46,770
 had monotonicity in there, so
 there's no work to be done.
 
 628
-00:30:45,870 --> 00:30:46,370
+00:30:46,770 --> 00:30:47,270
 Cool.
 
 629
-00:30:46,370 --> 00:30:48,470
+00:30:47,270 --> 00:30:49,370
 So not-all-equal just
 means that they're not
 
 630
-00:30:48,470 --> 00:30:49,840
+00:30:49,370 --> 00:30:50,740
 all the same values.
 
 631
-00:30:49,840 --> 00:30:53,220
+00:30:50,740 --> 00:30:54,120
 So that means not all
 true and not all false.
 
 632
-00:30:53,220 --> 00:31:00,080
+00:30:54,120 --> 00:31:00,980
 Not TTT and not FFF.
 
 633
-00:31:00,080 --> 00:31:01,630
+00:31:00,980 --> 00:31:02,530
 I really like this
 version of 3SAT
 
 634
-00:31:01,630 --> 00:31:03,620
+00:31:02,530 --> 00:31:04,520
 because it's
 completely symmetric
 
 635
-00:31:03,620 --> 00:31:05,670
+00:31:04,520 --> 00:31:06,570
 between true and false.
 
 636
-00:31:05,670 --> 00:31:07,096
+00:31:06,570 --> 00:31:07,996
 I mean, not at the clause level.
 
 637
-00:31:07,096 --> 00:31:08,470
+00:31:07,996 --> 00:31:09,370
 Every clause has
 to be satisfied.
 
 638
-00:31:08,470 --> 00:31:10,386
+00:31:09,370 --> 00:31:11,286
 Those are ANDed together
 in the logical level.
 
 639
-00:31:10,386 --> 00:31:11,845
+00:31:11,286 --> 00:31:12,745
 But the x_i's are
 treated completely
 
 640
-00:31:11,845 --> 00:31:13,386
+00:31:12,745 --> 00:31:14,286
 symmetrically between
 true and false.
 
 641
-00:31:13,386 --> 00:31:15,010
+00:31:14,286 --> 00:31:15,910
 You could just call
 them red and blue.
 
 642
-00:31:15,010 --> 00:31:17,350
+00:31:15,910 --> 00:31:18,250
 There's no reason to think
 one is true one is false.
 
 643
-00:31:17,350 --> 00:31:22,280
+00:31:18,250 --> 00:31:23,180
 You just can't have them all be
 the same color within a clause.
 
 644
-00:31:22,280 --> 00:31:22,780
+00:31:23,180 --> 00:31:23,680
 OK.
 
 645
-00:31:22,780 --> 00:31:25,322
+00:31:23,680 --> 00:31:26,222
 So you could think of it as
 a problem on hypergraphs.
 
 646
-00:31:25,322 --> 00:31:27,530
+00:31:26,222 --> 00:31:28,430
 Three uniform hypergraphs,
 you have all these triples
 
 647
-00:31:27,530 --> 00:31:28,650
+00:31:28,430 --> 00:31:29,550
 of things.
 
 648
-00:31:28,650 --> 00:31:31,560
+00:31:29,550 --> 00:31:32,460
 You just want them to not
 all be colored the same.
 
 649
-00:31:31,560 --> 00:31:34,240
+00:31:32,460 --> 00:31:35,140
 So it means two of one, one of
-ohe other, two trues and one
+the other, two trues and one
 
 650
-00:31:34,240 --> 00:31:37,450
+00:31:35,140 --> 00:31:38,350
 false, two reds and one
 blue, two falses, one true.
 
 651
-00:31:37,450 --> 00:31:39,794
+00:31:38,350 --> 00:31:40,694
 They're all this--
 those are all good cases
 
 652
-00:31:39,794 --> 00:31:40,960
+00:31:40,694 --> 00:31:41,860
 and these are the bad cases.
 
 653
-00:31:40,960 --> 00:31:44,500
+00:31:41,860 --> 00:31:45,400
 
 654
-00:31:44,500 --> 00:31:46,890
+00:31:45,400 --> 00:31:47,790
 Cool.
 
 655
-00:31:46,890 --> 00:31:50,824
+00:31:47,790 --> 00:31:51,724
 AUDIENCE: So this is
 1-or-2-in-3SAT?
 
 656
-00:31:50,824 --> 00:31:51,490
+00:31:51,724 --> 00:31:52,390
 PROFESSOR: Yeah.
 
 657
-00:31:51,490 --> 00:31:53,740
+00:31:52,390 --> 00:31:54,640
 You can think of this
 exactly 1-or-2-
 
 658
-00:31:53,740 --> 00:31:56,820
+00:31:54,640 --> 00:31:57,720
 in-3SAT, if you want to
 phrase it in this style.
 
 659
-00:31:56,820 --> 00:31:57,320
+00:31:57,720 --> 00:31:58,220
 OK.
 
 660
-00:31:57,320 --> 00:32:01,400
+00:31:58,220 --> 00:32:02,300
 So ideally, you should
 remember all of these.
 
 661
-00:32:01,400 --> 00:32:04,010
+00:32:02,300 --> 00:32:04,910
 But I'll tell you the most
 important ones are regular
 
 662
-00:32:04,010 --> 00:32:07,060
+00:32:04,910 --> 00:32:07,960
 3SAT-- that's at least one
 of each thing is true--
 
 663
-00:32:07,060 --> 00:32:10,840
+00:32:07,960 --> 00:32:11,740
 exactly-1 3SAT, or 1-in-3SAT --
 where exactly one of the things
 
 664
-00:32:10,840 --> 00:32:13,640
+00:32:11,740 --> 00:32:14,540
 is true, and adding
 more things breaks it --
 
 665
-00:32:13,640 --> 00:32:14,990
+00:32:14,540 --> 00:32:15,890
 and Not-All-Equal 3SAT.
 
 666
-00:32:14,990 --> 00:32:17,250
+00:32:15,890 --> 00:32:18,150
 Those are the three
 important ones
 
 667
-00:32:17,250 --> 00:32:19,690
+00:32:18,150 --> 00:32:20,590
 to know from a lower
 bounds perspective.
 
 668
-00:32:19,690 --> 00:32:21,330
+00:32:20,590 --> 00:32:22,230
 These others are,
 like, be careful
 
 669
-00:32:21,330 --> 00:32:23,371
+00:32:22,230 --> 00:32:24,271
 that you don't fall into
 one of these things that
 
 670
-00:32:23,371 --> 00:32:27,470
+00:32:24,271 --> 00:32:28,370
 is polynomial.
 
 671
-00:32:27,470 --> 00:32:30,007
+00:32:28,370 --> 00:32:30,907
 So occasionally MAX
 2SAT is the one other
 
 672
-00:32:30,007 --> 00:32:31,090
+00:32:30,907 --> 00:32:31,990
 that would be useful here.
 
 673
-00:32:31,090 --> 00:32:33,150
+00:32:31,990 --> 00:32:34,050
 But remember these guys.
 
 674
-00:32:33,150 --> 00:32:34,072
+00:32:34,050 --> 00:32:34,972
 They're super handy.
 
 675
-00:32:34,072 --> 00:32:36,280
+00:32:34,972 --> 00:32:37,180
 Because what will happen
 when you're proving hardness
 
 676
-00:32:36,280 --> 00:32:38,960
+00:32:37,180 --> 00:32:39,860
 is you fool around
 and you try to find--
 
 677
-00:32:38,960 --> 00:32:41,930
+00:32:39,860 --> 00:32:42,830
 you build a gadget that
 has two truths-- two
 
 678
-00:32:41,930 --> 00:32:44,420
+00:32:42,830 --> 00:32:45,320
 possible ways to satisfy it.
 
 679
-00:32:44,420 --> 00:32:47,360
+00:32:45,320 --> 00:32:48,260
 Call one red and one blue
 or one true and one false.
 
 680
-00:32:47,360 --> 00:32:51,350
+00:32:48,260 --> 00:32:52,250
 And then you try different
 ways to combine three of them.
 
 681
-00:32:51,350 --> 00:32:54,240
+00:32:52,250 --> 00:32:55,140
 And you're trying to get--
 you need some other things--
 
 682
-00:32:54,240 --> 00:32:56,390
+00:32:55,140 --> 00:32:57,290
 but you're trying to
 get clause gadgets.
 
 683
-00:32:56,390 --> 00:33:03,190
+00:32:57,290 --> 00:33:04,090
 Trying to get them to--
 when you combine three
 
 684
-00:33:03,190 --> 00:33:05,410
+00:33:04,090 --> 00:33:06,310
 wires into a little
 gadget, you want
 
 685
-00:33:05,410 --> 00:33:07,240
+00:33:06,310 --> 00:33:08,140
 them to be constrained somehow.
 
 686
-00:33:07,240 --> 00:33:09,620
+00:33:08,140 --> 00:33:10,520
 That in order to be
 globally OK, something
 
 687
-00:33:09,620 --> 00:33:11,672
+00:33:10,520 --> 00:33:12,572
 must hold locally at
 those three things.
 
 688
-00:33:11,672 --> 00:33:13,880
+00:33:12,572 --> 00:33:14,780
 And it might end up being
 a Not-All-Equal constraint,
 
 689
-00:33:13,880 --> 00:33:15,796
+00:33:14,780 --> 00:33:16,696
 it might end up being
 an exactly-1 constraint,
 
 690
-00:33:15,796 --> 00:33:18,430
+00:33:16,696 --> 00:33:19,330
 or it might end up
 being a 3SAT constraint.
 
 691
-00:33:18,430 --> 00:33:21,110
+00:33:19,330 --> 00:33:22,010
 With some negations
 to make it happy,
 
 692
-00:33:21,110 --> 00:33:25,070
+00:33:22,010 --> 00:33:25,970
 it should be one of
 those to be hard.
 
 693
-00:33:25,070 --> 00:33:27,690
+00:33:25,970 --> 00:33:28,590
 If you fall into something like
 this, then that's not good.
 
 694
-00:33:27,690 --> 00:33:30,450
+00:33:28,590 --> 00:33:31,350
 
 695
-00:33:30,450 --> 00:33:31,195
+00:33:31,350 --> 00:33:32,095
 Question.
 
 696
-00:33:31,195 --> 00:33:35,413
+00:33:32,095 --> 00:33:36,313
 AUDIENCE: So let's say, since
 this Not-All-Equal thing--
 
 697
-00:33:35,413 --> 00:33:37,720
+00:33:36,313 --> 00:33:38,620
 let's say you call
 it red and blue.
 
 698
-00:33:37,720 --> 00:33:40,464
+00:33:38,620 --> 00:33:41,364
 What if you add green?
 
 699
-00:33:40,464 --> 00:33:47,929
+00:33:41,364 --> 00:33:48,829
 Then would there be-- would
 Not-All-Equal 3SAT be NP-hard,
 
 700
-00:33:47,929 --> 00:33:49,830
+00:33:48,829 --> 00:33:50,730
 or would you need
 4SAT or something?
 
 701
-00:33:49,830 --> 00:33:50,496
+00:33:50,730 --> 00:33:51,396
 PROFESSOR: Yeah.
 
 702
-00:33:50,496 --> 00:33:51,680
+00:33:51,396 --> 00:33:52,580
 So what about ternary truth?
 
 703
-00:33:51,680 --> 00:33:55,988
+00:33:52,580 --> 00:33:56,888
 
 704
-00:33:55,988 --> 00:34:00,449
+00:33:56,888 --> 00:34:01,349
 I-- there might be a
 problem on that in the PSET.
 
 705
-00:34:00,449 --> 00:34:04,070
+00:34:01,349 --> 00:34:04,970
 But in general, you would
 have to go through the work
 
 706
-00:34:04,070 --> 00:34:05,330
+00:34:04,970 --> 00:34:06,230
 to check which problems.
 
 707
-00:34:05,330 --> 00:34:08,010
+00:34:06,230 --> 00:34:08,910
 I think those are
 pretty uncommon.
 
 708
-00:34:08,010 --> 00:34:10,929
+00:34:08,910 --> 00:34:11,829
 So usually what you do is
 if you have a gadget that
 
 709
-00:34:10,929 --> 00:34:13,127
+00:34:11,829 --> 00:34:14,027
 can be solved not two
 ways, but four ways,
 
 710
-00:34:13,127 --> 00:34:15,210
+00:34:14,027 --> 00:34:16,110
 is you call two of them
 true and two of them false
 
 711
-00:34:15,210 --> 00:34:18,070
+00:34:16,110 --> 00:34:18,970
 and hope they behave
 more or less identically.
 
 712
-00:34:18,070 --> 00:34:20,449
+00:34:18,970 --> 00:34:21,349
 So that's the most common
 answer, practically,
 
 713
-00:34:20,449 --> 00:34:21,989
+00:34:21,349 --> 00:34:22,889
 to what we do.
 
 714
-00:34:21,989 --> 00:34:24,454
+00:34:22,889 --> 00:34:25,354
 But it certainly is plausible
 with three different values.
 
 715
-00:34:24,454 --> 00:34:25,870
+00:34:25,354 --> 00:34:26,770
 Some of these are
 going to be hard
 
 716
-00:34:25,870 --> 00:34:29,060
+00:34:26,770 --> 00:34:29,960
 but I don't know which ones.
 
 717
-00:34:29,060 --> 00:34:31,761
+00:34:29,960 --> 00:34:32,661
 Hopefully all them, but
 you have to be careful.
 
 718
-00:34:31,761 --> 00:34:33,219
+00:34:32,661 --> 00:34:34,119
 And definitely the
 next theorem I'm
 
 719
-00:34:33,219 --> 00:34:35,350
+00:34:34,119 --> 00:34:36,250
 going to talk about--
 the dichotomy theorem--
 
 720
-00:34:35,350 --> 00:34:38,000
+00:34:36,250 --> 00:34:38,900
 would get more complicated
 with three colors.
 
 721
-00:34:38,000 --> 00:34:49,600
+00:34:38,900 --> 00:34:50,500
 
 722
-00:34:49,600 --> 00:34:50,260
+00:34:50,500 --> 00:34:51,160
 Nice question.
 
 723
-00:34:50,260 --> 00:34:55,020
+00:34:51,160 --> 00:34:55,920
 
 724
-00:34:55,020 --> 00:35:07,120
+00:34:55,920 --> 00:35:08,020
 So let's do Schaefer's
 Dichotomy Theorem.
 
 725
-00:35:07,120 --> 00:35:12,870
+00:35:08,020 --> 00:35:13,770
 This is about which versions
 of SAT are polynomial
 
 726
-00:35:12,870 --> 00:35:14,370
+00:35:13,770 --> 00:35:15,270
 and which versions
 are NP-complete.
 
 727
-00:35:14,370 --> 00:35:18,570
+00:35:15,270 --> 00:35:19,470
 With the right set up, every
 problem you can think of
 
 728
-00:35:18,570 --> 00:35:20,580
+00:35:19,470 --> 00:35:21,480
 is either polynomial
 or NP-complete.
 
 729
-00:35:20,580 --> 00:35:22,860
+00:35:21,480 --> 00:35:23,760
 There's no things in-between.
 
 730
-00:35:22,860 --> 00:35:25,040
+00:35:23,760 --> 00:35:25,940
 These are called
 NP-intermediate problems.
 
 731
-00:35:25,040 --> 00:35:27,990
+00:35:25,940 --> 00:35:28,890
 So it's always going to be
 one extreme or the other,
 
 732
-00:35:27,990 --> 00:35:30,540
+00:35:28,890 --> 00:35:31,440
 as I'm about to set it up.
 
 733
-00:35:30,540 --> 00:35:33,420
+00:35:31,440 --> 00:35:34,320
 And this theorem is by Schaefer.
 
 734
-00:35:33,420 --> 00:35:35,430
+00:35:34,320 --> 00:35:36,330
 And in the very
 same paper he proves
 
 735
-00:35:35,430 --> 00:35:38,100
+00:35:36,330 --> 00:35:39,000
 Not-All-Equal 3SAT and
 1-in-3SAT are hard.
 
 736
-00:35:38,100 --> 00:35:39,520
+00:35:39,000 --> 00:35:40,420
 Those are the original proofs.
 
 737
-00:35:39,520 --> 00:35:41,840
+00:35:40,420 --> 00:35:42,740
 So it's a great paper.
 
 738
-00:35:41,840 --> 00:35:44,790
+00:35:42,740 --> 00:35:45,690
 I have looked at it many times.
 
 739
-00:35:44,790 --> 00:35:46,720
+00:35:45,690 --> 00:35:47,620
 It's from 1978.
 
 740
-00:35:46,720 --> 00:35:49,819
+00:35:47,620 --> 00:35:50,719
 So long time ago.
 
 741
-00:35:49,819 --> 00:35:50,860
+00:35:50,719 --> 00:35:51,760
 But still quite readable.
 
 742
-00:35:50,860 --> 00:35:56,220
+00:35:51,760 --> 00:35:57,120
 
 743
-00:35:56,220 --> 00:35:59,420
+00:35:57,120 --> 00:36:00,320
 So I don't know how much-- all
 the last problems we've stated
 
 744
-00:35:59,420 --> 00:36:01,750
+00:36:00,320 --> 00:36:02,650
 have this property, but
 I'll make it explicit again.
 
 745
-00:36:01,750 --> 00:36:05,590
+00:36:02,650 --> 00:36:06,490
 That's your formula is going
 to be an AND of clauses.
 
 746
-00:36:05,590 --> 00:36:09,270
+00:36:06,490 --> 00:36:10,170
 And now we're going to allow
 general kinds of clauses.
 
 747
-00:36:09,270 --> 00:36:12,100
+00:36:10,170 --> 00:36:13,000
 A clause is just going
 to be any relation
 
 748
-00:36:12,100 --> 00:36:13,685
+00:36:13,000 --> 00:36:14,585
 on some number of variables.
 
 749
-00:36:13,685 --> 00:36:16,417
+00:36:14,585 --> 00:36:17,317
 
 750
-00:36:16,417 --> 00:36:18,750
+00:36:17,317 --> 00:36:19,650
 So there won't be any notion
 of literal here because you
 
 751
-00:36:18,750 --> 00:36:22,200
+00:36:19,650 --> 00:36:23,100
 can put that in the relation.
 
 752
-00:36:22,200 --> 00:36:28,700
+00:36:23,100 --> 00:36:29,600
 I'll call this a general
 clause and say relation
 
 753
-00:36:28,700 --> 00:36:30,845
+00:36:29,600 --> 00:36:31,745
 on some variables.
 
 754
-00:36:30,845 --> 00:36:33,680
+00:36:31,745 --> 00:36:34,580
 
 755
-00:36:33,680 --> 00:36:35,820
+00:36:34,580 --> 00:36:36,720
 So relation is
 something-- I give you
 
 756
-00:36:35,820 --> 00:36:38,000
+00:36:36,720 --> 00:36:38,900
 a set of truth values
 for those variables
 
 757
-00:36:38,000 --> 00:36:39,380
+00:36:38,900 --> 00:36:40,280
 and will say yes or no.
 
 758
-00:36:39,380 --> 00:36:40,957
+00:36:40,280 --> 00:36:41,857
 That's valid or it's invalid.
 
 759
-00:36:40,957 --> 00:36:42,540
+00:36:41,857 --> 00:36:43,440
 You can think of a
 relation as the set
 
 760
-00:36:42,540 --> 00:36:44,790
+00:36:43,440 --> 00:36:45,690
 of all assignments of the
 variables that make it true.
 
 761
-00:36:44,790 --> 00:36:47,216
+00:36:45,690 --> 00:36:48,116
 But you don't have to
 specify that, per se.
 
 762
-00:36:47,216 --> 00:36:48,590
+00:36:48,116 --> 00:36:49,490
 You just sort of
 know what it is.
 
 763
-00:36:48,590 --> 00:36:51,390
+00:36:49,490 --> 00:36:52,290
 
 764
-00:36:51,390 --> 00:36:51,890
+00:36:52,290 --> 00:36:52,790
 OK.
 
 765
-00:36:51,890 --> 00:36:54,380
+00:36:52,790 --> 00:36:55,280
 So I mean, in
 particular, it could
 
 766
-00:36:54,380 --> 00:36:56,700
+00:36:55,280 --> 00:36:57,600
 be the OR of three
 variables, then we get 3SAT.
 
 767
-00:36:56,700 --> 00:36:59,570
+00:36:57,600 --> 00:37:00,470
 Or it could be the Not-All-Equal
 constraint on three variables,
 
 768
-00:36:59,570 --> 00:37:01,250
+00:37:00,470 --> 00:37:02,150
 then it's Not-All-Equal
 3SAT, and so on.
 
 769
-00:37:01,250 --> 00:37:04,061
+00:37:02,150 --> 00:37:04,961
 
 770
-00:37:04,061 --> 00:37:04,560
+00:37:04,961 --> 00:37:05,460
 OK.
 
 771
-00:37:04,560 --> 00:37:08,120
+00:37:05,460 --> 00:37:09,020
 We are going to--
 so I guess, sorry.
 
 772
-00:37:08,120 --> 00:37:11,300
+00:37:09,020 --> 00:37:12,200
 The relationship should be given
 to you as a Boolean formula.
 
 773
-00:37:11,300 --> 00:37:13,900
+00:37:12,200 --> 00:37:14,800
 So it could be an OR, or
 you can write 1-in-3SAT
 
 774
-00:37:13,900 --> 00:37:14,989
+00:37:14,800 --> 00:37:15,889
 as a Boolean formula.
 
 775
-00:37:14,989 --> 00:37:16,030
+00:37:15,889 --> 00:37:16,930
 It's just little tedious.
 
 776
-00:37:16,030 --> 00:37:17,830
+00:37:16,930 --> 00:37:18,730
 You could say, well it could
 be this, or it could be this,
 
 777
-00:37:17,830 --> 00:37:18,810
+00:37:18,730 --> 00:37:19,710
 or it could be this.
 
 778
-00:37:18,810 --> 00:37:23,460
+00:37:19,710 --> 00:37:24,360
 In general, I'm going
 to assume that they're
 
 779
-00:37:23,460 --> 00:37:26,180
+00:37:24,360 --> 00:37:27,080
 given to you in CNF form.
 
 780
-00:37:26,180 --> 00:37:27,180
+00:37:27,080 --> 00:37:28,080
 Sorry, that's redundant.
 
 781
-00:37:27,180 --> 00:37:30,610
+00:37:28,080 --> 00:37:31,510
 CNF has "form" in it.
 
 782
-00:37:30,610 --> 00:37:33,920
+00:37:31,510 --> 00:37:34,820
 Because any formula
 can be made into CNF.
 
 783
-00:37:33,920 --> 00:37:38,510
+00:37:34,820 --> 00:37:39,410
 So now CNF is an
 AND of ORs, so this
 
 784
-00:37:38,510 --> 00:37:42,129
+00:37:39,410 --> 00:37:43,029
 is going to be an AND of what
 we might normally call clauses,
 
 785
-00:37:42,129 --> 00:37:43,670
+00:37:43,029 --> 00:37:44,570
 but we're already
 in a clause, so I'm
 
 786
-00:37:43,670 --> 00:37:44,920
+00:37:44,570 --> 00:37:45,820
 going to call this subclauses.
 
 787
-00:37:44,920 --> 00:37:47,510
+00:37:45,820 --> 00:37:48,410
 
 788
-00:37:47,510 --> 00:37:51,007
+00:37:48,410 --> 00:37:51,907
 Starting to sound like legalese.
 
 789
-00:37:51,007 --> 00:37:51,840
+00:37:51,907 --> 00:37:52,740
 I made up this word.
 
 790
-00:37:51,840 --> 00:37:53,740
+00:37:52,740 --> 00:37:54,640
 It's not in the literature.
 
 791
-00:37:53,740 --> 00:37:56,510
+00:37:54,640 --> 00:37:57,410
 So in general, your formula
 is an AND of clauses,
 
 792
-00:37:56,510 --> 00:37:58,120
+00:37:57,410 --> 00:37:59,020
 each one is just
 some relation, which
 
 793
-00:37:58,120 --> 00:37:59,740
+00:37:59,020 --> 00:38:00,640
 we're going to think of
 as an AND of subclauses.
 
 794
-00:37:59,740 --> 00:38:01,948
+00:38:00,640 --> 00:38:02,848
 Of course, it's really just
 an AND of all the things.
 
 795
-00:38:01,948 --> 00:38:05,350
+00:38:02,848 --> 00:38:06,250
 But this is trying
 to be general.
 
 796
-00:38:05,350 --> 00:38:08,120
+00:38:06,250 --> 00:38:09,020
 Because we're going to have
 constraints in the clauses,
 
 797
-00:38:08,120 --> 00:38:10,390
+00:38:09,020 --> 00:38:11,290
 in particular.
 
 798
-00:38:10,390 --> 00:38:17,910
+00:38:11,290 --> 00:38:18,810
 So then claim is SAT-- on
 these types of formulas-- so
 
 799
-00:38:17,910 --> 00:38:20,600
+00:38:18,810 --> 00:38:21,500
 here's the difference, I guess.
 
 800
-00:38:20,600 --> 00:38:24,930
+00:38:21,500 --> 00:38:25,830
 To define the problem, you
 specify what kind of relations
 
 801
-00:38:24,930 --> 00:38:25,620
+00:38:25,830 --> 00:38:26,520
 that you allow.
 
 802
-00:38:25,620 --> 00:38:28,350
+00:38:26,520 --> 00:38:29,250
 So in 3SAT, we say, OK,
 so OR of three things.
 
 803
-00:38:28,350 --> 00:38:31,200
+00:38:29,250 --> 00:38:32,100
 In CNF SAT, it's an OR
 of k things for any k.
 
 804
-00:38:31,200 --> 00:38:35,310
+00:38:32,100 --> 00:38:36,210
 In Not-All-Equal 3SAT, it's
 not all equal of three things,
 
 805
-00:38:35,310 --> 00:38:35,810
+00:38:36,210 --> 00:38:36,710
 and so on.
 
 806
-00:38:35,810 --> 00:38:40,070
+00:38:36,710 --> 00:38:40,970
 So we give that up front and
 then the decision problem
 
 807
-00:38:40,070 --> 00:38:44,060
+00:38:40,970 --> 00:38:44,960
 is well, I have
 n variables and I
 
 808
-00:38:44,060 --> 00:38:48,864
+00:38:44,960 --> 00:38:49,764
 can combine them with these
 clauses however I want.
 
 809
-00:38:48,864 --> 00:38:50,530
+00:38:49,764 --> 00:38:51,430
 So we need some kind
 of infinity, right?
 
 810
-00:38:50,530 --> 00:38:52,140
+00:38:51,430 --> 00:38:53,040
 If I gave you a
 specific problem,
 
 811
-00:38:52,140 --> 00:38:54,100
+00:38:53,040 --> 00:38:55,000
 then it's not going
 to be NP-hard.
 
 812
-00:38:54,100 --> 00:38:55,910
+00:38:55,000 --> 00:38:56,810
 Like, with these 10
 variables, that's
 
 813
-00:38:55,910 --> 00:38:57,860
+00:38:56,810 --> 00:38:58,760
 never going to be interesting.
 
 814
-00:38:57,860 --> 00:39:01,190
+00:38:58,760 --> 00:39:02,090
 So I give you the notion
 of what causes are allowed,
 
 815
-00:39:01,190 --> 00:39:04,670
+00:39:02,090 --> 00:39:05,570
 what relations are
 permitted, and then I
 
 816
-00:39:04,670 --> 00:39:08,990
+00:39:05,570 --> 00:39:09,890
 want to consider the class
 of all possible formulas you
 
 817
-00:39:08,990 --> 00:39:11,606
+00:39:09,890 --> 00:39:12,506
 can build with
 clauses of that type.
 
 818
-00:39:11,606 --> 00:39:13,980
+00:39:12,506 --> 00:39:14,880
 So you can think of this as
 really more of a clause type,
 
 819
-00:39:13,980 --> 00:39:17,340
+00:39:14,880 --> 00:39:18,240
 like Not-All-Equal,
 just to be precise here.
 
 820
-00:39:17,340 --> 00:39:20,260
+00:39:18,240 --> 00:39:21,160
 And then we get
 a version of SAT.
 
 821
-00:39:20,260 --> 00:39:32,690
+00:39:21,160 --> 00:39:33,590
 And it's going to be polynomial
 if one of four cases happen.
 
 822
-00:39:32,690 --> 00:39:33,640
+00:39:33,590 --> 00:39:34,540
 At least one.
 
 823
-00:39:33,640 --> 00:39:35,490
+00:39:34,540 --> 00:39:36,390
 Any one of these
 will make it easy.
 
 824
-00:39:35,490 --> 00:39:37,600
+00:39:36,390 --> 00:39:38,500
 We have seen almost
 all of these.
 
 825
-00:39:37,600 --> 00:39:44,640
+00:39:38,500 --> 00:39:45,540
 So first one is setting
 all variables true
 
 826
-00:39:44,640 --> 00:39:47,410
+00:39:45,540 --> 00:39:48,310
 satisfies the formula.
 
 827
-00:39:47,410 --> 00:39:50,990
+00:39:48,310 --> 00:39:51,890
 Well not just the formula,
 but all formulas of this type.
 
 828
-00:39:50,990 --> 00:40:06,495
+00:39:51,890 --> 00:40:07,395
 Or all variables false
 satisfies all clauses.
 
 829
-00:40:06,495 --> 00:40:09,350
+00:40:07,395 --> 00:40:10,250
 
 830
-00:40:09,350 --> 00:40:09,850
+00:40:10,250 --> 00:40:10,750
 OK.
 
 831
-00:40:09,850 --> 00:40:12,470
+00:40:10,750 --> 00:40:13,370
 This is a statement over all
 formulas with this clause type,
 
 832
-00:40:12,470 --> 00:40:12,969
+00:40:13,370 --> 00:40:13,869
 right?
 
 833
-00:40:12,969 --> 00:40:14,760
+00:40:13,869 --> 00:40:15,660
 So, a statement about
 the clause types.
 
 834
-00:40:14,760 --> 00:40:17,270
+00:40:15,660 --> 00:40:18,170
 And it's one of the issues we
 were having with not-exactly-1
 
 835
-00:40:17,270 --> 00:40:21,397
+00:40:18,170 --> 00:40:22,297
 3SAT, because there the
 clause type allowed everything
 
 836
-00:40:21,397 --> 00:40:23,480
+00:40:22,297 --> 00:40:24,380
 to be false and it also
 had everything to be true,
 
 837
-00:40:23,480 --> 00:40:24,940
+00:40:24,380 --> 00:40:25,840
 so it was doubly bad.
 
 838
-00:40:24,940 --> 00:40:28,229
+00:40:25,840 --> 00:40:29,129
 But of course is if you
 have clauses where this
 
 839
-00:40:28,229 --> 00:40:29,770
+00:40:29,129 --> 00:40:30,670
 is true for all
 the-- you could allow
 
 840
-00:40:29,770 --> 00:40:30,894
+00:40:30,670 --> 00:40:31,794
 different types of clauses.
 
 841
-00:40:30,894 --> 00:40:33,690
+00:40:31,794 --> 00:40:34,590
 You could have Not-All-Equal
 plus 1-in-3SAT, that
 
 842
-00:40:33,690 --> 00:40:35,467
+00:40:34,590 --> 00:40:36,367
 will also be hard, of course.
 
 843
-00:40:35,467 --> 00:40:38,050
+00:40:36,367 --> 00:40:38,950
 But if all of your clauses have
 this property, then of course,
 
 844
-00:40:38,050 --> 00:40:40,216
+00:40:38,950 --> 00:40:41,116
 you just globally set the
 variables and you're done.
 
 845
-00:40:40,216 --> 00:40:42,700
+00:40:41,116 --> 00:40:43,600
 
 846
-00:40:42,700 --> 00:40:44,451
+00:40:43,600 --> 00:40:45,351
 OK.
 
 847
-00:40:44,451 --> 00:40:45,450
+00:40:45,351 --> 00:40:46,350
 That was the first case.
 
 848
-00:40:45,450 --> 00:40:56,230
+00:40:46,350 --> 00:40:57,130
 
 849
-00:40:56,230 --> 00:40:58,300
+00:40:57,130 --> 00:40:59,200
 All right.
 
 850
-00:40:58,300 --> 00:41:05,900
+00:40:59,200 --> 00:41:06,800
 So the next one is that
 it could be the subclauses
 
 851
-00:41:05,900 --> 00:41:12,205
+00:41:06,800 --> 00:41:13,105
 are all Horn, or all dual Horn.
 
 852
-00:41:12,205 --> 00:41:17,690
+00:41:13,105 --> 00:41:18,590
 
 853
-00:41:17,690 --> 00:41:20,929
+00:41:18,590 --> 00:41:21,829
 So those are two happy
 cases we saw before.
 
 854
-00:41:20,929 --> 00:41:22,720
+00:41:21,829 --> 00:41:23,620
 I mean, we can think
 of the overall problem
 
 855
-00:41:22,720 --> 00:41:26,970
+00:41:23,620 --> 00:41:27,870
 as an AND of the clauses,
 which are ANDs of subclauses,
 
 856
-00:41:26,970 --> 00:41:29,510
+00:41:27,870 --> 00:41:30,410
 so if everything is a
 Horn or dual Horn thing,
 
 857
-00:41:29,510 --> 00:41:31,440
+00:41:30,410 --> 00:41:32,340
 then we're happy.
 
 858
-00:41:31,440 --> 00:41:42,170
+00:41:32,340 --> 00:41:43,070
 And next case is the
 relations are all 2-CNF.
 
 859
-00:41:42,170 --> 00:41:43,910
+00:41:43,070 --> 00:41:44,810
 So this would be the 2SAT case.
 
 860
-00:41:43,910 --> 00:41:46,330
+00:41:44,810 --> 00:41:47,230
 If all the relations you're
 working with are in 2-CNF,
 
 861
-00:41:46,330 --> 00:41:48,955
+00:41:47,230 --> 00:41:49,855
 then when we AND them together,
 you still have a 2-CNF formula,
 
 862
-00:41:48,955 --> 00:41:52,270
+00:41:49,855 --> 00:41:53,170
 so you can solve it by 2SAT.
 
 863
-00:41:52,270 --> 00:41:54,240
+00:41:53,170 --> 00:41:55,140
 So these are all
 things we've seen.
 
 864
-00:41:54,240 --> 00:41:58,160
+00:41:55,140 --> 00:41:59,060
 There's one more
 case we haven't seen.
 
 865
-00:41:58,160 --> 00:41:59,286
+00:41:59,060 --> 00:42:00,186
 Is there a question?
 
 866
-00:41:59,286 --> 00:42:00,258
+00:42:00,186 --> 00:42:01,158
 Yeah.
 
 867
-00:42:00,258 --> 00:42:03,174
+00:42:01,158 --> 00:42:04,074
 AUDIENCE: Isn't 2SAT just a
 subcase of the Horn and dual
 
 868
-00:42:03,174 --> 00:42:04,549
+00:42:04,074 --> 00:42:05,449
 Horn thing?
 
 869
-00:42:04,549 --> 00:42:06,090
+00:42:05,449 --> 00:42:06,990
 Because you're always
 going to have--
 
 870
-00:42:06,090 --> 00:42:06,965
+00:42:06,990 --> 00:42:07,865
 PROFESSOR: It's true.
 
 871
-00:42:06,965 --> 00:42:10,310
+00:42:07,865 --> 00:42:11,210
 2SAT is a special case of Horn.
 
 872
-00:42:10,310 --> 00:42:12,244
+00:42:11,210 --> 00:42:13,144
 [INTERPOSING VOICES]
 
 873
-00:42:12,244 --> 00:42:14,202
+00:42:13,144 --> 00:42:15,102
 AUDIENCE: You could have
 one with two positives
 
 874
-00:42:14,202 --> 00:42:15,660
+00:42:15,102 --> 00:42:16,560
 and another one
 with two negatives.
 
 875
-00:42:15,660 --> 00:42:17,094
+00:42:16,560 --> 00:42:17,994
 AUDIENCE: Yeah, that's true.
 
 876
-00:42:17,094 --> 00:42:18,602
+00:42:17,994 --> 00:42:19,502
 Yeah.
 
 877
-00:42:18,602 --> 00:42:20,060
+00:42:19,502 --> 00:42:20,960
 PROFESSOR: Ah,
 right, right, right.
 
 878
-00:42:20,060 --> 00:42:20,610
+00:42:20,960 --> 00:42:21,510
 So I see.
 
 879
-00:42:20,610 --> 00:42:23,820
+00:42:21,510 --> 00:42:24,720
 So 2-CNF, some of the
 clauses are going to be Horn
 
 880
-00:42:23,820 --> 00:42:25,800
+00:42:24,720 --> 00:42:26,700
 and some of them are
 dual Horn, I think.
 
 881
-00:42:25,800 --> 00:42:27,870
+00:42:26,700 --> 00:42:28,770
 So it doesn't fall into
 this because it's not
 
 882
-00:42:27,870 --> 00:42:28,770
+00:42:28,770 --> 00:42:29,670
 all one or the other.
 
 883
-00:42:28,770 --> 00:42:31,070
+00:42:29,670 --> 00:42:31,970
 In general, those
 combinations are bad.
 
 884
-00:42:31,070 --> 00:42:33,567
+00:42:31,970 --> 00:42:34,467
 But 2SAT is always OK.
 
 885
-00:42:33,567 --> 00:42:34,150
+00:42:34,467 --> 00:42:35,050
 Good question.
 
 886
-00:42:34,150 --> 00:42:39,020
+00:42:35,050 --> 00:42:39,920
 
 887
-00:42:39,020 --> 00:42:47,355
+00:42:39,920 --> 00:42:48,255
 OK Last case is
 some linear algebra.
 
 888
-00:42:47,355 --> 00:42:54,040
+00:42:48,255 --> 00:42:54,940
 
 889
-00:42:54,040 --> 00:42:55,500
+00:42:54,940 --> 00:42:56,400
 This is one other
 easy case of SAT
 
 890
-00:42:55,500 --> 00:42:56,900
+00:42:56,400 --> 00:42:57,800
 which doesn't come
 up very often,
 
 891
-00:42:56,900 --> 00:42:58,530
+00:42:57,800 --> 00:42:59,430
 so I didn't write it
 as a separate one.
 
 892
-00:42:58,530 --> 00:43:26,550
+00:42:59,430 --> 00:43:27,450
 
 893
-00:43:26,550 --> 00:43:28,780
+00:43:27,450 --> 00:43:29,680
 So imagine equations like this.
 
 894
-00:43:28,780 --> 00:43:33,540
+00:43:29,680 --> 00:43:34,440
 I take some number variables,
 I XOR them together and I say,
 
 895
-00:43:33,540 --> 00:43:37,790
+00:43:34,440 --> 00:43:38,690
 that should be 0, or similar
 thing, I set it equal to 1.
 
 896
-00:43:37,790 --> 00:43:41,700
+00:43:38,690 --> 00:43:42,600
 Those are what I would call
 linear equation over Zmod2.
 
 897
-00:43:41,700 --> 00:43:44,950
+00:43:42,600 --> 00:43:45,850
 Because in Zmod2 -- the finite
 field in two elements --
 
 898
-00:43:44,950 --> 00:43:49,090
+00:43:45,850 --> 00:43:49,990
 addition becomes XOR and
 there's no multiplication here
 
 899
-00:43:49,090 --> 00:43:52,010
+00:43:49,990 --> 00:43:52,910
 because it's a linear system.
 
 900
-00:43:52,010 --> 00:43:57,430
+00:43:52,910 --> 00:43:58,330
 So we can solve these things
 because Z2 is a finite field.
 
 901
-00:43:57,430 --> 00:43:59,350
+00:43:58,330 --> 00:44:00,250
 We can use Gaussian
 elimination if-- even
 
 902
-00:43:59,350 --> 00:44:01,670
+00:44:00,250 --> 00:44:02,570
 if I have a whole bunch
 of these equations,
 
 903
-00:44:01,670 --> 00:44:05,150
+00:44:02,570 --> 00:44:06,050
 I can solve them all using
 Gaussian elimination.
 
 904
-00:44:05,150 --> 00:44:06,730
+00:44:06,050 --> 00:44:07,630
 Or determine that
 they're unsolvable.
 
 905
-00:44:06,730 --> 00:44:12,290
+00:44:07,630 --> 00:44:13,190
 So that's another easy case
 for SAT to be careful about.
 
 906
-00:44:12,290 --> 00:44:16,950
+00:44:13,190 --> 00:44:17,850
 And the theorem is if you
 have one of these situations--
 
 907
-00:44:16,950 --> 00:44:18,280
+00:44:17,850 --> 00:44:19,180
 so you can't mix these.
 
 908
-00:44:18,280 --> 00:44:19,860
+00:44:19,180 --> 00:44:20,760
 If you have one
 clause of this type
 
 909
-00:44:19,860 --> 00:44:24,180
+00:44:20,760 --> 00:44:25,080
 and another clause of this type,
 your problem will be NP-hard.
 
 910
-00:44:24,180 --> 00:44:30,590
+00:44:25,080 --> 00:44:31,490
 So in general, you say,
 otherwise SAT is NP-hard.
 
 911
-00:44:30,590 --> 00:44:36,065
+00:44:31,490 --> 00:44:36,965
 
 912
-00:44:36,065 --> 00:44:37,690
+00:44:36,965 --> 00:44:38,590
 I guess it will
 actually be NP-complete
 
 913
-00:44:37,690 --> 00:44:40,190
+00:44:38,590 --> 00:44:41,090
 here, the way we've set it up.
 
 914
-00:44:40,190 --> 00:44:43,820
+00:44:41,090 --> 00:44:44,720
 Well, assuming the
 relations are checkable.
 
 915
-00:44:43,820 --> 00:44:45,190
+00:44:44,720 --> 00:44:46,090
 So these are the only cases.
 
 916
-00:44:45,190 --> 00:44:46,985
+00:44:46,090 --> 00:44:47,885
 This is an easy case,
 this is an easy case,
 
 917
-00:44:46,985 --> 00:44:47,860
+00:44:47,885 --> 00:44:48,760
 this is an easy case.
 
 918
-00:44:47,860 --> 00:44:50,140
+00:44:48,760 --> 00:44:51,040
 It could be that multiple
 of these things are true.
 
 919
-00:44:50,140 --> 00:44:52,810
+00:44:51,040 --> 00:44:53,710
 Maybe your 2CNF
 and your all Horn.
 
 920
-00:44:52,810 --> 00:44:54,960
+00:44:53,710 --> 00:44:55,860
 That will also be
 polynomial, of course.
 
 921
-00:44:54,960 --> 00:44:57,080
+00:44:55,860 --> 00:44:57,980
 But if none of these
 individually hold,
 
 922
-00:44:57,080 --> 00:44:58,900
+00:44:57,980 --> 00:44:59,800
 then your problem is NP-hard.
 
 923
-00:44:58,900 --> 00:44:59,523
+00:44:59,800 --> 00:45:00,423
 Question.
 
 924
-00:44:59,523 --> 00:45:01,064
+00:45:00,423 --> 00:45:01,964
 AUDIENCE: So how
 does this generalize
 
 925
-00:45:01,064 --> 00:45:03,466
+00:45:01,964 --> 00:45:04,366
 from non-Boolean fields?
 
 926
-00:45:03,466 --> 00:45:05,360
+00:45:04,366 --> 00:45:06,260
 I'm sure the last one
 is also still true.
 
 927
-00:45:05,360 --> 00:45:06,026
+00:45:06,260 --> 00:45:06,926
 PROFESSOR: Yeah.
 
 928
-00:45:06,026 --> 00:45:08,680
+00:45:06,926 --> 00:45:09,580
 So we can go back to your
 question about three colors,
 
 929
-00:45:08,680 --> 00:45:10,290
+00:45:09,580 --> 00:45:11,190
 and the answer is I don't know.
 
 930
-00:45:10,290 --> 00:45:11,840
+00:45:11,190 --> 00:45:12,740
 As far as I know, there's
 no theorem of that type.
 
 931
-00:45:11,840 --> 00:45:12,830
+00:45:12,740 --> 00:45:13,730
 But there might be one.
 
 932
-00:45:12,830 --> 00:45:15,650
+00:45:13,730 --> 00:45:16,550
 It's been 30 years.
 
 933
-00:45:15,650 --> 00:45:17,926
+00:45:16,550 --> 00:45:18,826
 So it wouldn't be surprising.
 
 934
-00:45:17,926 --> 00:45:20,050
+00:45:18,826 --> 00:45:20,950
 Certainly, you can-- some
 of these positive results
 
 935
-00:45:20,050 --> 00:45:21,820
+00:45:20,950 --> 00:45:22,720
 will generalize.
 
 936
-00:45:21,820 --> 00:45:26,860
+00:45:22,720 --> 00:45:27,760
 But I think even this one
 would be a little tricky.
 
 937
-00:45:26,860 --> 00:45:28,702
+00:45:27,760 --> 00:45:29,602
 AUDIENCE: So MAX 2SAT
 doesn't fall in this?
 
 938
-00:45:28,702 --> 00:45:29,410
+00:45:29,602 --> 00:45:30,310
 PROFESSOR: Right.
 
 939
-00:45:29,410 --> 00:45:32,835
+00:45:30,310 --> 00:45:33,735
 So here the goal is always to
 satisfy all of the clauses.
 
 940
-00:45:32,835 --> 00:45:34,460
+00:45:33,735 --> 00:45:35,360
 It's always the AND
 of all the clauses.
 
 941
-00:45:34,460 --> 00:45:38,060
+00:45:35,360 --> 00:45:38,960
 You could imagine a
 MAX 2SAT-like theorem.
 
 942
-00:45:38,060 --> 00:45:39,910
+00:45:38,960 --> 00:45:40,810
 My guess is most
 problems will be hard.
 
 943
-00:45:39,910 --> 00:45:43,180
+00:45:40,810 --> 00:45:44,080
 But as far as I know,
 there's no such theorem.
 
 944
-00:45:43,180 --> 00:45:43,970
+00:45:44,080 --> 00:45:44,870
 Yeah.
 
 945
-00:45:43,970 --> 00:45:46,178
+00:45:44,870 --> 00:45:47,078
 AUDIENCE: Is there any way
 to understand this theorem
 
 946
-00:45:46,178 --> 00:45:50,260
+00:45:47,078 --> 00:45:51,160
 as making a geometric statement
 about the relation being convex
 
 947
-00:45:50,260 --> 00:45:52,430
+00:45:51,160 --> 00:45:53,330
 and hypercube or something?
 
 948
-00:45:52,430 --> 00:45:53,930
+00:45:53,330 --> 00:45:54,830
 Like, is there any
 sort of convexity
 
 949
-00:45:53,930 --> 00:45:56,970
+00:45:54,830 --> 00:45:57,870
 property encoded in this?
 
 950
-00:45:56,970 --> 00:45:57,970
+00:45:57,870 --> 00:45:58,870
 PROFESSOR: I don't know.
 
 951
-00:45:57,970 --> 00:46:00,640
+00:45:58,870 --> 00:46:01,540
 I would guess no.
 
 952
-00:46:00,640 --> 00:46:02,410
+00:46:01,540 --> 00:46:03,310
 I know there is a
 more modern take
 
 953
-00:46:02,410 --> 00:46:04,809
+00:46:03,310 --> 00:46:05,709
 on this that is more algebraic.
 
 954
-00:46:04,809 --> 00:46:06,850
+00:46:05,709 --> 00:46:07,750
 So it's more like, if you
 start with these things
 
 955
-00:46:06,850 --> 00:46:08,224
+00:46:07,750 --> 00:46:09,124
 and you can build
 up in this way,
 
 956
-00:46:08,224 --> 00:46:10,060
+00:46:09,124 --> 00:46:10,960
 anything you can
 build up in this way
 
 957
-00:46:10,060 --> 00:46:12,780
+00:46:10,960 --> 00:46:13,680
 are the polynomial
 solvable versions of SAT.
 
 958
-00:46:12,780 --> 00:46:16,536
+00:46:13,680 --> 00:46:17,436
 Anything you can't build
 up in this way is NP-hard.
 
 959
-00:46:16,536 --> 00:46:18,910
+00:46:17,436 --> 00:46:19,810
 So if you're interested in
 that, check the Wikipedia page
 
 960
-00:46:18,910 --> 00:46:22,242
+00:46:19,810 --> 00:46:23,142
 for Schaefer's
 Dichotomy Theorem.
 
 961
-00:46:22,242 --> 00:46:24,450
+00:46:23,142 --> 00:46:25,350
 But I don't think there's
 a geometric interpretation.
 
 962
-00:46:24,450 --> 00:46:26,616
+00:46:25,350 --> 00:46:27,516
 This one, obviously, has a
 geometric interpretation.
 
 963
-00:46:26,616 --> 00:46:30,180
+00:46:27,516 --> 00:46:31,080
 But I think the others
 not, would be my guess.
 
 964
-00:46:30,180 --> 00:46:31,420
+00:46:31,080 --> 00:46:32,320
 Yeah.
 
 965
-00:46:31,420 --> 00:46:32,920
+00:46:32,320 --> 00:46:33,820
 AUDIENCE: So does
 this say something
 
 966
-00:46:32,920 --> 00:46:36,760
+00:46:33,820 --> 00:46:37,660
 about the complexity of
 recognizing the clauses if you
 
 967
-00:46:36,760 --> 00:46:38,250
+00:46:37,660 --> 00:46:39,150
 interpret them as a language?
 
 968
-00:46:38,250 --> 00:46:40,560
+00:46:39,150 --> 00:46:41,460
 PROFESSOR: If I give
 you the formula that
 
 969
-00:46:40,560 --> 00:46:42,720
+00:46:41,460 --> 00:46:43,620
 specifies the types
 of clauses, can you
 
 970
-00:46:42,720 --> 00:46:46,260
+00:46:43,620 --> 00:46:47,160
 determine whether any
 of these is the case.
 
 971
-00:46:46,260 --> 00:46:51,190
+00:46:47,160 --> 00:46:52,090
 I would guess yes, but I
 don't know of such a theorem.
 
 972
-00:46:51,190 --> 00:46:53,200
+00:46:52,090 --> 00:46:54,100
 So another good question.
 
 973
-00:46:53,200 --> 00:46:55,630
+00:46:54,100 --> 00:46:56,530
 So many questions
 to think about here.
 
 974
-00:46:55,630 --> 00:46:57,960
+00:46:56,530 --> 00:46:58,860
 It's definitely not
 explicitly mentioned,
 
 975
-00:46:57,960 --> 00:46:59,570
+00:46:58,860 --> 00:47:00,470
 that I saw, in the
 Schaefer paper.
 
 976
-00:46:59,570 --> 00:47:02,090
+00:47:00,470 --> 00:47:02,990
 But it's been around for
 a while so people may
 
 977
-00:47:02,090 --> 00:47:04,601
+00:47:02,990 --> 00:47:05,501
 have thought about that more.
 
 978
-00:47:04,601 --> 00:47:06,100
+00:47:05,501 --> 00:47:07,000
 It definitely can
 be a little tricky
 
 979
-00:47:06,100 --> 00:47:09,510
+00:47:07,000 --> 00:47:10,410
 to check which things are
 of this type, practically.
 
 980
-00:47:09,510 --> 00:47:14,120
+00:47:10,410 --> 00:47:15,020
 So it would be nice if
 there was an algorithm.
 
 981
-00:47:14,120 --> 00:47:19,020
+00:47:15,020 --> 00:47:19,920
 I would say-- so again,
 practically speaking,
 
 982
-00:47:19,020 --> 00:47:23,880
+00:47:19,920 --> 00:47:24,780
 there was one hardness proof I
 was trying to generate gadgets
 
 983
-00:47:23,880 --> 00:47:24,900
+00:47:24,780 --> 00:47:25,800
 computationally.
 
 984
-00:47:24,900 --> 00:47:26,670
+00:47:25,800 --> 00:47:27,570
 So just enumerate
 all possible gadgets
 
 985
-00:47:26,670 --> 00:47:28,570
+00:47:27,570 --> 00:47:29,470
 of a certain size
 for my problem,
 
 986
-00:47:28,570 --> 00:47:32,470
+00:47:29,470 --> 00:47:33,370
 and then see what formula
 they were representing.
 
 987
-00:47:32,470 --> 00:47:35,160
+00:47:33,370 --> 00:47:36,060
 And then we would
 take that formula,
 
 988
-00:47:35,160 --> 00:47:39,060
+00:47:36,060 --> 00:47:39,960
 do a Karnaugh map -- if you've
 ever done digital logic stuff --
 
 989
-00:47:39,060 --> 00:47:42,610
+00:47:39,960 --> 00:47:43,510
 and then from that, you
 get a nice, minimal form.
 
 990
-00:47:42,610 --> 00:47:45,160
+00:47:43,510 --> 00:47:46,060
 And then we would-- usually
 we could just look at the map
 
 991
-00:47:45,160 --> 00:47:48,860
+00:47:46,060 --> 00:47:49,760
 and say, oh, that's
 just equals, or that's
 
 992
-00:47:48,860 --> 00:47:50,030
+00:47:49,760 --> 00:47:50,930
 not equals or something.
 
 993
-00:47:50,030 --> 00:47:52,090
+00:47:50,930 --> 00:47:52,990
 We were hoping for-- we
 were dreaming for-- one
 
 994
-00:47:52,090 --> 00:47:53,710
+00:47:52,990 --> 00:47:54,610
 of these things or 3SAT.
 
 995
-00:47:53,710 --> 00:47:56,080
+00:47:54,610 --> 00:47:56,980
 We never got the
 gadget we wanted.
 
 996
-00:47:56,080 --> 00:47:59,250
+00:47:56,980 --> 00:48:00,150
 So I think, with a Karnaugh
 map, you could do this.
 
 997
-00:47:59,250 --> 00:48:00,450
+00:48:00,150 --> 00:48:01,350
 But that's exponential time.
 
 998
-00:48:00,450 --> 00:48:02,800
+00:48:01,350 --> 00:48:03,700
 AUDIENCE: Yeah.
 
 999
-00:48:02,800 --> 00:48:05,219
+00:48:03,700 --> 00:48:06,119
 PROFESSOR: So I
 don't know for sure.
 
 1000
-00:48:05,219 --> 00:48:07,010
+00:48:06,119 --> 00:48:07,910
 I should probably check
 the algebraic view.
 
 1001
-00:48:07,010 --> 00:48:08,870
+00:48:07,910 --> 00:48:09,770
 That might--
 
 1002
-00:48:08,870 --> 00:48:10,854
+00:48:09,770 --> 00:48:11,754
 AUDIENCE: That's a
 clever approach though.
 
 1003
-00:48:10,854 --> 00:48:11,520
+00:48:11,754 --> 00:48:12,420
 PROFESSOR: Yeah.
 
 1004
-00:48:11,520 --> 00:48:12,920
+00:48:12,420 --> 00:48:13,820
 AUDIENCE: To do things
 computationally.
 
 1005
-00:48:12,920 --> 00:48:14,380
+00:48:13,820 --> 00:48:15,280
 PROFESSOR: It's
 definitely helpful.
 
 1006
-00:48:14,380 --> 00:48:16,080
+00:48:15,280 --> 00:48:16,980
 Because of course,
 computationally, you
 
 1007
-00:48:16,080 --> 00:48:17,460
+00:48:16,980 --> 00:48:18,360
 can only look at small gadgets.
 
 1008
-00:48:17,460 --> 00:48:20,560
+00:48:18,360 --> 00:48:21,460
 But hopefully there is a small
 gadget and then a nice proof.
 
 1009
-00:48:20,560 --> 00:48:23,716
+00:48:21,460 --> 00:48:24,616
 So why do the hard work of
 generating them yourself when
 
 1010
-00:48:23,716 --> 00:48:25,090
+00:48:24,616 --> 00:48:25,990
 the computer could
 do it for you?
 
 1011
-00:48:25,090 --> 00:48:26,810
+00:48:25,990 --> 00:48:27,710
 It doesn't work
 for all problems.
 
 1012
-00:48:26,810 --> 00:48:29,330
+00:48:27,710 --> 00:48:30,230
 Your problems need to
 be locally isolatable.
 
 1013
-00:48:29,330 --> 00:48:32,870
+00:48:30,230 --> 00:48:33,770
 To not worry about
 the big picture.
 
 1014
-00:48:32,870 --> 00:48:35,790
+00:48:33,770 --> 00:48:36,690
 Other questions?
 
 1015
-00:48:35,790 --> 00:48:38,350
+00:48:36,690 --> 00:48:39,250
 Cool.
 
 1016
-00:48:38,350 --> 00:48:41,740
+00:48:39,250 --> 00:48:42,640
 Well that's all the versions
 of SAT you need to know.
 
 1017
-00:48:41,740 --> 00:48:44,270
+00:48:42,640 --> 00:48:45,170
 Because here we have the
 universality theorem.
 
 1018
-00:48:44,270 --> 00:48:46,650
+00:48:45,170 --> 00:48:47,550
 There will be another
 one or two that we
 
 1019
-00:48:46,650 --> 00:48:50,480
+00:48:47,550 --> 00:48:51,380
 bump into but these are the
 things you should all know.
 
 1020
-00:48:50,480 --> 00:48:52,200
+00:48:51,380 --> 00:48:53,100
 It's really helpful
 when doing a proof
 
 1021
-00:48:52,200 --> 00:48:54,870
+00:48:53,100 --> 00:48:55,770
 to not have to worry about
 which version 3SAT you even
 
 1022
-00:48:54,870 --> 00:48:57,616
+00:48:55,770 --> 00:48:58,516
 are going to use, and just know
 that these are all out here.
 
 1023
-00:48:57,616 --> 00:48:59,990
+00:48:58,516 --> 00:49:00,890
 So that when you find a gadget
 that happens to match one,
 
 1024
-00:48:59,990 --> 00:49:01,406
+00:49:00,890 --> 00:49:02,306
 and then you say,
 oh, well I meant
 
 1025
-00:49:01,406 --> 00:49:05,321
+00:49:02,306 --> 00:49:06,221
 to do a reduction from
 Not-All-Equal 3SAT.
 
 1026
-00:49:05,321 --> 00:49:07,070
+00:49:06,221 --> 00:49:07,970
 That's why I wanted
 to tell you all these,
 
 1027
-00:49:07,070 --> 00:49:11,300
+00:49:07,970 --> 00:49:12,200
 although I know it's a lot
 to take in all at once.
 
 1028
-00:49:11,300 --> 00:49:13,575
+00:49:12,200 --> 00:49:14,475
 Let's do some
 reductions, finally.
 
 1029
-00:49:13,575 --> 00:49:19,740
+00:49:14,475 --> 00:49:20,640
 
 1030
-00:49:19,740 --> 00:49:22,010
+00:49:20,640 --> 00:49:22,910
 NP-hardcore time.
 
 1031
-00:49:22,010 --> 00:49:30,410
+00:49:22,910 --> 00:49:31,310
 So the first one, I had
 actually never seen before,
 
 1032
-00:49:30,410 --> 00:49:32,080
+00:49:31,310 --> 00:49:32,980
 but it's in Schaefer's paper.
 
 1033
-00:49:32,080 --> 00:49:34,305
+00:49:32,980 --> 00:49:35,205
 So I thought it'd
 be fun to cover.
 
 1034
-00:49:34,305 --> 00:49:37,930
+00:49:35,205 --> 00:49:38,830
 
 1035
-00:49:37,930 --> 00:49:39,840
+00:49:38,830 --> 00:49:40,740
 Here's a problem,
 which is NP-hard,
 
 1036
-00:49:39,840 --> 00:49:42,260
+00:49:40,740 --> 00:49:43,160
 and we will actually
 prove this one NP-hard.
 
 1037
-00:49:42,260 --> 00:49:43,740
+00:49:43,160 --> 00:49:44,640
 2-colorable perfect matching.
 
 1038
-00:49:43,740 --> 00:49:46,380
+00:49:44,640 --> 00:49:47,280
 
 1039
-00:49:46,380 --> 00:49:53,070
+00:49:47,280 --> 00:49:53,970
 Let's say you're given a
 planar 3-regular graph,
 
 1040
-00:49:53,070 --> 00:49:54,530
+00:49:53,970 --> 00:49:55,430
 every vertex has degree 3.
 
 1041
-00:49:54,530 --> 00:50:00,880
+00:49:55,430 --> 00:50:01,780
 
 1042
-00:50:00,880 --> 00:50:04,150
+00:50:01,780 --> 00:50:05,050
 And what you'd like to do is
 2-color the vertices, a red
 
 1043
-00:50:04,150 --> 00:50:25,266
+00:50:05,050 --> 00:50:26,166
 and blue, such that every
 vertex has exactly one
 
 1044
-00:50:25,266 --> 00:50:26,390
+00:50:26,166 --> 00:50:27,290
 neighbor of the same color.
 
 1045
-00:50:26,390 --> 00:50:36,250
+00:50:27,290 --> 00:50:37,150
 
 1046
-00:50:36,250 --> 00:50:36,750
+00:50:37,150 --> 00:50:37,650
 OK.
 
 1047
-00:50:36,750 --> 00:50:42,490
+00:50:37,650 --> 00:50:43,390
 So if you look at a vertex
 and it has three neighbors,
 
 1048
-00:50:42,490 --> 00:50:45,080
+00:50:43,390 --> 00:50:45,980
 then-- let's say we
 color this guy red,
 
 1049
-00:50:45,080 --> 00:50:47,110
+00:50:45,980 --> 00:50:48,010
 there should be exactly
 one neighbor that's red.
 
 1050
-00:50:47,110 --> 00:50:49,266
+00:50:48,010 --> 00:50:50,166
 And so you can think of
 this edge as being red,
 
 1051
-00:50:49,266 --> 00:50:51,390
+00:50:50,166 --> 00:50:52,290
 and then the red edges will
 form a perfect matching
 
 1052
-00:50:51,390 --> 00:50:52,279
+00:50:52,290 --> 00:50:53,179
 in the graph.
 
 1053
-00:50:52,279 --> 00:50:53,820
+00:50:53,179 --> 00:50:54,720
 Every vertex will
 be incident to
 
 1054
-00:50:53,820 --> 00:50:55,529
+00:50:54,720 --> 00:50:56,429
 exactly one edge.
 
 1055
-00:50:55,529 --> 00:50:57,320
+00:50:56,429 --> 00:50:58,220
 So that's the 2-colorable
 perfect matching.
 
 1056
-00:50:57,320 --> 00:50:59,660
+00:50:58,220 --> 00:51:00,560
 It's kind of-- well, sorry.
 
 1057
-00:50:59,660 --> 00:51:02,400
+00:51:00,560 --> 00:51:03,300
 The red edges form perfect
 matching on the red nodes,
 
 1058
-00:51:02,400 --> 00:51:05,970
+00:51:03,300 --> 00:51:06,870
 and the black-- or
 the white edges,
 
 1059
-00:51:05,970 --> 00:51:10,020
+00:51:06,870 --> 00:51:10,920
 I guess-- form a perfect
 matching on the white nodes,
 
 1060
-00:51:10,020 --> 00:51:12,450
+00:51:10,920 --> 00:51:13,350
 black nodes, whatever.
 
 1061
-00:51:12,450 --> 00:51:15,870
+00:51:13,350 --> 00:51:16,770
 So it's like two
 perfect matchings,
 
 1062
-00:51:15,870 --> 00:51:18,510
+00:51:16,770 --> 00:51:19,410
 one in each color class.
 
 1063
-00:51:18,510 --> 00:51:19,930
+00:51:19,410 --> 00:51:20,830
 So this is a nice problem.
 
 1064
-00:51:19,930 --> 00:51:21,770
+00:51:20,830 --> 00:51:22,670
 You can think of it
 as SAT, in a sense.
 
 1065
-00:51:21,770 --> 00:51:24,310
+00:51:22,670 --> 00:51:25,210
 It's, again, just a local
 constraint on the nodes.
 
 1066
-00:51:24,310 --> 00:51:27,107
+00:51:25,210 --> 00:51:28,007
 
 1067
-00:51:27,107 --> 00:51:29,440
+00:51:28,007 --> 00:51:30,340
 And so you can think of this
 as being a clause involving
 
 1068
-00:51:29,440 --> 00:51:31,380
+00:51:30,340 --> 00:51:32,280
 those four guys.
 
 1069
-00:51:31,380 --> 00:51:33,360
+00:51:32,280 --> 00:51:34,260
 I think, unless I
 did something wrong,
 
 1070
-00:51:33,360 --> 00:51:38,380
+00:51:34,260 --> 00:51:39,280
 you can think of it
 as 2-in-4SAT,
 
 1071
-00:51:38,380 --> 00:51:41,440
+00:51:39,280 --> 00:51:42,340
 or a special version
 of 2-in-4SAT.
 
 1072
-00:51:41,440 --> 00:51:44,685
+00:51:42,340 --> 00:51:45,585
 Because-- is that right?
 
 1073
-00:51:44,685 --> 00:51:45,640
+00:51:45,585 --> 00:51:46,540
 Yeah.
 
 1074
-00:51:45,640 --> 00:51:50,310
+00:51:46,540 --> 00:51:51,210
 So let's say red is true.
 
 1075
-00:51:50,310 --> 00:51:52,547
+00:51:51,210 --> 00:51:53,447
 So what we're saying
 is if this guy is true,
 
 1076
-00:51:52,547 --> 00:51:54,630
+00:51:53,447 --> 00:51:55,530
 among these four nodes
 there should be exactly one
 
 1077
-00:51:54,630 --> 00:51:56,570
+00:51:55,530 --> 00:51:57,470
 other one that is red.
 
 1078
-00:51:56,570 --> 00:51:58,290
+00:51:57,470 --> 00:51:59,190
 On the other hand,
 if this is black,
 
 1079
-00:51:58,290 --> 00:52:01,230
+00:51:59,190 --> 00:52:02,130
 there should be exactly
 one of them that is black.
 
 1080
-00:52:01,230 --> 00:52:03,060
+00:52:02,130 --> 00:52:03,960
 And so the other
 two should be red.
 
 1081
-00:52:03,060 --> 00:52:06,600
+00:52:03,960 --> 00:52:07,500
 So in all cases, it's exactly
 two in four of them are red.
 
 1082
-00:52:06,600 --> 00:52:09,470
+00:52:07,500 --> 00:52:10,370
 And it's symmetric between red
 and black, so that seems good.
 
 1083
-00:52:09,470 --> 00:52:11,690
+00:52:10,370 --> 00:52:12,590
 So this is a special
 case of 2-in-4SAT.
 
 1084
-00:52:11,690 --> 00:52:14,370
+00:52:12,590 --> 00:52:15,270
 In case you were wondering
 whether 2-in-4SAT is hard,
 
 1085
-00:52:14,370 --> 00:52:15,440
+00:52:15,270 --> 00:52:16,340
 here it is.
 
 1086
-00:52:15,440 --> 00:52:22,365
+00:52:16,340 --> 00:52:23,265
 And I have the original
 reduction by Schaefer here.
 
 1087
-00:52:22,365 --> 00:52:23,520
+00:52:23,265 --> 00:52:24,420
 Do I have any notes?
 
 1088
-00:52:23,520 --> 00:52:25,190
+00:52:24,420 --> 00:52:26,090
 No, that would be too easy.
 
 1089
-00:52:25,190 --> 00:52:31,720
+00:52:26,090 --> 00:52:32,620
 So here's a gadget and
 here's another gadget,
 
 1090
-00:52:31,720 --> 00:52:34,860
+00:52:32,620 --> 00:52:35,760
 and then they're
 pasted together.
 
 1091
-00:52:34,860 --> 00:52:38,660
+00:52:35,760 --> 00:52:39,560
 And I should
 mention-- so Schaefer
 
 1092
-00:52:38,660 --> 00:52:40,955
+00:52:39,560 --> 00:52:41,855
 claims that if you have
 a planar 3-regular graph,
 
 1093
-00:52:40,955 --> 00:52:41,830
+00:52:41,855 --> 00:52:42,730
 this problem is hard.
 
 1094
-00:52:41,830 --> 00:52:43,320
+00:52:42,730 --> 00:52:44,220
 But he doesn't prove it.
 
 1095
-00:52:43,320 --> 00:52:45,010
+00:52:44,220 --> 00:52:45,910
 He just proves it
 for general graphs,
 
 1096
-00:52:45,010 --> 00:52:47,560
+00:52:45,910 --> 00:52:48,460
 so I'm only going to prove
 it for general graphs.
 
 1097
-00:52:47,560 --> 00:52:50,470
+00:52:48,460 --> 00:52:51,370
 Maybe we can think about
 planar 3-regular case,
 
 1098
-00:52:50,470 --> 00:52:52,440
+00:52:51,370 --> 00:52:53,340
 but not right here.
 
 1099
-00:52:52,440 --> 00:52:56,680
+00:52:53,340 --> 00:52:57,580
 So this will just make a graph
 instance to that problem.
 
 1100
-00:52:56,680 --> 00:53:00,280
+00:52:57,580 --> 00:53:01,180
 So this gadget,
 this is a K4 on--
 
 1101
-00:53:00,280 --> 00:53:03,590
+00:53:01,180 --> 00:53:04,490
 and we're only
 distinguishing x, y, and z.
 
 1102
-00:53:03,590 --> 00:53:05,470
+00:53:04,490 --> 00:53:06,370
 And it has to
 form-- there's going
 
 1103
-00:53:05,470 --> 00:53:09,030
+00:53:06,370 --> 00:53:09,930
 to be one red edge
 and one black edge.
 
 1104
-00:53:09,030 --> 00:53:10,730
+00:53:09,930 --> 00:53:11,630
 So maybe like this,
 and like this.
 
 1105
-00:53:10,730 --> 00:53:12,070
+00:53:11,630 --> 00:53:12,970
 Or like this, or like this.
 
 1106
-00:53:12,070 --> 00:53:15,050
+00:53:12,970 --> 00:53:15,950
 It's going to be a rotation
 of one of those assignments.
 
 1107
-00:53:15,050 --> 00:53:18,070
+00:53:15,950 --> 00:53:18,970
 So I believe the
 claim is x, y, and z,
 
 1108
-00:53:18,070 --> 00:53:19,870
+00:53:18,970 --> 00:53:20,770
 just looking at
 those three vertices,
 
 1109
-00:53:19,870 --> 00:53:22,990
+00:53:20,770 --> 00:53:23,890
 should be not-all-equal.
 
 1110
-00:53:22,990 --> 00:53:23,490
+00:53:23,890 --> 00:53:24,390
 OK?
 
 1111
-00:53:23,490 --> 00:53:26,190
+00:53:24,390 --> 00:53:27,090
 If two of them are red,
 by symmetry-- there's
 
 1112
-00:53:26,190 --> 00:53:28,510
+00:53:27,090 --> 00:53:29,410
 lots of rotational symmetry
 here-- so maybe two of them
 
 1113
-00:53:28,510 --> 00:53:29,900
+00:53:29,410 --> 00:53:30,800
 are red and one is black.
 
 1114
-00:53:29,900 --> 00:53:31,900
+00:53:30,800 --> 00:53:32,800
 Then this guy can be set
 black and you're happy.
 
 1115
-00:53:31,900 --> 00:53:35,030
+00:53:32,800 --> 00:53:35,930
 It's actually forced for
 that guy to be black.
 
 1116
-00:53:35,030 --> 00:53:38,600
+00:53:35,930 --> 00:53:39,500
 If two of them are black,
 then these two must be red.
 
 1117
-00:53:38,600 --> 00:53:41,670
+00:53:39,500 --> 00:53:42,570
 And if all three of these
 are black, you're toast.
 
 1118
-00:53:41,670 --> 00:53:43,810
+00:53:42,570 --> 00:53:44,710
 Because you should
 have two of each.
 
 1119
-00:53:43,810 --> 00:53:47,140
+00:53:44,710 --> 00:53:48,040
 And if all three of them
 are red, you're in trouble.
 
 1120
-00:53:47,140 --> 00:53:53,990
+00:53:48,040 --> 00:53:54,890
 So this is a not-all-equal
 clause gadget for this problem.
 
 1121
-00:53:53,990 --> 00:53:58,390
+00:53:54,890 --> 00:53:59,290
 So we're going to reduce
 from Not-All-Equal 3SAT
 
 1122
-00:53:58,390 --> 00:54:00,130
+00:53:59,290 --> 00:54:01,030
 to 2-colorable perfect matching.
 
 1123
-00:54:00,130 --> 00:54:03,150
+00:54:01,030 --> 00:54:04,050
 So we're representing a
 Not-All-Equal clause like this.
 
 1124
-00:54:03,150 --> 00:54:09,750
+00:54:04,050 --> 00:54:10,650
 And now what we need is the
 ability to copy data, right?
 
 1125
-00:54:09,750 --> 00:54:12,170
+00:54:10,650 --> 00:54:13,070
 So these are three variables
 that-- at the moment, yeah,
 
 1126
-00:54:12,170 --> 00:54:13,680
+00:54:13,070 --> 00:54:14,580
 they can be red or blue.
 
 1127
-00:54:13,680 --> 00:54:15,830
+00:54:14,580 --> 00:54:16,730
 But what we need
 is that the same x_i
 
 1128
-00:54:15,830 --> 00:54:17,430
+00:54:16,730 --> 00:54:18,330
 can appear in multiple clauses.
 
 1129
-00:54:17,430 --> 00:54:18,879
+00:54:18,330 --> 00:54:19,779
 Because we have a
 bipartite graph.
 
 1130
-00:54:18,879 --> 00:54:20,920
+00:54:19,779 --> 00:54:21,820
 If every variable appeared
 in only in one clause,
 
 1131
-00:54:20,920 --> 00:54:23,840
+00:54:21,820 --> 00:54:24,740
 the problem would
 be really easy.
 
 1132
-00:54:23,840 --> 00:54:26,090
+00:54:24,740 --> 00:54:26,990
 So that's what this gadget does.
 
 1133
-00:54:26,090 --> 00:54:29,180
+00:54:26,990 --> 00:54:30,080
 The claim is this
 gadget copies a value.
 
 1134
-00:54:29,180 --> 00:54:31,750
+00:54:30,080 --> 00:54:32,650
 And this, I think, requires--
 so it says that these two
 
 1135
-00:54:31,750 --> 00:54:34,400
+00:54:32,650 --> 00:54:35,300
 guys must have the same color.
 
 1136
-00:54:34,400 --> 00:54:37,260
+00:54:35,300 --> 00:54:38,160
 And so what you do
 is you just have--
 
 1137
-00:54:37,260 --> 00:54:39,020
+00:54:38,160 --> 00:54:39,920
 for each Not-All-Equal
 clause-- you
 
 1138
-00:54:39,020 --> 00:54:41,040
+00:54:39,920 --> 00:54:41,940
 have one of these
 Not-All-Equal gadgets.
 
 1139
-00:54:41,040 --> 00:54:43,280
+00:54:41,940 --> 00:54:44,180
 And then whenever you
 have two variables
 
 1140
-00:54:43,280 --> 00:54:46,180
+00:54:44,180 --> 00:54:47,080
 that are supposed to be the
 same thing here, it's x and x.
 
 1141
-00:54:46,180 --> 00:54:48,277
+00:54:47,080 --> 00:54:49,177
 In our terminology, x_i and x_i.
 
 1142
-00:54:48,277 --> 00:54:50,610
+00:54:49,177 --> 00:54:51,510
 Then you're just going to
 connect them with this gadget.
 
 1143
-00:54:50,610 --> 00:54:52,730
+00:54:51,510 --> 00:54:53,630
 And that will force
 them to be equal.
 
 1144
-00:54:52,730 --> 00:54:54,280
+00:54:53,630 --> 00:54:55,180
 Or over here we have y and y.
 
 1145
-00:54:54,280 --> 00:54:56,660
+00:54:55,180 --> 00:54:57,560
 So r here is Not-All-Equal.
 
 1146
-00:54:56,660 --> 00:55:00,590
+00:54:57,560 --> 00:55:01,490
 In our terminology, it'd
 be NAE(x,x,y) and NAE(y,z,u).
 
 1147
-00:55:00,590 --> 00:55:04,796
+00:55:01,490 --> 00:55:05,696
 This would represent
 that formula.
 
 1148
-00:55:04,796 --> 00:55:07,170
+00:55:05,696 --> 00:55:08,070
 So the thing to check, which
 I will leave as an exercise,
 
 1149
-00:55:07,170 --> 00:55:10,765
+00:55:08,070 --> 00:55:11,665
 because it seems-- at least,
 I couldn't find a clean way
 
 1150
-00:55:10,765 --> 00:55:11,265
+00:55:11,665 --> 00:55:12,165
 to do it.
 
 1151
-00:55:11,265 --> 00:55:12,514
+00:55:12,165 --> 00:55:13,414
 It seems a little bit tedious.
 
 1152
-00:55:12,514 --> 00:55:17,460
+00:55:13,414 --> 00:55:18,360
 That this forces equality
 between the two ends,
 
 1153
-00:55:17,460 --> 00:55:19,115
+00:55:18,360 --> 00:55:20,015
 not providing any
 other constraints.
 
 1154
-00:55:19,115 --> 00:55:22,110
+00:55:20,015 --> 00:55:23,010
 
 1155
-00:55:22,110 --> 00:55:25,116
+00:55:23,010 --> 00:55:26,016
 So that was a simple proof.
 
 1156
-00:55:25,116 --> 00:55:26,620
+00:55:26,016 --> 00:55:27,520
 One of few simple proofs.
 
 1157
-00:55:26,620 --> 00:55:27,760
+00:55:27,520 --> 00:55:28,660
 Still some cases to check.
 
 1158
-00:55:27,760 --> 00:55:29,049
+00:55:28,660 --> 00:55:29,949
 Yeah.
 
 1159
-00:55:29,049 --> 00:55:30,965
+00:55:29,949 --> 00:55:31,865
 AUDIENCE: Wait, you said
 those general graphs,
 
 1160
-00:55:30,965 --> 00:55:32,120
+00:55:31,865 --> 00:55:33,020
 they don't have to be
 3-regular?
 
 1161
-00:55:32,120 --> 00:55:32,828
+00:55:33,020 --> 00:55:33,728
 PROFESSOR: Right.
 
 1162
-00:55:32,828 --> 00:55:35,600
+00:55:33,728 --> 00:55:36,500
 This is general graphs.
 
 1163
-00:55:35,600 --> 00:55:39,990
+00:55:36,500 --> 00:55:40,890
 So you might say, what about
 planar 3-regular graphs?
 
 1164
-00:55:39,990 --> 00:55:44,330
+00:55:40,890 --> 00:55:45,230
 Planar Not-All-Equal 3SAT--
 when this graph is planar--
 
 1165
-00:55:44,330 --> 00:55:46,500
+00:55:45,230 --> 00:55:47,400
 when the bipartite graph
 is planar-- it's actually
 
 1166
-00:55:46,500 --> 00:55:48,530
+00:55:47,400 --> 00:55:49,430
 easy to solve, polynomial.
 
 1167
-00:55:48,530 --> 00:55:51,990
+00:55:49,430 --> 00:55:52,890
 So you can't reduce from
 planar Not-All-Equal 3SAT
 
 1168
-00:55:51,990 --> 00:55:53,620
+00:55:52,890 --> 00:55:54,520
 because it's easy.
 
 1169
-00:55:53,620 --> 00:55:55,780
+00:55:54,520 --> 00:55:56,680
 But I would guess that
 in this situation--
 
 1170
-00:55:55,780 --> 00:55:58,070
+00:55:56,680 --> 00:55:58,970
 and we just proved this
 is a more general problem
 
 1171
-00:55:58,070 --> 00:56:00,000
+00:55:58,970 --> 00:56:00,900
 than Not-All-Equal
 3SAT-- what we
 
 1172
-00:56:00,000 --> 00:56:02,420
+00:56:00,900 --> 00:56:03,320
 would need at this point
 is a crossover gadget.
 
 1173
-00:56:02,420 --> 00:56:04,410
+00:56:03,320 --> 00:56:05,310
 So that when-- and
 this thing is going
 
 1174
-00:56:04,410 --> 00:56:07,080
+00:56:05,310 --> 00:56:07,980
 to end up with crossings--
 if there's a gadget that just
 
 1175
-00:56:07,080 --> 00:56:09,530
+00:56:07,980 --> 00:56:10,430
 communicates the information
 across the crossover,
 
 1176
-00:56:09,530 --> 00:56:11,120
+00:56:10,430 --> 00:56:12,020
 without any other
 constraints, then
 
 1177
-00:56:11,120 --> 00:56:13,370
+00:56:12,020 --> 00:56:14,270
 we can just plug that in and
 get rid of all crossings.
 
 1178
-00:56:13,370 --> 00:56:16,640
+00:56:14,270 --> 00:56:17,540
 Then we have a planar graph
 and that would prove this part.
 
 1179
-00:56:16,640 --> 00:56:20,630
+00:56:17,540 --> 00:56:21,530
 And then the other part is that
 we have high degree nodes here.
 
 1180
-00:56:20,630 --> 00:56:22,564
+00:56:21,530 --> 00:56:23,464
 And so I'm guessing
 Schaefer had in mind
 
 1181
-00:56:22,564 --> 00:56:24,230
+00:56:23,464 --> 00:56:25,130
 the gadget that takes
 a high degree node
 
 1182
-00:56:24,230 --> 00:56:26,960
+00:56:25,130 --> 00:56:27,860
 and splits it up into lots of
 little lower degree nodes--
 
 1183
-00:56:26,960 --> 00:56:30,270
+00:56:27,860 --> 00:56:31,170
 degree 3 nodes-- that
 simulates the same effect.
 
 1184
-00:56:30,270 --> 00:56:32,080
+00:56:31,170 --> 00:56:32,980
 But I don't know either gadget.
 
 1185
-00:56:32,080 --> 00:56:34,340
+00:56:32,980 --> 00:56:35,240
 But that would be my
 guess on how to-- that
 
 1186
-00:56:34,340 --> 00:56:35,840
+00:56:35,240 --> 00:56:36,740
 would be the obvious
 approach of how
 
 1187
-00:56:35,840 --> 00:56:37,454
+00:56:36,740 --> 00:56:38,354
 to proceed to get that theorem.
 
 1188
-00:56:37,454 --> 00:56:37,954
+00:56:38,354 --> 00:56:38,854
 Yeah.
 
 1189
-00:56:37,954 --> 00:56:39,370
+00:56:38,854 --> 00:56:40,270
 AUDIENCE: The other
 gadget is just
 
 1190
-00:56:39,370 --> 00:56:43,910
+00:56:40,270 --> 00:56:44,810
 1(b) split into
 degree 3 copies connected
 
 1191
-00:56:43,910 --> 00:56:46,567
+00:56:44,810 --> 00:56:47,467
 by that gadget.
 
 1192
-00:56:46,567 --> 00:56:47,150
+00:56:47,467 --> 00:56:48,050
 PROFESSOR: OK.
 
 1193
-00:56:47,150 --> 00:56:48,140
+00:56:48,050 --> 00:56:49,040
 Good.
 
 1194
-00:56:48,140 --> 00:56:48,940
+00:56:49,040 --> 00:56:49,840
 One gadget down.
 
 1195
-00:56:48,940 --> 00:56:50,148
+00:56:49,840 --> 00:56:51,048
 Now we just need a crossover.
 
 1196
-00:56:50,148 --> 00:56:52,494
+00:56:51,048 --> 00:56:53,394
 
 1197
-00:56:52,494 --> 00:56:53,160
+00:56:53,394 --> 00:56:54,060
 Other questions?
 
 1198
-00:56:53,160 --> 00:56:58,050
+00:56:54,060 --> 00:56:58,950
 
 1199
-00:56:58,050 --> 00:56:59,340
+00:56:58,950 --> 00:57:00,240
 All right.
 
 1200
-00:56:59,340 --> 00:57:02,340
+00:57:00,240 --> 00:57:03,240
 I want to talk about two
 families of problems--
 
 1201
-00:57:02,340 --> 00:57:04,660
+00:57:03,240 --> 00:57:05,560
 a proof hardness for two
 families of problems-- next.
 
 1202
-00:57:04,660 --> 00:57:09,030
+00:57:05,560 --> 00:57:09,930
 One is called pushing blocks.
 
 1203
-00:57:09,030 --> 00:57:12,310
+00:57:09,930 --> 00:57:13,210
 These come up in lots of
 different video games.
 
 1204
-00:57:12,310 --> 00:57:15,530
+00:57:13,210 --> 00:57:16,430
 One of the first, I
 think, is called Sokoban.
 
 1205
-00:57:15,530 --> 00:57:20,360
+00:57:16,430 --> 00:57:21,260
 This goes back to 1984 and this
 is, I believe, the original CGA
 
 1206
-00:57:20,360 --> 00:57:23,010
+00:57:21,260 --> 00:57:23,910
 graphics for Sokoban.
 
 1207
-00:57:23,010 --> 00:57:25,140
+00:57:23,910 --> 00:57:26,040
 And so you may have
 played Sokoban.
 
 1208
-00:57:25,140 --> 00:57:26,580
+00:57:26,040 --> 00:57:27,480
 I think it's in Emacs.
 
 1209
-00:57:26,580 --> 00:57:27,680
+00:57:27,480 --> 00:57:28,580
 It's all over the place.
 
 1210
-00:57:27,680 --> 00:57:30,090
+00:57:28,580 --> 00:57:30,990
 Tons of implementations on it.
 
 1211
-00:57:30,090 --> 00:57:33,010
+00:57:30,990 --> 00:57:33,910
 You are at a warehouseman, that
 is what sokoban means literally
 
 1212
-00:57:33,010 --> 00:57:34,080
+00:57:33,910 --> 00:57:34,980
 in Japanese.
 
 1213
-00:57:34,080 --> 00:57:35,180
+00:57:34,980 --> 00:57:36,080
 And you have these boxes.
 
 1214
-00:57:35,180 --> 00:57:36,250
+00:57:36,080 --> 00:57:37,150
 They're all one by one boxes.
 
 1215
-00:57:36,250 --> 00:57:37,041
+00:57:37,150 --> 00:57:37,941
 You are one by one.
 
 1216
-00:57:37,041 --> 00:57:39,650
+00:57:37,941 --> 00:57:40,550
 There are some bricks
 which cannot be moved.
 
 1217
-00:57:39,650 --> 00:57:43,180
+00:57:40,550 --> 00:57:44,080
 You have some target
 locations and your poor job
 
 1218
-00:57:43,180 --> 00:57:45,690
+00:57:44,080 --> 00:57:46,590
 is to move all these boxes
 into the target locations.
 
 1219
-00:57:45,690 --> 00:57:47,440
+00:57:46,590 --> 00:57:48,340
 Or rather, every
 target location must
 
 1220
-00:57:47,440 --> 00:57:49,550
+00:57:48,340 --> 00:57:50,450
 be covered by exactly one box.
 
 1221
-00:57:49,550 --> 00:57:52,112
+00:57:50,450 --> 00:57:53,012
 Boxes can't overlap each
 other, you can push a box,
 
 1222
-00:57:52,112 --> 00:57:53,570
+00:57:53,012 --> 00:57:54,470
 but you can only
 push one at a time
 
 1223
-00:57:53,570 --> 00:57:54,870
+00:57:54,470 --> 00:57:55,770
 because you're not that strong.
 
 1224
-00:57:54,870 --> 00:57:57,530
+00:57:55,770 --> 00:57:58,430
 So you could not, for
 example, push left here.
 
 1225
-00:57:57,530 --> 00:58:01,200
+00:57:58,430 --> 00:58:02,100
 But in general, your inputs
 are up, down, left, and right.
 
 1226
-00:58:01,200 --> 00:58:03,560
+00:58:02,100 --> 00:58:04,460
 Up, up, down, down,
 left, right, left, right.
 
 1227
-00:58:03,560 --> 00:58:06,219
+00:58:04,460 --> 00:58:07,119
 And you can only push
 one block at a time.
 
 1228
-00:58:06,219 --> 00:58:07,760
+00:58:07,119 --> 00:58:08,660
 So if you push a
 block into a corner,
 
 1229
-00:58:07,760 --> 00:58:09,470
+00:58:08,660 --> 00:58:10,370
 it's never going to move again.
 
 1230
-00:58:09,470 --> 00:58:11,270
+00:58:10,370 --> 00:58:12,170
 So often you have to hit reset.
 
 1231
-00:58:11,270 --> 00:58:12,870
+00:58:12,170 --> 00:58:13,770
 There's a lot of
 ways to get stuck.
 
 1232
-00:58:12,870 --> 00:58:15,000
+00:58:13,770 --> 00:58:15,900
 But this is a solvable instance.
 
 1233
-00:58:15,000 --> 00:58:18,470
+00:58:15,900 --> 00:58:19,370
 I think it's level five
 in the original game.
 
 1234
-00:58:18,470 --> 00:58:22,392
+00:58:19,370 --> 00:58:23,292
 So this got started a
 huge family of problems.
 
 1235
-00:58:22,392 --> 00:58:23,850
+00:58:23,292 --> 00:58:24,750
 There are tons of
 other video games
 
 1236
-00:58:23,850 --> 00:58:25,500
+00:58:24,750 --> 00:58:26,400
 that have pushing
 blocks problems.
 
 1237
-00:58:25,500 --> 00:58:28,580
+00:58:26,400 --> 00:58:29,480
 This is one, in Legend of
 Zelda: Minish Cap, which I think
 
 1238
-00:58:28,580 --> 00:58:30,570
+00:58:29,480 --> 00:58:31,470
 is a Gameboy Advance game.
 
 1239
-00:58:30,570 --> 00:58:32,320
+00:58:31,470 --> 00:58:33,220
 It's been a while since
 I played this one.
 
 1240
-00:58:32,320 --> 00:58:35,130
+00:58:33,220 --> 00:58:36,030
 But here is a level
 where you have--
 
 1241
-00:58:35,130 --> 00:58:38,080
+00:58:36,030 --> 00:58:38,980
 it's in perspective
 a little bit,
 
 1242
-00:58:38,080 --> 00:58:40,290
+00:58:38,980 --> 00:58:41,190
 but this is really a 2D problem.
 
 1243
-00:58:40,290 --> 00:58:41,530
+00:58:41,190 --> 00:58:42,430
 Everything is one by one.
 
 1244
-00:58:41,530 --> 00:58:42,830
+00:58:42,430 --> 00:58:43,730
 Believe me.
 
 1245
-00:58:42,830 --> 00:58:44,790
+00:58:43,730 --> 00:58:45,690
 You have one by one blocks.
 
 1246
-00:58:44,790 --> 00:58:46,170
+00:58:45,690 --> 00:58:47,070
 You're on ice.
 
 1247
-00:58:46,170 --> 00:58:48,720
+00:58:47,070 --> 00:58:49,620
 So if you ever push a
 block, it will slide off
 
 1248
-00:58:48,720 --> 00:58:53,030
+00:58:49,620 --> 00:58:53,930
 to infinity unless it hits
 something else, like a block.
 
 1249
-00:58:53,030 --> 00:58:56,121
+00:58:53,930 --> 00:58:57,021
 And your goal is to
 get a block here.
 
 1250
-00:58:56,121 --> 00:58:56,620
+00:58:57,021 --> 00:58:57,520
 OK?
 
 1251
-00:58:56,620 --> 00:58:57,780
+00:58:57,520 --> 00:58:58,680
 Anyone see how to do it?
 
 1252
-00:58:57,780 --> 00:59:00,393
+00:58:58,680 --> 00:59:01,293
 
 1253
-00:59:00,393 --> 00:59:01,893
+00:59:01,293 --> 00:59:02,793
 AUDIENCE: It's like
 Ricochet Robots.
 
 1254
-00:59:01,893 --> 00:59:02,350
+00:59:02,793 --> 00:59:03,250
 AUDIENCE: Can you
 walk without sliding?
 
 1255
-00:59:02,350 --> 00:59:03,640
+00:59:03,250 --> 00:59:04,540
 PROFESSOR: It's a lot
 like Ricochet Robots.
 
 1256
-00:59:03,640 --> 00:59:04,490
+00:59:04,540 --> 00:59:05,390
 Yeah.
 
 1257
-00:59:04,490 --> 00:59:06,600
+00:59:05,390 --> 00:59:07,500
 You can walk wherever you want.
 
 1258
-00:59:06,600 --> 00:59:08,540
+00:59:07,500 --> 00:59:09,440
 There is no block.
 
 1259
-00:59:08,540 --> 00:59:10,960
+00:59:09,440 --> 00:59:11,860
 So there's lots of free
 space in this case.
 
 1260
-00:59:10,960 --> 00:59:15,750
+00:59:11,860 --> 00:59:16,650
 So you can push this guy down
 and then push it over and then
 
 1261
-00:59:15,750 --> 00:59:16,410
+00:59:16,650 --> 00:59:17,310
 push it up.
 
 1262
-00:59:16,410 --> 00:59:18,070
+00:59:17,310 --> 00:59:18,970
 It's actually not that hard.
 
 1263
-00:59:18,070 --> 00:59:19,736
+00:59:18,970 --> 00:59:20,636
 At some point I was
 thinking, well maybe
 
 1264
-00:59:19,736 --> 00:59:22,770
+00:59:20,636 --> 00:59:23,670
 I should stack up three
 here so it ends up-- but no.
 
 1265
-00:59:22,770 --> 00:59:27,162
+00:59:23,670 --> 00:59:28,062
 It's just three pushes
 and you're done.
 
 1266
-00:59:27,162 --> 00:59:29,620
+00:59:28,062 --> 00:59:30,520
 And if you watch the YouTube
 video that's linked from this,
 
 1267
-00:59:29,620 --> 00:59:31,970
+00:59:30,520 --> 00:59:32,870
 you'll see him spend
 like 30 minutes
 
 1268
-00:59:31,970 --> 00:59:33,800
+00:59:32,870 --> 00:59:34,700
 until he finds the
 right solution.
 
 1269
-00:59:33,800 --> 00:59:36,341
+00:59:34,700 --> 00:59:37,241
 In the game, it's frustrating
 because once you push them off,
 
 1270
-00:59:36,341 --> 00:59:38,650
+00:59:37,241 --> 00:59:39,550
 they disappear and you have
 to leave and come back.
 
 1271
-00:59:38,650 --> 00:59:40,610
+00:59:39,550 --> 00:59:41,510
 Anyway.
 
 1272
-00:59:40,610 --> 00:59:44,830
+00:59:41,510 --> 00:59:45,730
 So out of all these games,
 we've defined a bunch of models.
 
 1273
-00:59:44,830 --> 00:59:47,590
+00:59:45,730 --> 00:59:48,490
 Here's one aspect of the model.
 
 1274
-00:59:47,590 --> 00:59:49,350
+00:59:48,490 --> 00:59:50,250
 So we have the
 fixed blocks, which
 
 1275
-00:59:49,350 --> 00:59:53,090
+00:59:50,250 --> 00:59:53,990
 are in red, the movable
 blocks, which are in cyan here,
 
 1276
-00:59:53,090 --> 00:59:54,320
+00:59:53,990 --> 00:59:55,220
 and the robot is blue.
 
 1277
-00:59:54,320 --> 00:59:56,250
+00:59:55,220 --> 00:59:57,150
 Everything's one by one.
 
 1278
-00:59:56,250 --> 01:00:00,810
+00:59:57,150 --> 01:00:01,710
 And in one model, which we call
 Push, when you push a block,
 
 1279
-01:00:00,810 --> 01:00:02,480
+01:00:01,710 --> 01:00:03,380
 it moves one step.
 
 1280
-01:00:02,480 --> 01:00:03,680
+01:00:03,380 --> 01:00:04,580
 That's the normal model.
 
 1281
-01:00:03,680 --> 01:00:05,860
+01:00:04,580 --> 01:00:06,760
 And that's like Sokoban.
 
 1282
-01:00:05,860 --> 01:00:09,210
+01:00:06,760 --> 01:00:10,110
 And I'll talk about
 the two in a second.
 
 1283
-01:00:09,210 --> 01:00:12,400
+01:00:10,110 --> 01:00:13,300
 In PushPush-- this is
 like the on-ice version.
 
 1284
-01:00:12,400 --> 01:00:13,340
+01:00:13,300 --> 01:00:14,240
 So you're not on ice.
 
 1285
-01:00:13,340 --> 01:00:15,560
+01:00:14,240 --> 01:00:16,460
 You can still kind of
 move and then kind of
 
 1286
-01:00:15,560 --> 01:00:18,800
+01:00:16,460 --> 01:00:19,700
 counteract physics and
 just move one step.
 
 1287
-01:00:18,800 --> 01:00:22,030
+01:00:19,700 --> 01:00:22,930
 But the blocks, they'll just fly
 off until they hit something.
 
 1288
-01:00:22,030 --> 01:00:25,590
+01:00:22,930 --> 01:00:26,490
 So here, this block will
 fly until it goes there.
 
 1289
-01:00:25,590 --> 01:00:28,790
+01:00:26,490 --> 01:00:29,690
 In PushPushPush,
 everything is so slippery
 
 1290
-01:00:28,790 --> 01:00:31,620
+01:00:29,690 --> 01:00:32,520
 that if you hit a block and
 it hits another block that's
 
 1291
-01:00:31,620 --> 01:00:35,120
+01:00:32,520 --> 01:00:36,020
 movable, they will all
 just keep going until they
 
 1292
-01:00:35,120 --> 01:00:37,396
+01:00:36,020 --> 01:00:38,296
 hit an immovable block.
 
 1293
-01:00:37,396 --> 01:00:39,159
+01:00:38,296 --> 01:00:40,059
 AUDIENCE: But you don't slip.
 
 1294
-01:00:39,159 --> 01:00:41,450
+01:00:40,059 --> 01:00:42,350
 PROFESSOR: You still don't
 slip in any of these models.
 
 1295
-01:00:41,450 --> 01:00:43,199
+01:00:42,350 --> 01:00:44,099
 So there's another
 version where you slip,
 
 1296
-01:00:43,199 --> 01:00:45,030
+01:00:44,099 --> 01:00:45,930
 which has not been
 considered so much.
 
 1297
-01:00:45,030 --> 01:00:46,950
+01:00:45,930 --> 01:00:47,850
 Although Ricochet Robots
 has been considered
 
 1298
-01:00:46,950 --> 01:00:48,390
+01:00:47,850 --> 01:00:49,290
 and that's in that genre.
 
 1299
-01:00:48,390 --> 01:00:48,890
+01:00:49,290 --> 01:00:49,790
 Yeah?
 
 1300
-01:00:48,890 --> 01:00:52,692
+01:00:49,790 --> 01:00:53,592
 AUDIENCE: Is there a model
 where the block you first pushed
 
 1301
-01:00:52,692 --> 01:00:54,650
+01:00:53,592 --> 01:00:55,550
 stops and transfers its
 momentum to the other--
 
 1302
-01:00:54,650 --> 01:00:55,450
+01:00:55,550 --> 01:00:56,350
 PROFESSOR: Oh, cool.
 
 1303
-01:00:55,450 --> 01:00:55,780
+01:00:56,350 --> 01:00:56,680
 Yeah.
 
 1304
-01:00:55,780 --> 01:00:56,790
+01:00:56,680 --> 01:00:57,690
 Conservation momentum.
 
 1305
-01:00:56,790 --> 01:00:59,300
+01:00:57,690 --> 01:01:00,200
 So this one hits then
 the next one goes.
 
 1306
-01:00:59,300 --> 01:01:00,009
+01:01:00,200 --> 01:01:00,909
 That's probably--
 
 1307
-01:01:00,009 --> 01:01:00,966
+01:01:00,909 --> 01:01:01,866
 AUDIENCE: PushStopPush.
 
 1308
-01:01:00,966 --> 01:01:02,060
+01:01:01,866 --> 01:01:02,960
 PROFESSOR: PushStopPush.
 
 1309
-01:01:02,060 --> 01:01:04,200
+01:01:02,960 --> 01:01:05,100
 I would guess that's also
 hard because this ends up
 
 1310
-01:01:04,200 --> 01:01:05,495
+01:01:05,100 --> 01:01:06,395
 being the same proof.
 
 1311
-01:01:05,495 --> 01:01:07,710
+01:01:06,395 --> 01:01:08,610
 I'm guessing that works,
 but we would need to check.
 
 1312
-01:01:07,710 --> 01:01:09,110
+01:01:08,610 --> 01:01:10,010
 That's a good-- yeah.
 
 1313
-01:01:09,110 --> 01:01:13,130
+01:01:10,010 --> 01:01:14,030
 The push-- push ricochet push.
 
 1314
-01:01:13,130 --> 01:01:13,630
+01:01:14,030 --> 01:01:14,530
 OK.
 
 1315
-01:01:13,630 --> 01:01:15,750
+01:01:14,530 --> 01:01:16,650
 One other thing here
 is the number two.
 
 1316
-01:01:15,750 --> 01:01:17,930
+01:01:16,650 --> 01:01:18,830
 You'll notice only
 two blocks are moving.
 
 1317
-01:01:17,930 --> 01:01:21,180
+01:01:18,830 --> 01:01:22,080
 And normally here, two is
 the strength of the robot,
 
 1318
-01:01:21,180 --> 01:01:23,172
+01:01:22,080 --> 01:01:24,072
 meaning if there are
 up to two in a row,
 
 1319
-01:01:23,172 --> 01:01:25,630
+01:01:24,072 --> 01:01:26,530
 you can push two blocks, but
 once there are three in a row,
 
 1320
-01:01:25,630 --> 01:01:27,570
+01:01:26,530 --> 01:01:28,470
 you can't push at all.
 
 1321
-01:01:27,570 --> 01:01:29,450
+01:01:28,470 --> 01:01:30,350
 The idea here is the
 same thing happens.
 
 1322
-01:01:29,450 --> 01:01:31,070
+01:01:30,350 --> 01:01:31,970
 So they're just too heavy.
 
 1323
-01:01:31,070 --> 01:01:33,220
+01:01:31,970 --> 01:01:34,120
 After you get up
 to three of them,
 
 1324
-01:01:33,220 --> 01:01:35,250
+01:01:34,120 --> 01:01:36,150
 then they'll stop sliding.
 
 1325
-01:01:35,250 --> 01:01:37,400
+01:01:36,150 --> 01:01:38,300
 And same with PushPushPush.
 
 1326
-01:01:37,400 --> 01:01:39,720
+01:01:38,300 --> 01:01:40,620
 AUDIENCE: So Sokoban
 is actually Push-1.
 
 1327
-01:01:39,720 --> 01:01:41,580
+01:01:40,620 --> 01:01:42,480
 PROFESSOR: Sokoban
 is like Push-1.
 
 1328
-01:01:41,580 --> 01:01:43,070
+01:01:42,480 --> 01:01:43,970
 It's a little bit
 more complicated,
 
 1329
-01:01:43,070 --> 01:01:45,490
+01:01:43,970 --> 01:01:46,390
 as illustrated in this table.
 
 1330
-01:01:45,490 --> 01:01:51,900
+01:01:46,390 --> 01:01:52,800
 So Sokoban is here and you can
 only push one block at a time.
 
 1331
-01:01:51,900 --> 01:01:53,029
+01:01:52,800 --> 01:01:53,929
 There are fixed blocks.
 
 1332
-01:01:53,029 --> 01:01:55,070
+01:01:53,929 --> 01:01:55,970
 And in general, the models
 that have fixed blocks
 
 1333
-01:01:55,070 --> 01:01:58,170
+01:01:55,970 --> 01:01:59,070
 are highlighted in pink here.
 
 1334
-01:01:58,170 --> 01:02:01,480
+01:01:59,070 --> 01:02:02,380
 The slide thing is trying
 to capture whether it just
 
 1335
-01:02:01,480 --> 01:02:05,100
+01:02:02,380 --> 01:02:06,000
 moves one step or all the
 way until it can't anymore.
 
 1336
-01:02:05,100 --> 01:02:05,777
+01:02:06,000 --> 01:02:06,677
 That's the max.
 
 1337
-01:02:05,777 --> 01:02:07,610
+01:02:06,677 --> 01:02:08,510
 And there's only a
 couple of slide versions.
 
 1338
-01:02:07,610 --> 01:02:10,120
+01:02:08,510 --> 01:02:11,020
 I haven't put PushPushPush
 here because that
 
 1339
-01:02:10,120 --> 01:02:13,060
+01:02:11,020 --> 01:02:13,960
 would be the only difference--
 is what max means.
 
 1340
-01:02:13,060 --> 01:02:16,300
+01:02:13,960 --> 01:02:17,200
 But everything else
 you just move one step.
 
 1341
-01:02:16,300 --> 01:02:18,650
+01:02:17,200 --> 01:02:19,550
 Then the other issue
 is, what is the goal?
 
 1342
-01:02:18,650 --> 01:02:22,840
+01:02:19,550 --> 01:02:23,740
 I mentioned in Sokoban you
 have to cover every storage
 
 1343
-01:02:22,840 --> 01:02:25,200
+01:02:23,740 --> 01:02:26,100
 space with a box.
 
 1344
-01:02:25,200 --> 01:02:27,860
+01:02:26,100 --> 01:02:28,760
 That is the only problem with
 that flavor, in this list
 
 1345
-01:02:27,860 --> 01:02:28,540
+01:02:28,760 --> 01:02:29,440
 anyway.
 
 1346
-01:02:28,540 --> 01:02:30,310
+01:02:29,440 --> 01:02:31,210
 All the ones that
 are called Push--
 
 1347
-01:02:30,310 --> 01:02:33,490
+01:02:31,210 --> 01:02:34,390
 the goal is just to get
 the robot to a destination,
 
 1348
-01:02:33,490 --> 01:02:36,950
+01:02:34,390 --> 01:02:37,850
 like in Mario or
 Zelda or something.
 
 1349
-01:02:36,950 --> 01:02:41,130
+01:02:37,850 --> 01:02:42,030
 So that's the difference
 between Sokoban and Push-1.
 
 1350
-01:02:41,130 --> 01:02:45,590
+01:02:42,030 --> 01:02:46,490
 Well Push-1F, I suppose,
 is pushing one thing
 
 1351
-01:02:45,590 --> 01:02:47,820
+01:02:46,490 --> 01:02:48,720
 at a time with fixed blocks.
 
 1352
-01:02:47,820 --> 01:02:50,990
+01:02:48,720 --> 01:02:51,890
 That's identical to Sokoban
 except for this issue of what
 
 1353
-01:02:50,990 --> 01:02:51,620
+01:02:51,890 --> 01:02:52,520
 the goal is.
 
 1354
-01:02:51,620 --> 01:02:54,081
+01:02:52,520 --> 01:02:54,981
 Either just to get from
 s to t-- the robot--
 
 1355
-01:02:54,081 --> 01:02:56,455
+01:02:54,981 --> 01:02:57,355
 or to get all the blocks into
 a particular configuration.
 
 1356
-01:02:56,455 --> 01:02:59,790
+01:02:57,355 --> 01:03:00,690
 
 1357
-01:02:59,790 --> 01:03:01,550
+01:03:00,690 --> 01:03:02,450
 OK.
 
 1358
-01:03:01,550 --> 01:03:03,840
+01:03:02,450 --> 01:03:04,740
 Well there are some
 other things here.
 
 1359
-01:03:03,840 --> 01:03:05,760
+01:03:04,740 --> 01:03:06,660
 We've talked about Push-k.
 
 1360
-01:03:05,760 --> 01:03:07,470
+01:03:06,660 --> 01:03:08,370
 Push-* is when k is infinity.
 
 1361
-01:03:07,470 --> 01:03:09,880
+01:03:08,370 --> 01:03:10,780
 So when you push, you can--
 your arbitrary strength--
 
 1362
-01:03:09,880 --> 01:03:12,730
+01:03:10,780 --> 01:03:13,630
 you can push as many blocks
 in a row as you want.
 
 1363
-01:03:12,730 --> 01:03:15,440
+01:03:13,630 --> 01:03:16,340
 PushPush-k, PushPush-*, then.
 
 1364
-01:03:15,440 --> 01:03:17,910
+01:03:16,340 --> 01:03:18,810
 We've talked about F. F is
 when you have fixed blocks.
 
 1365
-01:03:17,910 --> 01:03:22,900
+01:03:18,810 --> 01:03:23,800
 Push-1F, Push-kF,
 and Push-*F.
 
 1366
-01:03:22,900 --> 01:03:25,050
+01:03:23,800 --> 01:03:25,950
 And then there's one
 other variation here
 
 1367
-01:03:25,050 --> 01:03:26,890
+01:03:25,950 --> 01:03:27,790
 that's been considered,
 which is the X.
 
 1368
-01:03:26,890 --> 01:03:29,620
+01:03:27,790 --> 01:03:30,520
 This is when the path
 that the robot takes
 
 1369
-01:03:29,620 --> 01:03:32,820
+01:03:30,520 --> 01:03:33,720
 must not cross itself--
 must not revisit a square.
 
 1370
-01:03:32,820 --> 01:03:34,340
+01:03:33,720 --> 01:03:35,240
 This is-- there a
 lot of video games
 
 1371
-01:03:34,340 --> 01:03:36,730
+01:03:35,240 --> 01:03:37,630
 where after you leave a
 square, that square disappears.
 
 1372
-01:03:36,730 --> 01:03:41,570
+01:03:37,630 --> 01:03:42,470
 It falls down into the
 abyss and so you're scared.
 
 1373
-01:03:41,570 --> 01:03:43,950
+01:03:42,470 --> 01:03:44,850
 So to represent
 those games-- there's
 
 1374
-01:03:43,950 --> 01:03:47,270
+01:03:44,850 --> 01:03:48,170
 another reason we did that, but
 I'll get to that in a moment--
 
 1375
-01:03:47,270 --> 01:03:50,241
+01:03:48,170 --> 01:03:51,141
 there's Push-kX
 and Push-*X.
 
 1376
-01:03:50,241 --> 01:03:50,740
+01:03:51,141 --> 01:03:51,640
 OK.
 
 1377
-01:03:50,740 --> 01:03:52,073
+01:03:51,640 --> 01:03:52,973
 Now let's talk about complexity.
 
 1378
-01:03:52,073 --> 01:03:54,540
+01:03:52,973 --> 01:03:55,440
 That's the right
 two columns here.
 
 1379
-01:03:54,540 --> 01:03:57,620
+01:03:55,440 --> 01:03:58,520
 The reference and
 the complexity.
 
 1380
-01:03:57,620 --> 01:04:01,650
+01:03:58,520 --> 01:04:02,550
 So all of these
 problems are NP-hard.
 
 1381
-01:04:01,650 --> 01:04:02,150
+01:04:02,550 --> 01:04:03,050
 OK?
 
 1382
-01:04:02,150 --> 01:04:04,660
+01:04:03,050 --> 01:04:05,560
 But there's this
 issue-- are they in NP
 
 1383
-01:04:04,660 --> 01:04:06,241
+01:04:05,560 --> 01:04:07,141
 or are they PSPACE-Complete?
 
 1384
-01:04:06,241 --> 01:04:06,740
+01:04:07,141 --> 01:04:07,640
 Question.
 
 1385
-01:04:06,740 --> 01:04:07,406
+01:04:07,640 --> 01:04:08,306
 AUDIENCE: Sorry.
 
 1386
-01:04:07,406 --> 01:04:09,110
+01:04:08,306 --> 01:04:10,010
 What did you say
 a fixed block is?
 
 1387
-01:04:09,110 --> 01:04:11,980
+01:04:10,010 --> 01:04:12,880
 PROFESSOR: A fixed block is a
 block that cannot be pushed.
 
 1388
-01:04:11,980 --> 01:04:13,570
+01:04:12,880 --> 01:04:14,470
 So it's just glued
 to the ground.
 
 1389
-01:04:13,570 --> 01:04:14,594
+01:04:14,470 --> 01:04:15,494
 AUDIENCE: So this is
 just whether or not
 
 1390
-01:04:14,594 --> 01:04:15,620
+01:04:15,494 --> 01:04:16,520
 there are some blocks
 that are fixed.
 
 1391
-01:04:15,620 --> 01:04:16,328
+01:04:16,520 --> 01:04:17,228
 PROFESSOR: Right.
 
 1392
-01:04:16,328 --> 01:04:18,760
+01:04:17,228 --> 01:04:19,660
 In these problems, this
 is a more general version
 
 1393
-01:04:18,760 --> 01:04:20,060
+01:04:19,660 --> 01:04:20,960
 than this game.
 
 1394
-01:04:20,060 --> 01:04:22,920
+01:04:20,960 --> 01:04:23,820
 Here, you allow some blocks
 to be specified as fixed.
 
 1395
-01:04:22,920 --> 01:04:24,990
+01:04:23,820 --> 01:04:25,890
 Here, everything is
 potentially movable.
 
 1396
-01:04:24,990 --> 01:04:26,740
+01:04:25,890 --> 01:04:27,640
 Although if you have
 more than k in a row,
 
 1397
-01:04:26,740 --> 01:04:27,870
+01:04:27,640 --> 01:04:28,770
 it's like a fixed block.
 
 1398
-01:04:27,870 --> 01:04:30,160
+01:04:28,770 --> 01:04:31,060
 If you have a
 k+1 by k+1 block,
 
 1399
-01:04:30,160 --> 01:04:32,690
+01:04:31,060 --> 01:04:33,590
 that's fixed, effectively.
 
 1400
-01:04:32,690 --> 01:04:35,240
+01:04:33,590 --> 01:04:36,140
 But you have a
 resolution issue that you
 
 1401
-01:04:35,240 --> 01:04:37,840
+01:04:36,140 --> 01:04:38,740
 can't make tiny fixed
 blocks in this model.
 
 1402
-01:04:37,840 --> 01:04:40,290
+01:04:38,740 --> 01:04:41,190
 And in this model there are
 no fixed blocks whatsoever.
 
 1403
-01:04:40,290 --> 01:04:42,480
+01:04:41,190 --> 01:04:43,380
 But here you can specify
 some of them are fixed.
 
 1404
-01:04:42,480 --> 01:04:45,310
+01:04:43,380 --> 01:04:46,210
 
 1405
-01:04:45,310 --> 01:04:46,060
+01:04:46,210 --> 01:04:46,960
 A lot of versions.
 
 1406
-01:04:46,060 --> 01:04:47,290
+01:04:46,960 --> 01:04:48,190
 AUDIENCE: So push-star
 has a boundary?
 
 1407
-01:04:47,290 --> 01:04:48,650
+01:04:48,190 --> 01:04:49,550
 Otherwise you could just--
 
 1408
-01:04:48,650 --> 01:04:51,071
+01:04:49,550 --> 01:04:51,971
 PROFESSOR: Push-star does
 live in a rectangular box.
 
 1409
-01:04:51,071 --> 01:04:51,570
+01:04:51,971 --> 01:04:52,470
 Yeah.
 
 1410
-01:04:51,570 --> 01:04:52,414
+01:04:52,470 --> 01:04:53,314
 That is the one.
 
 1411
-01:04:52,414 --> 01:04:53,330
+01:04:53,314 --> 01:04:54,230
 AUDIENCE: Is it fixed?
 
 1412
-01:04:53,330 --> 01:04:57,950
+01:04:54,230 --> 01:04:58,850
 PROFESSOR: You could think of
 that as fixed blocks or not.
 
 1413
-01:04:57,950 --> 01:05:00,550
+01:04:58,850 --> 01:05:01,450
 If nothing is fixed, then you
 can just walk off to infinity,
 
 1414
-01:05:00,550 --> 01:05:02,560
+01:05:01,450 --> 01:05:03,460
 move all the blocks
 away and then come back
 
 1415
-01:05:02,560 --> 01:05:03,643
+01:05:03,460 --> 01:05:04,543
 and find your destination.
 
 1416
-01:05:03,643 --> 01:05:04,812
+01:05:04,543 --> 01:05:05,712
 AUDIENCE: [INAUDIBLE].
 
 1417
-01:05:04,812 --> 01:05:05,520
+01:05:05,712 --> 01:05:06,420
 PROFESSOR: Right.
 
 1418
-01:05:05,520 --> 01:05:06,920
+01:05:06,420 --> 01:05:07,820
 So they're all NP-hard.
 
 1419
-01:05:06,920 --> 01:05:09,780
+01:05:07,820 --> 01:05:10,680
 There's a few that are
 known to be PSPACE-Complete.
 
 1420
-01:05:09,780 --> 01:05:15,060
+01:05:10,680 --> 01:05:15,960
 PushPush, with a fixed
 strength, is PSPACE-Complete.
 
 1421
-01:05:15,060 --> 01:05:20,740
+01:05:15,960 --> 01:05:21,640
 Or with fixed blocks, I think,
 should also be PSPACE-Complete.
 
 1422
-01:05:20,740 --> 01:05:22,390
+01:05:21,640 --> 01:05:23,290
 That's not written here.
 
 1423
-01:05:22,390 --> 01:05:24,750
+01:05:23,290 --> 01:05:25,650
 But PushPush-*, all
 we know is NP-hardness.
 
 1424
-01:05:24,750 --> 01:05:27,300
+01:05:25,650 --> 01:05:28,200
 
 1425
-01:05:27,300 --> 01:05:32,550
+01:05:28,200 --> 01:05:33,450
 Push-kF, where k is at least 2,
 is known to be PSPACE-Complete.
 
 1426
-01:05:32,550 --> 01:05:38,660
+01:05:33,450 --> 01:05:39,560
 But Push-1F or Push-2,
 without the F, are both open.
 
 1427
-01:05:38,660 --> 01:05:41,220
+01:05:39,560 --> 01:05:42,120
 And the reason we
 were interested
 
 1428
-01:05:41,220 --> 01:05:43,950
+01:05:42,120 --> 01:05:44,850
 in a non-crossing path is that
 forces the problem to be in NP.
 
 1429
-01:05:43,950 --> 01:05:45,574
+01:05:44,850 --> 01:05:46,474
 Because then you know
 the solution path
 
 1430
-01:05:45,574 --> 01:05:46,630
+01:05:46,474 --> 01:05:47,530
 has polynomial length.
 
 1431
-01:05:46,630 --> 01:05:48,660
+01:05:47,530 --> 01:05:49,560
 You can visit each
 square at most once.
 
 1432
-01:05:48,660 --> 01:05:50,570
+01:05:49,560 --> 01:05:51,470
 So the hard part
 here was to prove
 
 1433
-01:05:50,570 --> 01:05:53,130
+01:05:51,470 --> 01:05:54,030
 that it's still NP-hard,
 even with non-crossing paths.
 
 1434
-01:05:53,130 --> 01:05:54,979
+01:05:54,030 --> 01:05:55,879
 We won't try to
 prove that today.
 
 1435
-01:05:54,979 --> 01:05:57,270
+01:05:55,879 --> 01:05:58,170
 So those, we actually have
 tight bounds of NP-complete.
 
 1436
-01:05:57,270 --> 01:05:59,470
+01:05:58,170 --> 01:06:00,370
 And Sokoban-- there's a
 relatively old result--
 
 1437
-01:05:59,470 --> 01:06:01,720
+01:06:00,370 --> 01:06:02,620
 1998-- that it's
 PSPACE-Complete.
 
 1438
-01:06:01,720 --> 01:06:02,220
+01:06:02,620 --> 01:06:03,120
 OK.
 
 1439
-01:06:02,220 --> 01:06:03,450
+01:06:03,120 --> 01:06:04,350
 Let's do some reductions.
 
 1440
-01:06:03,450 --> 01:06:07,370
+01:06:04,350 --> 01:06:08,270
 So this first reduction
 is amazingly cool.
 
 1441
-01:06:07,370 --> 01:06:09,620
+01:06:08,270 --> 01:06:10,520
 It's by Michael Hoffman, 2000.
 
 1442
-01:06:09,620 --> 01:06:13,040
+01:06:10,520 --> 01:06:13,940
 This is Push-* with
 a rectangular box.
 
 1443
-01:06:13,040 --> 01:06:13,540
+01:06:13,940 --> 01:06:14,440
 OK.
 
 1444
-01:06:13,540 --> 01:06:14,700
+01:06:14,440 --> 01:06:15,600
 So you're here.
 
 1445
-01:06:14,700 --> 01:06:16,510
+01:06:15,600 --> 01:06:17,410
 The outlined regions
 are the blank space.
 
 1446
-01:06:16,510 --> 01:06:18,690
+01:06:17,410 --> 01:06:19,590
 Everything else is
 filled with a block.
 
 1447
-01:06:18,690 --> 01:06:20,870
+01:06:19,590 --> 01:06:21,770
 But every block
 is movable and you
 
 1448
-01:06:20,870 --> 01:06:22,560
+01:06:21,770 --> 01:06:23,460
 can push arbitrarily strongly.
 
 1449
-01:06:22,560 --> 01:06:24,850
+01:06:23,460 --> 01:06:25,750
 So this is going
 to be variables.
 
 1450
-01:06:24,850 --> 01:06:26,840
+01:06:25,750 --> 01:06:27,740
 You're going to make
 some choices here.
 
 1451
-01:06:26,840 --> 01:06:29,630
+01:06:27,740 --> 01:06:30,530
 These are the connections
 between variables and clauses.
 
 1452
-01:06:29,630 --> 01:06:31,880
+01:06:30,530 --> 01:06:32,780
 This is a bipartite
 graph encoded
 
 1453
-01:06:31,880 --> 01:06:34,270
+01:06:32,780 --> 01:06:35,170
 in binary in the obvious way.
 
 1454
-01:06:34,270 --> 01:06:36,570
+01:06:35,170 --> 01:06:37,470
 There's variables
 here, clauses here.
 
 1455
-01:06:36,570 --> 01:06:41,220
+01:06:37,470 --> 01:06:42,120
 There's a hole exactly when that
 literal appears in that clause.
 
 1456
-01:06:41,220 --> 01:06:41,720
+01:06:42,120 --> 01:06:42,620
 OK?
 
 1457
-01:06:41,720 --> 01:06:44,070
+01:06:42,620 --> 01:06:44,970
 There's actually two rows
 per variable, the true
 
 1458
-01:06:44,070 --> 01:06:45,540
+01:06:44,970 --> 01:06:46,440
 and the false.
 
 1459
-01:06:45,540 --> 01:06:48,550
+01:06:46,440 --> 01:06:49,450
 And then there's this gadget
 here to connect the things.
 
 1460
-01:06:48,550 --> 01:06:50,050
+01:06:49,450 --> 01:06:50,950
 And then these are
 the clauses where
 
 1461
-01:06:50,050 --> 01:06:52,300
+01:06:50,950 --> 01:06:53,200
 we're going to check that
 they were all set correctly.
 
 1462
-01:06:52,300 --> 01:06:53,390
+01:06:53,200 --> 01:06:54,290
 So let's go through it.
 
 1463
-01:06:53,390 --> 01:06:55,640
+01:06:54,290 --> 01:06:56,540
 This is the schematic
 diagram of what I just said.
 
 1464
-01:06:55,640 --> 01:06:57,265
+01:06:56,540 --> 01:06:58,165
 We're going to start here
 in the variable block
 
 1465
-01:06:57,265 --> 01:06:58,890
+01:06:58,165 --> 01:06:59,790
 and walk through each
 of the variables.
 
 1466
-01:06:58,890 --> 01:07:01,240
+01:06:59,790 --> 01:07:02,140
 Here's what the
 variables look like.
 
 1467
-01:07:01,240 --> 01:07:04,430
+01:07:02,140 --> 01:07:05,330
 You have two rows, the x_i row
 and the x_i-complement row.
 
 1468
-01:07:04,430 --> 01:07:07,869
+01:07:05,330 --> 01:07:08,769
 That's another way
 to write NOT x_i.
 
 1469
-01:07:07,869 --> 01:07:09,910
+01:07:08,769 --> 01:07:10,810
 And you're going to count,
 how many times does x_i
 
 1470
-01:07:09,910 --> 01:07:11,190
+01:07:10,810 --> 01:07:12,090
 appear in any clauses?
 
 1471
-01:07:11,190 --> 01:07:12,690
+01:07:12,090 --> 01:07:13,590
 In the positive
 form, negative form.
 
 1472
-01:07:12,690 --> 01:07:14,694
+01:07:13,590 --> 01:07:15,594
 That's called n_i and n_i-bar.
 
 1473
-01:07:14,694 --> 01:07:16,610
+01:07:15,594 --> 01:07:17,510
 And you're going to
 measure out these lengths.
 
 1474
-01:07:16,610 --> 01:07:18,970
+01:07:17,510 --> 01:07:19,870
 You can negate variables to
 make sure that n_i is always
 
 1475
-01:07:18,970 --> 01:07:20,730
+01:07:19,870 --> 01:07:21,630
 bigger than n_i-bar.
 
 1476
-01:07:20,730 --> 01:07:22,050
+01:07:21,630 --> 01:07:22,950
 So do that.
 
 1477
-01:07:22,050 --> 01:07:24,886
+01:07:22,950 --> 01:07:25,786
 So in this case, n_i is this
 big, n_i-bar is this big.
 
 1478
-01:07:24,886 --> 01:07:25,510
+01:07:25,786 --> 01:07:26,410
 Measure it out.
 
 1479
-01:07:25,510 --> 01:07:26,551
+01:07:26,410 --> 01:07:27,451
 This is your blank space.
 
 1480
-01:07:26,551 --> 01:07:28,840
+01:07:27,451 --> 01:07:29,740
 And what you're allowed--
 what we will show you
 
 1481
-01:07:28,840 --> 01:07:31,480
+01:07:29,740 --> 01:07:32,380
 you're allowed to do--
 is either move up here
 
 1482
-01:07:31,480 --> 01:07:34,180
+01:07:32,380 --> 01:07:35,080
 and move all the way
 over here and then up.
 
 1483
-01:07:34,180 --> 01:07:37,400
+01:07:35,080 --> 01:07:38,300
 Or to move here and all
 the way over and then up.
 
 1484
-01:07:37,400 --> 01:07:41,242
+01:07:38,300 --> 01:07:42,142
 And this star is so that the
 one block that's here could fit.
 
 1485
-01:07:41,242 --> 01:07:42,700
+01:07:42,142 --> 01:07:43,600
 And then you can
 go over to this x.
 
 1486
-01:07:42,700 --> 01:07:44,824
+01:07:43,600 --> 01:07:45,724
 In general, in these gadgets,
 the x is your target.
 
 1487
-01:07:44,824 --> 01:07:45,926
+01:07:45,724 --> 01:07:46,826
 x marks the spot.
 
 1488
-01:07:45,926 --> 01:07:46,620
+01:07:46,826 --> 01:07:47,520
 All right?
 
 1489
-01:07:46,620 --> 01:07:47,940
+01:07:47,520 --> 01:07:48,840
 For the gadget.
 
 1490
-01:07:47,940 --> 01:07:49,820
+01:07:48,840 --> 01:07:50,720
 And then there's a
 global x, which will
 
 1491
-01:07:49,820 --> 01:07:52,910
+01:07:50,720 --> 01:07:53,810
 be at the end of the clauses.
 
 1492
-01:07:52,910 --> 01:07:54,000
+01:07:53,810 --> 01:07:54,900
 So what does this do?
 
 1493
-01:07:54,000 --> 01:07:56,149
+01:07:54,900 --> 01:07:57,049
 Well if you think about
 this connection block--
 
 1494
-01:07:56,149 --> 01:07:58,229
+01:07:57,049 --> 01:07:59,129
 this is the bipartite
 graph encoded
 
 1495
-01:07:58,229 --> 01:08:02,330
+01:07:59,129 --> 01:08:03,230
 as a matrix-- the number
 of blank spaces over here
 
 1496
-01:08:02,330 --> 01:08:04,581
+01:08:03,230 --> 01:08:05,481
 is exactly n_i.
 
 1497
-01:08:04,581 --> 01:08:08,597
+01:08:05,481 --> 01:08:09,497
 So this is why, after you push
 n_i steps or n_i-bar steps,
 
 1498
-01:08:08,597 --> 01:08:09,430
+01:08:09,497 --> 01:08:10,330
 you'll have to stop.
 
 1499
-01:08:09,430 --> 01:08:11,705
+01:08:10,330 --> 01:08:12,605
 Because there are no blank
 spaces to the right of you.
 
 1500
-01:08:11,705 --> 01:08:13,330
+01:08:12,605 --> 01:08:14,230
 Then the only thing
 you can do is go up
 
 1501
-01:08:13,330 --> 01:08:15,163
+01:08:14,230 --> 01:08:16,063
 because there are no
 blank spaces below you.
 
 1502
-01:08:15,163 --> 01:08:18,350
+01:08:16,063 --> 01:08:19,250
 So in general, these gadgets are
 super tight because above you
 
 1503
-01:08:18,350 --> 01:08:19,479
+01:08:19,250 --> 01:08:20,379
 there's nothing.
 
 1504
-01:08:19,479 --> 01:08:20,300
+01:08:20,379 --> 01:08:21,200
 It's all blocks.
 
 1505
-01:08:20,300 --> 01:08:22,259
+01:08:21,200 --> 01:08:23,159
 And below you and left
 of you, it's all blocks.
 
 1506
-01:08:22,259 --> 01:08:23,383
+01:08:23,159 --> 01:08:24,283
 There's nothing you can do.
 
 1507
-01:08:23,383 --> 01:08:25,069
+01:08:24,283 --> 01:08:25,969
 You put the next
 variable gadget here,
 
 1508
-01:08:25,069 --> 01:08:27,479
+01:08:25,969 --> 01:08:28,379
 so then that remains true.
 
 1509
-01:08:27,479 --> 01:08:28,939
+01:08:28,379 --> 01:08:29,839
 In your row, and
 in your columns,
 
 1510
-01:08:28,939 --> 01:08:29,980
+01:08:29,839 --> 01:08:30,880
 you're completely packed.
 
 1511
-01:08:29,980 --> 01:08:33,630
+01:08:30,880 --> 01:08:34,530
 So the only choice you have
 is to do this or to do this.
 
 1512
-01:08:33,630 --> 01:08:37,850
+01:08:34,530 --> 01:08:38,750
 And you will fill the
 row that you choose.
 
 1513
-01:08:37,850 --> 01:08:38,733
+01:08:38,750 --> 01:08:39,633
 Exactly.
 
 1514
-01:08:38,733 --> 01:08:39,520
+01:08:39,633 --> 01:08:40,420
 OK?
 
 1515
-01:08:39,520 --> 01:08:40,884
+01:08:40,420 --> 01:08:41,784
 So that's the variable gadget.
 
 1516
-01:08:40,884 --> 01:08:43,510
+01:08:41,784 --> 01:08:44,410
 AUDIENCE: What prevents
 you from choosing both?
 
 1517
-01:08:43,510 --> 01:08:45,149
+01:08:44,410 --> 01:08:46,049
 PROFESSOR: You
 could choose both.
 
 1518
-01:08:45,149 --> 01:08:47,950
+01:08:46,049 --> 01:08:48,850
 Or you could do a little bit
 of one and then do the other.
 
 1519
-01:08:47,950 --> 01:08:48,450
+01:08:48,850 --> 01:08:49,350
 That's true.
 
 1520
-01:08:48,450 --> 01:08:50,533
+01:08:49,350 --> 01:08:51,433
 But as we'll see, that
 only makes your life worse.
 
 1521
-01:08:50,533 --> 01:08:51,254
+01:08:51,433 --> 01:08:52,154
 AUDIENCE: OK.
 
 1522
-01:08:51,254 --> 01:08:51,920
+01:08:52,154 --> 01:08:52,820
 PROFESSOR: Yeah.
 
 1523
-01:08:51,920 --> 01:08:53,680
+01:08:52,820 --> 01:08:54,580
 Good question.
 
 1524
-01:08:53,680 --> 01:08:55,819
+01:08:54,580 --> 01:08:56,719
 So next, we enter
 the bridge gadget,
 
 1525
-01:08:55,819 --> 01:08:59,470
+01:08:56,719 --> 01:09:00,370
 which is these two pictures
 and it looks like this.
 
 1526
-01:08:59,470 --> 01:09:01,560
+01:09:00,370 --> 01:09:02,460
 This is basically a
 locking mechanism.
 
 1527
-01:09:01,560 --> 01:09:04,290
+01:09:02,460 --> 01:09:05,190
 So you start here-- I'll just
 tell you're supposed to do.
 
 1528
-01:09:04,290 --> 01:09:06,880
+01:09:05,190 --> 01:09:07,780
 You walk over through
 this blank space,
 
 1529
-01:09:06,880 --> 01:09:11,770
+01:09:07,780 --> 01:09:12,670
 then you push all of
 these things down to here.
 
 1530
-01:09:11,770 --> 01:09:15,470
+01:09:12,670 --> 01:09:16,370
 So this basically prevents
 you from going back
 
 1531
-01:09:15,470 --> 01:09:16,569
+01:09:16,370 --> 01:09:17,469
 to where you were.
 
 1532
-01:09:16,569 --> 01:09:18,350
+01:09:17,469 --> 01:09:19,250
 So you push all that down.
 
 1533
-01:09:18,350 --> 01:09:23,540
+01:09:19,250 --> 01:09:24,440
 And then you go over here
 and you tunnel down--
 
 1534
-01:09:23,540 --> 01:09:25,870
+01:09:24,440 --> 01:09:26,770
 so I think you're moving
 these blocks over to here.
 
 1535
-01:09:25,870 --> 01:09:27,569
+01:09:26,770 --> 01:09:28,469
 That's another kind of lock.
 
 1536
-01:09:27,569 --> 01:09:31,420
+01:09:28,469 --> 01:09:32,320
 And then you're pushing
 this stuff down to here.
 
 1537
-01:09:31,420 --> 01:09:33,280
+01:09:32,320 --> 01:09:34,180
 And then you get there.
 
 1538
-01:09:33,280 --> 01:09:36,190
+01:09:34,180 --> 01:09:37,090
 So when all is said and
 done, this will be down here,
 
 1539
-01:09:36,190 --> 01:09:38,680
+01:09:37,090 --> 01:09:39,580
 this will be down here,
 this will be over here.
 
 1540
-01:09:38,680 --> 01:09:41,150
+01:09:39,580 --> 01:09:42,050
 And so when you're in
 the clause block-- again,
 
 1541
-01:09:41,150 --> 01:09:44,390
+01:09:42,050 --> 01:09:45,290
 you have full rows to your
 left, full columns above you.
 
 1542
-01:09:44,390 --> 01:09:46,860
+01:09:45,290 --> 01:09:47,760
 So there's nothing-- you can't
 go up and you can't go left.
 
 1543
-01:09:46,860 --> 01:09:48,380
+01:09:47,760 --> 01:09:49,280
 That's the purpose
 of this gadget--
 
 1544
-01:09:48,380 --> 01:09:50,240
+01:09:49,280 --> 01:09:51,140
 is to connect this
 thing to this thing.
 
 1545
-01:09:50,240 --> 01:09:52,110
+01:09:51,140 --> 01:09:53,010
 If there was a teleporter,
 it would be much easier.
 
 1546
-01:09:52,110 --> 01:09:53,651
+01:09:53,010 --> 01:09:54,551
 We could just leave
 these all filled.
 
 1547
-01:09:53,651 --> 01:09:57,790
+01:09:54,551 --> 01:09:58,690
 But we want to get up to here,
 but make sure this is all
 
 1548
-01:09:57,790 --> 01:09:59,100
+01:09:58,690 --> 01:10:00,000
 filled at the end.
 
 1549
-01:09:59,100 --> 01:10:01,550
+01:10:00,000 --> 01:10:02,450
 So that's the sole
 purpose of this gadget.
 
 1550
-01:10:01,550 --> 01:10:02,050
+01:10:02,450 --> 01:10:02,950
 OK.
 
 1551
-01:10:02,050 --> 01:10:04,836
+01:10:02,950 --> 01:10:05,736
 Now a clause.
 
 1552
-01:10:04,836 --> 01:10:07,410
+01:10:05,736 --> 01:10:08,310
 How do we do a clause again?
 
 1553
-01:10:07,410 --> 01:10:09,340
+01:10:08,310 --> 01:10:10,240
 So you have-- there's
 three spaces here
 
 1554
-01:10:09,340 --> 01:10:10,260
+01:10:10,240 --> 01:10:11,160
 because this is 3SAT.
 
 1555
-01:10:10,260 --> 01:10:13,380
+01:10:11,160 --> 01:10:14,280
 You can move down one here,
 and then move over two.
 
 1556
-01:10:13,380 --> 01:10:15,090
+01:10:14,280 --> 01:10:15,990
 These two blocks go here.
 
 1557
-01:10:15,090 --> 01:10:16,640
+01:10:15,990 --> 01:10:17,540
 And then you can get to the x.
 
 1558
-01:10:16,640 --> 01:10:20,050
+01:10:17,540 --> 01:10:20,950
 Or you can go down here
 and over and get to the x.
 
 1559
-01:10:20,050 --> 01:10:22,330
+01:10:20,950 --> 01:10:23,230
 Or you can go here
 and down, over.
 
 1560
-01:10:22,330 --> 01:10:24,906
+01:10:23,230 --> 01:10:25,806
 And this is possible if
 there's a hole below you.
 
 1561
-01:10:24,906 --> 01:10:26,780
+01:10:25,806 --> 01:10:27,680
 This is possible if
 there's a hole below you,
 
 1562
-01:10:26,780 --> 01:10:28,821
+01:10:27,680 --> 01:10:29,721
 and this is possible if
 there's a hole below you.
 
 1563
-01:10:28,821 --> 01:10:30,910
+01:10:29,721 --> 01:10:31,810
 These are aligned
 with these things.
 
 1564
-01:10:30,910 --> 01:10:33,500
+01:10:31,810 --> 01:10:34,400
 So with exact-- I
 didn't quite align them,
 
 1565
-01:10:33,500 --> 01:10:37,250
+01:10:34,400 --> 01:10:38,150
 but these three columns
 are these three columns.
 
 1566
-01:10:37,250 --> 01:10:40,490
+01:10:38,150 --> 01:10:41,390
 And if one of these
 is unfilled, you'll
 
 1567
-01:10:40,490 --> 01:10:42,020
+01:10:41,390 --> 01:10:42,920
 be able to get
 from here to here.
 
 1568
-01:10:42,020 --> 01:10:44,530
+01:10:42,920 --> 01:10:45,430
 If they're all
 filled, you won't.
 
 1569
-01:10:44,530 --> 01:10:46,890
+01:10:45,430 --> 01:10:47,790
 Because it will be full
 columns all the way down.
 
 1570
-01:10:46,890 --> 01:10:49,570
+01:10:47,790 --> 01:10:50,470
 
 1571
-01:10:49,570 --> 01:10:53,590
+01:10:50,470 --> 01:10:54,490
 So that's a clause
 gadget because things
 
 1572
-01:10:53,590 --> 01:10:59,500
+01:10:54,490 --> 01:11:00,400
 were filled when you chose
 that thing to be-- maybe
 
 1573
-01:10:59,500 --> 01:11:01,155
+01:11:00,400 --> 01:11:02,055
 I-- did I get it backwards?
 
 1574
-01:11:01,155 --> 01:11:03,520
+01:11:02,055 --> 01:11:04,420
 AUDIENCE: So you're really
 choosing the opposite.
 
 1575
-01:11:03,520 --> 01:11:04,228
+01:11:04,420 --> 01:11:05,128
 PROFESSOR: Right.
 
 1576
-01:11:04,228 --> 01:11:08,226
+01:11:05,128 --> 01:11:09,126
 You're choosing the
 thing to be not true
 
 1577
-01:11:08,226 --> 01:11:10,350
+01:11:09,126 --> 01:11:11,250
 and leaving the other one
 to be as true as possible
 
 1578
-01:11:10,350 --> 01:11:11,460
+01:11:11,250 --> 01:11:12,360
 by not pushing it.
 
 1579
-01:11:11,460 --> 01:11:13,720
+01:11:12,360 --> 01:11:14,620
 So it leaves the hole so
 that later you can traverse--
 
 1580
-01:11:13,720 --> 01:11:14,850
+01:11:14,620 --> 01:11:15,750
 AUDIENCE: So that's why you
 wouldn't want to choose both.
 
 1581
-01:11:14,850 --> 01:11:15,050
+01:11:15,750 --> 01:11:15,950
 PROFESSOR: Right.
 
 1582
-01:11:15,050 --> 01:11:16,600
+01:11:15,950 --> 01:11:17,500
 If you chose both, that
 would be like making them
 
 1583
-01:11:16,600 --> 01:11:17,975
+01:11:17,500 --> 01:11:18,875
 both of them not
 true, and so you
 
 1584
-01:11:17,975 --> 01:11:20,390
+01:11:18,875 --> 01:11:21,290
 don't get any of the benefits.
 
 1585
-01:11:20,390 --> 01:11:21,720
+01:11:21,290 --> 01:11:22,620
 OK?
 
 1586
-01:11:21,720 --> 01:11:24,180
+01:11:22,620 --> 01:11:25,080
 That's Push-*.
 
 1587
-01:11:24,180 --> 01:11:24,680
+01:11:25,080 --> 01:11:25,580
 Cool?
 
 1588
-01:11:24,680 --> 01:11:30,340
+01:11:25,580 --> 01:11:31,240
 
 1589
-01:11:30,340 --> 01:11:32,140
+01:11:31,240 --> 01:11:33,040
 OK.
 
 1590
-01:11:32,140 --> 01:11:34,710
+01:11:33,040 --> 01:11:35,610
 Let's do PushPush-1 in 3D.
 
 1591
-01:11:34,710 --> 01:11:37,030
+01:11:35,610 --> 01:11:37,930
 This is really easy.
 
 1592
-01:11:37,030 --> 01:11:39,440
+01:11:37,930 --> 01:11:40,340
 This is almost like the
 Super Mario Brothers proof.
 
 1593
-01:11:39,440 --> 01:11:43,680
+01:11:40,340 --> 01:11:44,580
 So it's just old drawing style.
 
 1594
-01:11:43,680 --> 01:11:45,430
+01:11:44,580 --> 01:11:46,330
 And we've drawn sort
 of the dual graphs,
 
 1595
-01:11:45,430 --> 01:11:48,390
+01:11:46,330 --> 01:11:49,290
 so these paths are
 little width-1 tunnels
 
 1596
-01:11:48,390 --> 01:11:49,784
+01:11:49,290 --> 01:11:50,684
 that you can walk down.
 
 1597
-01:11:49,784 --> 01:11:52,450
+01:11:50,684 --> 01:11:53,350
 So you start up here and you can
 either push this thing this way
 
 1598
-01:11:52,450 --> 01:11:53,910
+01:11:53,350 --> 01:11:54,810
 or this way.
 
 1599
-01:11:53,910 --> 01:11:56,410
+01:11:54,810 --> 01:11:57,310
 And so you're choosing which
 way you'll be able to traverse.
 
 1600
-01:11:56,410 --> 01:11:59,380
+01:11:57,310 --> 01:12:00,280
 Either you can go the true
 way or the false way--
 
 1601
-01:11:59,380 --> 01:12:01,556
+01:12:00,280 --> 01:12:02,456
 the opposite of wherever
 you push that block.
 
 1602
-01:12:01,556 --> 01:12:03,180
+01:12:02,456 --> 01:12:04,080
 And so that cuts off
 one of the things.
 
 1603
-01:12:03,180 --> 01:12:06,200
+01:12:04,080 --> 01:12:07,100
 Then that path is going to be
 connected to all of the clauses
 
 1604
-01:12:06,200 --> 01:12:07,420
+01:12:07,100 --> 01:12:08,320
 that it satisfies.
 
 1605
-01:12:07,420 --> 01:12:09,415
+01:12:08,320 --> 01:12:10,315
 That that literal
 choice satisfies.
 
 1606
-01:12:09,415 --> 01:12:11,040
+01:12:10,315 --> 01:12:11,940
 Then there's this
 gadget to prevent you
 
 1607
-01:12:11,040 --> 01:12:13,220
+01:12:11,940 --> 01:12:14,120
 from wrapping around
 to the other side.
 
 1608
-01:12:13,220 --> 01:12:17,099
+01:12:14,120 --> 01:12:17,999
 Whichever one you come down, you
 will block off the other path.
 
 1609
-01:12:17,099 --> 01:12:19,140
+01:12:17,999 --> 01:12:20,040
 And then you do that again
 for the next variable,
 
 1610
-01:12:19,140 --> 01:12:20,348
+01:12:20,040 --> 01:12:21,248
 the next variable, and so on.
 
 1611
-01:12:20,348 --> 01:12:22,360
+01:12:21,248 --> 01:12:23,260
 At the end of the
 last variable, you
 
 1612
-01:12:22,360 --> 01:12:23,900
+01:12:23,260 --> 01:12:24,800
 run through all the clauses.
 
 1613
-01:12:23,900 --> 01:12:25,100
+01:12:24,800 --> 01:12:26,000
 So how do the clauses work?
 
 1614
-01:12:25,100 --> 01:12:26,890
+01:12:26,000 --> 01:12:27,790
 Very simple.
 
 1615
-01:12:26,890 --> 01:12:31,230
+01:12:27,790 --> 01:12:32,130
 If any of the literals
 that satisfy the clause
 
 1616
-01:12:31,230 --> 01:12:34,820
+01:12:32,130 --> 01:12:35,720
 were visitable, then you
 could push this block over.
 
 1617
-01:12:34,820 --> 01:12:36,612
+01:12:35,720 --> 01:12:37,512
 And then later, when
 you visit the clause--
 
 1618
-01:12:36,612 --> 01:12:38,153
+01:12:37,512 --> 01:12:39,053
 at the end, when
 you visit the clause
 
 1619
-01:12:38,153 --> 01:12:40,220
+01:12:39,053 --> 01:12:41,120
 and try to traverse it--
 if there's nothing here
 
 1620
-01:12:40,220 --> 01:12:41,626
+01:12:41,120 --> 01:12:42,526
 when you push this
 block down, it
 
 1621
-01:12:41,626 --> 01:12:43,000
+01:12:42,526 --> 01:12:43,900
 will go all the
 way to the bottom
 
 1622
-01:12:43,000 --> 01:12:47,080
+01:12:43,900 --> 01:12:47,980
 and you're trapped, never to get
 to the finish line down here.
 
 1623
-01:12:47,080 --> 01:12:51,200
+01:12:47,980 --> 01:12:52,100
 But if at least one of these was
 in, then it will block this guy
 
 1624
-01:12:51,200 --> 01:12:54,030
+01:12:52,100 --> 01:12:54,930
 and you can-- if that's
 true for all the clauses--
 
 1625
-01:12:54,030 --> 01:12:55,800
+01:12:54,930 --> 01:12:56,700
 then you can get
 to the destination.
 
 1626
-01:12:55,800 --> 01:12:58,840
+01:12:56,700 --> 01:12:59,740
 So these are just
 clause checking.
 
 1627
-01:12:58,840 --> 01:13:02,709
+01:12:59,740 --> 01:13:03,609
 And that's a very
 straightforward 3SAT proof.
 
 1628
-01:13:02,709 --> 01:13:04,750
+01:13:03,609 --> 01:13:05,650
 In fact, the previous
 proof is based on this one.
 
 1629
-01:13:04,750 --> 01:13:06,977
+01:13:05,650 --> 01:13:07,877
 And the next proof
 is based on this one.
 
 1630
-01:13:06,977 --> 01:13:09,060
+01:13:07,877 --> 01:13:09,960
 And the Nintendo proofs
 are all based on this one.
 
 1631
-01:13:09,060 --> 01:13:11,706
+01:13:09,960 --> 01:13:12,606
 This is sort of the prototype.
 
 1632
-01:13:11,706 --> 01:13:12,205
+01:13:12,606 --> 01:13:13,105
 Yeah.
 
 1633
-01:13:12,205 --> 01:13:14,246
+01:13:13,105 --> 01:13:15,146
 AUDIENCE: Do you have the
 crossover gadget that--
 
 1634
-01:13:14,246 --> 01:13:15,500
+01:13:15,146 --> 01:13:16,400
 PROFESSOR: So this is 3D.
 
 1635
-01:13:15,500 --> 01:13:16,208
+01:13:16,400 --> 01:13:17,108
 AUDIENCE: Oh, oh.
 
 1636
-01:13:16,208 --> 01:13:18,110
+01:13:17,108 --> 01:13:19,010
 PROFESSOR: So
 there's no crossover.
 
 1637
-01:13:18,110 --> 01:13:20,110
+01:13:19,010 --> 01:13:21,010
 But in 2D, we want
 to get a crossover.
 
 1638
-01:13:20,110 --> 01:13:22,350
+01:13:21,010 --> 01:13:23,250
 So here's how we do 2D.
 
 1639
-01:13:22,350 --> 01:13:25,230
+01:13:23,250 --> 01:13:26,130
 And this will work for
 both Push and Push-1-- Push
 
 1640
-01:13:25,230 --> 01:13:26,600
+01:13:26,130 --> 01:13:27,500
 and PushPush.
 
 1641
-01:13:26,600 --> 01:13:28,100
+01:13:27,500 --> 01:13:29,000
 The only place we're
 using PushPush
 
 1642
-01:13:28,100 --> 01:13:32,850
+01:13:29,000 --> 01:13:33,750
 was this clause gadget, so let's
 first get rid of that aspect.
 
 1643
-01:13:32,850 --> 01:13:34,361
+01:13:33,750 --> 01:13:35,261
 So here's something
 called a lock,
 
 1644
-01:13:34,361 --> 01:13:36,610
+01:13:35,261 --> 01:13:37,510
 and you're going to have to
 believe a little bit here.
 
 1645
-01:13:36,610 --> 01:13:39,230
+01:13:37,510 --> 01:13:40,130
 
 1646
-01:13:39,230 --> 01:13:41,240
+01:13:40,130 --> 01:13:42,140
 Your goal, let's say,
 is to get from a to b.
 
 1647
-01:13:41,240 --> 01:13:48,230
+01:13:42,140 --> 01:13:49,130
 And this is what happens if you
 try to go from a to b directly.
 
 1648
-01:13:48,230 --> 01:13:50,110
+01:13:49,130 --> 01:13:51,010
 There isn't much that
 you can move-- well,
 
 1649
-01:13:50,110 --> 01:13:59,100
+01:13:51,010 --> 01:14:00,000
 you can maybe move I down, J
 left, and like this, but-- yes.
 
 1650
-01:13:59,100 --> 01:14:08,380
+01:14:00,000 --> 01:14:09,280
 You can move I down, J left, E
 down, F left, B down, but not C
 
 1651
-01:14:08,380 --> 01:14:10,694
+01:14:09,280 --> 01:14:11,594
 left, because D is in the way.
 
 1652
-01:14:10,694 --> 01:14:11,194
+01:14:11,594 --> 01:14:12,094
 OK?
 
 1653
-01:14:11,194 --> 01:14:14,370
+01:14:12,094 --> 01:14:15,270
 
 1654
-01:14:14,370 --> 01:14:15,930
+01:14:15,270 --> 01:14:16,830
 So you can't get from a to b.
 
 1655
-01:14:15,930 --> 01:14:21,949
+01:14:16,830 --> 01:14:22,849
 But if you visit from u, and you
 push this block out of the way,
 
 1656
-01:14:21,949 --> 01:14:23,990
+01:14:22,849 --> 01:14:24,890
 then you'd come back
 through a, then you can do--
 
 1657
-01:14:23,990 --> 01:14:24,790
+01:14:24,890 --> 01:14:25,690
 AUDIENCE: Push them over.
 
 1658
-01:14:24,790 --> 01:14:26,248
+01:14:25,690 --> 01:14:27,148
 PROFESSOR: You can
 do these things.
 
 1659
-01:14:26,248 --> 01:14:27,090
+01:14:27,148 --> 01:14:27,990
 Push them all over.
 
 1660
-01:14:27,090 --> 01:14:29,370
+01:14:27,990 --> 01:14:30,270
 And then you have
 room to push C over,
 
 1661
-01:14:29,370 --> 01:14:32,250
+01:14:30,270 --> 01:14:33,150
 and then A can go all the
 way down, and you're through.
 
 1662
-01:14:32,250 --> 01:14:35,480
+01:14:33,150 --> 01:14:36,380
 So this unlocks the lock.
 
 1663
-01:14:35,480 --> 01:14:37,863
+01:14:36,380 --> 01:14:38,763
 Then allowing a to b
 traversal later.
 
 1664
-01:14:37,863 --> 01:14:39,362
+01:14:38,763 --> 01:14:40,262
 AUDIENCE: And going
 backwards from v
 
 1665
-01:14:39,362 --> 01:14:41,240
+01:14:40,262 --> 01:14:42,140
 to u would lock it again?
 
 1666
-01:14:41,240 --> 01:14:41,980
+01:14:42,140 --> 01:14:42,880
 PROFESSOR: No.
 
 1667
-01:14:41,980 --> 01:14:43,320
+01:14:42,880 --> 01:14:44,220
 This is not a reversible gadget.
 
 1668
-01:14:43,320 --> 01:14:44,200
+01:14:44,220 --> 01:14:45,100
 It only works once.
 
 1669
-01:14:44,200 --> 01:14:47,184
+01:14:45,100 --> 01:14:48,084
 AUDIENCE: [INAUDIBLE].
 
 1670
-01:14:47,184 --> 01:14:48,350
+01:14:48,084 --> 01:14:49,250
 PROFESSOR: You can't
 un-unlock.
 
 1671
-01:14:48,350 --> 01:14:50,130
+01:14:49,250 --> 01:14:51,030
 Once L's down, it's
 permanently there.
 
 1672
-01:14:50,130 --> 01:14:52,970
+01:14:51,030 --> 01:14:53,870
 
 1673
-01:14:52,970 --> 01:14:56,460
+01:14:53,870 --> 01:14:57,360
 So now we're going to use
 this in a clause as follows.
 
 1674
-01:14:56,460 --> 01:14:57,960
+01:14:57,360 --> 01:14:58,860
 So here's the lock
 and then there's
 
 1675
-01:14:57,960 --> 01:14:59,550
+01:14:58,860 --> 01:15:00,450
 this schematic above it.
 
 1676
-01:14:59,550 --> 01:15:01,420
+01:15:00,450 --> 01:15:02,320
 So we have three
 possible entries.
 
 1677
-01:15:01,420 --> 01:15:05,884
+01:15:02,320 --> 01:15:06,784
 This is x_i or not x_j or x_k.
 
 1678
-01:15:05,884 --> 01:15:07,300
+01:15:06,784 --> 01:15:08,200
 And we're going
 to use this gadget
 
 1679
-01:15:07,300 --> 01:15:10,476
+01:15:08,200 --> 01:15:11,376
 to say, well if you come
 down the true path from here,
 
 1680
-01:15:10,476 --> 01:15:12,350
+01:15:11,376 --> 01:15:13,250
 you're going to have to
 push this block down,
 
 1681
-01:15:12,350 --> 01:15:14,950
+01:15:13,250 --> 01:15:15,850
 which prevents you from using
 the other half of the gadget.
 
 1682
-01:15:14,950 --> 01:15:18,022
+01:15:15,850 --> 01:15:18,922
 So either you move Y
 or you move X.
 
 1683
-01:15:18,022 --> 01:15:20,230
+01:15:18,922 --> 01:15:21,130
 From then on, you can only
 do west to south traversal
 
 1684
-01:15:20,230 --> 01:15:22,840
+01:15:21,130 --> 01:15:23,740
 or only north to east traversal.
 
 1685
-01:15:22,840 --> 01:15:24,476
+01:15:23,740 --> 01:15:25,376
 So it blocks the other path.
 
 1686
-01:15:24,476 --> 01:15:25,850
+01:15:25,376 --> 01:15:26,750
 So this is--
 because I don't want
 
 1687
-01:15:25,850 --> 01:15:28,090
+01:15:26,750 --> 01:15:28,990
 to come down here,
 unlock the lock,
 
 1688
-01:15:28,090 --> 01:15:29,840
+01:15:28,990 --> 01:15:30,740
 and then go back on
 a different path.
 
 1689
-01:15:29,840 --> 01:15:32,380
+01:15:30,740 --> 01:15:33,280
 Because that's not something
 that's necessarily true.
 
 1690
-01:15:32,380 --> 01:15:33,800
+01:15:33,280 --> 01:15:34,700
 So as you come
 down one of these,
 
 1691
-01:15:33,800 --> 01:15:36,350
+01:15:34,700 --> 01:15:37,250
 you force these gadgets to
 be in a particular state that
 
 1692
-01:15:36,350 --> 01:15:40,220
+01:15:37,250 --> 01:15:41,120
 will only let you come back
 the way you came-- go back
 
 1693
-01:15:40,220 --> 01:15:41,100
+01:15:41,120 --> 01:15:42,000
 the way you came.
 
 1694
-01:15:41,100 --> 01:15:43,410
+01:15:42,000 --> 01:15:44,310
 And then you can unlock
 the lock and then
 
 1695
-01:15:43,410 --> 01:15:45,000
+01:15:44,310 --> 01:15:45,900
 this just connects back.
 
 1696
-01:15:45,000 --> 01:15:45,500
+01:15:45,900 --> 01:15:46,400
 OK?
 
 1697
-01:15:45,500 --> 01:15:47,460
+01:15:46,400 --> 01:15:48,360
 Then later, when we're
 checking the clauses--
 
 1698
-01:15:47,460 --> 01:15:48,960
+01:15:48,360 --> 01:15:49,860
 when we come through
 all the clauses
 
 1699
-01:15:48,960 --> 01:15:50,543
+01:15:49,860 --> 01:15:51,443
 to make sure that
 they're true-- we're
 
 1700
-01:15:50,543 --> 01:15:52,403
+01:15:51,443 --> 01:15:53,303
 going to route those
 from a to b, to a to b,
 
 1701
-01:15:52,403 --> 01:15:53,735
+01:15:53,303 --> 01:15:54,635
 to a to b for all the locks.
 
 1702
-01:15:53,735 --> 01:15:55,360
+01:15:54,635 --> 01:15:56,260
 And if they're all
 unlocked, then we'll
 
 1703
-01:15:55,360 --> 01:15:57,300
+01:15:56,260 --> 01:15:58,200
 be able to traverse
 them, and otherwise, not.
 
 1704
-01:15:57,300 --> 01:15:59,660
+01:15:58,200 --> 01:16:00,560
 That's the idea.
 
 1705
-01:15:59,660 --> 01:16:00,700
+01:16:00,560 --> 01:16:01,600
 OK.
 
 1706
-01:16:00,700 --> 01:16:02,420
+01:16:01,600 --> 01:16:03,320
 Then we have the
 issue of a crossover,
 
 1707
-01:16:02,420 --> 01:16:04,560
+01:16:03,320 --> 01:16:05,460
 if we want to go into 2D.
 
 1708
-01:16:04,560 --> 01:16:11,090
+01:16:05,460 --> 01:16:11,990
 So we have-- here's a basic
 crossover in the Push-1 model,
 
 1709
-01:16:11,090 --> 01:16:12,620
+01:16:11,990 --> 01:16:13,520
 or PushPush-1.
 
 1710
-01:16:12,620 --> 01:16:17,000
+01:16:13,520 --> 01:16:17,900
 If we're going to go from north
 to south, then we will go-- OK.
 
 1711
-01:16:17,000 --> 01:16:19,160
+01:16:17,900 --> 01:16:20,060
 We can push this down.
 
 1712
-01:16:19,160 --> 01:16:21,670
+01:16:20,060 --> 01:16:22,570
 But we won't be able
 to go to the east then.
 
 1713
-01:16:21,670 --> 01:16:22,420
+01:16:22,570 --> 01:16:23,320
 OK?
 
 1714
-01:16:22,420 --> 01:16:23,920
+01:16:23,320 --> 01:16:24,820
 And we're not able
 to go to the west
 
 1715
-01:16:23,920 --> 01:16:26,340
+01:16:24,820 --> 01:16:27,240
 because if we push this
 block, it gets stuck.
 
 1716
-01:16:26,340 --> 01:16:28,050
+01:16:27,240 --> 01:16:28,950
 So we can go north to
 south, that's fine.
 
 1717
-01:16:28,050 --> 01:16:31,520
+01:16:28,950 --> 01:16:32,420
 And we can also go west to
 east, by symmetry, essentially.
 
 1718
-01:16:31,520 --> 01:16:34,600
+01:16:32,420 --> 01:16:35,500
 But you can't go from west
 to north or west to south,
 
 1719
-01:16:34,600 --> 01:16:36,350
+01:16:35,500 --> 01:16:37,250
 or any of the
 other combinations.
 
 1720
-01:16:36,350 --> 01:16:38,390
+01:16:37,250 --> 01:16:39,290
 This works as long as
 you do one or the other.
 
 1721
-01:16:38,390 --> 01:16:41,090
+01:16:39,290 --> 01:16:41,990
 
 1722
-01:16:41,090 --> 01:16:44,340
+01:16:41,990 --> 01:16:45,240
 Once you do west to east, you
 can't even do north to south.
 
 1723
-01:16:44,340 --> 01:16:46,930
+01:16:45,240 --> 01:16:47,830
 So that's why we call
 it an XOR crossover.
 
 1724
-01:16:46,930 --> 01:16:48,430
+01:16:47,830 --> 01:16:49,330
 It's not what we want.
 
 1725
-01:16:48,430 --> 01:16:51,570
+01:16:49,330 --> 01:16:52,470
 But if we combine
 things in this way,
 
 1726
-01:16:51,570 --> 01:16:54,780
+01:16:52,470 --> 01:16:55,680
 we get a uni-directional
 crossover.
 
 1727
-01:16:54,780 --> 01:16:58,640
+01:16:55,680 --> 01:16:59,540
 This is one where-- I better
 check my notes-- you can
 
 1728
-01:16:58,640 --> 01:17:02,310
+01:16:59,540 --> 01:17:03,210
 do with one of three things.
 
 1729
-01:17:02,310 --> 01:17:06,220
+01:17:03,210 --> 01:17:07,120
 You can do north to
 south, if you want.
 
 1730
-01:17:06,220 --> 01:17:09,950
+01:17:07,120 --> 01:17:10,850
 And then you can
 do west to east.
 
 1731
-01:17:09,950 --> 01:17:12,067
+01:17:10,850 --> 01:17:12,967
 So you could just
 do west to east.
 
 1732
-01:17:12,067 --> 01:17:14,150
+01:17:12,967 --> 01:17:15,050
 Or you could do north to
 south, then west to east.
 
 1733
-01:17:14,150 --> 01:17:15,649
+01:17:15,050 --> 01:17:16,549
 Or you could just
 do north to south.
 
 1734
-01:17:15,649 --> 01:17:17,390
+01:17:16,549 --> 01:17:18,290
 Those are all possible here.
 
 1735
-01:17:17,390 --> 01:17:21,600
+01:17:18,290 --> 01:17:22,500
 So when we do north to south,
 we prevent this particular thing
 
 1736
-01:17:21,600 --> 01:17:22,790
+01:17:22,500 --> 01:17:23,690
 from being traversed.
 
 1737
-01:17:22,790 --> 01:17:25,610
+01:17:23,690 --> 01:17:26,510
 But we unlock this gate, which
 later, when we go west to east,
 
 1738
-01:17:25,610 --> 01:17:27,400
+01:17:26,510 --> 01:17:28,300
 will allow us to do it.
 
 1739
-01:17:27,400 --> 01:17:34,840
+01:17:28,300 --> 01:17:35,740
 So we go here and then these
 are called no-reverse gadgets.
 
 1740
-01:17:34,840 --> 01:17:37,320
+01:17:35,740 --> 01:17:38,220
 So once you push
 this block back,
 
 1741
-01:17:37,320 --> 01:17:40,980
+01:17:38,220 --> 01:17:41,880
 you can never go-- this
 gadget becomes untraversible.
 
 1742
-01:17:40,980 --> 01:17:44,497
+01:17:41,880 --> 01:17:45,397
 So you come here, you push
 this, push that, push that,
 
 1743
-01:17:44,497 --> 01:17:46,330
+01:17:45,397 --> 01:17:47,230
 and now you can never
 use this gadget again.
 
 1744
-01:17:46,330 --> 01:17:48,360
+01:17:47,230 --> 01:17:49,260
 So it's like a single-use thing.
 
 1745
-01:17:48,360 --> 01:17:49,510
+01:17:49,260 --> 01:17:50,410
 So you can come here.
 
 1746
-01:17:49,510 --> 01:17:51,020
+01:17:50,410 --> 01:17:51,920
 If you tried to
 do that, you would
 
 1747
-01:17:51,020 --> 01:17:53,189
+01:17:51,920 --> 01:17:54,089
 get stuck because
 this is a lock and it
 
 1748
-01:17:53,189 --> 01:17:54,230
+01:17:54,089 --> 01:17:55,130
 hasn't been unlocked yet.
 
 1749
-01:17:54,230 --> 01:17:57,280
+01:17:55,130 --> 01:17:58,180
 So instead you've got to go over
 here, go through this thing,
 
 1750
-01:17:57,280 --> 01:18:00,210
+01:17:58,180 --> 01:18:01,110
 permanently destroy it, and
 then unlock this gadget,
 
 1751
-01:18:00,210 --> 01:18:01,230
+01:18:01,110 --> 01:18:02,130
 and then you exit.
 
 1752
-01:18:01,230 --> 01:18:03,190
+01:18:02,130 --> 01:18:04,090
 So that was north
 to south traversal.
 
 1753
-01:18:03,190 --> 01:18:05,790
+01:18:04,090 --> 01:18:06,690
 We unlocked this gate and
 we unlocked this gate.
 
 1754
-01:18:05,790 --> 01:18:07,210
+01:18:06,690 --> 01:18:08,110
 So if you're coming
 west to east,
 
 1755
-01:18:07,210 --> 01:18:09,240
+01:18:08,110 --> 01:18:10,140
 it could be this has
 been done or not.
 
 1756
-01:18:09,240 --> 01:18:12,710
+01:18:10,140 --> 01:18:13,610
 So going west to east, maybe
 you haven't visited this gadget.
 
 1757
-01:18:12,710 --> 01:18:14,240
+01:18:13,610 --> 01:18:15,140
 Then you can just
 go through here,
 
 1758
-01:18:14,240 --> 01:18:17,830
+01:18:15,140 --> 01:18:18,730
 block off a later north to
 south traversal, that's OK.
 
 1759
-01:18:17,830 --> 01:18:19,980
+01:18:18,730 --> 01:18:20,880
 Then come over here and leave.
 
 1760
-01:18:19,980 --> 01:18:23,120
+01:18:20,880 --> 01:18:24,020
 And if you try to go
 here, nothing happens.
 
 1761
-01:18:23,120 --> 01:18:24,840
+01:18:24,020 --> 01:18:25,740
 OK?
 
 1762
-01:18:24,840 --> 01:18:27,940
+01:18:25,740 --> 01:18:28,840
 Or it could be this has already
 been done-- north to south--
 
 1763
-01:18:27,940 --> 01:18:29,730
+01:18:28,840 --> 01:18:30,630
 and then when you're
 coming from the west,
 
 1764
-01:18:29,730 --> 01:18:33,180
+01:18:30,630 --> 01:18:34,080
 this has been unlocked, and
 so you can open this gate
 
 1765
-01:18:33,180 --> 01:18:35,340
+01:18:34,080 --> 01:18:36,240
 and come through here.
 
 1766
-01:18:35,340 --> 01:18:38,260
+01:18:36,240 --> 01:18:39,160
 This has already been used,
 so you can't go that way.
 
 1767
-01:18:38,260 --> 01:18:40,760
+01:18:39,160 --> 01:18:41,660
 So instead you use this one.
 
 1768
-01:18:40,760 --> 01:18:43,330
+01:18:41,660 --> 01:18:44,230
 This has already been unlocked,
 so you can get through.
 
 1769
-01:18:43,330 --> 01:18:45,487
+01:18:44,230 --> 01:18:46,387
 And then you get out.
 
 1770
-01:18:45,487 --> 01:18:47,070
+01:18:46,387 --> 01:18:47,970
 So with just a little
 bit of checking,
 
 1771
-01:18:47,070 --> 01:18:49,010
+01:18:47,970 --> 01:18:49,910
 those are the only
 things you can do.
 
 1772
-01:18:49,010 --> 01:18:51,230
+01:18:49,910 --> 01:18:52,130
 So when we have this
 diagram -- I think
 
 1773
-01:18:51,230 --> 01:18:53,190
+01:18:52,130 --> 01:18:54,090
 I have one here --
 variables and clauses,
 
 1774
-01:18:53,190 --> 01:18:55,356
+01:18:54,090 --> 01:18:56,256
 and you connect all the
 variables to all the clauses
 
 1775
-01:18:55,356 --> 01:18:57,850
+01:18:56,256 --> 01:18:58,750
 they're involved in-- this
 is a slide from lecture one,
 
 1776
-01:18:57,850 --> 01:19:01,290
+01:18:58,750 --> 01:19:02,190
 but it's the same outline.
 
 1777
-01:19:01,290 --> 01:19:03,690
+01:19:02,190 --> 01:19:04,590
 You know the order in which
 these crossings happen.
 
 1778
-01:19:03,690 --> 01:19:07,400
+01:19:04,590 --> 01:19:08,300
 Because you know I'm going to
 visit variable i before I visit
 
 1779
-01:19:07,400 --> 01:19:10,370
+01:19:08,300 --> 01:19:11,270
 variable j greater than i.
 
 1780
-01:19:10,370 --> 01:19:14,250
+01:19:11,270 --> 01:19:15,150
 So I know how to order--
 and each of these paths
 
 1781
-01:19:14,250 --> 01:19:16,660
+01:19:15,150 --> 01:19:17,560
 is really two paths,
 one and then the other.
 
 1782
-01:19:16,660 --> 01:19:19,360
+01:19:17,560 --> 01:19:20,260
 And so I know whether
 I'm going to do north
 
 1783
-01:19:19,360 --> 01:19:21,720
+01:19:20,260 --> 01:19:22,620
 to south before west to east.
 
 1784
-01:19:21,720 --> 01:19:25,380
+01:19:22,620 --> 01:19:26,280
 If not, I'd transpose the
 gadget and exchange north-south
 
 1785
-01:19:25,380 --> 01:19:26,760
+01:19:26,280 --> 01:19:27,660
 with west-east.
 
 1786
-01:19:26,760 --> 01:19:28,760
+01:19:27,660 --> 01:19:29,660
 And then I don't need
 that they're both visited.
 
 1787
-01:19:28,760 --> 01:19:30,220
+01:19:29,660 --> 01:19:31,120
 I don't know which ones
 are going to be visited,
 
 1788
-01:19:30,220 --> 01:19:31,630
+01:19:31,120 --> 01:19:32,530
 but I could do one or the other.
 
 1789
-01:19:31,630 --> 01:19:33,921
+01:19:32,530 --> 01:19:34,821
 Or if I do both, I know one
 will come before the other.
 
 1790
-01:19:33,921 --> 01:19:36,560
+01:19:34,821 --> 01:19:37,460
 So that kind of crossover
 gadget is enough
 
 1791
-01:19:36,560 --> 01:19:40,930
+01:19:37,460 --> 01:19:41,830
 for Push-1 and PushPush-1.
 
 1792
-01:19:40,930 --> 01:19:44,100
+01:19:41,830 --> 01:19:45,000
 And it's exactly mimicking
 what we did with Super Mario
 
 1793
-01:19:44,100 --> 01:19:46,180
+01:19:45,000 --> 01:19:47,080
 Brothers, we just had a
 different variable choice
 
 1794
-01:19:46,180 --> 01:19:50,190
+01:19:47,080 --> 01:19:51,090
 and a different clause and a
 different crossover gadget.
 
 1795
-01:19:50,190 --> 01:19:52,450
+01:19:51,090 --> 01:19:53,350
 But other than that, it
 was exactly the same.
 
 1796
-01:19:52,450 --> 01:19:54,960
+01:19:53,350 --> 01:19:55,860
 The gadgets were different,
 but the proof structure
 
 1797
-01:19:54,960 --> 01:19:56,010
+01:19:55,860 --> 01:19:56,910
 was the same.
 
 1798
-01:19:56,010 --> 01:19:59,140
+01:19:56,910 --> 01:20:00,040
 And that's our beginning
 of 3SAT reductions.
 
 1799
-01:19:59,140 --> 01:20:02,310
+01:20:00,040 --> 01:20:03,210
 We will do many more next class.
 
