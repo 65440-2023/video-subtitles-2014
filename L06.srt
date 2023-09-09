@@ -3462,8 +3462,8 @@ this planar circuit SAT.
 
 747
 00:33:56,370 --> 00:33:59,370
-It's like catch, this, I
-think is also a made-up term.
+Slight catch is that this,
+I think, is also a made-up term.
 
 748
 00:33:59,370 --> 00:34:00,969
