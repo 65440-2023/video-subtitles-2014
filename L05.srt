@@ -2344,7 +2344,7 @@ Alan Guo had in this case.
 500
 00:20:57,020 --> 00:20:59,090
 He's a PhD student
-in C-Cell here.
+in CSAIL here.
 
 501
 00:20:59,090 --> 00:21:02,210
@@ -2477,7 +2477,7 @@ this guy, John Conway.
 
 531
 00:21:58,100 --> 00:22:00,767
-And so if you've ever played
+And if you've ever played
 Conway's Game of Life,
 
 532
@@ -2496,7 +2496,7 @@ Here's the general idea.
 535
 00:22:06,710 --> 00:22:10,320
 There's a right player trying
-to get the white ball-- that's
+to get the white "ball", that's
 
 536
 00:22:10,320 --> 00:22:11,530
@@ -2504,7 +2504,7 @@ the "football."
 
 537
 00:22:11,530 --> 00:22:13,996
-This is philosophers'
+This is philosopher's
 football, if you will.
 
 538
@@ -2583,19 +2583,19 @@ can do several such jumps.
 
 553
 00:22:53,560 --> 00:22:54,970
-So I can jump here.
+So I can jump here,
 
 554
 00:22:54,970 --> 00:22:56,880
-Then, I can jump here.
+then, I can jump here,
 
 555
 00:22:56,880 --> 00:22:59,080
-Then, I can jump here.
+then, I can jump here,
 
 556
 00:22:59,080 --> 00:23:00,540
-Then, I can jump here.
+then, I can jump here.
 
 557
 00:23:00,540 --> 00:23:03,740
@@ -2745,8 +2745,8 @@ So that's tricky.
 
 588
 00:24:15,440 --> 00:24:18,480
-There is a piece-base hardness
-result relatively recent,
+There is a PSPACE-hardness
+result, relatively recent,
 
 589
 00:24:18,480 --> 00:24:22,360
@@ -2808,7 +2808,7 @@ It's pretty simple.
 602
 00:24:50,840 --> 00:24:53,204
 So this is what we call
-the mate in one problem.
+the mate-in-1 problem.
 
 603
 00:24:53,204 --> 00:24:54,870
@@ -2832,7 +2832,7 @@ and randomness and weird stuff.
 
 607
 00:25:03,220 --> 00:25:05,950
-And one movie usually
+And one move usually
 doesn't involve those at all.
 
 608
@@ -2920,20 +2920,20 @@ to the right here,
 
 625
 00:25:50,700 --> 00:25:51,658
-we don't have a choice.
+we don't have a choice,
 
 626
 00:25:51,658 --> 00:25:53,650
-We have to keep
+we have to keep
 jumping to the right.
 
 627
 00:25:53,650 --> 00:25:55,030
-But over here, we have a choice.
+But over here, we have a choice:
 
 628
 00:25:55,030 --> 00:25:59,111
-We could go down and then jump
+we could go down and then jump
 to the right and get over here
 
 629
@@ -2944,7 +2944,7 @@ things in the middle.
 630
 00:26:01,110 --> 00:26:03,307
 In general, that is
-our setting of x1.
+our setting of x_1.
 
 631
 00:26:03,307 --> 00:26:05,390
@@ -2953,12 +2953,12 @@ the same thing coming back
 
 632
 00:26:05,390 --> 00:26:07,130
-for x2 of two choices.
+for x_2 of two choices.
 
 633
 00:26:07,130 --> 00:26:09,890
 Then, the same thing
-going back for x3
+going back for x_3
 
 634
 00:26:09,890 --> 00:26:11,870
@@ -2967,7 +2967,7 @@ and then we get to this corner.
 635
 00:26:11,870 --> 00:26:14,280
 So that's forced other
-than these two choices,
+than these choices,
 
 636
 00:26:14,280 --> 00:26:16,450
@@ -2979,8 +2979,8 @@ Now, we have our first clause.
 
 638
 00:26:19,730 --> 00:26:24,040
-Let's say x1 negated or
-x2 negated or x3 negated.
+Let's say x_1 negated or
+x_2 negated or x_3 negated.
 
 639
 00:26:24,040 --> 00:26:26,330
@@ -3041,12 +3041,12 @@ the thing that makes it false.
 
 651
 00:26:52,900 --> 00:26:56,090
-So here, we want x2 to be false.
+So here, we want x_2 to be false.
 
 652
 00:26:56,090 --> 00:27:00,550
 So if we happen to follow the
-true path where x2 is true,
+true path where x_2 is true,
 
 653
 00:27:00,550 --> 00:27:03,340
@@ -3119,16 +3119,16 @@ get to the finish line
 
 667
 00:27:35,510 --> 00:27:39,940
-and win in one move, one move.
+and win in one move. One move.
 
 668
 00:27:39,940 --> 00:27:44,060
-So mate in one is NP-complete.
+So mate-in-1 is NP-complete.
 
 669
 00:27:44,060 --> 00:27:46,240
 I have one other example
-of a mate in one result.
+of a mate-in-1 result.
 
 670
 00:27:46,240 --> 00:27:48,656
@@ -3185,7 +3185,7 @@ we will get to at some point.
 681
 00:28:12,069 --> 00:28:14,360
 But for now, let's think
-about the mate in one problem.
+about the mate-in-1 problem.
 
 682
 00:28:14,360 --> 00:28:18,280
@@ -3390,7 +3390,7 @@ Then, you're happy.
 724
 00:30:03,330 --> 00:30:05,299
 So that's how to
-solve mate in one
+solve mate-in-1
 
 725
 00:30:05,299 --> 00:30:07,840
@@ -6038,7 +6038,7 @@ the motion to get there.
 1290
 00:56:21,970 --> 00:56:24,160
 That's another topic
-which you should take 8.49
+which you should take 6.849
 
 1291
 00:56:24,160 --> 00:56:26,100
