@@ -43,7 +43,7 @@ PROFESSOR: All right.
 
 11
 00:00:03,116 --> 00:00:05,030
-Welcome back to 6890.
+Welcome back to 6.890.
 
 12
 00:00:05,030 --> 00:00:08,880
@@ -75,7 +75,7 @@ see a few examples
 
 18
 00:00:19,400 --> 00:00:23,180
-of using SAT to prevent
+of using SAT to prove
 NP-completeness or NP-hardness.
 
 19
@@ -202,7 +202,7 @@ at the literature,
 44
 00:01:46,830 --> 00:01:53,360
 usually AND is the wedge, OR
-is the v, and NOT is the neg?
+is the vee, and NOT is the neg?
 
 45
 00:01:53,360 --> 00:01:56,150
@@ -212,7 +212,7 @@ name of that symbol.
 46
 00:01:56,150 --> 00:02:08,030
 And it's over n
-variables x1, x2, xn.
+variables x_1, x_2, ... x_n.
 
 47
 00:02:08,030 --> 00:02:09,780
@@ -222,7 +222,7 @@ given true or false
 48
 00:02:09,780 --> 00:02:13,570
 so that you can construct
-them by saying, x1 and not x1.
+them by saying, x_1 and not x_ 1.
 
 49
 00:02:13,570 --> 00:02:14,320
@@ -270,7 +270,7 @@ the Cook-Levin theorem,
 
 59
 00:02:45,720 --> 00:02:48,650
-the satisfiability
+that satisfiability
 is NP-complete.
 
 60
@@ -316,7 +316,7 @@ to think about it.
 
 69
 00:03:21,095 --> 00:03:22,470
-Also makes it the
+Also makes  the
 NP-completeness
 
 70
@@ -353,16 +353,16 @@ graphically inclined,
 77
 00:03:42,030 --> 00:03:46,990
 you could imagine you
-have your excise as wires,
+have your x_is as wires,
 
 78
 00:03:46,990 --> 00:03:52,379
 they're connected to gates--
-this is an and gate, this is
+this is an AND gate, this is
 
 79
 00:03:52,379 --> 00:03:56,640
-an or gate, this is a negation.
+an OR gate, this is a negation.
 
 80
 00:03:56,640 --> 00:04:02,500
@@ -389,11 +389,11 @@ might call the formula.
 85
 00:04:15,370 --> 00:04:20,300
 It is the AND of the
-negation of the OR of x3
+negation of the OR of x_3
 
 86
 00:04:20,300 --> 00:04:23,130
-and the AND of x1 and x2.
+and the AND of x_1 and x_2.
 
 87
 00:04:23,130 --> 00:04:27,000
@@ -478,7 +478,7 @@ So it's an acyclic circuit.
 105
 00:05:05,100 --> 00:05:07,960
 That would be another problem,
-which is harder than an NP.
+which is harder than sNP.
 
 106
 00:05:07,960 --> 00:05:11,670
@@ -508,7 +508,7 @@ of whether you can--
 111
 00:05:23,960 --> 00:05:26,200
 the existence of some
-setting of the AIs
+setting of the x_i's
 
 112
 00:05:26,200 --> 00:05:29,210
@@ -547,7 +547,7 @@ as a circuit or as a formula.
 119
 00:05:49,150 --> 00:05:54,270
 And then the existential
-quantifiers on the xi's let you
+quantifiers on the x_i's let you
 
 120
 00:05:54,270 --> 00:05:57,990
@@ -579,7 +579,7 @@ are symmetric here.
 126
 00:06:08,610 --> 00:06:12,930
 So that's the extent of
-the complexity theory
+complexity theory
 
 127
 00:06:12,930 --> 00:06:14,710
@@ -605,7 +605,7 @@ conjunctive normal form.
 132
 00:06:29,320 --> 00:06:31,270
 I hope you all know
-prepositional logic.
+propositional logic.
 
 133
 00:06:31,270 --> 00:06:33,490
@@ -659,7 +659,7 @@ What's a literal?
 145
 00:07:10,420 --> 00:07:15,950
 A literal is going
-to be xi or not xi.
+to be x_i or not x_i.
 
 146
 00:07:15,950 --> 00:07:18,500
@@ -728,7 +728,7 @@ prove this is hard.
 
 161
 00:07:52,470 --> 00:07:54,600
-Another view in this picture.
+Another view in this picture--
 
 162
 00:07:54,600 --> 00:07:59,690
@@ -782,7 +782,7 @@ are not negated.
 172
 00:08:39,920 --> 00:08:43,885
 So this is a clause that
-involves x1 or x2 or not x3.
+involves x_1 or x_2 or not x_3.
 
 173
 00:08:43,885 --> 00:08:49,080
@@ -833,7 +833,7 @@ degree of each of the clause
 
 183
 00:09:23,850 --> 00:09:25,560
-notes here is exactly three.
+nodes here is exactly three.
 
 184
 00:09:25,560 --> 00:09:28,110
@@ -922,7 +922,7 @@ Question.
 202
 00:10:22,070 --> 00:10:25,224
 AUDIENCE: Is that
-tight as 3SAT-4 NP?
+tight? Is 3SAT-4 in P?
 
 203
 00:10:25,224 --> 00:10:26,640
@@ -1160,12 +1160,12 @@ Yeah.
 256
 00:12:38,149 --> 00:12:40,440
 AUDIENCE: The construction
-to limit to five variables--
+to limit to five variables
 
 257
 00:12:40,440 --> 00:12:44,827
 should I believe work with the
-monotone construction as well?
+monotone construction as well.
 
 258
 00:12:44,827 --> 00:12:45,410
@@ -1205,7 +1205,7 @@ versions of SAT.
 
 267
 00:13:04,850 --> 00:13:08,450
-The three is tight
+The three is tight:
 if you have a clause
 
 268
@@ -1215,12 +1215,12 @@ but otherwise they're
 
 269
 00:13:12,550 --> 00:13:14,750
-just like 3SAT-- or
+just like 3SAT -- or
 just like CNF SAT,
 
 270
 00:13:14,750 --> 00:13:20,450
-I guess-- then this
+I guess -- then this
 is polynomial time.
 
 271
@@ -1312,7 +1312,7 @@ It's symmetric.
 
 289
 00:14:17,210 --> 00:14:19,900
-But this is now just
+This is now just
 a simple implication.
 
 290
@@ -1342,7 +1342,7 @@ solve 2SAT, you can just
 295
 00:14:33,120 --> 00:14:35,934
 pick your favorite variable,
-xi, set it to true,
+x_i, set it to true,
 
 296
 00:14:35,934 --> 00:14:37,600
@@ -1361,12 +1361,12 @@ the claim is there
 299
 00:14:40,900 --> 00:14:42,990
 is a satisfying assignment
-where xi equals true.
+where x_i equals true.
 
 300
 00:14:42,990 --> 00:14:46,100
 So you can try that
-with xi true, xi false.
+with x_i true, x_i false.
 
 301
 00:14:46,100 --> 00:14:47,840
@@ -1563,7 +1563,7 @@ at most one positive literal.
 344
 00:16:49,300 --> 00:16:50,930
 So that means
-you're form is going
+you're formula is going
 
 345
 00:16:50,930 --> 00:16:58,099
@@ -1581,7 +1581,7 @@ The rest are all negated.
 348
 00:17:02,410 --> 00:17:06,040
 And we can do some more
-prepositional logic.
+propositional logic.
 
 349
 00:17:06,040 --> 00:17:08,150
@@ -1793,7 +1793,7 @@ are on the outside.
 395
 00:19:31,740 --> 00:19:41,512
 So the formula is an
-AND of OR-- sorry.
+AND of ORs-- sorry.
 
 396
 00:19:41,512 --> 00:19:42,720
@@ -1818,11 +1818,11 @@ not-defined clauses
 401
 00:19:55,040 --> 00:19:56,956
 here because we don't
-really use this problem.
+really use this problem,
 
 402
 00:19:56,956 --> 00:20:01,070
-Because it's polynomial time.
+because it's polynomial time.
 
 403
 00:20:01,070 --> 00:20:03,464
@@ -1858,16 +1858,16 @@ of these is possible.
 410
 00:20:11,520 --> 00:20:14,450
 So you can just check for
-obvious contradictions, like xi
+obvious contradictions, like x_i
 
 411
 00:20:14,450 --> 00:20:16,010
-and not xi.
+and not x_i.
 
 412
 00:20:16,010 --> 00:20:18,320
 If that happens, then
-that cause is impossible.
+that clause is impossible.
 
 413
 00:20:18,320 --> 00:20:19,270
@@ -2051,8 +2051,8 @@ Thank you.
 
 453
 00:21:57,810 --> 00:22:00,160
-You might be wondering at
-this point, how much-- I mean,
+You might be wondering at this
+point, how am I supp-- I mean,
 
 454
 00:22:00,160 --> 00:22:02,127
@@ -2061,7 +2061,8 @@ all of these?
 
 455
 00:22:02,127 --> 00:22:03,460
-And sometimes the answer is yes.
+And in some sense
+the answer is yes.
 
 456
 00:22:03,460 --> 00:22:06,744
@@ -2076,7 +2077,7 @@ which versions of SAT
 458
 00:22:08,410 --> 00:22:11,360
 are polynomial time and
-which versions are NP hard,
+which versions are NP-hard,
 
 459
 00:22:11,360 --> 00:22:14,430
@@ -2152,7 +2153,7 @@ of SAT are in that spirit.
 475
 00:23:11,260 --> 00:23:14,317
 So this is usually, these
-days, called 1-in3 SAT,
+days, called 1-in-3 SAT,
 
 476
 00:23:14,317 --> 00:23:16,150
@@ -2189,22 +2190,22 @@ three variables, which
 483
 00:23:42,290 --> 00:23:56,450
 is that exactly one of, let's
-say, xi, xj, and xk is true.
+say, x_i, x_j, and x_k is true.
 
 484
 00:23:56,450 --> 00:24:01,280
 So this means it could be
-true-false-false, xi is true,
+true-false-false, x_i is true,
 
 485
 00:24:01,280 --> 00:24:03,810
 but the other two are false,
-it could be xj is true,
+it could be x_j is true,
 
 486
 00:24:03,810 --> 00:24:07,820
 the other two are false, or
-it could be that xk is true
+it could be that x_sk is true
 
 487
 00:24:07,820 --> 00:24:09,500
@@ -2258,7 +2259,7 @@ usually exactly.
 498
 00:24:32,100 --> 00:24:35,100
 Sometimes it's called
-all positive 1-in-3SAT.
+all-positive 1-in-3SAT.
 
 499
 00:24:35,100 --> 00:24:38,030
@@ -2383,7 +2384,7 @@ any suspense here.
 
 527
 00:25:50,640 --> 00:25:52,910
-This is NP.
+This is in P.
 
 528
 00:25:52,910 --> 00:25:54,440
@@ -2410,7 +2411,7 @@ know what it means.
 533
 00:26:04,860 --> 00:26:09,540
 A clause specifies that-- again,
-we take an and of clauses.
+we take an AND of clauses.
 
 534
 00:26:09,540 --> 00:26:16,990
@@ -2509,7 +2510,7 @@ interesting, you
 
 555
 00:27:07,200 --> 00:27:12,080
-can say x1 equals true,
+can say x_1 equals true,
 just to get you started.
 
 556
@@ -2578,7 +2579,7 @@ the OR of the other.
 569
 00:27:52,550 --> 00:27:59,410
 And this is the same
-as NOT xi or xj or xk.
+as NOT x_i or x_j or x_k.
 
 570
 00:27:59,410 --> 00:28:01,910
@@ -2618,7 +2619,7 @@ PROFESSOR: Good question.
 
 578
 00:28:18,630 --> 00:28:21,440
-Let's say x2 is false.
+Let's say x_2 is false.
 
 579
 00:28:21,440 --> 00:28:22,900
@@ -2782,7 +2783,8 @@ get to the dichotomy theorem.
 
 614
 00:29:43,480 --> 00:29:45,660
-So x1 is Not-All-Equal-3SAT.
+So next one is
+Not-All-Equal 3SAT.
 
 615
 00:29:45,660 --> 00:29:55,882
@@ -2817,11 +2819,11 @@ of three variables again.
 622
 00:30:14,760 --> 00:30:19,910
 And this is what I'm defining
-is going to be the monotone
+is going to be the Monotone
 
 623
 00:30:19,910 --> 00:30:25,980
-Not-All-Equal-3SAT--
+Not-All-Equal 3SAT--
 which is also hard--
 
 624
@@ -2831,8 +2833,8 @@ not just literals.
 
 625
 00:30:35,110 --> 00:30:40,210
-So no negations in monotone
-Not-All-Equal-3SAT.
+So no negations in Monotone
+Not-All-Equal 3SAT.
 
 626
 00:30:40,210 --> 00:30:41,920
@@ -2850,7 +2852,7 @@ Cool.
 
 629
 00:30:46,370 --> 00:30:48,470
-So not all equal just
+So not-all-equal just
 means that they're not
 
 630
@@ -2896,7 +2898,7 @@ in the logical level.
 
 639
 00:31:10,386 --> 00:31:11,845
-But the xi's are
+But the x_i's are
 treated completely
 
 640
@@ -2944,8 +2946,8 @@ all be colored the same.
 
 649
 00:31:31,560 --> 00:31:34,240
-So it means two of one, one
-of the other two trues and one
+So it means two of one, one of
+ohe other, two trues and one
 
 650
 00:31:34,240 --> 00:31:37,450
@@ -2971,7 +2973,7 @@ Cool.
 655
 00:31:46,890 --> 00:31:50,824
 AUDIENCE: So this is
-one or two in 3SAT?
+1-or-2-in-3SAT?
 
 656
 00:31:50,824 --> 00:31:51,490
@@ -2980,11 +2982,11 @@ PROFESSOR: Yeah.
 657
 00:31:51,490 --> 00:31:53,740
 You can think of this
-exactly one or two
+exactly 1-or-2-
 
 658
 00:31:53,740 --> 00:31:56,820
-in 3SAT, if you want to
+in-3SAT, if you want to
 phrase it in this style.
 
 659
@@ -3008,17 +3010,17 @@ of each thing is true--
 
 663
 00:32:07,060 --> 00:32:10,840
-exactly 1 3SAT, or 1-in-3SAT--
+exactly-1 3SAT, or 1-in-3SAT --
 where exactly one of the things
 
 664
 00:32:10,840 --> 00:32:13,640
 is true, and adding
-more things breaks it--
+more things breaks it --
 
 665
 00:32:13,640 --> 00:32:14,990
-and Not-All-Equal-3SAT.
+and Not-All-Equal 3SAT.
 
 666
 00:32:14,990 --> 00:32:17,250
@@ -3032,8 +3034,8 @@ bounds perspective.
 
 668
 00:32:19,690 --> 00:32:21,330
-These others are
-to, like, be careful
+These others are,
+like, be careful
 
 669
 00:32:21,330 --> 00:32:23,371
@@ -3132,7 +3134,7 @@ a Not-All-Equal constraint,
 689
 00:33:13,880 --> 00:33:15,796
 it might end up being
-an exactly 1 constraint,
+an exactly-1 constraint,
 
 690
 00:33:15,796 --> 00:33:18,430
@@ -3315,7 +3317,7 @@ or NP-complete.
 
 729
 00:35:20,580 --> 00:35:22,860
-There's no things in between.
+There's no things in-between.
 
 730
 00:35:22,860 --> 00:35:25,040
@@ -3437,7 +3439,7 @@ for those variables
 
 757
 00:36:38,000 --> 00:36:39,380
-and we'll say yes or no.
+and will say yes or no.
 
 758
 00:36:39,380 --> 00:36:40,957
@@ -3450,8 +3452,8 @@ relation as the set
 
 760
 00:36:42,540 --> 00:36:44,790
-of all assignments, their
-variables, and make it true.
+of all assignments of the
+variables that make it true.
 
 761
 00:36:44,790 --> 00:36:47,216
@@ -3544,7 +3546,7 @@ Sorry, that's redundant.
 
 781
 00:37:27,180 --> 00:37:30,610
-CNF has form in it.
+CNF has "form" in it.
 
 782
 00:37:30,610 --> 00:37:33,920
@@ -3592,8 +3594,8 @@ is an AND of clauses,
 
 792
 00:37:56,510 --> 00:37:58,120
-each one is your
-sum relation, which
+each one is just
+some relation, which
 
 793
 00:37:58,120 --> 00:37:59,740
@@ -3792,11 +3794,11 @@ the clause types.
 834
 00:40:14,760 --> 00:40:17,270
 And it's one of the issues we
-were having with not exactly
+were having with not-exactly-1
 
 835
 00:40:17,270 --> 00:40:21,397
-1 3SAT, because there the
+3SAT, because there the
 clause type allowed everything
 
 836
@@ -4057,7 +4059,7 @@ So imagine equations like this.
 894
 00:43:28,780 --> 00:43:33,540
 I take some number variables,
-I x OR them together and I say,
+I XOR them together and I say,
 
 895
 00:43:33,540 --> 00:43:37,790
@@ -4071,12 +4073,12 @@ linear equation over Zmod2.
 
 897
 00:43:41,700 --> 00:43:44,950
-Because in Zmod2-- the finite
-field in two elements--
+Because in Zmod2 -- the finite
+field in two elements --
 
 898
 00:43:44,950 --> 00:43:49,090
-addition becomes x OR and
+addition becomes XOR and
 there's no multiplication here
 
 899
@@ -4086,7 +4088,7 @@ because it's a linear system.
 900
 00:43:52,010 --> 00:43:57,430
 So we can solve these things
-because z2 is a finite field.
+because Z2 is a finite field.
 
 901
 00:43:57,430 --> 00:43:59,350
@@ -4498,8 +4500,8 @@ take that formula,
 
 988
 00:47:35,160 --> 00:47:39,060
-do a Karnaugh map-- if you've
-ever done digital logic stuff--
+do a Karnaugh map -- if you've
+ever done digital logic stuff --
 
 989
 00:47:39,060 --> 00:47:42,610
@@ -4697,7 +4699,7 @@ reductions, finally.
 
 1030
 00:49:19,740 --> 00:49:22,010
-NP hardcore time.
+NP-hardcore time.
 
 1031
 00:49:22,010 --> 00:49:30,410
@@ -4798,7 +4800,7 @@ in the graph.
 1053
 00:50:52,279 --> 00:50:53,820
 Every vertex will
-be [? instant to ?]
+be incident to
 
 1054
 00:50:53,820 --> 00:50:55,529
@@ -4853,7 +4855,7 @@ as SAT, in a sense.
 1065
 00:51:21,770 --> 00:51:24,310
 It's, again, just a local
-constraint on the notes.
+constraint on the nodes.
 
 1066
 00:51:24,310 --> 00:51:27,107
@@ -4875,12 +4877,12 @@ did something wrong,
 1070
 00:51:33,360 --> 00:51:38,380
 you can think of it
-as 2SAT and 4SAT,
+as 2-in-4SAT,
 
 1071
 00:51:38,380 --> 00:51:41,440
 or a special version
-of 2SAT and 4SAT.
+of 2-in-4SAT.
 
 1072
 00:51:41,440 --> 00:51:44,685
@@ -4926,7 +4928,7 @@ two should be red.
 1081
 00:52:03,060 --> 00:52:06,600
 So in all cases, it's exactly
-two and four of them are red.
+two in four of them are red.
 
 1082
 00:52:06,600 --> 00:52:09,470
@@ -4936,12 +4938,12 @@ and black, so that seems good.
 1083
 00:52:09,470 --> 00:52:11,690
 So this is a special
-case of 2SAT and 4SAT.
+case of 2-in-4SAT.
 
 1084
 00:52:11,690 --> 00:52:14,370
 In case you were wondering
-whether 2SAT and 4SAT is hard,
+whether 2-in-4SAT is hard,
 
 1085
 00:52:14,370 --> 00:52:15,440
@@ -5015,7 +5017,7 @@ instance to that problem.
 1100
 00:52:56,680 --> 00:53:00,280
 So this gadget,
-this is a k4 on--
+this is a K4 on--
 
 1101
 00:53:00,280 --> 00:53:03,590
@@ -5144,7 +5146,7 @@ they can be red or blue.
 1127
 00:54:13,680 --> 00:54:15,830
 But what we need
-is that the same xi
+is that the same x_i
 
 1128
 00:54:15,830 --> 00:54:17,430
@@ -5210,7 +5212,7 @@ same thing here, it's x and x.
 
 1141
 00:54:46,180 --> 00:54:48,277
-In our terminology, xi and xi.
+In our terminology, x_i and x_i.
 
 1142
 00:54:48,277 --> 00:54:50,610
@@ -5233,7 +5235,7 @@ So r here is Not-All-Equal.
 1146
 00:54:56,660 --> 00:55:00,590
 In our terminology, it'd
-be NAE, xxy, and yzu.
+be NAE(x,x,y) and NAE(y,z,u).
 
 1147
 00:55:00,590 --> 00:55:04,796
@@ -5294,7 +5296,8 @@ those general graphs,
 
 1160
 00:55:30,965 --> 00:55:32,120
-they don't [? tap in? ?]
+they don't have to be
+3-regular?
 
 1161
 00:55:32,120 --> 00:55:32,828
@@ -5436,7 +5439,7 @@ gadget is just
 
 1190
 00:56:39,370 --> 00:56:43,910
-[? 1b ?] split into
+1(b) split into
 degree 3 copies connected
 
 1191
@@ -5570,7 +5573,7 @@ be covered by exactly one box.
 
 1221
 00:57:49,550 --> 00:57:52,112
-Boxes can overlap each
+Boxes can't overlap each
 other, you can push a box,
 
 1222
@@ -6164,7 +6167,7 @@ between Sokoban and Push-1.
 
 1350
 01:02:41,130 --> 01:02:45,590
-Well Push-1-f, I suppose,
+Well Push-1F, I suppose,
 is pushing one thing
 
 1351
@@ -6208,7 +6211,7 @@ We've talked about Push-k.
 
 1360
 01:03:05,760 --> 01:03:07,470
-Push-star is when k is infinity.
+Push-* is when k is infinity.
 
 1361
 01:03:07,470 --> 01:03:09,880
@@ -6222,17 +6225,17 @@ in a row as you want.
 
 1363
 01:03:12,730 --> 01:03:15,440
-PushPush-k, PushPush-star, then.
+PushPush-k, PushPush-*, then.
 
 1364
 01:03:15,440 --> 01:03:17,910
-We've talked about f. f is
+We've talked about F. F is
 when you have fixed blocks.
 
 1365
 01:03:17,910 --> 01:03:22,900
-Push-1-f, Push-k-f,
-and Push-star-f.
+Push-1F, Push-kF,
+and Push-*F.
 
 1366
 01:03:22,900 --> 01:03:25,050
@@ -6242,7 +6245,7 @@ other variation here
 1367
 01:03:25,050 --> 01:03:26,890
 that's been considered,
-which is the x.
+which is the X.
 
 1368
 01:03:26,890 --> 01:03:29,620
@@ -6281,8 +6284,8 @@ I'll get to that in a moment--
 
 1375
 01:03:47,270 --> 01:03:50,241
-there's Push-k-x
-and Push-star-x.
+there's Push-kX
+and Push-*X.
 
 1376
 01:03:50,241 --> 01:03:50,740
@@ -6387,8 +6390,8 @@ it's like a fixed block.
 
 1398
 01:04:27,870 --> 01:04:30,160
-If you have a k plus
-1 by k plus 1 block,
+If you have a
+k+1 by k+1 block,
 
 1399
 01:04:30,160 --> 01:04:32,690
@@ -6455,11 +6458,11 @@ that as fixed blocks or not.
 1413
 01:04:57,950 --> 01:05:00,550
 If nothing is fixed, then you
-can just walk off to infinity.
+can just walk off to infinity,
 
 1414
 01:05:00,550 --> 01:05:02,560
-Move all the blocks
+move all the blocks
 away and then come back
 
 1415
@@ -6485,7 +6488,7 @@ known to be PSPACE-Complete.
 
 1420
 01:05:09,780 --> 01:05:15,060
-Push-Push, with a fixed
+PushPush, with a fixed
 strength, is PSPACE-Complete.
 
 1421
@@ -6499,7 +6502,7 @@ That's not written here.
 
 1423
 01:05:22,390 --> 01:05:24,750
-But Push-Push-Star, all
+But PushPush-*, all
 we know is NP-hardness.
 
 1424
@@ -6507,13 +6510,13 @@ we know is NP-hardness.
 
 1425
 01:05:27,300 --> 01:05:32,550
-Push-k-f, where k is at least 2,
+Push-kF, where k is at least 2,
 is known to be PSPACE-Complete.
 
 1426
 01:05:32,550 --> 01:05:38,660
-But Push-1-f or Push-2,
-without the f, are both open.
+But Push-1F or Push-2,
+without the F, are both open.
 
 1427
 01:05:38,660 --> 01:05:41,220
@@ -6523,7 +6526,7 @@ were interested
 1428
 01:05:41,220 --> 01:05:43,950
 in a non-crossing path is that
-forces the problem to be an NP.
+forces the problem to be in NP.
 
 1429
 01:05:43,950 --> 01:05:45,574
@@ -6537,7 +6540,7 @@ has polynomial length.
 1431
 01:05:46,630 --> 01:05:48,660
 You can visit each
-[? grant at ?] most once.
+square at most once.
 
 1432
 01:05:48,660 --> 01:05:50,570
@@ -6588,7 +6591,7 @@ It's by Michael Hoffman, 2000.
 
 1442
 01:06:09,620 --> 01:06:13,040
-This is Push-star with
+This is Push-* with
 a rectangular box.
 
 1443
@@ -6706,18 +6709,18 @@ variables look like.
 
 1467
 01:07:01,240 --> 01:07:04,430
-You have two rows, the xi row
-and the xi complement row.
+You have two rows, the x_i row
+and the x_i-complement row.
 
 1468
 01:07:04,430 --> 01:07:07,869
 That's another way
-to write NOT xi.
+to write NOT x_i.
 
 1469
 01:07:07,869 --> 01:07:09,910
 And you're going to count,
-how many times does xi
+how many times does x_i
 
 1470
 01:07:09,910 --> 01:07:11,190
@@ -6730,7 +6733,7 @@ form, negative form.
 
 1472
 01:07:12,690 --> 01:07:14,694
-That's called ni and ni bar.
+That's called n_i and n_i-bar.
 
 1473
 01:07:14,694 --> 01:07:16,610
@@ -6740,11 +6743,11 @@ measure out these lengths.
 1474
 01:07:16,610 --> 01:07:18,970
 You can negate variables to
-make sure that ni is always
+make sure that n_i is always
 
 1475
 01:07:18,970 --> 01:07:20,730
-bigger than ni bar.
+bigger than n_i-bar.
 
 1476
 01:07:20,730 --> 01:07:22,050
@@ -6752,8 +6755,8 @@ So do that.
 
 1477
 01:07:22,050 --> 01:07:24,886
-So in this case, ni is this
-big, ni bar is this big.
+So in this case, n_i is this
+big, n_i-bar is this big.
 
 1478
 01:07:24,886 --> 01:07:25,510
@@ -6840,12 +6843,12 @@ of blank spaces over here
 
 1496
 01:08:02,330 --> 01:08:04,581
-is exactly ni.
+is exactly n_i.
 
 1497
 01:08:04,581 --> 01:08:08,597
-So this is why, after you
-push ni steps or ni bar steps,
+So this is why, after you push
+n_i steps or n_i-bar steps,
 
 1498
 01:08:08,597 --> 01:08:09,430
@@ -7257,7 +7260,7 @@ OK?
 
 1586
 01:11:21,720 --> 01:11:24,180
-That's Push-star.
+That's Push-*.
 
 1587
 01:11:24,180 --> 01:11:24,680
@@ -7272,7 +7275,7 @@ OK.
 
 1590
 01:11:32,140 --> 01:11:34,710
-Let's do Push-Push-1 in 3D.
+Let's do PushPush-1 in 3D.
 
 1591
 01:11:34,710 --> 01:11:37,030
@@ -7507,12 +7510,12 @@ both Push and Push-1-- Push
 
 1640
 01:13:25,230 --> 01:13:26,600
-and Push-Push.
+and PushPush.
 
 1641
 01:13:26,600 --> 01:13:28,100
 The only place we're
-using Push-Push
+using PushPush
 
 1642
 01:13:28,100 --> 01:13:32,850
@@ -7549,17 +7552,17 @@ you can move-- well,
 
 1649
 01:13:50,110 --> 01:13:59,100
-you can maybe move i down, j
+you can maybe move I down, J
 left, and like this, but-- yes.
 
 1650
 01:13:59,100 --> 01:14:08,380
-You can move i down, j left, e
-down, f left, b down, but not c
+You can move I down, J left, E
+down, F left, B down, but not C
 
 1651
 01:14:08,380 --> 01:14:10,694
-left, because d is in the way.
+left, because D is in the way.
 
 1652
 01:14:10,694 --> 01:14:11,194
@@ -7598,11 +7601,11 @@ Push them all over.
 1660
 01:14:27,090 --> 01:14:29,370
 And then you have
-room to push c over,
+room to push C over,
 
 1661
 01:14:29,370 --> 01:14:32,250
-and then a can go all the
+and then A can go all the
 way down, and you're through.
 
 1662
@@ -7611,8 +7614,8 @@ So this unlocks the lock.
 
 1663
 01:14:35,480 --> 01:14:37,863
-Then allowing a to
-be traversal later.
+Then allowing a to b
+traversal later.
 
 1664
 01:14:37,863 --> 01:14:39,362
@@ -7641,11 +7644,12 @@ AUDIENCE: [INAUDIBLE].
 
 1670
 01:14:47,184 --> 01:14:48,350
-PROFESSOR: You can't unlock.
+PROFESSOR: You can't
+un-unlock.
 
 1671
 01:14:48,350 --> 01:14:50,130
-Once l's down, it's
+Once L's down, it's
 permanently there.
 
 1672
@@ -7672,7 +7676,7 @@ possible entries.
 
 1677
 01:15:01,420 --> 01:15:05,884
-This is xi or NOT xj or xk.
+This is x_i or not x_j or x_k.
 
 1678
 01:15:05,884 --> 01:15:07,300
@@ -7696,8 +7700,8 @@ the other half of the gadget.
 
 1682
 01:15:14,950 --> 01:15:18,022
-So either you move
-y or you move x.
+So either you move Y
+or you move X.
 
 1683
 01:15:18,022 --> 01:15:20,230
@@ -7822,7 +7826,7 @@ crossover in the Push-1 model,
 
 1709
 01:16:11,090 --> 01:16:12,620
-or Push-Push-1.
+or PushPush-1.
 
 1710
 01:16:12,620 --> 01:16:17,000
@@ -8119,11 +8123,11 @@ things you can do.
 1772
 01:18:49,010 --> 01:18:51,230
 So when we have this
-diagram-- I think
+diagram -- I think
 
 1773
 01:18:51,230 --> 01:18:53,190
-I have one here--
+I have one here --
 variables and clauses,
 
 1774
@@ -8208,7 +8212,7 @@ gadget is enough
 
 1791
 01:19:36,560 --> 01:19:40,930
-for Push-1 and Push-Push-1.
+for Push-1 and PushPush-1.
 
 1792
 01:19:40,930 --> 01:19:44,100
