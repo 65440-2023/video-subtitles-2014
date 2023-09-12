@@ -2877,7 +2877,7 @@ here and we have
 616
 00:25:24,630 --> 00:25:27,690
 a choice whether-- if we
-want to set x1 to true,
+want to set x_1 to true,
 
 617
 00:25:27,690 --> 00:25:30,850
@@ -3190,7 +3190,7 @@ about the mate-in-1 problem.
 682
 00:28:14,360 --> 00:28:18,280
 This turns out to be
-easy, unlike phutball.
+easy, unlike Phutball.
 
 683
 00:28:18,280 --> 00:28:23,320
@@ -5817,7 +5817,7 @@ can go one way or the other.
 
 1244
 00:54:27,120 --> 00:54:30,090
-So the idea is here is x2.
+So the idea is here is x_2.
 
 1245
 00:54:30,090 --> 00:54:32,170
@@ -5832,7 +5832,7 @@ splitter/negation gadget.
 1247
 00:54:35,260 --> 00:54:38,560
 So we get this copy
-of x2 just going off.
+of x_2 just going off.
 
 1248
 00:54:38,560 --> 00:54:41,220
@@ -5860,7 +5860,7 @@ like to do-- looks
 
 1253
 00:54:48,920 --> 00:54:51,700
-like this clause involves x2.
+like this clause involves x_2.
 
 1254
 00:54:51,700 --> 00:54:56,360
@@ -6126,12 +6126,12 @@ graph is proved NP-complete.
 1309
 00:57:21,630 --> 00:57:26,490
 So the problem is, I give you
-a bunch of terminal pairs, v1,
+a bunch of terminal pairs, v_1,
 
 1310
 00:57:26,490 --> 00:57:30,840
-v1 prime, v2, v2 prime,
-and so on, c1, c1 prime,
+v_1 prime, v_2, v_2 prime,
+and so on, c_1, c_1 prime,
 
 1311
 00:57:30,840 --> 00:57:32,480
@@ -6145,7 +6145,7 @@ the pairs by paths.
 1313
 00:57:35,150 --> 00:57:38,720
 So I want to find a path
-from v1 to v1 prime and so
+from v_1 to v_1 prime and so
 
 1314
 00:57:38,720 --> 00:57:43,210
@@ -6210,11 +6210,11 @@ path all the way through.
 1327
 00:58:10,380 --> 00:58:14,120
 Kind of similar to what we
-did with phutball-- the idea
+did with Phutball-- the idea
 
 1328
 00:58:14,120 --> 00:58:18,100
-is that from v1 to v1
+is that from v_1 to v_1
 prime, there are two paths,
 
 1329
@@ -6233,12 +6233,12 @@ be doomed, I hope.
 
 1332
 00:58:25,580 --> 00:58:28,940
-So the idea is v1, maybe
+So the idea is v_1, maybe
 you choose the blue path.
 
 1333
 00:58:28,940 --> 00:58:32,646
-That will prevent c3 from
+That will prevent c_3 from
 using that path because there's
 
 1334
@@ -6257,16 +6257,16 @@ no other vertices here.
 1337
 00:58:37,630 --> 00:58:40,920
 So I use the blue path,
-c3 cannot use that path.
+c_3 cannot use that path.
 
 1338
 00:58:40,920 --> 00:58:42,940
 If I use the red path,
-c1 can't use this
+c_1 can't use this
 
 1339
 00:58:42,940 --> 00:58:45,270
-one. c2 can't use this one.
+one. c_2 can't use this one.
 
 1340
 00:58:45,270 --> 00:58:47,270
@@ -6288,11 +6288,11 @@ say red is true.
 
 1344
 00:58:56,520 --> 00:59:01,190
-Then, c1 has v1 bar in it.
+Then, c_1 has v_1 bar in it.
 
 1345
 00:59:01,190 --> 00:59:03,820
-c1 is happy if you
+c_1 is happy if you
 choose the blue path
 
 1346
@@ -6302,7 +6302,7 @@ you choose the red path.
 
 1347
 00:59:06,030 --> 00:59:09,380
-Now, c1 to c1 prime
+Now, c_1 to c_1 prime
 only has to be happy
 
 1348
@@ -6318,7 +6318,7 @@ should be set correctly.
 1350
 00:59:15,270 --> 00:59:17,547
 Then, there is a path
-from c1 to c1 prime.
+from c_1 to c_1 prime.
 
 1351
 00:59:17,547 --> 00:59:19,380
@@ -6387,7 +6387,7 @@ to build a crossover gadget.
 1365
 00:59:53,910 --> 00:59:57,030
 So the idea is
-instead of v1 to v1
+instead of v_1 to v_1
 
 1366
 00:59:57,030 --> 01:00:00,790
@@ -6531,16 +6531,16 @@ here and if you look closely
 1397
 01:01:25,970 --> 01:01:31,100
 at the bold lines, you've got
-a bracket here from v1 to x1.
+a bracket here from v_1 to x_1.
 
 1398
 01:01:31,100 --> 01:01:34,440
 Then, you've got a bracket
-here from x2 to x3, then
+here from x_2 to x_3, then
 
 1399
 01:01:34,440 --> 01:01:36,160
-a bracket here from x4.
+a bracket here from x_4.
 
 1400
 01:01:36,160 --> 01:01:39,580
@@ -6597,7 +6597,7 @@ the brackets, and down.
 
 1411
 01:02:11,620 --> 01:02:15,490
-And so the c1 to c1 prime
+And so the c_1 to c_1 prime
 can remain a single path.
 
 1412
@@ -6616,7 +6616,7 @@ with no trouble.
 
 1415
 01:02:21,780 --> 01:02:24,400
-But v1 is still
+But v_1 is still
 communicating information
 
 1416
@@ -6746,7 +6746,7 @@ where you have two choices.
 
 1443
 01:03:41,760 --> 01:03:44,850
-So maybe the v1 dot
+So maybe the v_1 dot
 is actually here
 
 1444
