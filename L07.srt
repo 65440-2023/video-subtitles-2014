@@ -6642,7 +6642,7 @@ three-dimensional matching and
 
 1449
 01:05:41,130 --> 01:05:48,012
-planar exact cover by 3SATs,
+planar exact cover by 3-sets,
 you can have one cycle
 
 1450
