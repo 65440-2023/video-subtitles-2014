@@ -439,7 +439,7 @@ So it's an acyclic circuit.
 105
 00:05:06,000 --> 00:05:08,860
 That would be another problem,
-which is harder than sNP.
+which is harder than NP.
 
 106
 00:05:08,860 --> 00:05:12,570
