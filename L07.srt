@@ -8061,8 +8061,8 @@ only weakly hard.
 
 1761
 01:17:49,620 --> 01:17:51,560
-There was a pseudo
-poly-algorithm.
+There was a pseudopoly
+algorithm.
 
 1762
 01:17:51,560 --> 01:17:53,120
@@ -8071,12 +8071,12 @@ strongly NP-hard.
 
 1763
 01:17:53,120 --> 01:17:54,494
-There is no pseudo
-poly-algorithm
+There is no pseudopoly
+algorithm
 
 1764
 01:17:54,494 --> 01:17:55,640
-unless P equals np.
+unless P equals NP.
 
 1765
 01:17:55,640 --> 01:17:57,814
@@ -8232,7 +8232,7 @@ it one more time.
 
 1798
 01:19:15,140 --> 01:19:17,400
-Here it's hitting P1,
+Here it's hitting p_1,
 because this basically
 
 1799
@@ -8260,12 +8260,12 @@ then this one has to be down.
 1804
 01:19:28,720 --> 01:19:32,540
 But this guy can be up
-and avoid P1 but hit P2.
+and avoid p_1 but hit p_2.
 
 1805
 01:19:32,540 --> 01:19:37,030
 Or this one's down, these
-are up, and we hit P3.
+are up, and we hit p_3.
 
 1806
 01:19:37,030 --> 01:19:39,240
