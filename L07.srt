@@ -6030,7 +6030,7 @@ write down the problem again.
 
 1318
 00:59:31,560 --> 00:59:33,350
-You're given three sets.
+You're given 3-sets.
 
 1319
 00:59:33,350 --> 00:59:35,180
