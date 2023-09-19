@@ -3393,7 +3393,7 @@ before by Goldschlager in 1977.
 732
 00:33:02,855 --> 00:33:04,730
 They were worried about
-p completeness, which
+P-completeness, which
 
 733
 00:33:04,730 --> 00:33:06,370
@@ -4045,7 +4045,7 @@ choices for the x ANDs, such
 
 874
 00:40:15,910 --> 00:40:22,920
-that some f of xi's equals 1.
+that some f of x_i's equals 1.
 
 875
 00:40:22,920 --> 00:40:26,599
@@ -4178,7 +4178,7 @@ satisfying assignment.
 
 903
 00:41:56,380 --> 00:42:00,100
-I'd give you xa to xn,
+I'd give you x_1 to x_n,
 where f ends up being 1,
 
 904
@@ -4197,7 +4197,7 @@ all possible exponentially many
 
 907
 00:42:07,460 --> 00:42:09,740
-assignments to the xi's.
+assignments to the x_i's.
 
 908
 00:42:09,740 --> 00:42:11,920
@@ -4211,7 +4211,7 @@ That's coNP completeness.
 910
 00:42:13,150 --> 00:42:19,620
 It's the same NP versus
-p problem, but negated.
+P problem, but negated.
 
 911
 00:42:19,620 --> 00:42:20,550
@@ -4418,12 +4418,12 @@ they're about the same.
 954
 00:44:10,070 --> 00:44:12,510
 The difference between NP
-and coNP versus p space
+and coNP versus PSPACE
 
 955
 00:44:12,510 --> 00:44:15,860
-is totally different, or x
-time, or the other things
+is totally different, or
+EXPTIME, or the other things
 
 956
 00:44:15,860 --> 00:44:17,970
@@ -4435,12 +4435,12 @@ Yeah?
 
 958
 00:44:18,470 --> 00:44:21,737
-AUDIENCE: Would p equals
-NP imply p equals coNP?
+AUDIENCE: Would P equals
+NP imply P equals coNP?
 
 959
 00:44:21,737 --> 00:44:23,320
-ERIK DEMAINE: If p
+ERIK DEMAINE: If P
 equals NP, then I'm
 
 960
@@ -4450,7 +4450,7 @@ because in polynomial time
 
 961
 00:44:31,090 --> 00:44:33,970
-you can do-- yeah. p is
+you can do-- yeah. P is
 closed under a complement,
 
 962
@@ -5187,7 +5187,7 @@ or all gates are NOR.
 1120
 00:51:33,230 --> 00:51:38,120
 This is nice because when you're
-solving next p set or whatever,
+solving next pset or whatever,
 
 1121
 00:51:38,120 --> 00:51:41,970
@@ -7136,7 +7136,7 @@ all of these things come
 
 1541
 01:10:50,480 --> 01:10:53,070
-in, x1, x1 bar, x2, x2 bar.
+in, x_1, x_1 bar, x_2, x_2 bar.
 
 1542
 01:10:53,070 --> 01:10:56,890
@@ -7393,7 +7393,7 @@ didn't go up the chain.
 
 1596
 01:13:18,270 --> 01:13:22,544
-Here, setting x1 bar doesn't
+Here, setting x_1 bar doesn't
 do much except setting one
 
 1597
@@ -7433,7 +7433,7 @@ resolve from bottom to top,
 1604
 01:13:40,130 --> 01:13:47,715
 you-- it doesn't-- then first
-you figure out whether x1
+you figure out whether x_1
 
 1605
 01:13:47,715 --> 01:13:48,590
@@ -7442,17 +7442,17 @@ satisfies the clause.
 1606
 01:13:48,590 --> 01:13:51,090
 If it doesn't, it
-sets things up for x2.
+sets things up for x_2.
 
 1607
 01:13:51,090 --> 01:13:52,870
-And then maybe x2
+And then maybe x_2
 satisfies the clause.
 
 1608
 01:13:52,870 --> 01:13:54,760
 If it doesn't, it sets
-things up for x3 here.
+things up for x_3 here.
 
 1609
 01:13:54,760 --> 01:13:56,310
@@ -7749,7 +7749,7 @@ down and it just
 1671
 01:16:49,980 --> 01:16:54,080
 keeps-- it goes down, basically,
-to where the x1 bar is,
+to where the x_1 bar is,
 
 1672
 01:16:54,080 --> 01:16:57,930
@@ -7779,7 +7779,7 @@ Just lots of stuff happens.
 1678
 01:17:07,470 --> 01:17:09,320
 Anyway, eventually
-we'll get down to x2
+we'll get down to x_2
 
 1679
 01:17:09,320 --> 01:17:12,140
