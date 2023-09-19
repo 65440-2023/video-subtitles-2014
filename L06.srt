@@ -89,7 +89,7 @@ different approaches.
 
 21
 00:00:35,420 --> 00:00:40,950
-So approach one I'm going
+So approach (1) I'm going
 to call dual rail logic.
 
 22
@@ -136,7 +136,7 @@ variables have two outputs.
 31
 00:01:12,270 --> 00:01:14,620
 And the idea is that
-this one is activated
+this 1 is activated
 
 32
 00:01:14,620 --> 00:01:16,580
@@ -144,8 +144,8 @@ when x is set to true.
 
 33
 00:01:16,580 --> 00:01:18,630
-This one is activated
-when not x is set to true
+This 1 is activated
+when NOT x is set to true
 
 34
 00:01:18,630 --> 00:01:21,550
@@ -413,7 +413,7 @@ versions of 3SAT
 90
 00:04:30,300 --> 00:04:37,300
 you may also need a
-negation or not gadget.
+negation or NOT gadget.
 
 91
 00:04:37,300 --> 00:04:40,760
@@ -521,8 +521,8 @@ was part of this overall plan.
 
 113
 00:05:45,760 --> 00:05:52,210
-In both cases, in one
-and two, you probably
+In both cases, in (1)
+and (2), you probably
 
 114
 00:05:52,210 --> 00:05:58,290
@@ -688,7 +688,7 @@ multiple other gates.
 148
 00:07:33,250 --> 00:07:34,980
 In addition to a
-not gadget, you're
+NOT gadget, you're
 
 149
 00:07:34,980 --> 00:07:40,850
@@ -989,7 +989,7 @@ it easy to separate gadgets.
 212
 00:10:37,580 --> 00:10:40,117
 But here we have two
-blanks squares, a one,
+blank squares, a one,
 
 213
 00:10:40,117 --> 00:10:41,950
@@ -1392,7 +1392,7 @@ and x prime on the right.
 299
 00:14:13,310 --> 00:14:16,850
 So that means coming out here
-there's not x prime on the left
+there's NOT x prime on the left
 
 300
 00:14:16,850 --> 00:14:20,790
@@ -1498,7 +1498,7 @@ then ends up looking like this.
 321
 00:15:13,350 --> 00:15:17,210
 So we get a split
-gadget and a not gate
+gadget and a NOT gate
 
 322
 00:15:17,210 --> 00:15:18,780
@@ -1548,7 +1548,7 @@ We've got a split.
 
 332
 00:15:36,630 --> 00:15:37,400
-We've got a not.
+We've got a NOT.
 
 333
 00:15:37,400 --> 00:15:39,790
@@ -6230,7 +6230,7 @@ variable-- I should
 1341
 01:01:20,150 --> 01:01:21,720
 say this is not for
-circuit SAT, this
+Circuit SAT, this
 
 1342
 01:01:21,720 --> 01:01:25,100
@@ -7850,7 +7850,7 @@ hard, and next class we'll
 1693
 01:17:47,020 --> 01:17:49,450
 see planar versions of
-3SAT and one and 3SAT.
+3SAT and 1-in-3SAT.
 
 1694
 01:17:49,450 --> 01:17:53,280
@@ -7874,11 +7874,11 @@ planar circuit SAT.
 1698
 01:18:00,840 --> 01:18:03,940
 But next we'll do planar and
-3SAT, planar one and 3SAT,
+3SAT, planar 1-in-3SAT,
 
 1699
 01:18:03,940 --> 01:18:05,940
-planar not all equal SAT,
+planar not-all-equal SAT,
 those kinds of things.
 
 1700
