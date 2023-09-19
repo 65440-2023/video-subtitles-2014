@@ -266,7 +266,7 @@ sort of in one wire.
 59
 00:02:54,580 --> 00:02:57,140
 Now, this distinction is going
-to get a little bit of egg.
+to get a little bit vague.
 
 60
 00:02:57,140 --> 00:03:00,590
