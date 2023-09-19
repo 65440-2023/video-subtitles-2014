@@ -280,8 +280,8 @@ about crease pattern,
 
 62
 00:03:02,350 --> 00:03:05,110
-flat foldability,
-and p hardness.
+flat foldability
+NP-hardness.
 
 63
 00:03:05,110 --> 00:03:07,630
@@ -888,7 +888,7 @@ saying they can't
 
 191
 00:09:42,378 --> 00:09:44,539
-be in the same NOR column?
+be in the same row or column?
 
 192
 00:09:44,539 --> 00:09:46,580
@@ -1439,7 +1439,7 @@ as a splitter.
 
 309
 00:14:36,560 --> 00:14:40,000
-It kind of makes 3D
+It kind of makes three
 copies of your signal.
 
 310
@@ -1449,7 +1449,7 @@ just as a negation gadget, as
 
 311
 00:14:42,980 --> 00:14:45,040
-a not gate.
+a NOT gate.
 
 312
 00:14:45,040 --> 00:14:49,580
@@ -1741,7 +1741,7 @@ Good.
 374
 00:17:24,930 --> 00:17:29,910
 And then we should
-up here get x NOR.
+up here get XNOR.
 
 375
 00:17:29,910 --> 00:17:33,160
@@ -1759,12 +1759,12 @@ and therefore, this is present.
 
 378
 00:17:38,380 --> 00:17:41,810
-And the x OR of zero
+And the XOR of zero
 and zero is zero.
 
 379
 00:17:41,810 --> 00:17:45,620
-The x NOR is 1, so that's good.
+The XNOR is 1, so that's good.
 
 380
 00:17:45,620 --> 00:17:47,230
@@ -1782,8 +1782,8 @@ here, we can get either x OR y,
 
 383
 00:17:52,970 --> 00:17:59,320
-or x NOR-- x NOR
-y-- it sounds funny.
+or XNOR-- x XNOR y--
+it sounds funny.
 
 384
 00:17:59,320 --> 00:18:00,165
@@ -1901,16 +1901,16 @@ is easy to construct.
 409
 00:19:11,570 --> 00:19:15,720
 But because we have
-x OR anyway, we
+XOR anyway, we
 
 410
 00:19:15,720 --> 00:19:20,570
 can use this fun fact that--
-this is the symbol for x OR.
+this is the symbol for XOR.
 
 411
 00:19:20,570 --> 00:19:25,530
-If you have x OR gadgets, you
+If you have XOR gadgets, you
 can make a crossover gadget
 
 412
@@ -1933,11 +1933,11 @@ I won't check all of them.
 416
 00:19:33,110 --> 00:19:35,930
 But that's cool
-because we have x NOR,
+because we have XNOR,
 
 417
 00:19:35,930 --> 00:19:37,920
-we can negate it and get x OR.
+we can negate it and get XOR.
 
 418
 00:19:37,920 --> 00:19:41,980
@@ -1983,7 +1983,7 @@ in general for circuit SAT?
 
 427
 00:19:58,730 --> 00:20:01,400
-Is planner circuit SAT hard?
+Is planar circuit SAT hard?
 
 428
 00:20:01,400 --> 00:20:03,400
@@ -2109,8 +2109,8 @@ inputs by De Morgan.
 
 455
 00:21:08,810 --> 00:21:17,020
-So you've got x OR y is NOT
-x and NOT y or vice versa.
+So you've got NOT (x OR y) is
+NOT x AND NOT y or vice versa.
 
 456
 00:21:17,020 --> 00:21:18,690
@@ -3044,7 +3044,7 @@ and still have the same signal.
 656
 00:29:44,130 --> 00:29:47,720
 So you can see here
-we have xx bar,
+we have x, x bar,
 
 657
 00:29:47,720 --> 00:29:54,480
@@ -3054,7 +3054,7 @@ shifted two positions over.
 658
 00:29:54,480 --> 00:29:58,710
 Or I guess it's more impressive
-over here, so x bar x.
+over here, so x bar, x.
 
 659
 00:29:58,710 --> 00:30:01,300
@@ -3410,7 +3410,7 @@ This one we've seen.
 
 736
 00:33:12,050 --> 00:33:15,980
-If you have an x OR gadget,
+If you have an XOR gadget,
 you can construct a crossover.
 
 737
