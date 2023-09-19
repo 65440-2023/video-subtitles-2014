@@ -3208,7 +3208,7 @@ point in my old diagram
 710
 00:35:36,490 --> 00:35:38,590
 because 3-partitions
-are actually E and NP.
+are actually in NP.
 
 711
 00:35:38,590 --> 00:35:40,950
@@ -3838,7 +3838,7 @@ strongly NP-hard,
 852
 00:41:48,630 --> 00:41:51,770
 but I'm pretty sure we don't
-know whether it's E and NP.
+know whether it's in NP.
 
 853
 00:41:51,770 --> 00:41:55,380
@@ -4011,7 +4011,7 @@ but just to point out,
 890
 00:43:29,330 --> 00:43:31,950
 this is one way to make
-the problem in E and NP.
+the problem in NP.
 
 891
 00:43:31,950 --> 00:43:34,554
