@@ -3985,7 +3985,7 @@ something like circuit SAT.
 860
 00:39:29,730 --> 00:39:32,865
 It's going to be a reduction
-from circuit unSAT.
+from Circuit UNSAT.
 
 861
 00:39:32,865 --> 00:39:41,320
@@ -5527,7 +5527,7 @@ version are hard, I don't know.
 
 1193
 00:54:45,540 --> 00:54:49,870
-But I know that Ds in the
+But I know that these in the
 planar version are hard.
 
 1194
@@ -5556,7 +5556,7 @@ I mean I claim this is coNP
 
 1199
 00:55:02,505 --> 00:55:05,130
-and then we're doing unSATs, but
+and then we're doing UNSAT, but
 we should actually check that.
 
 1200
@@ -5640,7 +5640,7 @@ figure out everything.
 1216
 00:55:48,760 --> 00:55:50,135
 If you know what
-all the XI's are
+all the x_i's are
 
 1217
 00:55:50,135 --> 00:55:52,150
@@ -5702,7 +5702,7 @@ was the wrong direction.
 1229
 00:56:20,220 --> 00:56:22,740
 I'm given a circuit
-unSAT instance.
+UNSAT instance.
 
 1230
 00:56:22,740 --> 00:56:24,735
@@ -6182,7 +6182,7 @@ Things are going to get messier.
 1331
 01:00:54,120 --> 01:00:57,600
 OK, so you have this picture,
-variable gadget for XI.
+variable gadget for x_i.
 
 1332
 01:00:57,600 --> 01:01:01,860
@@ -7817,7 +7817,7 @@ candycrush.isnphard.com.
 1686
 01:17:24,642 --> 01:17:29,910
 We should try to get other
-things not as nphard.com.
+things .isnphard.com.
 
 1687
 01:17:29,910 --> 01:17:31,620
