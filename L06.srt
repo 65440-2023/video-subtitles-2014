@@ -50,7 +50,7 @@ about pure 3SAT, so to speak,
 12
 00:00:09,660 --> 00:00:11,940
 and we'll be focusing
-in particular on circuit
+in particular on Circuit
 
 13
 00:00:11,940 --> 00:00:13,740
@@ -630,12 +630,12 @@ of proofs we've seen so far.
 136
 00:06:59,310 --> 00:07:02,200
 Now, today we're going to
-do a couple of circuit SAT
+do a couple of Circuit SAT
 
 137
 00:07:02,200 --> 00:07:05,530
 proofs, which all of this
-applies to circuit SAT proofs,
+applies to Circuit SAT proofs,
 
 138
 00:07:05,530 --> 00:07:07,790
@@ -932,7 +932,7 @@ because it's relatively simple
 200
 00:10:05,110 --> 00:10:08,680
 and it illustrates a kind
-of circuit SAT and style
+of Circuit SAT and style
 
 201
 00:10:08,680 --> 00:10:10,890
@@ -1285,7 +1285,7 @@ only appears in two places,
 
 276
 00:13:11,200 --> 00:13:16,300
-3SAT is easy, our circuit
+3SAT is easy, our Circuit
 SAT is probably easy.
 
 277
@@ -1979,11 +1979,11 @@ crossover gadgets
 
 426
 00:19:57,486 --> 00:19:58,730
-in general for circuit SAT?
+in general for Circuit SAT?
 
 427
 00:19:58,730 --> 00:20:01,400
-Is planar circuit SAT hard?
+Is Planar Circuit SAT hard?
 
 428
 00:20:01,400 --> 00:20:03,400
@@ -2306,7 +2306,7 @@ But yeah, you do need it.
 
 497
 00:22:52,700 --> 00:22:55,520
-For circuit SAT you
+For Circuit SAT you
 need-- let's add that.
 
 498
@@ -3455,7 +3455,7 @@ you get planarity for free.
 745
 00:33:42,140 --> 00:33:49,030
 So I'm going to call
-this planar circuit SAT.
+this Planar Circuit SAT.
 
 746
 00:33:49,030 --> 00:33:56,370
@@ -3503,11 +3503,9 @@ Then this is NP-complete.
 00:34:28,050 --> 00:34:35,104
 
 757
-00:34:35,104 --> 00:34:36,020
-AUDIENCE: [INAUDIBLE].
-
-758
-00:34:36,020 --> 00:34:38,731
+00:34:35,104 --> 00:34:38,731
+AUDIENCE: Want something here...
+this here, checking whether...
 
 759
 00:34:38,731 --> 00:34:39,730
@@ -3664,7 +3662,7 @@ terminator here
 
 792
 00:36:06,160 --> 00:36:07,590
-because we're doing circuit SAT.
+because we're doing Circuit SAT.
 
 793
 00:36:07,590 --> 00:36:09,990
@@ -3980,7 +3978,7 @@ everything out?
 859
 00:39:24,340 --> 00:39:29,730
 So again, the reduction is from
-something like circuit SAT.
+something like Circuit SAT.
 
 860
 00:39:29,730 --> 00:39:32,865
@@ -5097,7 +5095,7 @@ on Wikipedia earlier today.
 1100
 00:50:42,670 --> 00:50:46,410
 We already know that planar
-circuit SAT with NAND gates
+Circuit SAT with NAND gates
 
 1101
 00:50:46,410 --> 00:50:47,400
@@ -5174,7 +5172,7 @@ which means we
 1117
 00:51:20,470 --> 00:51:23,240
 can add to our definition
-of planar circuit SAT.
+of Planar Circuit SAT.
 
 1118
 00:51:23,240 --> 00:51:29,870
@@ -5192,7 +5190,7 @@ solving next pset or whatever,
 1121
 00:51:38,120 --> 00:51:41,970
 you can just take
-planar circuit SAT,
+Planar Circuit SAT,
 
 1122
 00:51:41,970 --> 00:51:44,480
@@ -5442,8 +5440,8 @@ This is false I think.
 
 1175
 00:53:55,760 --> 00:53:59,810
-It's called [INAUDIBLE], and
-this is called top, it's true.
+It's called BOT, and this
+is called TOP, it's true.
 
 1176
 00:53:59,810 --> 00:54:03,004
@@ -5701,7 +5699,7 @@ was the wrong direction.
 
 1229
 00:56:20,220 --> 00:56:22,740
-I'm given a circuit
+I'm given a Circuit
 UNSAT instance.
 
 1230
@@ -7869,7 +7867,7 @@ ones that happen in the plane.
 1697
 01:17:58,820 --> 01:18:00,840
 So we've seen it with
-planar circuit SAT.
+Planar Circuit SAT.
 
 1698
 01:18:00,840 --> 01:18:03,940
