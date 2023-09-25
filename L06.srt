@@ -1970,7 +1970,7 @@ we just care about polynomial.
 424
 00:19:51,660 --> 00:19:55,903
 So that's Light
-Up as empty heart.
+Up as NP-hard.
 
 425
 00:19:55,903 --> 00:19:57,486
@@ -2156,8 +2156,8 @@ clean construction.
 
 465
 00:21:41,470 --> 00:21:45,182
-It could actually make decent
-resize puzzles with it.
+It could actually make decently 
+sized puzzles with it.
 
 466
 00:21:45,182 --> 00:21:47,948
@@ -2349,7 +2349,7 @@ This is from our poster.
 507
 00:23:22,811 --> 00:23:24,560
 We did Super Mario
-Brothers, and Bruce Lee
+Brothers, and briefly
 
 508
 00:23:24,560 --> 00:23:27,950
@@ -3202,7 +3202,7 @@ to make gadgets,
 
 690
 00:31:16,450 --> 00:31:19,780
-so I want to have more.
+so why not have more.
 
 691
 00:31:19,780 --> 00:31:22,090
