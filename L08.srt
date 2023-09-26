@@ -3744,7 +3744,7 @@ This is a result.
 
 811
 00:37:58,620 --> 00:38:02,790
-This is in FUN 2010 by Forišek.
+This is in FUN 2010 by Forisek.
 
 812
 00:38:02,790 --> 00:38:05,030
