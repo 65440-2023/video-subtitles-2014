@@ -182,7 +182,7 @@ nice NP-complete problem.
 40
 00:01:41,780 --> 00:01:48,260
 We've actually seen one proof
-that planar max degree four,
+that planar max-degree-4,
 
 41
 00:01:48,260 --> 00:01:53,230
@@ -205,8 +205,8 @@ I guess it's not actually
 
 45
 00:02:02,970 --> 00:02:05,590
-max degree four, probably a
-max degree six or something.
+max degree 4, probably a
+max degree 6 or something.
 
 46
 00:02:05,590 --> 00:02:09,640
@@ -592,7 +592,7 @@ series of reductions.
 129
 00:06:31,740 --> 00:06:38,030
 First one we'll do is planar
-max degree three graphs.
+max-degree-3 graphs.
 
 130
 00:06:38,030 --> 00:06:42,680
@@ -1266,12 +1266,12 @@ didn't care about planarity,
 274
 00:12:57,670 --> 00:12:59,900
 but I want planar
-directed max degree three.
+directed max-degree-3.
 
 275
 00:12:59,900 --> 00:13:03,760
 At this point we should be
-directed max degree three.
+directed max-degree-3.
 
 276
 00:13:03,760 --> 00:13:08,550
@@ -1390,11 +1390,11 @@ of these pictures,
 300
 00:14:20,500 --> 00:14:24,810
 and you end up with planar
-directed max degree three.
+directed max-degree-3.
 
 301
 00:14:24,810 --> 00:14:26,240
-All right?
+Alright?
 
 302
 00:14:26,240 --> 00:14:29,550
@@ -1415,7 +1415,7 @@ to tell you the goal.
 306
 00:14:37,280 --> 00:14:44,480
 Next one is going to be planar
-bipartite max degree three.
+bipartite max-degree-3.
 
 307
 00:14:44,480 --> 00:14:55,215
@@ -1439,7 +1439,7 @@ There it is.
 312
 00:15:03,710 --> 00:15:06,220
 So the cool thing
-about max degree three
+about max-degree-3
 
 313
 00:15:06,220 --> 00:15:09,840
@@ -1902,17 +1902,13 @@ we want to solve Hamiltonicity
 
 413
 00:20:10,550 --> 00:20:13,870
-in planar bipartite max
-degree three graphs,
+in planar bipartite
+max-degree-3 graphs,
 
 414
-00:20:13,870 --> 00:20:16,460
+00:20:13,870 --> 00:20:17,190
 and we're going to convert such
-a planar bipartite max degree
-
-415
-00:20:16,460 --> 00:20:17,190
-three
+a planar bipartite max-degree-3
 
 416
 00:20:17,190 --> 00:20:22,870
@@ -1961,7 +1957,7 @@ It happens to be planar.
 
 426
 00:20:47,190 --> 00:20:49,260
-It's max degree three.
+It's max degree 3.
 
 427
 00:20:49,260 --> 00:20:52,910
@@ -2054,7 +2050,7 @@ embedding in the grid.
 446
 00:21:41,897 --> 00:21:44,230
 It's well known that if you
-have a max degree four graph
+have a max-degree-4 graph
 
 447
 00:21:44,230 --> 00:21:46,770
@@ -2139,7 +2135,7 @@ orthogonal parity-preserving
 464
 00:22:34,330 --> 00:22:39,260
 drawing of our given bipartite
-planar max degree three graph.
+planar max-degree-3 graph.
 
 465
 00:22:39,260 --> 00:22:43,260
@@ -3784,8 +3780,8 @@ show hard, as usual.
 
 819
 00:38:28,750 --> 00:38:35,215
-Let's say, max degree
-three grid graphs.
+Let's say, max-degree-3
+grid graphs.
 
 820
 00:38:35,215 --> 00:38:40,170
@@ -3831,26 +3827,26 @@ have degree four.
 829
 00:38:55,740 --> 00:38:59,770
 Of course, every grid
-graph is max degree four.
+graph is max degree 4.
 
 830
 00:38:59,770 --> 00:39:04,940
-And max degree two is pretty
+And max degree 2 is pretty
 easy to solve Hamiltonicity.
 
 831
 00:39:04,940 --> 00:39:07,100
 So what's left is
-max degree three.
+max degree 3.
 
 832
 00:39:07,100 --> 00:39:09,730
-So a natural question in
-between is can you do max degree
+So a natural question in between
+is can you do max-degree-3
 
 833
 00:39:09,730 --> 00:39:10,985
-three grid graphs.
+grid graphs.
 
 834
 00:39:10,985 --> 00:39:13,370
@@ -3987,7 +3983,7 @@ edge gadget exactly
 863
 00:40:24,050 --> 00:40:28,310
 as we did before, but now it's
-max degree three everywhere.
+max-degree-3 everywhere.
 
 864
 00:40:28,310 --> 00:40:29,020
@@ -4475,12 +4471,12 @@ that we're actually
 968
 00:45:22,310 --> 00:45:25,130
 reducing from a sub-problem
-of [INAUDIBLE] bipartite,
+of planar bipartite,
 
 969
 00:45:25,130 --> 00:45:27,800
-max degree three graphs in
-that every vertex is connected
+max-degree-3 graphs in that
+every vertex is connected
 
 970
 00:45:27,800 --> 00:45:31,490
@@ -4502,8 +4498,8 @@ point-- in fact, it's planar
 
 974
 00:45:39,950 --> 00:45:43,610
-bipartite max degree three
-graphs where every degree three
+bipartite max-degree-3 graphs
+where every degree three
 
 975
 00:45:43,610 --> 00:45:47,770
@@ -4769,8 +4765,8 @@ Cool.
 
 1032
 00:48:22,870 --> 00:48:28,352
-So that was max degree
-three grid graphs.
+So that was max-degree-3
+grid graphs.
 
 1033
 00:48:28,352 --> 00:48:29,185
@@ -4850,7 +4846,7 @@ vertices in the tree
 
 1050
 00:49:34,560 --> 00:49:38,496
-have max degree two,
+have max degree 2,
 that is Hamiltonian path,
 
 1051
@@ -4861,7 +4857,7 @@ traveling salesman problem.
 1052
 00:49:40,370 --> 00:49:46,930
 So we already proved Euclidean
-max degree two minimum spanning
+max-degree-2 minimum spanning
 
 1053
 00:49:46,930 --> 00:49:47,800
@@ -4869,7 +4865,7 @@ tree is hard.
 
 1054
 00:49:47,800 --> 00:49:48,990
-What about max degree three?
+What about max degree 3?
 
 1055
 00:49:48,990 --> 00:49:51,560
@@ -4887,11 +4883,11 @@ You start from this problem.
 1058
 00:49:56,730 --> 00:49:58,920
 And the cool thing
-about a max degree
+about a max-degree-3
 
 1059
 00:49:58,920 --> 00:50:04,530
-three grid graph is if you look
+grid graph is if you look
 at any point, at most three
 
 1060
@@ -4902,7 +4898,7 @@ are actual vertices.
 1061
 00:50:09,370 --> 00:50:12,500
 One of them has to be absent
-in a max degree three.
+in a max degree 3.
 
 1062
 00:50:12,500 --> 00:50:19,380
@@ -4978,7 +4974,7 @@ they were motivated
 
 1077
 00:51:00,050 --> 00:51:03,450
-to define max degree grid
+to define max-degree-3 grid
 graphs and prove that hard.
 
 1078
@@ -5298,7 +5294,7 @@ part here is thin.
 
 1148
 00:55:13,410 --> 00:55:15,820
-The banner's actually
+The boundary's actually
 drawn in bold here.
 
 1149
@@ -5360,13 +5356,13 @@ already proved.
 
 1161
 00:55:52,650 --> 00:55:56,700
-If you have a max
-degree three grid graph,
+If you have a
+max-degree-3 grid graph,
 
 1162
 00:55:56,700 --> 00:55:59,960
 if max degree is
-three then it must
+three, then it must
 
 1163
 00:55:59,960 --> 00:56:02,700
@@ -5380,8 +5376,8 @@ case for squares is hard.
 
 1165
 00:56:05,540 --> 00:56:10,950
-Max degree thin implies
-thin, four squares.
+Max degree 3 implies
+thin, for squares.
 
 1166
 00:56:10,950 --> 00:56:18,210
@@ -5406,7 +5402,7 @@ is the planar and betting part.
 1170
 00:56:28,860 --> 00:56:34,210
 So again, we're going to reduce
-from bipartite max degree three
+from bipartite max-degree-3
 
 1171
 00:56:34,210 --> 00:56:38,690
@@ -5579,16 +5575,16 @@ Cool.
 
 1207
 00:58:15,600 --> 00:58:18,100
-Now, that was max degree five.
+Now, that was max degree 5.
 
 1208
 00:58:18,100 --> 00:58:20,290
-What about max degree four?
+What about max degree 4?
 
 1209
 00:58:20,290 --> 00:58:24,560
-So here we had degree
-five vertex there.
+So here we had a
+degree-5 vertex there.
 
 1210
 00:58:24,560 --> 00:58:28,580
@@ -5615,8 +5611,8 @@ And it works.
 
 1215
 00:58:44,530 --> 00:58:58,980
-So I should say max degree
-four triangle is NP-hard.
+So I should say max-degree-4
+triangle is NP-hard.
 
 1216
 00:58:58,980 --> 00:59:02,200
@@ -5643,7 +5639,7 @@ triangle is hard.
 
 1221
 00:59:14,090 --> 00:59:16,144
-Max degree four
+Max-degree-4
 triangle is hard.
 
 1222
@@ -5676,7 +5672,7 @@ hardness for hex grids yet.
 1228
 00:59:35,080 --> 00:59:38,180
 And one thing we know
-is max degree three,
+is max degree 3,
 
 1229
 00:59:38,180 --> 00:59:46,110
@@ -5884,12 +5880,12 @@ Again, there's a drawing step.
 1274
 01:01:55,640 --> 01:01:58,280
 You're given some
-bipartite max degree
+bipartite max-degree-3
 
 1275
 01:01:58,280 --> 01:02:04,780
-three graph, and bipartite
-planar max three degree graph.
+graph, and bipartite planar
+max-degree-3 graph.
 
 1276
 01:02:04,780 --> 01:02:08,040
