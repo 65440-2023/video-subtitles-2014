@@ -4249,11 +4249,11 @@ And we have a choice.
 919
 00:42:57,080 --> 00:42:59,570
 We can either go like this,
-end at P3 or go like this
+end at p_3 or go like this
 
 920
 00:42:59,570 --> 00:43:00,270
-and end at P4.
+and end at p_4.
 
 921
 00:43:00,270 --> 00:43:02,670
@@ -4262,7 +4262,7 @@ We visited all the e_i's.
 922
 00:43:02,670 --> 00:43:06,000
 But we can't start
-at P1 and end at P2.
+at p_1 and end at p_2.
 
 923
 00:43:06,000 --> 00:43:07,550
@@ -4270,7 +4270,7 @@ We want to visit everything.
 
 924
 00:43:07,550 --> 00:43:08,600
-Start at P1.
+Start at p_1.
 
 925
 00:43:08,600 --> 00:43:11,210
@@ -4280,7 +4280,7 @@ you can never come back.
 926
 00:43:11,210 --> 00:43:14,010
 To come around here,
-you've already visited P2.
+you've already visited p_2.
 
 927
 00:43:14,010 --> 00:43:16,650
@@ -4441,8 +4441,8 @@ chosen, so that
 
 961
 00:45:04,070 --> 00:45:07,950
-means we'll come in either P1
-or P2, or leave on P1 or P2,
+means we'll come in either p_1
+or p_2, or leave on p_1 or p_2,
 
 962
 00:45:07,950 --> 00:45:10,210
@@ -4452,7 +4452,7 @@ those two cases we're in.
 963
 00:45:10,210 --> 00:45:15,370
 And then we will leave
-or enter from P3 or P4,
+or enter from p_3 or p_4,
 
 964
 00:45:15,370 --> 00:45:20,261
