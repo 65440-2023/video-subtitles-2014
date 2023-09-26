@@ -84,7 +84,7 @@ Hamiltonian cycle, also called
 20
 00:00:41,680 --> 00:00:45,340
 a Hamiltonian tour, or
-Hamiltonian circuit all
+Hamiltonian circuit, all
 
 21
 00:00:45,340 --> 00:00:46,940
@@ -243,7 +243,7 @@ looking for a path
 53
 00:02:35,810 --> 00:02:42,234
 and you're given the
-two end points-- so
+two endpoints-- so
 
 54
 00:02:42,234 --> 00:02:44,150
@@ -271,7 +271,7 @@ there-- so here's the graph,
 
 59
 00:02:55,040 --> 00:02:57,290
-here's s and t-- I want to
+here's s and t, I want to
 know is there a path that
 
 60
@@ -285,7 +285,7 @@ This is NP-hard.
 62
 00:03:01,640 --> 00:03:06,874
 By reduction from Hamiltonian
-cycle, tell me what to do.
+cycle. Tell me what to do?
 
 63
 00:03:06,874 --> 00:03:10,682
@@ -388,7 +388,8 @@ has degree at least five.
 
 85
 00:04:14,290 --> 00:04:16,870
-But probably already met them.
+But I won't bother
+writing that down.
 
 86
 00:04:16,870 --> 00:04:20,290
@@ -402,7 +403,7 @@ results proved in the '70s.
 
 88
 00:04:27,777 --> 00:04:29,610
-It's going to be hard
+It's NP-hard
 for squares of graphs.
 
 89
@@ -727,7 +728,7 @@ it's not literally as drawn.
 158
 00:07:58,920 --> 00:08:01,870
 Again, this is notation
-for a gadget the
+for a gadget that
 
 159
 00:08:01,870 --> 00:08:06,080
@@ -806,11 +807,11 @@ to the clauses?
 175
 00:08:34,190 --> 00:08:36,670
 ERIK DEMAINE: So the idea
-is here there's a choice.
+is here there's a choice,
 
 176
 00:08:36,670 --> 00:08:40,370
-Do I choose this edge or this
+do I choose this edge or this
 edge in the Hamiltonian cycle.
 
 177
@@ -1085,8 +1086,8 @@ the entire cycle.
 
 235
 00:11:15,370 --> 00:11:18,550
-Also, when we've
-grabbed this cycle,
+Also, when we
+grab this cycle,
 
 236
 00:11:18,550 --> 00:11:26,510
@@ -1509,7 +1510,7 @@ edge in and two out.
 
 327
 00:15:48,290 --> 00:15:51,034
-And we're going to convert that.
+And we're going to convert that--
 
 328
 00:15:51,034 --> 00:15:52,450
@@ -1857,7 +1858,7 @@ the solid grid graph
 
 403
 00:19:39,070 --> 00:19:42,755
-case by Umens and Lenhart, '97.
+case by Umans and Lenhart, '97.
 
 404
 00:19:42,755 --> 00:19:45,300
@@ -1911,11 +1912,11 @@ a planar bipartite max degree
 
 415
 00:20:16,460 --> 00:20:17,190
-three.
+three
 
 416
 00:20:17,190 --> 00:20:22,870
-Graph into a grid graph
+graph into a grid graph
 that acts the same.
 
 417
@@ -2079,7 +2080,7 @@ wrong for some vertex.
 
 452
 00:21:58,630 --> 00:22:02,060
-Suppose you draw vertex B
+Suppose you draw vertex v
 and it happens to be black,
 
 453
@@ -2680,7 +2681,7 @@ investigators-- then
 580
 00:27:32,200 --> 00:27:37,950
 you can end at any other
-p_i, p_j in such a way
+p_j in such a way
 
 581
 00:27:37,950 --> 00:27:40,210
@@ -2716,7 +2717,7 @@ end at p_j,
 588
 00:27:54,310 --> 00:28:00,120
 and visit all the vertices and
-all of the e_i's, all of the e_k's.
+all of the e_k's.
 
 589
 00:28:00,120 --> 00:28:02,920
@@ -2914,7 +2915,7 @@ line of three white dots,
 
 630
 00:29:40,780 --> 00:29:42,530
-shouldn't they all be black?
+shouldn't the middle be black?
 
 631
 00:29:42,530 --> 00:29:44,670
@@ -3064,7 +3065,7 @@ a Hamiltonian path
 663
 00:31:00,840 --> 00:31:02,990
 is strictly easier
-than finding a circle?
+than finding a circuit?
 
 664
 00:31:02,990 --> 00:31:05,920
@@ -3200,7 +3201,7 @@ points in the plane.
 693
 00:32:21,800 --> 00:32:25,310
 Better not make it too big
-because this might be hard.
+because this is NP-hard.
 
 694
 00:32:25,310 --> 00:32:28,685
