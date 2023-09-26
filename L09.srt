@@ -7574,11 +7574,11 @@ rows, hey, I solved the puzzle.
 1611
 01:16:59,010 --> 01:17:02,940
 And in general, if you look at
-a [? cubee ?] and the four other
+a cubie and the four other
 
 1612
 01:17:02,940 --> 01:17:05,849
-[? cubees ?] that it can go
+cubies that it can go
 to, they have some pattern.
 
 1613
@@ -7619,7 +7619,7 @@ what it needs to be solved.
 
 1621
 01:17:27,202 --> 01:17:28,660
-So these [? cubees ?],
+So these cubies,
 for example,
 
 1622
@@ -7689,7 +7689,7 @@ of identically oriented
 
 1636
 01:17:58,060 --> 01:17:59,970
-[? cubees ?], I can
+cubies, I can
 solve it in about x
 
 1637
