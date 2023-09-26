@@ -509,15 +509,15 @@ So that's kind of a limit.
 111
 00:05:30,790 --> 00:05:34,220
 And the other one
-here is planar-- three
+here is planar-- three-
 
 112
 00:05:34,220 --> 00:05:36,430
-connector graphs is NP-complete.
+connected graphs is NP-complete.
 
 113
 00:05:36,430 --> 00:05:38,960
-Planar four connector
+Planar four-connected
 graphs is polynomial.
 
 114
@@ -525,8 +525,8 @@ graphs is polynomial.
 
 115
 00:05:44,630 --> 00:05:49,070
-This is a tough theorem,
-one of many tough theorems.
+This is a Tutte theorem,
+one of many Tutte theorems.
 
 116
 00:05:49,070 --> 00:05:52,130
@@ -677,8 +677,8 @@ should be chosen.
 
 148
 00:07:34,210 --> 00:07:37,710
-So that forces x1 to be
-the opposite of x1 bar,
+So that forces x_1 to be
+the opposite of x_1 bar,
 
 149
 00:07:37,710 --> 00:07:39,362
@@ -796,12 +796,12 @@ Yeah.
 173
 00:08:28,965 --> 00:08:30,657
 AUDIENCE: Why were
-you using exclusively
+you using exclusive OR
 
 174
 00:08:30,657 --> 00:08:34,190
-working with [INAUDIBLE]
-variables [INAUDIBLE]?
+to connect variables
+to the clauses?
 
 175
 00:08:34,190 --> 00:08:36,670
@@ -816,17 +816,17 @@ edge in the Hamiltonian cycle.
 177
 00:08:40,370 --> 00:08:42,200
 And I want the choice
-for this copy of x1
+for this copy of x_1
 
 178
 00:08:42,200 --> 00:08:44,950
 to be the same as
-for that copy of x1.
+for that copy of x_1.
 
 179
 00:08:44,950 --> 00:08:49,440
 So the exclusive OR forces each
-instance of x1 to be the same.
+instance of x_1 to be the same.
 
 180
 00:08:49,440 --> 00:08:51,060
@@ -843,7 +843,7 @@ AUDIENCE: Can you connect that?
 
 183
 00:08:54,508 --> 00:08:56,424
-Use the same guy to
+Use the same gadget to
 connect it to the instance
 
 184
@@ -879,7 +879,7 @@ that these two things can point
 
 191
 00:09:14,990 --> 00:09:17,540
-to different copies of x1.
+to different copies of x_1.
 
 192
 00:09:17,540 --> 00:09:19,655
@@ -1080,7 +1080,7 @@ and be happy.
 
 234
 00:11:11,290 --> 00:11:15,370
-And then we've grab
+And then we've grabbed
 the entire cycle.
 
 235
@@ -1379,7 +1379,7 @@ Cool?
 298
 00:14:13,230 --> 00:14:17,940
 So that is the crossing
-x over XOR gadget, which
+XOR gadget, which
 
 299
 00:14:17,940 --> 00:14:20,500
@@ -1823,8 +1823,8 @@ which we call holes.
 
 396
 00:19:13,800 --> 00:19:19,695
-So any non-length for
-face we call hole.
+So any non-length-4
+face we call a "hole".
 
 397
 00:19:19,695 --> 00:19:24,190
@@ -1964,8 +1964,8 @@ It's max degree three.
 
 427
 00:20:49,260 --> 00:20:52,910
-And the vertices are
-labeled, the XIs and the YIs,
+And the vertices are labeled,
+the x_i's and the y_i's,
 
 428
 00:20:52,910 --> 00:20:55,240
@@ -2012,16 +2012,16 @@ parity-preserving embedding
 
 437
 00:21:18,120 --> 00:21:21,270
-of the Graph
+of the graph.
 
 438
 00:21:21,270 --> 00:21:24,710
 And you can see in this example,
-the three XIs are white,
+the three x_i's are white,
 
 439
 00:21:24,710 --> 00:21:27,800
-and the three YIs are black.
+and the three y_i's are black.
 
 440
 00:21:27,800 --> 00:21:30,712
@@ -2669,7 +2669,7 @@ this vertex, if you
 
 578
 00:27:24,980 --> 00:27:28,850
-start at any of the PIs,
+start at any of the p_i's,
 any of the four corners--
 
 579
@@ -2680,12 +2680,12 @@ investigators-- then
 580
 00:27:32,200 --> 00:27:37,950
 you can end at any other
-PI, PJ in such a way
+p_i, p_j in such a way
 
 581
 00:27:37,950 --> 00:27:40,210
 that you visit all
-three of the EIs.
+three of the e_i's.
 
 582
 00:27:40,210 --> 00:27:43,090
@@ -2702,7 +2702,7 @@ are four of them.
 
 585
 00:27:46,071 --> 00:27:49,390
-EI, EO, EIEI-O. No, OK.
+e_i, e_o, E-I-E-I-O. No, OK.
 
 586
 00:27:49,390 --> 00:27:52,440
@@ -2710,13 +2710,13 @@ So let me get to the point.
 
 587
 00:27:52,440 --> 00:27:54,310
-You could start
-at PI, end at PJ,
+You could start at p_i,
+end at p_j,
 
 588
 00:27:54,310 --> 00:28:00,120
 and visit all the vertices and
-all of the EIs, all of the EKs.
+all of the e_i's, all of the e_k's.
 
 589
 00:28:00,120 --> 00:28:02,920
@@ -2740,12 +2740,12 @@ visited all the vertices,
 
 593
 00:28:13,030 --> 00:28:15,030
-visited all the EIs.
+visited all the e_i's.
 
 594
 00:28:15,030 --> 00:28:18,060
 So that's good because
-each of these EIs
+each of these e_i's
 
 595
 00:28:18,060 --> 00:28:21,170
@@ -2825,7 +2825,7 @@ So that's the key thing.
 611
 00:29:01,170 --> 00:29:03,370
 This was one of the
-EIs, and so the idea
+e_i's, and so the idea
 
 612
 00:29:03,370 --> 00:29:05,376
@@ -3323,7 +3323,7 @@ And then up and over.
 719
 00:33:40,500 --> 00:33:44,900
 And then the unused edges,
-the not orange ones,
+the not-orange ones,
 
 720
 00:33:44,900 --> 00:33:47,370
@@ -3417,7 +3417,7 @@ at least one,
 
 739
 00:34:38,870 --> 00:34:42,510
-because the close [INAUDIBLE]
+because the close pair of
 points is one apart.
 
 740
@@ -3427,11 +3427,11 @@ ERIK DEMAINE: Yup.
 741
 00:34:43,260 --> 00:34:45,259
 AUDIENCE: And so if you
-just counter [INAUDIBLE]
+just count the
 
 742
 00:34:45,259 --> 00:34:47,827
-those points and say
+number of points and say
 that that's the desired
 
 743
@@ -3479,7 +3479,7 @@ is that every tour--
 
 752
 00:35:10,700 --> 00:35:13,120
-let's say there are end
+let's say there are n
 points in this picture.
 
 753
@@ -3489,7 +3489,7 @@ at least n, as you say,
 
 754
 00:35:15,362 --> 00:35:17,570
-because they're end points,
+because they're n points,
 the total number of edges
 
 755
@@ -3747,7 +3747,7 @@ This is a result.
 
 811
 00:37:58,620 --> 00:38:02,790
-This is in Fun 2010 by Forishek.
+This is in FUN 2010 by Forišek.
 
 812
 00:38:02,790 --> 00:38:05,030
@@ -4229,12 +4229,12 @@ this feature that if we
 
 915
 00:42:42,110 --> 00:42:47,350
-start at any of the PIs we
-can get to one of the PJs
+start at any of the p_i's we
+can get to one of the p_j's
 
 916
 00:42:47,350 --> 00:42:51,420
-by visiting all the EI edges.
+by visiting all the e_i edges.
 
 917
 00:42:51,420 --> 00:42:56,205
@@ -4256,7 +4256,7 @@ and end at P4.
 
 921
 00:43:00,270 --> 00:43:02,670
-We visited all the EIs.
+We visited all the e_i's.
 
 922
 00:43:02,670 --> 00:43:06,000
@@ -4313,7 +4313,7 @@ visit everything, come out.
 933
 00:43:26,610 --> 00:43:28,720
 And because we
-visit all the EIs,
+visit all the e_i's,
 
 934
 00:43:28,720 --> 00:43:34,370
