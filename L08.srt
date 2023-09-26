@@ -1768,7 +1768,7 @@ You can't say there's no edge.
 
 384
 00:18:42,600 --> 00:18:45,490
-That would be a sub-graph
+That would be a subgraph
 of a grid graph.
 
 385
@@ -4470,7 +4470,7 @@ that we're actually
 
 968
 00:45:22,310 --> 00:45:25,130
-reducing from a sub-problem
+reducing from a subproblem
 of planar bipartite,
 
 969
@@ -6007,7 +6007,7 @@ These are some more gadgets.
 
 1302
 01:03:10,170 --> 01:03:13,710
-These are like sub-routines
+These are like subroutines
 they're going to use.
 
 1303
@@ -6868,7 +6868,7 @@ delineate the boundary.
 1485
 01:10:55,720 --> 01:10:57,950
 So this could actually do
-a sub-graph of a grid graph
+a subgraph of a grid graph
 
 1486
 01:10:57,950 --> 01:11:01,755
