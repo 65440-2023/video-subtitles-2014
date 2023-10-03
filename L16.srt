@@ -115,7 +115,7 @@ real PSPACE-hardness
 
 26
 00:00:41,430 --> 00:00:44,400
-proof other than lecture one.
+proof other than Lecture 1.
 
 27
 00:00:44,400 --> 00:00:46,860
@@ -167,7 +167,7 @@ the assumptions you need.
 37
 00:01:10,410 --> 00:01:15,630
 But the general setup
-for metatheorem one
+for Metatheorem 1
 
 38
 00:01:15,630 --> 00:01:20,010
@@ -932,7 +932,7 @@ OK.
 
 205
 00:08:27,910 --> 00:08:32,060
-So that is metatheorem one.
+So that is Metatheorem 1.
 
 206
 00:08:32,060 --> 00:08:34,690
@@ -949,7 +949,7 @@ another result based on it.
 
 209
 00:08:50,490 --> 00:08:54,050
-So metatheorem two is
+So Metatheorem 2 is
 same kind of setup.
 
 210
@@ -1006,8 +1006,8 @@ to pay with a token in order
 
 222
 00:09:50,190 --> 00:09:52,910
-to traverse the edge,
-this essentially
+to traverse the edge.
+This essentially
 
 223
 00:09:52,910 --> 00:09:55,090
@@ -1239,8 +1239,8 @@ the ghosts have reset.
 
 271
 00:11:59,020 --> 00:12:02,590
-So that is metatheorem
-two applied to Pac-Man,
+So that is Metatheorem 2
+applied to Pac-Man,
 
 272
 00:12:02,590 --> 00:12:04,830
@@ -1342,7 +1342,7 @@ a PSPACE computer
 293
 00:13:13,280 --> 00:13:15,580
 just by trying all possible
-options for the guests,
+options for the guesses,
 
 294
 00:13:15,580 --> 00:13:17,140
@@ -1352,7 +1352,7 @@ and throwing away
 295
 00:13:17,140 --> 00:13:19,717
 the information from
-the other guests' paths,
+the other guesses' paths,
 
 296
 00:13:19,717 --> 00:13:21,800
@@ -1407,15 +1407,15 @@ the space by a square.
 
 307
 00:13:51,110 --> 00:13:54,370
-So if you had SSPACE before,
-you have S squared space after.
+So if you had S space before,
+you have S-squared space after.
 
 308
 00:13:54,370 --> 00:13:57,220
 
 309
 00:13:57,220 --> 00:14:00,580
-Our polynomials are
+And polynomials are
 closed under squaring.
 
 310
@@ -1435,7 +1435,7 @@ usually, to give
 313
 00:14:05,826 --> 00:14:08,640
 a non-deterministic
-polynomial space algorithm.
+polynomial-space algorithm.
 
 314
 00:14:08,640 --> 00:14:11,160
@@ -1468,7 +1468,7 @@ OK.
 320
 00:14:21,820 --> 00:14:27,650
 So that was just some
-recall from lecture one.
+recall from Lecture 1.
 
 321
 00:14:27,650 --> 00:14:31,600
@@ -1494,7 +1494,7 @@ obvious one is to simulate
 
 326
 00:14:49,640 --> 00:14:51,095
-a polynomial space algorithm.
+a polynomial-space algorithm.
 
 327
 00:14:51,095 --> 00:14:55,890
@@ -1574,7 +1574,7 @@ of simulating a Turing machine.
 343
 00:15:36,050 --> 00:15:43,270
 Usually simpler way to go
-is a problem called Q SAT.
+is a problem called QSAT.
 
 344
 00:15:43,270 --> 00:15:46,600
@@ -1584,12 +1584,12 @@ usually called QBF,
 345
 00:15:46,600 --> 00:15:51,000
 and sometimes called TQBF,
-and occasionally called Q SAT.
+and occasionally called QSAT.
 
 346
 00:15:51,000 --> 00:15:53,280
 But I'm growing
-on the name Q SAT,
+on the name QSAT,
 
 347
 00:15:53,280 --> 00:15:55,467
@@ -1602,17 +1602,17 @@ our naming terminology.
 
 349
 00:15:57,300 --> 00:16:00,050
-We can say Q 3SAT, and
-we can say Q 1-in-3SAT,
+We can say Q3SAT, and
+we can say Q1-in-3SAT,
 
 350
 00:16:00,050 --> 00:16:02,180
-and we can say planar Q SAT.
+and we can say planar QSAT.
 
 351
 00:16:02,180 --> 00:16:06,370
 Whereas QBF, usually people
-mean Q 3SAT, I guess.
+mean Q3SAT, I guess.
 
 352
 00:16:06,370 --> 00:16:09,050
@@ -1732,7 +1732,7 @@ Exists at the beginning.
 
 377
 00:17:41,110 --> 00:17:44,030
-With Q SAT, you can have For
+With QSAT, you can have For
 Alls in addition to Exists.
 
 378
@@ -1959,7 +1959,7 @@ are PSPACE-complete-- sorry,
 
 425
 00:20:25,640 --> 00:20:27,930
-of Q SAT.
+of QSAT.
 
 426
 00:20:27,930 --> 00:20:29,930
@@ -2002,21 +2002,21 @@ everything works as before.
 
 434
 00:20:55,530 --> 00:21:05,350
-So planar Q SAT and planar
-1-in-3 Q SAT are hard.
+So planar QSAT and planar
+1-in-3QSAT are hard.
 
 435
 00:21:05,350 --> 00:21:07,610
-Planar not all equal.
+Planar Not-All-Equal
 
 436
 00:21:07,610 --> 00:21:12,390
-Q SAT is also going to be
+QSAT is also going to be
 easy like it was before.
 
 437
 00:21:12,390 --> 00:21:17,510
-But planar Q SAT, we can use
+But planar QSAT, we can use
 the usual crossover gadget.
 
 438
@@ -2096,7 +2096,7 @@ planar SAT paper.
 453
 00:21:55,280 --> 00:21:58,560
 It also talked
-about planar Q SAT.
+about planar QSAT.
 
 454
 00:21:58,560 --> 00:22:00,480
@@ -2106,7 +2106,7 @@ this problem is hard,
 455
 00:22:00,480 --> 00:22:05,060
 the same reaction we had for
-1-in-3 Q SAT also just works.
+1-in-3QSAT also just works.
 
 456
 00:22:05,060 --> 00:22:10,080
@@ -2195,11 +2195,11 @@ the game by starting.
 
 477
 00:23:16,340 --> 00:23:18,030
-So it's a path traversal.
+So it's a path traversal:
 
 478
 00:23:18,030 --> 00:23:25,180
-Get from A to B. And
+get from a to b. And
 what we're going to need
 
 479
@@ -2293,13 +2293,13 @@ So there are many such doors.
 
 499
 00:24:26,270 --> 00:24:29,920
-I'll say A, B, C.
+I'll say a, b, c.
 And this is going
 
 500
 00:24:29,920 --> 00:24:33,730
-to say Open A. This is
-going to say Close B.
+to say Open a. This is
+going to say Close b.
 
 501
 00:24:33,730 --> 00:24:35,990
@@ -2318,21 +2318,21 @@ OK?
 504
 00:24:42,460 --> 00:24:44,900
 So maybe I should
-have written A here.
+have written a here.
 
 505
 00:24:44,900 --> 00:24:47,249
 So this is the
-complete story for A.
+complete story for a.
 
 506
 00:24:47,249 --> 00:24:49,790
 And there's a similar open and
-close for B, an open and close
+close for b, an open and close
 
 507
 00:24:49,790 --> 00:24:52,880
-for C. And otherwise,
+for c. And otherwise,
 you can just walk around.
 
 508
@@ -2372,7 +2372,7 @@ PSPACE-complete by a reduction
 
 516
 00:25:17,220 --> 00:25:20,770
-from Q 3SAT.
+from Q3SAT.
 
 517
 00:25:20,770 --> 00:25:26,260
@@ -2769,7 +2769,7 @@ the variable was set true.
 601
 00:28:56,710 --> 00:29:02,140
 In fact, we will have both
-an xi and an xi bar door.
+an x_i and an x_i-bar door.
 
 602
 00:29:02,140 --> 00:29:06,530
@@ -2838,7 +2838,7 @@ and positive means open.
 616
 00:29:38,720 --> 00:29:43,720
 So if I come in here, the first
-thing I do is close the A door.
+thing I do is close the a door.
 
 617
 00:29:43,720 --> 00:29:46,140
@@ -2867,12 +2867,12 @@ several copies of x here.
 622
 00:29:58,080 --> 00:30:01,520
 So this is the first
-occurrence of x1 bar,
+occurrence of x_1-bar,
 
 623
 00:30:01,520 --> 00:30:03,870
 and the first occurrence
-of x2 bar, and so on.
+of x_2-bar, and so on.
 
 624
 00:30:03,870 --> 00:30:06,160
@@ -2897,7 +2897,7 @@ setting x to false.
 628
 00:30:17,050 --> 00:30:19,600
 And then at the very
-end, I open the B door,
+end, I open the b door,
 
 629
 00:30:19,600 --> 00:30:20,850
@@ -2919,7 +2919,7 @@ and then doubled back,
 633
 00:30:30,049 --> 00:30:31,590
 I would immediately
-close the B door,
+close the b door,
 
 634
 00:30:31,590 --> 00:30:33,540
@@ -3023,7 +3023,7 @@ on the Close and then
 656
 00:31:12,866 --> 00:31:16,790
 going back and opening
-B seems to work?
+b seems to work?
 
 657
 00:31:16,790 --> 00:31:19,429
@@ -3036,7 +3036,7 @@ You're right.
 
 659
 00:31:19,970 --> 00:31:21,660
-B will open up again.
+b will open up again.
 
 660
 00:31:21,660 --> 00:31:24,320
@@ -3116,7 +3116,7 @@ door-- or sorry,
 
 676
 00:32:01,210 --> 00:32:03,010
-we close door D. Oh, right.
+we close door d. Oh, right.
 
 677
 00:32:03,010 --> 00:32:03,510
@@ -3145,7 +3145,7 @@ at the beginning.
 682
 00:32:12,097 --> 00:32:14,430
 So here we're going to close
-D, which is our final exit.
+d, which is our final exit.
 
 683
 00:32:14,430 --> 00:32:15,596
@@ -3158,7 +3158,7 @@ So that's going to be hard.
 685
 00:32:17,580 --> 00:32:20,310
 We have to get to
-the open D spot.
+the open d spot.
 
 686
 00:32:20,310 --> 00:32:22,260
@@ -3166,7 +3166,7 @@ Then we set x to our setting.
 
 687
 00:32:22,260 --> 00:32:26,049
-Then we open A. And now
+Then we open a. And now
 we're allowed to go here.
 
 688
@@ -3195,7 +3195,7 @@ thing being satisfied,
 693
 00:32:37,990 --> 00:32:40,480
 we can't go through here,
-because D is closed.
+because d is closed.
 
 694
 00:32:40,480 --> 00:32:42,230
@@ -3204,12 +3204,12 @@ to go through here.
 
 695
 00:32:42,230 --> 00:32:44,040
-We open B. We
-immediately go through B.
+We open b. We
+immediately go through b.
 
 696
 00:32:44,040 --> 00:32:49,250
-We immediately close B. So it's
+We immediately close b. So it's
 like that's a one-way gadget.
 
 697
@@ -3220,11 +3220,11 @@ opposite of this thing.
 698
 00:32:53,820 --> 00:32:56,430
 And we can't go backwards,
-because B is closed.
+because b is closed.
 
 699
 00:32:56,430 --> 00:32:59,930
-Now we open D. So if we
+Now we open d. So if we
 can get through again,
 
 700
@@ -3234,16 +3234,16 @@ we'll be able to exit.
 701
 00:33:01,230 --> 00:33:04,040
 We can't immediately turn back,
-because again, B is closed.
+because again, b is closed.
 
 702
 00:33:04,040 --> 00:33:08,060
-We open C, visit C, close C.
+We open c, visit c, close c.
 So another one-way gadget.
 
 703
 00:33:08,060 --> 00:33:10,710
-And we also close A to
+And we also close a to
 prevent other weird things
 
 704
@@ -3256,7 +3256,7 @@ So now we go through again.
 
 706
 00:33:14,070 --> 00:33:18,100
-If we get back with D open, then
+If we get back with d open, then
 we can return and we're happy.
 
 707
@@ -3422,7 +3422,7 @@ exponential length.
 741
 00:34:47,650 --> 00:34:49,150
 But we're not talking
-about MP here,
+about NP here,
 
 742
 00:34:49,150 --> 00:34:50,858
@@ -3508,7 +3508,7 @@ Eye of the Beholder.
 759
 00:35:36,330 --> 00:35:38,650
 I think it's officially
-DND-licensed.
+D&D-licensed.
 
 760
 00:35:38,650 --> 00:35:40,680
@@ -3835,7 +3835,7 @@ much are in PSPACE,
 829
 00:38:31,700 --> 00:38:35,240
 because the state of the
-game is some polynomial space
+game is some polynomial-space
 
 830
 00:38:35,240 --> 00:38:38,630
@@ -3930,7 +3930,7 @@ Cool.
 
 850
 00:39:21,660 --> 00:39:26,490
-So that is metatheorem three.
+So that is Metatheorem 3.
 
 851
 00:39:26,490 --> 00:39:33,780
@@ -3949,7 +3949,7 @@ definitely get rid of.
 854
 00:39:37,830 --> 00:39:42,850
 And this is what Giovanni calls
-buttons in metatheorem four.
+buttons in Metatheorem 4.
 
 855
 00:39:42,850 --> 00:40:08,685
@@ -4114,11 +4114,11 @@ the black means closed here.
 890
 00:41:35,100 --> 00:41:37,960
 So the initial state is supposed
-to be A is open, B is closed,
+to be a is open, b is closed,
 
 891
 00:41:37,960 --> 00:41:39,210
-C is closed.
+c is closed.
 
 892
 00:41:39,210 --> 00:41:40,780
@@ -4184,22 +4184,22 @@ the bottom button.
 
 906
 00:42:09,260 --> 00:42:12,254
-Because that opens C. And
+Because that opens c. And
 you want to go forward.
 
 907
 00:42:12,254 --> 00:42:13,670
 So it's the only
-one that opens C.
+one that opens c.
 
 908
 00:42:13,670 --> 00:42:16,610
 This one would have
-closed C. And we also
+closed c. And we also
 
 909
 00:42:16,610 --> 00:42:20,082
-closed D and opened B, which
+closed d and opened b, which
 gets us to the next stage.
 
 910
@@ -4210,11 +4210,11 @@ press this button,
 911
 00:42:21,540 --> 00:42:24,370
 because this is the only
-one that opens D. Then we
+one that opens d. Then we
 
 912
 00:42:24,370 --> 00:42:27,070
-close C and open A.
+close c and open a.
 The point of that
 
 913
@@ -4542,7 +4542,7 @@ are PSPACE-complete.
 983
 00:45:18,794 --> 00:45:21,210
 So we'll call this
-metatheorem five.
+Metatheorem 5.
 
 984
 00:45:21,210 --> 00:45:24,340
@@ -4550,7 +4550,7 @@ metatheorem five.
 985
 00:45:24,340 --> 00:45:27,760
 I mean, this is very similar
-to metatheorem three,
+to Metatheorem 3,
 
 986
 00:45:27,760 --> 00:45:29,720
@@ -4753,8 +4753,8 @@ exactly one of those is closed.
 
 1029
 00:47:27,750 --> 00:47:32,930
-Either the one is closed or the
-two is closed, but not both.
+Either the 1 is closed or the
+2 is closed, but not both.
 
 1030
 00:47:32,930 --> 00:47:37,730
@@ -4790,7 +4790,7 @@ You can't go up here.
 1037
 00:47:51,190 --> 00:47:53,630
 So you have to go
-here, toggle two.
+here, toggle 2.
 
 1038
 00:47:53,630 --> 00:47:55,140
@@ -4819,7 +4819,7 @@ the closed state,
 
 1043
 00:48:05,170 --> 00:48:08,680
-with one closed and two open.
+with 1 closed and 2 open.
 
 1044
 00:48:08,680 --> 00:48:12,640
@@ -4868,7 +4868,7 @@ OK?
 1054
 00:48:28,640 --> 00:48:32,220
 So now, if the doors open,
-door number one is open,
+door number 1 is open,
 
 1055
 00:48:32,220 --> 00:48:33,610
@@ -4880,11 +4880,11 @@ That's cool.
 
 1057
 00:48:35,430 --> 00:48:37,830
-Let's look at the closed paths.
+Let's look at the close paths.
 
 1058
 00:48:37,830 --> 00:48:41,300
-The closed path-- exactly one
+The close path-- exactly one
 of these is going to be open.
 
 1059
@@ -4907,7 +4907,7 @@ We teleport to here.
 1063
 00:48:48,240 --> 00:48:52,720
 And then again, because
-two is the only thing open,
+2 is the only thing open,
 
 1064
 00:48:52,720 --> 00:48:56,120
@@ -4939,11 +4939,11 @@ We'll go down here.
 
 1070
 00:49:06,370 --> 00:49:07,420
-We'll toggle door one.
+We'll toggle door 1.
 
 1071
 00:49:07,420 --> 00:49:09,580
-Now door one is closed.
+Now door 1 is closed.
 
 1072
 00:49:09,580 --> 00:49:10,390
@@ -4991,7 +4991,7 @@ We flipped everything.
 
 1082
 00:49:31,540 --> 00:49:33,623
-Now two is open, and we
+Now 2 is open, and we
 go out through the closed.
 
 1083
@@ -5145,7 +5145,7 @@ the one, and we're out.
 1116
 00:50:36,860 --> 00:50:40,420
 Or it's closed, in
-which case two is open.
+which case 2 is open.
 
 1117
 00:50:40,420 --> 00:50:42,480
@@ -5154,7 +5154,7 @@ so we go down here.
 
 1118
 00:50:42,480 --> 00:50:44,760
-We toggle one, we toggle two.
+We toggle 1, we toggle 2.
 
 1119
 00:50:44,760 --> 00:50:47,220
@@ -5162,7 +5162,7 @@ And then we go out here.
 
 1120
 00:50:47,220 --> 00:50:48,470
-And now one is open.
+And now 1 is open.
 
 1121
 00:50:48,470 --> 00:50:49,480
@@ -5184,7 +5184,7 @@ And so we'll go out the open.
 1125
 00:50:53,924 --> 00:50:55,590
 When we go through
-the closed traversal,
+the close traversal,
 
 1126
 00:50:55,590 --> 00:50:57,380
@@ -5974,15 +5974,12 @@ Question?
 
 1296
 00:57:49,120 --> 00:57:51,393
-AUDIENCE: Is there any reason
-you need the [INAUDIBLE]
+AUDIENCE: Is there a reason
+you need that little zig-zag
 
 1297
-00:57:51,393 --> 00:57:51,892
-at the top?
-
-1298
-00:57:51,892 --> 00:57:54,329
+00:57:51,393 --> 00:57:54,329
+in the bees at the top?
 
 1299
 00:57:54,329 --> 00:57:55,870
@@ -6123,7 +6120,7 @@ up helping you,
 
 1329
 00:59:11,789 --> 00:59:14,330
-because you were already close,
+because you were already closed,
 so you knew you could already
 
 1330
@@ -6778,11 +6775,11 @@ intense experience.
 1471
 01:05:01,120 --> 01:05:03,910
 AUDIENCE: Why are there
-fire bars [INAUDIBLE]
+fire bars in the little block
 
 1472
 01:05:03,910 --> 01:05:05,260
-that they're hitting?
+that you're hitting?
 
 1473
 01:05:05,260 --> 01:05:07,090
@@ -7762,7 +7759,7 @@ OK.
 1682
 01:13:19,620 --> 01:13:24,400
 So now we want to
-use metatheorem five.
+use Metatheorem 5.
 
 1683
 01:13:24,400 --> 01:13:28,744
@@ -8178,12 +8175,12 @@ do in rapid fire?
 
 1772
 01:17:07,090 --> 01:17:10,590
-That was the closed path,
+That was the close path,
 where I must put this
 
 1773
 01:17:10,590 --> 01:17:12,850
-back in in order to survive.
+back in order to survive.
 
 1774
 01:17:12,850 --> 01:17:14,550
