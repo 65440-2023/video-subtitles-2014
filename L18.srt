@@ -131,8 +131,8 @@ a choice of which move to make,
 
 29
 00:01:06,370 --> 00:01:07,950
-will remain PSPACE
-complete even when
+will remain PSPACE-complete
+even when
 
 30
 00:01:07,950 --> 00:01:10,840
@@ -195,7 +195,7 @@ two-player bounded,
 42
 00:01:38,980 --> 00:01:43,710
 where we get another
-PSPACE completeness result.
+PSPACE-completeness result.
 
 43
 00:01:43,710 --> 00:01:49,080
@@ -414,7 +414,7 @@ And so nothing changes.
 
 90
 00:04:14,850 --> 00:04:16,930
-That's called still life.
+That's called Still Life.
 
 91
 00:04:16,930 --> 00:04:20,060
@@ -432,7 +432,7 @@ ask is, given a pattern,
 
 94
 00:04:24,289 --> 00:04:25,080
-is it a still life?
+is it a Still Life?
 
 95
 00:04:25,080 --> 00:04:26,650
@@ -467,8 +467,8 @@ questions are related,
 
 102
 00:04:41,730 --> 00:04:44,390
-other than still
-life, which is easy.
+other than Still Life,
+which is easy.
 
 103
 00:04:44,390 --> 00:04:47,980
@@ -539,7 +539,7 @@ north edge, and so on.
 117
 00:05:17,390 --> 00:05:21,260
 In that setting, Life is
-going to be PSPACE complete.
+going to be PSPACE-complete.
 
 118
 00:05:21,260 --> 00:05:29,830
@@ -851,8 +851,8 @@ on the tape being finite.
 
 184
 00:08:22,810 --> 00:08:27,120
-So it proves PSPACE completeness
-for the polynomial space
+So it proves PSPACE-completeness
+for the polynomial-space
 
 185
 00:08:27,120 --> 00:08:27,620
@@ -885,7 +885,7 @@ it was a Turing machine.
 191
 00:08:42,470 --> 00:08:44,570
 So that's fine for
-PSPACE hardness,
+PSPACE-hardness,
 
 192
 00:08:44,570 --> 00:08:46,460
@@ -989,8 +989,8 @@ just stop.
 
 214
 00:09:44,290 --> 00:09:52,620
-It will non answer the question
-of, given a life setup,
+It will not answer the question
+of, given a Life setup,
 
 215
 00:09:52,620 --> 00:09:55,430
@@ -1047,7 +1047,7 @@ games in particular.
 226
 00:10:23,450 --> 00:10:26,100
 But they have this chapter
-about life being undecidable.
+about Life being undecidable.
 
 227
 00:10:26,100 --> 00:10:29,780
@@ -1167,7 +1167,7 @@ just the eater remains.
 252
 00:11:27,184 --> 00:11:28,600
 The eater is
-otherwise still life.
+otherwise Still Life.
 
 253
 00:11:28,600 --> 00:11:30,600
@@ -1522,7 +1522,7 @@ bit longer for the signal
 327
 00:14:57,030 --> 00:15:00,300
 to get here, but
-you get the And.
+you get the AND.
 
 328
 00:15:00,300 --> 00:15:07,880
@@ -1574,11 +1574,11 @@ That's actually annoying.
 338
 00:15:30,080 --> 00:15:32,250
 It would be better if
-we had an AND and an OR.
+we had a NAND and a NOR.
 
 339
 00:15:32,250 --> 00:15:34,922
-Or an AND or an OR, cause
+Or a NAND or a NOR, cause
 then it would be done.
 
 340
@@ -1668,7 +1668,7 @@ you the next gadget,
 359
 00:16:12,500 --> 00:16:16,860
 I need another fun tool
-called the kick back.
+called the kickback.
 
 360
 00:16:16,860 --> 00:16:20,370
@@ -1744,7 +1744,7 @@ gliders at a certain rate.
 
 375
 00:17:02,089 --> 00:17:04,400
-Call that rate one.
+Call that rate 1.
 
 376
 00:17:04,400 --> 00:17:08,550
@@ -1820,7 +1820,7 @@ and forth, just hanging out.
 391
 00:17:47,560 --> 00:17:52,100
 And on the other hand, we
-have these guns-- G1, G2, G3.
+have these guns-- G_1, G_2, G_3.
 
 392
 00:17:52,100 --> 00:17:55,920
@@ -1877,7 +1877,7 @@ in and get kickback,
 403
 00:18:24,630 --> 00:18:28,310
 and consume one of the
-gliders down this G2 stream.
+gliders down this G_2 stream.
 
 404
 00:18:28,310 --> 00:18:30,050
@@ -1941,7 +1941,7 @@ PROFESSOR: Yeah.
 
 417
 00:18:55,180 --> 00:18:56,763
-AUDIENCE: Are glider
+AUDIENCE: Are the glider
 gun constructions
 
 418
@@ -1951,7 +1951,7 @@ as least know about it
 
 419
 00:18:58,912 --> 00:19:01,180
-at the time [INAUDIBLE]
+at the time, constrained
 enough that you can't just
 
 420
@@ -1962,7 +1962,7 @@ the gun construction use.
 421
 00:19:05,155 --> 00:19:07,446
 AUDIENCE: There's a gun for
-every period either greater
+every period p greater
 
 422
 00:19:07,446 --> 00:19:09,146
@@ -2057,7 +2057,7 @@ so there are many more guns
 442
 00:19:51,270 --> 00:19:54,950
 and there were in
-the early '80s so I
+the early '80s. So I
 
 443
 00:19:54,950 --> 00:19:57,500
@@ -2076,7 +2076,7 @@ ideas with guns, you
 
 446
 00:20:03,580 --> 00:20:05,514
-could build a split and a not.
+could build a split and a NOT.
 
 447
 00:20:05,514 --> 00:20:08,240
@@ -2219,7 +2219,7 @@ you can build binary logic,
 477
 00:21:28,720 --> 00:21:30,440
 so you can do
-CIRCUIT-SAT style things.
+Circuit-SAT style things.
 
 478
 00:21:30,440 --> 00:21:35,040
@@ -2244,7 +2244,7 @@ size, bounded size.
 482
 00:21:43,800 --> 00:21:46,910
 So that's enough to
-prove PSPACE hardness.
+prove PSPACE-hardness.
 
 483
 00:21:46,910 --> 00:21:48,980
@@ -2286,7 +2286,7 @@ What's a counter?
 491
 00:22:13,590 --> 00:22:16,290
 It stores a
-non-negative integer.
+nonnegative integer.
 
 492
 00:22:16,290 --> 00:22:19,810
@@ -2354,7 +2354,7 @@ It's not too hard.
 506
 00:22:53,170 --> 00:22:56,420
 So how are we going to represent
-an arbitrary non-negative
+an arbitrary nonnegative
 
 507
 00:22:56,420 --> 00:22:57,270
@@ -2582,7 +2582,7 @@ forward 1, this is pretty crazy.
 
 555
 00:25:04,000 --> 00:25:10,870
-Their second wave
+There's a second wave
 of five gliders.
 
 556
@@ -2606,7 +2606,7 @@ into a honey farm,
 560
 00:25:18,050 --> 00:25:20,370
 which is this particular
-still life pattern.
+Still Life pattern.
 
 561
 00:25:20,370 --> 00:25:22,580
@@ -2631,7 +2631,7 @@ of fun to implement
 
 566
 00:25:26,650 --> 00:25:28,970
-these in a life simulator
+these in a Life simulator
 and check that it works.
 
 567
@@ -3079,7 +3079,7 @@ get undecidability
 
 663
 00:29:35,690 --> 00:29:39,480
-of life in an infinite board.
+of Life in an infinite board.
 
 664
 00:29:39,480 --> 00:29:43,620
@@ -3302,8 +3302,8 @@ to use this gadget
 
 713
 00:32:59,075 --> 00:33:02,540
-in proving PSPACE
-completeness of this model.
+in proving PSPACE-completeness
+of this model.
 
 714
 00:33:02,540 --> 00:33:07,630
@@ -3725,8 +3725,8 @@ OK.
 
 804
 00:36:56,290 --> 00:37:01,450
-So now we want to prove PSPACE
-completeness of this model.
+So now we want to prove
+PSPACE-completeness of this model.
 
 805
 00:37:01,450 --> 00:37:04,860
@@ -3796,7 +3796,7 @@ we let the player decide
 
 819
 00:37:42,130 --> 00:37:45,540
-whether to choose x or x bar.
+whether to choose x or x-bar.
 
 820
 00:37:45,540 --> 00:37:48,360
@@ -3891,7 +3891,7 @@ execution of this thing.
 
 839
 00:38:36,130 --> 00:38:37,270
-I mean, it's like life.
+I mean, it's like Life.
 
 840
 00:38:37,270 --> 00:38:39,420
@@ -3909,7 +3909,7 @@ up here is that when
 
 843
 00:38:46,600 --> 00:38:50,550
-we set x bar to be false,
+we set x-bar to be false,
 we're going to flip this edge.
 
 844
@@ -3991,7 +3991,7 @@ the same time.
 
 861
 00:39:41,610 --> 00:39:44,480
-And AND will only work if
+An AND will only work if
 this edge and this edge
 
 862
@@ -4226,13 +4226,13 @@ like to get rid of though.
 
 911
 00:42:13,510 --> 00:42:18,490
-These degree 2 vertices, it
+These degree-2 vertices, it
 would be nicer to avoid those.
 
 912
 00:42:18,490 --> 00:42:23,600
 So this is a bunch of reductions
-to get rid of degree 2 vertices
+to get rid of degree-2 vertices
 
 913
 00:42:23,600 --> 00:42:25,960
@@ -4336,12 +4336,12 @@ just one of them has to be in.
 934
 00:43:22,180 --> 00:43:27,450
 So now we have no
-degree 2 vertices.
+degree-2 vertices.
 
 935
 00:43:27,450 --> 00:43:29,920
 The other thing is, we
-have a non-planar graph.
+have a nonplanar graph.
 
 936
 00:43:29,920 --> 00:43:31,795
@@ -4469,8 +4469,8 @@ deterministic constraint logic
 
 963
 00:44:49,350 --> 00:45:07,830
-is PSPACE complete for
-a planar and OR graphs.
+is PSPACE-complete for
+a planar AND/OR graphs.
 
 964
 00:45:07,830 --> 00:45:12,140
@@ -4629,7 +4629,7 @@ reach this configuration.
 998
 00:46:40,990 --> 00:46:42,970
 Another one was can
-you fit this edge?
+you flip this edge?
 
 999
 00:46:42,970 --> 00:46:44,665
@@ -4729,7 +4729,7 @@ that's in the book.
 1020
 00:47:23,560 --> 00:47:27,040
 But I think configuration to
-configuration, also PSPACE
+configuration, also PSPACE-
 
 1021
 00:47:27,040 --> 00:47:29,750
@@ -4985,7 +4985,7 @@ places the problem into PSPACE.
 1075
 00:50:10,830 --> 00:50:13,920
 So again, we're going to
-aim for PSPACE completeness.
+aim for PSPACE-completeness.
 
 1076
 00:50:13,920 --> 00:50:16,840
@@ -5131,11 +5131,11 @@ with SAT-style games.
 1106
 00:51:56,070 --> 00:51:59,545
 This is from another paper
-by Shaefer, same guy who
+by Schaefer, same guy who
 
 1107
 00:51:59,545 --> 00:52:03,370
-did Shaefer Dichotomy Theorem.
+did Schaefer Dichotomy Theorem.
 
 1108
 00:52:03,370 --> 00:52:06,680
@@ -5216,12 +5216,12 @@ it as there are a sequence
 
 1124
 00:52:55,100 --> 00:52:57,630
-of variables-- x1, x2, x3.
+of variables-- x_1, x_2, x_3.
 
 1125
 00:52:57,630 --> 00:53:02,140
 Play alternates between
-assigning xi and xi plus 1.
+assigning x_i and x_{i+1}.
 
 1126
 00:53:02,140 --> 00:53:04,727
@@ -5323,7 +5323,7 @@ the formula first wins.
 1147
 00:54:38,380 --> 00:54:42,870
 Then the opposite
-version is Void.
+version is Avoid.
 
 1148
 00:54:42,870 --> 00:54:46,632
@@ -5407,7 +5407,7 @@ polynomially bounded,
 
 1166
 00:55:45,971 --> 00:55:48,170
-and you get x time completeness.
+and you get EXPTIME-completeness.
 
 1167
 00:55:48,170 --> 00:55:50,390
@@ -5425,7 +5425,7 @@ be assigned once.
 
 1170
 00:55:53,330 --> 00:55:55,920
-And in a partial
+And in impartial
 game, any player
 
 1171
@@ -5444,11 +5444,11 @@ had a fixed ordering.
 
 1174
 00:56:03,270 --> 00:56:06,520
-First x1, then x2, then x3.
+First x_1, then x_2, then x_3.
 
 1175
 00:56:06,520 --> 00:56:14,740
-An impartial game
+In impartial game
 version of SAT, players
 
 1176
@@ -5472,7 +5472,7 @@ That would be impartial game.
 1180
 00:56:23,820 --> 00:56:26,040
 But I could also do impartial
-seek, impartial void.
+seek, impartial avoid.
 
 1181
 00:56:26,040 --> 00:56:28,930
@@ -5485,7 +5485,7 @@ I made up these names.
 1183
 00:56:31,860 --> 00:56:36,610
 So they don't match
-what Shaefer calls them.
+what Schaefer calls them.
 
 1184
 00:56:36,610 --> 00:56:37,880
@@ -5561,7 +5561,7 @@ the games that I want.
 1200
 00:57:27,760 --> 00:57:29,890
 Now let me tell you which
-combinations are PSPACE
+combinations are PSPACE-
 
 1201
 00:57:29,890 --> 00:57:30,390
@@ -5633,7 +5633,7 @@ formula to be false.
 
 1217
 00:58:09,952 --> 00:58:10,910
-That's PSPACE complete.
+That's PSPACE-complete.
 
 1218
 00:58:10,910 --> 00:58:13,520
@@ -5689,7 +5689,7 @@ Yeah.
 1230
 00:58:44,112 --> 00:58:48,440
 AUDIENCE: Is impartial game
-positive 10-SAT [INAUDIBLE]?
+positive 10-SAT easy?
 
 1231
 00:58:48,440 --> 00:58:51,860
@@ -5806,7 +5806,7 @@ hard for some version of SAT.
 1257
 01:00:27,890 --> 01:00:31,950
 And these are the tightest
-ones that Shaefer could show.
+ones that Schaefer could show.
 
 1258
 01:00:31,950 --> 01:00:34,800
@@ -5851,7 +5851,7 @@ OK.
 1267
 01:01:03,150 --> 01:01:09,190
 A couple more problems
-which are in Shaefer paper.
+which are in Schaefer paper.
 
 1268
 01:01:09,190 --> 01:01:12,850
@@ -5970,7 +5970,7 @@ choose from the black side.
 1294
 01:02:21,510 --> 01:02:24,020
 So these are both
-PSPACE complete as well,
+PSPACE-complete as well,
 
 1295
 01:02:24,020 --> 01:02:25,560
@@ -6050,7 +6050,7 @@ are valid moves between words.
 1311
 01:03:00,790 --> 01:03:03,430
 Do they have some
-common property.
+common property?
 
 1312
 01:03:03,430 --> 01:03:06,020
@@ -6122,7 +6122,7 @@ we have edge geography,
 1327
 01:03:46,956 --> 01:03:48,580
 which is more like
-an [INAUDIBLE] path.
+an Eulerian path.
 
 1328
 01:03:48,580 --> 01:03:52,870
@@ -6153,12 +6153,12 @@ edges or an undirected graph.
 1334
 01:04:06,260 --> 01:04:14,120
 And here undirected,
-no geography is NP.
+node geography is in P.
 
 1335
 01:04:14,120 --> 01:04:16,930
-Directed, no geography
-if PSPACE complete.
+Directed node geography
+if PSPACE-complete.
 
 1336
 01:04:16,930 --> 01:04:21,910
@@ -6170,7 +6170,7 @@ surprisingly, both
 
 1338
 01:04:24,260 --> 01:04:25,200
-are PSPACE complete.
+are PSPACE-complete.
 
 1339
 01:04:25,200 --> 01:04:29,390
@@ -6181,8 +6181,8 @@ So this is a useful problem.
 
 1341
 01:04:31,420 --> 01:04:33,870
-I've seen a ton of PSPACE
-completeness proofs
+I've seen a ton of
+PSPACE-completeness proofs
 
 1342
 01:04:33,870 --> 01:04:35,230
@@ -6198,7 +6198,7 @@ And I will show you one now.
 
 1345
 01:04:41,060 --> 01:04:46,280
-Everyone play Othello, Reversi.
+Everyone play Othello, Reversi?
 
 1346
 01:04:46,280 --> 01:04:47,940
@@ -6317,8 +6317,8 @@ original number.
 
 1370
 01:05:45,790 --> 01:05:47,890
-So this is PSPACE
-complete, given
+So this is PSPACE-complete,
+given
 
 1371
 01:05:47,890 --> 01:05:50,480
@@ -6332,7 +6332,7 @@ winning strategy, say,
 
 1373
 01:05:52,910 --> 01:05:55,070
-is PSPACE complete.
+is PSPACE-complete.
 
 1374
 01:05:55,070 --> 01:06:01,400
@@ -6579,7 +6579,7 @@ the typical setup.
 1425
 01:08:06,270 --> 01:08:10,109
 This is just a turn gadget, or
-it could be a degree 2 vertex.
+it could be a degree-2 vertex.
 
 1426
 01:08:10,109 --> 01:08:12,770
@@ -6588,12 +6588,12 @@ reducing from directed
 
 1427
 01:08:12,770 --> 01:08:19,529
-no geography, where this
-is directed no geography.
+node geography, where this
+is directed node geography.
 
 1428
 01:08:19,529 --> 01:08:21,109
-Also max degree 3.
+Also max-degree-3.
 
 1429
 01:08:21,109 --> 01:08:27,660
@@ -6601,17 +6601,17 @@ Also max degree 3.
 1430
 01:08:27,660 --> 01:08:31,460
 So that means you might
-have a degree 2 vertex,
+have a degree-2 vertex,
 
 1431
 01:08:31,460 --> 01:08:33,020
 or you might have
-a degree 3 vertex.
+a degree-3 vertex.
 
 1432
 01:08:33,020 --> 01:08:34,939
 There are two types
-of degree 3 directed
+of degree-3 directed
 
 1433
 01:08:34,939 --> 01:08:42,350
@@ -6674,7 +6674,7 @@ to be playing in each gadget.
 
 1446
 01:09:07,479 --> 01:09:10,240
-So in a degree 2 gadget, it
+So in a degree-2 gadget, it
 works something like this.
 
 1447
@@ -6736,7 +6736,7 @@ a signal, does a turn.
 
 1459
 01:09:40,080 --> 01:09:41,290
-It's a degree 2 vertex.
+It's a degree-2 vertex.
 
 1460
 01:09:41,290 --> 01:09:42,542
@@ -6771,7 +6771,7 @@ OK.
 1467
 01:09:49,990 --> 01:09:52,620
 More interesting are
-the degree 3 vertices.
+the degree-3 vertices.
 
 1468
 01:09:52,620 --> 01:09:55,420
@@ -6873,7 +6873,7 @@ Flip them all back to white.
 
 1489
 01:10:42,780 --> 01:10:45,270
-But now this B1
+But now this B_1
 position is white,
 
 1490
@@ -7173,7 +7173,7 @@ I think so.
 1554
 01:13:15,730 --> 01:13:18,169
 I didn't read that
-as [INAUDIBLE],
+as a lemma,
 
 1555
 01:13:18,169 --> 01:13:20,210
@@ -7252,7 +7252,7 @@ OK.
 1571
 01:13:51,200 --> 01:13:54,480
 So that's a sketch of
-Othello PSPACE hardness
+Othello PSPACE-hardness
 
 1572
 01:13:54,480 --> 01:13:55,545
@@ -7278,7 +7278,7 @@ bounded, two-player game
 
 1577
 01:14:13,030 --> 01:14:15,730
-should be PSPACE complete.
+should be PSPACE-complete.
 
 1578
 01:14:15,730 --> 01:14:17,480
@@ -7325,8 +7325,8 @@ orientation of a constraint
 
 1587
 01:14:38,450 --> 01:14:41,880
-graph is NP
-complete, we can show
+graph is NP-complete,
+we can show
 
 1588
 01:14:41,880 --> 01:14:47,620
@@ -7336,7 +7336,7 @@ gadget, that bounded NCL,
 1589
 01:14:47,620 --> 01:14:50,450
 you just want to flip this
-one edge is NP complete.
+one edge is NP-complete.
 
 1590
 01:14:50,450 --> 01:14:51,980
@@ -7363,7 +7363,7 @@ for this very simple proof.
 
 1595
 01:14:59,360 --> 01:15:03,510
-So NP completeness
+So NP-completeness
 for a bounded NCL.
 
 1596
@@ -7414,7 +7414,7 @@ constraint logic is called 2CL.
 
 1606
 01:15:26,305 --> 01:15:30,780
-This is PSPACE complete by
+This is PSPACE-complete by
 pretty much the same proof
 
 1607
@@ -7578,7 +7578,7 @@ this edge, that's
 1641
 01:16:56,400 --> 01:16:58,530
 going to correspond
-to setting x2 false.
+to setting x_2 false.
 
 1642
 01:16:58,530 --> 01:17:00,390
@@ -7636,7 +7636,7 @@ variables, there's
 
 1653
 01:17:19,440 --> 01:17:22,120
-going to be n over 2 rounds
+going to be n/2 rounds
 where all the variables get
 
 1654
@@ -7864,7 +7864,7 @@ So we can build predicted ORs.
 1703
 01:19:15,190 --> 01:19:20,820
 And then I have a bunch
-of PSPACE hardness proofs
+of PSPACE-hardness proofs
 
 1704
 01:19:20,820 --> 01:19:22,910
@@ -7926,12 +7926,12 @@ which is a modern game.
 1716
 01:19:57,054 --> 01:19:58,970
 These are all three
-bounded two- player games.
+bounded two-player games.
 
 1717
 01:19:58,970 --> 01:20:01,180
-And they're all PSPACE
-complete by a reduction
+And they're all PSPACE-complete
+by a reduction
 
 1718
 01:20:01,180 --> 01:20:05,410
