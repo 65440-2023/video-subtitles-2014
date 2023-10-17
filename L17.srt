@@ -48,7 +48,7 @@ topic, but in the same spirit
 
 12
 00:00:07,340 --> 00:00:10,070
-of PSPACE completeness
+of PSPACE-completeness
 of puzzles.
 
 13
@@ -103,7 +103,7 @@ about puzzles
 
 24
 00:00:44,190 --> 00:00:47,280
-and PSPACE completeness.
+and PSPACE-completeness.
 
 25
 00:00:47,280 --> 00:00:51,610
@@ -117,8 +117,8 @@ useful infrastructure
 
 27
 00:00:53,990 --> 00:00:56,330
-for proving PSPACE
-hardness results,
+for proving PSPACE-hardness
+results,
 
 28
 00:00:56,330 --> 00:00:59,510
@@ -559,7 +559,7 @@ both of these problems
 
 122
 00:05:53,770 --> 00:06:00,836
-are PSPACE complete for
+are PSPACE-complete for
 three regular graphs.
 
 123
@@ -603,7 +603,7 @@ two types of vertices,
 131
 00:06:25,010 --> 00:06:27,560
 both of these problems
-are PSPACE complete.
+are PSPACE-complete.
 
 132
 00:06:27,560 --> 00:06:28,289
@@ -665,7 +665,7 @@ find a valid configuration.
 
 145
 00:06:52,190 --> 00:06:53,860
-That problem is NP complete.
+That problem is NP-complete.
 
 146
 00:06:53,860 --> 00:06:55,520
@@ -702,7 +702,7 @@ So that's a good question.
 154
 00:07:31,360 --> 00:07:33,840
 At present, there aren't very
-many NP hardness reductions
+many NP-hardness reductions
 
 155
 00:07:33,840 --> 00:07:35,000
@@ -772,7 +772,7 @@ from one to the other.
 169
 00:08:02,430 --> 00:08:04,677
 And deciding whether you
-can is PSPACE complete.
+can is PSPACE-complete.
 
 170
 00:08:04,677 --> 00:08:06,760
@@ -871,7 +871,7 @@ with just these two types
 190
 00:08:59,157 --> 00:09:01,240
 of vertices, the whole
-problem is PSPACE complete.
+problem is PSPACE-complete.
 
 191
 00:09:01,240 --> 00:09:03,182
@@ -880,7 +880,7 @@ motivation is to prove
 
 192
 00:09:03,182 --> 00:09:04,390
-your problem PSPACE complete.
+your problem PSPACE-complete.
 
 193
 00:09:04,390 --> 00:09:08,077
@@ -899,7 +899,7 @@ by two pictures.
 196
 00:09:11,340 --> 00:09:15,970
 So that will lead to some very
-efficient PSPACE completeness
+efficient PSPACE-completeness
 
 197
 00:09:15,970 --> 00:09:16,470
@@ -2626,7 +2626,7 @@ prove that constraint graph
 572
 00:26:03,910 --> 00:26:08,040
 satisfiability, finding an
-orientation is NP complete
+orientation is NP-complete
 
 573
 00:26:08,040 --> 00:26:12,070
@@ -2750,12 +2750,12 @@ interesting things.
 599
 00:27:12,800 --> 00:27:16,040
 So that was constraint graph
-satisfactions NP complete.
+satisfaction is NP-complete.
 
 600
 00:27:16,040 --> 00:27:20,000
 Let's go to the reconfiguration
-problems being PSPACE complete.
+problems being PSPACE-complete.
 
 601
 00:27:20,000 --> 00:27:28,550
@@ -3886,7 +3886,7 @@ and only AND and OR gates,
 
 846
 00:37:35,750 --> 00:37:40,110
-we have PSPACE completeness
+we have PSPACE-completeness
 of flipping one edge.
 
 847
@@ -4337,7 +4337,7 @@ One more version.
 942
 00:41:53,120 --> 00:41:56,310
 So we just did planar
-graphs, or PSPACE complete.
+graphs, or PSPACE-complete.
 
 943
 00:41:56,310 --> 00:41:59,870
@@ -5501,7 +5501,7 @@ in want of a general theory.
 1194
 00:52:16,360 --> 00:52:18,980
 And there is no general
-theory because they're PSPACE
+theory because they're PSPACE-
 
 1195
 00:52:18,980 --> 00:52:19,480
@@ -5548,7 +5548,7 @@ number of moves is
 1204
 00:52:34,580 --> 00:52:37,620
 going to grow exponentially,
-because the problem is PSPACE
+because the problem is PSPACE-
 
 1205
 00:52:37,620 --> 00:52:39,852
@@ -5557,7 +5557,7 @@ complete.
 1206
 00:52:39,852 --> 00:52:41,810
 And here's the proof that
-it's PSPACE complete,
+it's PSPACE-complete,
 
 1207
 00:52:41,810 --> 00:52:42,850
@@ -6093,7 +6093,7 @@ get really short proofs
 
 1318
 00:57:39,040 --> 00:57:40,482
-of PSPACE completeness.
+of PSPACE-completeness.
 
 1319
 00:57:40,482 --> 00:57:41,440
@@ -6146,7 +6146,7 @@ a satisfying assignment.
 
 1330
 00:58:19,830 --> 00:58:25,470
-I claim it is PSPACE complete to
+I claim it is PSPACE-complete to
 find a sequence of such moves.
 
 1331
@@ -6605,7 +6605,7 @@ horizontal or vertical only.
 1428
 01:03:05,230 --> 01:03:07,490
 It's open whether this
-problem is PSPACE complete.
+problem is PSPACE-complete.
 
 1429
 01:03:07,490 --> 01:03:09,610
@@ -6666,8 +6666,8 @@ exponentially, maybe.
 
 1441
 01:03:36,869 --> 01:03:38,910
-So maybe it's PSPACE
-complete, but we don't know.
+So maybe it's PSPACE-complete,
+but we don't know.
 
 1442
 01:03:38,910 --> 01:03:41,650
@@ -6937,7 +6937,7 @@ had an algorithm to tell us.
 
 1502
 01:05:35,710 --> 01:05:37,540
-But it's PSPACE complete.
+But it's PSPACE-complete.
 
 1503
 01:05:37,540 --> 01:05:40,910
@@ -7032,12 +7032,12 @@ from Lecture 4, I think.
 1522
 01:06:30,470 --> 01:06:33,000
 So we did a lot of the
-NP hardness proofs.
+NP-hardness proofs.
 
 1523
 01:06:33,000 --> 01:06:35,250
 But there are some
-PSPACE hardness as well.
+PSPACE-hardness as well.
 
 1524
 01:06:35,250 --> 01:06:38,200
@@ -7450,7 +7450,7 @@ we have a crossover.
 1611
 01:10:25,460 --> 01:10:29,510
 So left of this line would be a
-PSPACE completeness proof using
+PSPACE-completeness proof using
 
 1612
 01:10:29,510 --> 01:10:32,671
@@ -7624,7 +7624,7 @@ mean that it's sticking up.
 
 1649
 01:12:00,300 --> 01:12:03,580
-Then it's PSPACE complete
+Then it's PSPACE-complete
 to roll a particular block,
 
 1650
@@ -7884,7 +7884,7 @@ shore, cross the river.
 
 1706
 01:14:16,200 --> 01:14:20,700
-This is PSPACE complete by
+This is PSPACE-complete by
 nondeterministic constraint
 
 1707
@@ -8116,7 +8116,7 @@ about the zooming
 1754
 01:16:21,140 --> 01:16:25,610
 out, although this paper proves
-that that is PSPACE complete.
+that that is PSPACE-complete.
 
 1755
 01:16:25,610 --> 01:16:28,970
@@ -8366,8 +8366,8 @@ environment with lasers?
 
 1808
 01:18:40,440 --> 01:18:42,620
-Turns out it's PSPACE
-complete to make sure
+Turns out it's
+PSPACE-complete to make sure
 
 1809
 01:18:42,620 --> 01:18:44,390
