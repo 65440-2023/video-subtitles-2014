@@ -107,7 +107,7 @@ and PSPACE-completeness.
 
 25
 00:00:47,280 --> 00:00:51,610
-So non-deterministic constraint
+So nondeterministic constraint
 logic-- usually called NCL.
 
 26
@@ -239,21 +239,21 @@ coming in.
 
 53
 00:02:03,330 --> 00:02:07,555
-But in general we have--
-so, a constraint graph.
+But in general we have...
+So, a constraint graph
 
 54
 00:02:07,555 --> 00:02:15,400
 
 55
 00:02:15,400 --> 00:02:27,890
-It's going to be a directed
-red/blue graph satisfying,
+is going to be a directed
+red/blue graph satisfying --
 
 56
 00:02:27,890 --> 00:02:39,160
 I'll call it the
-inflow constraint,
+inflow constraint --
 
 57
 00:02:39,160 --> 00:02:54,290
@@ -541,12 +541,12 @@ Yeah.
 118
 00:05:43,430 --> 00:05:46,880
 AUDIENCE: Does the graph
-[INAUDIBLE] degree 3?
+have to be degree 3?
 
 119
 00:05:46,880 --> 00:05:49,470
 PROFESSOR: It will
-always be max degree 3.
+always be max-degree-3.
 
 120
 00:05:49,470 --> 00:05:51,250
@@ -560,12 +560,12 @@ both of these problems
 122
 00:05:53,770 --> 00:06:00,836
 are PSPACE-complete for
-three regular graphs.
+3-regular graphs.
 
 123
 00:06:00,836 --> 00:06:02,960
 Although what I've drawn
-here is not three regular.
+here is not 3-regular.
 
 124
 00:06:02,960 --> 00:06:04,850
@@ -575,7 +575,7 @@ in degree 1.
 125
 00:06:04,850 --> 00:06:08,710
 You can actually
-assume max degree 3.
+assume max-degree-3.
 
 126
 00:06:08,710 --> 00:06:11,330
@@ -633,7 +633,7 @@ This would not be valid.
 138
 00:06:39,317 --> 00:06:41,150
 We'll show how to
-simulate degree 1 vertices
+simulate degree-1 vertices
 
 139
 00:06:41,150 --> 00:06:42,900
@@ -1540,7 +1540,7 @@ about outputs can activate,
 338
 00:15:58,870 --> 00:16:03,040
 but they don't have to, it's up
-to the non-deterministic player
+to the nondeterministic player
 
 339
 00:16:03,040 --> 00:16:08,320
@@ -1681,7 +1681,7 @@ two of them must be incoming.
 
 369
 00:17:38,490 --> 00:17:41,770
-At most, one of them
+At most one of them
 can be outgoing.
 
 370
@@ -2071,8 +2071,8 @@ Yeah.
 
 452
 00:21:31,050 --> 00:21:33,428
-AUDIENCE: What was the thing
-where [INAUDIBLE] that you
+AUDIENCE: What was the claim we were
+making in that diagram? Was it that you
 
 453
 00:21:33,428 --> 00:21:34,646
@@ -2080,10 +2080,11 @@ can't flip those colors?
 
 454
 00:21:34,646 --> 00:21:35,540
+AUDIENCE: Yeah, because I think you can.
 
 455
 00:21:35,540 --> 00:21:37,081
-Cause you can flip
+AUDIENCE: Cause you can flip
 the colors, right?
 
 456
@@ -2257,11 +2258,11 @@ formula.
 493
 00:22:45,940 --> 00:22:49,160
 We use a choice gadget to say,
-look, either W can activate,
+look, either w can activate,
 
 494
 00:22:49,160 --> 00:22:51,100
-or Wbar can activate.
+or w-bar can activate.
 
 495
 00:22:51,100 --> 00:22:52,500
@@ -2284,7 +2285,7 @@ channel representing
 
 499
 00:22:58,150 --> 00:23:00,480
-X, one representing Xbar.
+x, one representing x-bar.
 
 500
 00:23:00,480 --> 00:23:02,480
@@ -2394,7 +2395,7 @@ if that formula is satisfiable.
 523
 00:23:47,580 --> 00:23:51,110
 Assuming we know what to
-do with degree 1 vertices.
+do with degree-1 vertices.
 
 524
 00:23:51,110 --> 00:23:53,760
@@ -2403,7 +2404,7 @@ So this represents CNF.
 525
 00:23:53,760 --> 00:23:56,070
 Let me tell you what to
-do with degree 1 vertices.
+do with degree-1 vertices.
 
 526
 00:23:56,070 --> 00:23:58,130
@@ -2446,7 +2447,7 @@ Everybody has at least one.
 534
 00:24:17,390 --> 00:24:19,822
 And the point here is
-it's three regular.
+it's 3-regular.
 
 535
 00:24:19,822 --> 00:24:21,530
@@ -2455,8 +2456,8 @@ a kind of classic way
 
 536
 00:24:21,530 --> 00:24:25,870
-to make a three regular graph
-out of a degree 1 vertex.
+to make a 3-regular graph
+out of a degree-1 vertex.
 
 537
 00:24:25,870 --> 00:24:29,030
@@ -2513,7 +2514,7 @@ going to make it even.
 548
 00:24:49,450 --> 00:24:53,600
 If it's not even, I'll take
-any of my degree 1 vertices
+any of my degree-1 vertices
 
 549
 00:24:53,600 --> 00:24:56,680
@@ -2583,7 +2584,7 @@ whatever he wants.
 563
 00:25:31,380 --> 00:25:35,540
 That still lets you choose
-W or Wbar to be true.
+w or w-bar to be true.
 
 564
 00:25:35,540 --> 00:25:40,410
@@ -2673,13 +2674,13 @@ We'll use them in other ways.
 
 582
 00:26:27,078 --> 00:26:29,830
-AUDIENCE: Can we just use a
-[INAUDIBLE] red terminator
+AUDIENCE: Can't we just use an
+unconstrained red terminator
 
 583
 00:26:29,830 --> 00:26:33,458
-instead of the red-- to
-do a red [INAUDIBLE],
+instead of the red-blue--
+to do a red-blue conversion,
 
 584
 00:26:33,458 --> 00:26:36,049
@@ -2692,7 +2693,7 @@ did?
 
 586
 00:26:36,549 --> 00:26:38,048
-AUDIENCE: [INAUDIBLE]
+AUDIENCE: The unconstrained
 red terminator
 
 587
@@ -2780,7 +2781,7 @@ same kind of prototype
 605
 00:27:35,630 --> 00:27:39,720
 that we saw last class, with
-[? Viglietta's ?] Proof, where
+Viglietta's Proof, where
 
 606
 00:27:39,720 --> 00:27:42,820
@@ -2812,7 +2813,7 @@ represent variables
 
 612
 00:27:56,180 --> 00:27:58,630
-by two rails, x and x bar.
+by two rails, x and x-bar.
 
 613
 00:27:58,630 --> 00:28:02,710
@@ -2854,12 +2855,12 @@ to x being true.
 
 621
 00:28:19,930 --> 00:28:22,940
-If y bar is pointing up
+If y-bar is pointing up
 and y is pointing down,
 
 622
 00:28:22,940 --> 00:28:24,380
-then y bar will be true.
+then y-bar will be true.
 
 623
 00:28:24,380 --> 00:28:26,140
@@ -3320,7 +3321,7 @@ to either value.
 722
 00:32:32,220 --> 00:32:35,390
 So where x is pointing out,
-or x bar is pointing out,
+or x-bar is pointing out,
 
 723
 00:32:35,390 --> 00:32:36,480
@@ -3385,7 +3386,7 @@ has been locked into its state.
 
 736
 00:33:07,320 --> 00:33:10,670
-So it has only x or x bar set.
+So it has only x or x-bar set.
 
 737
 00:33:10,670 --> 00:33:11,674
@@ -3422,7 +3423,7 @@ the nondeterminism
 744
 00:33:24,180 --> 00:33:30,340
 of the player to make the right
-call whether to set x or x bar.
+call whether to set x or x-bar.
 
 745
 00:33:30,340 --> 00:33:32,090
@@ -3511,12 +3512,12 @@ rest of the construction.
 764
 00:34:22,570 --> 00:34:26,179
 Again, this is just setting
-x or x bar, just like before.
+x or x-bar, just like before.
 
 765
 00:34:26,179 --> 00:34:28,170
 But we're making
-copies of x and x bar.
+copies of x and x-bar.
 
 766
 00:34:28,170 --> 00:34:30,370
@@ -3534,11 +3535,11 @@ of x and this copy of x.
 769
 00:34:35,100 --> 00:34:37,740
 If we have this one set, we
-can set this copy of x bar
+can set this copy of x-bar
 
 770
 00:34:37,740 --> 00:34:38,940
-and this copy of x bar.
+and this copy of x-bar.
 
 771
 00:34:38,940 --> 00:34:41,390
@@ -3560,7 +3561,7 @@ mechanism of that latch.
 775
 00:34:50,520 --> 00:34:56,320
 And what we're saying
-is that if x bar is set,
+is that if x-bar is set,
 
 776
 00:34:56,320 --> 00:35:04,600
@@ -3671,7 +3672,7 @@ And so satisfied in is true.
 
 799
 00:35:56,770 --> 00:35:58,290
-And x bar is true.
+And x-bar is true.
 
 800
 00:35:58,290 --> 00:36:02,780
@@ -4228,7 +4229,7 @@ the crossover.
 
 919
 00:40:39,640 --> 00:40:44,770
-So except we have degree 4
+So except we have degree-4
 red, red, red, red vertices.
 
 920
@@ -4450,7 +4451,7 @@ these four wires to be zeroes.
 966
 00:43:10,276 --> 00:43:11,650
 And so then this
-one could be 01,
+one could be 0/1,
 
 967
 00:43:11,650 --> 00:43:14,170
@@ -4492,12 +4493,12 @@ will be the same as the input.
 
 975
 00:43:34,050 --> 00:43:36,060
-So I put two by two blocks here.
+So I put 2 by 2 blocks here.
 
 976
 00:43:36,060 --> 00:43:37,890
 I also have a
-similar two by three
+similar 2 by 3
 
 977
 00:43:37,890 --> 00:43:41,150
@@ -4564,7 +4565,7 @@ AUDIENCE: I'm sorry.
 
 991
 00:44:07,606 --> 00:44:09,000
-Do you have [INAUDIBLE]?
+Do you have half-edges here?
 
 992
 00:44:09,000 --> 00:44:09,500
@@ -4626,7 +4627,7 @@ here which you ignore.
 
 1005
 00:44:29,810 --> 00:44:32,364
-So it's like a degree 1 vertex.
+So it's like a degree-1 vertex.
 
 1006
 00:44:32,364 --> 00:44:33,030
@@ -4634,8 +4635,8 @@ AUDIENCE: Right.
 
 1007
 00:44:33,030 --> 00:44:36,229
-And then we can [INAUDIBLE]
-everything's OK.
+And then we can map that into
+the grid and everything's OK.
 
 1008
 00:44:36,229 --> 00:44:38,440
@@ -4720,7 +4721,7 @@ One more.
 1026
 00:45:15,480 --> 00:45:17,646
 AUDIENCE: Silly question
-about what nondeterministic
+about what "nondeterministic"
 
 1027
 00:45:17,646 --> 00:45:18,850
@@ -4729,15 +4730,15 @@ means in this case.
 1028
 00:45:18,850 --> 00:45:21,370
 Since we've been using
-nondeterministic to mean
+nondeterministic both to mean
 
 1029
 00:45:21,370 --> 00:45:22,375
-you can guess correctly.
+you can guess correctly,
 
 1030
 00:45:22,375 --> 00:45:24,960
-And to mean that the [INAUDIBLE]
+and to mean that the edges
 aren't being reflected.
 
 1031
@@ -4764,7 +4765,7 @@ PROFESSOR: Oh.
 
 1036
 00:45:32,140 --> 00:45:33,390
-No sir, that was asynchronous.
+No, sorry, that was asynchronous.
 
 1037
 00:45:33,390 --> 00:45:36,099
@@ -5103,8 +5104,8 @@ Hm?
 
 1109
 00:48:54,840 --> 00:48:56,589
-AUDIENCE: Which of the
-inputs [INAUDIBLE]?
+AUDIENCE: Which are the
+inputs for the OR?
 
 1110
 00:48:56,589 --> 00:48:59,221
@@ -5458,7 +5459,7 @@ you want and slide it
 
 1185
 00:51:52,820 --> 00:51:54,240
-along some non-colliding path.
+along some noncolliding path.
 
 1186
 00:51:54,240 --> 00:51:56,656
@@ -5669,7 +5670,7 @@ room to do it.
 1230
 00:53:41,950 --> 00:53:46,030
 So that's an AND gadget,
-an asynchronous world.
+in an asynchronous world.
 
 1231
 00:53:46,030 --> 00:53:49,620
@@ -5748,12 +5749,12 @@ But it's turns out just
 1246
 00:54:27,370 --> 00:54:31,380
 And these were found by a
-semi-automatic computer search.
+semi-automatic computer search,
 
 1247
 00:54:31,380 --> 00:54:35,030
-And I programmed it
-[INAUDIBLE] to analyze.
+in a program that Bob Hearn
+wrote to analyze.
 
 1248
 00:54:35,030 --> 00:54:37,980
@@ -6152,16 +6153,16 @@ find a sequence of such moves.
 1331
 00:58:25,470 --> 00:58:30,340
 This is originally approved by
-[? Papadimetriou ?] and a bunch
+Papadimitriou and a bunch
 
 1332
 00:58:30,340 --> 00:58:32,920
 of other people--
-[? Gopala, ?] [? Colitis, ?]
+Gopalan, Kolaitis,
 
 1333
 00:58:32,920 --> 00:58:35,330
-and [? Mineva. ?]
+and Maneva.
 
 1334
 00:58:35,330 --> 00:58:37,190
@@ -6233,7 +6234,7 @@ That's an OR constraint.
 1348
 00:59:34,820 --> 00:59:38,130
 And "in" here means I write x
-or x bar, according to whether
+or x-bar, according to whether
 
 1349
 00:59:38,130 --> 00:59:41,084
@@ -6330,7 +6331,7 @@ in the 3SAT instance.
 1369
 01:00:42,690 --> 01:00:44,550
 Very nice simple
-proof found by Sara.
+proof found by Sarah.
 
 1370
 01:00:44,550 --> 01:00:47,240
@@ -6396,7 +6397,7 @@ Next problem.
 
 1384
 01:01:19,800 --> 01:01:20,340
-Rush hour.
+Rush Hour.
 
 1385
 01:01:20,340 --> 01:01:22,173
@@ -6463,7 +6464,7 @@ That's good.
 1398
 01:01:55,110 --> 01:01:58,790
 And then Trump and
-[? Cidibrasi ?]
+Cilibrasi
 
 1399
 01:01:58,790 --> 01:02:03,020
@@ -7211,11 +7212,11 @@ needs to be used.
 1559
 01:08:17,100 --> 01:08:22,960
 And so let's see, in
-order to move V down,
+order to move B down,
 
 1560
 01:08:22,960 --> 01:08:25,584
-we must move- or, sorry.
+we must move-- or, sorry.
 
 1561
 01:08:25,584 --> 01:08:26,750
@@ -7387,7 +7388,7 @@ So it predates last lecture.
 1598
 01:09:47,300 --> 01:09:50,180
 It predates the
-[? Viglietta ?] paper.
+Viglietta paper.
 
 1599
 01:09:50,180 --> 01:09:54,150
@@ -7397,7 +7398,7 @@ this case is a lock gadget.
 1600
 01:09:54,150 --> 01:09:58,930
 This is just like the final
-meta-theorem from last class.
+metatheorem from last class.
 
 1601
 01:09:58,930 --> 01:10:01,600
@@ -7454,7 +7455,7 @@ PSPACE-completeness proof using
 
 1612
 01:10:29,510 --> 01:10:32,671
-the [? Viglietta ?] framework.
+the Viglietta framework.
 
 1613
 01:10:32,671 --> 01:10:34,170
@@ -8013,7 +8014,7 @@ see in these diagrams.
 
 1733
 01:15:28,070 --> 01:15:33,320
-But you're getting
+But you get an
 NCL reduction again.
 
 1734
@@ -8385,7 +8386,7 @@ orchestration of laser
 
 1812
 01:18:51,570 --> 01:18:53,370
-continuous reorientations.
+continuous re-orientations.
 
 1813
 01:18:53,370 --> 01:18:55,100
@@ -8466,4 +8467,9 @@ But I will leave it at that.
 1829
 01:19:29,770 --> 01:19:32,400
 And that's all for today.
+
+1830
+01:19:34,000 --> 01:19:37,000
+Next class, we will do
+two players.
 
