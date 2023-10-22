@@ -3597,7 +3597,7 @@ care about this edge.
 
 783
 00:35:19,340 --> 00:35:20,965
-It doesn't bias
+It doesn't buy us
 anything, this edge.
 
 784
@@ -4338,7 +4338,7 @@ One more version.
 942
 00:41:53,120 --> 00:41:56,310
 So we just did planar
-graphs, or PSPACE-complete.
+graphs are PSPACE-complete.
 
 943
 00:41:56,310 --> 00:41:59,870
@@ -6555,7 +6555,7 @@ about that, you
 1417
 01:02:41,640 --> 01:02:43,180
 can use them as
-protected oars, and then
+protected ORs, and then
 
 1418
 01:02:43,180 --> 01:02:44,679
@@ -6564,7 +6564,7 @@ of that, and build
 
 1419
 01:02:44,679 --> 01:02:46,610
-all the things we've done.
+all the things we've built.
 
 1420
 01:02:46,610 --> 01:02:48,690
@@ -7616,7 +7616,7 @@ actually sticking up.
 1647
 01:11:53,910 --> 01:11:56,130
 And the green ones are
-obviously lying in the plan.
+obviously lying in the plane.
 
 1648
 01:11:56,130 --> 01:12:00,300
