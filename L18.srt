@@ -2066,7 +2066,7 @@ this construction in detail,
 
 444
 00:19:57,500 --> 00:20:01,220
-but using orders
+but using ORs
 and some kickbacks
 
 445
