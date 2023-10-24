@@ -2471,8 +2471,8 @@ normal play condition,
 
 529
 00:23:47,344 --> 00:23:49,860
-if you use games different
-from the [INAUDIBLE]
+are these games different
+from the misère
 
 530
 00:23:49,860 --> 00:23:54,270
@@ -2485,8 +2485,8 @@ general, those games
 
 532
 00:23:56,370 --> 00:24:02,060
-are different when you
-can't move then you win.
+are different when, if you
+can't move, then you win.
 
 533
 00:24:02,060 --> 00:24:04,460
@@ -2723,7 +2723,7 @@ How hard are these games?
 585
 00:26:17,410 --> 00:26:21,200
 Well, what's been studied--
-this is a [INAUDIBLE] paper--
+this is a Papadimitriou paper--
 
 586
 00:26:21,200 --> 00:26:25,370
@@ -3181,7 +3181,7 @@ creatively named.
 
 685
 00:31:25,840 --> 00:31:28,394
-First one's called G1.
+First one's called G_1.
 
 686
 00:31:28,394 --> 00:31:30,310
@@ -3195,7 +3195,7 @@ of these games.
 
 688
 00:31:33,520 --> 00:31:38,174
-So in G1, I move my
+So in G_1, I move my
 player is to set all
 
 689
@@ -3394,7 +3394,7 @@ to prove some hardness.
 
 732
 00:33:35,670 --> 00:33:41,590
-G2, the next game, is
+G_2, the next game, is
 a move was going to be
 
 733
@@ -3483,7 +3483,7 @@ So that's a very useful game.
 
 752
 00:34:47,480 --> 00:34:48,575
-Next is G3.
+Next is G_3.
 
 753
 00:34:48,575 --> 00:34:51,660
@@ -3491,7 +3491,7 @@ Next is G3.
 754
 00:34:51,660 --> 00:34:54,990
 A slight variation
-to G3, we're going
+to G_3, we're going
 
 755
 00:34:54,990 --> 00:34:59,030
@@ -3597,7 +3597,7 @@ hardness proofs use this one.
 
 778
 00:36:07,370 --> 00:36:07,870
-G4.
+G_4.
 
 779
 00:36:07,870 --> 00:36:14,790
@@ -3659,23 +3659,23 @@ happens to win.
 
 793
 00:36:54,197 --> 00:36:55,280
-So it's a variation of G2.
+So it's a variation of G_2.
 
 794
 00:36:55,280 --> 00:36:58,440
 
 795
 00:36:58,440 --> 00:37:00,180
-G5 does not exist.
+G_5 does not exist.
 
 796
 00:37:00,180 --> 00:37:04,900
-G6-- there is a G5 in
+G_6-- there is a G_5 in
 the paper, but it's
 
 797
 00:37:04,900 --> 00:37:06,876
-a generalization of G6.
+a generalization of G_6.
 
 798
 00:37:06,876 --> 00:37:09,792
@@ -3688,7 +3688,7 @@ Not important.
 
 800
 00:37:11,630 --> 00:37:15,640
-So G6, same thing for the move.
+So G_6, same thing for the move.
 
 801
 00:37:15,640 --> 00:37:21,620
@@ -3762,12 +3762,12 @@ games.
 
 816
 00:38:13,730 --> 00:38:15,780
-So we'll use G6 for
+So we'll use G_6 for
 constraint logic.
 
 817
 00:38:15,780 --> 00:38:17,430
-G3 is most other proofs.
+G_3 is most other proofs.
 
 818
 00:38:17,430 --> 00:38:21,700
@@ -3788,7 +3788,7 @@ AUDIENCE: All right.
 822
 00:38:26,480 --> 00:38:28,230
 I'm a know; little
-confused about G1.
+confused about G_1.
 
 823
 00:38:28,230 --> 00:38:30,930
@@ -3815,11 +3815,11 @@ Because if--
 828
 00:38:34,824 --> 00:38:38,776
 AUDIENCE: You can lose if
-the turn variable changed
+the turn variable changing
 
 829
 00:38:38,776 --> 00:38:42,187
-satisfies the [INAUDIBLE].
+satisfies the formula.
 
 830
 00:38:42,187 --> 00:38:42,728
@@ -3831,7 +3831,8 @@ Yeah.
 
 832
 00:38:43,228 --> 00:38:44,210
-[INTERPOSING VOICES]
+AUDIENCE: Oh, you can just
+set the turn variable.
 
 833
 00:38:44,210 --> 00:38:45,200
@@ -3953,7 +3954,7 @@ it could be many of the games.
 859
 00:39:36,520 --> 00:39:39,970
 The one they chose
-to highlight was G4.
+to highlight was G_4.
 
 860
 00:39:39,970 --> 00:39:41,740
@@ -4005,7 +4006,7 @@ trays and black trays.
 
 870
 00:40:07,790 --> 00:40:11,890
-So G4, white player can take any
+So G_4, white player can take any
 of the trays of their variable,
 
 871
@@ -4231,7 +4232,7 @@ is going to be exponential.
 
 919
 00:42:27,600 --> 00:42:35,350
-So you can do like 4k equals 0
+So you can do like: for k = 0
 to the total number of states,
 
 920
@@ -4397,7 +4398,7 @@ into a corresponding game.
 956
 00:44:32,870 --> 00:44:38,020
 In this case, it's going
-to be a G6 style game.
+to be a G_6 style game.
 
 957
 00:44:38,020 --> 00:44:44,600
@@ -4483,7 +4484,7 @@ more surprisingly hard.
 974
 00:45:31,310 --> 00:45:37,150
 And it has a nice clean
-reduction also from G3.
+reduction also from G_3.
 
 975
 00:45:37,150 --> 00:45:38,065
@@ -4651,7 +4652,7 @@ get one of their tokens
 
 1014
 00:48:04,420 --> 00:48:09,000
-to a node in the win set WI.
+to a node in the win set W_i.
 
 1015
 00:48:09,000 --> 00:48:12,750
@@ -4702,7 +4703,7 @@ So this is a variable gadget.
 1026
 00:48:38,460 --> 00:48:40,047
 So we're going to
-reduce from G3.
+reduce from G_3.
 
 1027
 00:48:40,047 --> 00:48:40,880
@@ -4714,7 +4715,7 @@ This one.
 
 1029
 00:48:41,400 --> 00:48:44,540
-So G3, a move
+So G_3, a move
 corresponds to you're
 
 1030
@@ -5380,12 +5381,12 @@ be set between true or false.
 1176
 00:54:43,218 --> 00:54:47,140
 I didn't mention, but we
-are going to be playing G3.
+are going to be playing G_3.
 
 1177
 00:54:47,140 --> 00:54:49,240
 We are going to
-be simulating G3.
+be simulating G_3.
 
 1178
 00:54:49,240 --> 00:54:52,170
@@ -6544,7 +6545,7 @@ much everything.
 
 1424
 01:05:43,960 --> 01:05:45,560
-And that's the power of G3.
+And that's the power of G_3.
 
 1425
 01:05:45,560 --> 01:05:49,910
@@ -6609,7 +6610,7 @@ EXPTIME complete.
 
 1438
 01:06:19,600 --> 01:06:21,410
-This is also from G3.
+This is also from G_3.
 
 1439
 01:06:21,410 --> 01:06:23,180
@@ -6879,8 +6880,8 @@ could be exponentially long.
 
 1498
 01:08:47,380 --> 01:08:51,779
-So it's like double
-the exponential size.
+So it's like doubly
+exponential size.
 
 1499
 01:08:51,779 --> 01:08:55,979
@@ -6945,7 +6946,7 @@ interesting game to watch.
 1512
 01:09:22,660 --> 01:09:25,670
 But it's a reduction
-I think from G3 again.
+I think from G_3 again.
 
 1513
 01:09:25,670 --> 01:09:30,439
@@ -7044,7 +7045,7 @@ quasi-polynomial or polynomial
 
 1534
 01:10:10,300 --> 01:10:12,950
-spaces or some crazy thing.
+space or some crazy thing.
 
 1535
 01:10:12,950 --> 01:10:16,140
@@ -7173,7 +7174,7 @@ is also EXPTIME complete.
 
 1562
 01:11:18,380 --> 01:11:21,540
-This is a reduction from G6.
+This is a reduction from G_6.
 
 1563
 01:11:21,540 --> 01:11:24,430
@@ -7707,7 +7708,7 @@ with super-ko rule.
 1675
 01:16:33,250 --> 01:16:36,690
 And you take any of these
-games like G1 through G6.
+games like G_1 through G_6.
 
 1676
 01:16:36,690 --> 01:16:40,050
@@ -7736,8 +7737,8 @@ proved Go is EXPTIME hard,
 
 1682
 01:16:53,570 --> 01:16:56,820
-proved that G1, G2, and
-G3, and chess and checkers
+proved that G_1, G_2, and
+G_3, and chess and checkers
 
 1683
 01:16:56,820 --> 01:17:01,210
@@ -7826,16 +7827,17 @@ up to the next level which
 
 1701
 01:17:47,050 --> 01:17:50,140
-is double the exponential time.
+is doubly exponential time.
 
 1702
 01:17:50,140 --> 01:17:51,660
 AUDIENCE: This is
-change and changed
+changed and changed
 
 1703
 01:17:51,660 --> 01:17:55,060
-back [INAUDIBLE] configuration?
+back because it's a
+repeat configuration?
 
 1704
 01:17:55,060 --> 01:17:57,580
@@ -7909,8 +7911,8 @@ that he could prove
 
 1719
 01:18:28,280 --> 01:18:32,000
-is the G1 becomes double
-the exponential time.
+is the G_1 becomes doubly
+exponential time.
 
 1720
 01:18:32,000 --> 01:18:35,001
@@ -7998,7 +8000,7 @@ games in a natural way.
 1739
 01:19:29,330 --> 01:19:36,900
 Alternating polynomial time
-thing corresponds to queue set.
+thing corresponds to QSAT.
 
 1740
 01:19:36,900 --> 01:19:40,310
@@ -8026,7 +8028,7 @@ space gives you
 
 1745
 01:19:51,420 --> 01:19:53,240
-double the exponential time.
+doubly exponential time.
 
 1746
 01:19:53,240 --> 01:19:55,080
@@ -8041,7 +8043,7 @@ space complete,
 1748
 01:19:57,790 --> 01:19:59,810
 which is the same as
-double exponential time.
+doubly exponential time.
 
 1749
 01:19:59,810 --> 01:20:03,820
@@ -8102,7 +8104,7 @@ variable settings.
 1761
 01:20:27,550 --> 01:20:30,289
 In this setting, a slight
-variation on G1 and G2.
+variation on G_1 and G_2.
 
 1762
 01:20:30,289 --> 01:20:32,330
@@ -8111,7 +8113,7 @@ formula's a little bit,
 
 1763
 01:20:32,330 --> 01:20:34,990
-become double the exponential
+become doubly exponential
 time complete, just as hard
 
 1764
@@ -8144,7 +8146,7 @@ semi-blind game.
 
 1770
 01:20:51,080 --> 01:20:54,930
-In this case, G2 at least is
+In this case, G_2 at least is
 exponential space complete.
 
 1771
@@ -8210,11 +8212,11 @@ see anything to the right.
 1784
 01:21:23,680 --> 01:21:27,340
 And because they
-couldn't do G4, this
+couldn't do G_4, this
 
 1785
 01:21:27,340 --> 01:21:34,050
-is the G2 version, which is
+is the G_2 version, which is
 there's also a wall here.
 
 1786
@@ -8234,7 +8236,7 @@ different win conditions.
 
 1789
 01:21:40,500 --> 01:21:41,570
-That's G2.
+That's G_2.
 
 1790
 01:21:41,570 --> 01:21:45,600
@@ -8242,8 +8244,8 @@ And so that's a version of Peek.
 
 1791
 01:21:45,600 --> 01:21:47,400
-This one is double
-the exponential time
+This one is doubly
+exponential time
 
 1792
 01:21:47,400 --> 01:21:49,130
