@@ -438,13 +438,13 @@ going to separate them out.
 
 96
 00:04:03,210 --> 00:04:07,170
-And Y1-- the choice of Y1 is
-only allowed to depend on X1.
+And Y_1-- the choice of Y_1 is
+only allowed to depend on X_1.
 
 97
 00:04:07,170 --> 00:04:11,529
-And the choice of Y2 is only
-allowed to depend on X2.
+And the choice of Y_2 is only
+allowed to depend on X_2.
 
 98
 00:04:11,529 --> 00:04:13,070
@@ -453,7 +453,8 @@ to have some CNF
 
 99
 00:04:13,070 --> 00:04:15,490
-formula on the X1, X2, Y1, Y2.
+formula on the X_1, X_2,
+Y_1, Y_2.
 
 100
 00:04:15,490 --> 00:04:23,640
@@ -487,7 +488,7 @@ Black makes these choices.
 107
 00:04:38,800 --> 00:04:45,900
 And then white player
-1 chooses the Y1s.
+1 chooses the Y_1's.
 
 108
 00:04:45,900 --> 00:04:49,110
@@ -497,7 +498,7 @@ aspect of this game
 109
 00:04:49,110 --> 00:04:52,920
 is that the white player one
-can only see the X1 variables--
+can only see the X_1 variables--
 
 110
 00:04:52,920 --> 00:04:55,404
@@ -537,7 +538,7 @@ white player two, who can only
 
 118
 00:05:10,360 --> 00:05:13,070
-see the variables chosen-- X2.
+see the variables chosen-- X_2.
 
 119
 00:05:13,070 --> 00:05:13,570
@@ -561,7 +562,7 @@ team goes first.
 123
 00:05:19,026 --> 00:05:21,014
 So it doesn't,
-obviously, see Y1 and Y2.
+obviously, see Y_1 and Y_2.
 
 124
 00:05:21,014 --> 00:05:22,180
@@ -573,7 +574,7 @@ Yeah.
 
 126
 00:05:22,680 --> 00:05:25,426
-So X2 can see X1.
+So X_2 can see X_1.
 
 127
 00:05:25,426 --> 00:05:26,330
@@ -600,7 +601,7 @@ Really, this is one player.
 132
 00:05:33,820 --> 00:05:37,611
 So they get to choose
-everything in the X [INAUDIBLE].
+everything in the X_i's.
 
 133
 00:05:37,611 --> 00:05:38,110
@@ -695,7 +696,7 @@ are for all possible choices
 
 152
 00:06:37,470 --> 00:06:38,590
-of X1 and X2.
+of X_1 and X_2.
 
 153
 00:06:38,590 --> 00:06:41,190
@@ -704,8 +705,8 @@ exponentially many guesses.
 
 154
 00:06:41,190 --> 00:06:45,790
-For every state of X1, X2, guess
-what the right strategy is.
+For every state of X_1, X_2,
+guess what the right strategy is.
 
 155
 00:06:45,790 --> 00:06:50,790
@@ -1189,7 +1190,7 @@ round of one of the games
 259
 00:11:31,507 --> 00:11:36,369
 is equivalent to having
-all-around [INAUDIBLE] game?
+all rounds of the other game?
 
 260
 00:11:36,369 --> 00:11:38,160
@@ -1258,12 +1259,12 @@ Yeah.
 
 274
 00:12:06,910 --> 00:12:11,192
-AUDIENCE: So are you [INAUDIBLE]
-kind of rely on the fact
+AUDIENCE: So your argument that Bounded
+TCL is in NEXP kind of relied on the
 
 275
 00:12:11,192 --> 00:12:13,820
-that white doesn't learn
+fact that white doesn't learn
 anything from black's moves
 
 276
@@ -1404,7 +1405,7 @@ n such variables.
 
 305
 00:13:27,420 --> 00:13:30,230
-And B1 and B2 are both in here.
+And B_1 and B_2 are both in here.
 
 306
 00:13:30,230 --> 00:13:33,530
@@ -1546,7 +1547,7 @@ of the white players.
 
 335
 00:14:46,545 --> 00:14:49,980
-If this is a B1
+If this is a B_1
 variable, then this
 
 336
@@ -1957,7 +1958,7 @@ with bounded resources.
 425
 00:18:58,350 --> 00:19:01,440
 So before I get to the
-constrain logic version,
+constraint logic version,
 
 426
 00:19:01,440 --> 00:19:04,160
@@ -1986,7 +1987,7 @@ This is where the action is.
 431
 00:19:23,170 --> 00:19:24,740
 Going from here to
-a constrain logic
+a constraint logic
 
 432
 00:19:24,740 --> 00:19:28,270
@@ -2190,12 +2191,12 @@ mechanics make this happen.
 477
 00:21:36,180 --> 00:21:42,070
 And in this case, black can
-set two variables-- X1 and X2--
+set two variables-- x_1 and x_2--
 
 478
 00:21:42,070 --> 00:21:47,460
 to be anything in
-the set A, B. OK?
+the set {A, B}. OK?
 
 479
 00:21:47,460 --> 00:21:51,030
@@ -2237,11 +2238,11 @@ And white i is basically blind.
 
 488
 00:22:15,370 --> 00:22:18,530
-White i can only see Xi.
+White i can only see x_i.
 
 489
 00:22:18,530 --> 00:22:21,004
-These Xis are messages
+These x_i's are messages
 to the white players.
 
 490
@@ -2283,17 +2284,17 @@ do one other thing.
 
 498
 00:22:44,270 --> 00:22:47,840
-There's one memory cell
-in the machine, called M1.
+There's one memory cell in
+the machine, called m_1.
 
 499
 00:22:47,840 --> 00:22:49,440
 And there's another
-one called M2.
+one called m_2.
 
 500
 00:22:49,440 --> 00:22:54,730
-And player white i can set Mi.
+And player white i can set m_i.
 
 501
 00:22:54,730 --> 00:22:56,270
@@ -2312,7 +2313,7 @@ the move of white i.
 
 504
 00:23:03,620 --> 00:23:09,690
-White i move is just set Mi.
+White i move is just set m_i.
 
 505
 00:23:09,690 --> 00:23:11,360
@@ -2460,12 +2461,12 @@ outputting a strain of symbols.
 
 538
 00:25:17,460 --> 00:25:19,710
-White 1 is outputting M1 and
+White 1 is outputting m_1 and
 then outputting something
 
 539
 00:25:19,710 --> 00:25:21,280
-else to M1, and so on.
+else to m_1, and so on.
 
 540
 00:25:21,280 --> 00:25:24,960
@@ -2631,8 +2632,8 @@ is going to get huge.
 
 575
 00:27:25,610 --> 00:27:28,150
-So you think of this as kind
-of a streaming [INAUDIBLE]
+So, think of this as kind
+of a streaming algorithm.
 
 576
 00:27:28,150 --> 00:27:30,140
@@ -2666,7 +2667,7 @@ This is not literally true.
 582
 00:27:45,430 --> 00:27:48,080
 The sequence of
-characters-- M1, say--
+characters-- m_1, say--
 
 583
 00:27:48,080 --> 00:27:51,170
@@ -2689,7 +2690,7 @@ identifying with black here.
 
 587
 00:28:06,300 --> 00:28:09,180
-When we specify X1
+When we specify x_1
 equals A, we would
 
 588
@@ -2709,7 +2710,7 @@ OK?
 591
 00:28:17,640 --> 00:28:20,680
 When we request B,
-with X1 equals B,
+with x_1 equals B,
 
 592
 00:28:20,680 --> 00:28:22,895
@@ -3001,7 +3002,7 @@ happen when-- so whenever
 655
 00:32:17,790 --> 00:32:23,040
 both A and-- so if we just ask
-for A, A, and white 1 returns
+for (A, A), and white 1 returns
 
 656
 00:32:23,040 --> 00:32:25,160
@@ -3021,7 +3022,7 @@ character we see.
 659
 00:32:28,880 --> 00:32:32,300
 If-- assuming we keep
-playing A, A, is black.
+playing (A, A), is black.
 
 660
 00:32:32,300 --> 00:32:35,000
@@ -3035,7 +3036,7 @@ it will be an execution
 
 662
 00:32:38,120 --> 00:32:41,465
-where we play A, A
+where we play (A, A)
 throughout this entire state.
 
 663
@@ -3087,7 +3088,7 @@ and I reach a hash mark,
 673
 00:33:05,720 --> 00:33:12,010
 that means I know that both
-the W1 strain and the W2
+the W_1 strain and the W_2
 
 674
 00:33:12,010 --> 00:33:15,137
@@ -3225,12 +3226,12 @@ I'd be happy.
 
 703
 00:34:17,760 --> 00:34:23,080
-So my goal is to get W1 state
+So my goal is to get W_1's state
 to be one step out of sync,
 
 704
 00:34:23,080 --> 00:34:24,546
-one step behind W2 state.
+one step behind W_2's state.
 
 705
 00:34:24,546 --> 00:34:27,561
@@ -3268,7 +3269,7 @@ consider the situation
 713
 00:35:02,390 --> 00:35:08,870
 in which black plays, let's
-say A for the W1 player,
+say A for the W_1 player,
 
 714
 00:35:08,870 --> 00:35:10,600
@@ -3276,12 +3277,12 @@ and plays B on the other player.
 
 715
 00:35:10,600 --> 00:35:15,280
-W2's A state does not change
+W_2's A state does not change
 because we're advancing B.
 
 716
 00:35:15,280 --> 00:35:19,267
-And then W1's
+And then W_1's
 state is advancing.
 
 717
@@ -3306,8 +3307,8 @@ OK, cool, that means
 
 721
 00:35:29,820 --> 00:35:34,030
-W1 is one step ahead--
-one state ahead of W2.
+W_1 is one step ahead--
+one state ahead of W_2.
 
 722
 00:35:34,030 --> 00:35:36,850
@@ -3327,7 +3328,7 @@ then out of sync by 1.
 726
 00:35:53,920 --> 00:35:58,160
 And now what I'd like to
-happen next is X1 and X2 moves.
+happen next is (x_1, x_2) moves.
 
 727
 00:35:58,160 --> 00:36:03,280
@@ -3348,12 +3349,12 @@ a valid transition.
 731
 00:36:28,710 --> 00:36:31,970
 So from whatever
-W2 is outputting
+W_2 is outputting
 
 732
 00:36:31,970 --> 00:36:36,030
-to whatever W1 is outputting
-because W1 is ahead,
+to whatever W_1 is outputting
+because W_1 is ahead,
 
 733
 00:36:36,030 --> 00:36:37,430
@@ -3753,8 +3754,8 @@ important that the algorithm
 
 818
 00:40:30,620 --> 00:40:33,230
-is only one space, in
-the first place, though?
+is O(1) space, in the
+first place, though?
 
 819
 00:40:33,230 --> 00:40:36,990
@@ -3875,12 +3876,12 @@ is inside the algorithm.
 
 844
 00:41:41,780 --> 00:41:44,760
-So I can do that and
-[INAUDIBLE] some time
+So I can do that
+in constant time
 
 845
 00:41:44,760 --> 00:41:48,020
-with the lookup table.
+with a lookup table.
 
 846
 00:41:48,020 --> 00:41:50,830
@@ -4027,7 +4028,7 @@ OK.
 879
 00:44:09,660 --> 00:44:15,170
 So again, white 1 can only
-see one variable-- X1--
+see one variable-- x_1--
 
 880
 00:44:15,170 --> 00:44:16,560
@@ -4036,7 +4037,7 @@ that is set by black.
 881
 00:44:16,560 --> 00:44:18,980
 And white 2 can only
-see one variable-- X2--
+see one variable-- x_2--
 
 882
 00:44:18,980 --> 00:44:21,010
@@ -4144,15 +4145,15 @@ Pretty much the same setup.
 904
 00:45:18,800 --> 00:45:21,270
 Black has these
-variables, X and X prime.
+variables, X and X'.
 
 905
 00:45:21,270 --> 00:45:23,860
-Y1 has these variables, Y1.
+White 1 has these variables, Y_1.
 
 906
 00:45:23,860 --> 00:45:26,120
-Y2 has these variables, Y2.
+White 2 has these variables, Y_2.
 
 907
 00:45:26,120 --> 00:45:27,390
@@ -4589,8 +4590,8 @@ parallel, all pairs of items.
 
 1002
 00:49:45,410 --> 00:49:48,670
-I'm going to compare ai
-to aj for all i and j.
+I'm going to compare a_i
+to a_j for all i and j.
 
 1003
 00:49:48,670 --> 00:49:51,620
@@ -4619,7 +4620,7 @@ that item should
 
 1008
 00:50:03,020 --> 00:50:06,120
-go to the I-th
+go to the ith
 position in the array.
 
 1009
@@ -4629,8 +4630,8 @@ this matrix, i versus j.
 
 1010
 00:50:10,200 --> 00:50:15,170
-Each one says ai is
-smaller or greater than aj.
+Each one says a_i is
+smaller or greater than a_j.
 
 1011
 00:50:15,170 --> 00:50:18,090
@@ -5023,7 +5024,7 @@ of problem a lot.
 
 1098
 00:54:58,240 --> 00:54:59,989
-We did a similar thing with W1.
+We did a similar thing with W_1.
 
 1099
 00:54:59,989 --> 00:55:01,030
@@ -5040,7 +5041,7 @@ P. But if I phrase it this way,
 
 1102
 00:55:08,240 --> 00:55:12,060
-it would be X time complete
+it would be EXPTIME complete
 because t could represent
 
 1103
@@ -5169,7 +5170,7 @@ problem with symmetry
 
 1130
 00:56:16,558 --> 00:56:18,022
-between yea and
+between yes and
 no answers, here?
 
 1131
@@ -5361,12 +5362,12 @@ will not have poly log depth.
 
 1173
 00:58:14,540 --> 00:58:16,980
-Otherwise, it isn't in NC.
+Otherwise, it is in NC.
 
 1174
 00:58:16,980 --> 00:58:19,570
 But if you have a really large
-debt circuit, simulating--
+depth circuit, simulating--
 
 1175
 00:58:19,570 --> 00:58:23,680
@@ -5652,7 +5653,7 @@ worried about something
 
 1238
 01:01:15,220 --> 01:01:20,090
-called AC0 and NC0, when this is
+called AC^0 and NC^0, when this is
 0 and you want constant height.
 
 1239
@@ -6030,7 +6031,7 @@ put an OR there.
 
 1322
 01:05:03,070 --> 01:05:05,360
-And let's say i OR
+And let's say I OR
 that bit with itself.
 
 1323
@@ -6235,8 +6236,8 @@ starting and ending
 
 1368
 01:06:38,760 --> 01:06:41,760
-with or and fanout, at
-most, 2, at this point.
+with OR, and fanout at
+most 2 at this point.
 
 1369
 01:06:41,760 --> 01:06:46,960
@@ -6600,8 +6601,8 @@ inputs because I
 
 1447
 01:09:39,761 --> 01:09:42,093
-don't want to [INAUDIBLE]
-with the two input conditions.
+don't want to violate the
+two-input condition.
 
 1448
 01:09:42,093 --> 01:09:43,362
@@ -6818,7 +6819,7 @@ what we're doing.
 1497
 01:11:29,270 --> 01:11:31,070
 And basically,
-the i-th copy will
+the ith copy will
 
 1498
 01:11:31,070 --> 01:11:32,700
@@ -6831,8 +6832,8 @@ want to alternate ANDs and ORs.
 
 1500
 01:11:36,360 --> 01:11:42,970
-So in the i-th copy-- the
-i-th copy of the circuit
+So in the ith copy-- the
+ith copy of the circuit
 
 1501
 01:11:42,970 --> 01:11:51,140
@@ -6930,7 +6931,7 @@ part is the inputs.
 
 1521
 01:12:47,760 --> 01:12:52,990
-I want the i-th copy to be
+I want the ith copy to be
 triggered at time 2i, exactly.
 
 1522
@@ -7039,7 +7040,7 @@ what that bit value is.
 
 1544
 01:13:54,850 --> 01:13:56,930
-This will still be X2.
+This will still be x_2.
 
 1545
 01:13:56,930 --> 01:14:00,600
@@ -7047,7 +7048,7 @@ This will still be X2.
 1546
 01:14:00,600 --> 01:14:06,970
 You can think of the two cases--
-either x2 is 0, in which case
+either x_2 is 0, in which case
 
 1547
 01:14:06,970 --> 01:14:10,280
@@ -7146,7 +7147,7 @@ at the right time.
 
 1568
 01:14:54,520 --> 01:14:59,289
-So the i-th copy-- all of the
+So the ith copy-- all of the
 gates will trigger at time 2i.
 
 1569
@@ -7300,7 +7301,7 @@ be to use bounded deterministic
 
 1601
 01:16:13,610 --> 01:16:15,360
-constrain logic to
+constraint logic to
 prove interesting games
 
 1602
@@ -7324,20 +7325,20 @@ hardness reduction.
 1606
 01:16:30,180 --> 01:16:33,140
 So suppose you want to
-find an independence set.
+find an independent set.
 
 1607
 01:16:33,140 --> 01:16:34,390
-Independence set is hard.
+Independent set is hard.
 
 1608
 01:16:34,390 --> 01:16:36,530
 Suppose I want to find a
-maximal independence set,
+maximal independent set,
 
 1609
 01:16:36,530 --> 01:16:39,270
-an independence set where I
+an independent set where I
 can't add anymore vertices.
 
 1610
@@ -7397,7 +7398,7 @@ the lexically first maximal
 
 1622
 01:17:08,100 --> 01:17:11,670
-independence set because
+independent set because
 it adds 1, if it can.
 
 1623
@@ -7426,11 +7427,11 @@ the lexically smallest
 
 1628
 01:17:24,450 --> 01:17:25,860
-maximal independence set.
+maximal independent set.
 
 1629
 01:17:25,860 --> 01:17:29,550
-finding a maximal independence
+finding a maximal independent
 set can be done in parallel.
 
 1630
@@ -7577,7 +7578,7 @@ reduction has to be in NC.
 1661
 01:18:55,750 --> 01:19:00,070
 But once you do
-that, I claim that V
+that, I claim that v
 
 1662
 01:19:00,070 --> 01:19:05,500
@@ -7765,7 +7766,7 @@ it's called an onion peeling.
 1702
 01:20:30,520 --> 01:20:34,510
 And given a point, I want to
-know, is it on the k-th layer
+know, is it on the kth layer
 
 1703
 01:20:34,510 --> 01:20:36,379
@@ -7826,8 +7827,8 @@ That's P-complete.
 
 1715
 01:21:05,570 --> 01:21:09,930
-If I want to compute A mod
-B1, mod B2, mod B3, mod B4,
+If I want to compute a mod
+b_1, mod b_2, mod b_3, mod b_4,
 
 1716
 01:21:09,930 --> 01:21:12,160
@@ -7907,7 +7908,7 @@ But we don't know.
 
 1732
 01:21:52,220 --> 01:21:56,940
-Computing A or the B mod C is
+Computing a to the b mod c is
 conjectured to be P-complete.
 
 1733
