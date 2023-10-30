@@ -671,7 +671,7 @@ shoot there, back there,
 
 144
 00:06:36,010 --> 00:06:40,000
-shoot there, ther, shoot there,
+shoot there, there, shoot there,
 and get to the other room
 
 145
