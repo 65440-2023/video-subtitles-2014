@@ -265,7 +265,7 @@ from the late '80s
 57
 00:02:35,290 --> 00:02:38,750
 but became popular in the
-common material game theory
+combinatorial game theory
 
 58
 00:02:38,750 --> 00:02:42,060
@@ -2314,7 +2314,7 @@ make it the right player.
 
 495
 00:22:17,610 --> 00:22:22,540
-And here's the omega gadget
+And here's the mega gadget
 that does AND, SPLIT, and SHIFT.
 
 496
