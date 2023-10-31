@@ -334,7 +334,7 @@ problem into a decision
 73
 00:03:38,430 --> 00:03:41,080
 problem, you're asking is
-opt less than or equal to k.
+OPT less than or equal to k.
 
 74
 00:03:41,080 --> 00:03:44,290
@@ -1464,7 +1464,7 @@ to be within an additive plus
 317
 00:16:04,510 --> 00:16:13,457
 So this will decide whether
-opt is less than or equal to k
+OPT is less than or equal to k
 
 318
 00:16:13,457 --> 00:16:15,540

@@ -237,7 +237,7 @@ because all these problems are
 
 52
 00:02:18,220 --> 00:02:19,220
-going to be NP complete.
+going to be NP-complete.
 
 53
 00:02:19,220 --> 00:02:21,440
@@ -265,7 +265,7 @@ useful notation, which
 
 58
 00:02:36,390 --> 00:02:47,310
-is opt of x, x is an instance,
+is OPT of x, x is an instance,
 this is going to be two things.
 
 59
@@ -453,13 +453,13 @@ problem, the question is
 
 100
 00:05:23,971 --> 00:05:30,260
-is opt of x, the cost, less than
+is OPT of x, the cost, less than
 or equal to some query value.
 
 101
 00:05:30,260 --> 00:05:35,190
 And for a max
-version, it is is opt
+version, it is is OPT
 
 102
 00:05:35,190 --> 00:05:40,240
@@ -500,7 +500,7 @@ that it was a valid solution,
 110
 00:06:00,790 --> 00:06:03,840
 and then you know that
-opt-- opt is some min,
+OPT-- OPT is some min,
 
 111
 00:06:03,840 --> 00:06:05,530
@@ -514,7 +514,7 @@ to any particular solution.
 113
 00:06:07,200 --> 00:06:10,540
 So if I give you a solution,
-then I verify that opt of x
+then I verify that OPT of x
 
 114
 00:06:10,540 --> 00:06:13,330
@@ -542,7 +542,7 @@ equal to something,
 
 119
 00:06:22,340 --> 00:06:24,100
-well that's a co NP problem.
+well that's a coNP problem.
 
 120
 00:06:24,100 --> 00:06:27,670
@@ -579,7 +579,7 @@ which still give us NP problems.
 
 127
 00:06:46,530 --> 00:06:49,890
-We can still talk about NP
+We can still talk about NP-
 completeness of these problems.
 
 128
@@ -621,7 +621,7 @@ necessarily a constant.
 136
 00:07:27,596 --> 00:07:37,510
 It could be a function of
-N. If-- in the min case,
+n. If-- in the min case,
 
 137
 00:07:37,510 --> 00:07:42,410
@@ -640,7 +640,7 @@ reason, I write cost
 
 140
 00:07:51,310 --> 00:07:53,460
-of opt instead of just opt.
+of OPT instead of just OPT.
 
 141
 00:07:53,460 --> 00:07:55,190
@@ -901,7 +901,7 @@ problem, which is basically
 196
 00:10:45,570 --> 00:10:49,300
 deciding OPT exactly,
-that might be NP complete.
+that might be NP-complete.
 
 197
 00:10:49,300 --> 00:10:51,550
@@ -1001,7 +1001,7 @@ a value epsilon.
 
 218
 00:11:55,700 --> 00:12:00,450
-It's a rational epsilon
+Let's say a rational epsilon
 greater than zero.
 
 219
@@ -1049,12 +1049,12 @@ epsilon could be horrible.
 228
 00:12:50,490 --> 00:12:52,140
 You could have an
-algorithm, if N
+algorithm, if n
 
 229
 00:12:52,140 --> 00:12:55,836
 is your input size, that runs
-in something like N to the 2
+in something like n to the 2
 
 230
 00:12:55,836 --> 00:12:58,930
@@ -1082,12 +1082,12 @@ getting up there.
 
 235
 00:13:11,970 --> 00:13:13,320
-But that's considered a P test.
+But that's considered a PTAS.
 
 236
 00:13:13,320 --> 00:13:15,380
 Now there are stronger
-notions of P tests
+notions of PTAS
 
 237
 00:13:15,380 --> 00:13:16,910
@@ -1142,27 +1142,27 @@ have some class of functions,
 248
 00:14:03,640 --> 00:14:07,300
 then I'm going to write
-FAPX to be all the NPO
+F-APX to be all the NPO
 
 249
 00:14:07,300 --> 00:14:22,150
-problems with poly-time f
-approximation algorithms.
+problems with poly-time
+f-approximation algorithms --
 
 250
 00:14:22,150 --> 00:14:25,460
-I'll write f of N
+I'll write f of n
 to be clear what
 
 251
 00:14:25,460 --> 00:14:41,470
-we're depending on for some
+we're depending on -- for some
 little f in the class big F.
 
 252
 00:14:41,470 --> 00:14:46,010
 So for example, f
-of N could be 3.
+of n could be 3.
 
 253
 00:14:46,010 --> 00:14:48,170
@@ -1195,7 +1195,7 @@ commonly studied is log APX.
 
 259
 00:15:02,700 --> 00:15:10,289
-This is log N approximable
+This is log n approximable
 some constant factor.
 
 260
@@ -1209,7 +1209,7 @@ where you just want
 
 262
 00:15:13,380 --> 00:15:17,740
-N to some constant, usually
+n to some constant, usually
 less than one but not always.
 
 263
@@ -1330,7 +1330,7 @@ Hamiltonian cycle or something,
 287
 00:16:40,160 --> 00:16:42,000
 or pick your favorite
-NP hard problem.
+NP-hard problem.
 
 288
 00:16:42,000 --> 00:16:44,660
@@ -1519,7 +1519,7 @@ is a generalization.
 326
 00:18:27,819 --> 00:18:30,276
 In the case where you want to
-connect them in a [? Kleek ?]
+connect them in a clique
 
 327
 00:18:30,276 --> 00:18:31,850
@@ -1694,7 +1694,7 @@ an approximability standpoint.
 364
 00:19:58,810 --> 00:20:01,850
 And in a stronger sense,
-they're both log N approximable,
+they're both log n approximable,
 
 365
 00:20:01,850 --> 00:20:03,910
@@ -1702,7 +1702,7 @@ and that's the best you can do.
 
 366
 00:20:03,910 --> 00:20:07,550
-This is assuming p
+This is assuming P
 does not equal NP.
 
 367
@@ -1764,8 +1764,8 @@ algorithm, I think,
 
 379
 00:20:35,480 --> 00:20:39,700
-is N divided by log N,
-or something roughly N.
+is n divided by log n,
+or something roughly n.
 
 380
 00:20:39,700 --> 00:20:40,640
@@ -1778,7 +1778,7 @@ bound that you
 
 382
 00:20:42,090 --> 00:20:45,340
-can't do better than N to the 1
+can't do better than n to the 1
 minus epsilon for all epsilon.
 
 383
@@ -1820,7 +1820,7 @@ to solve things approximately.
 
 391
 00:21:05,670 --> 00:21:07,250
-Or if you're driving
+Or if you're proving
 hardness, you'd
 
 392
@@ -1859,7 +1859,7 @@ everywhere there
 399
 00:21:21,460 --> 00:21:24,120
 wasn't an edge added, that's
-the same problem as Kleek.
+the same problem as clique.
 
 400
 00:21:24,120 --> 00:21:29,900
@@ -1873,7 +1873,7 @@ OK.
 402
 00:21:30,919 --> 00:21:32,460
 This is annoying
-because [? Kleeks ?]
+because cliques
 
 403
 00:21:32,460 --> 00:21:34,160
@@ -1882,12 +1882,12 @@ are useful in practice, but.
 404
 00:21:34,160 --> 00:21:36,410
 There's another problem
-called [? densest ?] subgraph,
+called densest subgraph,
 
 405
 00:21:36,410 --> 00:21:37,780
 which is approximate
-[? Kleeks. ?] That's actually
+clique. That's actually
 
 406
 00:21:37,780 --> 00:21:38,455
@@ -1983,12 +1983,12 @@ hit all the elements.
 426
 00:22:24,910 --> 00:22:27,590
 For example, here
-I'm giving k sets
+I'm given k sets
 
 427
 00:22:27,590 --> 00:22:31,850
 and I want to know can I hit
-at least J of the elements.
+at least j of the elements.
 
 428
 00:22:31,850 --> 00:22:34,660
@@ -2028,7 +2028,7 @@ constant factor here,
 435
 00:22:49,360 --> 00:22:51,988
 whereas the best we
-can do is log N here.
+can do is log n here.
 
 436
 00:22:51,988 --> 00:22:54,640
@@ -2058,8 +2058,8 @@ you no longer get points for it.
 
 442
 00:23:05,110 --> 00:23:07,730
-That requires log
-N approximation.
+That requires log n
+approximation.
 
 443
 00:23:07,730 --> 00:23:11,620
@@ -2082,7 +2082,7 @@ in what we between log squared
 
 447
 00:23:19,000 --> 00:23:21,760
-and N to the epsilon.
+and n to the epsilon.
 
 448
 00:23:21,760 --> 00:23:23,750
@@ -2113,7 +2113,7 @@ on-- in approximability.
 
 454
 00:23:33,370 --> 00:23:36,270
-It's similar to N to the 1
+It's similar to n to the 1
 minus epsilon, but it's not.
 
 455
@@ -2122,13 +2122,13 @@ It's a little smaller.
 
 456
 00:23:37,210 --> 00:23:42,020
-So you see 2 to the log N would
-be N. That would be great.
+So you see 2 to the log n would
+be n. That would be great.
 
 457
 00:23:42,020 --> 00:23:44,100
 And so you'd really
-like 2 to the log N
+like 2 to the log n
 
 458
 00:23:44,100 --> 00:23:45,570
@@ -2141,7 +2141,7 @@ something a little smaller
 
 460
 00:23:48,290 --> 00:23:51,830
-than log N, log N to the
+than log n, log n to the
 1 minus epsilon power.
 
 461
@@ -2155,8 +2155,8 @@ than what we'd actually like,
 
 463
 00:24:00,240 --> 00:24:03,960
-which is something like N to the
-1 minus-- or N to some epsilon,
+which is something like n to the
+1 minus-- or n to some epsilon,
 
 464
 00:24:03,960 --> 00:24:05,730
@@ -2165,7 +2165,7 @@ I guess, would be ideal.
 465
 00:24:05,730 --> 00:24:08,399
 This is smaller than
-any N to the epsilon.
+any n to the epsilon.
 
 466
 00:24:08,399 --> 00:24:10,440
@@ -2174,12 +2174,12 @@ depends on the problem.
 
 467
 00:24:10,440 --> 00:24:12,831
-With N to some constant,
+With n to some constant,
 like for label cover,
 
 468
 00:24:12,831 --> 00:24:13,580
-it's N to the 1/3.
+it's n to the 1/3.
 
 469
 00:24:13,580 --> 00:24:15,300
@@ -2208,7 +2208,7 @@ known for that
 
 474
 00:24:23,190 --> 00:24:24,940
-is N to the 4/5 plus epsilon.
+is n to the 4/5 plus epsilon.
 
 475
 00:24:24,940 --> 00:24:27,540
@@ -2222,7 +2222,7 @@ do better than any constant.
 
 477
 00:24:29,839 --> 00:24:31,880
-Probably there's an N to
+Probably there's an n to
 the epsilon lower bound,
 
 478
@@ -2262,13 +2262,13 @@ messier in terms of reductions.
 
 486
 00:24:59,000 --> 00:25:01,520
-For NP completeness,
-NP hardness, we just
+For NP-completeness,
+NP-hardness, we just
 
 487
 00:25:01,520 --> 00:25:05,100
-worried about [? carp ?]
-style, one call reductions.
+worried about Karp-style,
+one-call reductions.
 
 488
 00:25:05,100 --> 00:25:06,640
@@ -2354,7 +2354,7 @@ produce an instance of B. Let's
 
 505
 00:26:16,750 --> 00:26:20,490
-call it x prime.
+call it x-prime.
 
 506
 00:26:20,490 --> 00:26:22,290
@@ -2363,7 +2363,7 @@ that by a function f,
 
 507
 00:26:22,290 --> 00:26:26,080
-so x prime is f of x.
+so x-prime is f of x.
 
 508
 00:26:26,080 --> 00:26:30,310
@@ -2376,12 +2376,12 @@ is that the answer to x equals
 
 510
 00:26:34,350 --> 00:26:36,010
-the answer to x prime.
+the answer to x-prime.
 
 511
 00:26:36,010 --> 00:26:39,000
 So you could say OPT of x
-equals the OPT of x prime.
+equals the OPT of x-prime.
 
 512
 00:26:39,000 --> 00:26:41,300
@@ -2430,7 +2430,7 @@ think it's g of y-prime,
 521
 00:27:14,920 --> 00:27:17,390
 but we'll make it g
-of x comma y prime.
+of x comma y-prime.
 
 522
 00:27:17,390 --> 00:27:21,890
@@ -2690,7 +2690,7 @@ that this conversion-- so y
 
 576
 00:30:36,550 --> 00:30:39,880
-here is g of xy-prime.
+here is g of x, y-prime.
 
 577
 00:30:39,880 --> 00:30:42,490
@@ -2946,7 +2946,7 @@ if you allow the 0,0 case.
 
 631
 00:33:35,310 --> 00:33:37,070
-Also, reductions change.
+Also, reductions chain.
 
 632
 00:33:37,070 --> 00:33:39,090
@@ -2996,7 +2996,7 @@ constant factor.
 642
 00:34:14,710 --> 00:34:18,860
 So this is useful if you care
-about log N approximation.
+about log n approximation.
 
 643
 00:34:18,860 --> 00:34:21,860
@@ -3015,12 +3015,12 @@ is out here in crazy ways.
 
 646
 00:34:29,080 --> 00:34:32,630
-So over here, [? before-- ?] so
-[? it's ?] just a linear blow
+So over here, before,
+so just a linear blowup
 
 647
 00:34:32,630 --> 00:34:35,470
-up in the approximation factor,
+in the approximation factor,
 then we only lose constant
 
 648
@@ -3081,11 +3081,11 @@ to say oh, this is even strict.
 661
 00:35:08,426 --> 00:35:11,990
 You don't even need any
-[? blowup ?] like this stuff.
+blowup like this stuff.
 
 662
 00:35:11,990 --> 00:35:18,490
-So that was strict AP
+So that was strict, AP,
 and PTAS reductions.
 
 663
@@ -3102,7 +3102,7 @@ first let me define hardness.
 666
 00:35:40,000 --> 00:35:44,300
 So today, we will
-focus on APX hardness.
+focus on APX-hardness.
 
 667
 00:35:44,300 --> 00:35:53,140
@@ -3135,7 +3135,7 @@ in PTAS reductions.
 673
 00:36:14,160 --> 00:36:18,770
 So it's going to turn out
-that APX hard-- well I
+that APX-hard-- well I
 
 674
 00:36:18,770 --> 00:36:20,730
@@ -3184,7 +3184,7 @@ PTAS then A had a PTAS.
 683
 00:36:54,670 --> 00:36:57,830
 And what we're saying is you
-can re-- your APX hard means
+can re-- your APX-hard means
 
 684
 00:36:57,830 --> 00:37:02,770
@@ -3216,7 +3216,7 @@ does not have a PTAS.
 690
 00:37:14,440 --> 00:37:16,580
 So it's just like
-MP completeness,
+NP-completeness,
 
 691
 00:37:16,580 --> 00:37:17,810
@@ -3445,7 +3445,7 @@ cost in B's problem of y-prime
 
 740
 00:40:18,440 --> 00:40:23,730
-minus OPT of B of x prime.
+minus OPT of B of x-prime.
 
 741
 00:40:23,730 --> 00:40:27,350
@@ -3500,11 +3500,11 @@ by more than a constant factor.
 752
 00:40:56,270 --> 00:40:59,320
 Again, this is at most some
-constant times [? that ?]
+constant times that
 
 753
 00:40:59,320 --> 00:41:01,190
-[? thing ?].
+thing.
 
 754
 00:41:01,190 --> 00:41:01,910
@@ -3576,7 +3576,7 @@ the cost of y divided by OPT.
 
 769
 00:42:11,620 --> 00:42:15,510
-OPT of X would be
+OPT of x would be
 the original input.
 
 770
@@ -3677,8 +3677,8 @@ minimization problem.
 
 790
 00:43:28,170 --> 00:43:39,861
-Let's say-- so this will be cos
-sub B of y-prime minus OPT of B
+Let's say-- so this will be cost
+sub B of y-prime minus OPT sub B
 
 791
 00:43:39,861 --> 00:43:40,360
@@ -3752,11 +3752,11 @@ We've got to use it.
 808
 00:44:30,580 --> 00:44:32,960
 The other property
-is that OPT sub
+is that OPT sub B
 
 809
 00:44:32,960 --> 00:44:39,480
-B is related to OPT sub A.
+is related to OPT sub A.
 Now we have OPT sub A here,
 
 810
@@ -3771,8 +3771,8 @@ up there as OPT sub A of x
 
 812
 00:44:45,490 --> 00:44:48,630
-is omega of OPT
-sub B of x-prime.
+is omega of OPT sub B
+of x-prime.
 
 813
 00:44:48,630 --> 00:44:50,970
@@ -4075,7 +4075,7 @@ simultaneously tell you
 877
 00:48:27,430 --> 00:48:29,800
 a bunch of problems
-that are APX complete so
+that are APX-complete so
 
 878
 00:48:29,800 --> 00:48:31,330
@@ -4162,7 +4162,7 @@ some variable assignment.
 896
 00:49:41,640 --> 00:49:43,534
 So that's going to
-be APX complete.
+be APX-complete.
 
 897
 00:49:43,534 --> 00:49:45,200
@@ -4283,8 +4283,8 @@ Do you have a question?
 
 922
 00:51:15,780 --> 00:51:17,571
-AUDIENCE: [INAUDIBLE]
-gives you a condition
+AUDIENCE: That gives
+you a condition
 
 923
 00:51:17,571 --> 00:51:19,300
@@ -4405,29 +4405,29 @@ a cycle, but of size 1 million.
 949
 00:52:21,760 --> 00:52:26,860
 And you're going to write down
-this 2SAT constraint-- not xi
+this 2SAT constraint-- not x_i
 
 950
 00:52:26,860 --> 00:52:28,790
-or xi plus 1 for all i.
+or x_{i+1} for all i.
 
 951
 00:52:28,790 --> 00:52:31,400
 And do it around in
-the cycle, so not x6
+the cycle, so not x_6
 
 952
 00:52:31,400 --> 00:52:35,170
-or x1-- or x a million or x1.
+or x_1-- or x a million or x_1.
 
 953
 00:52:35,170 --> 00:52:38,000
 That's, of course, equivalent
-to saying if xi is set to true,
+to saying if x_i is set to true,
 
 954
 00:52:38,000 --> 00:52:39,910
-then xi plus 1 must
+then x_{i+1} must
 also be set to true.
 
 955
@@ -4558,12 +4558,12 @@ and yet you're able to satisfy
 
 981
 00:54:00,810 --> 00:54:03,300
-xi equal to true, and
+x_i equal to true, and
 some other set of clauses
 
 982
 00:54:03,300 --> 00:54:05,480
-using xi set to false.
+using x_i set to false.
 
 983
 00:54:05,480 --> 00:54:07,720
@@ -4640,7 +4640,7 @@ Yeah.
 998
 00:54:37,950 --> 00:54:40,241
 AUDIENCE: If we're just
-talking about NP hardness here,
+talking about NP-hardness here,
 
 999
 00:54:40,241 --> 00:54:42,414
@@ -4654,7 +4654,7 @@ the clause many times?
 1001
 00:54:43,545 --> 00:54:45,670
 PROFESSOR: If we're just
-worried about NP hardness,
+worried about NP-hardness,
 
 1002
 00:54:45,670 --> 00:54:46,610
@@ -4691,7 +4691,7 @@ AUDIENCE: Satisfy k of--
 1009
 00:54:57,881 --> 00:54:59,754
 PROFESSOR: Yeah, but if
-you set k equal to N,
+you set k equal to n,
 
 1010
 00:54:59,754 --> 00:55:01,685
@@ -4718,7 +4718,7 @@ PROFESSOR: Yeah.
 1015
 00:55:05,790 --> 00:55:08,200
 If you didn't-- if you wanted
-to make k and N different,
+to make k and n different,
 
 1016
 00:55:08,200 --> 00:55:11,010
@@ -4749,7 +4749,7 @@ reduction from 3SAT.
 1022
 00:55:23,830 --> 00:55:28,589
 So I'm not going to prove
-that 3SAT is APX hard.
+that 3SAT is APX-hard.
 
 1023
 00:55:28,589 --> 00:55:30,130
@@ -4812,7 +4812,7 @@ k new variables.
 1036
 00:56:17,880 --> 00:56:21,920
 We're going to make k variables
-x1 through xk that replace x,
+x_1 through x_k that replace x,
 
 1037
 00:56:21,920 --> 00:56:23,750
@@ -4919,7 +4919,7 @@ whose vertices are
 
 1059
 00:57:19,120 --> 00:57:22,060
-the x1 through xk--
+the x_1 through x_k--
 I'm going to convert
 
 1060
@@ -4929,12 +4929,12 @@ which is effectively
 
 1061
 00:57:24,380 --> 00:57:32,530
-xi equals xj, which in
-reality is not xi or xj,
+x_i equals x_j, which in
+reality is not x_i or x_j,
 
 1062
 00:57:32,530 --> 00:57:35,620
-and not xj or xi.
+and not x_j or x_i.
 
 1063
 00:57:35,620 --> 00:57:39,220
@@ -4942,7 +4942,7 @@ and not xj or xi.
 1064
 00:57:39,220 --> 00:57:42,219
 So I really probably shouldn't
-think of it as xi equals xj.
+think of it as x_i equals x_j.
 
 1065
 00:57:42,219 --> 00:57:43,260
@@ -4994,7 +4994,7 @@ So this is for k nodes.
 1076
 00:58:10,720 --> 00:58:19,096
 We have bounded degree, and
-we have, for every cut AB--
+we have, for every cut (A, B)--
 
 1077
 00:58:19,096 --> 00:58:21,340
@@ -5041,11 +5041,11 @@ Some intuition.
 
 1086
 00:58:53,040 --> 00:58:53,905
-Imagine a Kleek.
+Imagine a clique.
 
 1087
 00:58:53,905 --> 00:58:56,070
-A [? Kleek ?] is
+A clique is
 not bounded degree,
 
 1088
@@ -5070,12 +5070,12 @@ it's at least the min.
 1092
 00:59:03,780 --> 00:59:06,810
 So you can think of the expander
-as a sparse [? Kleek. ?]
+as a sparse clique.
 
 1093
 00:59:06,810 --> 00:59:10,919
-It's [? Kleek-y ?]
-enough, in this sense,
+It's clique-y enough,
+in this sense,
 
 1094
 00:59:10,919 --> 00:59:12,960
@@ -5103,11 +5103,11 @@ we are applying,
 1099
 00:59:20,060 --> 00:59:21,790
 which is due to
-[INAUDIBLE] Philips
+Lubotzky, Philips,
 
 1100
 00:59:21,790 --> 00:59:25,750
-and [? Sarnak, ?]
+and Sarnak,
 the degree is 14.
 
 1101
@@ -5123,8 +5123,8 @@ Constant.
 
 1104
 00:59:29,701 --> 00:59:34,130
-It's actually 14
-regular, so that's nice.
+It's actually 14-regular,
+so that's nice.
 
 1105
 00:59:34,130 --> 00:59:36,424
@@ -5174,7 +5174,7 @@ this is an L reduction.
 
 1115
 00:59:58,640 --> 01:00:06,530
-Claim L reduction.
+Claim: L reduction.
 
 1116
 01:00:06,530 --> 01:00:12,079
@@ -5193,8 +5193,8 @@ so I can point at something.
 
 1119
 01:00:17,610 --> 01:00:19,276
-Let's draw the
-[? Kleek, ?] just so it's
+Let's draw the clique,
+just so it's
 
 1120
 01:00:19,276 --> 01:00:21,000
@@ -5244,11 +5244,11 @@ to the constructed instance
 
 1130
 01:00:47,730 --> 01:00:48,230
-x-prime.
+x-prime:
 
 1131
 01:00:48,230 --> 01:00:49,980
-X-prime has this expander.
+x-prime has this expander.
 
 1132
 01:00:49,980 --> 01:00:52,370
@@ -5717,7 +5717,7 @@ two constraints,
 1232
 01:05:56,810 --> 01:05:58,450
 the implication
-[? in ?] both ways.
+in both ways.
 
 1233
 01:05:58,450 --> 01:05:59,260
@@ -6015,7 +6015,7 @@ appears in one original clause.
 
 1296
 01:08:53,029 --> 01:08:55,740
-Yeah And we know the total
+Yeah. And we know the total
 size of the cycle is constant.
 
 1297
@@ -6099,20 +6099,20 @@ let me at least mention,
 1314
 01:09:36,970 --> 01:09:39,090
 in case I run out
-of time, max not all
+of time, max not-all-
 
 1315
 01:09:39,090 --> 01:09:47,810
-equal 3SAT, also hard, positive
-1 in 3SAT, even one in E3SAT.
+equal 3SAT, also hard; positive
+1-in-3SAT, even 1-in-E3SAT,
 
 1316
 01:09:47,810 --> 01:09:49,200
-Also, APX hard.
+also APX-hard.
 
 1317
 01:09:49,200 --> 01:09:50,530
-APX complete.
+APX-complete.
 
 1318
 01:09:50,530 --> 01:09:55,320
@@ -6172,8 +6172,8 @@ max degree 3 is hard also.
 
 1330
 01:10:48,610 --> 01:10:55,370
-So constant degree independent
-set is actually APX complete.
+So constant-degree independent
+set is actually APX-complete.
 
 1331
 01:10:55,370 --> 01:11:00,020
@@ -6206,7 +6206,7 @@ So that puts it in APX.
 1337
 01:11:17,490 --> 01:11:19,890
 And furthermore, we
-claim that's [INAUDIBLE].
+claim that's tight.
 
 1338
 01:11:19,890 --> 01:11:22,490
@@ -6250,7 +6250,7 @@ anything if I did things right.
 1346
 01:11:42,690 --> 01:11:45,227
 Now in fact-- so I drew
-here six recurrences of xi,
+here six recurrences of x_i,
 
 1347
 01:11:45,227 --> 01:11:46,810
@@ -6265,7 +6265,7 @@ complete bipartite graph
 1349
 01:11:49,120 --> 01:11:51,280
 between the positive
-instances of xi
+instances of x_i
 
 1350
 01:11:51,280 --> 01:11:52,920
@@ -6413,20 +6413,20 @@ because you might be screwed.
 1381
 01:12:58,840 --> 01:13:01,249
 Maybe you chose a
-red xi, and then you
+red x_i, and then you
 
 1382
 01:13:01,249 --> 01:13:02,790
 won't be able to
-choose this blue xi.
+choose this blue x_i.
 
 1383
 01:13:02,790 --> 01:13:04,080
-Maybe you chose a red xj.
+Maybe you chose a red x_j.
 
 1384
 01:13:04,080 --> 01:13:06,480
-Maybe you chose a blue xk.
+Maybe you chose a blue x_k.
 
 1385
 01:13:06,480 --> 01:13:08,240
@@ -6440,7 +6440,7 @@ any of these vertices.
 1387
 01:13:09,504 --> 01:13:11,170
 But if at least one
-of these [INAUDIBLE]
+of these
 
 1388
 01:13:11,170 --> 01:13:14,570
@@ -6449,8 +6449,8 @@ if you're either
 
 1389
 01:13:14,570 --> 01:13:18,130
-choosing the blue xi's or the
-blue xj's or the red xk's, then
+choosing the blue x_i's or the
+blue x_j's or the red x_k's, then
 
 1390
 01:13:18,130 --> 01:13:20,640
@@ -6480,12 +6480,12 @@ you'll be able to satisfy.
 1395
 01:13:28,860 --> 01:13:33,730
 And just by looking at whether
-any of the blue xi's are true,
+any of the blue x_i's are true,
 
 1396
 01:13:33,730 --> 01:13:36,840
-then you set xi to true, looking
-at whether any of the red xi's
+then you set x_i to true, looking
+at whether any of the red x_i's
 
 1397
 01:13:36,840 --> 01:13:39,810
@@ -6494,7 +6494,7 @@ in the independent set,
 
 1398
 01:13:39,810 --> 01:13:41,081
-then you set xi to false.
+then you set x_i to false.
 
 1399
 01:13:41,081 --> 01:13:42,455
@@ -6600,7 +6600,7 @@ degree to be an APX, but.
 
 1422
 01:14:43,576 --> 01:14:45,920
-This is also APX complete.
+This is also APX-complete.
 
 1423
 01:14:45,920 --> 01:14:49,730
@@ -6643,7 +6643,7 @@ is a vertex cover.
 1431
 01:15:10,740 --> 01:15:13,160
 So they're kind of
-duel in that, if you
+dual in that, if you
 
 1432
 01:15:13,160 --> 01:15:15,200
@@ -6692,7 +6692,7 @@ degree at most delta,
 1441
 01:15:43,300 --> 01:15:46,720
 there's always an independent
-set size of at least N
+set size of at least n
 
 1442
 01:15:46,720 --> 01:15:47,890
@@ -6701,7 +6701,7 @@ over delta.
 1443
 01:15:47,890 --> 01:15:50,800
 And there's always a
-vertex cover of size N.
+vertex cover of size n.
 
 1444
 01:15:50,800 --> 01:15:53,440
@@ -6729,11 +6729,11 @@ instance to vertex cover.
 
 1449
 01:16:08,420 --> 01:16:11,760
-And then-- so f is trivial.
+And then-- so f is trivial;
 
 1450
 01:16:11,760 --> 01:16:13,740
-G takes the complement.
+g takes the complement.
 
 1451
 01:16:13,740 --> 01:16:16,130
@@ -6906,7 +6906,7 @@ this is in the dominating set,
 1488
 01:17:40,080 --> 01:17:43,160
 you can just move it
-over to [INAUDIBLE] or w.
+over to say v or w.
 
 1489
 01:17:43,160 --> 01:17:45,760
