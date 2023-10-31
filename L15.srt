@@ -3735,7 +3735,7 @@ degree one and out degree one.
 810
 00:40:37,930 --> 00:40:41,480
 So you end up decomposing the
-graph into vertex destroyed
+graph into vertex disjoint
 
 811
 00:40:41,480 --> 00:40:45,440
