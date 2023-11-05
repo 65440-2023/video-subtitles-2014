@@ -3868,7 +3868,7 @@ There's one shared author.
 
 838
 00:39:21,090 --> 00:39:24,400
-This was Eti Papadimitriou
+This was Itai, Papadimitriou,
 and Szwarcfiter.
 
 839
