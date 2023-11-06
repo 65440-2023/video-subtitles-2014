@@ -5605,7 +5605,7 @@ times the number of clauses
 
 1208
 01:04:51,880 --> 01:04:54,530
-doesn't change the overall cos
+doesn't change the overall cost
 by more than a constant factor.
 
 1209
@@ -6216,7 +6216,7 @@ factor, and there's also
 1339
 01:11:22,490 --> 01:11:24,040
 a constant factor
-in approximability.
+inapproximability.
 
 1340
 01:11:24,040 --> 01:11:27,100
