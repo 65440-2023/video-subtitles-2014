@@ -62,7 +62,7 @@ different reductions.
 15
 00:00:16,030 --> 00:00:21,400
 We, I guess, in particular
-talked about P-tests, AP and L.
+talked about PTAS, AP, and L.
 
 16
 00:00:21,400 --> 00:00:25,220
@@ -384,7 +384,7 @@ that assuming Max 3SAT
 84
 00:03:39,310 --> 00:03:43,440
 is APX-complete, we
-reduce that to Max 3SAT3,
+reduce that to Max 3SAT-3,
 
 85
 00:03:43,440 --> 00:03:46,740
@@ -995,8 +995,8 @@ Cool?
 
 214
 00:10:14,400 --> 00:10:16,960
-So that's Max
-2SAT, APX-hardness.
+So that's Max 2SAT,
+APX-hardness.
 
 215
 00:10:16,960 --> 00:10:24,610
@@ -1047,7 +1047,7 @@ Max 2SAT, we can
 226
 00:11:06,130 --> 00:11:12,605
 do another one, which is
-Max not all equal 3SAT.
+Max Not-All-Equal 3SAT.
 
 227
 00:11:12,605 --> 00:11:17,080
@@ -1055,11 +1055,11 @@ Max not all equal 3SAT.
 228
 00:11:17,080 --> 00:11:24,560
 So from SAT-land, we have
-3SAT, not all equal 3SAT,
+3SAT, Not-All-Equal 3SAT,
 
 229
 00:11:24,560 --> 00:11:26,210
-and 1 and 3SAT.
+and 1-in-3SAT.
 
 230
 00:11:26,210 --> 00:11:27,730
@@ -1076,7 +1076,7 @@ Little bit stronger.
 
 233
 00:11:31,660 --> 00:11:34,760
-But let's do not all equal 3SAT.
+But let's do Not-All-Equal 3SAT.
 
 234
 00:11:34,760 --> 00:11:39,370
@@ -1140,7 +1140,7 @@ These may be negated or not.
 247
 00:12:16,880 --> 00:12:27,200
 And we're going to convert it
-into not all equal of x, y,
+into not-all-equal of x, y,
 
 248
 00:12:27,200 --> 00:12:28,556
@@ -1168,7 +1168,7 @@ So a appears everywhere.
 
 254
 00:12:41,380 --> 00:12:43,490
-And not all equal has
+And Not-All-Equal has
 this nice symmetry, right?
 
 255
@@ -1208,16 +1208,16 @@ that a equals zero.
 262
 00:13:01,580 --> 00:13:05,742
 If not, flip all the bits, and
-you'll still be not all equal.
+you'll still be not-all-equal.
 
 263
 00:13:05,742 --> 00:13:08,200
 Or all the things that were
-not all equal before will still
+not-all-equal before will still
 
 264
 00:13:08,200 --> 00:13:08,908
-be not all equal.
+be not-all-equal.
 
 265
 00:13:08,908 --> 00:13:10,850
@@ -1226,7 +1226,7 @@ You'll preserve OPT.
 266
 00:13:10,850 --> 00:13:15,040
 Now once you think of a is
-false, then not all equal
+false, then not-all-equal
 
 267
 00:13:15,040 --> 00:13:18,290
@@ -1262,8 +1262,8 @@ it so that a is zero,
 
 274
 00:13:30,600 --> 00:13:34,410
-and then convert the xy is just
-exactly the xy's over here,
+and then convert: the x, y is
+just exactly the x, y's over here,
 
 275
 00:13:34,410 --> 00:13:36,950
@@ -1363,11 +1363,11 @@ So it's the same problem.
 296
 00:14:38,130 --> 00:14:46,940
 And you can also think of
-it as max positive XOR-SAT.
+it as Max Positive XOR-SAT.
 
 297
 00:14:46,940 --> 00:14:48,820
-Maybe actually call it 2XOR-SAT.
+Maybe actually call it 2-XOR-SAT.
 
 298
 00:14:48,820 --> 00:14:51,820
@@ -1379,7 +1379,7 @@ Same thing.
 300
 00:14:52,390 --> 00:14:55,600
 It's just every constraint is
-of the form this x or this.
+of the form this XOR this.
 
 301
 00:14:55,600 --> 00:14:57,980
@@ -1426,7 +1426,7 @@ reductions here.
 310
 00:15:23,820 --> 00:15:27,950
 So we're going to reduce
-from Max not all equal 3SAT.
+from Max Not-All-Equal 3SAT.
 
 311
 00:15:27,950 --> 00:15:30,560
@@ -1443,8 +1443,8 @@ where we started from 3SAT,
 
 314
 00:15:37,760 --> 00:15:39,402
-converted into 3SAT
-3, converted it
+converted into 3SAT-3,
+converted it
 
 315
 00:15:39,402 --> 00:15:41,110
@@ -1511,7 +1511,7 @@ to simulate Max
 
 328
 00:16:15,540 --> 00:16:17,220
-not all equal 3SAT.
+Not-All-Equal 3SAT.
 
 329
 00:16:17,220 --> 00:16:21,350
@@ -1521,7 +1521,7 @@ planar lecture, planar 3SAT,
 330
 00:16:21,350 --> 00:16:26,150
 that you can reduce planar
-not all equal 3SAT to planar
+Not-All-Equal 3SAT to planar
 
 331
 00:16:26,150 --> 00:16:29,970
@@ -1530,7 +1530,7 @@ get a polynomial time algorithm
 
 332
 00:16:29,970 --> 00:16:31,840
-for planar not all equal 3SAT.
+for planar Not-All-Equal 3SAT.
 
 333
 00:16:31,840 --> 00:16:33,690
@@ -1549,7 +1549,7 @@ you can represent
 
 336
 00:16:40,310 --> 00:16:45,300
-a not all equal clause as
+a not-all-equal clause as
 a cut, as a Max-Cut problem
 
 337
@@ -1564,7 +1564,7 @@ either they're all equal,
 339
 00:16:48,364 --> 00:16:51,349
 and then there's no cut edges,
-or they're not all equal,
+or they're not-all-equal,
 
 340
 00:16:51,349 --> 00:16:54,020
@@ -1591,7 +1591,7 @@ It works the same way here.
 
 345
 00:17:02,530 --> 00:17:06,450
-You get 1 if they're not all
+You get 1 if they're not-all-
 equal, and zero otherwise.
 
 346
@@ -1605,7 +1605,7 @@ OK.
 348
 00:17:09,120 --> 00:17:12,410
 Now the one thing we need,
-because not all equal 3SAT
+because Not-All-Equal 3SAT
 
 349
 00:17:12,410 --> 00:17:15,800
@@ -1627,8 +1627,8 @@ variable gadget.
 
 353
 00:17:24,720 --> 00:17:29,290
-It's just a whole bunch of
-edges connecting xi and xi bar.
+It's just a whole bunch of edges
+connecting x_i and x_i bar.
 
 354
 00:17:29,290 --> 00:17:30,400
@@ -1667,7 +1667,7 @@ if we take an optimal solution,
 361
 00:17:51,230 --> 00:17:55,050
 we can make it another optimal
-solution where xi and xi
+solution where x_i and x_i
 
 362
 00:17:55,050 --> 00:17:58,206
@@ -1748,7 +1748,7 @@ the negation part.
 378
 00:18:34,240 --> 00:18:38,310
 And then it just reduces
-to not all equal 3SAT.
+to Not-All-Equal 3SAT.
 
 379
 00:18:38,310 --> 00:18:41,270
@@ -1816,7 +1816,7 @@ This is Max-Cut.
 
 394
 00:19:04,550 --> 00:19:08,520
-It will be a
+It will be
 bounded degree based
 
 395
@@ -1860,7 +1860,7 @@ It's also Max Cut in degree
 403
 00:19:40,190 --> 00:19:46,600
 So you could call that max
-positive 1 and 2SAT, hyphen 3.
+positive 1-in-2SAT, hyphen 3.
 
 404
 00:19:46,600 --> 00:19:47,240
@@ -1915,7 +1915,7 @@ always had a Max in front.
 
 416
 00:20:12,460 --> 00:20:15,350
-Max 2SAT for NP completeness,
+Max 2SAT for NP-completeness,
 we also had a Max in front.
 
 417
@@ -2069,7 +2069,7 @@ I'm going to call it X(N)OR-SAT.
 449
 00:21:55,850 --> 00:21:59,690
 You can also phrase them as
-linear equations over Z2.
+linear equations over Z_2.
 
 450
 00:21:59,690 --> 00:22:08,890
@@ -2080,8 +2080,8 @@ So this is zero and one.
 
 452
 00:22:10,790 --> 00:22:14,620
-And it's either X OR, meaning
-you take the X OR of all
+And it's either XOR, meaning
+you take the XOR of all
 
 453
 00:22:14,620 --> 00:22:16,840
@@ -2109,7 +2109,7 @@ time using Gaussian elimination
 
 458
 00:22:28,750 --> 00:22:30,420
-over Z2.
+over Z_2.
 
 459
 00:22:30,420 --> 00:22:32,560
@@ -2360,7 +2360,7 @@ You can still think about it.
 512
 00:24:53,500 --> 00:24:59,760
 And even when the SAT problem
-is easy, Max ones can be hard.
+is easy, Max Ones can be hard.
 
 513
 00:24:59,760 --> 00:25:02,150
@@ -2505,7 +2505,7 @@ Sorry.
 
 543
 00:26:13,265 --> 00:26:14,550
-There's an "or" in the middle.
+There's an OR in the middle.
 
 544
 00:26:14,550 --> 00:26:16,840
@@ -2546,13 +2546,14 @@ So that's a nice, very
 clean characterization.
 
 552
-00:26:36,082 --> 00:26:38,498
-AUDIENCE: Wait. [INAUDIBLE]
-that we learned about earlier.
+00:26:36,082 --> 00:26:38,000
+AUDIENCE: Wait, is that the same
+disjunctive normal form that we
 
 553
-00:26:38,498 --> 00:26:39,890
-Is this the [INAUDIBLE]?
+00:26:38,000 --> 00:26:39,890
+learned about earlier?
+Or is this different?
 
 554
 00:26:39,890 --> 00:26:40,515
@@ -2564,7 +2565,7 @@ This is disjunctive normal form.
 
 556
 00:26:42,030 --> 00:26:45,890
-So it's the or of ands.
+So it's the OR of ANDs.
 
 557
 00:26:45,890 --> 00:26:49,090
@@ -2928,7 +2929,7 @@ interesting.
 
 635
 00:30:02,450 --> 00:30:04,200
-AUDIENCE: Not all equal
+AUDIENCE: Not-All-Equal
 3SAT fall in that?
 
 636
@@ -2940,7 +2941,7 @@ Is that?
 
 638
 00:30:09,120 --> 00:30:11,830
-PROFESSOR: Not all equal 3SAT.
+PROFESSOR: Not-All-Equal 3SAT.
 
 639
 00:30:11,830 --> 00:30:14,027
@@ -2992,8 +2993,8 @@ be getting APX-completeness.
 
 650
 00:30:33,420 --> 00:30:35,337
-Yeah, but Max not all
-equal 3SAT is different.
+Yeah, but Max Not-All-Equal
+3SAT is different.
 
 651
 00:30:35,337 --> 00:30:37,628
@@ -3006,8 +3007,8 @@ were satisfied.
 
 653
 00:30:38,310 --> 00:30:40,809
-So if you have not
-all equal 3SAT,
+So if you have
+Not-All-Equal 3SAT,
 
 654
 00:30:40,809 --> 00:30:42,850
@@ -3017,7 +3018,7 @@ the number of ones, that
 655
 00:30:42,850 --> 00:30:45,224
 means first you have to satisfy
-not all equal 3SAT, which
+Not-All-Equal 3SAT, which
 
 656
 00:30:45,224 --> 00:30:46,110
@@ -3035,7 +3036,7 @@ The bottom one is feasibility.
 659
 00:30:50,300 --> 00:30:52,430
 Just finding a feasible
-solution is NP hard.
+solution is NP-hard.
 
 660
 00:30:52,430 --> 00:30:55,090
@@ -3043,7 +3044,7 @@ solution is NP hard.
 661
 00:30:55,090 --> 00:31:01,130
 The X(N)OR-SAT is this thing--
-linear equations over Z2.
+linear equations over Z_2.
 
 662
 00:31:01,130 --> 00:31:03,639
@@ -3053,11 +3054,11 @@ to 0, or equal to 1.
 663
 00:31:03,639 --> 00:31:05,430
 This is what you might
-call an X OR clause,
+call an XOR clause,
 
 664
 00:31:05,430 --> 00:31:09,440
-or this is an X OR clause,
+or this is an XOR clause,
 this is an X(N)OR clause.
 
 665
@@ -3219,12 +3220,12 @@ at least get 1, you
 
 699
 00:32:24,780 --> 00:32:27,430
-can get an N approximation,
+can get an n approximation,
 whereas here you
 
 700
 00:32:27,430 --> 00:32:28,820
-can't get an N approximation.
+can't get an n approximation.
 
 701
 00:32:28,820 --> 00:32:31,790
@@ -3266,7 +3267,7 @@ special about 1 here?
 709
 00:32:49,010 --> 00:32:52,477
 It seems to me if you
-replace that 1 by K
+replace that 1 by k
 
 710
 00:32:52,477 --> 00:32:53,810
@@ -3282,8 +3283,8 @@ AUDIENCE: Yeah.
 
 713
 00:32:55,830 --> 00:32:59,120
-If I just replace that one
-with a fixed K. Like 2.
+If I just replace that 1
+with a fixed k. Like 2.
 
 714
 00:32:59,120 --> 00:33:00,380
@@ -3297,7 +3298,7 @@ still be-- so if you
 716
 00:33:03,790 --> 00:33:06,500
 can set all but
-K of them true, I
+k of them true, I
 
 717
 00:33:06,500 --> 00:33:08,500
@@ -3569,11 +3570,11 @@ hitting set.
 774
 00:35:30,690 --> 00:35:34,410
 So you have a clause which
-lets you say x1 implies
+lets you say x_1 implies
 
 775
 00:35:34,410 --> 00:35:38,120
-x2 for any two variables.
+x_2 for any two variables.
 
 776
 00:35:38,120 --> 00:35:42,510
@@ -3700,7 +3701,7 @@ results of our APX-hardness,
 
 802
 00:36:52,980 --> 00:36:56,400
-and log and upper bound
+and log n upper bound
 for approximation.
 
 803
@@ -3715,7 +3716,7 @@ It's at least as hard as this.
 805
 00:37:01,610 --> 00:37:06,980
 And that happens when you are
-in the 2x (N)OR-SAT situation,
+in the 2-X(N)OR-SAT situation,
 
 806
 00:37:06,980 --> 00:37:09,820
@@ -3774,7 +3775,7 @@ then it turns out to be
 
 818
 00:37:41,610 --> 00:37:43,500
-equivalent to nearest Codeword.
+equivalent to Nearest Codeword.
 
 819
 00:37:43,500 --> 00:37:46,620
@@ -3894,7 +3895,7 @@ Put them all in.
 845
 00:38:49,610 --> 00:38:53,490
 And here there's a slightly
-better approximation known ,
+better approximation known,
 
 846
 00:38:53,490 --> 00:38:55,490
@@ -4003,7 +4004,7 @@ can be set to zero.
 869
 00:39:48,400 --> 00:39:52,490
 This is easy in
-the 2X(N)OR case.
+the 2-X(N)OR case.
 
 870
 00:39:52,490 --> 00:39:55,560
@@ -4077,11 +4078,11 @@ guys appearing, again
 
 886
 00:40:26,800 --> 00:40:27,570
-nearest Codeword.
+Nearest Codeword.
 
 887
 00:40:27,570 --> 00:40:29,480
-N Min Horn deletion.
+Min Horn deletion.
 
 888
 00:40:29,480 --> 00:40:31,520
@@ -4107,8 +4108,8 @@ Or no.
 
 893
 00:40:37,990 --> 00:40:42,380
-This was the 2 to the log
-N to the 1 minus epsilon.
+This was the 2 to the log n
+to the 1 minus epsilon.
 
 894
 00:40:42,380 --> 00:40:46,880
@@ -4117,7 +4118,7 @@ they're not all binary.
 
 895
 00:40:46,880 --> 00:40:49,370
-Then we get nearest
+Then we get Nearest
 Codeword-complete.
 
 896
@@ -4137,7 +4138,7 @@ that gives you a solution,
 899
 00:40:59,090 --> 00:41:04,280
 but it's like the worst solution
-possible, because you get N.
+possible, because you get n.
 
 900
 00:41:04,280 --> 00:41:08,820
@@ -4151,7 +4152,7 @@ Not very impressive.
 902
 00:41:11,240 --> 00:41:13,880
 And that's actually the
-best you can do, at some N
+best you can do, at some n
 
 903
 00:41:13,880 --> 00:41:15,680
@@ -4210,7 +4211,7 @@ to get to our good friend
 916
 00:42:19,240 --> 00:42:22,680
 from one of the first lectures,
-edge-matching-puzzles.
+edge-matching puzzles.
 
 917
 00:42:22,680 --> 00:42:26,980
@@ -4256,8 +4257,8 @@ So I need two more problems.
 
 926
 00:42:51,040 --> 00:43:05,496
-One is Max independent set
-in 3-regular 3-edge colorable
+One is Max Independent Set
+in 3-regular 3-edge-colorable
 
 927
 00:43:05,496 --> 00:43:05,995
@@ -4416,12 +4417,12 @@ that that's hard.
 960
 00:44:56,021 --> 00:45:01,490
 It is basically the same
-as Max independent set,
+as Max Independent Set,
 
 961
 00:45:01,490 --> 00:45:06,330
-and three regular
-3-edge colored graphs,
+and 3-regular
+3-edge-colored graphs,
 
 962
 00:45:06,330 --> 00:45:10,260
@@ -4541,7 +4542,7 @@ three-dimensional matching
 
 987
 00:46:31,040 --> 00:46:35,170
-where every element in ABC
+where every element in A, B, C
 appears in exactly two triples.
 
 988
@@ -4583,7 +4584,7 @@ to lay things out.
 996
 00:47:00,450 --> 00:47:03,380
 And I'll tell you the instance
-here is going to be 2 by N.
+here is going to be 2 by n.
 
 997
 00:47:03,380 --> 00:47:06,260
@@ -4597,7 +4598,7 @@ we saw in class.
 999
 00:47:08,740 --> 00:47:12,830
 And we're reducing
-from Max 3D M2.
+from Max 3DM-2.
 
 1000
 00:47:12,830 --> 00:47:14,656
@@ -5049,7 +5050,7 @@ through the details,
 1096
 00:51:06,200 --> 00:51:11,211
 but once you have that, you get
-an L-reduction from Max 3DN2.
+an L-reduction from Max 3DM-2.
 
 1097
 00:51:11,211 --> 00:51:11,710
@@ -5077,7 +5078,7 @@ factor, approximable problems
 
 1103
 00:51:31,630 --> 00:51:32,770
-that have no PTASses.
+that have no PTASes.
 
 1104
 00:51:32,770 --> 00:51:35,580
@@ -5260,7 +5261,8 @@ Some other ones are minimum.
 
 1143
 00:53:33,001 --> 00:53:34,932
-AUDIENCE: [INAUDIBLE].
+AUDIENCE: This is assuming
+P does not equal NP?
 
 1144
 00:53:34,932 --> 00:53:37,265
@@ -5456,7 +5458,7 @@ OK.
 
 1187
 00:55:29,550 --> 00:55:34,420
-So let's call this vertex V,
+So let's call this vertex v,
 and then maybe a, b, c, d.
 
 1188
@@ -6464,7 +6466,7 @@ is that they are
 1404
 01:05:12,275 --> 01:05:16,430
 the hardest problems that have
-any n to the ce approximation.
+any n to the c approximation.
 
 1405
 01:05:16,430 --> 01:05:20,880
@@ -6486,7 +6488,7 @@ up is APX-complete,
 1409
 01:05:28,510 --> 01:05:36,480
 things, problems approximable in
-exponential and n approximation
+exponential-in-n approximation
 
 1410
 01:05:36,480 --> 01:05:36,980
@@ -6503,7 +6505,7 @@ This is kind of funny.
 1413
 01:05:40,920 --> 01:05:45,850
 And the canonical problem here
-is the basic reason is numbers.
+is-- the basic reason is numbers.
 
 1414
 01:05:45,850 --> 01:05:48,690
@@ -6584,7 +6586,7 @@ It's APX complete.
 
 1431
 01:06:27,930 --> 01:06:33,530
-But for general waits
+But for general weights
 between pairs of vertices,
 
 1432
@@ -6698,7 +6700,7 @@ these results were proved.
 1455
 01:07:54,250 --> 01:07:57,278
 So you might think, well,
-double the exponential.
+doubly exponential.
 
 1456
 01:07:57,278 --> 01:07:57,819
@@ -6835,13 +6837,13 @@ Everything's polynomial.
 
 1486
 01:09:14,260 --> 01:09:18,370
-So a three-partition is sort
+So a 3-partition is sort
 of more in this universe.
 
 1487
 01:09:18,370 --> 01:09:21,990
 But in this situation, if you
-sort of have three partitions,
+sort of have 3-partition,
 
 1488
 01:09:21,990 --> 01:09:26,910
@@ -6875,7 +6877,7 @@ to a polynomial size.
 1494
 01:09:39,200 --> 01:09:42,400
 So when you do something
-like three partition,
+like 3-partition,
 
 1495
 01:09:42,400 --> 01:09:46,660
@@ -6888,7 +6890,7 @@ a polynomially bounded problem.
 
 1497
 01:09:48,770 --> 01:09:52,350
-Strong NP hardness means
+Strong NP-hardness means
 that that is NP-complete.
 
 1498
@@ -7041,7 +7043,7 @@ in the max case.
 1530
 01:11:12,070 --> 01:11:15,460
 But it depends on
-the exact set-up.
+the exact setup.
 
 1531
 01:11:15,460 --> 01:11:18,040
@@ -7347,7 +7349,8 @@ to these guys.
 
 1596
 01:14:20,938 --> 01:14:23,830
-AUDIENCE: [INAUDIBLE]?
+AUDIENCE: Can you saying anything
+about the Boolean formula?
 
 1597
 01:14:23,830 --> 01:14:25,720
@@ -7361,7 +7364,7 @@ go down to 2SAT is interesting.
 1599
 01:14:30,580 --> 01:14:34,460
 Here they say, I think,
-probably 3SAT or CNFSAT.
+probably 3SAT or CNF-SAT.
 
 1600
 01:14:34,460 --> 01:14:36,540
@@ -7594,7 +7597,7 @@ Yeah?
 1648
 01:16:49,650 --> 01:16:51,650
 AUDIENCE: How is it that
-distinguished from PXP?
+distinguished from Exp[-APX]?
 
 1649
 01:16:51,650 --> 01:16:54,050
@@ -7603,12 +7606,12 @@ you would ever get anything
 
 1650
 01:16:54,050 --> 01:16:56,450
-worse than this, because,
+worse than Exp, because,
 that's like the biggest
 
 1651
 01:16:56,450 --> 01:16:58,870
-that you [INAUDIBLE].
+that any of the weights can be.
 
 1652
 01:16:58,870 --> 01:17:01,970
@@ -7650,12 +7653,12 @@ generally you
 1660
 01:17:18,520 --> 01:17:21,312
 can get, depending
-on your set-up,
+on your setup,
 
 1661
 01:17:21,312 --> 01:17:23,895
 these problems you can all get
-like a factor, n approximation.
+like a factor-n approximation.
 
 1662
 01:17:23,895 --> 01:17:26,400
