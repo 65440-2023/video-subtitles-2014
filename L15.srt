@@ -6182,7 +6182,7 @@ into a biclique between them.
 
 1340
 01:07:00,440 --> 01:07:02,300
-Why did I address
+Why did I draw
 such a big one?
 
 1341
