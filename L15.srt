@@ -3137,12 +3137,12 @@ a problem that we're
 680
 00:33:53,040 --> 00:33:54,829
 trying to prove something
-P-hard and we start thinking
+NP-hard and we start thinking
 
 681
 00:33:54,829 --> 00:33:57,412
 maybe stop, we would just show
-it's in P by finding algorithm.
+it's in P by finding an algorithm.
 
 682
 00:33:57,412 --> 00:34:02,000
@@ -3156,7 +3156,7 @@ would say that sharp,
 
 684
 00:34:05,400 --> 00:34:07,800
-that problem is NP.
+that problem is in P.
 
 685
 00:34:07,800 --> 00:34:10,330
@@ -3175,7 +3175,7 @@ especially on like trees.
 688
 00:34:15,340 --> 00:34:17,271
 Typical thing is
-your dynamic program.
+you'd dynamic program.
 
 689
 00:34:17,271 --> 00:34:19,020
@@ -3249,7 +3249,7 @@ time counting algorithms.
 703
 00:34:46,570 --> 00:34:50,540
 In tree-like things that
-often works inbound treewidth.
+often works in bounded treewidth.
 
 704
 00:34:50,540 --> 00:34:53,062
@@ -3887,7 +3887,7 @@ literally constant,
 843
 00:42:18,620 --> 00:42:22,640
 but it will be a function
-of the problem sets.
+of the problem size.
 
 844
 00:42:22,640 --> 00:42:24,520
@@ -3977,7 +3977,7 @@ would be the true and the false.
 862
 00:43:15,120 --> 00:43:18,600
 And then from the
-clouds perspective
+clause perspective
 
 863
 00:43:18,600 --> 00:43:22,531
@@ -5114,7 +5114,7 @@ anything is hard.
 1106
 00:55:27,477 --> 00:55:30,060
 And here we're going to finally
-use some multi-color reduction
+use some multicall reduction
 
 1107
 00:55:30,060 --> 00:55:31,410
@@ -5993,8 +5993,8 @@ of perfect matchings in a given
 
 1298
 01:04:47,390 --> 01:04:49,390
-bipartite graph isn't
-going to be hard.
+bipartite graph is
+NP-hard.
 
 1299
 01:04:49,390 --> 01:04:51,964
