@@ -68,7 +68,7 @@ gap-preserving reductions.
 16
 00:00:20,120 --> 00:00:24,180
 We will prove along the way
-optimal lower bound on MAX-3SAT
+optimal lower bound on Max 3SAT
 
 17
 00:00:24,180 --> 00:00:26,580
@@ -268,7 +268,7 @@ Thank you.
 
 61
 00:02:57,250 --> 00:03:02,271
-C and k sound the same, so it's
+c and k sound the same, so it's
 always easy to mix them up.
 
 62
@@ -415,7 +415,7 @@ So that's an easier problem.
 93
 00:04:22,050 --> 00:04:32,590
 And the cool thing is if the
-c gap version of a problem
+c-gap version of a problem
 
 94
 00:04:32,590 --> 00:04:43,490
@@ -603,16 +603,16 @@ little bit more precise.
 
 133
 00:06:50,700 --> 00:06:52,420
-Consider MAX-SAT.
+Consider Max SAT.
 
 134
 00:06:52,420 --> 00:06:54,270
 Pick your favorite
-version of MAX-SAT,
+version of Max SAT,
 
 135
 00:06:54,270 --> 00:06:56,600
-or MAX-CSP was the
+or Max CSP was the
 general form where you
 
 136
@@ -725,16 +725,16 @@ Cool.
 160
 00:08:19,909 --> 00:08:22,325
 AUDIENCE: Do you use the same
-notation for one [INAUDIBLE]
+notation for one here, or
 
 161
 00:08:22,325 --> 00:08:25,550
-or only for-- so the one problem
+only for-- the Ones problem,
 like the maximum number of ones
 
 162
 00:08:25,550 --> 00:08:26,050
-you can get.
+you can get?
 
 163
 00:08:26,050 --> 00:08:28,800
@@ -868,7 +868,7 @@ going from some problem
 
 191
 00:09:40,825 --> 00:09:42,930
-a to some problem b.
+A to some problem B.
 
 192
 00:09:42,930 --> 00:09:48,230
@@ -877,7 +877,7 @@ the output instance to problem
 
 193
 00:09:48,230 --> 00:09:57,750
-b, the output of the
+B, the output of the
 reduction has OPT equal to k
 
 194
@@ -987,7 +987,7 @@ this instance, we
 216
 00:11:01,126 --> 00:11:06,100
 have a yes instance in the
-input, then we get end points.
+input, then we get n points.
 
 217
 00:11:06,100 --> 00:11:08,710
@@ -1970,15 +1970,17 @@ Yeah.
 
 428
 00:22:40,760 --> 00:22:42,520
-AUDIENCE: So does
-this [INAUDIBLE]?
+AUDIENCE: So
+does this proof
 
 429
 00:22:42,520 --> 00:22:45,260
+not then hold for
+general CNF?
 
 430
 00:22:45,260 --> 00:22:46,310
-So for [INAUDIBLE].
+So for O(1)-CNF?
 
 431
 00:22:46,310 --> 00:22:49,130
@@ -2478,12 +2480,12 @@ constant size CNF formula.
 
 538
 00:29:25,570 --> 00:29:28,220
-So when I and those together,
+So when I AND those together,
 I really just get one giant
 
 539
 00:29:28,220 --> 00:29:30,240
-and of clauses.
+AND of clauses.
 
 540
 00:29:30,240 --> 00:29:32,830
@@ -2578,7 +2580,7 @@ constant lower bound proving--
 560
 00:30:40,460 --> 00:30:45,030
 in particular, proving there's
-no P [? task ?] for MAX-3SAT.
+no PTAS for Max 3SAT.
 
 561
 00:30:45,030 --> 00:30:49,220
@@ -2652,7 +2654,7 @@ thinking about reductions
 
 576
 00:31:35,170 --> 00:31:40,280
-from a to b, because we know
+from A to B, because we know
 gap implies inapproximability,
 
 577
@@ -2662,7 +2664,7 @@ is inapproximable,
 
 578
 00:31:43,100 --> 00:31:46,890
-and then do, say, an l reduction
+and then do, say, an L reduction
 from 3SAT to something else.
 
 579
@@ -2682,7 +2684,7 @@ instead of thinking
 582
 00:31:54,100 --> 00:31:57,590
 about the inapproximability and
-how much carries from a to b,
+how much carries from A to B,
 
 583
 00:31:57,590 --> 00:32:00,050
@@ -2933,7 +2935,7 @@ more than polynomial.
 635
 00:35:07,380 --> 00:35:09,740
 Or if you want to prove that
-[INAUDIBLE] can't be solved
+Clique can't be solved
 
 636
 00:35:09,740 --> 00:35:13,670
@@ -2970,22 +2972,22 @@ are questions.
 
 643
 00:35:30,430 --> 00:35:38,690
-Cool So I'm going to
+Cool. So I'm going to
 reduce a problem which
 
 644
 00:35:38,690 --> 00:35:52,720
 we have mentioned
-before, which is MAX
+before, which is Max
 
 645
 00:35:52,720 --> 00:35:55,820
-exactly 3 XOR- and XNOR-SAT.
+exactly-3 XOR-and-XNOR SAT.
 
 646
 00:35:55,820 --> 00:35:59,260
-This is linear equations,
-[INAUDIBLE] two,
+This is linear equations
+modulo two,
 
 647
 00:35:59,260 --> 00:36:04,710
@@ -2994,8 +2996,8 @@ has exactly three terms.
 
 648
 00:36:04,710 --> 00:36:15,086
-So something like xi XOR xj XOR
-xk equals one, or something.
+So something like x_i XOR x_j
+XOR x_k equals 1, or something.
 
 649
 00:36:15,086 --> 00:36:16,460
@@ -3022,7 +3024,7 @@ it to another problem, namely
 
 654
 00:36:28,190 --> 00:36:30,790
-MAX-E3-SAT.
+Max E3SAT.
 
 655
 00:36:30,790 --> 00:36:34,860
@@ -3053,7 +3055,7 @@ epsilon inapproximable,
 
 661
 00:36:56,330 --> 00:36:57,520
-unless p equals NP.
+unless P equals NP.
 
 662
 00:36:57,520 --> 00:37:00,899
@@ -3118,7 +3120,7 @@ statements are about a parity,
 
 676
 00:37:45,110 --> 00:37:46,830
-if you think of xk
+if you think of x_k
 as random, it doesn't
 
 677
@@ -3209,11 +3211,11 @@ show is a reduction
 
 696
 00:38:47,450 --> 00:38:51,940
-from that problem to MAX-E3-SAT.
+from that problem to Max E3SAT.
 
 697
 00:38:51,940 --> 00:39:01,340
-So remember MAX-E3-SAT,
+So remember Max E3SAT,
 you're given
 
 698
@@ -3297,7 +3299,7 @@ be replaced with exactly four
 
 715
 00:39:58,050 --> 00:40:02,760
-clauses in the E3-SAT instance.
+clauses in the E3SAT instance.
 
 716
 00:40:02,760 --> 00:40:11,160
@@ -3432,7 +3434,7 @@ we have, for example,
 
 744
 00:41:36,200 --> 00:41:39,820
-xi appearing true and
+x_i appearing true and
 false in different cases,
 
 745
@@ -3510,7 +3512,7 @@ a corresponding solution
 
 761
 00:42:44,070 --> 00:42:48,230
-to MAX-E3 XNOR SAT, which
+to Max E3-XNOR-SAT, which
 don't change anything.
 
 762
@@ -3803,7 +3805,7 @@ inapproximability
 
 824
 00:46:24,476 --> 00:46:25,600
-in this case of MAX-E3-SAT.
+in this case of Max E3SAT.
 
 825
 00:46:25,600 --> 00:46:27,000
@@ -3955,7 +3957,7 @@ And so we just divide by seven.
 856
 00:47:59,090 --> 00:48:07,150
 So in this case, we
-get that MAX-E3-SAT
+get that Max E3SAT
 
 857
 00:48:07,150 --> 00:48:17,420
@@ -4011,7 +4013,7 @@ But it's not a tight bound.
 868
 00:48:53,590 --> 00:48:57,210
 The right answer
-for MAX-3SAT is 7/8.
+for Max 3SAT is 7/8.
 
 869
 00:48:57,210 --> 00:49:00,200
@@ -4035,7 +4037,7 @@ if it has exactly three terms
 
 873
 00:49:12,670 --> 00:49:16,220
-and it's an or of three things,
+and it's an OR of three things,
 you just need at least one head
 
 874
@@ -4169,11 +4171,11 @@ gap-preserving reduction,
 901
 00:51:09,930 --> 00:51:18,300
 namely that reduction, from
-MAX-E3-XNOR-SAT to MAX-3SAT,
+Max E3-XNOR-SAT to Max 3SAT,
 
 902
 00:51:18,300 --> 00:51:19,950
-E3-SAT I should say.
+E3SAT I should say.
 
 903
 00:51:19,950 --> 00:51:23,490
@@ -4440,7 +4442,7 @@ four minus epsilon gap 3SAT,
 
 961
 00:55:04,220 --> 00:55:10,020
-E3-SAT, is NP-hard.
+E3SAT, is NP-hard.
 
 962
 00:55:10,020 --> 00:55:13,490
@@ -4605,12 +4607,12 @@ Yeah.
 997
 00:57:01,752 --> 00:57:06,720
 AUDIENCE: So are there any
-[INAUDIBLE] randomness?
+CSPs where we can beat randomness?
 
 998
 00:57:06,720 --> 00:57:10,970
-AUDIENCE: So for [INAUDIBLE],
-you can be the randomness.
+AUDIENCE: So for Max Cut,
+you can beat the randomness.
 
 999
 00:57:10,970 --> 00:57:13,280
@@ -4619,8 +4621,8 @@ give you one half.
 
 1000
 00:57:13,280 --> 00:57:16,526
-[INAUDIBLE] algorithm
-gives you 1.8.
+The Goemans-Williamson
+algorithm gives you 1.8.
 
 1001
 00:57:16,526 --> 00:57:18,650
@@ -4634,12 +4636,12 @@ than a constant factor.
 
 1003
 00:57:20,840 --> 00:57:24,780
-MAX CUT is an example
+Max Cut is an example
 where you can beat it.
 
 1004
 00:57:24,780 --> 00:57:28,220
-I think I have the Goemans
+I think I have the Goemans-
 Williamson bound here.
 
 1005
@@ -4647,7 +4649,7 @@ Williamson bound here.
 
 1006
 00:57:31,770 --> 00:57:33,860
-MAX CUT, the best
+Max Cut, the best
 approximation is
 
 1007
@@ -4677,7 +4679,7 @@ Cool.
 1013
 00:57:45,740 --> 00:57:48,850
 So we get optimal
-bound for MAX-E3-SAT,
+bound for Max E3SAT,
 
 1014
 00:57:48,850 --> 00:57:53,251
@@ -4879,7 +4881,7 @@ A is n, size of B is n,
 
 1059
 01:00:37,980 --> 01:00:44,510
-and size of each Ai
+and size of each A_i
 is also the same.
 
 1060
@@ -4971,11 +4973,11 @@ group to a single vertex.
 
 1079
 01:01:56,700 --> 01:01:58,670
-This is A1.
+This is A_1.
 
 1080
 01:01:58,670 --> 01:02:01,810
-This is B3.
+This is B_3.
 
 1081
 01:02:01,810 --> 01:02:04,320
@@ -4984,8 +4986,8 @@ a super edge from the group
 
 1082
 01:02:04,320 --> 01:02:06,290
-A1 to the group
-B3 because there's
+A_1 to the group
+B_3 because there's
 
 1083
 01:02:06,290 --> 01:02:08,290
@@ -4993,18 +4995,18 @@ at least one edge between them.
 
 1084
 01:02:08,290 --> 01:02:10,390
-If I squashed A1
+If I squashed A_1
 to a single vertex,
 
 1085
 01:02:10,390 --> 01:02:13,610
-B3 down to a single vertex, I
+B_3 down to a single vertex, I
 would get an edge between them.
 
 1086
 01:02:13,610 --> 01:02:21,600
-So a super edge, Ai Bi--
-Ai Bj, I should say--
+So a super edge, A_i, B_i--
+A_i, B_j, I should say--
 
 1087
 01:02:21,600 --> 01:02:26,610
@@ -5013,7 +5015,7 @@ at least one edge
 
 1088
 01:02:26,610 --> 01:02:33,340
-in AI cross Bj, at least one
+in A_i cross B_j, at least one
 edge connecting those groups.
 
 1089
@@ -5036,7 +5038,7 @@ one edge-- sorry.
 
 1093
 01:02:52,650 --> 01:02:57,590
-If this Ai cross Bj, these
+If this A_i cross B_j, these
 are all the possible edges
 
 1094
@@ -5057,7 +5059,7 @@ have a solution where,
 1097
 01:03:16,960 --> 01:03:20,570
 if there is some edge
-between A1 and B3,
+between A_1 and B_3,
 
 1098
 01:03:20,570 --> 01:03:23,430
@@ -5071,8 +5073,8 @@ they induce at least one edge
 
 1100
 01:03:28,100 --> 01:03:31,480
-from A1 to B3, and
-also from A2 to B3
+from A_1 to B_3, and
+also from A_2 to B_3
 
 1101
 01:03:31,480 --> 01:03:34,400
@@ -5176,11 +5178,11 @@ one vertex from each group.
 1124
 01:04:34,200 --> 01:04:39,420
 So we got A prime
-intersect Ai equals
+intersect A_i equals
 
 1125
 01:04:39,420 --> 01:04:48,100
-one, and B prime intersect Bj
+one, and B prime intersect B_j
 equals one, for all i and j.
 
 1126
@@ -5233,7 +5235,7 @@ as many edges as you can.
 1136
 01:05:24,830 --> 01:05:30,236
 If there is an edge in the
-super graph from Ai to Bj,
+super graph from A_i to B_j,
 
 1137
 01:05:30,236 --> 01:05:34,337
@@ -5247,8 +5249,8 @@ an edge between the label
 
 1139
 01:05:36,420 --> 01:05:40,020
-you assign to Ai and the
-label you assign to Bj.
+you assign to A_i and the
+label you assign to B_j.
 
 1140
 01:05:40,020 --> 01:05:42,190
@@ -5496,7 +5498,7 @@ groups on the left.
 
 1192
 01:08:28,790 --> 01:08:31,130
-So this Ai group
+So this A_i group
 for furniture is
 
 1193
@@ -5643,7 +5645,7 @@ PROFESSOR: Yes.
 
 1224
 01:09:53,140 --> 01:09:56,260
-The Bis here are the
+The B_i's here are the
 alphabet A through Z,
 
 1225
@@ -5659,7 +5661,7 @@ connect two of them by an edge
 1227
 01:10:00,810 --> 01:10:07,030
 if that letter happens to
-match on the right, [INAUDIBLE]
+match on the right, the ith
 
 1228
 01:10:07,030 --> 01:10:08,160
@@ -5815,7 +5817,7 @@ used this class.
 
 1262
 01:12:20,970 --> 01:12:23,730
-Usually we talk about p, which
+Usually we talk about P, which
 is the union of all these
 
 1263
@@ -5834,7 +5836,7 @@ It could be some function of n.
 1266
 01:12:28,680 --> 01:12:31,140
 And in particular, if
-p does not equal NP,
+P does not equal NP,
 
 1267
 01:12:31,140 --> 01:12:33,810
@@ -5865,12 +5867,12 @@ statement here.
 
 1273
 01:12:54,670 --> 01:12:56,970
-We know if p does
+We know if P does
 not equal NP, we know
 
 1274
 01:12:56,970 --> 01:12:59,500
-that NP is not contained in p.
+that NP is not contained in P.
 
 1275
 01:12:59,500 --> 01:13:02,880
@@ -6036,7 +6038,7 @@ to one minus epsilon n.
 1310
 01:14:52,740 --> 01:14:55,130
 This is not assuming
-p does not equal NP.
+P does not equal NP.
 
 1311
 01:14:55,130 --> 01:14:57,220
@@ -6132,7 +6134,7 @@ connect via directed path
 
 1330
 01:15:50,710 --> 01:15:54,490
-some Ais and Bjs, let's say.
+some A_i's and B_j's, let's say.
 
 1331
 01:15:54,490 --> 01:15:58,550
@@ -6180,8 +6182,8 @@ super edge from, say,
 
 1340
 01:16:17,350 --> 01:16:20,480
-A2, capital A2 to
-capital B1, then
+A_2, capital A_2 to
+capital B_1, then
 
 1341
 01:16:20,480 --> 01:16:23,010
@@ -6191,7 +6193,7 @@ Steiner forest problem,
 1342
 01:16:23,010 --> 01:16:26,426
 I want a path from
-little a2 to little b1.
+little a_2 to little b_1.
 
 1343
 01:16:26,426 --> 01:16:28,300
@@ -6215,7 +6217,7 @@ solution to Min-Rep.
 1347
 01:16:34,530 --> 01:16:38,540
 You're just forcing the
-addition of the Ais and Bis.
+addition of the A_i's and B_i's.
 
 1348
 01:16:38,540 --> 01:16:40,060
@@ -6294,11 +6296,11 @@ special case of, say,
 1365
 01:17:34,530 --> 01:17:45,420
 Max-Rep, or either label cover
-problem, where the edges in Ai
+problem, where the edges in A_i
 
 1366
 01:17:45,420 --> 01:17:48,927
-cross Bj form a matching.
+cross B_j form a matching.
 
 1367
 01:17:48,927 --> 01:17:54,280
@@ -6382,7 +6384,7 @@ if you want to cover that edge.
 
 1384
 01:18:31,140 --> 01:18:35,370
-OK So far so good.
+OK. So far so good.
 
 1385
 01:18:35,370 --> 01:18:40,250
@@ -6490,7 +6492,7 @@ inapproximability standpoint.
 
 1407
 01:19:41,890 --> 01:19:45,980
-So for example, MAX-2SAT, the
+So for example, Max 2SAT, the
 best approximation algorithm is
 
 1408
@@ -6509,8 +6511,8 @@ lower bound.
 
 1411
 01:19:50,860 --> 01:19:54,270
-That was MAX-2SAT for
-MAX-CUT, as was mentioned,
+That was Max 2SAT for
+Max Cut, as was mentioned,
 
 1412
 01:19:54,270 --> 01:19:59,490
@@ -6572,7 +6574,7 @@ at over all the different CSP
 1424
 01:20:36,620 --> 01:20:39,530
 problems that we've seen,
-all the MAX-CSP problems,
+all the Max CSP problems,
 
 1425
 01:20:39,530 --> 01:20:41,900
@@ -6582,16 +6584,16 @@ using a particular kind
 1426
 01:20:41,900 --> 01:20:46,990
 of semi-definite programming,
-there's an STP relaxation.
+there's an SDP relaxation.
 
 1427
 01:20:46,990 --> 01:20:49,540
-If you don't know STPs,
+If you don't know SDPs,
 ignore this sentence.
 
 1428
 01:20:49,540 --> 01:20:52,440
-There's an STP relaxation
+There's an SDP relaxation
 of all CSP problems.
 
 1429
@@ -6600,7 +6602,7 @@ You do the obvious thing.
 
 1430
 01:20:54,810 --> 01:20:57,740
-And that STP will have
+And that SDP will have
 an integrality gap.
 
 1431
@@ -6635,7 +6637,7 @@ approximation algorithms.
 1437
 01:21:13,550 --> 01:21:16,000
 Because if there's
-a gap in the STP,
+a gap in the SDP,
 
 1438
 01:21:16,000 --> 01:21:17,730
@@ -6684,14 +6686,12 @@ Yeah.
 1448
 01:21:39,748 --> 01:21:41,658
 AUDIENCE: If there's a
-[INAUDIBLE] algorithm
+subexponential-time algorithm,
 
 1449
-01:21:41,658 --> 01:21:42,158
-[INAUDIBLE]?
-
-1450
-01:21:42,158 --> 01:21:46,050
+01:21:41,658 --> 01:21:46,050
+is it still OK for
+it to be NP-hard?
 
 1451
 01:21:46,050 --> 01:21:49,030
@@ -6704,7 +6704,7 @@ to be slightly subexponential.
 
 1453
 01:21:52,070 --> 01:21:56,470
-It's like two to the n to
+It's like 2 to the n to
 the epsilon or something.
 
 1454
