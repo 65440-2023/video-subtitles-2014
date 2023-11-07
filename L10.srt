@@ -1830,7 +1830,7 @@ if your problem looks like this.
 
 393
 00:21:10,340 --> 00:21:11,900
-Independence set,
+Independent set,
 just find me a set
 
 394
@@ -5138,7 +5138,7 @@ basically random
 
 1107
 00:59:37,840 --> 00:59:39,630
-graphs [INAUDIBLE]
+graphs have this
 property, but we
 
 1108
@@ -5202,7 +5202,7 @@ a little easier to think about.
 
 1121
 01:00:21,000 --> 01:00:23,760
-This is an expander, [? k4 ?].
+This is an expander, K_4.
 
 1122
 01:00:23,760 --> 01:00:29,200
@@ -6341,7 +6341,7 @@ an independent set?
 1366
 01:12:22,690 --> 01:12:23,610
 PROFESSOR:
-Independence set is you
+Independent set is you
 
 1367
 01:12:23,610 --> 01:12:24,660
@@ -6354,8 +6354,8 @@ have no edges between them.
 
 1369
 01:12:26,270 --> 01:12:29,490
-Sorry, instead of vertices,
-they have no edges between them.
+Sorry, a set of vertices,
+that have no edges between them.
 
 1370
 01:12:29,490 --> 01:12:33,110
