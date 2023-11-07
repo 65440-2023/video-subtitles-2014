@@ -1263,8 +1263,7 @@ class is normally
 
 275
 00:14:03,830 --> 00:14:06,580
-written PCP of order
-log n, comma order one.
+written PCP(log n, O(1)).
 
 276
 00:14:06,580 --> 00:14:09,970
@@ -1876,7 +1875,7 @@ random by flipping log n coins.
 408
 00:21:41,230 --> 00:21:46,415
 And then check so that
-involves-- this is three SATs.
+involves-- this is 3SAT.
 
 409
 00:21:46,415 --> 00:21:48,070
@@ -2067,8 +2066,8 @@ change this notation.
 
 449
 00:23:53,320 --> 00:24:07,670
-If less than 1, comma
-1, gap 3SAT is NP-hard,
+If (<1, 1)-gap 3SAT
+is NP-hard,
 
 450
 00:24:07,670 --> 00:24:13,150
@@ -2082,7 +2081,7 @@ is true, but before we
 452
 00:24:15,380 --> 00:24:21,670
 know that here-- so we just
-proved that this thing is NPCP.
+proved that this thing is in PCP.
 
 453
 00:24:21,670 --> 00:24:25,349
@@ -2110,7 +2109,7 @@ NP can reduce to this thing.
 
 458
 00:24:34,830 --> 00:24:36,480
-And then that thing is NPCP.
+And then that thing is in PCP.
 
 459
 00:24:36,480 --> 00:24:38,850
@@ -2120,7 +2119,7 @@ all problems in NP,
 460
 00:24:38,850 --> 00:24:42,590
 you can convert them into
-less than 1, comma 1 gap 3SAT
+(<1, 1)-gap 3SAT
 
 461
 00:24:42,590 --> 00:24:46,030
@@ -2144,7 +2143,7 @@ directly useful to us.
 
 465
 00:24:57,270 --> 00:25:17,680
-If, let's say, 3SAT is NPCP,
+If, let's say, 3SAT is in PCP,
 then the gap version of 3SAT
 
 466
@@ -2162,7 +2161,7 @@ because-- this is true
 469
 00:25:26,130 --> 00:25:30,790
 because NP equals PCP, in
-particular 3SAT is NPCP.
+particular 3SAT is in PCP.
 
 470
 00:25:30,790 --> 00:25:32,680
@@ -2244,11 +2243,10 @@ gap-preserving reduction.
 487
 00:26:22,780 --> 00:26:25,410
 The PCP algorithm we're given,
-because we're looking at PCP
+because we're looking at PCP(log n, O(1))
 
 488
 00:26:25,410 --> 00:26:29,300
-log n, comma order one,
 runs in constant time.
 
 489
@@ -2409,7 +2407,7 @@ I get a satisfiable formula.
 
 523
 00:28:14,680 --> 00:28:22,180
-So yes, complies satisfiable,
+So yes, implies satisfiable,
 100% satisfiable.
 
 524
@@ -2744,7 +2742,7 @@ an instance x of A.
 594
 00:32:35,220 --> 00:32:44,440
 We convert that into an instance
-x prime of some problem B.
+x' of some problem B.
 
 595
 00:32:44,440 --> 00:32:46,430
@@ -2753,7 +2751,7 @@ think about the OPT of x
 
 596
 00:32:46,430 --> 00:32:49,300
-versus the OPT of x prime.
+versus the OPT of x'.
 
 597
 00:32:49,300 --> 00:32:54,480
@@ -2771,8 +2769,8 @@ OPT of x is at most some k,
 
 600
 00:33:04,270 --> 00:33:11,770
-then the OPT of x prime
-is at most some k prime.
+then the OPT of x'
+is at most some k'.
 
 601
 00:33:11,770 --> 00:33:14,120
@@ -2803,7 +2801,7 @@ at most some function of n,
 
 607
 00:33:49,159 --> 00:33:52,611
-then I get that OPT of x prime
+then I get that OPT of x'
 is at most some other function
 
 608
@@ -2821,7 +2819,7 @@ What I care about is this gap c.
 
 611
 00:33:58,260 --> 00:34:00,360
-Should be a c prime here.
+Should be a c' here.
 
 612
 00:34:00,360 --> 00:34:03,810
@@ -2841,11 +2839,11 @@ k, I want that to be
 615
 00:34:09,530 --> 00:34:11,790
 preserved for some
-possibly other gap c
+possibly other gap c'
 
 616
 00:34:11,790 --> 00:34:13,687
-prime in the new problem.
+in the new problem.
 
 617
 00:34:13,687 --> 00:34:16,020
@@ -2859,11 +2857,11 @@ we want to preserve.
 619
 00:34:17,440 --> 00:34:21,179
 If we had a gap of c before,
-we get some gap c prime after.
+we get some gap c' after.
 
 620
 00:34:21,179 --> 00:34:25,100
-If c prime equals c, this would
+If c' equals c, this would
 be a perfectly gap-preserving
 
 621
@@ -2877,7 +2875,7 @@ some constant factor.
 
 623
 00:34:27,940 --> 00:34:30,980
-If c prime is
+If c' is
 greater than c, this
 
 624
@@ -4928,8 +4926,8 @@ to choose some subset of A,
 
 1069
 01:01:20,390 --> 01:01:26,400
-let's call it A prime, and some
-subset of B, call it B prime.
+let's call it A', and some
+subset of B, call it B'.
 
 1070
 01:01:26,400 --> 01:01:32,180
@@ -5021,11 +5019,11 @@ edge connecting those groups.
 1089
 01:02:33,340 --> 01:02:38,610
 And I'm going to call such a
-super edge covered by A prime B
+super edge covered by (A', B')
 
 1090
 01:02:38,610 --> 01:02:46,410
-prime if at least one of those
+if at least one of those
 edges is in this chosen set.
 
 1091
@@ -5044,7 +5042,7 @@ are all the possible edges
 1094
 01:02:57,590 --> 01:03:10,420
 between those groups, intersects
-A prime cross B prime.
+A' cross B'.
 
 1095
 01:03:10,420 --> 01:03:13,820
@@ -5068,7 +5066,7 @@ vertices I choose,
 
 1099
 01:03:23,430 --> 01:03:28,100
-A prime and B prime in the left,
+A' and B' in the left,
 they induce at least one edge
 
 1100
@@ -5098,7 +5096,7 @@ Yeah.
 1105
 01:03:39,625 --> 01:03:41,810
 AUDIENCE: So you're choosing
-subsets A prime of A.
+subsets A' of A.
 
 1106
 01:03:41,810 --> 01:03:43,934
@@ -5162,7 +5160,7 @@ which is called Max-Rep.
 1120
 01:04:16,020 --> 01:04:19,380
 So we have two constraints
-on A prime and B prime.
+on A' and B'.
 
 1121
 01:04:19,380 --> 01:04:23,520
@@ -5177,12 +5175,12 @@ one vertex from each group.
 
 1124
 01:04:34,200 --> 01:04:39,420
-So we got A prime
-intersect A_i equals
+So we got |A' intersect A_i|
+equals one,
 
 1125
 01:04:39,420 --> 01:04:48,100
-one, and B prime intersect B_j
+and |B' intersect B_j|
 equals one, for all i and j.
 
 1126
@@ -5301,7 +5299,7 @@ the size of these sets,
 
 1150
 01:06:22,210 --> 01:06:25,060
-A prime plus B prime.
+|A'| plus |B'|.
 
 1151
 01:06:25,060 --> 01:06:27,820
@@ -6081,7 +6079,7 @@ lot of approximation lower
 
 1319
 01:15:20,350 --> 01:15:24,400
-bounds in s world today
+bounds in the world today
 start from Max-Rep or Min-Rep
 
 1320
@@ -6394,7 +6392,7 @@ the special case is also hard.
 1386
 01:18:40,250 --> 01:18:50,690
 Unique games conjecture is that
-epsilon one minus epsilon gap
+(epsilon, one minus epsilon) gap
 
 1387
 01:18:50,690 --> 01:18:54,951
