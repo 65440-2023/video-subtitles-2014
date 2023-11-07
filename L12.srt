@@ -1749,7 +1749,7 @@ it to gap problems.
 380
 00:19:36,510 --> 00:19:58,180
 So let's say first claim is
-that if we look at this gap sap
+that if we look at this gap SAT
 
 381
 00:19:58,180 --> 00:20:02,340
