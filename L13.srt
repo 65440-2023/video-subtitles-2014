@@ -405,11 +405,11 @@ bad dependence on k.
 88
 00:04:36,920 --> 00:04:44,430
 So let me start with a
-so-so dependents, XP, would
+so-so dependence: XP would
 
 89
 00:04:44,430 --> 00:04:56,070
-be the set of all prioritized
+be the set of all parameterized
 problems solvable in n
 
 90
@@ -443,7 +443,7 @@ a bad running time.
 
 96
 00:05:19,320 --> 00:05:21,120
-F is presumably exponential.
+f is presumably exponential.
 
 97
 00:05:21,120 --> 00:05:22,510
@@ -647,13 +647,13 @@ sense of tractable.
 
 140
 00:07:16,800 --> 00:07:19,910
-You can say it is n
-squared for any fixed k.
+You can say it is n-squared
+for any fixed k.
 
 141
 00:07:19,910 --> 00:07:22,070
-Or, it's n to the
-fifth for any fixed k.
+Or, it's n to the fifth,
+for any fixed k.
 
 142
 00:07:22,070 --> 00:07:24,820
@@ -989,7 +989,7 @@ vertex cover when k is given,
 216
 00:10:56,180 --> 00:10:59,910
 you can just run that
-algorithm for k equals 1, 2, 4,
+algorithm for k equals 1, 2, 3,
 
 217
 00:10:59,910 --> 00:11:01,790
@@ -1522,7 +1522,7 @@ algorithms assuming
 
 329
 00:16:50,960 --> 00:16:54,310
-FPT does not equal w1-- an
+FPT does not equal W[1]-- an
 assumption we will get to
 
 330
@@ -1578,7 +1578,7 @@ results I've talked about,
 
 341
 00:17:22,380 --> 00:17:25,340
-planar independence set, planar
+planar independent set, planar
 vertex cover, those things all
 
 342
@@ -1619,7 +1619,7 @@ you can use those
 350
 00:17:43,990 --> 00:17:47,800
 to get EPTASs for planar
-and h-minor free problems.
+and H-minor-free problems.
 
 351
 00:17:47,800 --> 00:17:49,670
@@ -1711,7 +1711,7 @@ some decision problem B
 
 370
 00:18:39,660 --> 00:18:43,310
-with parameter k prime.
+with parameter k-prime.
 
 371
 00:18:43,310 --> 00:18:48,300
@@ -1740,11 +1740,11 @@ A gets mapped to
 376
 00:19:00,960 --> 00:19:08,040
 by a function f to an
-instance x prime of B. X prime
+instance x-prime of B, x-prime
 
 377
 00:19:08,040 --> 00:19:12,640
-is f o x as usual.
+is f of x as usual.
 
 378
 00:19:12,640 --> 00:19:18,650
@@ -1758,7 +1758,7 @@ which means, in particular,
 
 380
 00:19:22,960 --> 00:19:26,340
-x prime has polynomials
+x-prime has polynomials
 size reduced back to x.
 
 381
@@ -1771,11 +1771,11 @@ It should be answer preserving.
 383
 00:19:33,680 --> 00:19:39,840
 So x is yes instance
-for A if and only
+for A if and only if
 
 384
 00:19:39,840 --> 00:19:43,940
-x prime is a yes instance for B.
+x-prime is a yes instance for B.
 
 385
 00:19:43,940 --> 00:19:46,980
@@ -1796,7 +1796,7 @@ which is parameter preserving.
 
 389
 00:19:58,240 --> 00:20:20,380
-This is there's some function
+This is: there's some function
 g, which I'll call the parameter
 
 390
@@ -1892,7 +1892,7 @@ parameter tractable,
 
 410
 00:21:16,660 --> 00:21:23,640
-then A is because we can
+then A is, because we can
 take an instance of A
 
 411
@@ -2134,7 +2134,7 @@ which we will get to.
 
 462
 00:23:49,550 --> 00:23:54,040
-In particular, W1
+In particular, W[1]
 is the most common.
 
 463
@@ -2227,7 +2227,7 @@ parameter preserving.
 
 482
 00:24:47,840 --> 00:24:50,090
-Whereas independence
+Whereas independent
 set, these are
 
 483
@@ -2238,7 +2238,7 @@ a different sense
 484
 00:24:51,730 --> 00:24:54,146
 that if you take everything
-that's not in the independence
+that's not in the independent
 
 485
 00:24:54,146 --> 00:24:55,250
@@ -2270,7 +2270,7 @@ we just showed is FPT.
 491
 00:25:12,410 --> 00:25:17,640
 Independence set is not, if you
-believe w1 does not equal FPT
+believe W[1] does not equal FPT
 
 492
 00:25:17,640 --> 00:25:20,990
@@ -2300,14 +2300,14 @@ interesting things.
 497
 00:25:34,960 --> 00:25:37,310
 And I want to start to
-introduce the notion of w1.
+introduce the notion of W[1].
 
 498
 00:25:37,310 --> 00:26:02,400
 
 499
 00:26:02,400 --> 00:26:05,040
-I won't define w1 yet.
+I won't define W[1] yet.
 
 500
 00:26:05,040 --> 00:26:07,980
@@ -2448,7 +2448,7 @@ want to the machine
 529
 00:27:31,770 --> 00:27:41,350
 to have order n
-stateS-- yeah, let's say
+states-- yeah, let's say
 
 530
 00:27:41,350 --> 00:27:58,147
@@ -2707,7 +2707,7 @@ as part of the Turing machine.
 584
 00:30:06,730 --> 00:30:08,743
 There's not one
-turning machine-- well,
+Turing machine-- well,
 
 585
 00:30:08,743 --> 00:30:10,993
@@ -2915,12 +2915,12 @@ That's an assumption.
 
 628
 00:32:24,180 --> 00:32:32,310
-And this problem is w1 complete.
+And this problem is W[1]-complete.
 
 629
 00:32:32,310 --> 00:32:35,170
 I will to define
-w1 a little later,
+W[1] a little later,
 
 630
 00:32:35,170 --> 00:32:37,210
@@ -2929,8 +2929,8 @@ take this as given.
 
 631
 00:32:37,210 --> 00:32:40,180
-You could define w1
-complete to mean problems
+You could define W[1]-complete
+to mean problems
 
 632
 00:32:40,180 --> 00:32:42,520
@@ -2997,12 +2997,12 @@ problem independent set.
 
 646
 00:33:19,740 --> 00:33:23,480
-That's also w1 complete.
+That's also W[1]-complete.
 
 647
 00:33:23,480 --> 00:33:28,690
 And to prove, first of
-all, that it's w1 hard,
+all, that it's W[1]-hard,
 
 648
 00:33:28,690 --> 00:33:33,150
@@ -3067,7 +3067,7 @@ going to consist mostly
 
 661
 00:34:16,719 --> 00:34:20,980
-of k squared cliques.
+of k-squared cliques.
 
 662
 00:34:20,980 --> 00:34:23,670
@@ -3361,13 +3361,13 @@ Sorry.
 
 725
 00:37:49,660 --> 00:37:58,730
-It is by these guys again,
-Fomin, Kowalik, Lockshtanov,
+It is by these guys again: [Cygan,]
+Fomin, Kowalik, Lokshtanov,
 
 726
 00:37:58,730 --> 00:38:03,360
-Marx, Pilipczuck
-brothers, and Saurabh.
+Marx, Pilipczuk brothers,
+and Saurabh.
 
 727
 00:38:03,360 --> 00:38:07,564
@@ -3399,32 +3399,32 @@ to independent set, which
 
 733
 00:38:21,700 --> 00:38:23,750
-shows the independence
+shows the independent
 set is at least as
 
 734
 00:38:23,750 --> 00:38:27,790
 hard as this problem, which
-we think is hard, w1 hard.
+we think is hard, W[1]-hard.
 
 735
 00:38:27,790 --> 00:38:29,090
-So that proves w1 hardness.
+So that proves W[1]-hardness.
 
 736
 00:38:29,090 --> 00:38:33,130
 But there's another question
-of is independent set in w1.
+of is independent set in W[1].
 
 737
 00:38:33,130 --> 00:38:36,190
 As you might guess from the name
-w1, there's more than just w1.
+W[1], there's more than just W[1].
 
 738
 00:38:36,190 --> 00:38:41,000
-There's w2 and w3
-and w4 and even more.
+There's W[2] and W[3]
+and W[4] and even more.
 
 739
 00:38:41,000 --> 00:38:43,760
@@ -3443,12 +3443,12 @@ in that hierarchy.
 742
 00:38:48,090 --> 00:38:53,860
 But in fact, independent set is
-w1 hard-- sorry-- w1 complete.
+W[1]-hard-- sorry-- W[1]-complete.
 
 743
 00:38:53,860 --> 00:38:57,735
 So we can do a reduction
-from independence
+from independent
 
 744
 00:38:57,735 --> 00:39:03,470
@@ -3628,7 +3628,7 @@ no edge between them
 782
 00:41:15,640 --> 00:41:18,120
 basically by using the
-code as a look-up table.
+code as a lookup table.
 
 783
 00:41:18,120 --> 00:41:23,350
@@ -3671,7 +3671,7 @@ plus an order n size
 791
 00:41:43,610 --> 00:41:48,060
 thing, which is the
-look-up table for what
+lookup table for what
 
 792
 00:41:48,060 --> 00:41:49,590
@@ -3701,7 +3701,7 @@ I'm sorry.
 
 798
 00:41:57,259 --> 00:41:58,700
-This is k prime.
+This is k-prime.
 
 799
 00:41:58,700 --> 00:42:02,370
@@ -3712,7 +3712,7 @@ Yes.
 
 801
 00:42:03,320 --> 00:42:06,906
-So probably k prime here
+So probably k-prime here
 is exactly order k squared.
 
 802
@@ -3762,7 +3762,7 @@ over the tape k squared steps.
 
 812
 00:42:30,250 --> 00:42:33,200
-And also n prime is whatever.
+And also n-prime is whatever.
 
 813
 00:42:33,200 --> 00:42:36,250
@@ -3777,11 +3777,11 @@ V plus E. So the point
 815
 00:42:42,860 --> 00:42:45,170
 of doing that was to
-show the independence set
+show the independent set
 
 816
 00:42:45,170 --> 00:42:47,490
-is also w1 complete.
+is also W[1]-complete.
 
 817
 00:42:47,490 --> 00:42:50,080
@@ -3816,11 +3816,11 @@ big the blow up is,
 823
 00:43:04,580 --> 00:43:06,710
 it's just as hard as
-an independence set.
+an independent set.
 
 824
 00:43:06,710 --> 00:43:08,670
-So independence set
+So independent set
 is a problem we think
 
 825
@@ -3834,7 +3834,7 @@ also the reverse reduction,
 
 827
 00:43:16,250 --> 00:43:18,880
-clique is also w1 complete.
+clique is also W[1]-complete.
 
 828
 00:43:18,880 --> 00:43:22,710
@@ -3848,7 +3848,7 @@ So a bunch more reductions.
 
 831
 00:43:38,300 --> 00:43:43,081
-In general, most w1 hardness
+In general, most W[1]-hardness
 results start from clique.
 
 832
@@ -3920,23 +3920,23 @@ in general, let's say
 
 847
 00:44:26,690 --> 00:44:31,660
-capital delta is the maximum
+capital Delta is the maximum
 degree in your given graph,
 
 848
 00:44:31,660 --> 00:44:35,640
 and we want to convert it
-into a delta regular graph.
+into a Delta-regular graph.
 
 849
 00:44:35,640 --> 00:44:38,910
 So we're going to increase all
-the lower degrees up to delta.
+the lower degrees up to Delta.
 
 850
 00:44:38,910 --> 00:44:45,050
 What we're going to do is take
-delta copies of the graph.
+Delta copies of the graph.
 
 851
 00:44:45,050 --> 00:44:48,390
@@ -3944,7 +3944,7 @@ delta copies of the graph.
 852
 00:44:48,390 --> 00:44:52,890
 So for every old vertex,
-we get delta copies of it.
+we get Delta copies of it.
 
 853
 00:44:52,890 --> 00:44:56,640
@@ -3960,11 +3960,11 @@ is the graph that's
 
 856
 00:45:02,440 --> 00:45:04,070
-been duplicated delta times.
+been duplicated Delta times.
 
 857
 00:45:04,070 --> 00:45:06,307
-Here, delta is 5.
+Here, Delta is 5.
 
 858
 00:45:06,307 --> 00:45:07,890
@@ -3983,27 +3983,27 @@ going to do is create
 
 861
 00:45:12,940 --> 00:45:17,510
-delta minus d new vertices
+Delta minus d new vertices
 and then add a biclique here,
 
 862
 00:45:17,510 --> 00:45:21,430
 bipartite clique, connecting all
-of those delta minus d things
+of those Delta minus d things
 
 863
 00:45:21,430 --> 00:45:23,650
-to all of these delta things.
+to all of these Delta things.
 
 864
 00:45:23,650 --> 00:45:27,750
-They're delta copies
+They're Delta copies
 of the original vertex.
 
 865
 00:45:27,750 --> 00:45:31,504
 This is v over here,
-v1 through v delta.
+v_1 through v_Delta.
 
 866
 00:45:31,504 --> 00:45:33,170
@@ -4012,8 +4012,8 @@ is these vertices
 
 867
 00:45:33,170 --> 00:45:36,810
-will have entered degree delta
-because there were delta things
+will have entered degree Delta
+because there were Delta things
 
 868
 00:45:36,810 --> 00:45:38,400
@@ -4022,7 +4022,7 @@ to connect to over there.
 869
 00:45:38,400 --> 00:45:40,210
 And now these things
-will have degree delta
+will have degree Delta
 
 870
 00:45:40,210 --> 00:45:41,680
@@ -4036,12 +4036,12 @@ an additional degree
 
 872
 00:45:43,300 --> 00:45:46,330
-delta minus d on the left.
+Delta minus d on the left.
 
 873
 00:45:46,330 --> 00:45:48,790
 So cool, everything's
-now delta regular.
+now Delta-regular.
 
 874
 00:45:48,790 --> 00:45:51,240
@@ -4128,7 +4128,7 @@ Everything's cool.
 891
 00:46:36,590 --> 00:46:38,480
 So in this situation
-k prime equals
+k-prime equals
 
 892
 00:46:38,480 --> 00:46:41,491
@@ -4146,7 +4146,7 @@ That got a little bigger.
 895
 00:46:44,692 --> 00:46:46,150
 And now everything's
-delta regular.
+Delta-regular.
 
 896
 00:46:46,150 --> 00:46:49,820
@@ -4164,7 +4164,7 @@ something is true of clique,
 899
 00:46:56,690 --> 00:46:58,148
 it's also true of
-independence set.
+independent set.
 
 900
 00:46:58,148 --> 00:47:00,440
@@ -4196,8 +4196,8 @@ have degree n minus 1
 
 906
 00:47:11,335 --> 00:47:13,418
-minus delta or n minus
-delta, something like that.
+minus Delta or n minus
+Delta, something like that.
 
 907
 00:47:13,418 --> 00:47:16,150
@@ -4213,7 +4213,7 @@ called partial vertex cover.
 
 910
 00:47:26,490 --> 00:47:30,270
-This is also w1 complete.
+This is also W[1]-complete.
 
 911
 00:47:30,270 --> 00:47:39,245
@@ -4258,11 +4258,11 @@ the most bang for your buck.
 920
 00:47:58,710 --> 00:48:16,950
 And this is easy to reduce from
-delta regular independence set
+Delta-regular independent set
 
 921
 00:48:16,950 --> 00:48:21,280
-because-- k independence set
+because-- k independent set
 if we want to be explicit.
 
 922
@@ -4277,13 +4277,13 @@ partial vertex cover
 
 924
 00:48:26,710 --> 00:48:31,770
-with k prime equal
-to delta times k.
+with k-prime equal
+to Delta times k.
 
 925
 00:48:31,770 --> 00:48:37,470
-Sorry, that's l prime
-is delta times k.
+Sorry, that's l-prime
+is Delta times k.
 
 926
 00:48:37,470 --> 00:48:40,580
@@ -4302,7 +4302,7 @@ able to choose k vertices that
 929
 00:48:44,840 --> 00:48:46,339
 cover exactly
-delta times k edges
+Delta times k edges
 
 930
 00:48:46,339 --> 00:48:48,380
@@ -4312,7 +4312,7 @@ independent, none of the edges
 931
 00:48:48,380 --> 00:48:50,210
 will be shared among
-my independence set.
+my independent set.
 
 932
 00:48:50,210 --> 00:48:51,680
@@ -4321,7 +4321,7 @@ And this is if and only if.
 933
 00:48:51,680 --> 00:48:55,130
 If I try to choose k vertices
-that cover exactly delta k
+that cover exactly Delta k
 
 934
 00:48:55,130 --> 00:48:58,690
@@ -4356,7 +4356,7 @@ letter, but parameterized by k,
 
 941
 00:49:10,790 --> 00:49:12,710
-this problem is w1 complete.
+this problem is W[1]-complete.
 
 942
 00:49:12,710 --> 00:49:15,500
@@ -4388,7 +4388,7 @@ that the graph was regular.
 948
 00:49:31,060 --> 00:49:33,764
 Otherwise, it would be
-at most k-- at most delta
+at most k-- at most Delta
 
 949
 00:49:33,764 --> 00:49:35,430
@@ -4411,11 +4411,11 @@ still a bit confused
 953
 00:49:38,968 --> 00:49:42,250
 about the relationship
-between w1 and XP and FPT.
+between W[1] and XP and FPT.
 
 954
 00:49:42,250 --> 00:49:44,230
-I don't know what w1 is.
+I don't know what W[1] is.
 
 955
 00:49:44,230 --> 00:49:46,840
@@ -4425,7 +4425,7 @@ well we'll get there.
 956
 00:49:46,840 --> 00:49:49,260
 For now, you can think
-w1 is all problems they
+W[1] is all problems they
 
 957
 00:49:49,260 --> 00:49:52,530
@@ -4447,7 +4447,7 @@ Some people use that.
 961
 00:49:56,650 --> 00:49:59,985
 And in general, FPT
-is contained in w1.
+is contained in W[1].
 
 962
 00:49:59,985 --> 00:50:02,670
@@ -4456,7 +4456,7 @@ things, which we will get to.
 
 963
 00:50:02,670 --> 00:50:06,990
-w2 and so on is all
+W[2] and so on is all
 contained in XP.
 
 964
@@ -4471,7 +4471,7 @@ hypothesis.
 966
 00:50:10,510 --> 00:50:13,230
 So if you believe there are
-no sub exponential algorithms
+no subexponential algorithms
 
 967
 00:50:13,230 --> 00:50:17,820
@@ -4481,7 +4481,7 @@ no FPT algorithm with respect
 968
 00:50:17,820 --> 00:50:20,919
 to k and all the
-w1 complete things.
+W[1]-complete things.
 
 969
 00:50:20,919 --> 00:50:22,710
@@ -4506,7 +4506,7 @@ is it's not here.
 973
 00:50:30,040 --> 00:50:33,590
 And any hardness,
-w1 or worse, will
+W[1] or worse, will
 
 974
 00:50:33,590 --> 00:50:36,760
@@ -4632,7 +4632,7 @@ into k clusters.
 1000
 00:52:11,830 --> 00:52:21,410
 And the question is, is there
-k clique with one vertex
+k-clique with one vertex
 
 1001
 00:52:21,410 --> 00:52:24,200
@@ -4682,11 +4682,11 @@ So we are given a k-color graph.
 1011
 00:52:51,870 --> 00:52:55,240
 And we want to know,
-does it have a k clique?
+does it have a k-clique?
 
 1012
 00:52:55,240 --> 00:52:57,290
-And if it has a d clique
+And if it has a k-clique
 and it's k-colored, then
 
 1013
@@ -4741,12 +4741,12 @@ vertices in each color class.
 
 1025
 00:53:42,390 --> 00:53:49,310
-And then if we have an edge
-(v,w) convert it into edges
+And then if we have an edge (v, w),
+we will convert it into edges
 
 1026
 00:53:49,310 --> 00:53:55,920
-(vi, wj) for all
+(v_i, w_j), for all
 i not equal to j.
 
 1027
@@ -4767,7 +4767,7 @@ it's supposed to be a k-color,
 1030
 00:54:03,970 --> 00:54:07,690
 we're not allowed
-to connect (vi,wi).
+to connect (v_i, w_i).
 
 1031
 00:54:07,690 --> 00:54:10,630
@@ -4854,7 +4854,7 @@ from the v above it, right?
 1048
 00:54:42,890 --> 00:54:46,350
 PROFESSOR: Yeah, this is
-for all v and for all vw.
+for all v and for all v, w.
 
 1049
 00:54:46,350 --> 00:54:49,630
@@ -4875,7 +4875,7 @@ Cool.
 
 1053
 00:55:00,770 --> 00:55:04,212
-So k prime here equals
+So k-prime here equals
 k, no expansion.
 
 1054
@@ -4944,7 +4944,7 @@ I won't cover that proof.
 1068
 00:55:49,780 --> 00:55:59,776
 The problem is shortest
-common super sequence.
+common supersequence.
 
 1069
 00:55:59,776 --> 00:56:03,500
@@ -4963,7 +4963,7 @@ Your given k strings.
 
 1073
 00:56:13,990 --> 00:56:19,750
-Let's say alphabet sigma.
+Let's say alphabet Sigma.
 
 1074
 00:56:19,750 --> 00:56:28,980
@@ -4980,7 +4980,7 @@ a string of length
 
 1077
 00:56:36,470 --> 00:56:50,750
-l that's a super sequence
+l that's a supersequence
 of all input strings.
 
 1078
@@ -5050,7 +5050,7 @@ string here is ACAGGACT.
 
 1093
 00:57:40,320 --> 00:57:42,670
-This is a super string,
+This is a superstring,
 meaning I can drop letters
 
 1094
@@ -5092,7 +5092,7 @@ on the number of strings?
 1102
 00:57:59,440 --> 00:58:02,110
 And the answer is no
-because this is w1 complete.
+because this is W[1]-complete.
 
 1103
 00:58:02,110 --> 00:58:06,580
@@ -5176,7 +5176,7 @@ being able to shrink
 1120
 00:58:45,380 --> 00:58:49,880
 your longest-- your shortest
-common super sequence.
+common supersequence.
 
 1121
 00:58:49,880 --> 00:58:51,100
@@ -5204,7 +5204,7 @@ biology and useful.
 1126
 00:58:59,180 --> 00:59:03,840
 Because it's used to prove
-that flood-it is hard.
+that Flood-It is hard.
 
 1127
 00:59:03,840 --> 00:59:05,810
@@ -5212,7 +5212,7 @@ Time for some fun.
 
 1128
 00:59:05,810 --> 00:59:10,320
-So here is flood-it.
+So here is Flood-It.
 
 1129
 00:59:10,320 --> 00:59:14,200
@@ -5369,7 +5369,7 @@ out there you can play.
 
 1164
 01:00:40,790 --> 01:00:47,900
-It's w1 complete with respect
+It's W[1]-complete with respect
 to number of colors and number
 
 1165
@@ -5398,12 +5398,12 @@ I could can that
 1170
 01:00:58,560 --> 01:01:02,930
 talked about parametrized
-complexity of flood-it.
+complexity of Flood-It.
 
 1171
 01:01:02,930 --> 01:01:06,392
 And so this is
-flood-it on trees.
+Flood-It on trees.
 
 1172
 01:01:06,392 --> 01:01:11,090
@@ -5460,7 +5460,7 @@ sequence of colors
 1184
 01:01:45,290 --> 01:01:48,480
 I do is a longest common
-subsequence, super sequence,
+subsequence, supersequence,
 
 1185
 01:01:48,480 --> 01:01:53,780
@@ -5582,7 +5582,7 @@ has no repeated characters.
 1210
 01:03:01,250 --> 01:03:03,704
 And then you can reduce that
-to flood-it because that's
+to Flood-It because that's
 
 1211
 01:03:03,704 --> 01:03:04,495
@@ -5609,7 +5609,7 @@ actually two parameters,
 1216
 01:03:10,660 --> 01:03:14,844
 so this is a fun
-thing, k and sigma.
+thing, k and Sigma.
 
 1217
 01:03:14,844 --> 01:03:16,510
@@ -5623,7 +5623,7 @@ by the sum or just
 
 1219
 01:03:18,600 --> 01:03:21,017
-by the vector k, sigma.
+by the vector k, Sigma.
 
 1220
 01:03:21,017 --> 01:03:23,600
@@ -5633,7 +5633,7 @@ of them are relatively small.
 1221
 01:03:23,600 --> 01:03:26,700
 We could be exponential
-in both k and sigma.
+in both k and Sigma.
 
 1222
 01:03:26,700 --> 01:03:28,910
@@ -5642,8 +5642,8 @@ it would not be hard.
 
 1223
 01:03:28,910 --> 01:03:33,220
-But if you put k and sigma
-and it's still w1 complete.
+But if you put k and Sigma
+and it's still W[1]-complete.
 
 1224
 01:03:33,220 --> 01:03:36,020
@@ -5675,11 +5675,11 @@ Yeah?
 1230
 01:03:43,732 --> 01:03:46,065
 AUDIENCE: Why is it obvious
-that you can reduce flood-it
+that you can reduce Flood-It
 
 1231
 01:03:46,065 --> 01:03:47,362
-on trees to not flood-it?
+on trees to not Flood-It?
 
 1232
 01:03:47,362 --> 01:03:49,070
@@ -5693,7 +5693,7 @@ problem is related to trees.
 1234
 01:03:51,200 --> 01:03:55,660
 There are hardness results
-for like 2 by n flood-it.
+for like 2 by n Flood-It.
 
 1235
 01:03:55,660 --> 01:03:56,910
@@ -5701,8 +5701,8 @@ But they're just NP hardness.
 
 1236
 01:03:56,910 --> 01:03:59,770
-I didn't see a w1 hardness
-for 2 by n flood-it.
+I didn't see a W[1]-hardness
+for 2 by n Flood-It.
 
 1237
 01:03:59,770 --> 01:04:02,770
@@ -5732,7 +5732,7 @@ reduction, and then I'll
 
 1243
 01:04:15,010 --> 01:04:16,050
-finally define w1.
+finally define W[1].
 
 1244
 01:04:16,050 --> 01:04:38,280
@@ -5740,7 +5740,7 @@ finally define w1.
 1245
 01:04:38,280 --> 01:04:44,510
 Dominating Set, this problem
-is actually w2 complete,
+is actually W[2]-complete,
 
 1246
 01:04:44,510 --> 01:04:46,280
@@ -5748,8 +5748,8 @@ so this is even harder.
 
 1247
 01:04:46,280 --> 01:04:52,690
-But before we worry about w2,
-let's prove that it's w1 hard.
+But before we worry about W[2],
+let's prove that it's W[1]-hard.
 
 1248
 01:04:52,690 --> 01:04:58,126
@@ -5789,7 +5789,7 @@ represent each vertex
 1256
 01:05:26,530 --> 01:05:28,870
 in the multicolored
-independence set problem
+independent set problem
 
 1257
 01:05:28,870 --> 01:05:31,660
@@ -5821,12 +5821,12 @@ We just take this graph.
 
 1263
 01:05:42,490 --> 01:05:43,840
-We poured it over.
+We port it over.
 
 1264
 01:05:43,840 --> 01:05:51,160
 Now, what that tells us is that
-the vi's form color classes.
+the v_i's form color classes.
 
 1265
 01:05:51,160 --> 01:05:54,230
@@ -5910,7 +5910,7 @@ from each color class
 
 1282
 01:06:34,200 --> 01:06:36,327
-in the dominant set.
+in the dominating set.
 
 1283
 01:06:36,327 --> 01:06:38,660
@@ -5964,7 +5964,7 @@ choose these things.
 1293
 01:06:55,840 --> 01:07:01,650
 Now, how do I represent an edge
-in my independence set graph.
+in my independent set graph.
 
 1294
 01:07:01,650 --> 01:07:05,800
@@ -6064,7 +6064,7 @@ for free because we just--
 
 1314
 01:07:57,450 --> 01:08:01,540
-if I set k prime to be the
+if I set k-prime to be the
 number of color classes, which
 
 1315
@@ -6094,7 +6094,7 @@ flavor of nice reductions
 1320
 01:08:16,540 --> 01:08:21,930
 you can do with multicolored
-clique or independence set.
+clique or independent set.
 
 1321
 01:08:21,930 --> 01:08:25,750
@@ -6121,7 +6121,7 @@ we derived them.
 
 1326
 01:08:35,569 --> 01:08:39,800
-PROFESSOR: Right We want
+PROFESSOR: Right. We want
 them to be there in order
 
 1327
@@ -6195,12 +6195,12 @@ The time has come.
 
 1343
 01:09:21,770 --> 01:09:25,060
-By the way, dominate set is
-w2 complete, so is set cover.
+By the way, dominating set is
+W[2]-complete, so is set cover.
 
 1344
 01:09:25,060 --> 01:09:30,000
-And most w2 hardness reductions
+And most W[2]-hardness reductions
 start from one of these two.
 
 1345
@@ -6275,7 +6275,7 @@ aren't actual weights here.
 1360
 01:10:14,650 --> 01:10:16,400
 The goal is to get
-minimum hamming weight,
+minimum Hamming weight,
 
 1361
 01:10:16,400 --> 01:10:19,270
@@ -6342,12 +6342,12 @@ That's weighted circuit set.
 1375
 01:10:58,050 --> 01:11:01,900
 This problem defines
-the class called WP.
+the class called W[P].
 
 1376
 01:11:01,900 --> 01:11:03,820
 This is the original
-definition of WP
+definition of W[P]
 
 1377
 01:11:03,820 --> 01:11:08,150
@@ -6383,15 +6383,15 @@ than all the things.
 1384
 01:11:29,100 --> 01:11:33,240
 So we have FPT is
-contained in w1.
+contained in W[1].
 
 1385
 01:11:33,240 --> 01:11:37,350
-It's contained in w2, et cetera.
+It's contained in W[2], et cetera.
 
 1386
 01:11:37,350 --> 01:11:41,800
-And then we have WP,
+And then we have W[P],
 and then we have XP.
 
 1387
@@ -6476,12 +6476,12 @@ between constant input gates
 
 1405
 01:12:57,920 --> 01:13:00,080
-and super constant input gates.
+and super-constant input gates.
 
 1406
 01:13:00,080 --> 01:13:02,470
 So if you count how many
-super constant input gates
+super-constant input gates
 
 1407
 01:13:02,470 --> 01:13:06,940
@@ -6490,20 +6490,20 @@ depth circuit,
 
 1408
 01:13:06,940 --> 01:13:14,586
-then we get the w
-classes, w for weft.
+then we get the W
+classes, W for "weft".
 
 1409
 01:13:14,586 --> 01:13:20,420
 
 1410
 01:13:20,420 --> 01:13:28,000
-w(t) is the set of
+W[t] is the set of
 parameterized problems
 
 1411
 01:13:28,000 --> 01:13:41,670
-that reduce to constant depth
+that reduce to constant-depth
 weft-t weighted circuit set.
 
 1412
@@ -6515,12 +6515,12 @@ t is not the parameter.
 
 1414
 01:13:48,660 --> 01:13:51,240
-K is still the parameter.
+k is still the parameter.
 k is the number of ones.
 
 1415
 01:13:51,240 --> 01:13:52,140
-t is the thing.
+t is this thing.
 
 1416
 01:13:52,140 --> 01:13:56,120
@@ -6551,8 +6551,8 @@ times t or something.
 
 1422
 01:14:07,755 --> 01:14:10,984
-AUDIENCE: Then, w in WP is
-a different w than w(t)?
+AUDIENCE: Then, W in W[P] is
+a different W than W[t]?
 
 1423
 01:14:10,984 --> 01:14:14,121
@@ -6578,7 +6578,7 @@ is basically unbounded weft.
 
 1428
 01:14:24,325 --> 01:14:25,859
-w does not stand for weighted.
+W does not stand for weighted.
 
 1429
 01:14:25,859 --> 01:14:27,275
@@ -6623,7 +6623,7 @@ not need a weft to hold them in,
 
 1438
 01:14:50,480 --> 01:14:55,380
-but super constant ones do, then
+but super-constant ones do, then
 it's how many layers of wefting
 
 1439
@@ -6633,7 +6633,7 @@ cover all those things?
 
 1440
 01:14:57,840 --> 01:15:02,230
-That's the larges the longest
+That's the largest, the longest
 path in terms of counting
 
 1441
@@ -6647,7 +6647,7 @@ useful to think about.
 
 1443
 01:15:08,550 --> 01:15:12,050
-So for example, independence
+So for example, independent
 set, inputs are up here.
 
 1444
@@ -6724,11 +6724,11 @@ level of big gates.
 
 1460
 01:15:46,880 --> 01:15:49,400
-So independent set is in w1.
+So independent set is in W[1].
 
 1461
 01:15:49,400 --> 01:15:52,109
-That's a proof that it's in w1.
+That's a proof that it's in W[1].
 
 1462
 01:15:52,109 --> 01:15:54,400
@@ -6737,7 +6737,7 @@ we've been talking about,
 
 1463
 01:15:54,400 --> 01:15:58,540
-except dominating set, is in w1.
+except dominating set, is in W[1].
 
 1464
 01:15:58,540 --> 01:16:02,470
@@ -6812,12 +6812,12 @@ we have two levels of big gates.
 
 1479
 01:16:36,640 --> 01:16:39,330
-So this problem is in w2.
+So this problem is in W[2].
 
 1480
 01:16:39,330 --> 01:16:43,970
-Now, funnily enough, w1 and
-w2 are the most common things
+Now, funnily enough, W[1] and
+W[2] are the most common things
 
 1481
 01:16:43,970 --> 01:16:44,640
@@ -6826,7 +6826,7 @@ you see.
 1482
 01:16:44,640 --> 01:16:48,210
 I've never seen
-a paper about w3.
+a paper about W[3].
 
 1483
 01:16:48,210 --> 01:16:50,790
@@ -6836,26 +6836,26 @@ think, about problems
 1484
 01:16:50,790 --> 01:16:55,490
 that we tend to care about,
-ands of ors are common.
+ANDs of ORs are common.
 
 1485
 01:16:55,490 --> 01:16:59,010
 This, of course,
-CNF SAT is in w2.
+CNF SAT is in W[2].
 
 1486
 01:16:59,010 --> 01:17:01,710
 I should say weighted
-CNF SAT is in w2.
+CNF SAT is in W[2].
 
 1487
 01:17:01,710 --> 01:17:05,300
-It's actually w2 complete.
+It's actually W[2]-complete.
 
 1488
 01:17:05,300 --> 01:17:09,890
-Weighted three
-set is w1 complete
+Weighted 3SAT
+is W[1]-complete
 
 1489
 01:17:09,890 --> 01:17:12,350
@@ -6873,11 +6873,11 @@ SAT, you have five SAT.
 
 1492
 01:17:21,860 --> 01:17:25,140
-That's w1 complete.
+That's W[1]-complete.
 
 1493
 01:17:25,140 --> 01:17:28,790
-And CNF SAT is w2 complete.
+And CNF SAT is W[2]-complete.
 
 1494
 01:17:28,790 --> 01:17:30,760
@@ -6891,7 +6891,7 @@ this should be weighted.
 
 1496
 01:17:34,505 --> 01:17:38,320
-I'm going tow rite w,
+I'm going to write w,
 but I mean weighted.
 
 1497
@@ -6915,7 +6915,7 @@ represented as CNF SAT.
 1501
 01:17:49,530 --> 01:17:52,300
 I think that's why we
-rarely get outside of w2.
+rarely get outside of W[2].
 
 1502
 01:17:52,300 --> 01:17:53,690
@@ -6924,8 +6924,8 @@ other things there.
 
 1503
 01:17:53,690 --> 01:17:59,220
-You could do an or of ands of
-ors or an and of ors of ands.
+You could do an OR of ANDs of
+ORs or an AND of ORs of ANDs.
 
 1504
 01:17:59,220 --> 01:18:02,914
@@ -6943,8 +6943,8 @@ What's going on?
 
 1507
 01:18:05,510 --> 01:18:08,540
-Well, when you do
-that inefficient form,
+Well, when you do that
+in an efficient form,
 
 1508
 01:18:08,540 --> 01:18:09,870
@@ -7018,7 +7018,7 @@ Turing machines.
 
 1523
 01:18:44,320 --> 01:18:48,070
-These are w2 complete.
+These are W[2]-complete.
 
 1524
 01:18:48,070 --> 01:18:52,020
@@ -7041,16 +7041,16 @@ independently move on one tape.
 1528
 01:18:59,410 --> 01:19:01,550
 Those are equivalent,
-and they give you w2.
+and they give you W[2].
 
 1529
 01:19:01,550 --> 01:19:04,810
-Three tapes, gives w2.
+Three tapes, gives W[2].
 
 1530
 01:19:04,810 --> 01:19:07,837
 Any constant number of
-tapes, you still get w2.
+tapes, you still get W[2].
 
 1531
 01:19:07,837 --> 01:19:09,670
@@ -7059,22 +7059,22 @@ think, natural reason
 
 1532
 01:19:09,670 --> 01:19:12,280
-why w2 comes up a lot.
+why W[2] comes up a lot.
 
 1533
 01:19:12,280 --> 01:19:16,810
 I have seen problems that are
-hard for what's called w-star.
+hard for what's called W-star.
 
 1534
 01:19:16,810 --> 01:19:19,920
-This w-star is wt
+This W-star is W[t]
 for all fixed t.
 
 1535
 01:19:19,920 --> 01:19:24,820
 You can think of
-that as w order a.
+that as W[order 1].
 
 1536
 01:19:24,820 --> 01:19:26,370
@@ -7092,7 +7092,7 @@ They're hard for all of them.
 1539
 01:19:30,410 --> 01:19:32,560
 But I've never seen a
-w3 complete problem.
+W[3]-complete problem.
 
 1540
 01:19:32,560 --> 01:19:34,050
@@ -7100,18 +7100,18 @@ Maybe we can think of one.
 
 1541
 01:19:34,050 --> 01:19:37,400
-I've also seen WP come
+I've also seen W[P] come
 up, and there's also
 
 1542
 01:19:37,400 --> 01:19:43,740
-a problem called W-SAT which
+a problem called W[SAT] which
 is if you have weighted formula
 
 1543
 01:19:43,740 --> 01:19:47,340
-sat instead of weighted circuits
-sat, you get w-sat instead WP.
+SAT instead of weighted circuit
+SAT, you get W[SAT] instead W[P].
 
 1544
 01:19:47,340 --> 01:19:52,110
@@ -7120,7 +7120,7 @@ because in circuit SAT you can
 
 1545
 01:19:52,110 --> 01:19:54,164
-reuse things and in
+re-use things and in
 formula set, you can't.
 
 1546
@@ -7155,7 +7155,7 @@ problem-- first you
 1552
 01:20:09,410 --> 01:20:11,730
 should check where it
-fits in the w hierarchy
+fits in the W hierarchy
 
 1553
 01:20:11,730 --> 01:20:14,230
@@ -7169,7 +7169,7 @@ in the CNF style thing.
 1555
 01:20:15,690 --> 01:20:17,690
 Figure out whether
-it's w1 or w2.
+it's W[1] or W[2].
 
 1556
 01:20:17,690 --> 01:20:20,280
@@ -7178,12 +7178,12 @@ problems you should start from.
 
 1557
 01:20:20,280 --> 01:20:22,997
-If it's w1, probably want to
+If it's W[1], probably want to
 start from a version of clique.
 
 1558
 01:20:22,997 --> 01:20:24,580
-If it's w2, you
+If it's W[2], you
 probably want to start
 
 1559
@@ -7198,7 +7198,7 @@ about them here.
 
 1561
 01:20:27,530 --> 01:20:29,140
-And usually it's w1 or w2.
+And usually it's W[1] or W[2].
 
 1562
 01:20:29,140 --> 01:20:31,820
