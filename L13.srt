@@ -2353,7 +2353,7 @@ get away without it,
 509
 00:26:37,670 --> 00:26:39,290
 but I'm going to
-have mention them.
+have to mention them.
 
 510
 00:26:39,290 --> 00:26:41,575
@@ -2418,7 +2418,7 @@ to position k away from you,
 
 523
 00:27:13,660 --> 00:27:14,780
-you have to spin k time.
+you have to spend k time.
 
 524
 00:27:14,780 --> 00:27:17,220
@@ -2443,7 +2443,7 @@ instruction pointer.
 528
 00:27:27,070 --> 00:27:31,770
 And in general, I
-want to the machine
+want the machine
 
 529
 00:27:31,770 --> 00:27:41,350
@@ -2971,7 +2971,7 @@ natural assumption.
 640
 00:33:00,280 --> 00:33:02,120
 It's stronger than
-p does not equal NP,
+P does not equal NP,
 
 641
 00:33:02,120 --> 00:33:05,700
@@ -4583,7 +4583,7 @@ version of clique that's hard.
 
 990
 00:51:33,520 --> 00:51:45,340
-Mufti-colored clique if you
+Multi-colored clique if you
 remember way back to three
 
 991
@@ -4623,7 +4623,7 @@ sets of vertices.
 998
 00:52:01,730 --> 00:52:05,910
 For clique here, set
-the vertices partition
+of vertices partitioned
 
 999
 00:52:05,910 --> 00:52:11,830
@@ -4632,7 +4632,7 @@ into k clusters.
 1000
 00:52:11,830 --> 00:52:21,410
 And the question is, is there
-k-clique with one vertex
+a k-clique with one vertex
 
 1001
 00:52:21,410 --> 00:52:24,200
@@ -4677,7 +4677,7 @@ k-coloring of the graph.
 
 1010
 00:52:49,520 --> 00:52:51,870
-So we are given a k-color graph.
+So we are given a k-colored graph.
 
 1011
 00:52:51,870 --> 00:52:55,240
@@ -4762,7 +4762,7 @@ we'll also duplicate the edges
 1029
 00:54:01,387 --> 00:54:03,970
 in all versions except, because
-it's supposed to be a k-color,
+it's supposed to be a k-coloring,
 
 1030
 00:54:03,970 --> 00:54:07,690
@@ -4802,7 +4802,7 @@ it's a clique, you
 1037
 00:54:21,900 --> 00:54:23,940
 will never choose two
-verses from the same color
+vertices from the same color
 
 1038
 00:54:23,940 --> 00:54:26,235
@@ -4831,7 +4831,7 @@ vertices arbitrary numbers
 1043
 00:54:33,513 --> 00:54:35,763
 as long as they're all
-distinct any permutation of one
+distinct, any permutation of one
 
 1044
 00:54:35,763 --> 00:54:37,800
@@ -5198,7 +5198,7 @@ about this problem
 
 1125
 00:58:56,380 --> 00:58:59,180
-other than its computational
+other than it's computational
 biology and useful.
 
 1126
@@ -5920,7 +5920,7 @@ dummy vertices are doing.
 1284
 01:06:38,660 --> 01:06:41,380
 They are only going to be
-connect to things in here.
+connected to things in here.
 
 1285
 01:06:41,380 --> 01:06:43,410

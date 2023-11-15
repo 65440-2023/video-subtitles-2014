@@ -95,7 +95,7 @@ make analogous assumptions
 
 23
 00:00:57,530 --> 00:01:02,580
-about kSAT set for various k.
+about kSAT for various k.
 But in general, the hypothesis
 
 24
@@ -178,8 +178,8 @@ you cannot get, like,
 
 40
 00:01:47,960 --> 00:01:51,390
-2 the square root of n, the sum,
-and be complete problems have 2
+2 the square root of n, though some
+NP-complete problems have 2
 
 41
 00:01:51,390 --> 00:01:53,270
@@ -386,7 +386,7 @@ reductions from SAT,
 
 84
 00:03:55,019 --> 00:03:57,730
-you can turn this lower bound.
+you can turn this kind of lower bound,
 
 85
 00:03:57,730 --> 00:03:59,600
@@ -478,7 +478,7 @@ of past reductions.
 104
 00:05:05,660 --> 00:05:14,950
 And I'm going to start with
-3-coloring a graph for here.
+3-coloring a graph, over here.
 
 105
 00:05:14,950 --> 00:05:19,380
@@ -602,7 +602,7 @@ explicitly mention
 
 130
 00:07:06,710 --> 00:07:11,170
-ETH teach every time I use it.
+ETH every time I use it.
 
 131
 00:07:11,170 --> 00:07:16,290
@@ -700,7 +700,7 @@ for problem B,
 151
 00:08:39,330 --> 00:08:44,550
 because you could just convert
-to only get a linear size
+to B, only get a linear size
 
 152
 00:08:44,550 --> 00:08:47,230
@@ -1547,7 +1547,7 @@ even though the planar problems
 
 333
 00:18:33,120 --> 00:18:36,181
-are NP-hard, they a
+are NP-hard, they're a
 little bit easier.
 
 334
@@ -1860,7 +1860,7 @@ This is assuming ETH.
 403
 00:22:14,950 --> 00:22:18,010
 Because in particular,
-kb could be n.
+k could be n.
 
 404
 00:22:18,010 --> 00:22:19,890
@@ -2148,7 +2148,7 @@ set is W[2]-complete,
 466
 00:25:30,150 --> 00:25:33,800
 we think that means
-there's FPT algorithm.
+there's no FPT algorithm.
 
 467
 00:25:33,800 --> 00:25:36,530
@@ -2597,7 +2597,7 @@ to make a clique.
 565
 00:31:26,900 --> 00:31:29,644
 And we are going to
-connect to colorings
+connect two colorings
 
 566
 00:31:29,644 --> 00:31:30,560
