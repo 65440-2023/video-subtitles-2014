@@ -1902,7 +1902,7 @@ the original parameter was
 
 412
 00:21:27,400 --> 00:21:30,220
-founded by some k,
+bounded by some k,
 this new parameter
 
 413
@@ -2027,7 +2027,7 @@ does not have two
 
 439
 00:22:42,940 --> 00:22:49,790
-to the little of n algorithms--
+to the little o of n algorithms--
 if that's not possible for SAT,
 
 440
@@ -2086,7 +2086,7 @@ time you need,
 451
 00:23:23,180 --> 00:23:25,100
 something like n
-to the little k.
+to the little o of k.
 
 452
 00:23:25,100 --> 00:23:27,680
@@ -5393,7 +5393,7 @@ been studied.
 1169
 01:00:57,144 --> 01:00:58,560
 It's the only one
-I could can that
+I could find that
 
 1170
 01:00:58,560 --> 01:01:02,930
