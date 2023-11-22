@@ -5554,7 +5554,7 @@ hardness result, no f of k
 
 1208
 01:07:53,180 --> 01:07:57,520
-and a little o of k, because we
+n to the little o of k, because we
 only expand k by a factor of 4.
 
 1209
@@ -6175,7 +6175,7 @@ to constraints are satisfied.
 1343
 01:15:31,140 --> 01:15:33,190
 If and only if, so this
-a reduction from grid
+is a reduction from grid
 
 1344
 01:15:33,190 --> 01:15:35,500
@@ -6378,11 +6378,11 @@ you the grid tiling
 
 1387
 01:17:33,720 --> 01:17:35,874
-with less than or equal to.
+with less than or equal to,
 
 1388
 01:17:35,874 --> 01:17:37,790
-Probably also corresponds
+which probably also corresponds
 to the last example,
 
 1389
