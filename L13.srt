@@ -5112,7 +5112,7 @@ a multicolored clique.
 
 1107
 00:58:13,060 --> 00:58:15,150
-I think this the paper that
+I think this is the paper that
 introduced multicolored clique
 
 1108
